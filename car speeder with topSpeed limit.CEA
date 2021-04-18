@@ -1,0 +1,37 @@
+{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1.04
+local topSpeed=100
+local div=0.85
+local limiter=1/mul
+
+hk1=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+r=((x.Value^2)+(y.Value^2))^0.5
+if r<topSpeed then
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+else
+x.Value=x.Value*limiter
+y.Value=y.Value*limiter
+end
+end,0x26)
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+x.Value=x.Value*div
+y.Value=y.Value*div
+end,0x28)
+
+
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+

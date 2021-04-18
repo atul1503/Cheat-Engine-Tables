@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"HEALTH"</Description>
+      <LastState Value="200" Activated="1" RealAddress="00A5CE00"/>
+      <VariableType>Byte</VariableType>
+      <Address>00A5CE00</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"JILL SLOT 09"</Description>
+      <LastState Value="0" RealAddress="00A622C5"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622C5</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"JILL SLOT 08"</Description>
+      <LastState Value="0" RealAddress="00A622C1"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622C1</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"JILL SLOT 07"</Description>
+      <LastState Value="0" RealAddress="00A622BD"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622BD</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"JILL SLOT 06"</Description>
+      <LastState Value="0" RealAddress="00A622B9"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622B9</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"JILL SLOT 05"</Description>
+      <LastState Value="1" RealAddress="00A622B5"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622B5</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"JILL SLOT 04"</Description>
+      <LastState Value="1140850688" RealAddress="00A622B1"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622B1</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"JILL SLOT 03"</Description>
+      <LastState Value="1912606719" RealAddress="00A622AD"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622AD</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"JILL SLOT 02"</Description>
+      <LastState Value="704643560" RealAddress="00A623E9"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A623E9</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"JILL SLOT 01"</Description>
+      <LastState Value="150994945" RealAddress="00A622A5"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622A5</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"JILL SLOT 00"</Description>
+      <LastState Value="1124073472" RealAddress="00A622A1"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00A622A1</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"ammo"</Description>
+      <LastState Value="255" Activated="1" RealAddress="00A622A9"/>
+      <VariableType>Byte</VariableType>
+      <Address>ResidentEvil3.exe+6622A9</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

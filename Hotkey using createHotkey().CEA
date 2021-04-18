@@ -1,0 +1,25 @@
+{$lua}
+
+if syntaxcheck then return end
+[ENABLE]
+
+hk=createHotkey(function()
+local multi=2.0
+local z=0.2
+local y=0
+local x=0
+sleep(200)
+writeFloat("[speed_ptr]+8",z)
+sleep(100)
+x=readFloat("[speed_ptr]")
+y=readFloat("[speed_ptr]+4")
+x=x*multi
+y=y*multi
+writeFloat("[speed_ptr]",x)
+writeFloat("[speed_ptr]+4",y)
+end,VK_CONTROL)
+
+
+[DISABLE]
+hk.destroy()
+

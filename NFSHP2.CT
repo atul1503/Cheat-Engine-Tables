@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"POINTER"</Description>
+      <LastState Value="076A7E10" RealAddress="006E27A0"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>NFSHP2.exe+2E27A0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"X"</Description>
+      <LastState Value="-10.72682381" RealAddress="006E27A8"/>
+      <VariableType>Float</VariableType>
+      <Address>006E27A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Y"</Description>
+      <LastState Value="-28.82979012" RealAddress="006E27B0"/>
+      <VariableType>Float</VariableType>
+      <Address>006E27B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Z"</Description>
+      <LastState Value="-0.8597254157" RealAddress="006E27AC"/>
+      <VariableType>Float</VariableType>
+      <Address>006E27AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"SPEEDER"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+if syntaxcheck then return end
+
+[ENABLE]
+local mul=1.05
+local div=0.9
+
+hk1=createHotkey(function()
+writeFloat("006E27A8",readFloat("006E27A8")*mul)
+writeFloat("006E27B0",readFloat("006E27B0")*mul)
+end,0x26)
+
+hk2=createHotkey(function()
+writeFloat("006E27A8",readFloat("006E27A8")*div)
+writeFloat("006E27B0",readFloat("006E27B0")*div)
+end,0x28)
+
+
+
+[DISABLE]
+
+hk1.destroy()
+hk2.destroy()
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"ROTATION"</Description>
+      <LastState Value="0.0004038705956" RealAddress="006E27B8"/>
+      <VariableType>Float</VariableType>
+      <Address>006E27B8</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Increase Value</Action>
+          <Keys>
+            <Key>39</Key>
+          </Keys>
+          <Value>0.05</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Decrease Value</Action>
+          <Keys>
+            <Key>37</Key>
+          </Keys>
+          <Value>0.05</Value>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>STEERING WHEEL</Description>
+      <AddressString>NFSHP2.exe+288D9</AddressString>
+      <Before>
+        <Byte>80</Byte>
+        <Byte>BF</Byte>
+        <Byte>DD</Byte>
+        <Byte>D8</Byte>
+        <Byte>51</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+        <Byte>44</Byte>
+        <Byte>06</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>1C</Byte>
+        <Byte>24</Byte>
+        <Byte>E8</Byte>
+        <Byte>29</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

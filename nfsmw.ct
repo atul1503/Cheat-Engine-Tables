@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"X"</Description>
+      <LastState Value="-2878.218994" RealAddress="009386D8"/>
+      <VariableType>Float</VariableType>
+      <Address>Speed.exe+5386D8</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>84</Key>
+          </Keys>
+          <Value>-2878.219</Value>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Z"</Description>
+      <LastState Value="195.4309998" RealAddress="009386DC"/>
+      <VariableType>Float</VariableType>
+      <Address>009386DC</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>84</Key>
+          </Keys>
+          <Value>195.431</Value>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Y"</Description>
+      <LastState Value="-192.5809937" RealAddress="009386E0"/>
+      <VariableType>Float</VariableType>
+      <Address>009386E0</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>84</Key>
+          </Keys>
+          <Value>-192.581</Value>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"X SPEED"</Description>
+      <LastState Value="5.686052799" RealAddress="009386E8"/>
+      <VariableType>Float</VariableType>
+      <Address>009386E8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"Y SPEED"</Description>
+      <LastState Value="10.24043465" RealAddress="009386F0"/>
+      <VariableType>Float</VariableType>
+      <Address>009386F0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Z SPEED"</Description>
+      <LastState Value="0.2132998854" RealAddress="009386EC"/>
+      <VariableType>Float</VariableType>
+      <Address>009386EC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"WEIGHT"</Description>
+      <LastState Value="1328" RealAddress="009386F4"/>
+      <VariableType>Float</VariableType>
+      <Address>009386F4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"ROTATION"</Description>
+      <LastState Value="0.3403712511" RealAddress="009386FC"/>
+      <VariableType>Float</VariableType>
+      <Address>009386FC</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Increase Value</Action>
+          <Keys>
+            <Key>39</Key>
+          </Keys>
+          <Value>0.0625</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Decrease Value</Action>
+          <Keys>
+            <Key>37</Key>
+          </Keys>
+          <Value>0.0625</Value>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"SPEEDER SCRIPT"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1.1
+local div=0.8
+
+hk1=createHotkey(function()
+getAddressList().getMemoryRecord(3).Value=getAddressList().getMemoryRecord(3).Value*mul
+getAddressList().getMemoryRecord(4).Value=getAddressList().getMemoryRecord(4).Value*mul
+end,0x26)
+
+hk3=createHotkey(function()
+getAddressList().getMemoryRecord(3).Value=getAddressList().getMemoryRecord(3).Value*20
+getAddressList().getMemoryRecord(4).Value=getAddressList().getMemoryRecord(4).Value*20
+end,0x4C)
+
+hk2=createHotkey(function()
+getAddressList().getMemoryRecord(3).Value=getAddressList().getMemoryRecord(3).Value*div
+getAddressList().getMemoryRecord(4).Value=getAddressList().getMemoryRecord(4).Value*div
+end,0x28)
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="20000000">
+      <Description>Car Wheel Speed</Description>
+      <AddressString>Speed.exe+28E447</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>D0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>D0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>8E</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Car Wheel Test</Description>
+      <AddressString>Speed.exe+29E20A</AddressString>
+      <Before>
+        <Byte>86</Byte>
+        <Byte>D0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>D0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>CB</Byte>
+        <Byte>00</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>speed</Description>
+      <AddressString>Speed.exe+297955</AddressString>
+      <Before>
+        <Byte>50</Byte>
+        <Byte>57</Byte>
+        <Byte>D8</Byte>
+        <Byte>46</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>C0</Byte>
+        <Byte>D8</Byte>
+        <Byte>4E</Byte>
+        <Byte>54</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

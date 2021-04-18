@@ -1,0 +1,66 @@
+{ Game   : gta_sa.exe
+  Version: 
+  Date   : 2020-08-03
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,gta_sa.exe,D9 5E 44 D9 44 24 08) // should be unique
+alloc(newmem,$1000)
+globalalloc(base,4)
+label(code)
+label(return)
+
+newmem:
+mov [base],esi
+
+code:
+  fstp dword ptr [esi+44]
+  fld dword ptr [esp+08]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db D9 5E 44 D9 44 24 08
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "gta_sa.exe"+14304A
+
+"gta_sa.exe"+143027: D8 3D 24 96 85 00        -  fdivr dword ptr [gta_sa.exe+459624]
+"gta_sa.exe"+14302D: D9 44 24 04              -  fld dword ptr [esp+04]
+"gta_sa.exe"+143031: D8 C9                    -  fmul st(0),st(1)
+"gta_sa.exe"+143033: D9 44 24 08              -  fld dword ptr [esp+08]
+"gta_sa.exe"+143037: D8 CA                    -  fmul st(0),st(2)
+"gta_sa.exe"+143039: D9 5C 24 08              -  fstp dword ptr [esp+08]
+"gta_sa.exe"+14303D: D9 C9                    -  fxch st(1)
+"gta_sa.exe"+14303F: D8 4C 24 0C              -  fmul dword ptr [esp+0C]
+"gta_sa.exe"+143043: D9 5C 24 0C              -  fstp dword ptr [esp+0C]
+"gta_sa.exe"+143047: D8 46 44                 -  fadd dword ptr [esi+44]
+// ---------- INJECTING HERE ----------
+"gta_sa.exe"+14304A: D9 5E 44                 -  fstp dword ptr [esi+44]
+"gta_sa.exe"+14304D: D9 44 24 08              -  fld dword ptr [esp+08]
+// ---------- DONE INJECTING  ----------
+"gta_sa.exe"+143051: D8 46 48                 -  fadd dword ptr [esi+48]
+"gta_sa.exe"+143054: D9 5E 48                 -  fstp dword ptr [esi+48]
+"gta_sa.exe"+143057: D9 44 24 0C              -  fld dword ptr [esp+0C]
+"gta_sa.exe"+14305B: D8 46 4C                 -  fadd dword ptr [esi+4C]
+"gta_sa.exe"+14305E: D9 5E 4C                 -  fstp dword ptr [esi+4C]
+"gta_sa.exe"+143061: 8B 46 40                 -  mov eax,[esi+40]
+"gta_sa.exe"+143064: A8 10                    -  test al,10
+"gta_sa.exe"+143066: 0F 85 0B 01 00 00        -  jne gta_sa.exe+143177
+"gta_sa.exe"+14306C: 8A 4C 24 38              -  mov cl,[esp+38]
+"gta_sa.exe"+143070: 84 C9                    -  test cl,cl
+}

@@ -1,0 +1,19 @@
+{$lua}
+
+[ENABLE]
+
+local button=0x4E
+local wait=400
+
+hk1=createHotkey(function()
+while(1)
+do
+  if isKeyPressed(0x4F) then break end
+  sleep(wait)
+ doKeyPress(button)
+end
+end,0x50)
+
+[DISABLE]
+
+hk1.destroy()

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"MAIN"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"ENERGY INST"</Description>
+          <LastState Value="3256375513" RealAddress="00439FA6"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00439FA6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"REPUTATION INST"</Description>
+          <LastState Value="2333890777" RealAddress="00438CCC"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00438CCC</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

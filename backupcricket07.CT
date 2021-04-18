@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"MAIN"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"BATSMAN MOVER INST"</Description>
+          <LastState Value="13147865" RealAddress="005EDF0F"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>005EDF0F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"1950+addr(7.66)"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"The stumps and pitch fields are the file name"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"BALL HEIGHT INST"</Description>
+          <LastState Value="48011737" RealAddress="00543515"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00543515</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"BALL SWING INST"</Description>
+          <LastState Value="47749593" RealAddress="005434F9"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>005434F9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"BALL SPEED INST"</Description>
+          <LastState Value="48273881" RealAddress="0054352B"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0054352B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"fstp dword ptr [ecx+000002D8]"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>52</ID>
+          <Description>"LINE INST"</Description>
+          <LastState Value="46176729" RealAddress="00543429"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00543429</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>53</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="-0.7557131648" RealAddress="031CE460"/>
+      <VariableType>Float</VariableType>
+      <Address>031CE460</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>83</Key>
+          </Keys>
+          <Value>0.13</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>68</Key>
+          </Keys>
+          <Value>-0.13</Value>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>swing</Description>
+      <AddressString>Cricket07.exe+1434F9</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>D8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>D8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>81</Byte>
+        <Byte>E8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>line coord(-0.12 and 0.12)</Description>
+      <AddressString>Cricket07.exe+143429</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>C0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>C0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>81</Byte>
+        <Byte>E8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>important</Description>
+      <AddressString>Cricket07.exe+141F80</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>0C</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>speed</Description>
+      <AddressString>Cricket07.exe+14352B</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>E0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>E0</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>D8</Byte>
+        <Byte>0D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>height</Description>
+      <AddressString>Cricket07.exe+143515</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>DC</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>DC</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>height coord</Description>
+      <AddressString>Cricket07.exe+143455</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>C4</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>C4</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>length coord(8.75 and -8.75)</Description>
+      <AddressString>Cricket07.exe+14347B</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>C8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>C8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>2A</Byte>
+        <Byte>E8</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

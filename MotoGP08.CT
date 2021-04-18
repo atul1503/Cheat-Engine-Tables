@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+local grass=2
+local mul=1.1
+local div=0.4
+
+hk1=createHotkey(function()
+getAddressList().getMemoryRecordByDescription("x").Value=getAddressList().getMemoryRecordByDescription("x").Value*mul
+getAddressList().getMemoryRecordByDescription("y").Value=getAddressList().getMemoryRecordByDescription("y").Value*mul
+end,0x26)
+
+hk2=createHotkey(function()
+getAddressList().getMemoryRecordByDescription("x").Value=getAddressList().getMemoryRecordByDescription("x").Value*div
+getAddressList().getMemoryRecordByDescription("y").Value=getAddressList().getMemoryRecordByDescription("y").Value*div
+end,0x28)
+
+hk3=createHotkey(function()
+getAddressList().getMemoryRecordByDescription("x").Value=getAddressList().getMemoryRecordByDescription("x").Value*grass
+getAddressList().getMemoryRecordByDescription("y").Value=getAddressList().getMemoryRecordByDescription("y").Value*grass
+end,0x57)
+
+
+[DISABLE]
+hk2.destroy()
+hk1.destroy()
+hk3.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"x"</Description>
+      <LastState Value="0.002623918001" RealAddress="15602CB4"/>
+      <VariableType>Float</VariableType>
+      <Address>15602CB4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"y"</Description>
+      <LastState Value="-0.03221375495" RealAddress="15602CBC"/>
+      <VariableType>Float</VariableType>
+      <Address>15602CB4+8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"No description"</Description>
+      <LastState Value="300" RealAddress="15602D08"/>
+      <VariableType>Float</VariableType>
+      <Address>15602D08</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="20000000">
+      <Description>Something important</Description>
+      <AddressString>Launcher.exe+3FE22</AddressString>
+      <Before>
+        <Byte>68</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>80</Byte>
+        <Byte>AC</Byte>
+        <Byte>0C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Extremely important</Description>
+      <AddressString>Launcher.exe+12CBC0</AddressString>
+      <Before>
+        <Byte>B7</Byte>
+        <Byte>B8</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9F</Byte>
+        <Byte>00</Byte>
+        <Byte>07</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>87</Byte>
+        <Byte>DC</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Speed</Description>
+      <AddressString>Launcher.exe+C9C64</AddressString>
+      <Before>
+        <Byte>8E</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>46</Byte>
+        <Byte>54</Byte>
+      </Actual>
+      <After>
+        <Byte>FF</Byte>
+        <Byte>15</Byte>
+        <Byte>1C</Byte>
+        <Byte>94</Byte>
+        <Byte>69</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>X speed</Description>
+      <AddressString>Engine.dll+2D4A</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>D9</Byte>
+        <Byte>01</Byte>
+        <Byte>D8</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+        <Byte>D8</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>X speed after renew</Description>
+      <AddressString>Launcher.exe+12CA55</AddressString>
+      <Before>
+        <Byte>41</Byte>
+        <Byte>75</Byte>
+        <Byte>32</Byte>
+        <Byte>D9</Byte>
+        <Byte>EE</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>57</Byte>
+        <Byte>74</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>57</Byte>
+        <Byte>78</Byte>
+        <Byte>D9</Byte>
+        <Byte>57</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Turn something</Description>
+      <AddressString>Launcher.exe+F99F4</AddressString>
+      <Before>
+        <Byte>A1</Byte>
+        <Byte>EC</Byte>
+        <Byte>0C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>81</Byte>
+        <Byte>C8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>DE</Byte>
+        <Byte>CA</Byte>
+        <Byte>DE</Byte>
+        <Byte>C9</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

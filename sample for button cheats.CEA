@@ -1,0 +1,27 @@
+{$lua}
+
+if syntaxcheck then return end
+[ENABLE]
+
+function boost()
+
+         if isKeyPressed(0x57) then
+
+                      speedx=readFloat("[p_coord]")
+                      speedy=readFloat("[p_coord]+4")
+                      speedz=readFloat("[p_coord]+8")
+                      speedx=speedx*1.5
+                      speedy=speedy*1.5
+                      speedz=speedz*1.5
+                      writeFloat("[p_coord]",speedx)
+                      writeFloat("[p_coord]+4",speedy)
+                      writeFloat("[p_coord]+8",speedz)
+                      end
+                      end
+            t=createTimer(nil)
+            timer_setInterval(t,10)
+            timer_onTimer(t,boost)
+            timer_setEnabled(t,true)
+
+[DISABLE]
+timer_setEnabled(t,false)

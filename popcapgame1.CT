@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Recharge test"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : popcapgame1.exe
+  Version: 
+  Date   : 2020-08-26
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(instant_recharge,popcapgame1.exe,8B 47 24 3B 47 28) // should be unique
+alloc(newmem,$100)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+mov [edi+24],#9999999999
+  mov eax,[edi+24]
+  cmp eax,[edi+28]
+  jmp return
+
+instant_recharge:
+  jmp newmem
+  nop
+return:
+registersymbol(instant_recharge)
+
+[DISABLE]
+
+instant_recharge:
+  db 8B 47 24 3B 47 28
+
+unregistersymbol(instant_recharge)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "popcapgame1.exe"+91E4F
+
+"popcapgame1.exe"+91E29: 0F 84 05 01 00 00     -  je popcapgame1.exe+91F34
+"popcapgame1.exe"+91E2F: 8B 4F 04              -  mov ecx,[edi+04]
+"popcapgame1.exe"+91E32: 83 B9 80 55 00 00 00  -  cmp dword ptr [ecx+00005580],00
+"popcapgame1.exe"+91E39: 75 05                 -  jne popcapgame1.exe+91E40
+"popcapgame1.exe"+91E3B: E8 10 FF FF FF        -  call popcapgame1.exe+91D50
+"popcapgame1.exe"+91E40: 80 7F 48 00           -  cmp byte ptr [edi+48],00
+"popcapgame1.exe"+91E44: 75 25                 -  jne popcapgame1.exe+91E6B
+"popcapgame1.exe"+91E46: 80 7F 49 00           -  cmp byte ptr [edi+49],00
+"popcapgame1.exe"+91E4A: 74 1F                 -  je popcapgame1.exe+91E6B
+"popcapgame1.exe"+91E4C: FF 47 24              -  inc [edi+24]
+// ---------- INJECTING HERE ----------
+"popcapgame1.exe"+91E4F: 8B 47 24              -  mov eax,[edi+24]
+"popcapgame1.exe"+91E52: 3B 47 28              -  cmp eax,[edi+28]
+// ---------- DONE INJECTING  ----------
+"popcapgame1.exe"+91E55: 7E 14                 -  jle popcapgame1.exe+91E6B
+"popcapgame1.exe"+91E57: C7 47 24 00 00 00 00  -  mov [edi+24],00000000
+"popcapgame1.exe"+91E5E: C6 47 49 00           -  mov byte ptr [edi+49],00
+"popcapgame1.exe"+91E62: C6 47 48 01           -  mov byte ptr [edi+48],01
+"popcapgame1.exe"+91E66: E8 E5 FE FF FF        -  call popcapgame1.exe+91D50
+"popcapgame1.exe"+91E6B: 8B 47 3C              -  mov eax,[edi+3C]
+"popcapgame1.exe"+91E6E: 85 C0                 -  test eax,eax
+"popcapgame1.exe"+91E70: 0F 8E BE 00 00 00     -  jng popcapgame1.exe+91F34
+"popcapgame1.exe"+91E76: 8D 48 FF              -  lea ecx,[eax-01]
+"popcapgame1.exe"+91E79: 8D 91 70 FE FF FF     -  lea edx,[ecx-00000190]
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>Sun Points</Description>
+      <AddressString>popcapgame1.exe+94445</AddressString>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>1D</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>87</Byte>
+        <Byte>78</Byte>
+        <Byte>55</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>C9</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Recharge counter</Description>
+      <AddressString>popcapgame1.exe+91E4F</AddressString>
+      <Before>
+        <Byte>74</Byte>
+        <Byte>1F</Byte>
+        <Byte>FF</Byte>
+        <Byte>47</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>47</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>47</Byte>
+        <Byte>28</Byte>
+        <Byte>7E</Byte>
+        <Byte>14</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

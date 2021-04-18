@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>40</ID>
+      <Description>"MAIN"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"Faster Resource Extraction"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : age3.exe
+  Version: 
+  Date   : 2020-09-12
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+
+aobscanmodule(Faster_resources,age3.exe,D8 88 54 03 00 00 8B) // should be unique
+alloc(newmem,$200)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+mov [eax+354],(float)1
+  fmul dword ptr [eax+00000354]
+  jmp return
+
+Faster_resources:
+  jmp newmem
+  nop
+return:
+registersymbol(Faster_resources)
+
+[DISABLE]
+
+Faster_resources:
+  db D8 88 54 03 00 00
+
+unregistersymbol(Faster_resources)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "age3.exe"+1C1565
+
+"age3.exe"+1C1547: 8B CF              -  mov ecx,edi
+"age3.exe"+1C1549: D9 E0              -  fchs 
+"age3.exe"+1C154B: D9 1C 24           -  fstp dword ptr [esp]
+"age3.exe"+1C154E: 52                 -  push edx
+"age3.exe"+1C154F: E8 0A BA EB FF     -  call age3.exe+7CF5E
+"age3.exe"+1C1554: 8B CD              -  mov ecx,ebp
+"age3.exe"+1C1556: E8 BB 73 E9 FF     -  call age3.exe+58916
+"age3.exe"+1C155B: 8B 4E 10           -  mov ecx,[esi+10]
+"age3.exe"+1C155E: D9 44 24 14        -  fld dword ptr [esp+14]
+"age3.exe"+1C1562: 8B 41 44           -  mov eax,[ecx+44]
+// ---------- INJECTING HERE ----------
+"age3.exe"+1C1565: D8 88 54 03 00 00  -  fmul dword ptr [eax+00000354]
+// ---------- DONE INJECTING  ----------
+"age3.exe"+1C156B: 8B 56 04           -  mov edx,[esi+04]
+"age3.exe"+1C156E: F6 42 58 10        -  test byte ptr [edx+58],10
+"age3.exe"+1C1572: D9 5C 24 14        -  fstp dword ptr [esp+14]
+"age3.exe"+1C1576: 8B 7C 24 14        -  mov edi,[esp+14]
+"age3.exe"+1C157A: 0F 8F 7B 20 0B 00  -  jg age3.exe+2735FB
+"age3.exe"+1C1580: 8A 49 7C           -  mov cl,[ecx+7C]
+"age3.exe"+1C1583: 88 4C 24 28        -  mov [esp+28],cl
+"age3.exe"+1C1587: 8B 54 24 28        -  mov edx,[esp+28]
+"age3.exe"+1C158B: 52                 -  push edx
+"age3.exe"+1C158C: 83 EC 04           -  sub esp,04
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"10005 gold is 1851062351"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"A lot of Food is      3428703423"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Wood(good amount)=3494432892"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>41</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>16787800</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>198D13E4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>43</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1AF46A90</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>14FBAA84</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>14FBAA88</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>14FBAA8C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="20000000">
+      <Description>Wood(4 byte)</Description>
+      <AddressString>age3.exe+4D25A</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>CC</Byte>
+        <Byte>DA</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>04</Byte>
+        <Byte>8A</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>CE</Byte>
+        <Byte>E8</Byte>
+        <Byte>3C</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Wood Adder</Description>
+      <AddressString>age3.exe+1C1565</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>44</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>88</Byte>
+        <Byte>54</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>56</Byte>
+        <Byte>04</Byte>
+        <Byte>F6</Byte>
+        <Byte>42</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Population max count</Description>
+      <AddressString>age3.exe+1C569D</AddressString>
+      <Before>
+        <Byte>F0</Byte>
+        <Byte>33</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>72</Byte>
+        <Byte>54</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>0D</Byte>
+        <Byte>50</Byte>
+        <Byte>70</Byte>
+        <Byte>C0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Soldier Slot</Description>
+      <AddressString>age3.exe+598826</AddressString>
+      <Before>
+        <Byte>BB</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4E</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>5D</Byte>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Building Health</Description>
+      <AddressString>age3.exe+AFD78</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>64</Byte>
+        <Byte>C6</Byte>
+        <Byte>1B</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>5E</Byte>
+        <Byte>64</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Current Population Count</Description>
+      <AddressString>age3.exe+5990B6</AddressString>
+      <Before>
+        <Byte>82</Byte>
+        <Byte>D8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>43</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>79</Byte>
+        <Byte>07</Byte>
+        <Byte>C7</Byte>
+        <Byte>43</Byte>
+        <Byte>58</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Soldier and Building Health</Description>
+      <AddressString>age3.exe+308F5</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>BB</Byte>
+        <Byte>23</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>51</Byte>
+        <Byte>64</Byte>
+      </Actual>
+      <After>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Card Counter</Description>
+      <AddressString>age3.exe+23E715</AddressString>
+      <Before>
+        <Byte>C7</Byte>
+        <Byte>01</Byte>
+        <Byte>83</Byte>
+        <Byte>C5</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>3B</Byte>
+        <Byte>BE</Byte>
+        <Byte>78</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>8C</Byte>
+        <Byte>5A</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Soldier</Description>
+      <AddressString>age3.exe+56DEEA</AddressString>
+      <Before>
+        <Byte>A9</Byte>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>55</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>17</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>53</Byte>
+        <Byte>8D</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>All Addresses are ours</Description>
+      <AddressString>age3.exe+3AE3FC</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>CC</Byte>
+        <Byte>DA</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>04</Byte>
+        <Byte>8A</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C7</Byte>
+        <Byte>01</Byte>
+        <Byte>3B</Byte>
+        <Byte>3D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Gold value while creating soldier</Description>
+      <AddressString>age3.exe+3AE3FC</AddressString>
+      <Before>
+        <Byte>8D</Byte>
+        <Byte>CC</Byte>
+        <Byte>DA</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>04</Byte>
+        <Byte>8A</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C7</Byte>
+        <Byte>01</Byte>
+        <Byte>3B</Byte>
+        <Byte>3D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Change of cmp eax,[edi+08]</Description>
+      <AddressString>age3.exe+56E195</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>01</Byte>
+        <Byte>83</Byte>
+        <Byte>C3</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>3B</Byte>
+        <Byte>47</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+        <Byte>7C</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>1)Find the gold value then the next two addresses are the wood and Food.
+2) 10005 gold is 1851062351
+</Comments>
+  <LuaScript>aalist=getAutoAttachList()
+stringlist_add(aalist,"aoe3.exe");
+</LuaScript>
+</CheatTable>

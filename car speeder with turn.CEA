@@ -1,0 +1,91 @@
+{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1+3e-2
+local degAngle=0
+local rotater=0.025
+local speedForTurn=37.5
+local speedForTurnSwitch=0
+local easyTurnSwitch=0
+local topSpeed=200
+local div=0.85
+local boost=2
+local overLimitMultiplier=(1/mul)
+
+hk1=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+r=(((x.Value)^2)+((y.Value)^2))^0.5
+if r<topSpeed then
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+else
+x.Value=x.Value*overLimitMultiplier
+y.Value=y.Value*overLimitMultiplier
+end
+end,0x26)
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+x.Value=x.Value*div
+y.Value=y.Value*div
+end,0x28)
+
+hk3=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+x.Value=x.Value*boost
+y.Value=y.Value*boost
+end,0x42)
+
+hk4=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
+if tonumber(ro.Value)>0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+if not isKeyPressed(0x26) and speedForTurnSwitch~=0 then
+r=((x.Value^2)+(y.Value^2))^0.5
+ratio=speedForTurn/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+ro.Value=ro.Value-rotater
+theta=degAngle*(math.pi/180)
+xn=x.Value*math.cos(theta)-y.Value*math.sin(theta)
+yn=x.Value*math.sin(theta)+y.Value*math.cos(theta)
+x.Value=xn
+y.Value=yn
+end,0x25)
+
+hk5=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
+if tonumber(ro.Value)<0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+if not isKeyPressed(0x26) and speedForTurnSwitch~=0 then
+r=((x.Value^2)+(y.Value^2))^0.5
+ratio=speedForTurn/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+ro.Value=ro.Value+rotater
+theta=degAngle*(math.pi/180)
+xn=x.Value*math.cos(theta)+y.Value*math.sin(theta)
+yn=(-1)*x.Value*math.sin(theta)+y.Value*math.cos(theta)
+x.Value=xn
+y.Value=yn
+end,0x27)
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+hk5.destroy()

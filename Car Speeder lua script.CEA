@@ -1,0 +1,73 @@
+{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1.03
+local topSpeed=150
+local stop=0.85
+local rotation=1
+local superBoost=2
+local turn=1/mul
+local limiter=1/mul
+
+hk1=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+r=((x.Value^2)+(y.Value^2))^0.5
+if r<topSpeed/2 then
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+else
+x.Value=x.Value*limiter
+y.Value=y.Value*limiter
+end
+end,0x26)
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+x.Value=x.Value*stop
+y.Value=y.Value*stop
+end,0x28)
+
+hk3=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+x.Value=x.Value*turn
+y.Value=y.Value*turn
+end,0x25)
+
+hk4=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+x.Value=x.Value*turn
+y.Value=y.Value*turn
+end,0x27)
+
+hk5=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription("speed x")
+y=getAddressList().getMemoryRecordByDescription("speed y")
+x.Value=x.Value*superBoost
+y.Value=y.Value*superBoost
+end,0x42)
+
+hk6=createHotkey(function()
+ro=getAddressList().getMemoryRecordByDescription("Rotation")
+ro.Value=ro.Value+rotation
+end,0x25)
+
+hk7=createHotkey(function()
+ro=getAddressList().getMemoryRecordByDescription("Rotation")
+ro.Value=ro.Value-rotation
+end,0x27)
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+hk5.destroy()
+hk6.destroy()
+hk7.destroy()

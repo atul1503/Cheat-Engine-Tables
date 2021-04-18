@@ -1,0 +1,94 @@
+{ Game   : gta_sa.exe
+  Version: 
+  Date   : 2020-08-07
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,gta_sa.exe,8B 01 8B 51 04 89 44 24 10) // should be unique
+alloc(newmem,$1000)
+alloc(flag,4)
+alloc(multi,4)
+label(code)
+label(return)
+
+newmem:
+
+code:
+cmp [flag],1
+je atul
+  mov eax,[ecx]
+  mov edx,[ecx+04]
+  jmp return
+
+
+atul:
+mov [flag],0
+fld [ecx]
+fmul [multi]
+fstp [ecx]
+fld [ecx+04]
+fmul [multi]
+fstp [ecx+04]
+fld [ecx+08]
+fmul [multi]
+fstp [ecx+08]
+mov eax,[ecx]
+mov edx,[ecx+04]
+jmp return
+
+
+flag:
+dd 0
+
+multi:
+dd (float)1.1
+
+
+INJECT:
+  jmp newmem
+return:
+registersymbol(flag)
+registersymbol(multi)
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 8B 01 8B 51 04
+unregistersymbol(INJECT)
+unregistersymbol(flag)
+unregistersymbol(multi)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "gta_sa.exe"+13D580
+
+"gta_sa.exe"+13D561: 83 C4 04           -  add esp,04
+"gta_sa.exe"+13D564: 3B C3              -  cmp eax,ebx
+"gta_sa.exe"+13D566: 74 7B              -  je gta_sa.exe+13D5E3
+"gta_sa.exe"+13D568: 8B 88 6C 04 00 00  -  mov ecx,[eax+0000046C]
+"gta_sa.exe"+13D56E: F6 C5 01           -  test ch,01
+"gta_sa.exe"+13D571: 74 1B              -  je gta_sa.exe+13D58E
+"gta_sa.exe"+13D573: 8B 88 8C 05 00 00  -  mov ecx,[eax+0000058C]
+"gta_sa.exe"+13D579: 3B CB              -  cmp ecx,ebx
+"gta_sa.exe"+13D57B: 74 11              -  je gta_sa.exe+13D58E
+"gta_sa.exe"+13D57D: 83 C1 44           -  add ecx,44
+// ---------- INJECTING HERE ----------
+"gta_sa.exe"+13D580: 8B 01              -  mov eax,[ecx]
+"gta_sa.exe"+13D582: 8B 51 04           -  mov edx,[ecx+04]
+// ---------- DONE INJECTING  ----------
+"gta_sa.exe"+13D585: 89 44 24 10        -  mov [esp+10],eax
+"gta_sa.exe"+13D589: 8B 41 08           -  mov eax,[ecx+08]
+"gta_sa.exe"+13D58C: EB 0F              -  jmp gta_sa.exe+13D59D
+"gta_sa.exe"+13D58E: 83 C0 44           -  add eax,44
+"gta_sa.exe"+13D591: 8B 08              -  mov ecx,[eax]
+"gta_sa.exe"+13D593: 8B 50 04           -  mov edx,[eax+04]
+"gta_sa.exe"+13D596: 8B 40 08           -  mov eax,[eax+08]
+"gta_sa.exe"+13D599: 89 4C 24 10        -  mov [esp+10],ecx
+"gta_sa.exe"+13D59D: D9 44 24 10        -  fld dword ptr [esp+10]
+"gta_sa.exe"+13D5A1: 89 54 24 14        -  mov [esp+14],edx
+}

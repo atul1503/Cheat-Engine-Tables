@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>88</ID>
+      <Description>"Speeder test"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>
+[ENABLE]
+
+aobscanmodule(Second,BurnoutParadise.exe,0F 29 4E 40 E8 AE 44 FF FF) // should be unique
+alloc(newmem,$200)
+alloc(car,4)
+registersymbol(car)
+label(code)
+label(return)
+
+newmem:
+mov [car],esi
+
+code:
+  movaps [esi+40],xmm1
+  call BurnoutParadise.exe+28EE50
+  jmp return
+
+Second:
+  jmp newmem
+  nop 4
+return:
+registersymbol(Second)
+
+{$lua}
+
+local mul=1.2
+local div=0.7
+
+hk1=createHotkey(function()
+writeFloat("[car]+40",readFloat("[car]+40")*mul)
+writeFloat("[car]+48",readFloat("[car]+48")*mul)
+end,0x26)
+
+hk2=createHotkey(function()
+writeFloat("[car]+40",readFloat("[car]+40")*div)
+writeFloat("[car]+48",readFloat("[car]+48")*div)
+end,0x28)
+
+
+{$asm}
+
+
+[DISABLE]
+
+Second:
+  db 0F 29 4E 40 E8 AE 44 FF FF
+
+dealloc(car)
+unregistersymbol(car)
+unregistersymbol(Second)
+dealloc(newmem)
+
+{$lua}
+
+hk1.destroy()
+hk2.destroy()
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>Car speed</Description>
+      <AddressString>BurnoutParadise.exe+29A999</AddressString>
+      <Before>
+        <Byte>46</Byte>
+        <Byte>40</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>4E</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>AE</Byte>
+        <Byte>44</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Car speed 2</Description>
+      <AddressString>BurnoutParadise.exe+2B0EB8</AddressString>
+      <Before>
+        <Byte>40</Byte>
+        <Byte>40</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>48</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>01</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

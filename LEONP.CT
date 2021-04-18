@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"LEON HEALTH/CLAIRE HEALTH"</Description>
+      <LastState Value="200" Activated="1" RealAddress="009933A6"/>
+      <VariableType>Byte</VariableType>
+      <Address>LEONP.EXE+5933A6</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"SLOT"</Description>
+      <LastState Value="01000011" RealAddress="00998095"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>998095</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"SLOT"</Description>
+      <LastState Value="10000000" RealAddress="00998099"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>998099</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"SLOT"</Description>
+      <LastState Value="170000FF" RealAddress="0099809D"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>99809d</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"SLOT"</Description>
+      <LastState Value="00000000" RealAddress="009980A1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>9980a1</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

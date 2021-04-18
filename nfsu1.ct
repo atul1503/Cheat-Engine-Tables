@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="130.4459534" RealAddress="03924994"/>
+      <VariableType>Float</VariableType>
+      <Address>03924994</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>Code :fstp dword ptr [ecx+000002BC] (wheel speed)</Description>
+      <AddressString>speed.exe+78E4A</AddressString>
+      <Before>
+        <Byte>40</Byte>
+        <Byte>28</Byte>
+        <Byte>8B</Byte>
+        <Byte>4F</Byte>
+        <Byte>58</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>BC</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>57</Byte>
+        <Byte>44</Byte>
+        <Byte>D9</Byte>
+        <Byte>42</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [edi+ebp] (wheel 2)</Description>
+      <AddressString>speed.exe+12DCE0</AddressString>
+      <Before>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+        <Byte>FE</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>04</Byte>
+        <Byte>2F</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>6C</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

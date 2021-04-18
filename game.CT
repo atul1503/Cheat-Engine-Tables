@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"MATCH"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"RUNS 2"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>game.exe+5AA18C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"RUNS 1"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>game.exe+5AA18E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"WICKETS 1"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>game.exe+5AA1C2</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"WICKETS 2"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>game.exe+5AA1C0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"BALLS 1"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>game.exe+3EDD60</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"BALLS 2"</Description>
+          <VariableType>2 Bytes</VariableType>
+          <Address>game.exe+5C5AC4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"BATSMAN MOVER INST"</Description>
+          <VariableType>Float</VariableType>
+          <Address>005EDE28</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"MAIN"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"BATSMAN MOVER INST"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>005EDF0F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"1950+addr(7.66)"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"The stumps and pitch fields are the file name"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"BALL HEIGHT INST"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00543515</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"BALL SWING INST"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>005434F9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"BALL SPEED INST"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0054352B</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"fstp dword ptr [ecx+000002D8]"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>52</ID>
+          <Description>"LINE INST"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00543429</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>swing</Description>
+      <AddressString>game.exe+1434F9</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>D8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>99</Byte>
+        <Byte>D8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>81</Byte>
+        <Byte>E8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

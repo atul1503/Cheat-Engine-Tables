@@ -1,0 +1,29 @@
+{$lua}
+
+if syntaxcheck then return end
+[ENABLE]
+
+local multi=2
+local breaker=0.9
+
+hk=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription('car x').value
+y=t.getMemoryRecordByDescription('car y').value
+t.getMemoryRecordByDescription('car x').value=x*multi
+t.getMemoryRecordByDescription('car y').value=y*multi
+end,0x26)
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription('car x').value
+y=t.getMemoryRecordByDescription('car y').value
+t.getMemoryRecordByDescription('car x').value=x*breaker
+t.getMemoryRecordByDescription('car y').value=y*breaker
+end,0x28)
+
+
+[DISABLE]
+hk.destroy()
+hk1.destroy()
+

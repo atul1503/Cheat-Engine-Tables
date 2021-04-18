@@ -1,0 +1,136 @@
+{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1+3e-3
+local up=18
+local down=0
+local rotater=0
+local div=0.85
+local easyTurnSwitch=1
+
+
+
+
+--Gear is increased by W and decreased by S
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecord(3)
+y=t.getMemoryRecord(4)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r>=1 then
+if r>up then
+ratio=up/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+elseif r<down then
+ratio=down/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+else
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end
+end
+end,0x26)
+
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r>=1 then
+if r>down then
+x.Value=x.Value*div
+y.Value=y.Value*div
+else
+ratio=down/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+end
+end,0x28)
+
+
+hk4=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+z=getAddressList().getMemoryRecord(5)
+ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
+if tonumber(ro.Value)>0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value-rotater
+end,0x25)
+
+hk5=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+z=getAddressList().getMemoryRecord(5)
+ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
+if tonumber(ro.Value)<0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value+rotater
+end,0x27)
+
+hk3=createHotkey(function()
+down=up
+up=up*2
+t=getAddressList()
+x=t.getMemoryRecord(3)
+y=t.getMemoryRecord(4)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r>=1 then
+ratio=down/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear up')
+end,0x57)
+
+hk6=createHotkey(function()
+up=down
+down=down/2
+t=getAddressList()
+x=t.getMemoryRecord(3)
+y=t.getMemoryRecord(4)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r>=1 then
+ratio=up/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear down')
+end,0x53)
+
+hk7=createHotkey(function()
+up=18
+down=0
+t=getAddressList()
+x=t.getMemoryRecord(3)
+y=t.getMemoryRecord(4)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r>=1 then
+ratio=up/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Reset')
+end,0x52)
+
+
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+hk5.destroy()
+hk6.destroy()
+hk7.destroy()

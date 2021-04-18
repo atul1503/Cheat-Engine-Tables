@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" RealAddress="00B89C1C"/>
+      <VariableType>Float</VariableType>
+      <Address>Cricket2009.exe+789C1C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" RealAddress="00B89C28"/>
+      <VariableType>Float</VariableType>
+      <Address>Cricket2009.exe+789C28</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>runs</Description>
+      <AddressString>Cricket2009.exe+233189</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>BC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>01</Byte>
+        <Byte>94</Byte>
+        <Byte>08</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8D</Byte>
+        <Byte>84</Byte>
+        <Byte>08</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ball movement</Description>
+      <AddressString>Cricket2009.exe+A4E7E</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>97</Byte>
+        <Byte>08</Byte>
+        <Byte>18</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>1C</Byte>
+        <Byte>24</Byte>
+        <Byte>E8</Byte>
+        <Byte>E4</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

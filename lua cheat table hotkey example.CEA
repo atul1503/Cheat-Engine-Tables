@@ -1,0 +1,21 @@
+{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1.15
+local div=0.5
+
+hk1=createHotkey(function()
+getAddressList().getMemoryRecordByDescription("x").Value=getAddressList().getMemoryRecordByDescription("x").Value*mul
+getAddressList().getMemoryRecordByDescription("y").Value=getAddressList().getMemoryRecordByDescription("y").Value*mul
+end,0x26)
+
+hk2=createHotkey(function()
+getAddressList().getMemoryRecordByDescription("x").Value=getAddressList().getMemoryRecordByDescription("x").Value*div
+getAddressList().getMemoryRecordByDescription("y").Value=getAddressList().getMemoryRecordByDescription("y").Value*div
+end,0x28)
+
+[DISABLE]
+hk2.destroy()
+hk1.destroy()

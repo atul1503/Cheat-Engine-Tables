@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>1cb1720</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Puffin.exe
+  Version: 
+  Date   : 2019-02-21
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,Puffin.exe,75 05 E8 3B AA 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+ // jne Puffin.exe+5E3D1
+  call Puffin.exe+68E0C
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db 75 05 E8 3B AA 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Puffin.exe"+5E3CA
+
+"Puffin.exe"+5E3B1: 50                    -  push eax
+"Puffin.exe"+5E3B2: E8 2C A6 00 00        -  call Puffin.exe+689E3
+"Puffin.exe"+5E3B7: 59                    -  pop ecx
+"Puffin.exe"+5E3B8: 59                    -  pop ecx
+"Puffin.exe"+5E3B9: C3                    -  ret 
+"Puffin.exe"+5E3BA: 8B 65 E8              -  mov esp,[ebp-18]
+"Puffin.exe"+5E3BD: E8 8D A9 00 00        -  call Puffin.exe+68D4F
+"Puffin.exe"+5E3C2: 84 C0                 -  test al,al
+"Puffin.exe"+5E3C4: 74 28                 -  je Puffin.exe+5E3EE
+"Puffin.exe"+5E3C6: 80 7D E7 00           -  cmp byte ptr [ebp-19],00
+// ---------- INJECTING HERE ----------
+"Puffin.exe"+5E3CA: 75 05                 -  jne Puffin.exe+5E3D1
+"Puffin.exe"+5E3CC: E8 3B AA 00 00        -  call Puffin.exe+68E0C
+// ---------- DONE INJECTING  ----------
+"Puffin.exe"+5E3D1: C7 45 FC FE FF FF FF  -  mov [ebp-04],FFFFFFFE
+"Puffin.exe"+5E3D8: 8B 45 E0              -  mov eax,[ebp-20]
+"Puffin.exe"+5E3DB: E8 D6 07 00 00        -  call Puffin.exe+5EBB6
+"Puffin.exe"+5E3E0: C3                    -  ret 
+"Puffin.exe"+5E3E1: 6A 07                 -  push 07
+"Puffin.exe"+5E3E3: E8 E1 05 00 00        -  call Puffin.exe+5E9C9
+"Puffin.exe"+5E3E8: 56                    -  push esi
+"Puffin.exe"+5E3E9: E8 8A AA 00 00        -  call Puffin.exe+68E78
+"Puffin.exe"+5E3EE: FF 75 E0              -  push [ebp-20]
+"Puffin.exe"+5E3F1: E8 34 AA 00 00        -  call Puffin.exe+68E2A
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

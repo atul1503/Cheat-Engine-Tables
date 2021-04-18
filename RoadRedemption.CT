@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="31">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No description"</Description>
+      <LastState Value="-59.20410156" RealAddress="03C40FB8"/>
+      <VariableType>Float</VariableType>
+      <Address>03C40FB8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="184.1410065" RealAddress="80DC8960"/>
+      <VariableType>Float</VariableType>
+      <Address>80DC8960</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <LastState Value="183.7862091" RealAddress="80DC8964"/>
+      <VariableType>Float</VariableType>
+      <Address>80DC8964</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"No description"</Description>
+      <LastState Value="184.1410065" RealAddress="80DC8970"/>
+      <VariableType>Float</VariableType>
+      <Address>80DC8970</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"No description"</Description>
+      <LastState Value="183.7862091" RealAddress="80DC8974"/>
+      <VariableType>Float</VariableType>
+      <Address>80DC8974</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="80000008">
+      <Description>speed pointer</Description>
+      <AddressString>RoadRedemption.exe+CE5ADB</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>CA</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>27</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>A5</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

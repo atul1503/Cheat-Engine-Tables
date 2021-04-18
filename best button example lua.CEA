@@ -1,0 +1,26 @@
+{$lua}
+
+if syntaxcheck then return end
+[ENABLE]
+
+local x,y,z
+local multip=2
+local function boost()
+
+         if isKeyPressed(0x57) then
+
+                      x=readFloat("[loc]-20")
+                       y=readFloat("[loc]-1C")
+                       x=x*multip
+                       y=y*multip
+                      writeFloat("[loc]-20",x)
+                      writeFloat("[loc]-1C",y)
+                      end
+                      end
+            t=createTimer(nil)
+            timer_setInterval(t,10)
+            timer_onTimer(t,boost)
+            timer_setEnabled(t,true)
+
+[DISABLE]
+timer_setEnabled(t,false)

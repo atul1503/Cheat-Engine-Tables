@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1002</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : FIFA08.exe
+  Version: 
+  Date   : 2019-09-11
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,FIFA08.exe,0C 89 4D 00 8B 50 04) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [ebp+00],(float)2000
+  mov edx,[eax+04]
+  jmp return
+
+INJECT+01:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT+01:
+  db 89 4D 00 8B 50 04
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FIFA08.exe"+31FEBA
+
+"FIFA08.exe"+31FE97: F3 A5              - repe  movsd 
+"FIFA08.exe"+31FE99: 89 85 70 0D 00 00  -  mov [ebp+00000D70],eax
+"FIFA08.exe"+31FE9F: EB 06              -  jmp FIFA08.exe+31FEA7
+"FIFA08.exe"+31FEA1: 89 9D 70 0D 00 00  -  mov [ebp+00000D70],ebx
+"FIFA08.exe"+31FEA7: 89 9D 6C 0D 00 00  -  mov [ebp+00000D6C],ebx
+"FIFA08.exe"+31FEAD: 8B 4D 04           -  mov ecx,[ebp+04]
+"FIFA08.exe"+31FEB0: 8B 01              -  mov eax,[ecx]
+"FIFA08.exe"+31FEB2: FF 50 50           -  call dword ptr [eax+50]
+"FIFA08.exe"+31FEB5: 8B 08              -  mov ecx,[eax]
+"FIFA08.exe"+31FEB7: 83 C5 0C           -  add ebp,0C
+// ---------- INJECTING HERE ----------
+"FIFA08.exe"+31FEBA: 89 4D 00           -  mov [ebp+00],ecx
+"FIFA08.exe"+31FEBD: 8B 50 04           -  mov edx,[eax+04]
+// ---------- DONE INJECTING  ----------
+"FIFA08.exe"+31FEC0: 89 55 04           -  mov [ebp+04],edx
+"FIFA08.exe"+31FEC3: 8B 40 08           -  mov eax,[eax+08]
+"FIFA08.exe"+31FEC6: 5F                 -  pop edi
+"FIFA08.exe"+31FEC7: 89 45 08           -  mov [ebp+08],eax
+"FIFA08.exe"+31FECA: 5E                 -  pop esi
+"FIFA08.exe"+31FECB: 5D                 -  pop ebp
+"FIFA08.exe"+31FECC: 5B                 -  pop ebx
+"FIFA08.exe"+31FECD: 83 C4 10           -  add esp,10
+"FIFA08.exe"+31FED0: C2 08 00           -  ret 0008
+"FIFA08.exe"+31FED3: CC                 -  int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1520</ID>
+      <Description>"No description"</Description>
+      <LastState Value="29.91936302" RealAddress="3C0020F4"/>
+      <VariableType>Float</VariableType>
+      <Address>3C0020F4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1521</ID>
+      <Description>"No description"</Description>
+      <LastState Value="2720.848145" RealAddress="00D13C50"/>
+      <VariableType>Float</VariableType>
+      <Address>00D13C50</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Player Mover</Description>
+      <AddressString>FIFA08.exe+321F95</AddressString>
+      <Before>
+        <Byte>51</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>34</Byte>
+        <Byte>8B</Byte>
+        <Byte>09</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Player Mover 2</Description>
+      <AddressString>FIFA08.exe+321F8A</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>10</Byte>
+        <Byte>8D</Byte>
+        <Byte>4E</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>11</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>important maybe</Description>
+      <AddressString>FIFA08.exe+1868D3</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+        <Byte>D8</Byte>
+        <Byte>45</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>58</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4A</Byte>
+        <Byte>04</Byte>
+        <Byte>8D</Byte>
+        <Byte>0C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>player mover 3</Description>
+      <AddressString>FIFA08.exe+31FEBA</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>08</Byte>
+        <Byte>83</Byte>
+        <Byte>C5</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4D</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>55</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>ball coord</Description>
+      <AddressString>FIFA08.exe+16543D</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>B4</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>93</Byte>
+        <Byte>B8</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>83</Byte>
+        <Byte>B0</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>important</Description>
+      <AddressString>FIFA08.exe+214F90</AddressString>
+      <Before>
+        <Byte>6A</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>49</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4A</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>74</Byte>
+        <Byte>8D</Byte>
+        <Byte>46</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>

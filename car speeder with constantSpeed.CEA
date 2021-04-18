@@ -1,0 +1,122 @@
+{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1+1e-2
+local degAngle=0
+local rotater=0.02
+local turnSpeed=35
+local constFlag=1
+local constSpeed=60
+local turnSpeedSwitch=0
+local topSpeed=80
+local div=0.85
+local boost=2
+
+
+--Automatic assignment vars:
+local storedSpeed=0
+local flag=0
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecord(3)
+y=t.getMemoryRecord(4)
+r=((x.Value^2)+(y.Value^2))^0.5
+if constFlag==0 then
+if r<topSpeed then
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+else
+ratio=topSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+if flag==1 then
+ratio=storedSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+flag=0
+end
+else
+if math.abs(r)>1 then
+ratio=constSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+end
+end,0x26)
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+x.Value=x.Value*div
+y.Value=y.Value*div
+end,0x28)
+
+hk3=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+x.Value=x.Value*boost
+y.Value=y.Value*boost
+end,0x42)
+
+hk4=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+z=getAddressList().getMemoryRecord(5)
+ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
+if tonumber(ro.Value)>0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value-rotater
+if not isKeyPressed(0x26) and turnSpeedSwitch~=0 then
+r=((x.Value^2)+(y.Value^2))^0.5
+if flag~=1 then
+storedSpeed=r
+flag=1
+end
+ratio=turnSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+theta=degAngle*(math.pi/180)
+xn=x.Value*math.cos(theta)-y.Value*math.sin(theta)
+yn=x.Value*math.sin(theta)+y.Value*math.cos(theta)
+x.Value=xn
+y.Value=yn
+end,0x25)
+
+hk5=createHotkey(function()
+x=getAddressList().getMemoryRecord(3)
+y=getAddressList().getMemoryRecord(4)
+z=getAddressList().getMemoryRecord(5)
+ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
+if tonumber(ro.Value)<0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value+rotater
+if not isKeyPressed(0x26) and turnSpeedSwitch~=0 then
+r=((x.Value^2)+(y.Value^2))^0.5
+if flag~=1 then
+storedSpeed=r
+flag=1
+end
+ratio=turnSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+theta=degAngle*(math.pi/180)
+xn=x.Value*math.cos(theta)+y.Value*math.sin(theta)
+yn=(-1)*x.Value*math.sin(theta)+y.Value*math.cos(theta)
+x.Value=xn
+y.Value=yn
+end,0x27)
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+hk5.destroy()

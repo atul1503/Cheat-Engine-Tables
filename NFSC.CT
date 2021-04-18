@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"SPEEDER"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1+2e-3
+local div=1-2e-3
+local turnCoeff=0.05
+
+hk1=createHotkey(function()
+writeFloat("00AAB150",readFloat("00AAB150")*mul)
+writeFloat("00AAB158",readFloat("00AAB158")*mul)
+end,0x26)
+
+hk3=createHotkey(function()
+x=readFloat("00AAB150")
+y=readFloat("00AAB158")
+z=readFloat("00AAB154")
+r=((x^2)+(y^2))^0.5
+writeFloat("00AAB154",z-r*turnCoeff)
+end,0x25)
+
+hk4=createHotkey(function()
+x=readFloat("00AAB150")
+y=readFloat("00AAB158")
+z=readFloat("00AAB154")
+r=((x^2)+(y^2))^0.5
+writeFloat("00AAB154",z-r*turnCoeff)
+end,0x27)
+
+
+hk2=createHotkey(function()
+writeFloat("00AAB150",readFloat("00AAB150")*div)
+writeFloat("00AAB158",readFloat("00AAB158")*div)
+
+end,0x28)
+
+[DISABLE]
+
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"ROTATION"</Description>
+      <LastState Value="-0.0004188211751" RealAddress="00AAB164"/>
+      <VariableType>Float</VariableType>
+      <Address>00AAB164</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"TRACTION"</Description>
+      <LastState Value="0.0006333122146" RealAddress="00AAB16C"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00AAB16C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"X SPEED"</Description>
+      <LastState Value="5.00424242" RealAddress="00AAB150"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00AAB150</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"HEIGHT"</Description>
+      <LastState Value="29.25459671" RealAddress="00AAB144"/>
+      <VariableType>Float</VariableType>
+      <Address>00AAB144</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"LENGTH"</Description>
+      <LastState Value="3439.11377" RealAddress="00AAB148"/>
+      <VariableType>Float</VariableType>
+      <Address>00AAB148</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"WIDTH"</Description>
+      <LastState Value="-305.2272644" RealAddress="00AAB140"/>
+      <VariableType>Float</VariableType>
+      <Address>00AAB140</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"TELEPORTER"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+if syntaxcheck then return end
+
+[ENABLE]
+local z=69.86
+local x=5977.203
+local y=-759.327
+
+save=createHotkey(function()
+z=readFloat("00AAB144")
+x=readFloat("00AAB148")
+y=readFloat("00AAB140")
+end,VK_NUMPAD1)
+
+port=createHotkey(function()
+l=getAddressList()
+l.getMemoryRecordByDescription("HEIGHT").Value=z
+l.getMemoryRecordByDescription("LENGTH").Value=x
+l.getMemoryRecordByDescription("WIDTH").Value=y
+
+l.getMemoryRecordByDescription("HEIGHT").Active=true
+l.getMemoryRecordByDescription("LENGTH").Active=true
+l.getMemoryRecordByDescription("WIDTH").Active=true
+end,VK_NUMPAD2)
+
+last=createHotkey(function()
+l=getAddressList()
+
+l.getMemoryRecordByDescription("HEIGHT").Active=false
+l.getMemoryRecordByDescription("LENGTH").Active=false
+l.getMemoryRecordByDescription("WIDTH").Active=false
+end,VK_NUMPAD3)
+
+[DISABLE]
+
+save.destroy()
+port.destroy()
+last.destroy()
+
+
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry Color="20000000">
+      <Description>speed</Description>
+      <AddressString>NFSC.exe+2E8C5D</AddressString>
+      <Before>
+        <Byte>9E</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <LuaScript>
+</LuaScript>
+</CheatTable>
