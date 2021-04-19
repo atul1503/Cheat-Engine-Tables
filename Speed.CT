@@ -96,9 +96,9 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+5e-3
+local mul=1+1.55e-3
 local mulAtFirstGear=1.1
-local rotater=0
+local rotater=0.1
 local greatLaunchFlag=0
 local firstGearSpeed=40
 local minturnspeed=40
@@ -308,6 +308,44 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
+      <ID>51</ID>
+      <Description>"Turn Off Rev Limiter"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(frame2,Speed.exe,D8 4C 24 1C D8 44 24 34) // should be unique
+alloc(newmem,$100)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esp+1c],(float)50
+  fmul dword ptr [esp+1C]
+  fadd dword ptr [esp+34]
+  jmp return
+
+frame2:
+  jmp newmem
+  nop 3
+return:
+registersymbol(frame2)
+
+[DISABLE]
+
+frame2:
+  db D8 4C 24 1C D8 44 24 34
+
+unregistersymbol(frame2)
+dealloc(newmem)
+
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
       <ID>45</ID>
       <Description>"Speeder 2 script"</Description>
       <LastState/>
@@ -458,7 +496,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
-      <LastState Value="-0.7487989068" RealAddress="009386CC"/>
+      <LastState Value="0.9433606863" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -466,7 +504,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
-      <LastState Value="-2817.380371" RealAddress="009386D8"/>
+      <LastState Value="332.6901855" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -484,7 +522,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
-      <LastState Value="179.8826599" RealAddress="009386DC"/>
+      <LastState Value="115.637291" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -523,7 +561,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
-      <LastState Value="446.6071472" RealAddress="009386E0"/>
+      <LastState Value="2586.365723" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -540,7 +578,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="0" RealAddress="009386E8"/>
+      <LastState Value="-5.219357604E-7" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -548,7 +586,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="0" RealAddress="009386EC"/>
+      <LastState Value="-0.0001793276024" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -579,14 +617,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="0" RealAddress="009386F0"/>
+      <LastState Value="-3.620602683E-6" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>23</ID>
       <Description>"WEIGHT"</Description>
-      <LastState Value="1547" RealAddress="009386F4"/>
+      <LastState Value="1328" RealAddress="009386F4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386F4</Address>
@@ -594,17 +632,24 @@ hk5.destroy()
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
-      <LastState Value="0" RealAddress="009386FC"/>
+      <LastState Value="-0.0000719385207" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
-      <LastState Value="0.0006464124308" RealAddress="00938704"/>
+      <LastState Value="0.0007530120201" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>54</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="7000" RealAddress="0C753238"/>
+      <VariableType>Float</VariableType>
+      <Address>0C753238</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -2067,6 +2112,154 @@ hk5.destroy()
         <Byte>F0</Byte>
         <Byte>10</Byte>
         <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Change of cmp [esi+00000084],ebx</Description>
+      <AddressString>Speed.exe+2929E1</AddressString>
+      <Before>
+        <Byte>14</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>9E</Byte>
+        <Byte>84</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>7C</Byte>
+        <Byte>20</Byte>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+        <Byte>8C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Change of fdiv dword ptr [esp+24]</Description>
+      <AddressString>Speed.exe+2AFA8A</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>D8</Byte>
+        <Byte>64</Byte>
+        <Byte>24</Byte>
+        <Byte>34</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Change of fsub dword ptr [esp+34]</Description>
+      <AddressString>Speed.exe+2AFA86</AddressString>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>64</Byte>
+        <Byte>24</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Change of fmul dword ptr [esp+18]</Description>
+      <AddressString>Speed.exe+2AFA8E</AddressString>
+      <Before>
+        <Byte>34</Byte>
+        <Byte>D8</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :mov ebx,[esi+00000084] (important function gear related)</Description>
+      <AddressString>Speed.exe+2AFA79</AddressString>
+      <Before>
+        <Byte>86</Byte>
+        <Byte>F4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>9E</Byte>
+        <Byte>84</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>FB</Byte>
+        <Byte>01</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Change of fmul dword ptr [esp+1C]</Description>
+      <AddressString>Speed.exe+2AFA92</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>D8</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>34</Byte>
+        <Byte>D9</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
