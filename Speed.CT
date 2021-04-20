@@ -94,9 +94,9 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+1.55e-3
+local mul=1+2e-2
 local mulAtFirstGear=1.1
-local rotater=0.1
+local rotater=0
 local greatLaunchFlag=0
 local firstGearSpeed=40
 local minturnspeed=40
@@ -2147,6 +2147,30 @@ hk5.destroy()
         <Byte>04</Byte>
         <Byte>00</Byte>
         <Byte>6A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [ecx+eax*4+20] (Front Rear Wheel Tractions)</Description>
+      <AddressString>Speed.exe+29DAD1</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>81</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+        <Byte>D9</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
