@@ -73,6 +73,7 @@
     <CheatEntry>
       <ID>46</ID>
       <Description>"Power Instruction"</Description>
+      <LastState Value="3625468377" RealAddress="0066BB37"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>0066BB37</Address>
@@ -80,6 +81,7 @@
     <CheatEntry>
       <ID>47</ID>
       <Description>"Top Speed Instruction"</Description>
+      <LastState Value="3629662425" RealAddress="0066C653"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>0066C653</Address>
@@ -94,9 +96,9 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+2e-2
+local mul=1
 local mulAtFirstGear=1.1
-local rotater=0
+local rotater=0.1
 local greatLaunchFlag=0
 local firstGearSpeed=40
 local minturnspeed=40
@@ -232,7 +234,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>38</ID>
       <Description>"Unlimited Nitrous"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -494,6 +496,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
+      <LastState Value="0.8745539188" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -501,6 +504,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
+      <LastState Value="511.6281128" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -518,6 +522,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
+      <LastState Value="-371.0238953" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -556,6 +561,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
+      <LastState Value="410.7436829" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -572,6 +578,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
+      <LastState Value="-52.6432724" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -579,6 +586,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
+      <LastState Value="-0.513441503" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -609,12 +617,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
+      <LastState Value="-33.09812927" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>23</ID>
       <Description>"WEIGHT"</Description>
+      <LastState Value="1547" RealAddress="009386F4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386F4</Address>
@@ -622,12 +632,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
+      <LastState Value="0.03030570596" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
+      <LastState Value="0.0006399999838" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
@@ -2149,7 +2161,7 @@ hk5.destroy()
         <Byte>6A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fld dword ptr [ecx+eax*4+20] (Front Rear Wheel Tractions)</Description>
       <AddressString>Speed.exe+29DAD1</AddressString>
       <Before>
@@ -2171,6 +2183,51 @@ hk5.destroy()
         <Byte>24</Byte>
         <Byte>20</Byte>
         <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [ecx+04] (Nitrous power related car data region)</Description>
+      <AddressString>Speed.exe+2A0446</AddressString>
+      <Before>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>41</Byte>
+        <Byte>75</Byte>
+        <Byte>16</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>1D</Byte>
+        <Byte>68</Byte>
+        <Byte>09</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :mov edx,[eax] (Nitrous power)</Description>
+      <AddressString>Speed.exe+26BD47</AddressString>
+      <Before>
+        <Byte>46</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+        <Byte>48</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>08</Byte>
+        <Byte>89</Byte>
+        <Byte>4C</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
