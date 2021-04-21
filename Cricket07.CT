@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="0" RealAddress="009C5AC4"/>
+          <LastState Value="5" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -695,7 +695,7 @@ hk7.destroy()
       <ID>86</ID>
       <Description>"BALL ROTATION FINDER SCRIPT"</Description>
       <Options moAlwaysHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -739,7 +739,7 @@ sleep(tr)
                       turn1=1
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
-                      end,0x51)
+                      end,0x51)  --Q
 hk2=createHotkey(function()
 sleep(tr)
                       turn=readFloat("[rot]+10")
@@ -748,7 +748,7 @@ sleep(tr)
                       turn1=1
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
-                      end,0x5A)
+                      end,0x5A) --Z
 hk3=createHotkey(function()
 sleep(tr)
                       turn=readFloat("[rot]+10")
@@ -757,15 +757,16 @@ sleep(tr)
                       turn1=-1
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
-                      end,0x57)
+                      end,0x57)   --W
 hk4=createHotkey(function()
+                           sleep(tr)
                       turn=readFloat("[rot]+10")
                       turn1=readFloat("[rot]+10-4")
                       turn=0
                       turn1=0
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
-                      end,0x46)
+                      end,0x46)   --F
 
 hk5=createHotkey(function()
                            sleep(tr)
@@ -776,7 +777,7 @@ hk5=createHotkey(function()
                       turn=turn*rotationWithAorDforFast
                       end
                       writeFloat("[rot]+10",turn)
-                      end,0x41)
+                      end,0x41)   --A
 
 hk6=createHotkey(function()
                            sleep(tr)
@@ -787,7 +788,7 @@ hk6=createHotkey(function()
                       turn=turn*(-rotationWithAorDforFast)
                       end
                       writeFloat("[rot]+10",turn)
-                      end,0x44)
+                      end,0x44)    --D
 
 {$asm}
 
@@ -811,146 +812,6 @@ hk5.destroy()
 hk6.destroy()
 
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>96</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="5.952692032" RealAddress="02F73CE0"/>
-      <VariableType>Float</VariableType>
-      <Address>02F73CE0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>97</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-999" RealAddress="009C6D4C"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6D4C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>98</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-7" RealAddress="009C6D50"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6D50</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>99</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-7" RealAddress="009C6D58"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6D58</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>100</ID>
-      <Description>"No description"</Description>
-      <LastState Value="7" RealAddress="009C6D8C"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6D8C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>101</ID>
-      <Description>"No description"</Description>
-      <LastState Value="7" RealAddress="009C6D94"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6D94</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>102</ID>
-      <Description>"No description"</Description>
-      <LastState Value="999" RealAddress="009C6D98"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6D98</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>103</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-999" RealAddress="009C6DA0"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DA0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>104</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-70" Activated="1" RealAddress="009C6DA4"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DA4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>106</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-45" Activated="1" RealAddress="009C6DB0"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DB0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>107</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-45" Activated="1" RealAddress="009C6DB8"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DB8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>108</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-20" Activated="1" RealAddress="009C6DBC"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DBC</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>109</ID>
-      <Description>"No description"</Description>
-      <LastState Value="20" Activated="1" RealAddress="009C6DD0"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DD0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>110</ID>
-      <Description>"No description"</Description>
-      <LastState Value="45" Activated="1" RealAddress="009C6DD4"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DD4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>111</ID>
-      <Description>"No description"</Description>
-      <LastState Value="45" Activated="1" RealAddress="009C6DDC"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DDC</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>112</ID>
-      <Description>"No description"</Description>
-      <LastState Value="70" Activated="1" RealAddress="009C6DE0"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DE0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>113</ID>
-      <Description>"No description"</Description>
-      <LastState Value="70" Activated="1" RealAddress="009C6DE8"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DE8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>114</ID>
-      <Description>"No description"</Description>
-      <LastState Value="999" RealAddress="009C6DEC"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5C6DEC</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>115</ID>
-      <Description>"No description"</Description>
-      <LastState Value="-170" Activated="1" RealAddress="009E1828"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5E1828</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>116</ID>
-      <Description>"No description"</Description>
-      <LastState Value="88.40000153" Activated="1" RealAddress="009E1838"/>
-      <VariableType>Float</VariableType>
-      <Address>Cricket07.exe+5E1838</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1741,7 +1602,7 @@ hk6.destroy()
         <Byte>51</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fld dword ptr [ebp+0C] (Bounce speed after pitch)</Description>
       <AddressString>Cricket07.exe+1461DB</AddressString>
       <Before>
