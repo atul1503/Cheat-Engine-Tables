@@ -96,16 +96,15 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1
+local mul=1+5e-3
 local mulAtFirstGear=1.1
-local rotater=0.1
+local rotater=0
 local greatLaunchFlag=0
 local firstGearSpeed=40
-local minturnspeed=40
-local turner=1.3
-local turnSpeedFlag=0
+local minturnspeed=35
+local turner=1+7e-3
+local turnSpeedFlag=1
 local easyTurnSwitch=0
-local turnSpeedSwitch=0
 local div=1-2e-2
 local boost=2
 local restoreAfterDrop=0
@@ -175,7 +174,7 @@ if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
 ro.Value=0
 end
 ro.Value=ro.Value-rotater
-if turnSpeedFlag~=0 and not isKeyPressed(0x26) then
+if turnSpeedFlag~=0 then
 if restore~=1 and restoreAfterDrop~=0 then
 br=r
 restore=1
@@ -204,7 +203,7 @@ if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
 ro.Value=0
 end
 ro.Value=ro.Value+rotater
-if turnSpeedFlag~=0 and not isKeyPressed(0x26) then
+if turnSpeedFlag~=0 then
 if restore~=1 and restoreAfterDrop~=0 then
 br=r
 restore=1
@@ -310,7 +309,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>51</ID>
       <Description>"Turn Off Rev Limiter"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -496,7 +495,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
-      <LastState Value="0.6615807414" RealAddress="009386CC"/>
+      <LastState Value="0.6897594929" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -504,7 +503,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
-      <LastState Value="-2635.871094" RealAddress="009386D8"/>
+      <LastState Value="-836.7096558" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -522,7 +521,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
-      <LastState Value="162.9806061" RealAddress="009386DC"/>
+      <LastState Value="126.4838943" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -561,7 +560,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
-      <LastState Value="1447.409668" RealAddress="009386E0"/>
+      <LastState Value="2390.159912" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -578,7 +577,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="-21.24141693" RealAddress="009386E8"/>
+      <LastState Value="42.87067413" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -586,7 +585,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="-0.2145474553" RealAddress="009386EC"/>
+      <LastState Value="-1.732336402" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -617,7 +616,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="2.311474085" RealAddress="009386F0"/>
+      <LastState Value="2.286465168" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
@@ -632,14 +631,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
-      <LastState Value="0.3078988791" RealAddress="009386FC"/>
+      <LastState Value="0.05408073217" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
-      <LastState Value="0.0006277463981" RealAddress="00938704"/>
+      <LastState Value="0.0006500000018" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
