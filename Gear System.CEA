@@ -6,7 +6,7 @@ if syntaxcheck then return end
 local mul=1+3e-3
 local up=18
 local down=0
-local rotater=0
+local rangeMultiplier=1.5
 local div=0.85
 local easyTurnSwitch=1
 
@@ -19,8 +19,8 @@ local easyTurnSwitch=1
 
 hk1=createHotkey(function()
 t=getAddressList()
-x=t.getMemoryRecord(3)
-y=t.getMemoryRecord(4)
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
 r=((x.Value^2)+(y.Value^2))^0.5
 if r>=1 then
 if r>up then
@@ -41,8 +41,8 @@ end,0x26)
 
 
 hk2=createHotkey(function()
-x=getAddressList().getMemoryRecord(3)
-y=getAddressList().getMemoryRecord(4)
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
 r=((x.Value^2)+(y.Value^2))^0.5
 if r>=1 then
 if r>down then
@@ -57,34 +57,12 @@ end
 end,0x28)
 
 
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecord(3)
-y=getAddressList().getMemoryRecord(4)
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
-if tonumber(ro.Value)>0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value-rotater
-end,0x25)
-
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecord(3)
-y=getAddressList().getMemoryRecord(4)
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Wheel Rotation')
-if tonumber(ro.Value)<0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value+rotater
-end,0x27)
-
 hk3=createHotkey(function()
 down=up
-up=up*2
+up=up*rangeMultiplier
 t=getAddressList()
-x=t.getMemoryRecord(3)
-y=t.getMemoryRecord(4)
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
 r=((x.Value^2)+(y.Value^2))^0.5
 if r>=1 then
 ratio=down/r
@@ -96,10 +74,10 @@ end,0x57)
 
 hk6=createHotkey(function()
 up=down
-down=down/2
+down=down/rangeMultiplier
 t=getAddressList()
-x=t.getMemoryRecord(3)
-y=t.getMemoryRecord(4)
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
 r=((x.Value^2)+(y.Value^2))^0.5
 if r>=1 then
 ratio=up/r
@@ -113,8 +91,8 @@ hk7=createHotkey(function()
 up=18
 down=0
 t=getAddressList()
-x=t.getMemoryRecord(3)
-y=t.getMemoryRecord(4)
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
 r=((x.Value^2)+(y.Value^2))^0.5
 if r>=1 then
 ratio=up/r
@@ -130,7 +108,5 @@ end,0x52)
 hk1.destroy()
 hk2.destroy()
 hk3.destroy()
-hk4.destroy()
-hk5.destroy()
 hk6.destroy()
 hk7.destroy()
