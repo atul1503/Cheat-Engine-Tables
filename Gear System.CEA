@@ -4,9 +4,10 @@ if syntaxcheck then return end
 [ENABLE]
 
 local mul=1+3e-3
+local rangeMultiplier=1.5
 local up=18
 local down=0
-local rangeMultiplier=1.5
+local rotater=0
 local div=0.85
 local easyTurnSwitch=1
 
@@ -80,7 +81,8 @@ x=t.getMemoryRecordByDescription('X SPEED')
 y=t.getMemoryRecordByDescription('Y SPEED')
 r=((x.Value^2)+(y.Value^2))^0.5
 if r>=1 then
-ratio=up/r
+mid=(up+down)/2
+ratio=mid/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end

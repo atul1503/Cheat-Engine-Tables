@@ -232,6 +232,127 @@ hk5.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
+      <ID>52</ID>
+      <Description>"Gear System"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1+3e-3
+local rangeMultiplier=1.5
+local up=18
+local down=0
+local rotater=0
+local div=0.85
+local easyTurnSwitch=1
+
+
+
+
+--Gear is increased by W and decreased by S
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=1 then
+if r&gt;up then
+ratio=up/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+elseif r&lt;down then
+ratio=down/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+else
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end
+end
+end,0x26)
+
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=1 then
+if r&gt;down then
+x.Value=x.Value*div
+y.Value=y.Value*div
+else
+ratio=down/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+end
+end,0x28)
+
+
+hk3=createHotkey(function()
+down=up
+up=up*rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=1 then
+ratio=down/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear up')
+end,0x57)
+
+hk6=createHotkey(function()
+up=down
+down=down/rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=1 then
+mid=(up+down)/2
+ratio=mid/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear down')
+end,0x53)
+
+hk7=createHotkey(function()
+up=18
+down=0
+t=getAddressList()
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=1 then
+ratio=up/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Reset')
+end,0x52)
+
+
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk6.destroy()
+hk7.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
       <ID>38</ID>
       <Description>"Unlimited Nitrous"</Description>
       <LastState/>
@@ -496,7 +617,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
-      <LastState Value="0.2030230165" RealAddress="009386CC"/>
+      <LastState Value="-0.5432270765" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -504,7 +625,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
-      <LastState Value="-949.8154907" RealAddress="009386D8"/>
+      <LastState Value="-1813.325928" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -522,7 +643,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
-      <LastState Value="123.6911697" RealAddress="009386DC"/>
+      <LastState Value="110.6930466" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -561,7 +682,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
-      <LastState Value="2084.51416" RealAddress="009386E0"/>
+      <LastState Value="2499.453613" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -578,7 +699,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="8.998776436" RealAddress="009386E8"/>
+      <LastState Value="24.67263222" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -586,7 +707,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="2.616714239" RealAddress="009386EC"/>
+      <LastState Value="1.08659339" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -617,14 +738,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="20.76464081" RealAddress="009386F0"/>
+      <LastState Value="10.96636963" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>23</ID>
       <Description>"WEIGHT"</Description>
-      <LastState Value="1568" RealAddress="009386F4"/>
+      <LastState Value="1631" RealAddress="009386F4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386F4</Address>
@@ -632,137 +753,17 @@ hk5.destroy()
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
-      <LastState Value="0.0006528126542" RealAddress="009386FC"/>
+      <LastState Value="-0.08050240576" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
-      <LastState Value="0.000637755089" RealAddress="00938704"/>
+      <LastState Value="0.000613120792" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>52</ID>
-      <Description>"Gear System"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1+3e-3
-local up=18
-local down=0
-local rotater=0
-local div=0.85
-local easyTurnSwitch=1
-
-
-
-
---Gear is increased by W and decreased by S
-
-
-
-hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-if r&gt;up then
-ratio=up/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-elseif r&lt;down then
-ratio=down/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-else
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-end
-end
-end,0x26)
-
-
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-if r&gt;down then
-x.Value=x.Value*div
-y.Value=y.Value*div
-else
-ratio=down/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-end
-end,0x28)
-
-
-hk3=createHotkey(function()
-down=up
-up=up*rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-ratio=down/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Gear up')
-end,0x57)
-
-hk6=createHotkey(function()
-up=down
-down=down/rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-mid=(up+down)/2
-ratio=mid/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Gear down')
-end,0x53)
-
-hk7=createHotkey(function()
-up=18
-down=0
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-ratio=up/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Reset')
-end,0x52)
-
-
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk6.destroy()
-hk7.destroy()
-</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
