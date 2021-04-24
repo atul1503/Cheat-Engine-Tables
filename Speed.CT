@@ -242,7 +242,7 @@ if syntaxcheck then return end
 [ENABLE]
 
 local mul=1+3e-3
-local rangeMultiplier=1.5
+local rangeMultiplier=1.8
 local up=18
 local down=0
 local rotater=0
@@ -252,7 +252,12 @@ local easyTurnSwitch=1
 
 
 
---Gear is increased by W and decreased by S
+--W=Gear Up
+--S=Gear Down
+--R=Reset
+--Up=Accelerate
+--Down=Brake/Reverse
+--T=Reset alternative
 
 
 
@@ -342,12 +347,28 @@ end
 speak('Reset')
 end,0x52)
 
+hk4=createHotkey(function()
+up=18
+down=0
+t=getAddressList()
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=1 then
+ratio=up/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Reset')
+end,0x54)
+
 
 
 [DISABLE]
 hk1.destroy()
 hk2.destroy()
 hk3.destroy()
+hk4.destroy()
 hk6.destroy()
 hk7.destroy()
 </AssemblerScript>
@@ -617,7 +638,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
-      <LastState Value="-0.5432270765" RealAddress="009386CC"/>
+      <LastState Value="0.1505904347" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -625,7 +646,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
-      <LastState Value="-1813.325928" RealAddress="009386D8"/>
+      <LastState Value="-2144.587891" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -643,7 +664,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
-      <LastState Value="110.6930466" RealAddress="009386DC"/>
+      <LastState Value="-412.774292" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -682,7 +703,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
-      <LastState Value="2499.453613" RealAddress="009386E0"/>
+      <LastState Value="980.6929932" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -699,7 +720,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="24.67263222" RealAddress="009386E8"/>
+      <LastState Value="1.333209276" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -707,7 +728,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="1.08659339" RealAddress="009386EC"/>
+      <LastState Value="0" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -738,14 +759,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="10.96636963" RealAddress="009386F0"/>
+      <LastState Value="14.65393353" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>23</ID>
       <Description>"WEIGHT"</Description>
-      <LastState Value="1631" RealAddress="009386F4"/>
+      <LastState Value="1593" RealAddress="009386F4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386F4</Address>
@@ -753,14 +774,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
-      <LastState Value="-0.08050240576" RealAddress="009386FC"/>
+      <LastState Value="0.1580689698" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
-      <LastState Value="0.000613120792" RealAddress="00938704"/>
+      <LastState Value="0.0006277463981" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
