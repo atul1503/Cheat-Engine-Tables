@@ -20,7 +20,7 @@
             <CheatEntry>
               <ID>55</ID>
               <Description>"HEALTH"</Description>
-              <LastState Value="176" RealAddress="0FB0B888"/>
+              <LastState Value="176" RealAddress="1011B888"/>
               <VariableType>Float</VariableType>
               <Address>00C0C068</Address>
               <Offsets>
@@ -37,14 +37,14 @@
             <CheatEntry>
               <ID>57</ID>
               <Description>"OXYGEN"</Description>
-              <LastState Value="17713" RealAddress="00B7F462"/>
+              <LastState Value="17786" RealAddress="00B7F462"/>
               <VariableType>4 Bytes</VariableType>
               <Address>00B7F462</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>71</ID>
               <Description>"ARMOR"</Description>
-              <LastState Value="0" RealAddress="0FB0B890"/>
+              <LastState Value="0" RealAddress="1011B890"/>
               <VariableType>Float</VariableType>
               <Address>00C0C068</Address>
               <Offsets>
@@ -116,7 +116,7 @@
                 <CheatEntry>
                   <ID>83</ID>
                   <Description>"SEXUALiTY"</Description>
-                  <LastState Value="490" RealAddress="00B7BA64"/>
+                  <LastState Value="740" RealAddress="00B7BA64"/>
                   <VariableType>Float</VariableType>
                   <Address>00B7BA64</Address>
                 </CheatEntry>
@@ -290,14 +290,14 @@
                 <CheatEntry>
                   <ID>72</ID>
                   <Description>"AMOUNT OF PASSED DAYS"</Description>
-                  <LastState Value="182" RealAddress="00B7B6B8"/>
+                  <LastState Value="183" RealAddress="00B7B6B8"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>00B7B6B8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>4</ID>
                   <Description>"AMOUNT OF USED CHEATS"</Description>
-                  <LastState Value="49" RealAddress="00B7B6C4"/>
+                  <LastState Value="50" RealAddress="00B7B6C4"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>gta_sa.exe+77B6C4</Address>
                 </CheatEntry>
@@ -337,7 +337,7 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"WANTED LEVEL_2"</Description>
-              <LastState Value="1110028288" RealAddress="1227D83C"/>
+              <LastState Value="0" RealAddress="1227D83C"/>
               <VariableType>4 Bytes</VariableType>
               <Address>1227D83C</Address>
             </CheatEntry>
@@ -494,14 +494,14 @@
             <CheatEntry>
               <ID>59</ID>
               <Description>"TiME (MiNUTES)"</Description>
-              <LastState Value="169350947" RealAddress="00B727D2"/>
+              <LastState Value="169410843" RealAddress="00B727D2"/>
               <VariableType>4 Bytes</VariableType>
               <Address>00B727D2</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>58</ID>
               <Description>"TiME (HOURS)"</Description>
-              <LastState Value="23" RealAddress="00B727D3"/>
+              <LastState Value="1" RealAddress="00B727D3"/>
               <VariableType>Byte</VariableType>
               <Address>00B727D3</Address>
             </CheatEntry>
@@ -1118,7 +1118,7 @@ dealloc(newmem)
       <ID>234</ID>
       <Description>"ROAD CARS"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -1142,7 +1142,181 @@ CAR_pter:
 return:
 registersymbol(CAR_pter)
 
-{$lua}
+[DISABLE]
+
+CAR_pter:
+  db 8B 86 F8 04 00 00
+
+unregistersymbol(CAR_pter)
+unregistersymbol(crp)
+dealloc(crp)
+dealloc(newmem)
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>235</ID>
+          <Description>"CAR LOCKED STATE"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="1" RealAddress="10160BA4"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[crp]+4f8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>236</ID>
+              <Description>"CAR HEALTH"</Description>
+              <LastState Value="127177.0312" RealAddress="10160B6C"/>
+              <VariableType>Float</VariableType>
+              <Address>-38</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>73</Key>
+                  </Keys>
+                  <Value>(CAR HEALTH)*2.0</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>237</ID>
+              <Description>"X SPEED road"</Description>
+              <LastState Value="0.004171095323" RealAddress="101606F0"/>
+              <VariableType>Float</VariableType>
+              <Address>-4b4</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>70</Key>
+                  </Keys>
+                  <Value>0</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>238</ID>
+              <Description>"Y SPEED road"</Description>
+              <LastState Value="0.337474227" RealAddress="101606F4"/>
+              <VariableType>Float</VariableType>
+              <Address>-4b4+4</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>70</Key>
+                  </Keys>
+                  <Value>0</Value>
+                  <ID>2</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>239</ID>
+              <Description>"Z SPEED"</Description>
+              <LastState Value="-0.0005592395319" RealAddress="101606F8"/>
+              <VariableType>Float</VariableType>
+              <Address>-4b4+8</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Increase Value</Action>
+                  <Keys>
+                    <Key>71</Key>
+                  </Keys>
+                  <Value>0.2</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>70</Key>
+                  </Keys>
+                  <Value>0</Value>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>240</ID>
+              <Description>"MASS"</Description>
+              <LastState Value="500" RealAddress="10160738"/>
+              <VariableType>Float</VariableType>
+              <Address>-46c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>241</ID>
+              <Description>"TURN MASS"</Description>
+              <LastState Value="200" RealAddress="1016073C"/>
+              <VariableType>Float</VariableType>
+              <Address>-46c+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>242</ID>
+              <Description>"GRIP"</Description>
+              <LastState Value="1" RealAddress="10160740"/>
+              <VariableType>Float</VariableType>
+              <Address>-46c+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>243</ID>
+              <Description>"HOR FLIP"</Description>
+              <LastState Value="-0.0009649900021" RealAddress="101606FC"/>
+              <VariableType>Float</VariableType>
+              <Address>-4b4+8+4</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>16</Key>
+                  </Keys>
+                  <Value>0.1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>244</ID>
+              <Description>"HOR ROTATE"</Description>
+              <LastState Value="1.819991667E-6" RealAddress="10160704"/>
+              <VariableType>Float</VariableType>
+              <Address>-4b4+8+4+8</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>82</Key>
+                  </Keys>
+                  <Value>0.8</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>245</ID>
+              <Description>"DRAG"</Description>
+              <LastState Value="0.002249999903" RealAddress="10160744"/>
+              <VariableType>Float</VariableType>
+              <Address>-460</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>246</ID>
+              <Description>"STATIC LOC PTR"</Description>
+              <LastState Value="00C3749C" RealAddress="10160A30"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>4 Bytes</VariableType>
+              <Address>-174</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>257</ID>
+              <Description>"Speeder"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+
+[ENABLE]
 
 local multi=1.02
 local topSpeed=0.5
@@ -1171,188 +1345,138 @@ writeFloat('[crp]+4f8-4b4',x*stop)
 writeFloat('[crp]+4f8-4b4+4',y*stop)
 end,0x28)
 
-hk3=createHotkey(function()
-x=readFloat('[crp]+4f8-4b4')
-y=readFloat('[crp]+4f8-4b4+4')
-theta=degAngle*(math.pi/180)
-xn=x*math.cos(theta)-y*math.sin(theta)
-yn=x*math.sin(theta)+y*math.cos(theta)
-writeFloat('[crp]+4f8-4b4',xn)
-writeFloat('[crp]+4f8-4b4+4',yn)
-end,0x25)
-
-hk4=createHotkey(function()
-x=readFloat('[crp]+4f8-4b4')
-y=readFloat('[crp]+4f8-4b4+4')
-theta=degAngle*(math.pi/180)
-xn=x*math.cos(theta)+y*math.sin(theta)
-yn=(-1)*x*math.sin(theta)+y*math.cos(theta)
-writeFloat('[crp]+4f8-4b4',xn)
-writeFloat('[crp]+4f8-4b4+4',yn)
-end,0x27)
 
 
-{$asm}
 
 [DISABLE]
 
-CAR_pter:
-  db 8B 86 F8 04 00 00
+hk1.destroy()
+hk2.destroy()
 
-unregistersymbol(CAR_pter)
-unregistersymbol(crp)
-dealloc(crp)
-dealloc(newmem)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>256</ID>
+              <Description>"Gear System"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
 
-{$lua}
+[ENABLE]
+
+local mul=1+3e-3
+local rangeMultiplier=1.5
+local Up=0.1
+local Down=0
+local div=0.85
+local motion=1e-3
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+
+
+
+--Gear is increased by W and decreased by S
+
+local TempUp=Up
+local TempDown=Down
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+if r&gt;TempUp then
+ratio=TempUp/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+elseif r&lt;TempDown then
+ratio=TempDown/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+else
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end
+end
+end,0x26)
+
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription(speedXString)
+y=getAddressList().getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+if r&gt;TempDown then
+x.Value=x.Value*div
+y.Value=y.Value*div
+else
+ratio=TempDown/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+end
+end,0x28)
+
+
+hk3=createHotkey(function()
+TempDown=TempUp
+TempUp=TempUp*rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+ratio=TempDown/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear Up')
+end,0x57)
+
+hk6=createHotkey(function()
+TempUp=TempDown
+TempDown=TempDown/rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+mid=(TempUp+TempDown)/2
+ratio=mid/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear Down')
+end,0x53)
+
+hk7=createHotkey(function()
+TempUp=Up
+TempDown=Down
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+ratio=TempUp/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Reset')
+end,0x52)
+
+
+
+[DISABLE]
 hk1.destroy()
 hk2.destroy()
 hk3.destroy()
-hk4.destroy()
+hk6.destroy()
+hk7.destroy()
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>235</ID>
-          <Description>"CAR LOCKED STATE"</Description>
-          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[crp]+4f8</Address>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>236</ID>
-              <Description>"CAR HEALTH"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-38</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>73</Key>
-                  </Keys>
-                  <Value>(CAR HEALTH)*2.0</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>237</ID>
-              <Description>"X SPEED road"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>238</ID>
-              <Description>"Y SPEED road"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>2</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>239</ID>
-              <Description>"Z SPEED"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Increase Value</Action>
-                  <Keys>
-                    <Key>71</Key>
-                  </Keys>
-                  <Value>0.2</Value>
-                  <ID>0</ID>
-                </Hotkey>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>1</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>240</ID>
-              <Description>"MASS"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-46c</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>241</ID>
-              <Description>"TURN MASS"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-46c+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>242</ID>
-              <Description>"GRIP"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-46c+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>243</ID>
-              <Description>"HOR FLIP"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8+4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>16</Key>
-                  </Keys>
-                  <Value>0.1</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>244</ID>
-              <Description>"HOR ROTATE"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8+4+8</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>82</Key>
-                  </Keys>
-                  <Value>0.8</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>245</ID>
-              <Description>"DRAG"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-460</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>246</ID>
-              <Description>"STATIC LOC PTR"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <VariableType>4 Bytes</VariableType>
-              <Address>-174</Address>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -2042,135 +2166,6 @@ dealloc(newmem)
           </Hotkeys>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>255</ID>
-      <Description>"Auto Assemble script"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1+3e-3
-local up=0.2
-local down=0
-local div=0.85
-
-
-
-
---Gear is increased by W and decreased by S
-
-
-
-hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED road')
-y=t.getMemoryRecordByDescription('Y SPEED road')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-if r&gt;up then
-ratio=up/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-elseif r&lt;down then
-ratio=down/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-else
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-end
-end
-end,0x26)
-
-
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED road')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED road')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-if r&gt;down then
-x.Value=x.Value*div
-y.Value=y.Value*div
-else
-ratio=down/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-end
-end,0x28)
-
-
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED road')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED road')
-end,0x25)
-
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED road')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED road')
-end,0x27)
-
-hk3=createHotkey(function()
-down=up
-up=up*2
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED road')
-y=t.getMemoryRecordByDescription('Y SPEED road')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-ratio=down/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Gear up')
-end,0x57)
-
-hk6=createHotkey(function()
-up=down
-down=down/2
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED road')
-y=t.getMemoryRecordByDescription('Y SPEED road')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-ratio=up/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Gear down')
-end,0x53)
-
-hk7=createHotkey(function()
-up=0.2
-down=0
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED road')
-y=t.getMemoryRecordByDescription('Y SPEED road')
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=1 then
-ratio=up/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Reset')
-end,0x52)
-
-
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
-hk6.destroy()
-hk7.destroy()
-</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>

@@ -1,35 +1,37 @@
 {$lua}
-if syntaxcheck then return end
 
 [ENABLE]
 
 local mul=1+3e-3
 local rangeMultiplier=1.5
-local up=18
-local down=0
-local rotater=0
+local Up=1
+local Down=0
 local div=0.85
-local easyTurnSwitch=1
-
+local motion=1e-3
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
 
 
 
 --Gear is increased by W and decreased by S
 
+local TempUp=Up
+local TempDown=Down
+
 
 
 hk1=createHotkey(function()
 t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
 r=((x.Value^2)+(y.Value^2))^0.5
-if r>=1 then
-if r>up then
-ratio=up/r
+if r>=motion then
+if r>TempUp then
+ratio=TempUp/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
-elseif r<down then
-ratio=down/r
+elseif r<TempDown then
+ratio=TempDown/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 else
@@ -42,15 +44,15 @@ end,0x26)
 
 
 hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+x=getAddressList().getMemoryRecordByDescription(speedXString)
+y=getAddressList().getMemoryRecordByDescription(speedYString)
 r=((x.Value^2)+(y.Value^2))^0.5
-if r>=1 then
-if r>down then
+if r>=motion then
+if r>TempDown then
 x.Value=x.Value*div
 y.Value=y.Value*div
 else
-ratio=down/r
+ratio=TempDown/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end
@@ -59,45 +61,45 @@ end,0x28)
 
 
 hk3=createHotkey(function()
-down=up
-up=up*rangeMultiplier
+TempDown=TempUp
+TempUp=TempUp*rangeMultiplier
 t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
 r=((x.Value^2)+(y.Value^2))^0.5
-if r>=1 then
-ratio=down/r
+if r>=motion then
+ratio=TempDown/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end
-speak('Gear up')
+speak('Gear Up')
 end,0x57)
 
 hk6=createHotkey(function()
-up=down
-down=down/rangeMultiplier
+TempUp=TempDown
+TempDown=TempDown/rangeMultiplier
 t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
 r=((x.Value^2)+(y.Value^2))^0.5
-if r>=1 then
-mid=(up+down)/2
+if r>=motion then
+mid=(TempUp+TempDown)/2
 ratio=mid/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end
-speak('Gear down')
+speak('Gear Down')
 end,0x53)
 
 hk7=createHotkey(function()
-up=18
-down=0
+TempUp=Up
+TempDown=Down
 t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
 r=((x.Value^2)+(y.Value^2))^0.5
-if r>=1 then
-ratio=up/r
+if r>=motion then
+ratio=TempUp/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end
