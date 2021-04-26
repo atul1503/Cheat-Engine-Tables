@@ -6,8 +6,7 @@
       <Description>"Unlimited Nitrous"</Description>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>
-[ENABLE]
+      <AssemblerScript>[ENABLE]
 
 aobscanmodule(nitro,NFS11.exe,F3 0F 5C D0 0F 28 C2 F3 0F 11) // should be unique
 registersymbol(nitro)
@@ -267,42 +266,34 @@ hk5.destroy()
     <CheatEntry>
       <ID>23</ID>
       <Description>"x"</Description>
-      <LastState Value="0" RealAddress="07596CC0"/>
+      <LastState Value="0" RealAddress="076E6CC0"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>07596CC0</Address>
+      <Address>076E6CC0</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>24</ID>
           <Description>"y"</Description>
-          <LastState Value="0" RealAddress="07596CC8"/>
+          <LastState Value="0" RealAddress="076E6CC8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+8</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>33</ID>
+          <Description>"Traction"</Description>
+          <LastState Value="0.0005973715452" RealAddress="076E6C9C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>-24</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>27</ID>
           <Description>"Rotation"</Description>
-          <LastState Value="0" RealAddress="07596CD4"/>
+          <LastState Value="0" RealAddress="076E6CD4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+14</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>34</ID>
-          <Description>"Traction"</Description>
-          <LastState Value="0.0007168458542" RealAddress="07596C9C"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>07596C9C</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>33</ID>
-          <Description>"Gravity of Car"</Description>
-          <LastState Value="-9.81000042" RealAddress="07596CAC"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>07596CAC</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -410,7 +401,7 @@ hk5.destroy()
         <Byte>51</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :movss [ecx+0C],xmm0 (Nitrous)</Description>
       <AddressString>NFS11.exe+1DAA7C</AddressString>
       <Before>
@@ -435,7 +426,7 @@ hk5.destroy()
         <Byte>57</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :movss xmm0,[eax] (0-62 mph time)</Description>
       <AddressString>NFS11.exe+40C155</AddressString>
       <Before>
