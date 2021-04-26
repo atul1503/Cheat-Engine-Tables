@@ -2,6 +2,181 @@
 <CheatTable CheatEngineTableVersion="34">
   <CheatEntries>
     <CheatEntry>
+      <ID>32</ID>
+      <Description>"Unlimited Nitrous"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>
+[ENABLE]
+
+aobscanmodule(nitro,NFS11.exe,F3 0F 5C D0 0F 28 C2 F3 0F 11) // should be unique
+registersymbol(nitro)
+
+nitro:
+db 90 90 90 90 0F 28 C2
+
+
+
+[DISABLE]
+
+nitro:
+  db F3 0F 5C D0 0F 28 C2
+
+unregistersymbol(nitro)
+
+{
+// ORIGINAL CODE - INJECTION POINT: NFS11.exe+1DA76A
+
+NFS11.exe+1DA741: 0F 57 C9                 - xorps xmm1,xmm1
+NFS11.exe+1DA744: 0F 2F C1                 - comiss xmm0,xmm1
+NFS11.exe+1DA747: 77 59                    - ja NFS11.exe+1DA7A2
+NFS11.exe+1DA749: 8B 0F                    - mov ecx,[edi]
+NFS11.exe+1DA74B: 8B 51 28                 - mov edx,[ecx+28]
+NFS11.exe+1DA74E: 8B 47 04                 - mov eax,[edi+04]
+NFS11.exe+1DA751: F3 0F 10 44 02 28        - movss xmm0,[edx+eax+28]
+NFS11.exe+1DA757: F3 0F 59 86 B0 00 00 00  - mulss xmm0,[esi+000000B0]
+NFS11.exe+1DA75F: F3 0F 10 56 0C           - movss xmm2,[esi+0C]
+NFS11.exe+1DA764: F3 0F 59 44 24 10        - mulss xmm0,[esp+10]
+// ---------- INJECTING HERE ----------
+NFS11.exe+1DA76A: F3 0F 5C D0              - subss xmm2,xmm0
+// ---------- DONE INJECTING  ----------
+NFS11.exe+1DA76E: 0F 28 C2                 - movaps xmm0,xmm2
+NFS11.exe+1DA771: F3 0F 11 44 24 20        - movss [esp+20],xmm0
+NFS11.exe+1DA777: 8B 44 24 20              - mov eax,[esp+20]
+NFS11.exe+1DA77B: C1 F8 1F                 - sar eax,1F
+NFS11.exe+1DA77E: 8B C8                    - mov ecx,eax
+NFS11.exe+1DA780: F3 0F 11 4C 24 1C        - movss [esp+1C],xmm1
+NFS11.exe+1DA786: 8B 54 24 1C              - mov edx,[esp+1C]
+NFS11.exe+1DA78A: F7 D1                    - not ecx
+NFS11.exe+1DA78C: F3 0F 11 44 24 20        - movss [esp+20],xmm0
+NFS11.exe+1DA792: 23 4C 24 20              - and ecx,[esp+20]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"Gear System"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local mul=1+1e-3
+local rangeMultiplier=1.3
+local Up=20
+local Down=0
+local div=0.85
+local motion=1
+local speedXString='x'
+local speedYString='y'
+
+
+
+--Gear is increased by W and decreased by S
+
+local TempUp=Up
+local TempDown=Down
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+if r&gt;TempUp then
+ratio=TempUp/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+elseif r&lt;TempDown then
+ratio=TempDown/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+else
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end
+end
+end,0x26)
+
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription(speedXString)
+y=getAddressList().getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+if r&gt;TempDown then
+x.Value=x.Value*div
+y.Value=y.Value*div
+else
+ratio=TempDown/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+end
+end,0x28)
+
+
+hk3=createHotkey(function()
+TempDown=TempUp
+TempUp=TempUp*rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+ratio=TempDown/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear Up')
+end,0x57)
+
+hk6=createHotkey(function()
+TempUp=TempDown
+TempDown=TempDown/rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+mid=(TempUp+TempDown)/2
+ratio=mid/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Gear Down')
+end,0x53)
+
+hk7=createHotkey(function()
+TempUp=Up
+TempDown=Down
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;=motion then
+ratio=TempUp/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end
+speak('Reset')
+end,0x52)
+
+
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk6.destroy()
+hk7.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
       <ID>22</ID>
       <Description>"Speeder by x and y"</Description>
       <LastState/>
@@ -92,15 +267,15 @@ hk5.destroy()
     <CheatEntry>
       <ID>23</ID>
       <Description>"x"</Description>
-      <LastState Value="-17.13925743" RealAddress="077F6CC0"/>
+      <LastState Value="0" RealAddress="07596CC0"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>077F6CC0</Address>
+      <Address>07596CC0</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>24</ID>
           <Description>"y"</Description>
-          <LastState Value="47.33536911" RealAddress="077F6CC8"/>
+          <LastState Value="0" RealAddress="07596CC8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+8</Address>
@@ -108,10 +283,26 @@ hk5.destroy()
         <CheatEntry>
           <ID>27</ID>
           <Description>"Rotation"</Description>
-          <LastState Value="-0.001012361026" RealAddress="077F6CD4"/>
+          <LastState Value="0" RealAddress="07596CD4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"Traction"</Description>
+          <LastState Value="0.0007168458542" RealAddress="07596C9C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>07596C9C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Gravity of Car"</Description>
+          <LastState Value="-9.81000042" RealAddress="07596CAC"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>07596CAC</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -217,6 +408,55 @@ hk5.destroy()
         <Byte>24</Byte>
         <Byte>60</Byte>
         <Byte>51</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :movss [ecx+0C],xmm0 (Nitrous)</Description>
+      <AddressString>NFS11.exe+1DAA7C</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>41</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>41</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C8</Byte>
+        <Byte>0F</Byte>
+        <Byte>57</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :movss xmm0,[eax] (0-62 mph time)</Description>
+      <AddressString>NFS11.exe+40C155</AddressString>
+      <Before>
+        <Byte>FC</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>6A</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
