@@ -46,7 +46,7 @@ hk3.destroy()
     <CheatEntry>
       <ID>32</ID>
       <Description>"Unlimited Nitrous"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -219,7 +219,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>8</ID>
       <Description>"ROTATION"</Description>
-      <LastState Value="-0.4133168161" RealAddress="00AAB164"/>
+      <LastState Value="-0.6950474381" RealAddress="00AAB164"/>
       <VariableType>Float</VariableType>
       <Address>00AAB164</Address>
     </CheatEntry>
@@ -234,7 +234,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>19</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="0.1333519816" RealAddress="00AAB150"/>
+      <LastState Value="38.85619736" RealAddress="00AAB150"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB150</Address>
@@ -242,7 +242,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>20</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="-49.10052872" RealAddress="00AAB158"/>
+      <LastState Value="-24.8078289" RealAddress="00AAB158"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB158</Address>
@@ -250,7 +250,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="-6.794212341" RealAddress="00AAB154"/>
+      <LastState Value="-1.122729778" RealAddress="00AAB154"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB154</Address>
@@ -282,7 +282,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>12</ID>
       <Description>"HEIGHT"</Description>
-      <LastState Value="111.1664886" RealAddress="00AAB144"/>
+      <LastState Value="104.6755371" RealAddress="00AAB144"/>
       <VariableType>Float</VariableType>
       <Address>00AAB144</Address>
       <Hotkeys>
@@ -307,14 +307,14 @@ hk7.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"LENGTH"</Description>
-      <LastState Value="1188.834717" RealAddress="00AAB148"/>
+      <LastState Value="1028.15332" RealAddress="00AAB148"/>
       <VariableType>Float</VariableType>
       <Address>00AAB148</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>14</ID>
       <Description>"WIDTH"</Description>
-      <LastState Value="-1365.472534" RealAddress="00AAB140"/>
+      <LastState Value="-1510.604004" RealAddress="00AAB140"/>
       <VariableType>Float</VariableType>
       <Address>00AAB140</Address>
     </CheatEntry>
