@@ -219,14 +219,14 @@ hk7.destroy()
     <CheatEntry>
       <ID>8</ID>
       <Description>"ROTATION"</Description>
-      <LastState Value="-0.03814791515" RealAddress="00AAB164"/>
+      <LastState Value="0.2343705893" RealAddress="00AAB164"/>
       <VariableType>Float</VariableType>
       <Address>00AAB164</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>18</ID>
       <Description>"TRACTION"</Description>
-      <LastState Value="0.000613120792" RealAddress="00AAB16C"/>
+      <LastState Value="0.0007215007208" RealAddress="00AAB16C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB16C</Address>
@@ -234,7 +234,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>19</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="-6.864528656" RealAddress="00AAB150"/>
+      <LastState Value="1.44621551" RealAddress="00AAB150"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB150</Address>
@@ -242,7 +242,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>20</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="-22.6959095" RealAddress="00AAB158"/>
+      <LastState Value="-39.19348907" RealAddress="00AAB158"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB158</Address>
@@ -250,7 +250,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="-0.198776111" RealAddress="00AAB154"/>
+      <LastState Value="2.355768919" RealAddress="00AAB154"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB154</Address>
@@ -282,7 +282,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>12</ID>
       <Description>"HEIGHT"</Description>
-      <LastState Value="29.20647812" RealAddress="00AAB144"/>
+      <LastState Value="101.3528214" RealAddress="00AAB144"/>
       <VariableType>Float</VariableType>
       <Address>00AAB144</Address>
       <Hotkeys>
@@ -307,24 +307,16 @@ hk7.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"LENGTH"</Description>
-      <LastState Value="3347.796143" RealAddress="00AAB148"/>
+      <LastState Value="903.4290161" RealAddress="00AAB148"/>
       <VariableType>Float</VariableType>
       <Address>00AAB148</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>14</ID>
       <Description>"WIDTH"</Description>
-      <LastState Value="-327.9863586" RealAddress="00AAB140"/>
+      <LastState Value="-1324.192749" RealAddress="00AAB140"/>
       <VariableType>Float</VariableType>
       <Address>00AAB140</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>33</ID>
-      <Description>"No description"</Description>
-      <LastState Value="1061788057" RealAddress="0421AD94"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0421AD94</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -375,32 +367,6 @@ hk7.destroy()
         <Byte>CC</Byte>
         <Byte>CC</Byte>
         <Byte>CC</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of fsubr dword ptr [esi+000000F0]</Description>
-      <AddressString>NFSC.exe+2E4046</AddressString>
-      <Before>
-        <Byte>4C</Byte>
-        <Byte>24</Byte>
-        <Byte>28</Byte>
-        <Byte>51</Byte>
-        <Byte>55</Byte>
-      </Before>
-      <Actual>
-        <Byte>D8</Byte>
-        <Byte>AE</Byte>
-        <Byte>F0</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>D9</Byte>
-        <Byte>9E</Byte>
-        <Byte>F0</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
       </After>
     </CodeEntry>
     <CodeEntry Color="20000000">
@@ -473,6 +439,176 @@ hk7.destroy()
         <Byte>24</Byte>
         <Byte>04</Byte>
         <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :fld dword ptr [eax+58] (Top Speed)</Description>
+      <AddressString>NFSC.exe+2C3263</AddressString>
+      <Before>
+        <Byte>D8</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>60</Byte>
+        <Byte>5C</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :fld dword ptr [esi+ecx*4+08] (transmission for every gear)</Description>
+      <AddressString>NFSC.exe+2E2F86</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>3B</Byte>
+        <Byte>C8</Byte>
+        <Byte>73</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>8E</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>6A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :fld dword ptr [ecx+00000080] (Transmission)</Description>
+      <AddressString>NFSC.exe+2C3254</AddressString>
+      <Before>
+        <Byte>C4</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>4F</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>81</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [ecx+eax*4+48] (front-rear tractions)</Description>
+      <AddressString>NFSC.exe+2EE969</AddressString>
+      <Before>
+        <Byte>58</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>81</Byte>
+        <Byte>48</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [ecx+eax*4+58] (front-rear traction 2)</Description>
+      <AddressString>NFSC.exe+2EE961</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>81</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :mov eax,[edx+78] (slowing power while turning)</Description>
+      <AddressString>NFSC.exe+2EF584</AddressString>
+      <Before>
+        <Byte>96</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>78</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>2C</Byte>
+        <Byte>8B</Byte>
+        <Byte>11</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fmul dword ptr [ecx+00000088] (turning traction of front end)</Description>
+      <AddressString>NFSC.exe+2FB18D</AddressString>
+      <Before>
+        <Byte>10</Byte>
+        <Byte>DE</Byte>
+        <Byte>C1</Byte>
+        <Byte>D9</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>8B</Byte>
+        <Byte>CC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
