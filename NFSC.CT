@@ -12,7 +12,7 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+1e-2
+local mul=1+8e-3
 local div=0.85
 local boost=2
 local turnCoeff=0.05
@@ -46,7 +46,7 @@ hk3.destroy()
     <CheatEntry>
       <ID>32</ID>
       <Description>"Unlimited Nitrous"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -219,14 +219,14 @@ hk7.destroy()
     <CheatEntry>
       <ID>8</ID>
       <Description>"ROTATION"</Description>
-      <LastState Value="-0.6950474381" RealAddress="00AAB164"/>
+      <LastState Value="0.08712910861" RealAddress="00AAB164"/>
       <VariableType>Float</VariableType>
       <Address>00AAB164</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>18</ID>
       <Description>"TRACTION"</Description>
-      <LastState Value="0.0007042253274" RealAddress="00AAB16C"/>
+      <LastState Value="0.0007215007208" RealAddress="00AAB16C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB16C</Address>
@@ -234,7 +234,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>19</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="38.85619736" RealAddress="00AAB150"/>
+      <LastState Value="7.591528893" RealAddress="00AAB150"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB150</Address>
@@ -242,7 +242,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>20</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="-24.8078289" RealAddress="00AAB158"/>
+      <LastState Value="40.31230164" RealAddress="00AAB158"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB158</Address>
@@ -250,7 +250,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>25</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="-1.122729778" RealAddress="00AAB154"/>
+      <LastState Value="1.234849095" RealAddress="00AAB154"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00AAB154</Address>
@@ -282,7 +282,7 @@ hk7.destroy()
     <CheatEntry>
       <ID>12</ID>
       <Description>"HEIGHT"</Description>
-      <LastState Value="104.6755371" RealAddress="00AAB144"/>
+      <LastState Value="137.8517303" RealAddress="00AAB144"/>
       <VariableType>Float</VariableType>
       <Address>00AAB144</Address>
       <Hotkeys>
@@ -307,14 +307,14 @@ hk7.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"LENGTH"</Description>
-      <LastState Value="1028.15332" RealAddress="00AAB148"/>
+      <LastState Value="1408.604614" RealAddress="00AAB148"/>
       <VariableType>Float</VariableType>
       <Address>00AAB148</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>14</ID>
       <Description>"WIDTH"</Description>
-      <LastState Value="-1510.604004" RealAddress="00AAB140"/>
+      <LastState Value="-1423.659912" RealAddress="00AAB140"/>
       <VariableType>Float</VariableType>
       <Address>00AAB140</Address>
     </CheatEntry>
@@ -680,7 +680,7 @@ hk7.destroy()
         <Byte>9C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fld dword ptr [ecx+78] (Aerodynamic Drag)</Description>
       <AddressString>NFSC.exe+2DEBEE</AddressString>
       <Before>
@@ -703,27 +703,54 @@ hk7.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
-      <Description>Code :fmul dword ptr [eax+7C] (rear traction like)</Description>
-      <AddressString>NFSC.exe+2FB169</AddressString>
+    <CodeEntry Color="20000000">
+      <Description>Code :fld dword ptr [esi+ecx*4+48] (any gear thrust)</Description>
+      <AddressString>NFSC.exe+2E2FB7</AddressString>
       <Before>
-        <Byte>D8</Byte>
-        <Byte>48</Byte>
-        <Byte>6C</Byte>
-        <Byte>EB</Byte>
-        <Byte>03</Byte>
+        <Byte>08</Byte>
+        <Byte>3B</Byte>
+        <Byte>C8</Byte>
+        <Byte>73</Byte>
+        <Byte>08</Byte>
       </Before>
       <Actual>
-        <Byte>D8</Byte>
-        <Byte>48</Byte>
-        <Byte>7C</Byte>
-      </Actual>
-      <After>
         <Byte>D9</Byte>
         <Byte>44</Byte>
+        <Byte>8E</Byte>
+        <Byte>48</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>6A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [esi+000000CC] (Wheel spin)</Description>
+      <AddressString>NFSC.exe+2EEA9D</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>EB</Byte>
+        <Byte>5C</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+        <Byte>CC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>1D</Byte>
+        <Byte>8C</Byte>
         <Byte>24</Byte>
-        <Byte>28</Byte>
-        <Byte>8B</Byte>
+        <Byte>9C</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
