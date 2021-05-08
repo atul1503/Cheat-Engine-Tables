@@ -583,7 +583,6 @@ registersymbol(movement)
 {$lua}
 
 
---s=shot
 --z=speedup x,y,z
 --a=swing right
 --d=swing left
@@ -594,7 +593,6 @@ registersymbol(movement)
 --pr=sleep time
 --multi=multiplier for x,y,z
 --slow=slow for multiplier
---dub=shot multiplier
 --bouncerMultiplier=bouncer strength
 --smal=swing
 
@@ -604,25 +602,11 @@ registersymbol(movement)
 local pr=120
 local multi=1.3
 local slow=0.8
-local dub=2
 local bouncerMultiplier=1.5
 local smal=0.6
 local speedx,speedy,speedz
 
-hk1=createHotkey(function()
-                           sleep(500)
-                      speedx=readFloat("[ball]+2d8")
-                      speedy=readFloat("[ball]+2dc")
-                      speedz=readFloat("[ball]+2e0")
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*dub
-                      speedy=speedy*dub
-                      speedz=speedz*dub
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedy)
-                      writeFloat("[ball]+2e0",speedz)
-                      end
-                      end,0x53)
+
 hk2=createHotkey(function()
                            speedx=readFloat("[ball]+2d8")
                       speedy=readFloat("[ball]+2dc")
@@ -700,7 +684,6 @@ dealloc(newmem)
 
 {$lua}
 
-hk1.destroy()
 hk2.destroy()
 hk3.destroy()
 hk4.destroy()
@@ -828,6 +811,69 @@ hk3.destroy()
 hk4.destroy()
 hk5.destroy()
 hk6.destroy()
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"BATSMAN SHOT SCRIPT"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
+alloc(newmem,$180)
+alloc(ball,4)
+label(code)
+label(return)
+registersymbol(ball)
+newmem:
+
+code:
+mov [ball],ecx
+  fstp dword ptr [ecx+000002D8]
+  jmp return
+
+movement:
+  jmp newmem
+  nop
+return:
+registersymbol(movement)
+
+{$lua}
+local dub=1.3
+
+
+hk1=createHotkey(function()
+                           sleep(500)
+                      speedx=readFloat("[ball]+2d8")
+                      speedy=readFloat("[ball]+2dc")
+                      speedz=readFloat("[ball]+2e0")
+                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
+                      speedx=speedx*dub
+                      speedy=speedy*dub
+                      speedz=speedz*dub
+                      writeFloat("[ball]+2d8",speedx)
+                      writeFloat("[ball]+2dc",speedy)
+                      writeFloat("[ball]+2e0",speedz)
+                      end
+                      end,0x53)
+
+{$asm}
+
+[DISABLE]
+
+movement:
+  db D9 99 D8 02 00 00
+
+unregistersymbol(ball)
+unregistersymbol(movement)
+dealloc(ball)
+dealloc(newmem)
+
+{$lua}
+
+hk1.destroy()
 
 </AssemblerScript>
     </CheatEntry>
