@@ -13,14 +13,14 @@
           <ID>24</ID>
           <Description>"PLAYER"</Description>
           <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
           <Color>0000FF</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
               <ID>55</ID>
               <Description>"HEALTH"</Description>
-              <LastState Value="176" RealAddress="1011B888"/>
+              <LastState Value="200" Activated="1" RealAddress="0FAFB888"/>
               <VariableType>Float</VariableType>
               <Address>00C0C068</Address>
               <Offsets>
@@ -44,7 +44,7 @@
             <CheatEntry>
               <ID>71</ID>
               <Description>"ARMOR"</Description>
-              <LastState Value="0" RealAddress="1011B890"/>
+              <LastState Value="200" Activated="1" RealAddress="0FAFB890"/>
               <VariableType>Float</VariableType>
               <Address>00C0C068</Address>
               <Offsets>
@@ -116,7 +116,7 @@
                 <CheatEntry>
                   <ID>83</ID>
                   <Description>"SEXUALiTY"</Description>
-                  <LastState Value="740" RealAddress="00B7BA64"/>
+                  <LastState Value="540" RealAddress="00B7BA64"/>
                   <VariableType>Float</VariableType>
                   <Address>00B7BA64</Address>
                 </CheatEntry>
@@ -297,7 +297,7 @@
                 <CheatEntry>
                   <ID>4</ID>
                   <Description>"AMOUNT OF USED CHEATS"</Description>
-                  <LastState Value="50" RealAddress="00B7B6C4"/>
+                  <LastState Value="53" RealAddress="00B7B6C4"/>
                   <VariableType>4 Bytes</VariableType>
                   <Address>gta_sa.exe+77B6C4</Address>
                 </CheatEntry>
@@ -337,7 +337,7 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"WANTED LEVEL_2"</Description>
-              <LastState Value="0" RealAddress="1227D83C"/>
+              <LastState Value="3185966208" RealAddress="1227D83C"/>
               <VariableType>4 Bytes</VariableType>
               <Address>1227D83C</Address>
             </CheatEntry>
@@ -494,14 +494,14 @@
             <CheatEntry>
               <ID>59</ID>
               <Description>"TiME (MiNUTES)"</Description>
-              <LastState Value="169410843" RealAddress="00B727D2"/>
+              <LastState Value="169412137" RealAddress="00B727D2"/>
               <VariableType>4 Bytes</VariableType>
               <Address>00B727D2</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>58</ID>
               <Description>"TiME (HOURS)"</Description>
-              <LastState Value="1" RealAddress="00B727D3"/>
+              <LastState Value="6" RealAddress="00B727D3"/>
               <VariableType>Byte</VariableType>
               <Address>00B727D3</Address>
             </CheatEntry>
@@ -1118,7 +1118,7 @@ dealloc(newmem)
       <ID>234</ID>
       <Description>"ROAD CARS"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -1158,7 +1158,6 @@ dealloc(newmem)
           <ID>235</ID>
           <Description>"CAR LOCKED STATE"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="1" RealAddress="10160BA4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[crp]+4f8</Address>
@@ -1166,7 +1165,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>236</ID>
               <Description>"CAR HEALTH"</Description>
-              <LastState Value="127177.0312" RealAddress="10160B6C"/>
               <VariableType>Float</VariableType>
               <Address>-38</Address>
               <Hotkeys>
@@ -1183,7 +1181,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>237</ID>
               <Description>"X SPEED road"</Description>
-              <LastState Value="0.004171095323" RealAddress="101606F0"/>
               <VariableType>Float</VariableType>
               <Address>-4b4</Address>
               <Hotkeys>
@@ -1200,7 +1197,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>238</ID>
               <Description>"Y SPEED road"</Description>
-              <LastState Value="0.337474227" RealAddress="101606F4"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+4</Address>
               <Hotkeys>
@@ -1217,7 +1213,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>239</ID>
               <Description>"Z SPEED"</Description>
-              <LastState Value="-0.0005592395319" RealAddress="101606F8"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8</Address>
               <Hotkeys>
@@ -1242,28 +1237,24 @@ dealloc(newmem)
             <CheatEntry>
               <ID>240</ID>
               <Description>"MASS"</Description>
-              <LastState Value="500" RealAddress="10160738"/>
               <VariableType>Float</VariableType>
               <Address>-46c</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>241</ID>
               <Description>"TURN MASS"</Description>
-              <LastState Value="200" RealAddress="1016073C"/>
               <VariableType>Float</VariableType>
               <Address>-46c+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>242</ID>
               <Description>"GRIP"</Description>
-              <LastState Value="1" RealAddress="10160740"/>
               <VariableType>Float</VariableType>
               <Address>-46c+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>243</ID>
               <Description>"HOR FLIP"</Description>
-              <LastState Value="-0.0009649900021" RealAddress="101606FC"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4</Address>
               <Hotkeys>
@@ -1279,8 +1270,7 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>244</ID>
-              <Description>"HOR ROTATE"</Description>
-              <LastState Value="1.819991667E-6" RealAddress="10160704"/>
+              <Description>"HOR ROTATE road"</Description>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4+8</Address>
               <Hotkeys>
@@ -1297,14 +1287,12 @@ dealloc(newmem)
             <CheatEntry>
               <ID>245</ID>
               <Description>"DRAG"</Description>
-              <LastState Value="0.002249999903" RealAddress="10160744"/>
               <VariableType>Float</VariableType>
               <Address>-460</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>246</ID>
               <Description>"STATIC LOC PTR"</Description>
-              <LastState Value="00C3749C" RealAddress="10160A30"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>-174</Address>
@@ -1318,10 +1306,9 @@ dealloc(newmem)
 
 [ENABLE]
 
-local multi=1.02
-local topSpeed=0.5
+local multi=1.03
+local topSpeed=2
 local stop=0.9
-local degAngle=2
 local limiter=(1/multi)
 
 
@@ -1338,7 +1325,8 @@ writeFloat('[crp]+4f8-4b4+4',y*limiter)
 end
 end,0x26)
 
-hk2=createHotkey(function()
+
+hk4=createHotkey(function()
 x=readFloat('[crp]+4f8-4b4')
 y=readFloat('[crp]+4f8-4b4+4')
 writeFloat('[crp]+4f8-4b4',x*stop)
@@ -1351,8 +1339,7 @@ end,0x28)
 [DISABLE]
 
 hk1.destroy()
-hk2.destroy()
-
+hk4.destroy()
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
@@ -2022,6 +2009,11 @@ dealloc(newmem)
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+{$asm}
 
 aobscanmodule(super_jump,gta_sa.exe,8B 08 8B 50 04 8B 40 08 8B 3D) // should be unique
 alloc(newmem,$150)
@@ -2043,31 +2035,12 @@ return:
 registersymbol(speed_ptr)
 registersymbol(super_jump)
 
-[DISABLE]
-
-super_jump:
-  db 8B 08 8B 50 04
-unregistersymbol(speed_ptr)
-unregistersymbol(super_jump)
-dealloc(speed_ptr)
-dealloc(newmem)
-
-</AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>232</ID>
-          <Description>"Jump Script(hotkey)"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-
-if syntaxcheck then return end
-[ENABLE]
+{$lua}
 
 hk=createHotkey(function()
 local power=1
 local multi=12
-local z=4
+local z=1
 local y=0
 local x=0
 sleep(200)
@@ -2084,13 +2057,21 @@ writeFloat("[speed_ptr]",x)
 writeFloat("[speed_ptr]+4",y)
 end,VK_CONTROL)
 
+{$asm}
 
 [DISABLE]
+
+super_jump:
+  db 8B 08 8B 50 04
+unregistersymbol(speed_ptr)
+unregistersymbol(super_jump)
+dealloc(speed_ptr)
+dealloc(newmem)
+
+{$lua}
 hk.destroy()
 
 </AssemblerScript>
-        </CheatEntry>
-      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>252</ID>
@@ -3696,6 +3677,29 @@ dealloc(newmem)
         <Byte>40</Byte>
         <Byte>83</Byte>
         <Byte>F8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :mov ecx,[ebx+08] (Gun Fire Range)</Description>
+      <AddressString>gta_sa.exe+34122F</AddressString>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>4B</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+        <Byte>75</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

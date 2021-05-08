@@ -46,200 +46,6 @@
       </Hotkeys>
     </CheatEntry>
     <CheatEntry>
-      <ID>40</ID>
-      <Description>"Wheel rotation"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>0</Address>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>37</Key>
-          </Keys>
-          <Value>25</Value>
-          <ID>0</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>39</Key>
-          </Keys>
-          <Value>25</Value>
-          <ID>1</ID>
-        </Hotkey>
-      </Hotkeys>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>46</ID>
-      <Description>"Power Instruction"</Description>
-      <LastState Value="3625468377" RealAddress="0066BB37"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0066BB37</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>55</ID>
-      <Description>"Nitrous Power Instruction"</Description>
-      <LastState Value="3624157657" RealAddress="006A0446"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>006A0446</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>47</ID>
-      <Description>"Top Speed Instruction"</Description>
-      <LastState Value="3629662425" RealAddress="0066C653"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0066C653</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>44</ID>
-      <Description>"Speeder script"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1+4e-2
-local turnSpeedConstant=1+6e-2   --increasing this number will slow down your car more aggressively during corners
-local mulAtFirstGear=1.1
-local rotater=0
-local greatLaunchFlag=1
-local firstGearSpeed=40
-local minturnspeed=10
-local turnSpeedFlag=1
-local easyTurnSwitch=0
-local div=1-2e-2
-local boost=2
-local restoreAfterDrop=0
-
-
---Automatic assignment vars:
-local turner=mul*turnSpeedConstant
-local restore=0
-local br=0
-local maintainMin=1
-
-
-hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-if turnSpeedFlag~=0 then
-maintainMin=1
-end
-if turnSpeedFlag~=0 and restore==1 and restoreAfterDrop~=0 then
-ratio=br/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-ro.Value=0
-restore=0
-end
-if greatLaunchFlag~=0 then
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;firstGearSpeed then
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-elseif r*mulAtFirstGear&gt;firstGearSpeed then
-ratio=firstGearSpeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-else
-x.Value=x.Value*mulAtFirstGear
-y.Value=y.Value*mulAtFirstGear
-end
-else
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-end
-end,0x26)
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*div
-y.Value=y.Value*div
-end,0x28)
-
-hk3=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*boost
-y.Value=y.Value*boost
-end,0x42)
-
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-r=((x.Value^2)+(y.Value^2))^0.5
-if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value-rotater
-if turnSpeedFlag~=0 then
-if restore~=1 and restoreAfterDrop~=0 then
-br=r
-restore=1
-end
-if maintainMin~=0 then
-if  r&gt;minturnspeed then
-x.Value=x.Value/turner
-y.Value=y.Value/turner
-elseif r&gt;2 then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-maintainMin=0
-end
-end
-end
-end,0x25)
-
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-r=((x.Value^2)+(y.Value^2))^0.5
-if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value+rotater
-if turnSpeedFlag~=0 then
-if restore~=1 and restoreAfterDrop~=0 then
-br=r
-restore=1
-end
-if maintainMin~=0 then
-if r&gt;minturnspeed then
-x.Value=x.Value/turner
-y.Value=y.Value/turner
-elseif r&gt;2 then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-maintainMin=0
-end
-end
-end
-end,0x27)
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
       <ID>52</ID>
       <Description>"Gear System"</Description>
       <LastState/>
@@ -360,120 +166,6 @@ hk2.destroy()
 hk3.destroy()
 hk6.destroy()
 hk7.destroy()
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>38</ID>
-      <Description>"Unlimited Nitrous"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-
-aobscanmodule(nitro,Speed.exe,D9 9E F8 00 00 00 E8) // should be unique
-registersymbol(nitro)
-
-nitro:
-      db 90 90 90 90 90 90 E8
-
-[DISABLE]
-
-nitro:
-  db D9 9E F8 00 00 00
-
-unregistersymbol(nitro)
-
-
-
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>39</ID>
-      <Description>"Unlimited Speedbreaker"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-
-aobscanmodule(breaker,Speed.exe,D8 AE 84 00 00 00) // should be unique
-registersymbol(breaker)
-
-breaker:
- db 90 90 90 90 90 90
-
-
-[DISABLE]
-
-breaker:
-  db D8 AE 84 00 00 00
-
-unregistersymbol(breaker)
-
-
-
-{
-// ORIGINAL CODE - INJECTION POINT: Speed.exe+2EDDC8
-
-Speed.exe+2EDDA8: D8 0D E0 67 89 00  - fmul dword ptr [Speed.exe+4967E0]
-Speed.exe+2EDDAE: 74 28              - je Speed.exe+2EDDD8
-Speed.exe+2EDDB0: A0 1C 8E 98 00     - mov al,[Speed.exe+588E1C]
-Speed.exe+2EDDB5: DD D8              - fstp st(0)
-Speed.exe+2EDDB7: 84 C0              - test al,al
-Speed.exe+2EDDB9: 75 51              - jne Speed.exe+2EDE0C
-Speed.exe+2EDDBB: D9 44 24 0C        - fld dword ptr [esp+0C]
-Speed.exe+2EDDBF: 6A 00              - push 00
-Speed.exe+2EDDC1: D8 0D D4 0C 89 00  - fmul dword ptr [Speed.exe+490CD4]
-Speed.exe+2EDDC7: 51                 - push ecx
-// ---------- INJECTING HERE ----------
-Speed.exe+2EDDC8: D8 AE 84 00 00 00  - fsubr dword ptr [esi+00000084]
-// ---------- DONE INJECTING  ----------
-Speed.exe+2EDDCE: D9 1C 24           - fstp dword ptr [esp]
-Speed.exe+2EDDD1: E8 EA 3F D1 FF     - call Speed.exe+1DC0
-Speed.exe+2EDDD6: EB 2B              - jmp Speed.exe+2EDE03
-Speed.exe+2EDDD8: D8 1D E8 1A 90 00  - fcomp dword ptr [Speed.exe+501AE8]
-Speed.exe+2EDDDE: DF E0              - fnstsw ax
-Speed.exe+2EDDE0: F6 C4 41           - test ah,41
-Speed.exe+2EDDE3: 75 27              - jne Speed.exe+2EDE0C
-Speed.exe+2EDDE5: D9 44 24 08        - fld dword ptr [esp+08]
-Speed.exe+2EDDE9: 68 00 00 80 3F     - push 3F800000
-Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>51</ID>
-      <Description>"Turn Off Rev Limiter"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-
-aobscanmodule(frame2,Speed.exe,D8 4C 24 1C D8 44 24 34) // should be unique
-alloc(newmem,$100)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  mov [esp+1c],(float)50
-  fmul dword ptr [esp+1C]
-  fadd dword ptr [esp+34]
-  jmp return
-
-frame2:
-  jmp newmem
-  nop 3
-return:
-registersymbol(frame2)
-
-[DISABLE]
-
-frame2:
-  db D8 4C 24 1C D8 44 24 34
-
-unregistersymbol(frame2)
-dealloc(newmem)
-
-
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
@@ -625,9 +317,317 @@ hk5.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
+      <ID>44</ID>
+      <Description>"Speeder script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1
+local turnSpeedConstant=1+6e-2   --increasing this number will slow down your car more aggressively during corners
+local mulAtFirstGear=1.1
+local rotater=0.15
+local greatLaunchFlag=1
+local firstGearSpeed=40
+local minturnspeed=10
+local turnSpeedFlag=0
+local easyTurnSwitch=0
+local div=1-2e-2
+local boost=2
+local restoreAfterDrop=0
+
+
+--Automatic assignment vars:
+local turner=mul*turnSpeedConstant
+local restore=0
+local br=0
+local maintainMin=1
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription('X SPEED')
+y=t.getMemoryRecordByDescription('Y SPEED')
+ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
+if turnSpeedFlag~=0 then
+maintainMin=1
+end
+if turnSpeedFlag~=0 and restore==1 and restoreAfterDrop~=0 then
+ratio=br/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+ro.Value=0
+restore=0
+end
+if greatLaunchFlag~=0 then
+r=((x.Value^2)+(y.Value^2))^0.5
+if r&gt;firstGearSpeed then
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+elseif r*mulAtFirstGear&gt;firstGearSpeed then
+ratio=firstGearSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+else
+x.Value=x.Value*mulAtFirstGear
+y.Value=y.Value*mulAtFirstGear
+end
+else
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end
+end,0x26)
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+x.Value=x.Value*div
+y.Value=y.Value*div
+end,0x28)
+
+hk3=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+x.Value=x.Value*boost
+y.Value=y.Value*boost
+end,0x42)
+
+hk4=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+z=getAddressList().getMemoryRecord(5)
+ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
+r=((x.Value^2)+(y.Value^2))^0.5
+if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value-rotater
+if turnSpeedFlag~=0 then
+if restore~=1 and restoreAfterDrop~=0 then
+br=r
+restore=1
+end
+if maintainMin~=0 then
+if  r&gt;minturnspeed then
+x.Value=x.Value/turner
+y.Value=y.Value/turner
+elseif r&gt;2 then
+ratio=minturnspeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+maintainMin=0
+end
+end
+end
+end,0x25)
+
+hk5=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+z=getAddressList().getMemoryRecord(5)
+ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
+r=((x.Value^2)+(y.Value^2))^0.5
+if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value+rotater
+if turnSpeedFlag~=0 then
+if restore~=1 and restoreAfterDrop~=0 then
+br=r
+restore=1
+end
+if maintainMin~=0 then
+if r&gt;minturnspeed then
+x.Value=x.Value/turner
+y.Value=y.Value/turner
+elseif r&gt;2 then
+ratio=minturnspeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+maintainMin=0
+end
+end
+end
+end,0x27)
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+hk5.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>51</ID>
+      <Description>"Turn Off Rev Limiter"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(frame2,Speed.exe,D8 4C 24 1C D8 44 24 34) // should be unique
+alloc(newmem,$100)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esp+1c],(float)50
+  fmul dword ptr [esp+1C]
+  fadd dword ptr [esp+34]
+  jmp return
+
+frame2:
+  jmp newmem
+  nop 3
+return:
+registersymbol(frame2)
+
+[DISABLE]
+
+frame2:
+  db D8 4C 24 1C D8 44 24 34
+
+unregistersymbol(frame2)
+dealloc(newmem)
+
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"Unlimited Nitrous"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(nitro,Speed.exe,D9 9E F8 00 00 00 E8) // should be unique
+registersymbol(nitro)
+
+nitro:
+      db 90 90 90 90 90 90 E8
+
+[DISABLE]
+
+nitro:
+  db D9 9E F8 00 00 00
+
+unregistersymbol(nitro)
+
+
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>39</ID>
+      <Description>"Unlimited Speedbreaker"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+
+aobscanmodule(breaker,Speed.exe,D8 AE 84 00 00 00) // should be unique
+registersymbol(breaker)
+
+breaker:
+ db 90 90 90 90 90 90
+
+
+[DISABLE]
+
+breaker:
+  db D8 AE 84 00 00 00
+
+unregistersymbol(breaker)
+
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Speed.exe+2EDDC8
+
+Speed.exe+2EDDA8: D8 0D E0 67 89 00  - fmul dword ptr [Speed.exe+4967E0]
+Speed.exe+2EDDAE: 74 28              - je Speed.exe+2EDDD8
+Speed.exe+2EDDB0: A0 1C 8E 98 00     - mov al,[Speed.exe+588E1C]
+Speed.exe+2EDDB5: DD D8              - fstp st(0)
+Speed.exe+2EDDB7: 84 C0              - test al,al
+Speed.exe+2EDDB9: 75 51              - jne Speed.exe+2EDE0C
+Speed.exe+2EDDBB: D9 44 24 0C        - fld dword ptr [esp+0C]
+Speed.exe+2EDDBF: 6A 00              - push 00
+Speed.exe+2EDDC1: D8 0D D4 0C 89 00  - fmul dword ptr [Speed.exe+490CD4]
+Speed.exe+2EDDC7: 51                 - push ecx
+// ---------- INJECTING HERE ----------
+Speed.exe+2EDDC8: D8 AE 84 00 00 00  - fsubr dword ptr [esi+00000084]
+// ---------- DONE INJECTING  ----------
+Speed.exe+2EDDCE: D9 1C 24           - fstp dword ptr [esp]
+Speed.exe+2EDDD1: E8 EA 3F D1 FF     - call Speed.exe+1DC0
+Speed.exe+2EDDD6: EB 2B              - jmp Speed.exe+2EDE03
+Speed.exe+2EDDD8: D8 1D E8 1A 90 00  - fcomp dword ptr [Speed.exe+501AE8]
+Speed.exe+2EDDDE: DF E0              - fnstsw ax
+Speed.exe+2EDDE0: F6 C4 41           - test ah,41
+Speed.exe+2EDDE3: 75 27              - jne Speed.exe+2EDE0C
+Speed.exe+2EDDE5: D9 44 24 08        - fld dword ptr [esp+08]
+Speed.exe+2EDDE9: 68 00 00 80 3F     - push 3F800000
+Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>40</ID>
+      <Description>"Wheel rotation"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>0</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Decrease Value</Action>
+          <Keys>
+            <Key>37</Key>
+          </Keys>
+          <Value>25</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Increase Value</Action>
+          <Keys>
+            <Key>39</Key>
+          </Keys>
+          <Value>25</Value>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"Power Instruction"</Description>
+      <LastState Value="3625468377" RealAddress="0066BB37"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>0066BB37</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"Top Speed Instruction"</Description>
+      <LastState Value="3629662425" RealAddress="0066C653"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>0066C653</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>55</ID>
+      <Description>"Nitrous Power Instruction"</Description>
+      <LastState Value="3624157657" RealAddress="006A0446"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>006A0446</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
-      <LastState Value="0.737818718" RealAddress="009386CC"/>
+      <LastState Value="0.5462656617" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -635,7 +635,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
-      <LastState Value="-2373.04834" RealAddress="009386D8"/>
+      <LastState Value="-2465.097412" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -653,7 +653,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
-      <LastState Value="151.5229492" RealAddress="009386DC"/>
+      <LastState Value="148.952652" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -692,7 +692,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
-      <LastState Value="1772.500122" RealAddress="009386E0"/>
+      <LastState Value="1776.09082" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -709,7 +709,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="0" RealAddress="009386E8"/>
+      <LastState Value="18.66410446" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -717,7 +717,7 @@ hk5.destroy()
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="0" RealAddress="009386EC"/>
+      <LastState Value="0.2904579043" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -748,14 +748,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="0" RealAddress="009386F0"/>
+      <LastState Value="8.210168839" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>23</ID>
       <Description>"WEIGHT"</Description>
-      <LastState Value="1547" RealAddress="009386F4"/>
+      <LastState Value="1345" RealAddress="009386F4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386F4</Address>
@@ -763,14 +763,14 @@ hk5.destroy()
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
-      <LastState Value="0" RealAddress="009386FC"/>
+      <LastState Value="-0.01743567735" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
-      <LastState Value="0.0006000000285" RealAddress="00938704"/>
+      <LastState Value="0.0007434944273" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
@@ -1048,72 +1048,6 @@ hk5.destroy()
         <Byte>CC</Byte>
         <Byte>CC</Byte>
         <Byte>CC</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of jae Speed.exe+292138</Description>
-      <AddressString>Speed.exe+2920E5</AddressString>
-      <Before>
-        <Byte>7C</Byte>
-        <Byte>24</Byte>
-        <Byte>0C</Byte>
-        <Byte>90</Byte>
-        <Byte>90</Byte>
-      </Before>
-      <Actual>
-        <Byte>73</Byte>
-        <Byte>51</Byte>
-      </Actual>
-      <After>
-        <Byte>8B</Byte>
-        <Byte>86</Byte>
-        <Byte>84</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of cmp edi,eax</Description>
-      <AddressString>Speed.exe+2920ED</AddressString>
-      <Before>
-        <Byte>86</Byte>
-        <Byte>84</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>3B</Byte>
-        <Byte>F8</Byte>
-      </Actual>
-      <After>
-        <Byte>74</Byte>
-        <Byte>47</Byte>
-        <Byte>85</Byte>
-        <Byte>FF</Byte>
-        <Byte>7C</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of cmp edi,eax</Description>
-      <AddressString>Speed.exe+2920F5</AddressString>
-      <Before>
-        <Byte>47</Byte>
-        <Byte>85</Byte>
-        <Byte>FF</Byte>
-        <Byte>7C</Byte>
-        <Byte>43</Byte>
-      </Before>
-      <Actual>
-        <Byte>3B</Byte>
-        <Byte>F8</Byte>
-      </Actual>
-      <After>
-        <Byte>8B</Byte>
-        <Byte>CE</Byte>
-        <Byte>57</Byte>
-        <Byte>7D</Byte>
-        <Byte>0D</Byte>
       </After>
     </CodeEntry>
     <CodeEntry Color="20000000">
@@ -2404,6 +2338,101 @@ hk5.destroy()
         <Byte>24</Byte>
         <Byte>D8</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :mov [eax+00000248],ecx (rpm arrow)</Description>
+      <AddressString>Speed.exe+BC5D2</AddressString>
+      <Before>
+        <Byte>42</Byte>
+        <Byte>34</Byte>
+        <Byte>8B</Byte>
+        <Byte>49</Byte>
+        <Byte>74</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>48</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>14</Byte>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :fld dword ptr [ecx+eax*4+20] (car attr for turn)</Description>
+      <AddressString>Speed.exe+29DAD1</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>81</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :fld dword ptr [eax+54] (front wheel speed limit in rpm)</Description>
+      <AddressString>Speed.exe+2A0936</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>5C</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>54</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>58</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Change of fstp dword ptr [ecx]</Description>
+      <AddressString>Speed.exe+16A9</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>D8</Byte>
+        <Byte>08</Byte>
+        <Byte>DE</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>19</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>D8</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
