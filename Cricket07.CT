@@ -46,14 +46,14 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="3" RealAddress="009C5AC4"/>
+          <LastState Value="0" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>89</ID>
           <Description>"RUNS"</Description>
-          <LastState Value="0" RealAddress="009AA192"/>
+          <LastState Value="65535" RealAddress="009AA192"/>
           <VariableType>2 Bytes</VariableType>
           <Address>Cricket07.exe+5AA192</Address>
         </CheatEntry>
@@ -747,7 +747,7 @@ local start=200
 local mul=1.3
 local tr=120
 local rotationWithAorDforFast=3
-local rotationWithAorDforSpin=1.2
+local rotationWithAorDforSpin=1.5
 
 hk1=createHotkey(function()
 sleep(tr)
