@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="4" RealAddress="009C5AC4"/>
+          <LastState Value="5" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -876,40 +876,6 @@ dealloc(newmem)
 hk1.destroy()
 
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>104</ID>
-      <Description>"No description"</Description>
-      <LastState Value="4294967295" RealAddress="03BFFFEC"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03C038F8</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>105</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="29" RealAddress="03C03194"/>
-      <VariableType>Float</VariableType>
-      <Address>03C03194</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>106</ID>
-      <Description>"No description"</Description>
-      <LastState Value="0.8500000238" RealAddress="03C031A4"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>03C031A4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>107</ID>
-      <Description>"No description"</Description>
-      <LastState Value="2.900000095" RealAddress="03C031A8"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>03C031A8</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
