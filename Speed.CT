@@ -329,8 +329,8 @@ if syntaxcheck then return end
 local mul=1
 local turnSpeedConstant=1+6e-2   --increasing this number will slow down your car more aggressively during corners
 local mulAtFirstGear=1.1
-local rotater=0.15
-local greatLaunchFlag=1
+local rotater=0.05
+local greatLaunchFlag=0
 local firstGearSpeed=40
 local minturnspeed=10
 local turnSpeedFlag=0
@@ -627,7 +627,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>25</ID>
       <Description>"Car Rotation"</Description>
-      <LastState Value="-0.9490945935" RealAddress="009386CC"/>
+      <LastState Value="-0.9912160635" RealAddress="009386CC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386CC</Address>
@@ -635,7 +635,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>9</ID>
       <Description>"X"</Description>
-      <LastState Value="-3803.578613" RealAddress="009386D8"/>
+      <LastState Value="-3348.688965" RealAddress="009386D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Speed.exe+5386D8</Address>
@@ -653,7 +653,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>13</ID>
       <Description>"Z"</Description>
-      <LastState Value="200.7301331" RealAddress="009386DC"/>
+      <LastState Value="194.9548187" RealAddress="009386DC"/>
       <VariableType>Float</VariableType>
       <Address>009386DC</Address>
       <Hotkeys>
@@ -692,7 +692,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>14</ID>
       <Description>"Y"</Description>
-      <LastState Value="821.352356" RealAddress="009386E0"/>
+      <LastState Value="466.7934875" RealAddress="009386E0"/>
       <VariableType>Float</VariableType>
       <Address>009386E0</Address>
       <Hotkeys>
@@ -709,7 +709,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>16</ID>
       <Description>"X SPEED"</Description>
-      <LastState Value="-11.26786041" RealAddress="009386E8"/>
+      <LastState Value="-9.585229874" RealAddress="009386E8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386E8</Address>
@@ -717,7 +717,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>17</ID>
       <Description>"Z SPEED"</Description>
-      <LastState Value="0.7753722072" RealAddress="009386EC"/>
+      <LastState Value="0.2270704657" RealAddress="009386EC"/>
       <VariableType>Float</VariableType>
       <Address>009386EC</Address>
       <Hotkeys>
@@ -748,14 +748,14 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>18</ID>
       <Description>"Y SPEED"</Description>
-      <LastState Value="-17.61086655" RealAddress="009386F0"/>
+      <LastState Value="-35.86244202" RealAddress="009386F0"/>
       <VariableType>Float</VariableType>
       <Address>009386F0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>23</ID>
       <Description>"WEIGHT"</Description>
-      <LastState Value="1547" RealAddress="009386F4"/>
+      <LastState Value="1568" RealAddress="009386F4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>009386F4</Address>
@@ -763,14 +763,14 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
     <CheatEntry>
       <ID>22</ID>
       <Description>"Steering Rotation"</Description>
-      <LastState Value="0.6638224125" RealAddress="009386FC"/>
+      <LastState Value="-0.1409749091" RealAddress="009386FC"/>
       <VariableType>Float</VariableType>
       <Address>009386FC</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>30</ID>
       <Description>"Traction"</Description>
-      <LastState Value="0.0006464124308" RealAddress="00938704"/>
+      <LastState Value="0.000637755089" RealAddress="00938704"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>00938704</Address>
@@ -2457,7 +2457,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <Byte>DF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fld dword ptr [ecx+18] (Car Spool)</Description>
       <AddressString>Speed.exe+26BB37</AddressString>
       <Before>
@@ -2480,7 +2480,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fmul dword ptr [eax+edx*4] (car braking memory region)</Description>
       <AddressString>Speed.exe+28E239</AddressString>
       <Before>
@@ -2503,7 +2503,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <Byte>8F</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fld dword ptr [eax+edx*4+08] (Front Brake Power)</Description>
       <AddressString>Speed.exe+28E22F</AddressString>
       <Before>
