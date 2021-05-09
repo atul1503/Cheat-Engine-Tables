@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="0" RealAddress="009C5AC4"/>
+          <LastState Value="4" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -730,7 +730,7 @@ local start=200
 local mul=1.3
 local tr=120
 local rotationWithAorDforFast=3
-local rotationWithAorDforSpin=1.5
+local rotationWithAorDforSpin=1.05
 
 hk1=createHotkey(function()
 sleep(tr)
@@ -876,6 +876,22 @@ dealloc(newmem)
 hk1.destroy()
 
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"No description"</Description>
+      <LastState Value="29" RealAddress="03C03914"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>03C03914</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>101</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1.639999986" RealAddress="03C03918"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>03C03918</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1710,6 +1726,97 @@ hk1.destroy()
         <Byte>3C</Byte>
         <Byte>89</Byte>
         <Byte>7C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :mov [ebp+62],ax (Player attribute related)</Description>
+      <AddressString>Cricket07.exe+B8C0C</AddressString>
+      <Before>
+        <Byte>60</Byte>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>64</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>89</Byte>
+        <Byte>45</Byte>
+        <Byte>62</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>09</Byte>
+        <Byte>80</Byte>
+        <Byte>A5</Byte>
+        <Byte>90</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :mov eax,[edx] (Player attribute related 2)</Description>
+      <AddressString>Cricket07.exe+32355B</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>51</Byte>
+        <Byte>8B</Byte>
+        <Byte>55</Byte>
+        <Byte>DC</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4D</Byte>
+        <Byte>DC</Byte>
+        <Byte>FF</Byte>
+        <Byte>50</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :cmp [ebx],eax (Player Data Structure)</Description>
+      <AddressString>Cricket07.exe+1725A2</AddressString>
+      <Before>
+        <Byte>1D</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>03</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>0D</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fsub dword ptr [edi+04] (Bowler Pace attribute)</Description>
+      <AddressString>Cricket07.exe+16C287</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>67</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+        <Byte>D8</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
