@@ -878,20 +878,38 @@ hk1.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>100</ID>
+      <ID>104</ID>
       <Description>"No description"</Description>
-      <LastState Value="29" RealAddress="03C03914"/>
+      <LastState Value="4294967295" RealAddress="03BFFFEC"/>
       <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>03C03914</Address>
+      <VariableType>4 Bytes</VariableType>
+      <Address>03C038F8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>101</ID>
+      <ID>105</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="29" RealAddress="03C03194"/>
+      <VariableType>Float</VariableType>
+      <Address>03C03194</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>106</ID>
       <Description>"No description"</Description>
-      <LastState Value="1.639999986" RealAddress="03C03918"/>
+      <LastState Value="0.8500000238" RealAddress="03C031A4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>03C03918</Address>
+      <Address>03C031A4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>107</ID>
+      <Description>"No description"</Description>
+      <LastState Value="2.900000095" RealAddress="03C031A8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>03C031A8</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1775,7 +1793,7 @@ hk1.destroy()
       </After>
     </CodeEntry>
     <CodeEntry Color="80000008">
-      <Description>Code :cmp [ebx],eax (Player Data Structure)</Description>
+      <Description>Code :cmp [ebx],eax (Bowler Data Structure)</Description>
       <AddressString>Cricket07.exe+1725A2</AddressString>
       <Before>
         <Byte>1D</Byte>
@@ -1817,6 +1835,29 @@ hk1.destroy()
         <Byte>24</Byte>
         <Byte>10</Byte>
         <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :mov eax,[eax+14] (Bowler Bounce Attribute)</Description>
+      <AddressString>Cricket07.exe+16D1E6</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>14</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+        <Byte>6A</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
