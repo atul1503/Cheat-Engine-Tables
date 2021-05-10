@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="0" RealAddress="009C5AC4"/>
+          <LastState Value="5" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -876,6 +876,14 @@ dealloc(newmem)
 hk1.destroy()
 
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"No description"</Description>
+      <LastState Value="2" Activated="1" RealAddress="03972734"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>03972734</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1758,7 +1766,7 @@ hk1.destroy()
         <Byte>50</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :cmp [ebx],eax (Bowler Data Structure)</Description>
       <AddressString>Cricket07.exe+1725A2</AddressString>
       <Before>
@@ -1780,7 +1788,7 @@ hk1.destroy()
         <Byte>24</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fsub dword ptr [edi+04] (Bowler Pace attribute)</Description>
       <AddressString>Cricket07.exe+16C287</AddressString>
       <Before>
@@ -1803,7 +1811,7 @@ hk1.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :mov eax,[eax+14] (Bowler Bounce Attribute)</Description>
       <AddressString>Cricket07.exe+16D1E6</AddressString>
       <Before>
@@ -1824,6 +1832,29 @@ hk1.destroy()
         <Byte>24</Byte>
         <Byte>0C</Byte>
         <Byte>6A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :mov ecx,[eax+74] (Swing/Spin meter)</Description>
+      <AddressString>Cricket07.exe+16AA06</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>F8</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>48</Byte>
+        <Byte>74</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>54</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
