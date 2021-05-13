@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="4" RealAddress="009C5AC4"/>
+          <LastState Value="1" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -964,15 +964,15 @@ hk2=createHotkey(function()
                       end,0x44)
 
 hk3=createHotkey(function()
-                      speedz=readFloat("[ball]+2d8")
+                      speedz=readFloat("[ball]+2dc")
                       if (readFloat("[ball]+2dc")) then
                       speedz=speedz*dBounce
-                      writeFloat("[ball]+2d8",speedz)
+                      writeFloat("[ball]+2dc",speedz)
                       end
                       sleep(pr)
-                      if (readFloat("[ball]+2d8")) then
+                      if (readFloat("[ball]+2dc")) then
                       speedz=speedz/dBounce
-                      writeFloat("[ball]+2d8",speedz)
+                      writeFloat("[ball]+2dc",speedz)
                       end
                       end,0x57)
 
@@ -995,6 +995,13 @@ hk1.destroy()
 hk2.destroy()
 hk3.destroy()
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>98</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="-0.04201938212" RealAddress="0305584C"/>
+      <VariableType>Float</VariableType>
+      <Address>0305584C</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
