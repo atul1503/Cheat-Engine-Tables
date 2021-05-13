@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="262144" RealAddress="009C5AC4"/>
+          <LastState Value="4" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -923,18 +923,19 @@ registersymbol(movement)
 {$lua}
 
 
----a=double swing
-
+---a=double swing first
+---d=double swing second
+---w=double bounce
 
 
 ---pr=time to wait
 ---double swing=swing multiplier
-
+---dBounce
 
 
 local pr=150
 local doubleSwing=0.6
-
+local dBounce=0.9
 
 hk1=createHotkey(function()
                       speedx=readFloat("[ball]+2d8")
@@ -962,6 +963,18 @@ hk2=createHotkey(function()
                       end
                       end,0x44)
 
+hk3=createHotkey(function()
+                      speedz=readFloat("[ball]+2d8")
+                      if (readFloat("[ball]+2dc")) then
+                      speedz=speedz*dBounce
+                      writeFloat("[ball]+2d8",speedz)
+                      end
+                      sleep(pr)
+                      if (readFloat("[ball]+2d8")) then
+                      speedz=speedz/dBounce
+                      writeFloat("[ball]+2d8",speedz)
+                      end
+                      end,0x57)
 
 
 {$asm}
@@ -980,6 +993,7 @@ dealloc(newmem)
 
 hk1.destroy()
 hk2.destroy()
+hk3.destroy()
 </AssemblerScript>
     </CheatEntry>
   </CheatEntries>
