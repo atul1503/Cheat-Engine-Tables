@@ -46,14 +46,14 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="2" RealAddress="009C5AC4"/>
+          <LastState Value="262144" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>89</ID>
           <Description>"RUNS"</Description>
-          <LastState Value="65535" RealAddress="009AA192"/>
+          <LastState Value="0" RealAddress="009AA192"/>
           <VariableType>2 Bytes</VariableType>
           <Address>Cricket07.exe+5AA192</Address>
         </CheatEntry>
@@ -841,7 +841,7 @@ return:
 registersymbol(movement)
 
 {$lua}
-local dub=1.3
+local dub=1.325
 
 
 hk1=createHotkey(function()
@@ -859,6 +859,22 @@ hk1=createHotkey(function()
                       end
                       end,0x53)
 
+
+hk2=createHotkey(function()
+                           sleep(500)
+                      speedx=readFloat("[ball]+2d8")
+                      speedy=readFloat("[ball]+2dc")
+                      speedz=readFloat("[ball]+2e0")
+                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
+                      speedx=speedx*dub
+                      speedy=speedy*dub
+                      speedz=speedz*dub
+                      writeFloat("[ball]+2d8",speedx)
+                      writeFloat("[ball]+2dc",speedy)
+                      writeFloat("[ball]+2e0",speedz)
+                      end
+                      end,0x57)
+
 {$asm}
 
 [DISABLE]
@@ -874,12 +890,12 @@ dealloc(newmem)
 {$lua}
 
 hk1.destroy()
-
+hk2.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
       <ID>97</ID>
-      <Description>"BALL MOVEMENT Double SCRIPT"</Description>
+      <Description>"BALL DOUBLE MOVEMENT SCRIPT"</Description>
       <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
@@ -907,86 +923,44 @@ registersymbol(movement)
 {$lua}
 
 
---z=speedup x,y,z
---a=swing right
---d=swing left
---x=slow x,y,z
---k=hard bouncer
---l=low bouncer
+---a=double swing
 
---pr=sleep time
---multi=multiplier for x,y,z
---slow=slow for multiplier
---bouncerMultiplier=bouncer strength
---smal=swing
 
+
+---pr=time to wait
+---double swing=swing multiplier
 
 
 
 local pr=150
-local multi=1.3
-local slow=0.8
-local bouncerMultiplier=1.5
-local smal=0.8
-local speedx,speedy,speedz
+local doubleSwing=0.6
 
 
-hk2=createHotkey(function()
-                           speedx=readFloat("[ball]+2d8")
-                      speedy=readFloat("[ball]+2dc")
-                      speedz=readFloat("[ball]+2e0")
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*multi
-                      speedy=speedy*multi
-                      speedz=speedz*multi
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedy)
-                      writeFloat("[ball]+2e0",speedz)
-                      end
-                      end,0x5A)
-hk3=createHotkey(function()
+hk1=createHotkey(function()
                       speedx=readFloat("[ball]+2d8")
                       if (readFloat("[ball]+2d8")) then
-                      speedx=speedx+smal
+                      speedx=speedx+doubleSwing
                       writeFloat("[ball]+2d8",speedx)
                       end
                       sleep(pr)
                       if (readFloat("[ball]+2d8")) then
-                      speedx=speedx-smal
+                      speedx=speedx-doubleSwing
                       writeFloat("[ball]+2d8",speedx)
                       end
                       end,0x41)
-hk5=createHotkey(function()
-                           speedx=readFloat("[ball]+2d8")
-                      speedy=readFloat("[ball]+2dc")
-                      speedz=readFloat("[ball]+2e0")
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*slow
-                      speedy=speedy*slow
-                      speedz=speedz*slow
+
+hk2=createHotkey(function()
+                      speedx=readFloat("[ball]+2d8")
+                      if (readFloat("[ball]+2d8")) then
+                      speedx=speedx-doubleSwing
                       writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedy)
-                      writeFloat("[ball]+2e0",speedz)
                       end
-                      end,0x58)
-
-hk6=createHotkey(function()
-                           sleep(pr)
-                      speedz=readFloat("[ball]+2dc")
-                      if (readFloat("[ball]+2dc")) then
-                      speedz=speedz*bouncerMultiplier
-                      writeFloat("[ball]+2dc",speedz)
+                      sleep(pr)
+                      if (readFloat("[ball]+2d8")) then
+                      speedx=speedx+doubleSwing
+                      writeFloat("[ball]+2d8",speedx)
                       end
-                      end,0x4B)
-
-hk7=createHotkey(function()
-                           sleep(pr)
-                      speedz=readFloat("[ball]+2dc")
-                      if (speedz) then
-                      speedz=speedz*(1/bouncerMultiplier)
-                      writeFloat("[ball]+2dc",speedz)
-                      end
-                      end,0x4C)
+                      end,0x44)
 
 
 
@@ -1004,11 +978,8 @@ dealloc(newmem)
 
 {$lua}
 
+hk1.destroy()
 hk2.destroy()
-hk3.destroy()
-hk5.destroy()
-hk6.destroy()
-hk7.destroy()
 </AssemblerScript>
     </CheatEntry>
   </CheatEntries>

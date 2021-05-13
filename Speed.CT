@@ -14,7 +14,6 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="-0.9752100706" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +21,6 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-3180.986572" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +38,6 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="204.1394958" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +76,6 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="492.2280579" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +93,6 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-13.9170475" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +100,6 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0.08314417303" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,14 +131,12 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="-29.71943665" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1593" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -152,14 +144,13 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="0.02350985073" RealAddress="009386FC"/>
+          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0006277463981" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -699,7 +690,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>38</ID>
           <Description>"Unlimited Nitrous"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -723,7 +714,7 @@ unregistersymbol(nitro)
         <CheatEntry>
           <ID>39</ID>
           <Description>"Unlimited Speedbreaker"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -775,7 +766,6 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <CheatEntry>
           <ID>46</ID>
           <Description>"Power Instruction"</Description>
-          <LastState Value="3625468377" RealAddress="0066BB37"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0066BB37</Address>
@@ -783,7 +773,6 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <CheatEntry>
           <ID>47</ID>
           <Description>"Top Speed Instruction"</Description>
-          <LastState Value="3629662425" RealAddress="0066C653"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0066C653</Address>
@@ -791,12 +780,36 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <CheatEntry>
           <ID>55</ID>
           <Description>"Nitrous Power Instruction"</Description>
-          <LastState Value="3624157657" RealAddress="006A0446"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>006A0446</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>60</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>009386FC+4</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Decrease Value</Action>
+          <Keys>
+            <Key>37</Key>
+          </Keys>
+          <Value>0.1</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Increase Value</Action>
+          <Keys>
+            <Key>39</Key>
+          </Keys>
+          <Value>0.1</Value>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
