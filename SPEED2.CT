@@ -10,7 +10,7 @@
         <CheatEntry>
           <ID>11</ID>
           <Description>"x coordinate reference"</Description>
-          <LastState Value="316.4689941" RealAddress="0082BEDC"/>
+          <LastState Value="-644.3458252" RealAddress="0082BEDC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>SPEED2.EXE+42BEDC</Address>
@@ -21,7 +21,7 @@
       <ID>0</ID>
       <Description>"speed x"</Description>
       <Options moManualExpandCollapse="1"/>
-      <LastState Value="-32.59127808" RealAddress="0BE79A90"/>
+      <LastState Value="0" RealAddress="0BE79A90"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>0BE79A90</Address>
@@ -29,7 +29,7 @@
         <CheatEntry>
           <ID>1</ID>
           <Description>"speed y"</Description>
-          <LastState Value="-4.351212025" RealAddress="0BE79A94"/>
+          <LastState Value="0" RealAddress="0BE79A94"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+4</Address>
@@ -37,7 +37,7 @@
         <CheatEntry>
           <ID>15</ID>
           <Description>"speed z"</Description>
-          <LastState Value="-0.2670057714" RealAddress="0BE79A98"/>
+          <LastState Value="0" RealAddress="0BE79A98"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+8</Address>
@@ -45,7 +45,7 @@
         <CheatEntry>
           <ID>5</ID>
           <Description>"Wheel Rotation"</Description>
-          <LastState Value="0.6324538589" RealAddress="0BE79AA8"/>
+          <LastState Value="0" RealAddress="0BE79AA8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+18</Address>
@@ -61,7 +61,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"x dummy location"</Description>
-          <LastState Value="316.4689941" RealAddress="0BE79B20"/>
+          <LastState Value="0" RealAddress="0BE79B20"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+90</Address>
@@ -151,135 +151,6 @@ hk4.destroy()
 hk5.destroy()
 </AssemblerScript>
     </CheatEntry>
-    <CheatEntry>
-      <ID>17</ID>
-      <Description>"No description"</Description>
-      <LastState Value="199733984" RealAddress="0BE7B4F0"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0BE79A00</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>19</ID>
-      <Description>"No description"</Description>
-      <LastState Value="199727652" RealAddress="03BAEB74"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0BE79A28</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>20</ID>
-      <Description>"No description"</Description>
-      <LastState Value="202002900" RealAddress="0C027124"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0BE7B4F4</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>21</ID>
-      <Description>"No description"</Description>
-      <LastState Value="202002900" RealAddress="0BE7B4F8"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0BE7B4F8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>22</ID>
-      <Description>"No description"</Description>
-      <LastState Value="199727652" RealAddress="0BE77FD8"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0BE77FD8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>23</ID>
-      <Description>"No description"</Description>
-      <LastState Value="199849032" RealAddress="0BE77FF0"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0BE77FF0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>24</ID>
-      <Description>"No description"</Description>
-      <LastState Value="202006244" RealAddress="03BAEB78"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB78</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>25</ID>
-      <Description>"No description"</Description>
-      <LastState Value="199727648" RealAddress="03BAEB80"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB80</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>26</ID>
-      <Description>"No description"</Description>
-      <LastState Value="202106176" RealAddress="03BAEB84"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB84</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>27</ID>
-      <Description>"No description"</Description>
-      <LastState Value="201304832" RealAddress="03BAEB88"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB88</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>28</ID>
-      <Description>"No description"</Description>
-      <LastState Value="201305024" RealAddress="03BAEB8C"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB8C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>29</ID>
-      <Description>"No description"</Description>
-      <LastState Value="201305216" RealAddress="03BAEB90"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB90</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>30</ID>
-      <Description>"No description"</Description>
-      <LastState Value="201305408" RealAddress="03BAEB94"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>03BAEB94</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>31</ID>
-      <Description>"No description"</Description>
-      <LastState Value="202002900" RealAddress="0C027128"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0C027128</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>32</ID>
-      <Description>"No description"</Description>
-      <LastState Value="202002900" RealAddress="0C027124"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0C027124</Address>
-    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry Color="20000000">
@@ -354,7 +225,7 @@ hk5.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :cmp dword ptr [edx+3C],01 (Gear+1)</Description>
       <AddressString>SPEED2.EXE+19447A</AddressString>
       <Before>
@@ -378,7 +249,7 @@ hk5.destroy()
         <Byte>18</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :mov eax,[esi+78] (Z speed)</Description>
       <AddressString>SPEED2.EXE+19C606</AddressString>
       <Before>
