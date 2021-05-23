@@ -10,7 +10,7 @@
         <CheatEntry>
           <ID>11</ID>
           <Description>"x coordinate reference"</Description>
-          <LastState Value="-644.3458252" RealAddress="0082BEDC"/>
+          <LastState Value="-374.0217285" RealAddress="0082BEDC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>SPEED2.EXE+42BEDC</Address>
@@ -21,15 +21,13 @@
       <ID>0</ID>
       <Description>"speed x"</Description>
       <Options moManualExpandCollapse="1"/>
-      <LastState Value="0" RealAddress="0BE79A90"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>0BE79A90</Address>
+      <Address>0</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>1</ID>
           <Description>"speed y"</Description>
-          <LastState Value="0" RealAddress="0BE79A94"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+4</Address>
@@ -37,7 +35,6 @@
         <CheatEntry>
           <ID>15</ID>
           <Description>"speed z"</Description>
-          <LastState Value="0" RealAddress="0BE79A98"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+8</Address>
@@ -45,7 +42,6 @@
         <CheatEntry>
           <ID>5</ID>
           <Description>"Wheel Rotation"</Description>
-          <LastState Value="0" RealAddress="0BE79AA8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+18</Address>
@@ -53,7 +49,6 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0" RealAddress="0BE79AB0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+20</Address>
@@ -61,7 +56,6 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"x dummy location"</Description>
-          <LastState Value="0" RealAddress="0BE79B20"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+90</Address>
@@ -150,6 +144,38 @@ hk3.destroy()
 hk4.destroy()
 hk5.destroy()
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"No description"</Description>
+      <LastState Value="12" RealAddress="00890280"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00890280</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"8000"</Description>
+      <LastState Value="8000" RealAddress="008903A4"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>008903A4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"No description"</Description>
+      <LastState Value="3.200000048" RealAddress="0089028C"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>0089028C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1.400000095" RealAddress="00890290"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>00890290</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -270,6 +296,52 @@ hk5.destroy()
         <Byte>74</Byte>
         <Byte>89</Byte>
         <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Code :mov eax,[ecx+28] (wheel rotation)</Description>
+      <AddressString>SPEED2.EXE+19D350</AddressString>
+      <Before>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>54</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fmul dword ptr [ecx+0C] (front wheel traction)</Description>
+      <AddressString>SPEED2.EXE+19D67C</AddressString>
+      <Before>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>49</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>88</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

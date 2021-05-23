@@ -46,14 +46,14 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="1" RealAddress="009C5AC4"/>
+          <LastState Value="5" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>89</ID>
           <Description>"RUNS"</Description>
-          <LastState Value="1" RealAddress="009AA192"/>
+          <LastState Value="65535" RealAddress="009AA192"/>
           <VariableType>2 Bytes</VariableType>
           <Address>Cricket07.exe+5AA192</Address>
         </CheatEntry>
@@ -603,7 +603,7 @@ local pr=120
 local multi=1.3
 local slow=0.8
 local bouncerMultiplier=1.5
-local smal=0.8
+local smal=0.6
 local speedx,speedy,speedz
 
 
@@ -1955,7 +1955,7 @@ hk2.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fmul dword ptr [esi+000000C8] (Batsman mover 2)</Description>
       <AddressString>Cricket07.exe+1EDEF1</AddressString>
       <Before>
