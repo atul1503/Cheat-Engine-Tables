@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.9982942939" RealAddress="009386CC"/>
+          <LastState Value="0.9982844591" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2514.713135" RealAddress="009386D8"/>
+          <LastState Value="-2515.197754" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +40,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="151.1629028" RealAddress="009386DC"/>
+          <LastState Value="-348.8419495" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +79,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1596.025024" RealAddress="009386E0"/>
+          <LastState Value="1591.8927" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +97,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-5.859086037" RealAddress="009386E8"/>
+          <LastState Value="-5.767662525" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +105,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-0.05685219169" RealAddress="009386EC"/>
+          <LastState Value="-0.03837261349" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,7 +137,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="-50.14613342" RealAddress="009386F0"/>
+          <LastState Value="-49.22805405" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
@@ -152,7 +152,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="0.003191799391" RealAddress="009386FC"/>
+          <LastState Value="0.002893989207" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -242,7 +242,7 @@
           <CheatEntries>
             <CheatEntry>
               <ID>60</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 1"</Description>
               <LastState Value="1000" RealAddress="0C753068"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -250,7 +250,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>61</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 2"</Description>
               <LastState Value="1000" RealAddress="0C75306C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -258,7 +258,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>62</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 3"</Description>
               <LastState Value="1000" RealAddress="0C753070"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -266,7 +266,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>63</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 4"</Description>
               <LastState Value="1000" RealAddress="0C753074"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -274,7 +274,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>64</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 5"</Description>
               <LastState Value="1000" RealAddress="0C753078"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -282,7 +282,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>65</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 6"</Description>
               <LastState Value="1000" RealAddress="0C75307C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -290,7 +290,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>66</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 7"</Description>
               <LastState Value="1000" RealAddress="0C753080"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -298,7 +298,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>67</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 8"</Description>
               <LastState Value="1000" RealAddress="0C753084"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
@@ -306,7 +306,7 @@
             </CheatEntry>
             <CheatEntry>
               <ID>68</ID>
-              <Description>"No description"</Description>
+              <Description>"Torque 9"</Description>
               <LastState Value="1000" RealAddress="0C753088"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
