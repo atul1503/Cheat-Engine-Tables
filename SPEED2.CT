@@ -4,13 +4,14 @@
     <CheatEntry>
       <ID>13</ID>
       <Description>"References"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
       <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>11</ID>
           <Description>"x coordinate reference"</Description>
-          <LastState Value="-374.0217285" RealAddress="0082BEDC"/>
+          <LastState Value="528.2258911" RealAddress="0082BEDC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>SPEED2.EXE+42BEDC</Address>
@@ -18,16 +19,25 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>17</ID>
+      <Description>"Money"</Description>
+      <LastState Value="99995550" RealAddress="00861E74"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>SPEED2.EXE+461E74</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>0</ID>
       <Description>"speed x"</Description>
       <Options moManualExpandCollapse="1"/>
+      <LastState Value="0.2158904225" RealAddress="0C082390"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>0</Address>
+      <Address>0C082390</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>1</ID>
           <Description>"speed y"</Description>
+          <LastState Value="0.01504064351" RealAddress="0C082394"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+4</Address>
@@ -35,6 +45,7 @@
         <CheatEntry>
           <ID>15</ID>
           <Description>"speed z"</Description>
+          <LastState Value="0.01613006927" RealAddress="0C082398"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+8</Address>
@@ -42,6 +53,7 @@
         <CheatEntry>
           <ID>5</ID>
           <Description>"Wheel Rotation"</Description>
+          <LastState Value="0.0008126178291" RealAddress="0C0823A8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+18</Address>
@@ -49,6 +61,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"Traction"</Description>
+          <LastState Value="0.1248887107" RealAddress="0C0823B0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+20</Address>
@@ -56,6 +69,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"x dummy location"</Description>
+          <LastState Value="528.2258911" RealAddress="0C082420"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>+90</Address>
@@ -72,12 +86,12 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+3e-3
+local mul=1+7e-3
 local topSpeed=180
 local stop=0.85
 local rotation=0.15
 local superBoost=2
-local easyTurnSwitch=1
+local easyTurnSwitch=0
 local limiter=(1/mul)
 
 
@@ -144,38 +158,6 @@ hk3.destroy()
 hk4.destroy()
 hk5.destroy()
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>26</ID>
-      <Description>"No description"</Description>
-      <LastState Value="12" RealAddress="00890280"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>00890280</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>27</ID>
-      <Description>"8000"</Description>
-      <LastState Value="8000" RealAddress="008903A4"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>008903A4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>28</ID>
-      <Description>"No description"</Description>
-      <LastState Value="3.200000048" RealAddress="0089028C"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>0089028C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>29</ID>
-      <Description>"No description"</Description>
-      <LastState Value="1.400000095" RealAddress="00890290"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>00890290</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -321,7 +303,7 @@ hk5.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fmul dword ptr [ecx+0C] (front wheel traction)</Description>
       <AddressString>SPEED2.EXE+19D67C</AddressString>
       <Before>
@@ -342,6 +324,32 @@ hk5.destroy()
         <Byte>24</Byte>
         <Byte>04</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fdiv dword ptr [esi+00000140] something handling related and in the car attr region</Description>
+      <AddressString>SPEED2.EXE+1B59BC</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>B6</Byte>
+        <Byte>40</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+        <Byte>DF</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
