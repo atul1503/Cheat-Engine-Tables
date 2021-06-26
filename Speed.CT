@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="-0.4524756968" RealAddress="009386CC"/>
+          <LastState Value="0.1346798241" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2693.627197" RealAddress="009386D8"/>
+          <LastState Value="-3705.284668" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +40,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="128.2023926" RealAddress="009386DC"/>
+          <LastState Value="-465.7278137" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +79,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="2271.351318" RealAddress="009386E0"/>
+          <LastState Value="3532.924072" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +97,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-8.129655838" RealAddress="009386E8"/>
+          <LastState Value="5.135455608" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +105,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="1.577449083" RealAddress="009386EC"/>
+          <LastState Value="1.284526944" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,14 +137,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="5.920676708" RealAddress="009386F0"/>
+          <LastState Value="23.62432671" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1480" RealAddress="009386F4"/>
+          <LastState Value="1328" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -152,7 +152,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.04299725592" RealAddress="009386FC"/>
+          <LastState Value="12.47554684" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -160,7 +160,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.000675675692" RealAddress="00938704"/>
+          <LastState Value="0.0007530120201" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -235,7 +235,7 @@
           <ID>70</ID>
           <Description>"Top Speed - Red Line"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="3.026107365E29" RealAddress="0C753778"/>
+          <LastState Value="-3.356000811E-9" RealAddress="0C753778"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>0C753778</Address>
@@ -243,7 +243,7 @@
             <CheatEntry>
               <ID>71</ID>
               <Description>"Top Speed - Engine Top Speed"</Description>
-              <LastState Value="1.590094275E29" RealAddress="0C753774"/>
+              <LastState Value="1.836726739E-39" RealAddress="0C753774"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-4</Address>
@@ -251,7 +251,7 @@
             <CheatEntry>
               <ID>60</ID>
               <Description>"Torque 1"</Description>
-              <LastState Value="1.050418233E-38" RealAddress="0C753728"/>
+              <LastState Value="1" RealAddress="0C753728"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50</Address>
@@ -259,7 +259,7 @@
             <CheatEntry>
               <ID>61</ID>
               <Description>"Torque 2"</Description>
-              <LastState Value="1.74707197E19" RealAddress="0C75372C"/>
+              <LastState Value="0" RealAddress="0C75372C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+4</Address>
@@ -267,7 +267,7 @@
             <CheatEntry>
               <ID>62</ID>
               <Description>"Torque 3"</Description>
-              <LastState Value="4.747632324E27" RealAddress="0C753730"/>
+              <LastState Value="1.657087528E-22" RealAddress="0C753730"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8</Address>
@@ -275,7 +275,7 @@
             <CheatEntry>
               <ID>63</ID>
               <Description>"Torque 4"</Description>
-              <LastState Value="2.938819898E29" RealAddress="0C753734"/>
+              <LastState Value="-2.003163225E27" RealAddress="0C753734"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4</Address>
@@ -283,7 +283,7 @@
             <CheatEntry>
               <ID>64</ID>
               <Description>"Torque 5"</Description>
-              <LastState Value="7.396985262E31" RealAddress="0C753738"/>
+              <LastState Value="-1.342577182E23" RealAddress="0C753738"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4</Address>
@@ -291,7 +291,7 @@
             <CheatEntry>
               <ID>65</ID>
               <Description>"Torque 6"</Description>
-              <LastState Value="4.464272607E30" RealAddress="0C75373C"/>
+              <LastState Value="1.866522928E-31" RealAddress="0C75373C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4</Address>
@@ -299,7 +299,7 @@
             <CheatEntry>
               <ID>66</ID>
               <Description>"Torque 7"</Description>
-              <LastState Value="4.464243895E30" RealAddress="0C753740"/>
+              <LastState Value="1.864556326E-31" RealAddress="0C753740"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4</Address>
@@ -307,7 +307,7 @@
             <CheatEntry>
               <ID>67</ID>
               <Description>"Torque 8"</Description>
-              <LastState Value="2.794548836E20" RealAddress="0C753744"/>
+              <LastState Value="1.866524574E-31" RealAddress="0C753744"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4</Address>
@@ -315,7 +315,7 @@
             <CheatEntry>
               <ID>68</ID>
               <Description>"Torque 9"</Description>
-              <LastState Value="2.644758584E20" RealAddress="0C753748"/>
+              <LastState Value="0" RealAddress="0C753748"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4+4</Address>
@@ -460,23 +460,25 @@ hk7.destroy()
         <CheatEntry>
           <ID>45</ID>
           <Description>"Speeder 1"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1
+local mul=1+1e-2
+local mulExpo=1
 local mulAtFirstGear=1.1
-local rotater=0
+local rotater=0.03
 local oversteer=4
 local greatLaunchFlag=0
 local firstGearSpeed=50
-local minturnspeed=30
-local turner=1.3
-local turnSpeedFlag=0
-local maxTurnCount=10
+local minturnspeed=5
+local turner=1.01
+local turnerExponent=1
+local turnSpeedFlag=1
+local maxTurnCount=1
 local easyTurnSwitch=0
 local turnSpeedSwitch=0
 local div=0.85
@@ -508,8 +510,8 @@ end
 if greatLaunchFlag~=0 then
 r=((x.Value^2)+(y.Value^2))^0.5
 if r&gt;firstGearSpeed then
-x.Value=x.Value*mul
-y.Value=y.Value*mul
+x.Value=x.Value*(mul^mulExpo)
+y.Value=y.Value*(mul^mulExpo)
 elseif r*mulAtFirstGear&gt;firstGearSpeed then
 ratio=firstGearSpeed/r
 x.Value=x.Value*ratio
@@ -556,8 +558,8 @@ restore=1
 end
 if maintainMin&gt;=maxTurnCount then
 if  r&gt;minturnspeed then
-x.Value=x.Value/turner
-y.Value=y.Value/turner
+x.Value=x.Value/(turner^turnerExponent)
+y.Value=y.Value/(turner^turnerExponent)
 elseif r&gt;2 then
 ratio=minturnspeed/r
 x.Value=x.Value*ratio
@@ -586,8 +588,8 @@ restore=1
 end
 if maintainMin&gt;=maxTurnCount then
 if r&gt;minturnspeed then
-x.Value=x.Value/turner
-y.Value=y.Value/turner
+x.Value=x.Value/(turner^turnerExponent)
+y.Value=y.Value/(turner^turnerExponent)
 elseif r&gt;2 then
 ratio=minturnspeed/r
 x.Value=x.Value*ratio
@@ -1107,6 +1109,13 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
           <Address>0068D839</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>82</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1.69998908" RealAddress="02C45958"/>
+      <VariableType>Float</VariableType>
+      <Address>02C45958</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3137,6 +3146,32 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <Byte>24</Byte>
         <Byte>CC</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :fld dword ptr [esi+00000178] (No collision timer value)</Description>
+      <AddressString>Speed.exe+28BCB5</AddressString>
+      <Before>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>05</Byte>
+        <Byte>7A</Byte>
+        <Byte>31</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+        <Byte>78</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>64</Byte>
+        <Byte>24</Byte>
+        <Byte>0C</Byte>
+        <Byte>D9</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
