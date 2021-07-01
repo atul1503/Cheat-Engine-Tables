@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.4773551226" RealAddress="009386CC"/>
+          <LastState Value="-0.6025837064" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-1422.818237" RealAddress="009386D8"/>
+          <LastState Value="-2819.462158" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +40,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="127.9724503" RealAddress="009386DC"/>
+          <LastState Value="-313.9673767" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +79,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1313.005127" RealAddress="009386E0"/>
+          <LastState Value="1054.802734" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +97,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="44.66939545" RealAddress="009386E8"/>
+          <LastState Value="-33.36291122" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +105,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-2.743840456" RealAddress="009386EC"/>
+          <LastState Value="-3.517839909" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,14 +137,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="28.46857071" RealAddress="009386F0"/>
+          <LastState Value="9.336957932" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1547" RealAddress="009386F4"/>
+          <LastState Value="1523" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -152,7 +152,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.07984406501" RealAddress="009386FC"/>
+          <LastState Value="0.637555778" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -160,7 +160,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0006464124308" RealAddress="00938704"/>
+          <LastState Value="0.0006565988297" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -341,7 +341,7 @@
 [ENABLE]
 
 local mul=1+3e-3
-local rangeMultiplier=2
+local rangeMultiplier=1.5
 local Up=18
 local Down=0
 local div=0.85
@@ -460,7 +460,7 @@ hk7.destroy()
         <CheatEntry>
           <ID>45</ID>
           <Description>"Speeder 1"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -470,12 +470,12 @@ if syntaxcheck then return end
 local mul=1+7e-3
 local mulExpo=1
 local mulAtFirstGear=1.1
-local rotater=0.075
-local oversteer=0
+local rotater=0.2
+local oversteer=5
 local greatLaunchFlag=0
 local firstGearSpeed=50
 local minturnspeed=5
-local turner=1.05
+local turner=1
 local turnerExponent=1
 local turnSpeedFlag=1
 local maxTurnCount=1
@@ -947,6 +947,98 @@ hk5.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>85</ID>
+          <Description>"Speeder 5"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local mul=1+7e-3
+local rotater=0.075
+local easyTurnSwitch=0
+local topSpeed=200
+local div=1.125
+local boost=2
+local overLimitMultiplier=(1/mul)
+
+function calcdegAngle(x)
+return x*5
+end
+
+
+hk1=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+r=(((x.Value)^2)+((y.Value)^2))^0.5
+if r&lt;topSpeed then
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+else
+x.Value=x.Value*overLimitMultiplier
+y.Value=y.Value*overLimitMultiplier
+end
+end,0x26)
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+x.Value=x.Value/div
+y.Value=y.Value/div
+end,0x28)
+
+hk3=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+x.Value=x.Value*boost
+y.Value=y.Value*boost
+end,0x42)
+
+hk4=createHotkey(function()
+x=getAddressList().getMemoryRecord('X SPEED')
+y=getAddressList().getMemoryRecord('Y SPEED')
+ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
+if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value-rotater
+if tonumber(ro.Value)&lt;0 then
+theta=calcdegAngle(-ro.Value)*(math.pi/180)
+xn=x.Value*math.cos(theta)-y.Value*math.sin(theta)
+yn=x.Value*math.sin(theta)+y.Value*math.cos(theta)
+x.Value=xn
+y.Value=yn
+end
+end,0x25)
+
+hk5=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription('X SPEED')
+y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
+if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
+ro.Value=0
+end
+ro.Value=ro.Value+rotater
+if tonumber(ro.Value)&gt;0 then
+theta=calcdegAngle(ro.Value)*(math.pi/180)
+xn=x.Value*math.cos(theta)+y.Value*math.sin(theta)
+yn=(-1)*x.Value*math.sin(theta)+y.Value*math.cos(theta)
+x.Value=xn
+y.Value=yn
+end
+end,0x27)
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk4.destroy()
+hk5.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>51</ID>
           <Description>"Turn Off Rev Limiter"</Description>
           <LastState/>
@@ -1063,7 +1155,7 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <CheatEntry>
           <ID>84</ID>
           <Description>"No Cooldown"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -1152,6 +1244,14 @@ unregistersymbol(Inf_No_Collision)
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0068D839</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>86</ID>
+          <Description>"Brake Instruction"</Description>
+          <LastState Value="143672537" RealAddress="0068E22F"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0068E22F</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
