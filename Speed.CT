@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.7238768935" RealAddress="009386CC"/>
+          <LastState Value="-0.2503497899" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2562.506348" RealAddress="009386D8"/>
+          <LastState Value="-1852.264648" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +40,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="158.1885071" RealAddress="009386DC"/>
+          <LastState Value="177.0119781" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +79,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1512.609985" RealAddress="009386E0"/>
+          <LastState Value="732.140564" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +97,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-9.144128799" RealAddress="009386E8"/>
+          <LastState Value="-12.99995613" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +105,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0.688041985" RealAddress="009386EC"/>
+          <LastState Value="-4.705273151" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,14 +137,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="-0.4278855622" RealAddress="009386F0"/>
+          <LastState Value="23.71130562" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1593" RealAddress="009386F4"/>
+          <LastState Value="1402" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -152,7 +152,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.08004688472" RealAddress="009386FC"/>
+          <LastState Value="-0.04734239727" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -160,7 +160,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0006277463981" RealAddress="00938704"/>
+          <LastState Value="0.0007132667815" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -330,7 +330,7 @@
 [ENABLE]
 
 local mul=1+3e-3
-local rangeMultiplier=1.5
+local rangeMultiplier=1.7
 local Up=18
 local Down=0
 local div=0.85
@@ -373,17 +373,8 @@ end,0x26)
 hk2=createHotkey(function()
 x=getAddressList().getMemoryRecordByDescription(speedXString)
 y=getAddressList().getMemoryRecordByDescription(speedYString)
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=motion then
-if r&gt;TempDown then
 x.Value=x.Value*div
 y.Value=y.Value*div
-else
-ratio=TempDown/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-end
 end,0x28)
 
 
@@ -456,21 +447,22 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+2e-2
+local mul=1+1e-3
 local mulExpo=1
 local mulAtFirstGear=1.1
-local rotater=0.025
+local rotater=0.0125
 local oversteer=0
 local greatLaunchFlag=0
 local firstGearSpeed=50
 local minturnspeed=5
 local turner=1
+local steermult=10
 local turnerExponent=1
 local turnSpeedFlag=0
 local maxTurnCount=1
 local easyTurnSwitch=0
 local turnSpeedSwitch=0
-local div=0.85
+local div=0.9
 local boost=1.5
 local restoreAfterDrop=0
 
@@ -479,12 +471,14 @@ local restoreAfterDrop=0
 local restore=0
 local br=0
 local maintainMin=0
+local steercount=0
 
 
 hk1=createHotkey(function()
 t=getAddressList()
 x=t.getMemoryRecordByDescription('X SPEED')
 y=t.getMemoryRecordByDescription('Y SPEED')
+steercount=0
 ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
 if turnSpeedFlag~=0 then
 maintainMin=0
@@ -518,6 +512,7 @@ end,0x26)
 hk2=createHotkey(function()
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
+steercount=0
 x.Value=x.Value*div
 y.Value=y.Value*div
 end,0x28)
@@ -533,12 +528,13 @@ hk4=createHotkey(function()
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
 z=getAddressList().getMemoryRecord(5)
+steercount=steercount+steermult
 ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
 r=((x.Value^2)+(y.Value^2))^0.5
 if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
 ro.Value=0
 end
-ro.Value=ro.Value-rotater
+ro.Value=ro.Value-rotater*steercount
 maintainMin=maintainMin+1
 if turnSpeedFlag~=0 and not isKeyPressed(0x26) then
 if restore~=1 and restoreAfterDrop~=0 then
@@ -563,12 +559,13 @@ hk5=createHotkey(function()
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
 z=getAddressList().getMemoryRecord(5)
+steercount=steercount+steermult
 ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
 r=((x.Value^2)+(y.Value^2))^0.5
 if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
 ro.Value=0
 end
-ro.Value=ro.Value+rotater
+ro.Value=ro.Value+rotater*steercount
 maintainMin=maintainMin+1
 if turnSpeedFlag~=0 and not isKeyPressed(0x26) then
 if restore~=1 and restoreAfterDrop~=0 then

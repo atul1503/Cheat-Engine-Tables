@@ -53,7 +53,7 @@
         <CheatEntry>
           <ID>89</ID>
           <Description>"RUNS"</Description>
-          <LastState Value="65535" RealAddress="009AA192"/>
+          <LastState Value="0" RealAddress="009AA192"/>
           <VariableType>2 Bytes</VariableType>
           <Address>Cricket07.exe+5AA192</Address>
         </CheatEntry>
@@ -1979,6 +1979,28 @@ hk2.destroy()
         <Byte>24</Byte>
         <Byte>04</Byte>
         <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :mov cl,[eax] (player name)</Description>
+      <AddressString>Cricket07.exe+D9105</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>C0</Byte>
+        <Byte>04</Byte>
+        <Byte>2B</Byte>
+        <Byte>D0</Byte>
+      </Before>
+      <Actual>
+        <Byte>8A</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>88</Byte>
+        <Byte>0C</Byte>
+        <Byte>02</Byte>
+        <Byte>83</Byte>
+        <Byte>C0</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
