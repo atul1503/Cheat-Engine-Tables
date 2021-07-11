@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="-0.2503497899" RealAddress="009386CC"/>
+          <LastState Value="-0.6911474466" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-1852.264648" RealAddress="009386D8"/>
+          <LastState Value="-2398.263428" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +40,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="177.0119781" RealAddress="009386DC"/>
+          <LastState Value="151.6358948" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +79,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="732.140564" RealAddress="009386E0"/>
+          <LastState Value="1789.567871" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +97,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-12.99995613" RealAddress="009386E8"/>
+          <LastState Value="-16.817379" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +105,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-4.705273151" RealAddress="009386EC"/>
+          <LastState Value="-0.2638827562" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,14 +137,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="23.71130562" RealAddress="009386F0"/>
+          <LastState Value="0.6387605071" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1402" RealAddress="009386F4"/>
+          <LastState Value="1345" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -152,7 +152,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.04734239727" RealAddress="009386FC"/>
+          <LastState Value="0.2394519448" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -160,7 +160,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0007132667815" RealAddress="00938704"/>
+          <LastState Value="0.0007434944273" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -447,16 +447,18 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+1e-3
+local mul=1+7e-3
 local mulExpo=1
 local mulAtFirstGear=1.1
-local rotater=0.0125
+local rotater=0.1
+local steerDamper=1.5
+local spinDamper=1.2
 local oversteer=0
 local greatLaunchFlag=0
 local firstGearSpeed=50
 local minturnspeed=5
 local turner=1
-local steermult=10
+local steermult=1
 local turnerExponent=1
 local turnSpeedFlag=0
 local maxTurnCount=1
@@ -504,8 +506,14 @@ x.Value=x.Value*mulAtFirstGear
 y.Value=y.Value*mulAtFirstGear
 end
 else
+r=getAddressList().getMemoryRecordByDescription('Steering Rotation').Value
+if math.abs(r)&lt;steerDamper then
 x.Value=x.Value*mul
 y.Value=y.Value*mul
+else
+x.Value=x.Value/spinDamper
+y.Value=y.Value/spinDamper
+end
 end
 end,0x26)
 
@@ -535,6 +543,10 @@ if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
 ro.Value=0
 end
 ro.Value=ro.Value-rotater*steercount
+if math.abs(ro.Value)&gt;steerDamper then
+x.Value=x.Value/spinDamper
+y.Value=y.Value/spinDamper
+end
 maintainMin=maintainMin+1
 if turnSpeedFlag~=0 and not isKeyPressed(0x26) then
 if restore~=1 and restoreAfterDrop~=0 then
@@ -566,6 +578,10 @@ if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
 ro.Value=0
 end
 ro.Value=ro.Value+rotater*steercount
+if math.abs(ro.Value)&gt;steerDamper then
+x.Value=x.Value/spinDamper
+y.Value=y.Value/spinDamper
+end
 maintainMin=maintainMin+1
 if turnSpeedFlag~=0 and not isKeyPressed(0x26) then
 if restore~=1 and restoreAfterDrop~=0 then
