@@ -1202,49 +1202,6 @@ hk1.destroy()
 hk2.destroy()
 </AssemblerScript>
     </CheatEntry>
-    <CheatEntry>
-      <ID>135</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="0" RealAddress="033B6A14"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>033B6A14</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>136</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="49770800" RealAddress="02EA62F8"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>02EA62F8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>137</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="1.422453587E-38" RealAddress="033B6364"/>
-      <VariableType>Float</VariableType>
-      <Address>033B6364</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>138</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="19293050" RealAddress="009AE438"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>4 Bytes</VariableType>
-      <Address>033B6364</Address>
-      <Offsets>
-        <Offset>0</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>139</ID>
-      <Description>"No description"</Description>
-      <LastState RealAddress="009AE004"/>
-      <VariableType>String</VariableType>
-      <Length>5</Length>
-      <Unicode>0</Unicode>
-      <CodePage>0</CodePage>
-      <ZeroTerminate>1</ZeroTerminate>
-      <Address>Cricket07.exe+5AE004</Address>
-    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry Color="20000000">
