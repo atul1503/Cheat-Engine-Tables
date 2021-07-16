@@ -1,0 +1,30 @@
+{$lua}
+
+[ENABLE]
+
+function bigJump(x,y,z)
+local zPower=0.35
+local fwdPower=12
+
+
+z.Value=zPower
+while tonumber(z.Value)>=0
+do end
+x.Value=x.Value*fwdPower
+y.Value=y.Value*fwdPower
+end
+
+
+hk=createHotkey(function()
+l=getAddressList()
+bigJump(
+l.getMemoryRecordByDescription('x'),
+l.getMemoryRecordByDescription('y'),
+l.getMemoryRecordByDescription('z')
+)
+end,0x11)
+
+
+[DISABLE]
+
+hk.destroy()
