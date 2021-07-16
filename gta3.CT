@@ -11,58 +11,19 @@
         <CheatEntry>
           <ID>19</ID>
           <Description>"Vertical Camera Angle"</Description>
-          <LastState Value="-0.00806993898" RealAddress="006FAF44"/>
+          <LastState Value="0.02062886395" RealAddress="006FAF44"/>
           <VariableType>Float</VariableType>
           <Address>gta3.exe+2FAF44</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>21</ID>
           <Description>"Horizontal Camera Angle"</Description>
-          <LastState Value="1.602337956" RealAddress="006FAF54"/>
+          <LastState Value="-2.527410746" RealAddress="006FAF54"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>006FAF54</Address>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>23</ID>
-      <Description>"No Description"</Description>
-      <LastState Value="200" RealAddress="10690918"/>
-      <VariableType>Float</VariableType>
-      <Address>10690918</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>24</ID>
-      <Description>"No description"</Description>
-      <LastState Value="70" RealAddress="10690718"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>10690718</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>25</ID>
-      <Description>"x"</Description>
-      <LastState Value="-0.0004061554791" RealAddress="106906D0"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>106906D0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>26</ID>
-      <Description>"y"</Description>
-      <LastState Value="0.01287253667" RealAddress="106906D4"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>106906D4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>27</ID>
-      <Description>"z"</Description>
-      <LastState Value="0" RealAddress="106906D8"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>106906D8</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>28</ID>
@@ -74,9 +35,8 @@
 [ENABLE]
 
 function bigJump(x,y,z)
-local zPower=0.35
-local fwdPower=12
-
+local zPower=0.75
+local fwdPower=40
 
 z.Value=zPower
 while tonumber(z.Value)&gt;=0
@@ -102,6 +62,63 @@ end,0x11)
 
 hk.destroy()
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"Health"</Description>
+      <LastState Value="200" Activated="1" RealAddress="1086AF38"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>1086AF38</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"z"</Description>
+          <LastState Value="-1.399661064" RealAddress="1086ACF8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>-240</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"x"</Description>
+          <LastState Value="0" RealAddress="1086ACF4"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>-240-4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"y"</Description>
+          <LastState Value="0" RealAddress="1086ACF0"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>-240-8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"No description"</Description>
+      <LastState Value="903.442749" RealAddress="108AD588"/>
+      <VariableType>Float</VariableType>
+      <Address>108AD588</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1" RealAddress="108AD5AC"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>108AD5AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1" RealAddress="108AD5DC"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>108AD5DC</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -211,6 +228,33 @@ hk.destroy()
         <Byte>2D</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry Color="80000008">
+      <Description>Code :cmp dword ptr [ebx+00000224],03 (Car Lock )</Description>
+      <AddressString>gta3.exe+15240D</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>84</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>13</Byte>
+      </Before>
+      <Actual>
+        <Byte>83</Byte>
+        <Byte>BB</Byte>
+        <Byte>24</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>03</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>0A</Byte>
+        <Byte>30</Byte>
+        <Byte>C0</Byte>
+        <Byte>5B</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
   <Structures StructVersion="2">
@@ -305,5 +349,6 @@ hk.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>Z speed=addrress(health)-240</Comments>
+  <Comments>Z speed=addrress(health)-240
+</Comments>
 </CheatTable>
