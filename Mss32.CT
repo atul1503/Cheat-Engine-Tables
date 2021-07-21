@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>0</ID>
           <Description>"Money"</Description>
-          <LastState Value="99990006" RealAddress="0094ADC8"/>
+          <LastState Value="99989706" RealAddress="0094ADC8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Mss32.exe+54ADC8</Address>
         </CheatEntry>
@@ -26,15 +26,15 @@
           <ID>5</ID>
           <Description>"Health"</Description>
           <Options moAlwaysHideChildren="1"/>
-          <LastState Value="100" Activated="1" RealAddress="0C452364"/>
+          <LastState Value="100" Activated="1" RealAddress="23F642DC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>0C452364</Address>
+          <Address>23F642DC</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
               <Description>"x"</Description>
-              <LastState Value="-0.009859915823" RealAddress="0C452080"/>
+              <LastState Value="0" RealAddress="23F63FF8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4</Address>
@@ -42,7 +42,7 @@
             <CheatEntry>
               <ID>7</ID>
               <Description>"y"</Description>
-              <LastState Value="0.03437920287" RealAddress="0C452084"/>
+              <LastState Value="0" RealAddress="23F63FFC"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+4</Address>
@@ -50,7 +50,7 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"z"</Description>
-              <LastState Value="-0.6723366976" RealAddress="0C452088"/>
+              <LastState Value="0" RealAddress="23F64000"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+8</Address>
@@ -68,16 +68,19 @@
       <CheatEntries>
         <CheatEntry>
           <ID>9</ID>
-          <Description>"Super Jumper Script"</Description>
+          <Description>"Super Jumper 1"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
 [ENABLE]
 
+
+-- best ratio for fwdPower/zPower=48:1 for gta vc
+
 function bigJump(x,y,z)
-local zPower=4
-local fwdPower=12
+local zPower=0.5
+local fwdPower=24
 
 
 z.Value=zPower
@@ -85,6 +88,52 @@ while tonumber(z.Value)&gt;=0
 do end
 x.Value=x.Value*fwdPower
 y.Value=y.Value*fwdPower
+end
+
+
+hk=createHotkey(function()
+l=getAddressList()
+bigJump(
+l.getMemoryRecordByDescription('x'),
+l.getMemoryRecordByDescription('y'),
+l.getMemoryRecordByDescription('z')
+)
+end,0x11)
+
+
+[DISABLE]
+
+hk.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"Super Jumper 2"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- Constant Jump Power Script
+
+-- best ratio for fwdPower/zPower=48:1 for gta vc
+
+function bigJump(x,y,z)
+local zPower=0.5
+local fwdPower=1.1
+
+
+z.Value=zPower
+xb=x.Value
+yb=y.Value
+r=((xb^2)+(yb^2))^(1/2)
+xb=xb/r
+yb=yb/r
+while tonumber(z.Value)~=0 do
+x.Value=xb*fwdPower
+y.Value=yb*fwdPower
+end
 end
 
 

@@ -1,0 +1,39 @@
+{$lua}
+
+[ENABLE]
+
+-- Constant Jump Power Script
+
+-- best ratio for fwdPower/zPower=48:1 for gta vc
+
+function bigJump(x,y,z)
+local zPower=0.5
+local fwdPower=1.2
+
+
+z.Value=zPower
+xb=x.Value
+yb=y.Value
+r=((xb^2)+(yb^2))^(1/2)
+xb=xb/r
+yb=yb/r
+while tonumber(z.Value)~=0 do
+x.Value=xb*fwdPower
+y.Value=yb*fwdPower
+end
+end
+
+
+hk=createHotkey(function()
+l=getAddressList()
+bigJump(
+l.getMemoryRecordByDescription('x'),
+l.getMemoryRecordByDescription('y'),
+l.getMemoryRecordByDescription('z')
+)
+end,0x11)
+
+
+[DISABLE]
+
+hk.destroy()
