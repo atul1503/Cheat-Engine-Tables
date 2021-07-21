@@ -11,14 +11,12 @@
         <CheatEntry>
           <ID>0</ID>
           <Description>"Money"</Description>
-          <LastState Value="99989706" RealAddress="0094ADC8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Mss32.exe+54ADC8</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4</ID>
           <Description>"Side Mission Global Var "</Description>
-          <LastState Value="48" RealAddress="00827500"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Mss32.exe+427500</Address>
         </CheatEntry>
@@ -26,15 +24,13 @@
           <ID>5</ID>
           <Description>"Health"</Description>
           <Options moAlwaysHideChildren="1"/>
-          <LastState Value="100" Activated="1" RealAddress="23F642DC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>23F642DC</Address>
+          <Address>0</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
               <Description>"x"</Description>
-              <LastState Value="0" RealAddress="23F63FF8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4</Address>
@@ -42,7 +38,6 @@
             <CheatEntry>
               <ID>7</ID>
               <Description>"y"</Description>
-              <LastState Value="0" RealAddress="23F63FFC"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+4</Address>
@@ -50,7 +45,6 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"z"</Description>
-              <LastState Value="0" RealAddress="23F64000"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+8</Address>
@@ -117,11 +111,11 @@ hk.destroy()
 
 -- Constant Jump Power Script
 
--- best ratio for fwdPower/zPower=48:1 for gta vc
+-- fwdPower is the eact speed
 
 function bigJump(x,y,z)
-local zPower=0.5
-local fwdPower=1.1
+local zPower=0.25
+local fwdPower=1
 
 
 z.Value=zPower
@@ -156,6 +150,150 @@ hk.destroy()
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
+    <CodeEntry Color="20000000">
+      <Description>HEALTH POINTER</Description>
+      <AddressString>gta-vc.exe+10F3A6</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>6C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>80</Byte>
+        <Byte>54</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>1D</Byte>
+        <Byte>94</Byte>
+        <Byte>27</Byte>
+        <Byte>69</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>Height Pointer</Description>
+      <AddressString>gta-vc.exe+BA964</AddressString>
+      <Before>
+        <Byte>97</Byte>
+        <Byte>00</Byte>
+        <Byte>D8</Byte>
+        <Byte>69</Byte>
+        <Byte>78</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>59</Byte>
+        <Byte>78</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>41</Byte>
+        <Byte>70</Byte>
+        <Byte>D8</Byte>
+        <Byte>81</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>CAR SPEED 1</Description>
+      <AddressString>gta-vc.exe+B5C10</AddressString>
+      <Before>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>24</Byte>
+        <Byte>89</Byte>
+        <Byte>D9</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5B</Byte>
+        <Byte>70</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>43</Byte>
+        <Byte>74</Byte>
+        <Byte>D8</Byte>
+        <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>CAR SPEED 1 WATCHER</Description>
+      <AddressString>gta-vc.exe+13DD90</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>50</Byte>
+        <Byte>E4</Byte>
+        <Byte>F7</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>70</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>50</Byte>
+        <Byte>E8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>CAR HEALTH</Description>
+      <AddressString>gta-vc.exe+19C2B0</AddressString>
+      <Before>
+        <Byte>AB</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>83</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry Color="20000000">
+      <Description>HEIGHT POINTER(for player only)</Description>
+      <AddressString>gta-vc.exe+BAE10</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>D9</Byte>
+        <Byte>58</Byte>
+        <Byte>74</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>78</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
     <CodeEntry Color="20000000">
       <Description>Code :fstp dword ptr [ebx+00000354] Health</Description>
       <AddressString>Mss32.exe+1267E8</AddressString>

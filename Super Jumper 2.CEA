@@ -4,11 +4,11 @@
 
 -- Constant Jump Power Script
 
--- best ratio for fwdPower/zPower=48:1 for gta vc
+-- fwdPower is the eact speed
 
 function bigJump(x,y,z)
-local zPower=0.5
-local fwdPower=1.2
+local zPower=1
+local fwdPower=1.1
 
 
 z.Value=zPower
