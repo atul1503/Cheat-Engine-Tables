@@ -19,15 +19,15 @@
           <ID>5</ID>
           <Description>"Health"</Description>
           <Options moAlwaysHideChildren="1"/>
-          <LastState Value="100" Activated="1" RealAddress="0D72E544"/>
+          <LastState Value="100" Activated="1" RealAddress="0D82321C"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>0D72E544</Address>
+          <Address>0D82321C</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
               <Description>"x"</Description>
-              <LastState Value="-0.0546021983" RealAddress="0D72E260"/>
+              <LastState Value="0" RealAddress="0D822F38"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4</Address>
@@ -35,7 +35,7 @@
             <CheatEntry>
               <ID>7</ID>
               <Description>"y"</Description>
-              <LastState Value="-0.04439709708" RealAddress="0D72E264"/>
+              <LastState Value="0" RealAddress="0D822F3C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+4</Address>
@@ -43,7 +43,7 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"z"</Description>
-              <LastState Value="0" RealAddress="0D72E268"/>
+              <LastState Value="0" RealAddress="0D822F40"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+8</Address>
@@ -115,8 +115,8 @@ hk.destroy()
 
 function bigJump(x,y,z)
 local zPower=0.5
-local fwdPower=1
-local slowDown=1-1e-3
+local fwdPower=0.5
+local slowDown=1-5e-3
 
 z.Value=zPower
 xb=x.Value
@@ -132,6 +132,64 @@ if tonumber(z.Value)&lt;0 then
 z.Value=z.Value*slowDown
 end
 if isKeyPressed(0x53) then
+x.Value=0
+y.Value=0
+break
+end
+end
+end
+
+
+hk=createHotkey(function()
+l=getAddressList()
+bigJump(
+l.getMemoryRecordByDescription('x'),
+l.getMemoryRecordByDescription('y'),
+l.getMemoryRecordByDescription('z')
+)
+end,0x11)
+
+
+[DISABLE]
+
+hk.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Super Jumper 3"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- Constant Jump Power Script
+
+-- fwdPower is the exact speed
+-- downSpeed is the speed for descend
+
+function bigJump(x,y,z)
+local zPower=0.5
+local fwdPower=0.5
+local downSpeed=-0.05
+
+z.Value=zPower
+xb=x.Value
+yb=y.Value
+r=((xb^2)+(yb^2))^(1/2)
+xb=xb/r
+yb=yb/r
+while tonumber(z.Value)~=0 do
+x.Value=xb*fwdPower
+y.Value=yb*fwdPower
+
+if tonumber(z.Value)&lt;0 then
+z.Value=downSpeed
+end
+if isKeyPressed(0x53) then
+x.Value=0
+y.Value=0
 break
 end
 end
@@ -261,7 +319,7 @@ hk.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry Color="20000000">
       <Description>Code :fstp dword ptr [ebx+00000354] Health</Description>
       <AddressString>gta-vc.exe+126808</AddressString>
       <Before>
