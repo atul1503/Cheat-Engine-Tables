@@ -11,6 +11,7 @@
         <CheatEntry>
           <ID>0</ID>
           <Description>"Money "</Description>
+          <LastState Value="0" RealAddress="0094ADC8"/>
           <VariableType>4 Bytes</VariableType>
           <Address>"gta-vc.exe"+54ADC8</Address>
         </CheatEntry>
@@ -18,13 +19,15 @@
           <ID>5</ID>
           <Description>"Health"</Description>
           <Options moAlwaysHideChildren="1"/>
+          <LastState Value="100" Activated="1" RealAddress="0D72E544"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>0D6F2FEC</Address>
+          <Address>0D72E544</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
               <Description>"x"</Description>
+              <LastState Value="-0.0546021983" RealAddress="0D72E260"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4</Address>
@@ -32,6 +35,7 @@
             <CheatEntry>
               <ID>7</ID>
               <Description>"y"</Description>
+              <LastState Value="-0.04439709708" RealAddress="0D72E264"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+4</Address>
@@ -39,6 +43,7 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"z"</Description>
+              <LastState Value="0" RealAddress="0D72E268"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+8</Address>
@@ -105,7 +110,8 @@ hk.destroy()
 
 -- Constant Jump Power Script
 
--- fwdPower is the eact speed
+-- fwdPower is the exact speed
+-- slowDown is the speed multiplier for descend
 
 function bigJump(x,y,z)
 local zPower=0.5
@@ -121,6 +127,7 @@ yb=yb/r
 while tonumber(z.Value)~=0 do
 x.Value=xb*fwdPower
 y.Value=yb*fwdPower
+
 if tonumber(z.Value)&lt;0 then
 z.Value=z.Value*slowDown
 end
@@ -256,7 +263,7 @@ hk.destroy()
     </CodeEntry>
     <CodeEntry Color="80000008">
       <Description>Code :fstp dword ptr [ebx+00000354] Health</Description>
-      <AddressString>gta-vc.exe+1267E8</AddressString>
+      <AddressString>gta-vc.exe+126808</AddressString>
       <Before>
         <Byte>00</Byte>
         <Byte>D8</Byte>

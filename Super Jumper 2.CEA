@@ -4,12 +4,13 @@
 
 -- Constant Jump Power Script
 
--- fwdPower is the eact speed
+-- fwdPower is the exact speed
+-- slowDown is the speed multiplier for descend
 
 function bigJump(x,y,z)
-local zPower=1
-local fwdPower=1.1
-
+local zPower=0.5
+local fwdPower=1
+local slowDown=1-1e-3
 
 z.Value=zPower
 xb=x.Value
@@ -20,6 +21,13 @@ yb=yb/r
 while tonumber(z.Value)~=0 do
 x.Value=xb*fwdPower
 y.Value=yb*fwdPower
+
+if tonumber(z.Value)<0 then
+z.Value=z.Value*slowDown
+end
+if isKeyPressed(0x53) then
+break
+end
 end
 end
 
