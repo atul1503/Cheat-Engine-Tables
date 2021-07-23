@@ -1,0 +1,67 @@
+{$lua}
+
+[ENABLE]
+
+-- Constant Jump Power Script
+-- fwdPower is the exact speed
+-- downSpeed is the speed for descend
+
+
+local zPower=0.5
+local fwdPower=0.5
+local downSpeed=-0.05
+local degAngle=5
+local xb=0
+local yb=0
+
+counter=0
+
+function bigJump(x,y,z)
+z.Value=zPower
+xb=x.Value
+yb=y.Value
+r=((xb^2)+(yb^2))^(1/2)
+xb=xb/r
+yb=yb/r
+while tonumber(z.Value)~=0 do
+x.Value=xb*fwdPower
+y.Value=yb*fwdPower
+
+
+if tonumber(z.Value)<0 then
+z.Value=downSpeed
+end
+if isKeyPressed(0x53) then
+x.Value=0
+y.Value=0
+break
+end
+if isKeyPressed(0x25) then
+theta=math.rad(degAngle)
+xb=xb*math.cos(theta)-yb*math.sin(theta)
+yb=xb*math.sin(theta)+yb*math.cos(theta)
+keyUp(0x25)
+end
+if isKeyPressed(0x27) then
+theta=-math.rad(degAngle)
+xb=xb*math.cos(theta)-yb*math.sin(theta)
+yb=xb*math.sin(theta)+yb*math.cos(theta)
+keyUp(0x27)
+end
+end
+end
+
+
+hk1=createHotkey(function()
+l=getAddressList()
+bigJump(
+l.getMemoryRecordByDescription('x'),
+l.getMemoryRecordByDescription('y'),
+l.getMemoryRecordByDescription('z')
+)
+end,0x11)
+
+
+[DISABLE]
+
+hk1.destroy()

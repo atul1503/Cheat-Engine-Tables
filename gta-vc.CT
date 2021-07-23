@@ -9,25 +9,18 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>0</ID>
-          <Description>"Money "</Description>
-          <LastState Value="0" RealAddress="0094ADC8"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"gta-vc.exe"+54ADC8</Address>
-        </CheatEntry>
-        <CheatEntry>
           <ID>5</ID>
           <Description>"Health"</Description>
           <Options moAlwaysHideChildren="1"/>
-          <LastState Value="100" Activated="1" RealAddress="0D82321C"/>
+          <LastState Value="100" Activated="1" RealAddress="0D8466D4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>0D82321C</Address>
+          <Address>0D8466D4</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
               <Description>"x"</Description>
-              <LastState Value="0" RealAddress="0D822F38"/>
+              <LastState Value="0" RealAddress="0D8463F0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4</Address>
@@ -35,7 +28,7 @@
             <CheatEntry>
               <ID>7</ID>
               <Description>"y"</Description>
-              <LastState Value="0" RealAddress="0D822F3C"/>
+              <LastState Value="0" RealAddress="0D8463F4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+4</Address>
@@ -43,7 +36,7 @@
             <CheatEntry>
               <ID>8</ID>
               <Description>"z"</Description>
-              <LastState Value="0" RealAddress="0D822F40"/>
+              <LastState Value="0" RealAddress="0D8463F8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-2e4+8</Address>
@@ -209,6 +202,80 @@ end,0x11)
 [DISABLE]
 
 hk.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"Super Jumper 4"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- Constant Jump Power Script
+-- fwdPower is the exact speed
+-- downSpeed is the speed for descend
+
+
+local zPower=0.5
+local fwdPower=0.5
+local downSpeed=-0.05
+local degAngle=5
+local xb=0
+local yb=0
+
+counter=0
+
+function bigJump(x,y,z)
+z.Value=zPower
+xb=x.Value
+yb=y.Value
+r=((xb^2)+(yb^2))^(1/2)
+xb=xb/r
+yb=yb/r
+while tonumber(z.Value)~=0 do
+x.Value=xb*fwdPower
+y.Value=yb*fwdPower
+
+
+if tonumber(z.Value)&lt;0 then
+z.Value=downSpeed
+end
+if isKeyPressed(0x53) then
+x.Value=0
+y.Value=0
+break
+end
+if isKeyPressed(0x25) then
+theta=math.rad(degAngle)
+xb=xb*math.cos(theta)-yb*math.sin(theta)
+yb=xb*math.sin(theta)+yb*math.cos(theta)
+keyUp(0x25)
+end
+if isKeyPressed(0x27) then
+theta=-math.rad(degAngle)
+xb=xb*math.cos(theta)-yb*math.sin(theta)
+yb=xb*math.sin(theta)+yb*math.cos(theta)
+keyUp(0x27)
+end
+end
+end
+
+
+hk1=createHotkey(function()
+l=getAddressList()
+bigJump(
+l.getMemoryRecordByDescription('x'),
+l.getMemoryRecordByDescription('y'),
+l.getMemoryRecordByDescription('z')
+)
+end,0x11)
+
+
+[DISABLE]
+
+hk1.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
