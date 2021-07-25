@@ -9,12 +9,11 @@
 
 local zPower=0.5
 local fwdPower=0.5
-local downSpeed=-0.05
+local downSpeed=1e-8
 local degAngle=5
 local xb=0
 local yb=0
 
-counter=0
 
 function bigJump(x,y,z)
 z.Value=zPower
