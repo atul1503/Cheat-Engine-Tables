@@ -2,46 +2,122 @@
 
 [ENABLE]
 
--- Constant Jump Power Script
+local mul=1+3e-3
+local gearMul=1.05
+local rangeMultiplier=1.7
+local Up=18
+local Down=0
+local div=0.85
+local motion=1
+local speedXString='X SPEED'
+local speedYString='Y SPEED'
 
--- fwdPower is the exact speed
--- slowDown is the speed multiplier for descend
 
-function bigJump(x,y,z)
-local zPower=0.5
-local fwdPower=1
-local slowDown=1-1e-3
+--Instructions
+--Version 2 goes into the realistic side of gear systems in cars.It pushes the car speed in the gear speed range gradually instead of instantly(which happens in version 1).
+--mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
+--gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
+--Up is the initial top speed
+-- Down is the initial bottom speed
+--div is the speed for bigger brakes.If however you want to slow down just change to a lower gear
+--motion is the threshold for the speed of the car so that script may start to work normally.
+--Gear is increased by W and decreased by S
 
-z.Value=zPower
-xb=x.Value
-yb=y.Value
-r=((xb^2)+(yb^2))^(1/2)
-xb=xb/r
-yb=yb/r
-while tonumber(z.Value)~=0 do
-x.Value=xb*fwdPower
-y.Value=yb*fwdPower
+local TempUp=Up
+local TempDown=Down
 
-if tonumber(z.Value)<0 then
-z.Value=z.Value*slowDown
+
+
+function adjustSpeed(x,y,tempUp,tempDown)
+
+	r=((x.Value^2)+(y.Value^2))^0.5
+	if r<tempDown then
+		if r*gearMul<=tempDown then
+			x.Value=x.Value*gearMul
+			y.Value=y.Value*gearMul
+		else
+			ratio=tempDown/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	elseif r>=tempDown and r<tempUp then
+		if r*mul<=tempUp then
+			x.Value=x.Value*mul
+			y.Value=y.Value*mul
+		else
+			ratio=tempUp/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	else
+		if r/gearMul>tempUp then
+			x.Value=x.Value/gearMul
+			y.Value=y.Value/gearMul
+		else
+			ratio=tempUp/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	end
 end
-if isKeyPressed(0x53) then
-break
-end
-end
-end
 
 
-hk=createHotkey(function()
-l=getAddressList()
-bigJump(
-l.getMemoryRecordByDescription('x'),
-l.getMemoryRecordByDescription('y'),
-l.getMemoryRecordByDescription('z')
-)
-end,0x11)
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown)
+end,0x26)
+
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription(speedXString)
+y=getAddressList().getMemoryRecordByDescription(speedYString)
+x.Value=x.Value*div
+y.Value=y.Value*div
+end,0x28)
+
+
+hk3=createHotkey(function()
+TempDown=TempUp
+TempUp=TempUp*rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown)
+speak('Gear Up')
+end,0x57)
+
+hk6=createHotkey(function()
+TempUp=TempDown
+TempDown=TempDown/rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown)
+speak('Gear Down')
+end,0x53)
+
+hk7=createHotkey(function()
+TempUp=Up
+TempDown=Down
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown)
+speak('Reset')
+end,0x52)
+
+
+
 
 
 [DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk6.destroy()
+hk7.destroy()
 
-hk.destroy()
