@@ -7,25 +7,27 @@ local gearMul=1.05
 local rangeMultiplier=1.7
 local Up=18
 local Down=0
-local div=0.85
 local motion=1
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
 
 
 --Instructions
---Version 3 allows speed to be maintained over the grear speed range while cornering by just using direction keys.However by just using direction keys,the car will only be forced to be in the gear speed range and will not accelerate if the speed is greater than or equal to bottom speed.
 --mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
 --gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
 --rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
 --Up is the initial top speed
 -- Down is the initial bottom speed
---div is the speed for bigger brakes.If however you want to slow down just change to a lower gear
 --motion is the threshold for the speed of the car so that script may start to work normally.
 --Gear is increased by W and decreased by S
 
 local TempUp=Up
 local TempDown=Down
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
 
 
 
@@ -66,32 +68,15 @@ end
 
 
 hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
 adjustSpeed(x,y,TempUp,TempDown,1)
 end,0x26)
 
 
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription(speedXString)
-y=getAddressList().getMemoryRecordByDescription(speedYString)
-x.Value=x.Value*div
-y.Value=y.Value*div
-end,0x28)
-
 left=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
 adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x25)
 
 right=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
 adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x27)
 
@@ -99,9 +84,6 @@ end,0x27)
 hk3=createHotkey(function()
 TempDown=TempUp
 TempUp=TempUp*rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
 adjustSpeed(x,y,TempUp,TempDown)
 speak('Gear Up')
 end,0x57)
@@ -109,9 +91,6 @@ end,0x57)
 hk6=createHotkey(function()
 TempUp=TempDown
 TempDown=TempDown/rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
 adjustSpeed(x,y,TempUp,TempDown,1)
 speak('Gear Down')
 end,0x53)
@@ -119,9 +98,6 @@ end,0x53)
 hk7=createHotkey(function()
 TempUp=Up
 TempDown=Down
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
 adjustSpeed(x,y,TempUp,TempDown,1)
 speak('Reset')
 end,0x52)
@@ -132,7 +108,6 @@ end,0x52)
 
 [DISABLE]
 hk1.destroy()
-hk2.destroy()
 hk3.destroy()
 hk6.destroy()
 hk7.destroy()
