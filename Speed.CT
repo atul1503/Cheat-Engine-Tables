@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="-0.9957275391" RealAddress="009386CC"/>
+          <LastState Value="-0.7142158747" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-4443.249512" RealAddress="009386D8"/>
+          <LastState Value="-2144.587891" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -40,7 +40,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="213.0427246" RealAddress="009386DC"/>
+          <LastState Value="-3849.20166" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -79,7 +79,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1463.362549" RealAddress="009386E0"/>
+          <LastState Value="980.6929932" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -97,7 +97,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-4.823080063" RealAddress="009386E8"/>
+          <LastState Value="23.37306786" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -105,7 +105,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-0.6353492737" RealAddress="009386EC"/>
+          <LastState Value="0" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -137,14 +137,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="-25.95775223" RealAddress="009386F0"/>
+          <LastState Value="-0.4710248709" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1273" RealAddress="009386F4"/>
+          <LastState Value="1579" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -152,7 +152,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.0186028108" RealAddress="009386FC"/>
+          <LastState Value="-0.0002017779334" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -160,7 +160,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0007855459698" RealAddress="00938704"/>
+          <LastState Value="0.0006333122146" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -454,8 +454,8 @@ hk7.destroy()
 [ENABLE]
 
 local mul=1+3e-3
-local gearMul=1.1
-local rangeMultiplier=1.6
+local gearMul=1.05
+local rangeMultiplier=1.7
 local Up=18
 local Down=0
 local div=0.85
@@ -465,6 +465,7 @@ local speedYString='Y SPEED'
 
 
 --Instructions
+--Version 2 goes into the realistic side of gear systems in cars.It pushes the car speed in the gear speed range gradually instead of instantly(which happens in version 1).
 --mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
 --gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
 --rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
@@ -571,6 +572,152 @@ hk3.destroy()
 hk6.destroy()
 hk7.destroy()
 
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"Gear System 3"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local mul=1+3e-3
+local gearMul=1.05
+local rangeMultiplier=1.7
+local Up=18
+local Down=0
+local div=0.85
+local motion=1
+local speedXString='X SPEED'
+local speedYString='Y SPEED'
+
+
+--Instructions
+--mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
+--gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
+--Up is the initial top speed
+-- Down is the initial bottom speed
+--div is the speed for bigger brakes.If however you want to slow down just change to a lower gear
+--motion is the threshold for the speed of the car so that script may start to work normally.
+--Gear is increased by W and decreased by S
+
+local TempUp=Up
+local TempDown=Down
+
+
+
+function adjustSpeed(x,y,tempUp,tempDown,speedUp)
+
+	r=((x.Value^2)+(y.Value^2))^0.5
+	if r&lt;tempDown then
+		if r*gearMul&lt;=tempDown then
+			x.Value=x.Value*gearMul
+			y.Value=y.Value*gearMul
+		else
+			ratio=tempDown/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	elseif r&gt;=tempDown and r&lt;tempUp then
+		if r*mul&lt;=tempUp then
+			if speedUp then
+				x.Value=x.Value*mul
+				y.Value=y.Value*mul
+			end
+		else
+			ratio=tempUp/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	else
+		if r/gearMul&gt;tempUp then
+			x.Value=x.Value/gearMul
+			y.Value=y.Value/gearMul
+		else
+			ratio=tempUp/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	end
+end
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown,1)
+end,0x26)
+
+
+
+hk2=createHotkey(function()
+x=getAddressList().getMemoryRecordByDescription(speedXString)
+y=getAddressList().getMemoryRecordByDescription(speedYString)
+x.Value=x.Value*div
+y.Value=y.Value*div
+end,0x28)
+
+left=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown,0)
+end,0x25)
+
+right=createHotkey(function()
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown,0)
+end,0x27)
+
+
+hk3=createHotkey(function()
+TempDown=TempUp
+TempUp=TempUp*rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown)
+speak('Gear Up')
+end,0x57)
+
+hk6=createHotkey(function()
+TempUp=TempDown
+TempDown=TempDown/rangeMultiplier
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown,1)
+speak('Gear Down')
+end,0x53)
+
+hk7=createHotkey(function()
+TempUp=Up
+TempDown=Down
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+adjustSpeed(x,y,TempUp,TempDown,1)
+speak('Reset')
+end,0x52)
+
+
+
+
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+hk3.destroy()
+hk6.destroy()
+hk7.destroy()
+left.destroy()
+right.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
