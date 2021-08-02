@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.9828161001" RealAddress="009386CC"/>
+          <LastState Value="-0.8646467924" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-3755.127197" RealAddress="009386D8"/>
+          <LastState Value="-1299.788818" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="199.9490051" RealAddress="009386DC"/>
+          <LastState Value="149.2224121" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1092.588257" RealAddress="009386E0"/>
+          <LastState Value="2130.758301" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-15.47367477" RealAddress="009386E8"/>
+          <LastState Value="1.108610392" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-0.1428640485" RealAddress="009386EC"/>
+          <LastState Value="0.0251987353" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,7 +153,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="-40.11938858" RealAddress="009386F0"/>
+          <LastState Value="-0.3421311378" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="0.07639883459" RealAddress="009386FC"/>
+          <LastState Value="0.1910417676" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -736,7 +736,7 @@ right.destroy()
 
 local mul=1+3e-3
 local gearMul=1.5
-local rangeShifter=25
+local rangeShifter=15
 local Up=18
 local Down=0
 local motion=1
@@ -1660,7 +1660,7 @@ unregistersymbol(Inf_No_Collision)
 [ENABLE]
 
 local mul=1.001
-local steerSpeed=0
+local steerSpeed=0.2
 
 
 
@@ -1674,16 +1674,19 @@ realy=Alist.getMemoryRecordByDescription("Y")
 rotate=Alist.getMemoryRecordByDescription("Steering Rotation")
 
 
-function getUnitVector(x1,y1,x2,y2)
+function getUnitVector(x1,y1,x2,y2,theta)
 r=(((x1-x2)^2)+((y1-y2)^2))^0.5
 xcomp=(x1-x2)/r
 ycomp=(y1-y2)/r
+theta=math.rad(theta)
+xcomp=xcomp*math.cos(theta)-ycomp*math.sin(theta)
+ycomp=xcomp*math.sin(theta)+ycomp*math.cos(theta)
 return xcomp,ycomp
 end
 
 function DirectionMagic(speedUp)
 xcomp,ycomp=getUnitVector(
-realx.Value,realy.Value,x1.Value,y1.Value
+realx.Value,realy.Value,x1.Value,y1.Value,90
 )
 r=(((xspeed.Value)^2)+((yspeed.Value)^2))^0.5
 if speedUp then
@@ -1712,6 +1715,21 @@ hk3.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"x1"</Description>
+      <LastState Value="-1299.452637" RealAddress="02E1B088"/>
+      <VariableType>Float</VariableType>
+      <Address>02E1B088</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>101</ID>
+      <Description>"y1"</Description>
+      <LastState Value="2131.256104" RealAddress="02E1B090"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02E1B090</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -4058,29 +4076,6 @@ hk3.destroy()
         <Byte>24</Byte>
         <Byte>08</Byte>
         <Byte>D8</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Code :fmul dword ptr [edx+58] (rev pointer as x1 landmark)</Description>
-      <AddressString>speed.exe+26C6F5</AddressString>
-      <Before>
-        <Byte>F2</Byte>
-        <Byte>D8</Byte>
-        <Byte>74</Byte>
-        <Byte>24</Byte>
-        <Byte>10</Byte>
-      </Before>
-      <Actual>
-        <Byte>D8</Byte>
-        <Byte>4A</Byte>
-        <Byte>58</Byte>
-      </Actual>
-      <After>
-        <Byte>DE</Byte>
-        <Byte>C9</Byte>
-        <Byte>D8</Byte>
-        <Byte>0D</Byte>
-        <Byte>98</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
