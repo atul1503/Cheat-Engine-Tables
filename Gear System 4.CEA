@@ -3,9 +3,10 @@
 [ENABLE]
 
 local mul=1+3e-3
-local gearMul=1.2
+local gearMul=3
 local rangeShifter=15
-local SpeedGearNumber=3
+local HandlingGearNumber=3
+local SpeedGearNumber=4
 local Up=15
 local Down=0
 local motion=1
@@ -23,6 +24,7 @@ local speedYString='Y SPEED'
 --In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
 --SpeedGearNumber is the gear no. at which the car will we directly triggered to.For eg if SpeedGearNumber is 4 then Car will be at 4th gear after a hotkey is pressed.Currently speed gear can be triggered by M hotkey.
+--HandlingGearNumber is the gear at which good handling is expected.
 
 local TempUp=Up
 local TempDown=Down
@@ -113,6 +115,12 @@ adjustSpeed(x,y,TempUp,TempDown,1)
 speak('Speed Gear')
 end,0x4D)
 
+hk9=createHotkey(function()
+TempUp=Down+HandlingGearNumber*rangeShifter
+TempDown=Down+(HandlingGearNumber-1)*rangeShifter
+adjustSpeed(x,y,TempUp,TempDown,1)
+speak('Handling Gear')
+end,0x48)
 
 
 [DISABLE]
@@ -121,3 +129,4 @@ hk3.destroy()
 hk6.destroy()
 hk7.destroy()
 hk8.destroy()
+hk9.destroy()
