@@ -2,657 +2,6 @@
 <CheatTable CheatEngineTableVersion="34">
   <CheatEntries>
     <CheatEntry>
-      <ID>29</ID>
-      <Description>"Grand Theft Auto San Andreas v1.01"</Description>
-      <Options moHideChildren="1"/>
-      <LastState Value="" RealAddress="00000000"/>
-      <Color>A0685F</Color>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>24</ID>
-          <Description>"PLAYER"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>0000FF</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>55</ID>
-              <Description>"HEALTH"</Description>
-              <VariableType>Float</VariableType>
-              <Address>00C0C068</Address>
-              <Offsets>
-                <Offset>540</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>23</ID>
-              <Description>"MONEY"</Description>
-              <LastState Value="256016880" RealAddress="00B7F4D0"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>gta_sa.exe+77F4D0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>57</ID>
-              <Description>"OXYGEN"</Description>
-              <LastState Value="3907" RealAddress="00B7F462"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>00B7F462</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>71</ID>
-              <Description>"ARMOR"</Description>
-              <VariableType>Float</VariableType>
-              <Address>00C0C068</Address>
-              <Offsets>
-                <Offset>548</Offset>
-              </Offsets>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>20</ID>
-          <Description>"POiNTS"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>008000</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>0</ID>
-              <Description>"DANCE POiNTS"</Description>
-              <LastState Value="4800863" RealAddress="00A512A0"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>gta_sa.exe+6512A0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>2</ID>
-              <Description>"LOWRiDER POiNTS"</Description>
-              <LastState Value="1101035681" RealAddress="00A4CFC8"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>gta_sa.exe+64CFC8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1</ID>
-              <Description>"YOUR LOWRiDER RiVAL POiNTS"</Description>
-              <LastState Value="1130107909" RealAddress="00A4CFCC"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>gta_sa.exe+64CFCC</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>19</ID>
-          <Description>"STATS"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>004080</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>87</ID>
-              <Description>"PLAYER"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>78</ID>
-                  <Description>"LUCK"</Description>
-                  <LastState Value="0" RealAddress="00B7B844"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B844</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>79</ID>
-                  <Description>"LUNG CAPACiTY"</Description>
-                  <LastState Value="0" RealAddress="00B7B824"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B824</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>83</ID>
-                  <Description>"SEXUALiTY"</Description>
-                  <LastState Value="4.093545201E-34" RealAddress="00B7BA64"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BA64</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>84</ID>
-                  <Description>"STAMiNA"</Description>
-                  <LastState Value="0" RealAddress="00B7BA58"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BA58</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>80</ID>
-                  <Description>"MUSCULATURE"</Description>
-                  <LastState Value="4.092601132E-34" RealAddress="00B7BA5C"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BA5C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>81</ID>
-                  <Description>"RESPECT"</Description>
-                  <LastState Value="6.164950653E-33" RealAddress="00B7BB00"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB00</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>77</ID>
-                  <Description>"FULLNESS"</Description>
-                  <LastState Value="0" RealAddress="00B7BA54"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BA54</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>82</ID>
-                  <Description>"MAX AMOUNT IS - *1000*"</Description>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>0000FF</Color>
-                  <GroupHeader>1</GroupHeader>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>86</ID>
-              <Description>"DRIVE, FLY SKiLLS"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>74</ID>
-                  <Description>"BiKE"</Description>
-                  <LastState Value="0" RealAddress="00B7B838"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B838</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>75</ID>
-                  <Description>"DRiVE"</Description>
-                  <LastState Value="287375372" RealAddress="00B7B720"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B720</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>76</ID>
-                  <Description>"PiLOT"</Description>
-                  <LastState Value="0" RealAddress="00B7B81C"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B81C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>73</ID>
-                  <Description>"MOTORCYCLE"</Description>
-                  <LastState Value="0" RealAddress="00B7B834"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B834</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>97</ID>
-                  <Description>"MAX AMOUNT IS - *1000*"</Description>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>0000FF</Color>
-                  <GroupHeader>1</GroupHeader>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>88</ID>
-              <Description>"WEAPONS SKiLLS"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>85</ID>
-                  <Description>"SiLENCER PiSTOL"</Description>
-                  <LastState Value="6.488735991E-36" RealAddress="00B7BB18"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB18</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>89</ID>
-                  <Description>"DESERT EAGLE"</Description>
-                  <LastState Value="6.253633534E-36" RealAddress="00B7BB1C"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB1C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>90</ID>
-                  <Description>"SHOTGUN"</Description>
-                  <LastState Value="6.253629946E-36" RealAddress="00B7BB20"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB20</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>91</ID>
-                  <Description>"ARMY SHOTGUN"</Description>
-                  <LastState Value="Nan" RealAddress="00B7BB28"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB28</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>92</ID>
-                  <Description>"SAWN-OFF WEAPON"</Description>
-                  <LastState Value="Nan" RealAddress="00B7BB24"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB24</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>93</ID>
-                  <Description>"AUTOMATiC PiSTOL"</Description>
-                  <LastState Value="2.465154182E-32" RealAddress="00B7BB2C"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB2C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>94</ID>
-                  <Description>"SMG"</Description>
-                  <LastState Value="Nan" RealAddress="00B7BB30"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB30</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>95</ID>
-                  <Description>"AK-47"</Description>
-                  <LastState Value="2.350952828E-38" RealAddress="00B7BB34"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB34</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>96</ID>
-                  <Description>"M4"</Description>
-                  <LastState Value="Nan" RealAddress="00B7BB38"/>
-                  <VariableType>Float</VariableType>
-                  <Address>00B7BB38</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>98</ID>
-                  <Description>"MAX AMOUNT IS - *1000*"</Description>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <Color>0000FF</Color>
-                  <GroupHeader>1</GroupHeader>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>101</ID>
-              <Description>"OTHER"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>72</ID>
-                  <Description>"AMOUNT OF PASSED DAYS"</Description>
-                  <LastState Value="168296964" RealAddress="00B7B6B8"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B6B8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>4</ID>
-                  <Description>"AMOUNT OF USED CHEATS"</Description>
-                  <LastState Value="84216323" RealAddress="00B7B6C4"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+77B6C4</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>100</ID>
-                  <Description>"AMOUNT OF ViSiTED GYM"</Description>
-                  <LastState Value="0" RealAddress="00B7B7B8"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00B7B7B8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>99</ID>
-                  <Description>"AMOUT OF SAVES"</Description>
-                  <LastState Value="2314218448" RealAddress="0077B6C0"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0077B6C0</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>18</ID>
-          <Description>"POLiCE"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>FF0000</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>7</ID>
-              <Description>"WANTED LEVEL_1"</Description>
-              <LastState Value="12241548" RealAddress="00BACAA0"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>gta_sa.exe+7ACAA0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>8</ID>
-              <Description>"WANTED LEVEL_2"</Description>
-              <LastState Value="1767858048" RealAddress="1227D83C"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>1227D83C</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>17</ID>
-          <Description>"GAMES"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>FF0080</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>25</ID>
-              <Description>"THEY_CRAWLED_FROM_URANUS_GAME"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>9</ID>
-                  <Description>"THEY_CRAWLED_FROM_URANUS_GAME - SCORE"</Description>
-                  <LastState Value="0" RealAddress="00A4B600"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+64B600</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>11</ID>
-                  <Description>"THEY_CRAWLED_FROM_URANUS_GAME - HEALTH"</Description>
-                  <LastState Value="0" RealAddress="00A4B63C"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+64B63C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>12</ID>
-                  <Description>"THEY_CRAWLED_FROM_URANUS_GAME - LIVES"</Description>
-                  <LastState Value="1134129879" RealAddress="00A4B650"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+64B650</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>26</ID>
-              <Description>"DUALITY_GAME"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>14</ID>
-                  <Description>"DUALITY_GAME - SCORE"</Description>
-                  <LastState Value="131105" RealAddress="00A4B490"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+64B490</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>27</ID>
-              <Description>"LETS_GET_READY_TO_BUMBLE_GAME"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>15</ID>
-                  <Description>"LETS_GET_READY_TO_BUMBLE_GAME - SCORE"</Description>
-                  <LastState Value="999999" RealAddress="00A4B0B8"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+64B0B8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>16</ID>
-                  <Description>"LETS_GET_READY_TO_BUMBLE_GAME - LIVES"</Description>
-                  <LastState Value="1" RealAddress="00A4B0AC"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+64B0AC</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>28</ID>
-              <Description>"GO_GO_SPACE_MONKEY"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>21</ID>
-                  <Description>"GO_GO_SPACE_MONKEY - SCORE"</Description>
-                  <LastState Value="42812" RealAddress="00A51828"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+651828</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>22</ID>
-                  <Description>"GO_GO_SPACE_MONKEY - LIVES"</Description>
-                  <LastState Value="42562" RealAddress="00A51824"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>gta_sa.exe+651824</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>60</ID>
-          <Description>"COLLECTABLES"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>808040</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>61</ID>
-              <Description>"GRAFFiTi"</Description>
-              <LastState Value="11622164" RealAddress="00A9D3F4"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>00A9D3F4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>62</ID>
-              <Description>"HORSESHOES"</Description>
-              <LastState Value="0" RealAddress="00B7B864"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>00B7B864</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>63</ID>
-              <Description>"OYSTERS"</Description>
-              <LastState Value="0" RealAddress="00B7B86C"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>00B7B86C</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>64</ID>
-              <Description>"SNAPSHOTS"</Description>
-              <LastState Value="0" RealAddress="00B7B83C"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>00B7B83C</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>65</ID>
-          <Description>"TiME"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>00FF00</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>59</ID>
-              <Description>"TiME (MiNUTES)"</Description>
-              <LastState Value="0" RealAddress="00B727D2"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>00B727D2</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>58</ID>
-              <Description>"TiME (HOURS)"</Description>
-              <LastState Value="0" RealAddress="00B727D3"/>
-              <VariableType>Byte</VariableType>
-              <Address>00B727D3</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>103</ID>
-          <Description>"CAR MiSSiONS"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <Color>8000FF</Color>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>108</ID>
-              <Description>"POLiCE"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>68</ID>
-                  <Description>"POLiCE MiSSiON TiMER"</Description>
-                  <LastState Value="0" RealAddress="00A54059"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>00A54059</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>107</ID>
-                  <Description>"POLiCE MiSSiON LEVEL"</Description>
-                  <LastState Value="1103051201" RealAddress="00A5406C"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00A5406C</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>112</ID>
-                  <Description>"POLiCE KiLLED"</Description>
-                  <LastState Value="0" RealAddress="00A5405C"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00A5405C</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>109</ID>
-              <Description>"MEDiC"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>67</ID>
-                  <Description>"MEDiC MiSSiON TiMER"</Description>
-                  <LastState Value="0" RealAddress="00A54029"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>00A54029</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>104</ID>
-                  <Description>"MEDiC MiSSiON LEVEL"</Description>
-                  <LastState Value="0" RealAddress="00A5402C"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00A5402C</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>110</ID>
-              <Description>"FiREMAN"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>66</ID>
-                  <Description>"FiREMAN MiSSiON TiMER"</Description>
-                  <LastState Value="0" RealAddress="00A53401"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>00A53401</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>105</ID>
-                  <Description>"FiREMAN MiSSiON LEVEL"</Description>
-                  <LastState Value="0" RealAddress="00A54034"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00A54034</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>106</ID>
-                  <Description>"FiREMAN MiSSiON PASSED"</Description>
-                  <LastState Value="608471807" RealAddress="00654038"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00654038</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>111</ID>
-              <Description>"TAXi"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>114</ID>
-                  <Description>"SERVED"</Description>
-                  <LastState Value="0" RealAddress="00A53FF8"/>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>00A53FF8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>113</ID>
-                  <Description>"TiMER"</Description>
-                  <LastState Value="0" RealAddress="00A53FFC"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>00A53FFC</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>203</ID>
-          <Description>"CAR WATCHER"</Description>
-          <LastState Value="4040164807" RealAddress="0053D580"/>
-          <VariableType>4 Bytes</VariableType>
-          <Address>"gta_sa.exe"+13D580</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>170</ID>
-          <Description>"GRAVITY"</Description>
-          <LastState Value="3300.082031" RealAddress="008649AC"/>
-          <VariableType>Float</VariableType>
-          <Address>008649AC</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>228</ID>
-          <Description>"JETPACK LIMIT"</Description>
-          <LastState Value="9.910745046E-39" RealAddress="00871410"/>
-          <VariableType>Float</VariableType>
-          <Address>00871410</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>250</ID>
-          <Description>"Walking Speed"</Description>
-          <LastState Value="0" RealAddress="00B7F1E4"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>00B7F1E4</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
       <ID>163</ID>
       <Description>"STATIC LOC"</Description>
       <Options moHideChildren="1"/>
@@ -953,7 +302,6 @@ dealloc(newmem)
           <ID>135</ID>
           <Description>"CAR LOCKED STATE"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="1" RealAddress="0F4B71E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[crpa]+4f8</Address>
@@ -961,7 +309,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>136</ID>
               <Description>"CAR HEALTH"</Description>
-              <LastState Value="668.1925659" RealAddress="0F4B71A8"/>
               <VariableType>Float</VariableType>
               <Address>-38</Address>
               <Hotkeys>
@@ -978,7 +325,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>137</ID>
               <Description>"X SPEED"</Description>
-              <LastState Value="0" RealAddress="0F4B6D2C"/>
               <VariableType>Float</VariableType>
               <Address>-4b4</Address>
               <Hotkeys>
@@ -1003,7 +349,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>138</ID>
               <Description>"Y SPEED"</Description>
-              <LastState Value="0" RealAddress="0F4B6D30"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+4</Address>
               <Hotkeys>
@@ -1028,7 +373,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>139</ID>
               <Description>"Z SPEED"</Description>
-              <LastState Value="0" RealAddress="0F4B6D34"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8</Address>
               <Hotkeys>
@@ -1053,28 +397,24 @@ dealloc(newmem)
             <CheatEntry>
               <ID>164</ID>
               <Description>"MASS"</Description>
-              <LastState Value="500" RealAddress="0F4B6D74"/>
               <VariableType>Float</VariableType>
               <Address>-46c</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>165</ID>
               <Description>"TURN MASS"</Description>
-              <LastState Value="200" RealAddress="0F4B6D78"/>
               <VariableType>Float</VariableType>
               <Address>-46c+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>166</ID>
               <Description>"GRIP"</Description>
-              <LastState Value="1" RealAddress="0F4B6D7C"/>
               <VariableType>Float</VariableType>
               <Address>-46c+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>140</ID>
               <Description>"HOR FLIP"</Description>
-              <LastState Value="0.1000000015" RealAddress="0F4B6D38"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4</Address>
               <Hotkeys>
@@ -1091,7 +431,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>142</ID>
               <Description>"HOR ROTATE"</Description>
-              <LastState Value="0.8000000119" RealAddress="0F4B6D40"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4+8</Address>
               <Hotkeys>
@@ -1108,14 +447,12 @@ dealloc(newmem)
             <CheatEntry>
               <ID>150</ID>
               <Description>"DRAG"</Description>
-              <LastState Value="0.002249999903" RealAddress="0F4B6D80"/>
               <VariableType>Float</VariableType>
               <Address>-460</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>158</ID>
               <Description>"STATIC LOC PTR"</Description>
-              <LastState Value="00C34CDC" RealAddress="0F4B706C"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>-174</Address>
@@ -1168,7 +505,7 @@ dealloc(newmem)
           <ID>235</ID>
           <Description>"CAR LOCKED STATE"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="1" RealAddress="0F4E2040"/>
+          <LastState Value="1" RealAddress="0F6C67C8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[crp]+4f8</Address>
@@ -1176,7 +513,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>236</ID>
               <Description>"CAR HEALTH"</Description>
-              <LastState Value="1000" RealAddress="0F4E2008"/>
+              <LastState Value="28356.64844" RealAddress="0F6C6790"/>
               <VariableType>Float</VariableType>
               <Address>-38</Address>
               <Hotkeys>
@@ -1193,7 +530,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>237</ID>
               <Description>"X SPEED road"</Description>
-              <LastState Value="-0.1980500668" RealAddress="0F4E1B8C"/>
+              <LastState Value="0.02060386725" RealAddress="0F6C6314"/>
               <VariableType>Float</VariableType>
               <Address>-4b4</Address>
               <Hotkeys>
@@ -1210,7 +547,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>238</ID>
               <Description>"Y SPEED road"</Description>
-              <LastState Value="0.08177696913" RealAddress="0F4E1B90"/>
+              <LastState Value="0.1147293597" RealAddress="0F6C6318"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+4</Address>
               <Hotkeys>
@@ -1226,8 +563,8 @@ dealloc(newmem)
             </CheatEntry>
             <CheatEntry>
               <ID>239</ID>
-              <Description>"Z SPEED"</Description>
-              <LastState Value="0.183239609" RealAddress="0F4E1B94"/>
+              <Description>"Z SPEED road"</Description>
+              <LastState Value="-0.004708854016" RealAddress="0F6C631C"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8</Address>
               <Hotkeys>
@@ -1252,28 +589,28 @@ dealloc(newmem)
             <CheatEntry>
               <ID>240</ID>
               <Description>"MASS"</Description>
-              <LastState Value="1600" RealAddress="0F4E1BD4"/>
+              <LastState Value="500" RealAddress="0F6C635C"/>
               <VariableType>Float</VariableType>
               <Address>-46c</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>241</ID>
               <Description>"TURN MASS"</Description>
-              <LastState Value="4500" RealAddress="0F4E1BD8"/>
+              <LastState Value="200" RealAddress="0F6C6360"/>
               <VariableType>Float</VariableType>
               <Address>-46c+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>242</ID>
               <Description>"GRIP"</Description>
-              <LastState Value="1" RealAddress="0F4E1BDC"/>
+              <LastState Value="1" RealAddress="0F6C6364"/>
               <VariableType>Float</VariableType>
               <Address>-46c+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>243</ID>
               <Description>"HOR FLIP"</Description>
-              <LastState Value="0.1000000015" RealAddress="0F4E1B98"/>
+              <LastState Value="-0.006969914772" RealAddress="0F6C6320"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4</Address>
               <Hotkeys>
@@ -1290,7 +627,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>244</ID>
               <Description>"HOR ROTATE road"</Description>
-              <LastState Value="0.8000000119" RealAddress="0F4E1BA0"/>
+              <LastState Value="-0.001047628932" RealAddress="0F6C6328"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4+8</Address>
               <Hotkeys>
@@ -1307,14 +644,14 @@ dealloc(newmem)
             <CheatEntry>
               <ID>245</ID>
               <Description>"DRAG"</Description>
-              <LastState Value="0.000699999975" RealAddress="0F4E1BE0"/>
+              <LastState Value="0.002249999903" RealAddress="0F6C6368"/>
               <VariableType>Float</VariableType>
               <Address>-460</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>246</ID>
               <Description>"STATIC LOC PTR"</Description>
-              <LastState Value="00C2F63C" RealAddress="0F4E1ECC"/>
+              <LastState Value="00C34CDC" RealAddress="0F6C6654"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>-174</Address>
@@ -1499,12 +836,12 @@ hk7.destroy()
 local mul=1+3e-3
 local gearMul=1.3
 local rangeShifter=0.3
-local Up=0.2
+local Up=0.1
 local Down=0
 local motion=0.1
 local speedXString='X SPEED road'
 local speedYString='Y SPEED road'
-
+local speedZString='Z SPEED road'
 
 --Instructions
 --mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
@@ -1523,43 +860,50 @@ local TempDown=Down
 t=getAddressList()
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)
-
+z=t.getMemoryRecordByDescription(speedZString)
 
 
 function adjustSpeed(x,y,tempUp,tempDown,speedUp)
 
-	r=((x.Value^2)+(y.Value^2))^0.5
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
 	if r&lt;tempDown then
 		if r*gearMul&lt;=tempDown then
 			x.Value=x.Value*gearMul
 			y.Value=y.Value*gearMul
+            z.Value=z.Value*gearMul
 		else
 			ratio=tempDown/r
 			x.Value=x.Value*ratio
 			y.Value=y.Value*ratio
+            z.Value=z.Value*ratio
 		end
 	elseif r&gt;=tempDown and r&lt;tempUp then
 		if r*mul&lt;=tempUp then
 			if speedUp then
 				x.Value=x.Value*mul
 				y.Value=y.Value*mul
+                z.Value=z.Value*mul
             else
                 x.Value=x.Value/mul
 				y.Value=y.Value/mul
+                z.Value=z.Value/mul
 			end
 		else
 			ratio=tempUp/r
 			x.Value=x.Value*ratio
 			y.Value=y.Value*ratio
+            z.Value=z.Value*ratio
 		end
 	else
 		if r/gearMul&gt;tempUp then
 			x.Value=x.Value/gearMul
 			y.Value=y.Value/gearMul
+            z.Value=z.Value/gearMul
 		else
 			ratio=tempUp/r
 			x.Value=x.Value*ratio
 			y.Value=y.Value*ratio
+            z.Value=z.Value*ratio
 		end
 	end
 end

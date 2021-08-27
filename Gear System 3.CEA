@@ -3,24 +3,23 @@
 [ENABLE]
 
 local mul=1+3e-3
-local gearMulabove=1.09
-local gearMulbelow=1.1
-local rangeMultiplier=1.4
-local Up=18
+local gearMul=1.3
+local rangeShifter=0.3
+local Up=0.1
 local Down=0
-local motion=1
-local speedXString='X SPEED'
-local speedYString='Y SPEED'
-
+local motion=0.1
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+local speedZString='Z SPEED road'
 
 --Instructions
 --mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMulabove is the speed by which car speed will be slowed to force it at the upper limit speed of the current gear.Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
 --rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
---gearMulbelow is the same as gearMulabove but will boost the speed of the car to reach the lower bound of current gear.
 --Up is the initial top speed
 -- Down is the initial bottom speed
 --motion is the threshold for the speed of the car so that script may start to work normally.
+--In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
 
 local TempUp=Up
@@ -30,40 +29,50 @@ local TempDown=Down
 t=getAddressList()
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)
-
+z=t.getMemoryRecordByDescription(speedZString)
 
 
 function adjustSpeed(x,y,tempUp,tempDown,speedUp)
 
-	r=((x.Value^2)+(y.Value^2))^0.5
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
 	if r<tempDown then
-		if r*gearMulbelow<=tempDown then
-			x.Value=x.Value*gearMulbelow
-			y.Value=y.Value*gearMulbelow
+		if r*gearMul<=tempDown then
+			x.Value=x.Value*gearMul
+			y.Value=y.Value*gearMul
+            z.Value=z.Value*gearMul
 		else
 			ratio=tempDown/r
 			x.Value=x.Value*ratio
 			y.Value=y.Value*ratio
+            z.Value=z.Value*ratio
 		end
 	elseif r>=tempDown and r<tempUp then
 		if r*mul<=tempUp then
 			if speedUp then
 				x.Value=x.Value*mul
 				y.Value=y.Value*mul
+                z.Value=z.Value*mul
+            else
+                x.Value=x.Value/mul
+				y.Value=y.Value/mul
+                z.Value=z.Value/mul
 			end
 		else
 			ratio=tempUp/r
 			x.Value=x.Value*ratio
 			y.Value=y.Value*ratio
+            z.Value=z.Value*ratio
 		end
 	else
-		if r/gearMulabove>tempUp then
-			x.Value=x.Value/gearMulabove
-			y.Value=y.Value/gearMulabove
+		if r/gearMul>tempUp then
+			x.Value=x.Value/gearMul
+			y.Value=y.Value/gearMul
+            z.Value=z.Value/gearMul
 		else
 			ratio=tempUp/r
 			x.Value=x.Value*ratio
 			y.Value=y.Value*ratio
+            z.Value=z.Value*ratio
 		end
 	end
 end
@@ -85,14 +94,14 @@ end,0x27)
 
 hk3=createHotkey(function()
 TempDown=TempUp
-TempUp=TempUp*rangeMultiplier
+TempUp=TempUp+rangeShifter
 adjustSpeed(x,y,TempUp,TempDown)
 speak('Gear Up')
 end,0x57)
 
 hk6=createHotkey(function()
 TempUp=TempDown
-TempDown=TempDown/rangeMultiplier
+TempDown=TempDown-rangeShifter
 adjustSpeed(x,y,TempUp,TempDown,1)
 speak('Gear Down')
 end,0x53)
@@ -102,7 +111,7 @@ TempUp=Up
 TempDown=Down
 adjustSpeed(x,y,TempUp,TempDown,1)
 speak('Reset')
-end,0x52)
+end,0x20)
 
 
 
