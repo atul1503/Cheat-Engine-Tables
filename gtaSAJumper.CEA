@@ -1,11 +1,35 @@
 [ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+{$asm}
+
+aobscanmodule(super_jump,gta_sa.exe,8B 08 8B 50 04 8B 40 08 8B 3D) // should be unique
+alloc(newmem,$150)
+alloc(speed_ptr,4)
+label(code)
+label(return)
+
+newmem:
+mov [speed_ptr],eax
+code:
+  mov ecx,[eax]
+  mov edx,[eax+04]
+  jmp return
+
+
+super_jump:
+  jmp newmem
+return:
+registersymbol(speed_ptr)
+registersymbol(super_jump)
 
 {$lua}
 
-local multi=0.4
+local multi=0.1
 local zBoost=0.5
-local zDownSpeed=0.8
-local deg=5
+local zDownSpeed=0.9
 local y=0
 local x=0
 local xaddr="[speed_ptr]"
@@ -23,7 +47,7 @@ y=readFloat(yaddr)
 r=((x^2)+(y^2))^0.5
 xdir=x/r
 ydir=y/r
-while readFloat(zaddr)~=0 do
+while readFloat(zaddr) do
 x=xdir*multi
 y=ydir*multi
 zdir=readFloat(zaddr)
@@ -32,22 +56,20 @@ writeFloat(yaddr,y)
 writeFloat(zaddr,zdir*zDownSpeed)
 if isKeyPressed(0x53) then break
 end
-if isKeyPressed(0x25) then
-angle=math.rad(deg)
-xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
-ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
-keyUp(0x25)
-end
-if isKeyPressed(0x27) then
-angle=-math.rad(deg)
-xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
-ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
-keyUp(0x27)
-end
-end
+
 end,VK_CONTROL)
+
+{$asm}
 
 [DISABLE]
 
+super_jump:
+  db 8B 08 8B 50 04
+unregistersymbol(speed_ptr)
+unregistersymbol(super_jump)
+dealloc(speed_ptr)
+dealloc(newmem)
+
+{$lua}
 hk.destroy()
 
