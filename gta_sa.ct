@@ -1514,9 +1514,9 @@ registersymbol(super_jump)
 
 {$lua}
 
-local multi=0.2
+local multi=0.3
 local zBoost=0.5
-local zDownSpeed=0.05
+local zDownSpeed=-0.001
 local deg=10
 local y=0
 local x=0
