@@ -1,0 +1,36 @@
+{$lua}
+
+[ENABLE]
+
+local initaccel=1-1e-3
+local jerk=1.01
+local speedXString='X SPEED'
+local speedYString='Y SPEED'
+local accel=initaccel
+
+speedup=createHotkey(function()
+x.Value=x.Value*accel
+y.Value=y.Value*accel
+end,0x26)
+
+gearup=createHotkey(function()
+accel=accel*jerk
+end,0x57)
+
+geardown=createHotkey(function()
+accel=accel/jerk
+end,0x53)
+
+reset=createHotkey(function()
+accel=initaccel
+end,0x20)
+
+[DISABLE]
+
+speedup.destroy()
+gearup.destroy()
+geardown.destroy()
+reset.destroy()
+
+
+
