@@ -819,11 +819,13 @@ hk7.destroy()
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{$lua}
 
+if synataxcheck then return end
+
 [ENABLE]
 
 local mul=1+3e-3
 local gearMul=1.3
-local rangeShifter=0.3
+local rangeShifter=0.25
 local Up=0.1
 local Down=0
 local motion=0.1
@@ -902,14 +904,6 @@ adjustSpeed(x,y,TempUp,TempDown,1)
 end,0x26)
 
 
-left=createHotkey(function()
-adjustSpeed(x,y,TempUp,TempDown,0)
-end,0x25)
-
-right=createHotkey(function()
-adjustSpeed(x,y,TempUp,TempDown,0)
-end,0x27)
-
 
 hk3=createHotkey(function()
 TempDown=TempUp
@@ -938,8 +932,6 @@ hk1.destroy()
 hk3.destroy()
 hk6.destroy()
 hk7.destroy()
-left.destroy()
-right.destroy()
 </AssemblerScript>
             </CheatEntry>
           </CheatEntries>
@@ -1483,7 +1475,7 @@ dealloc(newmem)
       <ID>230</ID>
       <Description>"SUPER JUMP"</Description>
       <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1515,6 +1507,7 @@ registersymbol(super_jump)
 {$lua}
 
 local multi=0.22
+local multiSpeeder=1.1
 local zBoost=0.5
 local zDownSpeed=0.012
 local deg=10
@@ -1526,6 +1519,7 @@ local zaddr="[speed_ptr]+8"
 
 
 hk=createHotkey(function()
+local multi=multi
 writeFloat("[speed_ptr]+4fc",100000.0)
 writeFloat("[speed_ptr]+504",100000.0)
 writeFloat(zaddr,zBoost)
@@ -1554,6 +1548,14 @@ angle=-math.rad(deg)
 xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
 ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
 keyUp(0x27)
+end
+if isKeyPressed(0x26) then
+multi=multi*multiSpeeder
+keyUp(0x26)
+end
+if isKeyPressed(0x28) then
+multi=multi/multiSpeeder
+keyUp(0x28)
 end
 end
 end,VK_CONTROL)

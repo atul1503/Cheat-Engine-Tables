@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.5830557942" RealAddress="009386CC"/>
+          <LastState Value="-0.08894811571" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2144.587891" RealAddress="009386D8"/>
+          <LastState Value="-2301.477539" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="-310.8202515" RealAddress="009386DC"/>
+          <LastState Value="156.0783386" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="980.6929932" RealAddress="009386E0"/>
+          <LastState Value="792.0220337" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="37.92695236" RealAddress="009386E8"/>
+          <LastState Value="4.946182728" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0" RealAddress="009386EC"/>
+          <LastState Value="0.369887203" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,7 +153,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="12.57721329" RealAddress="009386F0"/>
+          <LastState Value="28.33658028" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="7.929330349" RealAddress="009386FC"/>
+          <LastState Value="0.09881674498" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -353,11 +353,13 @@
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
+if syntaxcheck then return end
+
 [ENABLE]
 
 local mul=1+3e-3
 local rangeMultiplier=1.5
-local Up=18
+local Up=13
 local Down=0
 local div=0.85
 local motion=1
@@ -455,7 +457,7 @@ x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end
 speak('Reset')
-end,0x52)
+end,0x20)
 
 
 
@@ -731,15 +733,16 @@ right.destroy()
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
+if syntaxcheck then return end
 
 [ENABLE]
 
+
 local mul=1.002
-local gearMul=1.1
-local rangeShifter=15
+local gearMul=3
+local rangeShifter=20
 local HandlingGearNumber=2
 local SpeedGearNumber=4
-local loopForShifter=10
 local Up=15
 local Down=0
 local motion=1
@@ -823,31 +826,31 @@ end,0x26)
 hk3=createHotkey(function()
 TempDown=TempUp
 TempUp=TempUp+rangeShifter
-for i=1,loopForShifter,1 do adjustSpeed(x,y,TempUp,TempDown,0) end
+adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x57)
 
 hk6=createHotkey(function()
 TempUp=TempDown
 TempDown=TempDown-rangeShifter
-for i=1,loopForShifter,1 do adjustSpeed(x,y,TempUp,TempDown,0) end
+adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x53)
 
 hk7=createHotkey(function()
 TempUp=Up
 TempDown=Down
-for i=1,loopForShifter,1 do adjustSpeed(x,y,TempUp,TempDown,0) end
+adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x20)
 
 hk8=createHotkey(function()
 TempUp=Down+SpeedGearNumber*rangeShifter
 TempDown=Down+(SpeedGearNumber-1)*rangeShifter
-for i=1,loopForShifter,1 do adjustSpeed(x,y,TempUp,TempDown,0) end
+adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x4D)
 
 hk9=createHotkey(function()
 TempUp=Down+HandlingGearNumber*rangeShifter
 TempDown=Down+(HandlingGearNumber-1)*rangeShifter
-for i=1,loopForShifter,1 do adjustSpeed(x,y,TempUp,TempDown,0) end
+adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x48)
 
 
@@ -863,7 +866,7 @@ hk9.destroy()
         <CheatEntry>
           <ID>102</ID>
           <Description>"Jerk1"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 

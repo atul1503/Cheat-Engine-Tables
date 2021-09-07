@@ -1,4 +1,5 @@
 {$lua}
+if syntaxcheck then return end
 
 [ENABLE]
 
@@ -7,6 +8,10 @@ local jerk=1.01
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
 local accel=initaccel
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
 
 speedup=createHotkey(function()
 x.Value=x.Value*accel
