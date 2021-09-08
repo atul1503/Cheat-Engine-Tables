@@ -505,6 +505,7 @@ dealloc(newmem)
           <ID>235</ID>
           <Description>"CAR LOCKED STATE"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="1" RealAddress="0F4871E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[crp]+4f8</Address>
@@ -512,6 +513,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>236</ID>
               <Description>"CAR HEALTH"</Description>
+              <LastState Value="0" RealAddress="0F4871A8"/>
               <VariableType>Float</VariableType>
               <Address>-38</Address>
               <Hotkeys>
@@ -528,6 +530,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>237</ID>
               <Description>"X SPEED road"</Description>
+              <LastState Value="0" RealAddress="0F486D2C"/>
               <VariableType>Float</VariableType>
               <Address>-4b4</Address>
               <Hotkeys>
@@ -544,6 +547,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>238</ID>
               <Description>"Y SPEED road"</Description>
+              <LastState Value="0" RealAddress="0F486D30"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+4</Address>
               <Hotkeys>
@@ -560,6 +564,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>239</ID>
               <Description>"Z SPEED road"</Description>
+              <LastState Value="0" RealAddress="0F486D34"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8</Address>
               <Hotkeys>
@@ -584,24 +589,28 @@ dealloc(newmem)
             <CheatEntry>
               <ID>240</ID>
               <Description>"MASS"</Description>
+              <LastState Value="1600" RealAddress="0F486D74"/>
               <VariableType>Float</VariableType>
               <Address>-46c</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>241</ID>
               <Description>"TURN MASS"</Description>
+              <LastState Value="4000" RealAddress="0F486D78"/>
               <VariableType>Float</VariableType>
               <Address>-46c+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>242</ID>
               <Description>"GRIP"</Description>
+              <LastState Value="1" RealAddress="0F486D7C"/>
               <VariableType>Float</VariableType>
               <Address>-46c+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>243</ID>
               <Description>"HOR FLIP"</Description>
+              <LastState Value="0" RealAddress="0F486D38"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4</Address>
               <Hotkeys>
@@ -618,6 +627,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>244</ID>
               <Description>"HOR ROTATE road"</Description>
+              <LastState Value="0" RealAddress="0F486D40"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4+8</Address>
               <Hotkeys>
@@ -634,12 +644,14 @@ dealloc(newmem)
             <CheatEntry>
               <ID>245</ID>
               <Description>"DRAG"</Description>
+              <LastState Value="0.001249999972" RealAddress="0F486D80"/>
               <VariableType>Float</VariableType>
               <Address>-460</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>246</ID>
               <Description>"STATIC LOC PTR"</Description>
+              <LastState Value="00C2F55C" RealAddress="0F48706C"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>-174</Address>
@@ -902,7 +914,6 @@ end
 hk1=createHotkey(function()
 adjustSpeed(x,y,TempUp,TempDown,1)
 end,0x26)
-
 
 
 hk3=createHotkey(function()
@@ -1506,8 +1517,10 @@ registersymbol(super_jump)
 
 {$lua}
 
+--zDownSpeed=0.012 is gravity defying for gta san andreas.
+
 local multi=0.22
-local multiSpeeder=1.1
+local multiSpeeder=1.5
 local zBoost=0.5
 local zDownSpeed=0.012
 local deg=10
@@ -1618,6 +1631,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>253</ID>
           <Description>"cj x"</Description>
+          <LastState Value="-0.001095946995" RealAddress="0F43943C"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[speed_ptr1]</Address>
@@ -1635,6 +1649,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>254</ID>
           <Description>"cj y"</Description>
+          <LastState Value="-0.08380375803" RealAddress="0F439440"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[speed_ptr1]+4</Address>
