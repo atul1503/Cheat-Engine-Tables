@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="-0.08894811571" RealAddress="009386CC"/>
+          <LastState Value="-0.3809295893" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2301.477539" RealAddress="009386D8"/>
+          <LastState Value="-1376.197632" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="156.0783386" RealAddress="009386DC"/>
+          <LastState Value="145.291275" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="792.0220337" RealAddress="009386E0"/>
+          <LastState Value="2223.237549" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="4.946182728" RealAddress="009386E8"/>
+          <LastState Value="-31.15226936" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0.369887203" RealAddress="009386EC"/>
+          <LastState Value="-0.1073736921" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,14 +153,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="28.33658028" RealAddress="009386F0"/>
+          <LastState Value="31.39716721" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1631" RealAddress="009386F4"/>
+          <LastState Value="1495" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="0.09881674498" RealAddress="009386FC"/>
+          <LastState Value="-0.001007689396" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -186,7 +186,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.000613120792" RealAddress="00938704"/>
+          <LastState Value="0.000668896304" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -826,31 +826,26 @@ end,0x26)
 hk3=createHotkey(function()
 TempDown=TempUp
 TempUp=TempUp+rangeShifter
-adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x57)
 
 hk6=createHotkey(function()
 TempUp=TempDown
 TempDown=TempDown-rangeShifter
-adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x53)
 
 hk7=createHotkey(function()
 TempUp=Up
 TempDown=Down
-adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x20)
 
 hk8=createHotkey(function()
 TempUp=Down+SpeedGearNumber*rangeShifter
 TempDown=Down+(SpeedGearNumber-1)*rangeShifter
-adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x4D)
 
 hk9=createHotkey(function()
 TempUp=Down+HandlingGearNumber*rangeShifter
 TempDown=Down+(HandlingGearNumber-1)*rangeShifter
-adjustSpeed(x,y,TempUp,TempDown,0)
 end,0x48)
 
 
