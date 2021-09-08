@@ -1,0 +1,53 @@
+[ENABLE]
+
+{$lua}
+
+if syntaxcheck then return end
+
+--Super Jumper 2
+--Has 2 cycles.First,when it going up in the first cycle and second when it is coming down in the second cycle.
+--zUpSpeed is the up speed in the first cycle.
+--zDownSpeed is the down speed in the second cycle.
+--stopKey is used to change/shift between cycles.
+
+local multi=0.22
+local zUpSpeed=0.1
+local zDownSpeed=-0.008
+local stopKey=0x53
+local xaddr="[speed_ptr]"
+local yaddr="[speed_ptr]+4"
+local zaddr="[speed_ptr]+8"
+
+
+hk=createHotkey(function()
+local multi=multi
+writeFloat("[speed_ptr]+4fc",100000.0)
+writeFloat("[speed_ptr]+504",100000.0)
+x=readFloat(xaddr)
+y=readFloat(yaddr)
+r=((x^2)+(y^2))^0.5
+xdir=x/r
+ydir=y/r
+while not isKeyPressed(stopKey) do
+x=xdir*multi
+y=ydir*multi
+writeFloat(xaddr,x)
+writeFloat(yaddr,y)
+writeFloat(zaddr,zUpSpeed)
+end
+keyUp(stopKey)
+while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
+x=xdir*multi
+y=ydir*multi
+writeFloat(xaddr,x)
+writeFloat(yaddr,y)
+writeFloat(zaddr,zDownSpeed)
+end
+keyUp(stopKey)
+end,VK_CONTROL)
+
+
+[DISABLE]
+
+hk.destroy()
+

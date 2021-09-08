@@ -505,7 +505,6 @@ dealloc(newmem)
           <ID>235</ID>
           <Description>"CAR LOCKED STATE"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="1" RealAddress="0F4871E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[crp]+4f8</Address>
@@ -513,7 +512,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>236</ID>
               <Description>"CAR HEALTH"</Description>
-              <LastState Value="0" RealAddress="0F4871A8"/>
               <VariableType>Float</VariableType>
               <Address>-38</Address>
               <Hotkeys>
@@ -530,7 +528,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>237</ID>
               <Description>"X SPEED road"</Description>
-              <LastState Value="0" RealAddress="0F486D2C"/>
               <VariableType>Float</VariableType>
               <Address>-4b4</Address>
               <Hotkeys>
@@ -547,7 +544,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>238</ID>
               <Description>"Y SPEED road"</Description>
-              <LastState Value="0" RealAddress="0F486D30"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+4</Address>
               <Hotkeys>
@@ -564,7 +560,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>239</ID>
               <Description>"Z SPEED road"</Description>
-              <LastState Value="0" RealAddress="0F486D34"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8</Address>
               <Hotkeys>
@@ -589,28 +584,24 @@ dealloc(newmem)
             <CheatEntry>
               <ID>240</ID>
               <Description>"MASS"</Description>
-              <LastState Value="1600" RealAddress="0F486D74"/>
               <VariableType>Float</VariableType>
               <Address>-46c</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>241</ID>
               <Description>"TURN MASS"</Description>
-              <LastState Value="4000" RealAddress="0F486D78"/>
               <VariableType>Float</VariableType>
               <Address>-46c+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>242</ID>
               <Description>"GRIP"</Description>
-              <LastState Value="1" RealAddress="0F486D7C"/>
               <VariableType>Float</VariableType>
               <Address>-46c+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>243</ID>
               <Description>"HOR FLIP"</Description>
-              <LastState Value="0" RealAddress="0F486D38"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4</Address>
               <Hotkeys>
@@ -627,7 +618,6 @@ dealloc(newmem)
             <CheatEntry>
               <ID>244</ID>
               <Description>"HOR ROTATE road"</Description>
-              <LastState Value="0" RealAddress="0F486D40"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4+8</Address>
               <Hotkeys>
@@ -644,14 +634,12 @@ dealloc(newmem)
             <CheatEntry>
               <ID>245</ID>
               <Description>"DRAG"</Description>
-              <LastState Value="0.001249999972" RealAddress="0F486D80"/>
               <VariableType>Float</VariableType>
               <Address>-460</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>246</ID>
               <Description>"STATIC LOC PTR"</Description>
-              <LastState Value="00C2F55C" RealAddress="0F48706C"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>-174</Address>
@@ -1486,7 +1474,7 @@ dealloc(newmem)
       <ID>230</ID>
       <Description>"SUPER JUMP"</Description>
       <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1631,7 +1619,6 @@ dealloc(newmem)
         <CheatEntry>
           <ID>253</ID>
           <Description>"cj x"</Description>
-          <LastState Value="-0.001095946995" RealAddress="0F43943C"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[speed_ptr1]</Address>
@@ -1649,7 +1636,6 @@ dealloc(newmem)
         <CheatEntry>
           <ID>254</ID>
           <Description>"cj y"</Description>
-          <LastState Value="-0.08380375803" RealAddress="0F439440"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[speed_ptr1]+4</Address>
@@ -1665,6 +1651,95 @@ dealloc(newmem)
           </Hotkeys>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>259</ID>
+      <Description>"Super Jumper 2"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+{$asm}
+
+aobscanmodule(super_jump,gta_sa.exe,8B 08 8B 50 04 8B 40 08 8B 3D) // should be unique
+alloc(newmem,$150)
+alloc(speed_ptr,4)
+label(code)
+label(return)
+
+newmem:
+mov [speed_ptr],eax
+code:
+  mov ecx,[eax]
+  mov edx,[eax+04]
+  jmp return
+
+
+super_jump:
+  jmp newmem
+return:
+registersymbol(speed_ptr)
+registersymbol(super_jump)
+
+{$lua}
+
+--zDownSpeed=0.012 is gravity defying for gta san andreas.
+
+local multi=0.22
+local zUpSpeed=0.1
+local zDownSpeed=-0.008
+local stopKey=0x53
+local xaddr="[speed_ptr]"
+local yaddr="[speed_ptr]+4"
+local zaddr="[speed_ptr]+8"
+
+
+hk=createHotkey(function()
+local multi=multi
+writeFloat("[speed_ptr]+4fc",100000.0)
+writeFloat("[speed_ptr]+504",100000.0)
+x=readFloat(xaddr)
+y=readFloat(yaddr)
+r=((x^2)+(y^2))^0.5
+xdir=x/r
+ydir=y/r
+while not isKeyPressed(stopKey) do
+x=xdir*multi
+y=ydir*multi
+writeFloat(xaddr,x)
+writeFloat(yaddr,y)
+writeFloat(zaddr,zUpSpeed)
+end
+keyUp(stopKey)
+while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
+x=xdir*multi
+y=ydir*multi
+writeFloat(xaddr,x)
+writeFloat(yaddr,y)
+writeFloat(zaddr,zDownSpeed)
+end
+keyUp(stopKey)
+end,VK_CONTROL)
+
+
+{$asm}
+
+[DISABLE]
+
+super_jump:
+  db 8B 08 8B 50 04
+unregistersymbol(speed_ptr)
+unregistersymbol(super_jump)
+dealloc(speed_ptr)
+dealloc(newmem)
+
+{$lua}
+hk.destroy()
+
+</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
