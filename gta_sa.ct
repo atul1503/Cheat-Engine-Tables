@@ -1655,7 +1655,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>259</ID>
       <Description>"Super Jumper 2"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1690,7 +1690,7 @@ registersymbol(super_jump)
 
 local multi=0.22
 local zUpSpeed=0.1
-local zDownSpeed=-0.008
+local zDownSpeed=-0.05
 local stopKey=0x53
 local xaddr="[speed_ptr]"
 local yaddr="[speed_ptr]+4"
