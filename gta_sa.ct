@@ -1655,7 +1655,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>259</ID>
       <Description>"Super Jumper 2"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1689,12 +1689,27 @@ registersymbol(super_jump)
 --zDownSpeed=0.012 is gravity defying for gta san andreas.
 
 local multi=0.22
-local zUpSpeed=0.1
-local zDownSpeed=-0.05
+local multiSpeeder=1.5
+local zUpSpeed=0.05
+local zDownSpeed=-0.025
 local stopKey=0x53
+local slowKey=0x28
+local fastKey=0x26
 local xaddr="[speed_ptr]"
 local yaddr="[speed_ptr]+4"
 local zaddr="[speed_ptr]+8"
+
+function fwdSpeedModifier(speed,multiplier)
+if isKeyPressed(slowKey) then
+speed=speed/multiplier
+keyUp(slowKey)
+end
+if isKeyPressed(fastKey) then
+speed=speed*multiplier
+keyUp(fastKey)
+end
+return speed
+end
 
 
 hk=createHotkey(function()
@@ -1704,6 +1719,7 @@ writeFloat("[speed_ptr]+504",100000.0)
 x=readFloat(xaddr)
 y=readFloat(yaddr)
 r=((x^2)+(y^2))^0.5
+if r==0 then return end
 xdir=x/r
 ydir=y/r
 while not isKeyPressed(stopKey) do
@@ -1712,6 +1728,7 @@ y=ydir*multi
 writeFloat(xaddr,x)
 writeFloat(yaddr,y)
 writeFloat(zaddr,zUpSpeed)
+multi=fwdSpeedModifier(multi,multiSpeeder)
 end
 keyUp(stopKey)
 while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
@@ -1720,6 +1737,7 @@ y=ydir*multi
 writeFloat(xaddr,x)
 writeFloat(yaddr,y)
 writeFloat(zaddr,zDownSpeed)
+multi=fwdSpeedModifier(multi,multiSpeeder)
 end
 keyUp(stopKey)
 end,VK_CONTROL)
