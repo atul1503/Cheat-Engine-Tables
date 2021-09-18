@@ -1,13 +1,12 @@
 [ENABLE]
 {$lua}
 
+if syntaxcheck then return end
 
---zDownSpeed=0.012 is gravity defying for gta san andreas.
-
-local multi=0.22
+local multi=0.12
 local multiSpeeder=1.5
 local zUpSpeed=0.05
-local zDownSpeed=-0.025
+local zDownSpeed=-0.05
 local stopKey=0x53
 local slowKey=0x28
 local fastKey=0x26
@@ -32,10 +31,10 @@ hk=createHotkey(function()
 local multi=multi
 writeFloat("[speed_ptr]+4fc",100000.0)
 writeFloat("[speed_ptr]+504",100000.0)
+while(readFloat(xaddr)==0 and readFloat(yaddr)==0) do end
 x=readFloat(xaddr)
 y=readFloat(yaddr)
 r=((x^2)+(y^2))^0.5
-if r==0 then return end
 xdir=x/r
 ydir=y/r
 while not isKeyPressed(stopKey) do
