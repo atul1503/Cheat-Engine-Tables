@@ -1717,7 +1717,8 @@ hk=createHotkey(function()
 local multi=multi
 writeFloat("[speed_ptr]+4fc",100000.0)
 writeFloat("[speed_ptr]+504",100000.0)
-while(readFloat(xaddr)==0 and readFloat(yaddr)==0) do end
+while(readFloat(xaddr)==0 and readFloat(yaddr)==0 and not isKeyPressed(stopKey)) do end
+keyUp(stopKey)
 x=readFloat(xaddr)
 y=readFloat(yaddr)
 r=((x^2)+(y^2))^0.5
