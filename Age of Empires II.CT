@@ -1,16 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="31">
+<CheatTable CheatEngineTableVersion="38">
   <CheatEntries>
     <CheatEntry>
-      <ID>0</ID>
-      <Description>"No description"</Description>
-      <LastState Value="9958" RealAddress="18FF8720"/>
+      <ID>5</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="200" Activated="1" RealAddress="146EEC70"/>
       <VariableType>Float</VariableType>
-      <Address>18FF8720</Address>
+      <Address>146EEC70</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <LastState Value="642.1522217" RealAddress="172A58B0"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>172A58B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"wood"</Description>
+      <LastState Value="964.4486084" RealAddress="172A58B4"/>
+      <VariableType>Float</VariableType>
+      <Address>172A58B4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1" Activated="1" RealAddress="172A58DC"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>172A58DC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="2400" Activated="1" RealAddress="172E82B0"/>
+      <VariableType>Float</VariableType>
+      <Address>172E82B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="45" RealAddress="172EC660"/>
+      <VariableType>Float</VariableType>
+      <Address>172EC660</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="200" Activated="1" RealAddress="174973B0"/>
+      <VariableType>Float</VariableType>
+      <Address>174973B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="1500" Activated="1" RealAddress="17494730"/>
+      <VariableType>Float</VariableType>
+      <Address>17494730</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="16" RealAddress="1467A206"/>
+      <VariableType>2 Bytes</VariableType>
+      <Address>1467A206</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Wood</Description>
       <AddressString>empires2.exe+1A80C1</AddressString>
       <Before>
@@ -33,7 +91,7 @@
         <Byte>40</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="80000008">
+    <CodeEntry>
       <Description>Army Health</Description>
       <AddressString>empires2.exe+1AC08E</AddressString>
       <Before>
@@ -54,6 +112,30 @@
         <Byte>8C</Byte>
         <Byte>08</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>empires2.exe+35A4C (Strength)</Description>
+      <AddressString>empires2.exe+35A4C</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>FA</Byte>
+        <Byte>03</Byte>
+        <Byte>75</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>3B</Byte>
+        <Byte>07</Byte>
+        <Byte>7E</Byte>
+        <Byte>03</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

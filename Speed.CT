@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="34">
+<CheatTable CheatEngineTableVersion="38">
   <Forms>
-    <CETrainer Class="TTrainerForm" Encoding="Ascii85">eN*SF):ZfO=fTsT7HrrsT]@@bnf419Y*2(-)%2KL!)*YF-!z(iR;o1/!jJGxuwdBrBiQf;D3,5rC3Iz7N$1;i(#{HAB1F;jvm-))%1WrtMK$wc,+F5s7*$e.Wp^yHO^Dn.nMBOZR_nR6R;,C?:D;.RTryGGThLL:8I+DZ33R/dBxTIS0vx}osKb2freeWXG_r;B$npxHj1;eb6p$EabIznHybPy!7=NaI;oSU6Sq9Ro3:1Jw!BScR[wffZ4AXFc]x:D*11hYLv#ZjvDPP[5Be)_ME7d%XH?fbN8;pbryU9{S;@=NGQMiPTlB$5pI6$6}6*mL^We]TmC5bKxNd^V()Fil1+B/^]3.Wy%b19F6g3jD/DMiM/g10f;3P*loYiE[4j$fDB+-dw)UFpr{6/EEC?Gai$YyQ-R82_Rw@EjETK.^z/wf(8_I3z89+=xb]J9MA#!T.nAZIv5!yFMKO54s6=hd:hiXx-0W,xE0;:Qrw4H^RG=A+b+qNNJ[mW5Gq]qAlZ-4$k6XFD1QX)4sB(*4tf!.[):Ad5@XgaNJKa,z$9,H^c*ZfL{XdnNLKu2wXbV5u/$;;sPbMxb:G48QUr$pwg}$Ios;eNfXI$/ixAH0_oR5,^%14h2!PC17o]6)!(LlH}KejY[z;^IfIJj$EQID7J0=Ax?RXHcu8{}uHiUKG49}uvG(#1Kwdw-$1O}}@T]WWAS$77A2(.Nrj:MZAF4-{O}j2R?%%1btVBiP*)zBJ;CdMlRjA3*Uj</CETrainer>
+    <CETrainer Class="TTrainerForm" Encoding="Ascii85">eN*SB)=ArRI]zAvEZDF=U7.eOHe$gN.W$$g.l??x/,WmB-!xVnPc*gdg(+OcSRi(=?da%71jZgGaZ2dQ@E(6Adyem}eS{DK*.:JF*2sk}#]w)kalP9QU?ThSbfX8@/wUgppcY}C+7H66eU@$z;-C:L*49l4VQfGLex5-g*){[i+NCw2bG87{sXp;DnOYHBWF=LHV9w%%0}Ef50CxgEcn5q?Rxn=jv]:21w2?1E9MAJi$Om=eBRup-IIOg4;9$l2DW#f?kR?ReEg+OB2Qu@]Z-4@?LjM7!x_e5^g:x@deCKrF3i5s-do:CQRlu%,L#j@0rPw.X(jc.C2pxqy1,MKOTgvJzg/ys2b.1kMxgaDQC{CPHOnXxK^(OYlb1lrGd51}p%/]6k#o1S_+MaEXh%H6swshEZs.zQ,T@%V]]ZIb7djH(egSYFpeken/f9tA#%vf+]$.3uYfBhczNW/T3x4+4hbeHemf9Do$lxtPFfQ{$^dm)v=KL%cBRnJ-3[NXf7*ap.y-WWY5rtrm$D3_O$%Ne*OhVfw,$NsP%k$yO6)5Aa-pKfUJcnpcSL*!?055gEX13upl]1;m0SEg4a6UG.:MW-rav?2sZN$ZRo6V:SvkO:]5MwLr?r$?)iB*@gAmv09WXcM;+N!f+ICwUjfbeRhqr/u4]zj1A(VHe98?GLnxb-S:gc(5{nKJLOZnuzQQj@YU8E+;5!UmXR@tKmCrV5+Z)wpW6vfYdsym-0=2)UW^Ahc2G5Yeix@J-R4Gb:ZyN%C+#:Oh/AfJ4b(3</CETrainer>
   </Forms>
   <CheatEntries>
     <CheatEntry>
@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.2981794775" RealAddress="009386CC"/>
+          <LastState Value="0.03053192981" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-3241.190918" RealAddress="009386D8"/>
+          <LastState Value="534.8201904" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="200.0995331" RealAddress="009386DC"/>
+          <LastState Value="131.4963684" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1140.41272" RealAddress="009386E0"/>
+          <LastState Value="2311.693115" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="-6.867240429" RealAddress="009386E8"/>
+          <LastState Value="-0.8001485467" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0.1339043081" RealAddress="009386EC"/>
+          <LastState Value="0.6327815652" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,14 +153,14 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="9.980557442" RealAddress="009386F0"/>
+          <LastState Value="13.07161236" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1345" RealAddress="009386F4"/>
+          <LastState Value="1483" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.1048114374" RealAddress="009386FC"/>
+          <LastState Value="-0.0009614863084" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -186,7 +186,7 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0007434944273" RealAddress="00938704"/>
+          <LastState Value="0.0006743088597" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -261,7 +261,6 @@
           <ID>70</ID>
           <Description>"Top Speed - Red Line"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="0.0001764312183" RealAddress="0CF646D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>0CF646D8</Address>
@@ -269,7 +268,6 @@
             <CheatEntry>
               <ID>71</ID>
               <Description>"Top Speed - Engine Top Speed"</Description>
-              <LastState Value="1.849370835E31" RealAddress="0CF646D4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-4</Address>
@@ -277,7 +275,6 @@
             <CheatEntry>
               <ID>60</ID>
               <Description>"Torque 1"</Description>
-              <LastState Value="4.305469954E21" RealAddress="0CF64688"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50</Address>
@@ -285,7 +282,6 @@
             <CheatEntry>
               <ID>61</ID>
               <Description>"Torque 2"</Description>
-              <LastState Value="2.57892907E-9" RealAddress="0CF6468C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+4</Address>
@@ -293,7 +289,6 @@
             <CheatEntry>
               <ID>62</ID>
               <Description>"Torque 3"</Description>
-              <LastState Value="52.58332825" RealAddress="0CF64690"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8</Address>
@@ -301,7 +296,6 @@
             <CheatEntry>
               <ID>63</ID>
               <Description>"Torque 4"</Description>
-              <LastState Value="2.692121859E-9" RealAddress="0CF64694"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4</Address>
@@ -309,7 +303,6 @@
             <CheatEntry>
               <ID>64</ID>
               <Description>"Torque 5"</Description>
-              <LastState Value="4.861714829E30" RealAddress="0CF64698"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4</Address>
@@ -317,7 +310,6 @@
             <CheatEntry>
               <ID>65</ID>
               <Description>"Torque 6"</Description>
-              <LastState Value="134673952" RealAddress="0CF6469C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4</Address>
@@ -325,7 +317,6 @@
             <CheatEntry>
               <ID>66</ID>
               <Description>"Torque 7"</Description>
-              <LastState Value="13.27034473" RealAddress="0CF646A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4</Address>
@@ -333,7 +324,6 @@
             <CheatEntry>
               <ID>67</ID>
               <Description>"Torque 8"</Description>
-              <LastState Value="3.423579144E12" RealAddress="0CF646A4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4</Address>
@@ -341,7 +331,6 @@
             <CheatEntry>
               <ID>68</ID>
               <Description>"Torque 9"</Description>
-              <LastState Value="1.944463368E31" RealAddress="0CF646A8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4+4</Address>
@@ -623,8 +612,8 @@ hk7.destroy()
 [ENABLE]
 
 local mul=1+3e-3
-local gearMul=1.3
-local rangeMultiplier=2.13
+local gearMul=5
+local rangeMultiplier=1.5
 local Up=18
 local Down=0
 local motion=1
@@ -708,21 +697,18 @@ hk3=createHotkey(function()
 TempDown=TempUp
 TempUp=TempUp*rangeMultiplier
 adjustSpeed(x,y,TempUp,TempDown)
-speak('Gear Up')
 end,0x57)
 
 hk6=createHotkey(function()
 TempUp=TempDown
 TempDown=TempDown/rangeMultiplier
 adjustSpeed(x,y,TempUp,TempDown,1)
-speak('Gear Down')
 end,0x53)
 
 hk7=createHotkey(function()
 TempUp=Up
 TempDown=Down
 adjustSpeed(x,y,TempUp,TempDown,1)
-speak('Reset')
 end,0x20)
 
 
@@ -856,6 +842,142 @@ end,0x4D)
 hk9=createHotkey(function()
 TempUp=Down+HandlingGearNumber*rangeShifter
 TempDown=Down+(HandlingGearNumber-1)*rangeShifter
+end,0x48)
+
+
+[DISABLE]
+hk1.destroy()
+hk3.destroy()
+hk6.destroy()
+hk7.destroy()
+hk8.destroy()
+hk9.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>103</ID>
+          <Description>"Gear System 5"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+
+local mul=1.002
+local gearMul=3
+local rangeShifter=20
+local HandlingGearNumber=2
+local SpeedGearNumber=4
+local Up=15
+local Down=0
+local motion=1
+local isInstantGearChange=1
+local speedXString='X SPEED'
+local speedYString='Y SPEED'
+
+
+--Instructions
+--mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
+--gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
+--Up is the initial top speed
+-- Down is the initial bottom speed
+--motion is the threshold for the speed of the car so that script may start to work normally.
+--In this,range is adjusted by constants.
+--Gear is increased by W and decreased by S
+--SpeedGearNumber is the gear no. at which the car will we directly triggered to.For eg if SpeedGearNumber is 4 then Car will be at 4th gear after a hotkey is pressed.Currently speed gear can be triggered by M hotkey.
+--HandlingGearNumber is the gear at which good handling is expected.
+
+local TempUp=Up
+local TempDown=Down
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+
+
+function startupHandler()
+         r=((x.Value^2)+(y.Value^2))^0.5
+         if r&lt;motion then
+            TempUp=Up
+            TempDown=Down
+         end
+end
+
+function adjustSpeed(x,y,tempUp,tempDown,speedUp)
+	r=((x.Value^2)+(y.Value^2))^0.5
+	if r&lt;tempDown then
+		if r*gearMul&lt;=tempDown then
+			x.Value=x.Value*gearMul
+			y.Value=y.Value*gearMul
+		else
+			ratio=tempDown/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	elseif r&gt;=tempDown and r&lt;tempUp then
+		if r*mul&lt;=tempUp then
+			if speedUp then
+				x.Value=x.Value*mul
+				y.Value=y.Value*mul
+            else
+                x.Value=x.Value/mul
+				y.Value=y.Value/mul
+			end
+		else
+			ratio=tempUp/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	else
+		if r/gearMul&gt;tempUp then
+			x.Value=x.Value/gearMul
+			y.Value=y.Value/gearMul
+		else
+			ratio=tempUp/r
+			x.Value=x.Value*ratio
+			y.Value=y.Value*ratio
+		end
+	end
+end
+
+
+hk1=createHotkey(function()
+adjustSpeed(x,y,TempUp,TempDown,1)
+end,0x26)
+
+
+hk3=createHotkey(function()
+TempDown=TempUp
+TempUp=TempUp+rangeShifter
+if instantGearChange~=0 then adjustSpeed(x,y,TempUp,TempDown,0) end
+end,0x57)
+
+hk6=createHotkey(function()
+TempUp=TempDown
+TempDown=TempDown-rangeShifter
+if instantGearChange~=0 then adjustSpeed(x,y,TempUp,TempDown,0) end
+end,0x53)
+
+hk7=createHotkey(function()
+TempUp=Up
+TempDown=Down
+if instantGearChange~=0 then adjustSpeed(x,y,TempUp,TempDown,0) end
+end,0x20)
+
+hk8=createHotkey(function()
+TempUp=Down+SpeedGearNumber*rangeShifter
+TempDown=Down+(SpeedGearNumber-1)*rangeShifter
+if instantGearChange~=0 then adjustSpeed(x,y,TempUp,TempDown,0) end
+end,0x4D)
+
+hk9=createHotkey(function()
+TempUp=Down+HandlingGearNumber*rangeShifter
+TempDown=Down+(HandlingGearNumber-1)*rangeShifter
+if instantGearChange~=0 then adjustSpeed(x,y,TempUp,TempDown,0) end
 end,0x48)
 
 
@@ -1702,7 +1824,7 @@ hk3.destroy()
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Car Wheel Speed</Description>
       <AddressString>Speed.exe+28E447</AddressString>
       <Before>
@@ -1728,7 +1850,7 @@ hk3.destroy()
         <Byte>FF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Car Wheel Test</Description>
       <AddressString>Speed.exe+29E20A</AddressString>
       <Before>
@@ -1754,7 +1876,7 @@ hk3.destroy()
         <Byte>FF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>speed</Description>
       <AddressString>Speed.exe+297955</AddressString>
       <Before>
@@ -1777,7 +1899,7 @@ hk3.destroy()
         <Byte>54</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [esi+3C] (traction inst)</Description>
       <AddressString>Speed.exe+29793E</AddressString>
       <Before>
@@ -1800,7 +1922,7 @@ hk3.destroy()
         <Byte>81</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [ecx+000000D0],edx (wheel rotation)</Description>
       <AddressString>Speed.exe+2A957F</AddressString>
       <Before>
@@ -1826,7 +1948,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fstp dword ptr [esi+000000D0] (wheel rotation)</Description>
       <AddressString>Speed.exe+29E20A</AddressString>
       <Before>
@@ -1852,7 +1974,7 @@ hk3.destroy()
         <Byte>FF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fdiv dword ptr [esi+000000C4] (increasing it can increase max speed,4 values in one inst)</Description>
       <AddressString>Speed.exe+29E1E0</AddressString>
       <Before>
@@ -1878,7 +2000,7 @@ hk3.destroy()
         <Byte>10</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [esi+00000084],edi (gear+1)</Description>
       <AddressString>Speed.exe+292114</AddressString>
       <Before>
@@ -1904,7 +2026,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Change of cmp [esi+00000084],edi</Description>
       <AddressString>Speed.exe+2AF970</AddressString>
       <Before>
@@ -1930,7 +2052,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :cmp edi,eax (nop this to get unlimited gears)</Description>
       <AddressString>Speed.exe+2920E3</AddressString>
       <Before>
@@ -1952,7 +2074,7 @@ hk3.destroy()
         <Byte>84</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[ecx+38] (gear pointer)</Description>
       <AddressString>Speed.exe+2A0590</AddressString>
       <Before>
@@ -1975,7 +2097,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>fstp dword ptr [esi+000000F8] (Nitrous)</Description>
       <AddressString>Speed.exe+292C11</AddressString>
       <Before>
@@ -2001,7 +2123,7 @@ hk3.destroy()
         <Byte>44</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fsub dword ptr [esi+000000FC] (imp)</Description>
       <AddressString>Speed.exe+29DB16</AddressString>
       <Before>
@@ -2027,7 +2149,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>item price in shop(engine)</Description>
       <AddressString>Speed.exe+3B1441</AddressString>
       <Before>
@@ -2050,7 +2172,7 @@ hk3.destroy()
         <Byte>68</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code:fld dword ptr [ebx+04] (Handling Slider Value)</Description>
       <AddressString>Speed.exe+2A9E65</AddressString>
       <Before>
@@ -2073,7 +2195,7 @@ hk3.destroy()
         <Byte>74</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ebx+08] (brake bias)</Description>
       <AddressString>Speed.exe+2A9C06</AddressString>
       <Before>
@@ -2096,7 +2218,7 @@ hk3.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [esi+04] imp</Description>
       <AddressString>Speed.exe+2D12D0</AddressString>
       <Before>
@@ -2119,7 +2241,7 @@ hk3.destroy()
         <Byte>8A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [eax] imp gear</Description>
       <AddressString>Speed.exe+26C64E</AddressString>
       <Before>
@@ -2141,7 +2263,7 @@ hk3.destroy()
         <Byte>40</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+0000021C] (backup timer)</Description>
       <AddressString>Speed.exe+33B70</AddressString>
       <Before>
@@ -2167,7 +2289,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+58] (top speed in rpm)</Description>
       <AddressString>Speed.exe+26C653</AddressString>
       <Before>
@@ -2190,7 +2312,7 @@ hk3.destroy()
         <Byte>5C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fstp dword ptr [esi+00000168] (Cooldown timer)</Description>
       <AddressString>Speed.exe+440FB</AddressString>
       <Before>
@@ -2216,7 +2338,7 @@ hk3.destroy()
         <Byte>08</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov edx,[eax] (First wheel traction)</Description>
       <AddressString>Speed.exe+2730B0</AddressString>
       <Before>
@@ -2238,7 +2360,7 @@ hk3.destroy()
         <Byte>C7</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [esi+edi*4+08] (tyre traction or acceleration)</Description>
       <AddressString>Speed.exe+2730CD</AddressString>
       <Before>
@@ -2262,7 +2384,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [esi+0000011C] (handling imp)</Description>
       <AddressString>Speed.exe+29DF6D</AddressString>
       <Before>
@@ -2288,7 +2410,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fsubr dword ptr [esi+00000084] (Speadbreaker pointer)</Description>
       <AddressString>Speed.exe+2EDDC8</AddressString>
       <Before>
@@ -2314,7 +2436,7 @@ hk3.destroy()
         <Byte>EA</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[eax+08] (back wheel collsion)</Description>
       <AddressString>Speed.exe+2AA0C3</AddressString>
       <Before>
@@ -2337,7 +2459,7 @@ hk3.destroy()
         <Byte>8A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [esi+000000FC],eax (chakka something)</Description>
       <AddressString>Speed.exe+29DB1C</AddressString>
       <Before>
@@ -2363,7 +2485,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+1C] (Heat Level)</Description>
       <AddressString>Speed.exe+9400</AddressString>
       <Before>
@@ -2386,7 +2508,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+00000110] (heat drawer)</Description>
       <AddressString>Speed.exe+AF25</AddressString>
       <Before>
@@ -2412,7 +2534,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [esi+0000011C],edx (front wheel direction)</Description>
       <AddressString>Speed.exe+29E97B</AddressString>
       <Before>
@@ -2438,7 +2560,7 @@ hk3.destroy()
         <Byte>41</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fsub dword ptr [esi+000000FC] (wheel friction)</Description>
       <AddressString>Speed.exe+29DB16</AddressString>
       <Before>
@@ -2464,7 +2586,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fsub dword ptr [eax] (start of vehicle data possibly)</Description>
       <AddressString>Speed.exe+2AA116</AddressString>
       <Before>
@@ -2486,7 +2608,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+70] (friction of car)</Description>
       <AddressString>Speed.exe+28D91E</AddressString>
       <Before>
@@ -2509,7 +2631,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[eax+20] (traction like thing)</Description>
       <AddressString>Speed.exe+28D6B3</AddressString>
       <Before>
@@ -2532,7 +2654,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+60] (turn like)</Description>
       <AddressString>Speed.exe+28D313</AddressString>
       <Before>
@@ -2555,7 +2677,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[ecx+24] (Bounty in a single pursuit)</Description>
       <AddressString>Speed.exe+33380</AddressString>
       <Before>
@@ -2578,7 +2700,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[ecx+0000013C] (Police Cars destroyed)</Description>
       <AddressString>Speed.exe+AA00</AddressString>
       <Before>
@@ -2604,7 +2726,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [edi+18] (Supercharger slider value)</Description>
       <AddressString>Speed.exe+26BD85</AddressString>
       <Before>
@@ -2627,7 +2749,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov edx,[eax] (Acceleration candidate)</Description>
       <AddressString>Speed.exe+26BD47</AddressString>
       <Before>
@@ -2649,7 +2771,7 @@ hk3.destroy()
         <Byte>4C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+18] (Acceleration candidate 2)</Description>
       <AddressString>Speed.exe+26BB37</AddressString>
       <Before>
@@ -2672,7 +2794,7 @@ hk3.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fstp dword ptr [esi+000000EC] (Revolution something)</Description>
       <AddressString>Speed.exe+2AFF69</AddressString>
       <Before>
@@ -2698,7 +2820,7 @@ hk3.destroy()
         <Byte>05</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [esi+18] (Time multiplier)</Description>
       <AddressString>Speed.exe+2F6D9D</AddressString>
       <Before>
@@ -2721,7 +2843,7 @@ hk3.destroy()
         <Byte>98</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movzx eax,word ptr [ecx+02] (vehicle data 2)</Description>
       <AddressString>Speed.exe+52940</AddressString>
       <Before>
@@ -2745,7 +2867,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[eax] (easy access of vehicle data 2)</Description>
       <AddressString>Speed.exe+291FE3</AddressString>
       <Before>
@@ -2767,7 +2889,7 @@ hk3.destroy()
         <Byte>0C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+0C] (Ride height slider)</Description>
       <AddressString>Speed.exe+28E556</AddressString>
       <Before>
@@ -2790,7 +2912,7 @@ hk3.destroy()
         <Byte>8A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ebx,[esi+28] (Current Lap display)</Description>
       <AddressString>Speed.exe+1E94D5</AddressString>
       <Before>
@@ -2813,7 +2935,7 @@ hk3.destroy()
         <Byte>24</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[ecx+00001958] (no. of opponents)</Description>
       <AddressString>Speed.exe+1DBEF0</AddressString>
       <Before>
@@ -2839,7 +2961,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[eax] (friction for 1st gear) (further memory addresses have friction for higher gears as well)</Description>
       <AddressString>Speed.exe+291FE3</AddressString>
       <Before>
@@ -2861,7 +2983,7 @@ hk3.destroy()
         <Byte>0C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [esi+ecx*4+08] (friction for current gear)</Description>
       <AddressString>Speed.exe+291AD6</AddressString>
       <Before>
@@ -2885,7 +3007,7 @@ hk3.destroy()
         <Byte>6A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+000000F0] (Gravity for car)</Description>
       <AddressString>Speed.exe+2A70F2</AddressString>
       <Before>
@@ -2911,7 +3033,7 @@ hk3.destroy()
         <Byte>47</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movzx eax,word ptr [ecx+02] (yet another vehicle data)</Description>
       <AddressString>Speed.exe+52940</AddressString>
       <Before>
@@ -2935,7 +3057,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[eax] (easy access for this vehicle data)</Description>
       <AddressString>Speed.exe+29ECD6</AddressString>
       <Before>
@@ -2957,7 +3079,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+eax*4+38] (front end traction)</Description>
       <AddressString>Speed.exe+29DAD9</AddressString>
       <Before>
@@ -2981,7 +3103,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+eax*4+38] (back end traction)</Description>
       <AddressString>Speed.exe+29DAD9</AddressString>
       <Before>
@@ -3005,7 +3127,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[edx+48] (traction candidate)</Description>
       <AddressString>Speed.exe+29E864</AddressString>
       <Before>
@@ -3028,7 +3150,7 @@ hk3.destroy()
         <Byte>11</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fdiv dword ptr [eax+edx*4+18] (traction candidates with 4 addresses from here)</Description>
       <AddressString>Speed.exe+29E0F0</AddressString>
       <Before>
@@ -3052,7 +3174,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ebp+10] (Aerodynamic slider value)</Description>
       <AddressString>Speed.exe+28D943</AddressString>
       <Before>
@@ -3075,7 +3197,7 @@ hk3.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ebx,[esi+00000084] (important function gear related)</Description>
       <AddressString>Speed.exe+2AFA79</AddressString>
       <Before>
@@ -3101,7 +3223,7 @@ hk3.destroy()
         <Byte>44</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+00000080] (Acceleration-Top speed ratio per Gear)</Description>
       <AddressString>Speed.exe+26C644</AddressString>
       <Before>
@@ -3127,7 +3249,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [esi+ecx*4+48] (Acceleration candidate 3)</Description>
       <AddressString>Speed.exe+291B07</AddressString>
       <Before>
@@ -3151,7 +3273,7 @@ hk3.destroy()
         <Byte>6A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+eax*4+20] (Front Rear Wheel Tractions)</Description>
       <AddressString>Speed.exe+29DAD1</AddressString>
       <Before>
@@ -3175,7 +3297,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+04] (Nitrous power 1)</Description>
       <AddressString>Speed.exe+2A0446</AddressString>
       <Before>
@@ -3198,7 +3320,7 @@ hk3.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov edx,[eax] (Nitrous power 2)</Description>
       <AddressString>Speed.exe+26BD47</AddressString>
       <Before>
@@ -3220,7 +3342,7 @@ hk3.destroy()
         <Byte>4C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+70] (Drag/Aerodynamics)</Description>
       <AddressString>Speed.exe+28D91E</AddressString>
       <Before>
@@ -3243,7 +3365,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fsub dword ptr [eax] (Another car region)</Description>
       <AddressString>Speed.exe+2AA116</AddressString>
       <Before>
@@ -3265,7 +3387,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [eax+00000248],ecx (rpm arrow)</Description>
       <AddressString>Speed.exe+BC5D2</AddressString>
       <Before>
@@ -3291,7 +3413,7 @@ hk3.destroy()
         <Byte>50</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+eax*4+20] (car attr for turn)</Description>
       <AddressString>Speed.exe+29DAD1</AddressString>
       <Before>
@@ -3315,7 +3437,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+54] (front wheel speed limit in rpm)</Description>
       <AddressString>Speed.exe+2A0936</AddressString>
       <Before>
@@ -3338,7 +3460,7 @@ hk3.destroy()
         <Byte>40</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Change of fstp dword ptr [ecx]</Description>
       <AddressString>Speed.exe+16A9</AddressString>
       <Before>
@@ -3360,7 +3482,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [edi] (Torques) (can be 15) </Description>
       <AddressString>Speed.exe+26C248</AddressString>
       <Before>
@@ -3382,7 +3504,7 @@ hk3.destroy()
         <Byte>DF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+18] (Car Spool)</Description>
       <AddressString>Speed.exe+26BB37</AddressString>
       <Before>
@@ -3405,7 +3527,7 @@ hk3.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [eax+edx*4] (car braking memory region)</Description>
       <AddressString>Speed.exe+28E239</AddressString>
       <Before>
@@ -3428,7 +3550,7 @@ hk3.destroy()
         <Byte>8F</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+edx*4+08] (Front Brake Power)</Description>
       <AddressString>Speed.exe+28E22F</AddressString>
       <Before>
@@ -3452,7 +3574,7 @@ hk3.destroy()
         <Byte>8A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [esi+edi*4+08] torque test</Description>
       <AddressString>Speed.exe+2730CD</AddressString>
       <Before>
@@ -3476,7 +3598,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[edx+000000B4] (Money watcher in Garage)</Description>
       <AddressString>Speed.exe+3B14A1</AddressString>
       <Before>
@@ -3502,7 +3624,7 @@ hk3.destroy()
         <Byte>68</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+60] (Side Weight Transfer)</Description>
       <AddressString>Speed.exe+28D313</AddressString>
       <Before>
@@ -3525,7 +3647,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[eax+64] (Steering attr 2)</Description>
       <AddressString>Speed.exe+28D809</AddressString>
       <Before>
@@ -3548,7 +3670,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [edx+5C] (Steering attr 1)</Description>
       <AddressString>Speed.exe+28DB6C</AddressString>
       <Before>
@@ -3571,7 +3693,7 @@ hk3.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [eax+60] (Steering attr 3 : Weight transfer to side) </Description>
       <AddressString>Speed.exe+28D313</AddressString>
       <Before>
@@ -3594,7 +3716,7 @@ hk3.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fadd dword ptr [eax+6C] (Steering 4)</Description>
       <AddressString>Speed.exe+28D839</AddressString>
       <Before>
@@ -3617,7 +3739,7 @@ hk3.destroy()
         <Byte>54</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fdiv dword ptr [eax+edx*4+18] (Grip Scale)</Description>
       <AddressString>Speed.exe+29E0F0</AddressString>
       <Before>
@@ -3641,7 +3763,7 @@ hk3.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+70] (Differential 2)</Description>
       <AddressString>Speed.exe+29215E</AddressString>
       <Before>
@@ -3664,7 +3786,7 @@ hk3.destroy()
         <Byte>68</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[eax] tire grip</Description>
       <AddressString>Speed.exe+29ECD6</AddressString>
       <Before>
@@ -3686,7 +3808,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [ecx+68] (handling related but jerks at high value)</Description>
       <AddressString>Speed.exe+26BAEB</AddressString>
       <Before>
@@ -3709,7 +3831,7 @@ hk3.destroy()
         <Byte>8A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [esi+00000178] (No collision timer value)</Description>
       <AddressString>Speed.exe+28BCB5</AddressString>
       <Before>
@@ -3735,7 +3857,7 @@ hk3.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Change of fadd dword ptr [esi+00000168]</Description>
       <AddressString>Speed.exe+440E5</AddressString>
       <Before>
@@ -3761,7 +3883,7 @@ hk3.destroy()
         <Byte>FF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ecx+000000FC] (Tyre friction like)</Description>
       <AddressString>Speed.exe+28E5B1</AddressString>
       <Before>
@@ -3787,7 +3909,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[edi+esi*4] (Performance Upgrades watcher in Garage)</Description>
       <AddressString>Speed.exe+27F861</AddressString>
       <Before>
@@ -3810,7 +3932,7 @@ hk3.destroy()
         <Byte>10</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[esi+0000011C] (Car upgrade Brakes watcher)</Description>
       <AddressString>Speed.exe+193F96</AddressString>
       <Before>
@@ -3836,7 +3958,7 @@ hk3.destroy()
         <Byte>C9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [edi+ecx*2],ax (Car color in garage)(starts with 23)</Description>
       <AddressString>Speed.exe+16F296</AddressString>
       <Before>
@@ -3860,7 +3982,7 @@ hk3.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movsx ecx,word ptr [ecx+eax*2] (Vinyl number in a vinyl type)</Description>
       <AddressString>Speed.exe+16F254</AddressString>
       <Before>
@@ -3884,7 +4006,7 @@ hk3.destroy()
         <Byte>9B</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movsx ecx,word ptr [ecx+eax*2] (Vinyl type)(18 is Body)</Description>
       <AddressString>Speed.exe+16F254</AddressString>
       <Before>
@@ -3908,7 +4030,7 @@ hk3.destroy()
         <Byte>9B</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movsx ecx,word ptr [ecx+eax*2] (Body kit in garage)</Description>
       <AddressString>Speed.exe+16F254</AddressString>
       <Before>
@@ -3932,7 +4054,7 @@ hk3.destroy()
         <Byte>9B</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movsx ecx,word ptr [ecx+eax*2] (Vinyl color in garage)</Description>
       <AddressString>Speed.exe+16F254</AddressString>
       <Before>
@@ -3956,7 +4078,7 @@ hk3.destroy()
         <Byte>9B</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[esi+08](AOB of current car)</Description>
       <AddressString>Speed.exe+3AD8DF</AddressString>
       <Before>
@@ -3979,7 +4101,7 @@ hk3.destroy()
         <Byte>51</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :movsx eax,word ptr [ebx+esi*2] (Vinyl color in garage)</Description>
       <AddressString>Speed.exe+16F2C0</AddressString>
       <Before>
@@ -4003,7 +4125,7 @@ hk3.destroy()
         <Byte>9B</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [eax],ecx (back coord)</Description>
       <AddressString>speed.exe+389FE8</AddressString>
       <Before>
@@ -4025,7 +4147,7 @@ hk3.destroy()
         <Byte>50</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fstp dword ptr [ecx] (x1 for unit vector)</Description>
       <AddressString>speed.exe+16A9</AddressString>
       <Before>
