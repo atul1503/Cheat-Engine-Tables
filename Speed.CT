@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.9999713898" RealAddress="009386CC"/>
+          <LastState Value="0.4713844955" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2510.784668" RealAddress="009386D8"/>
+          <LastState Value="-2832.064941" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="151.2772675" RealAddress="009386DC"/>
+          <LastState Value="186.0702057" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1656.549316" RealAddress="009386E0"/>
+          <LastState Value="1265.251221" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="0.2197681814" RealAddress="009386E8"/>
+          <LastState Value="47.20056915" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0.005196051672" RealAddress="009386EC"/>
+          <LastState Value="-11.24659348" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,7 +153,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="-14.5614481" RealAddress="009386F0"/>
+          <LastState Value="28.92468071" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.006725919433" RealAddress="009386FC"/>
+          <LastState Value="-0.0948086381" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -261,7 +261,7 @@
           <ID>70</ID>
           <Description>"Top Speed - Red Line"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="-0.0002323109366" RealAddress="0CF646D8"/>
+          <LastState Value="5.781655648E-34" RealAddress="0CF646D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>0CF646D8</Address>
@@ -269,7 +269,7 @@
             <CheatEntry>
               <ID>71</ID>
               <Description>"Top Speed - Engine Top Speed"</Description>
-              <LastState Value="-0.9999999404" RealAddress="0CF646D4"/>
+              <LastState Value="0" RealAddress="0CF646D4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-4</Address>
@@ -277,7 +277,7 @@
             <CheatEntry>
               <ID>60</ID>
               <Description>"Torque 1"</Description>
-              <LastState Value="-0.000294277037" RealAddress="0CF64688"/>
+              <LastState Value="4.190948199E-24" RealAddress="0CF64688"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50</Address>
@@ -285,7 +285,7 @@
             <CheatEntry>
               <ID>61</ID>
               <Description>"Torque 2"</Description>
-              <LastState Value="-0.9999999404" RealAddress="0CF6468C"/>
+              <LastState Value="4.681473525E-12" RealAddress="0CF6468C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+4</Address>
@@ -293,7 +293,7 @@
             <CheatEntry>
               <ID>62</ID>
               <Description>"Torque 3"</Description>
-              <LastState Value="-0.0002357916383" RealAddress="0CF64690"/>
+              <LastState Value="0" RealAddress="0CF64690"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8</Address>
@@ -301,7 +301,7 @@
             <CheatEntry>
               <ID>63</ID>
               <Description>"Torque 4"</Description>
-              <LastState Value="-2.328598905E38" RealAddress="0CF64694"/>
+              <LastState Value="0" RealAddress="0CF64694"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4</Address>
@@ -309,7 +309,7 @@
             <CheatEntry>
               <ID>64</ID>
               <Description>"Torque 5"</Description>
-              <LastState Value="-0.07421875" RealAddress="0CF64698"/>
+              <LastState Value="5.132682746E-29" RealAddress="0CF64698"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4</Address>
@@ -317,7 +317,7 @@
             <CheatEntry>
               <ID>65</ID>
               <Description>"Torque 6"</Description>
-              <LastState Value="0.0703125" RealAddress="0CF6469C"/>
+              <LastState Value="-6.012013435" RealAddress="0CF6469C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4</Address>
@@ -325,7 +325,7 @@
             <CheatEntry>
               <ID>66</ID>
               <Description>"Torque 7"</Description>
-              <LastState Value="17.83862305" RealAddress="0CF646A0"/>
+              <LastState Value="0" RealAddress="0CF646A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4</Address>
@@ -333,7 +333,7 @@
             <CheatEntry>
               <ID>67</ID>
               <Description>"Torque 8"</Description>
-              <LastState Value="-8.543113708" RealAddress="0CF646A4"/>
+              <LastState Value="0" RealAddress="0CF646A4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4</Address>
@@ -341,7 +341,7 @@
             <CheatEntry>
               <ID>68</ID>
               <Description>"Torque 9"</Description>
-              <LastState Value="7.552726746" RealAddress="0CF646A8"/>
+              <LastState Value="5.132682746E-29" RealAddress="0CF646A8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4+4</Address>
@@ -1002,46 +1002,106 @@ hk9.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>102</ID>
-          <Description>"Jerk1"</Description>
+          <ID>109</ID>
+          <Description>"Gear System 6"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
+if synataxcheck then return end
+
 [ENABLE]
 
-local initaccel=1-1e-3
-local jerk=1.01
+local mul=1.04
+local gearMul=2
+local rangeShifter=20
+local Up=20
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
-local accel=initaccel
+local speedZString='Z SPEED'
 
-speedup=createHotkey(function()
-x.Value=x.Value*accel
-y.Value=y.Value*accel
+--Instructions
+--mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
+--gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,0).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
+--Up is the initial top speed
+--In this,range is adjusted by constants.
+--Gear is increased by W and decreased by S
+
+local TempUp=Up
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+z=t.getMemoryRecordByDescription(speedZString)
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	if r&lt;=tempUp then
+      if r*mul&lt;=tempUp then
+        if speedUp==1 then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+          z.Value=z.Value*mul
+        end
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    else
+      if (r/gearMul)&gt;=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+        z.Value=z.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    end
+end
+
+
+normal=createHotkey(function()
+adjustSpeed(x,y,TempUp,1)
 end,0x26)
 
-gearup=createHotkey(function()
-accel=accel*jerk
+
+up=createHotkey(function()
+TempUp=TempUp+rangeShifter
+adjustSpeed(x,y,TempUp)
 end,0x57)
 
-geardown=createHotkey(function()
-accel=accel/jerk
+down=createHotkey(function()
+TempUp=TempUp-rangeShifter
+adjustSpeed(x,y,TempUp,1)
 end,0x53)
 
 reset=createHotkey(function()
-accel=initaccel
+TempUp=Up
+adjustSpeed(x,y,TempUp,0)
 end,0x20)
 
+
+stop=createHotkey(function()
+x.Value=0
+y.Value=0
+z.Value=0
+end,0x52)
+
+
 [DISABLE]
-
-speedup.destroy()
-gearup.destroy()
-geardown.destroy()
+normal.destroy()
+up.destroy()
+down.destroy()
 reset.destroy()
-
-
-
+stop.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -1515,7 +1575,7 @@ breaker.destroy()
         <CheatEntry>
           <ID>101</ID>
           <Description>"Turner 1"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -1552,7 +1612,7 @@ right.destroy()
         <CheatEntry>
           <ID>51</ID>
           <Description>"Turn Off Rev Limiter"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
