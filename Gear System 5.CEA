@@ -1,0 +1,96 @@
+{$lua}
+
+if synataxcheck then return end
+
+[ENABLE]
+
+local mul=1.04
+local gearMul=2
+local rangeShifter=0.2
+local Up=0.08
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+local speedZString='Z SPEED road'
+
+--Instructions
+--mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
+--gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,0).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
+--Up is the initial top speed
+--In this,range is adjusted by constants.
+--Gear is increased by W and decreased by S
+
+local TempUp=Up
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+z=t.getMemoryRecordByDescription(speedZString)
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	if r<=tempUp then
+      if r*mul<=tempUp then
+        if speedUp==1 then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+          z.Value=z.Value*mul
+        end
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    else
+      if (r/gearMul)>=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+        z.Value=z.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    end
+end
+
+
+normal=createHotkey(function()
+adjustSpeed(x,y,TempUp,1)
+end,0x26)
+
+
+up=createHotkey(function()
+TempUp=TempUp+rangeShifter
+adjustSpeed(x,y,TempUp)
+end,0x57)
+
+down=createHotkey(function()
+TempUp=TempUp-rangeShifter
+adjustSpeed(x,y,TempUp,1)
+end,0x53)
+
+reset=createHotkey(function()
+TempUp=Up
+adjustSpeed(x,y,TempUp,0)
+end,0x20)
+
+
+stop=createHotkey(function()
+x.Value=0
+y.Value=0
+z.Value=0
+end,0x52)
+
+
+[DISABLE]
+normal.destroy()
+up.destroy()
+down.destroy()
+reset.destroy()
+stop.destroy()

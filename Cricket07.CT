@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="34">
+<CheatTable CheatEngineTableVersion="38">
   <CheatEntries>
     <CheatEntry>
       <ID>16</ID>
@@ -11,48 +11,56 @@
         <CheatEntry>
           <ID>52</ID>
           <Description>"LINE INST"</Description>
+          <LastState Value="46176729" RealAddress="00543429"/>
           <VariableType>4 Bytes</VariableType>
           <Address>00543429</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>40</ID>
           <Description>"BALL SWING INST"</Description>
+          <LastState Value="47749593" RealAddress="005434F9"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005434F9</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>36</ID>
           <Description>"BALL HEIGHT INST"</Description>
+          <LastState Value="48011737" RealAddress="00543515"/>
           <VariableType>4 Bytes</VariableType>
           <Address>00543515</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>43</ID>
           <Description>"BALL SPEED INST"</Description>
+          <LastState Value="48273881" RealAddress="0054352B"/>
           <VariableType>4 Bytes</VariableType>
           <Address>0054352B</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>17</ID>
           <Description>"BATSMAN MOVER INST"</Description>
+          <LastState Value="13147865" RealAddress="005EDF0F"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005EDF0F</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
+          <LastState Value="3" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>89</ID>
           <Description>"RUNS"</Description>
+          <LastState Value="48" RealAddress="009AA192"/>
           <VariableType>2 Bytes</VariableType>
           <Address>Cricket07.exe+5AA192</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>95</ID>
           <Description>"Camera Zoom"</Description>
+          <LastState Value="57.295784" RealAddress="0078C8DC"/>
           <VariableType>Float</VariableType>
           <Address>0078C8DC</Address>
         </CheatEntry>
@@ -60,6 +68,7 @@
           <ID>150</ID>
           <Description>"Player Name Intial"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="68" RealAddress="009AE43C"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
           <Address>009AE43C</Address>
@@ -67,6 +76,7 @@
             <CheatEntry>
               <ID>151</ID>
               <Description>"Skill"</Description>
+              <LastState Value="254" RealAddress="009AE4A5"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+69</Address>
@@ -74,6 +84,7 @@
             <CheatEntry>
               <ID>152</ID>
               <Description>"Concentration"</Description>
+              <LastState Value="120" RealAddress="009AE49C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+60</Address>
@@ -81,6 +92,7 @@
             <CheatEntry>
               <ID>153</ID>
               <Description>"Resilience"</Description>
+              <LastState Value="226" RealAddress="0089D976"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>0089D976</Address>
@@ -88,6 +100,7 @@
             <CheatEntry>
               <ID>154</ID>
               <Description>"Attack and Defence"</Description>
+              <LastState Value="126" RealAddress="009AE49D"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+61</Address>
@@ -95,6 +108,7 @@
             <CheatEntry>
               <ID>155</ID>
               <Description>"Offside"</Description>
+              <LastState Value="223" RealAddress="009AE49E"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+62</Address>
@@ -102,6 +116,7 @@
             <CheatEntry>
               <ID>156</ID>
               <Description>"Legside"</Description>
+              <LastState Value="57" RealAddress="009AE49F"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+63</Address>
@@ -109,6 +124,7 @@
             <CheatEntry>
               <ID>157</ID>
               <Description>"Straight"</Description>
+              <LastState Value="246" RealAddress="009AE4A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+64</Address>
@@ -116,6 +132,7 @@
             <CheatEntry>
               <ID>158</ID>
               <Description>"Frontfoot"</Description>
+              <LastState Value="141" RealAddress="009AE4A1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+65</Address>
@@ -123,6 +140,7 @@
             <CheatEntry>
               <ID>159</ID>
               <Description>"Backfoot"</Description>
+              <LastState Value="223" RealAddress="009AE4A2"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+66</Address>
@@ -130,6 +148,7 @@
             <CheatEntry>
               <ID>160</ID>
               <Description>"Discipline"</Description>
+              <LastState Value="169" RealAddress="009AE4AD"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+71</Address>
@@ -137,6 +156,7 @@
             <CheatEntry>
               <ID>161</ID>
               <Description>"Seam and Accuracy"</Description>
+              <LastState Value="150" RealAddress="009AE4AE"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+72</Address>
@@ -144,6 +164,7 @@
             <CheatEntry>
               <ID>162</ID>
               <Description>"Bouncer"</Description>
+              <LastState Value="36" RealAddress="009AE4AF"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+73</Address>
@@ -151,6 +172,7 @@
             <CheatEntry>
               <ID>163</ID>
               <Description>"Slow ball"</Description>
+              <LastState Value="224" RealAddress="009AE4B0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+74</Address>
@@ -158,6 +180,7 @@
             <CheatEntry>
               <ID>164</ID>
               <Description>"Inswing"</Description>
+              <LastState Value="36" RealAddress="009AE4B4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+78</Address>
@@ -165,6 +188,7 @@
             <CheatEntry>
               <ID>165</ID>
               <Description>"Outswing"</Description>
+              <LastState Value="91" RealAddress="009AE4B5"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+79</Address>
@@ -172,6 +196,7 @@
             <CheatEntry>
               <ID>166</ID>
               <Description>"Stamina"</Description>
+              <LastState Value="121" RealAddress="009AE4B8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+7C</Address>
@@ -179,6 +204,7 @@
             <CheatEntry>
               <ID>149</ID>
               <Description>"No description"</Description>
+              <LastState Value="57" RealAddress="009AE49F"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+63</Address>
@@ -186,6 +212,7 @@
             <CheatEntry>
               <ID>148</ID>
               <Description>"No description"</Description>
+              <LastState Value="246" RealAddress="009AE4A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+64</Address>
@@ -193,6 +220,7 @@
             <CheatEntry>
               <ID>147</ID>
               <Description>"No description"</Description>
+              <LastState Value="141" RealAddress="009AE4A1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+65</Address>
@@ -200,6 +228,7 @@
             <CheatEntry>
               <ID>140</ID>
               <Description>"No description"</Description>
+              <LastState Value="223" RealAddress="009AE4A2"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+66</Address>
@@ -207,6 +236,7 @@
             <CheatEntry>
               <ID>141</ID>
               <Description>"No description"</Description>
+              <LastState Value="56" RealAddress="009AE4A3"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+67</Address>
@@ -214,6 +244,7 @@
             <CheatEntry>
               <ID>142</ID>
               <Description>"No description"</Description>
+              <LastState Value="223" RealAddress="009AE4A2"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+66</Address>
@@ -221,6 +252,7 @@
             <CheatEntry>
               <ID>143</ID>
               <Description>"No description"</Description>
+              <LastState Value="56" RealAddress="009AE4A3"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+67</Address>
@@ -228,6 +260,7 @@
             <CheatEntry>
               <ID>144</ID>
               <Description>"No description"</Description>
+              <LastState Value="55" RealAddress="009AE4A4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+68</Address>
@@ -235,6 +268,7 @@
             <CheatEntry>
               <ID>145</ID>
               <Description>"No description"</Description>
+              <LastState Value="254" RealAddress="009AE4A5"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+69</Address>
@@ -242,6 +276,7 @@
             <CheatEntry>
               <ID>146</ID>
               <Description>"No description"</Description>
+              <LastState Value="42" RealAddress="009AE4AC"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+70</Address>
@@ -914,7 +949,7 @@ local start=200
 local mul=1.3
 local tr=120
 local rotationWithAorDforFast=3
-local rotationWithAorDforSpin=1.05
+local rotationWithAorDforSpin=2
 
 hk1=createHotkey(function()
 sleep(tr)
@@ -967,11 +1002,7 @@ hk5=createHotkey(function()
 hk6=createHotkey(function()
                            sleep(tr)
                       turn=readFloat("[rot]+10")
-                      if math.abs(readFloat("[rot]+10-4"))&gt;0.9 then
-                      turn=turn*(-1)*rotationWithAorDforSpin
-                      else
-                      turn=turn*(-1)*rotationWithAorDforFast
-                      end
+                      turn=turn*(-1)
                       writeFloat("[rot]+10",turn)
                       end,0x44)    --D
 
@@ -1117,8 +1148,8 @@ registersymbol(movement)
 ---dBounce
 
 
-local pr=150
-local doubleSwing=0.6
+local pr=300
+local doubleSwing=0.8
 
 
 hk1=createHotkey(function()
@@ -1167,9 +1198,35 @@ hk1.destroy()
 hk2.destroy()
 </AssemblerScript>
     </CheatEntry>
+    <CheatEntry>
+      <ID>168</ID>
+      <Description>"length"</Description>
+      <LastState Value="-5" Activated="1" RealAddress="03BD8830"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>03BD8830</Address>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>87</Key>
+          </Keys>
+          <Value>5</Value>
+          <ID>0</ID>
+        </Hotkey>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>88</Key>
+          </Keys>
+          <Value>-5</Value>
+          <ID>1</ID>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>swing</Description>
       <AddressString>Cricket07.exe+1434F9</AddressString>
       <Before>
@@ -1195,7 +1252,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>line coord(0.3 and -0.3)</Description>
       <AddressString>Cricket07.exe+143429</AddressString>
       <Before>
@@ -1221,7 +1278,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>speed(16 for fast and 8 for spin)</Description>
       <AddressString>Cricket07.exe+14352B</AddressString>
       <Before>
@@ -1247,7 +1304,7 @@ hk2.destroy()
         <Byte>0D</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>height</Description>
       <AddressString>Cricket07.exe+143515</AddressString>
       <Before>
@@ -1273,7 +1330,7 @@ hk2.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>height coord</Description>
       <AddressString>Cricket07.exe+143455</AddressString>
       <Before>
@@ -1299,7 +1356,7 @@ hk2.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>length coord(8 and -8)</Description>
       <AddressString>Cricket07.exe+14347B</AddressString>
       <Before>
@@ -1325,7 +1382,7 @@ hk2.destroy()
         <Byte>FF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>SWING ACCELERATOR</Description>
       <AddressString>Cricket07.exe+141FF7</AddressString>
       <Before>
@@ -1347,7 +1404,7 @@ hk2.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL POINTER(WIDTH)</Description>
       <AddressString>Cricket07.exe+16D992</AddressString>
       <Before>
@@ -1370,7 +1427,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL MARKER SPEED</Description>
       <AddressString>Cricket07.exe+16D913</AddressString>
       <Before>
@@ -1393,7 +1450,7 @@ hk2.destroy()
         <Byte>24</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BOWL MARKER(LENGTH)(FINAL)</Description>
       <AddressString>Cricket07.exe+16CA3C</AddressString>
       <Before>
@@ -1416,7 +1473,7 @@ hk2.destroy()
         <Byte>46</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BOWL MARKER(WIDTH)(FINAL)</Description>
       <AddressString>Cricket07.exe+16CA32</AddressString>
       <Before>
@@ -1438,7 +1495,7 @@ hk2.destroy()
         <Byte>04</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BOWL SPEED MARKER</Description>
       <AddressString>Cricket07.exe+17188A</AddressString>
       <Before>
@@ -1464,7 +1521,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL ROTATION BY RPM</Description>
       <AddressString>Cricket07.exe+147837</AddressString>
       <Before>
@@ -1487,7 +1544,7 @@ hk2.destroy()
         <Byte>80</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL PITCH MECHANICS(for spin)</Description>
       <AddressString>Cricket07.exe+142EDB</AddressString>
       <Before>
@@ -1510,7 +1567,7 @@ hk2.destroy()
         <Byte>46</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL PITCH SPEED</Description>
       <AddressString>Cricket07.exe+14262A</AddressString>
       <Before>
@@ -1532,7 +1589,7 @@ hk2.destroy()
         <Byte>04</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>fielder location inst</Description>
       <AddressString>Cricket07.exe+1E371B</AddressString>
       <Before>
@@ -1555,7 +1612,7 @@ hk2.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL PITCH HEIGHT MOVEMENT</Description>
       <AddressString>Cricket07.exe+14262A</AddressString>
       <Before>
@@ -1577,7 +1634,7 @@ hk2.destroy()
         <Byte>04</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BATSMAN BAT SOMETHING</Description>
       <AddressString>Cricket07.exe+155821</AddressString>
       <Before>
@@ -1603,7 +1660,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>gravity</Description>
       <AddressString>Cricket07.exe+143505</AddressString>
       <Before>
@@ -1629,7 +1686,7 @@ hk2.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL MARKER FIXER FOR ALL BOWLERS(MAKE IT 0)</Description>
       <AddressString>Cricket07.exe+16CA88</AddressString>
       <Before>
@@ -1652,7 +1709,7 @@ hk2.destroy()
         <Byte>78</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>important search around</Description>
       <AddressString>Cricket07.exe+25311A</AddressString>
       <Before>
@@ -1674,7 +1731,7 @@ hk2.destroy()
         <Byte>E9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL PITCH MECHANICS(for speed)</Description>
       <AddressString>Cricket07.exe+142EBB</AddressString>
       <Before>
@@ -1696,7 +1753,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BATSMAN MOVER</Description>
       <AddressString>Cricket07.exe+1EDF0F</AddressString>
       <Before>
@@ -1722,7 +1779,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL PITCH BOUNCE</Description>
       <AddressString>Cricket07.exe+142701</AddressString>
       <Before>
@@ -1747,7 +1804,7 @@ hk2.destroy()
         <Byte>80</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>THROW SPEED</Description>
       <AddressString>Cricket07.exe+142673</AddressString>
       <Before>
@@ -1772,7 +1829,7 @@ hk2.destroy()
         <Byte>D4</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>BALL PITCH BOUNCE</Description>
       <AddressString>Cricket07.exe+142701</AddressString>
       <Before>
@@ -1797,7 +1854,7 @@ hk2.destroy()
         <Byte>80</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>important very much</Description>
       <AddressString>Cricket07.exe+16A9F0</AddressString>
       <Before>
@@ -1823,7 +1880,7 @@ hk2.destroy()
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>IMPORTANT FLAG</Description>
       <AddressString>Cricket07.exe+147939</AddressString>
       <Before>
@@ -1853,7 +1910,7 @@ hk2.destroy()
         <Byte>D4</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [Cricket07.exe+38F018]</Description>
       <AddressString>Cricket07.exe+147A48</AddressString>
       <Before>
@@ -1879,7 +1936,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Game speed</Description>
       <AddressString>Cricket07.exe+18A9E</AddressString>
       <Before>
@@ -1905,7 +1962,7 @@ hk2.destroy()
         <Byte>4C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Main function</Description>
       <AddressString>Cricket07.exe+1475F1</AddressString>
       <Before>
@@ -1930,7 +1987,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Camera Zoom</Description>
       <AddressString>Cricket07.exe+143581</AddressString>
       <Before>
@@ -1956,7 +2013,7 @@ hk2.destroy()
         <Byte>51</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ebp+0C] (Bounce speed after pitch)</Description>
       <AddressString>Cricket07.exe+1461DB</AddressString>
       <Before>
@@ -1979,7 +2036,7 @@ hk2.destroy()
         <Byte>0D</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [edi+08],ebp (something bowler related)</Description>
       <AddressString>Cricket07.exe+19DF9C</AddressString>
       <Before>
@@ -2002,7 +2059,7 @@ hk2.destroy()
         <Byte>7C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [ebp+62],ax (Player attribute related)</Description>
       <AddressString>Cricket07.exe+B8C0C</AddressString>
       <Before>
@@ -2026,7 +2083,7 @@ hk2.destroy()
         <Byte>90</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[edx] (Player attribute related 2)</Description>
       <AddressString>Cricket07.exe+32355B</AddressString>
       <Before>
@@ -2048,7 +2105,7 @@ hk2.destroy()
         <Byte>50</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :cmp [ebx],eax (Bowler Data Structure)</Description>
       <AddressString>Cricket07.exe+1725A2</AddressString>
       <Before>
@@ -2070,7 +2127,7 @@ hk2.destroy()
         <Byte>24</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fsub dword ptr [edi+04] (Bowler Pace attribute)</Description>
       <AddressString>Cricket07.exe+16C287</AddressString>
       <Before>
@@ -2093,7 +2150,7 @@ hk2.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[eax+14] (Bowler Bounce Attribute)</Description>
       <AddressString>Cricket07.exe+16D1E6</AddressString>
       <Before>
@@ -2116,7 +2173,7 @@ hk2.destroy()
         <Byte>6A</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[eax+74] (Swing/Spin meter)</Description>
       <AddressString>Cricket07.exe+16AA06</AddressString>
       <Before>
@@ -2139,7 +2196,7 @@ hk2.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fmul dword ptr [esi+000000C8] (Batsman mover 2)</Description>
       <AddressString>Cricket07.exe+1EDEF1</AddressString>
       <Before>
@@ -2165,7 +2222,7 @@ hk2.destroy()
         <Byte>D8</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov cl,[eax] (player name)</Description>
       <AddressString>Cricket07.exe+D9105</AddressString>
       <Before>
@@ -2187,7 +2244,7 @@ hk2.destroy()
         <Byte>C0</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fld dword ptr [ebx+00000338] (Bowler Speed control UI)</Description>
       <AddressString>Cricket07.exe+171890</AddressString>
       <Before>
@@ -2213,7 +2270,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov edx,[ecx+000000A0] (batsman imp)</Description>
       <AddressString>Cricket07.exe+16C770</AddressString>
       <Before>
@@ -2239,7 +2296,7 @@ hk2.destroy()
         <Byte>E0</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[eax+08] imp</Description>
       <AddressString>Cricket07.exe+4E94E</AddressString>
       <Before>
@@ -2262,7 +2319,7 @@ hk2.destroy()
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[eax+00000084]  attr imp</Description>
       <AddressString>Cricket07.exe+10221C</AddressString>
       <Before>
@@ -2288,7 +2345,7 @@ hk2.destroy()
         <Byte>E0</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[ebx+68] Batsman attribute important</Description>
       <AddressString>Cricket07.exe+1019DD</AddressString>
       <Before>
@@ -2311,7 +2368,7 @@ hk2.destroy()
         <Byte>06</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[ebp+6C] (batsman skill)</Description>
       <AddressString>Cricket07.exe+DC560</AddressString>
       <Before>
@@ -2334,7 +2391,7 @@ hk2.destroy()
         <Byte>E1</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov cl,[ecx+00000080] bowler att imp stamina</Description>
       <AddressString>Cricket07.exe+101D69</AddressString>
       <Before>
@@ -2360,7 +2417,7 @@ hk2.destroy()
         <Byte>3F</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov esi,[edx+74] ball att seam</Description>
       <AddressString>Cricket07.exe+101B5C</AddressString>
       <Before>
@@ -2383,7 +2440,7 @@ hk2.destroy()
         <Byte>67</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov esi,[ecx+7C] (bowl att inswing 255 byte)</Description>
       <AddressString>Cricket07.exe+101CB9</AddressString>
       <Before>
@@ -2406,7 +2463,7 @@ hk2.destroy()
         <Byte>06</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov al,[ecx+00000080] (bowler stamina att)</Description>
       <AddressString>Cricket07.exe+101D0A</AddressString>
       <Before>
@@ -2432,7 +2489,7 @@ hk2.destroy()
         <Byte>3F</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [ebp-2C],edx</Description>
       <AddressString>Cricket07.exe+E0DFA</AddressString>
       <Before>
@@ -2455,7 +2512,7 @@ hk2.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov [esi+00001C24],cx</Description>
       <AddressString>Cricket07.exe+E0E2E</AddressString>
       <Before>
@@ -2482,7 +2539,7 @@ hk2.destroy()
         <Byte>96</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov ecx,[eax+00004858]</Description>
       <AddressString>Cricket07.exe+E0E4C</AddressString>
       <Before>
@@ -2508,7 +2565,7 @@ hk2.destroy()
         <Byte>20</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov edx,[ebx+ecx*8+00001CB8]</Description>
       <AddressString>Cricket07.exe+E0F42</AddressString>
       <Before>
@@ -2535,7 +2592,7 @@ hk2.destroy()
         <Byte>1C</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :fstp dword ptr [esi+00000C58] important instruction and function</Description>
       <AddressString>Cricket07.exe+155875</AddressString>
       <Before>
@@ -2561,7 +2618,7 @@ hk2.destroy()
         <Byte>FF</Byte>
       </After>
     </CodeEntry>
-    <CodeEntry Color="20000000">
+    <CodeEntry>
       <Description>Code :mov eax,[edx*8+Cricket07.exe+5C6EB8] very important vvip</Description>
       <AddressString>Cricket07.exe+16CA7A</AddressString>
       <Before>
@@ -2586,6 +2643,52 @@ hk2.destroy()
         <Byte>E8</Byte>
         <Byte>98</Byte>
         <Byte>BF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fmul dword ptr [eax+30] (Ball pitch length blue pointer)</Description>
+      <AddressString>Cricket07.exe+16DED9</AddressString>
+      <Before>
+        <Byte>2C</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>48</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fmul dword ptr [eax+28] (Ball pitch width blue pointer)</Description>
+      <AddressString>Cricket07.exe+16DECA</AddressString>
+      <Before>
+        <Byte>64</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+        <Byte>D9</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>48</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>1C</Byte>
+        <Byte>24</Byte>
+        <Byte>D9</Byte>
+        <Byte>C0</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
@@ -3129,4 +3232,6 @@ hk2.destroy()
       </Elements>
     </Structure>
   </Structures>
+  <Comments>0.3 line
+5.2 length</Comments>
 </CheatTable>
