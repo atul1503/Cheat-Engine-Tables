@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.4713844955" RealAddress="009386CC"/>
+          <LastState Value="-0.9550581574" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2832.064941" RealAddress="009386D8"/>
+          <LastState Value="169.3764954" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="186.0702057" RealAddress="009386DC"/>
+          <LastState Value="108.0900803" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1265.251221" RealAddress="009386E0"/>
+          <LastState Value="2127.461914" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="47.20056915" RealAddress="009386E8"/>
+          <LastState Value="12.80737019" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-11.24659348" RealAddress="009386EC"/>
+          <LastState Value="-0.00004407709639" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,7 +153,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="28.92468071" RealAddress="009386F0"/>
+          <LastState Value="-15.36135674" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="-0.0948086381" RealAddress="009386FC"/>
+          <LastState Value="1.176531672" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -1004,7 +1004,7 @@ hk9.destroy()
         <CheatEntry>
           <ID>109</ID>
           <Description>"Gear System 6"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -1013,22 +1013,22 @@ if synataxcheck then return end
 [ENABLE]
 
 local mul=1.04
-local gearMul=2
-local rangeShifter=20
-local Up=20
+local gearMul=1.1
+local rangeShifter=16
+local Top_Speed=20
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
 local speedZString='Z SPEED'
 
 --Instructions
---mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,0).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed
 --rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
 --Up is the initial top speed
 --In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
 
-local TempUp=Up
+local TempUp=Top_Speed
 
 
 t=getAddressList()
@@ -1080,11 +1080,11 @@ end,0x57)
 
 down=createHotkey(function()
 TempUp=TempUp-rangeShifter
-adjustSpeed(x,y,TempUp,1)
+adjustSpeed(x,y,TempUp,0)
 end,0x53)
 
 reset=createHotkey(function()
-TempUp=Up
+TempUp=Top_Speed
 adjustSpeed(x,y,TempUp,0)
 end,0x20)
 

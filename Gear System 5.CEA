@@ -5,22 +5,22 @@ if synataxcheck then return end
 [ENABLE]
 
 local mul=1.04
-local gearMul=2
-local rangeShifter=0.2
-local Up=0.08
-local speedXString='X SPEED road'
-local speedYString='Y SPEED road'
-local speedZString='Z SPEED road'
+local gearMul=1.04
+local rangeShifter=30
+local Top_Speed=20
+local speedXString='X SPEED'
+local speedYString='Y SPEED'
+local speedZString='Z SPEED'
 
 --Instructions
---mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,0).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed
 --rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
 --Up is the initial top speed
 --In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
 
-local TempUp=Up
+local TempUp=Top_Speed
 
 
 t=getAddressList()
@@ -72,11 +72,11 @@ end,0x57)
 
 down=createHotkey(function()
 TempUp=TempUp-rangeShifter
-adjustSpeed(x,y,TempUp,1)
+adjustSpeed(x,y,TempUp,0)
 end,0x53)
 
 reset=createHotkey(function()
-TempUp=Up
+TempUp=Top_Speed
 adjustSpeed(x,y,TempUp,0)
 end,0x20)
 
