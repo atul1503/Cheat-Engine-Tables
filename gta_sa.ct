@@ -465,7 +465,7 @@ dealloc(newmem)
       <ID>234</ID>
       <Description>"ROAD CARS"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -505,7 +505,7 @@ dealloc(newmem)
           <ID>235</ID>
           <Description>"CAR LOCKED STATE"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="1" RealAddress="0D729028"/>
+          <LastState Value="1" RealAddress="0D4E8610"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>[crp]+4f8</Address>
@@ -513,7 +513,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>236</ID>
               <Description>"CAR HEALTH"</Description>
-              <LastState Value="1000" Activated="1" RealAddress="0D728FF0"/>
+              <LastState Value="1000" Activated="1" RealAddress="0D4E85D8"/>
               <VariableType>Float</VariableType>
               <Address>-38</Address>
               <Hotkeys>
@@ -530,7 +530,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>237</ID>
               <Description>"X SPEED road"</Description>
-              <LastState Value="-0.1253503561" RealAddress="0D728B74"/>
+              <LastState Value="0.01426507253" RealAddress="0D4E815C"/>
               <VariableType>Float</VariableType>
               <Address>-4b4</Address>
               <Hotkeys>
@@ -547,7 +547,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>238</ID>
               <Description>"Y SPEED road"</Description>
-              <LastState Value="-0.09876135737" RealAddress="0D728B78"/>
+              <LastState Value="0.0787179023" RealAddress="0D4E8160"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+4</Address>
               <Hotkeys>
@@ -564,7 +564,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>239</ID>
               <Description>"Z SPEED road"</Description>
-              <LastState Value="0.6610094309" RealAddress="0D728B7C"/>
+              <LastState Value="1.560699616E-6" RealAddress="0D4E8164"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8</Address>
               <Hotkeys>
@@ -573,7 +573,7 @@ dealloc(newmem)
                   <Keys>
                     <Key>71</Key>
                   </Keys>
-                  <Value>0.4</Value>
+                  <Value>0.15</Value>
                   <ID>0</ID>
                 </Hotkey>
                 <Hotkey>
@@ -589,28 +589,28 @@ dealloc(newmem)
             <CheatEntry>
               <ID>240</ID>
               <Description>"MASS"</Description>
-              <LastState Value="5000" RealAddress="0D728BBC"/>
+              <LastState Value="3200" RealAddress="0D4E81A4"/>
               <VariableType>Float</VariableType>
               <Address>-46c</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>241</ID>
               <Description>"TURN MASS"</Description>
-              <LastState Value="7604.200195" RealAddress="0D728BC0"/>
+              <LastState Value="6000" RealAddress="0D4E81A8"/>
               <VariableType>Float</VariableType>
               <Address>-46c+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>242</ID>
               <Description>"GRIP"</Description>
-              <LastState Value="1" RealAddress="0D728BC4"/>
+              <LastState Value="1" RealAddress="0D4E81AC"/>
               <VariableType>Float</VariableType>
               <Address>-46c+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>243</ID>
               <Description>"HOR FLIP"</Description>
-              <LastState Value="0.1000000015" RealAddress="0D728B80"/>
+              <LastState Value="0.0001451858116" RealAddress="0D4E8168"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4</Address>
               <Hotkeys>
@@ -627,21 +627,21 @@ dealloc(newmem)
             <CheatEntry>
               <ID>244</ID>
               <Description>"HOR ROTATE road"</Description>
-              <LastState Value="-0.00007196522347" RealAddress="0D728B88"/>
+              <LastState Value="6.733491318E-6" RealAddress="0D4E8170"/>
               <VariableType>Float</VariableType>
               <Address>-4b4+8+4+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>245</ID>
               <Description>"DRAG"</Description>
-              <LastState Value="0.001249999972" RealAddress="0D728BC8"/>
+              <LastState Value="0.001099999994" RealAddress="0D4E81B0"/>
               <VariableType>Float</VariableType>
               <Address>-460</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>246</ID>
               <Description>"STATIC LOC PTR"</Description>
-              <LastState Value="00C2F2BC" RealAddress="0D728EB4"/>
+              <LastState Value="00C3131C" RealAddress="0D4E849C"/>
               <ShowAsHex>1</ShowAsHex>
               <VariableType>4 Bytes</VariableType>
               <Address>-174</Address>
@@ -925,7 +925,7 @@ stop.destroy()
             <CheatEntry>
               <ID>261</ID>
               <Description>"Gear System 3"</Description>
-              <LastState Activated="1"/>
+              <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{$lua}
 
@@ -933,7 +933,7 @@ if synataxcheck then return end
 
 [ENABLE]
 
-local mul=1.04
+local mul=1.01
 local gearMul=2
 local rangeShifter=0.2
 local Up=0.08
@@ -969,10 +969,12 @@ function adjustSpeed(x,y,tempUp,speedUp)
           z.Value=z.Value*mul
         end
       else
-        local ratio=tempUp/r
-        x.Value=x.Value*ratio
-        y.Value=y.Value*ratio
-        z.Value=z.Value*ratio
+        if speedUp==1 then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+          z.Value=z.Value*ratio
+        end
       end
     else
       if (r/gearMul)&gt;=tempUp then
@@ -996,12 +998,12 @@ end,0x26)
 
 up=createHotkey(function()
 TempUp=TempUp+rangeShifter
-adjustSpeed(x,y,TempUp)
+adjustSpeed(x,y,TempUp,0)
 end,0x57)
 
 down=createHotkey(function()
 TempUp=TempUp-rangeShifter
-adjustSpeed(x,y,TempUp,1)
+adjustSpeed(x,y,TempUp,0)
 end,0x53)
 
 reset=createHotkey(function()

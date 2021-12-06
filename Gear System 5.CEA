@@ -4,13 +4,13 @@ if synataxcheck then return end
 
 [ENABLE]
 
-local mul=1.04
-local gearMul=1.04
-local rangeShifter=30
-local Top_Speed=20
-local speedXString='X SPEED'
-local speedYString='Y SPEED'
-local speedZString='Z SPEED'
+local mul=3
+local gearMul=3
+local rangeShifter=0.2
+local Top_Speed=0.1
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+local speedZString='Z SPEED road'
 
 --Instructions
 --mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed
@@ -19,6 +19,7 @@ local speedZString='Z SPEED'
 --Up is the initial top speed
 --In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
+--When trying to use this script in a game just adjust speedStrings , Top_Speed and rangeShifter depending on the game.
 
 local TempUp=Top_Speed
 
@@ -30,20 +31,22 @@ z=t.getMemoryRecordByDescription(speedZString)
 
 
 function adjustSpeed(x,y,tempUp,speedUp)
-
+  if tempUp>=Top_Speed then
 	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
 	if r<=tempUp then
       if r*mul<=tempUp then
-        if speedUp==1 then
+        if speedUp then
           x.Value=x.Value*mul
           y.Value=y.Value*mul
           z.Value=z.Value*mul
         end
       else
-        local ratio=tempUp/r
-        x.Value=x.Value*ratio
-        y.Value=y.Value*ratio
-        z.Value=z.Value*ratio
+        if speedUp then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+          z.Value=z.Value*ratio
+        end
       end
     else
       if (r/gearMul)>=tempUp then
@@ -57,34 +60,45 @@ function adjustSpeed(x,y,tempUp,speedUp)
         z.Value=z.Value*ratio
       end
     end
+  else
+    x.Value=x.Value*(-1)
+	y.Value=y.Value*(-1)
+	z.Value=z.Value*(-1)
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	gear=(r-Top_Speed)/rangeShifter
+	if (gear*100)%100~=0 then
+	  TempUp=Top_Speed+(gear+1)*rangeShifter
+	else
+	  TempUp=Top_Speed+(gear)*rangeShifter
+    end
+  end
 end
 
 
 normal=createHotkey(function()
-adjustSpeed(x,y,TempUp,1)
+adjustSpeed(x,y,TempUp,true)
 end,0x26)
 
 
 up=createHotkey(function()
 TempUp=TempUp+rangeShifter
-adjustSpeed(x,y,TempUp)
+adjustSpeed(x,y,TempUp,false)
 end,0x57)
 
 down=createHotkey(function()
 TempUp=TempUp-rangeShifter
-adjustSpeed(x,y,TempUp,0)
+adjustSpeed(x,y,TempUp,false)
 end,0x53)
 
 reset=createHotkey(function()
 TempUp=Top_Speed
-adjustSpeed(x,y,TempUp,0)
+adjustSpeed(x,y,TempUp,false)
 end,0x20)
 
 
-stop=createHotkey(function()
-x.Value=0
-y.Value=0
-z.Value=0
+reverser=createHotkey(function()
+TempUp=-1
+adjustSpeed(x,y,TempUp,false)
 end,0x52)
 
 
@@ -93,4 +107,4 @@ normal.destroy()
 up.destroy()
 down.destroy()
 reset.destroy()
-stop.destroy()
+reverser.destroy()
