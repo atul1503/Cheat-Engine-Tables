@@ -1,0 +1,123 @@
+{$lua}
+
+if synataxcheck then return end
+
+[ENABLE]
+
+local mul=3
+local jerk=1.5
+local gearMul=3
+local rangeShifter=0.3
+local Top_Speed=0.1
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+local speedZString='Z SPEED road'
+
+--Instructions
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
+--jerk is the multiplier/divider for mul.Increasing mul results in higher power and decreasing mul results in lower power.
+--rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
+--Up is the initial top speed
+--In this,range is adjusted by constants.
+--Gear is increased by W and decreased by S
+--When trying to use this script in a game just adjust speedStrings , Top_Speed and rangeShifter depending on the game.
+
+local TempUp=Top_Speed
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+z=t.getMemoryRecordByDescription(speedZString)
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+  if tempUp>=Top_Speed then
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	if r<=tempUp then
+      if r*mul<=tempUp then
+        if speedUp then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+          z.Value=z.Value*mul
+        end
+      else
+        if speedUp then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+          z.Value=z.Value*ratio
+        end
+      end
+    else
+      if (r/gearMul)>=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+        z.Value=z.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    end
+  else
+    x.Value=x.Value*(-1)
+	y.Value=y.Value*(-1)
+	z.Value=z.Value*(-1)
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	gear=(r-Top_Speed)/rangeShifter
+	if (gear*100)%100~=0 then
+	  TempUp=Top_Speed+(gear+1)*rangeShifter
+	else
+	  TempUp=Top_Speed+(gear)*rangeShifter
+    end
+  end
+end
+
+
+normal=createHotkey(function()
+adjustSpeed(x,y,TempUp,true)
+end,0x26) --UP key
+
+
+up=createHotkey(function()
+TempUp=TempUp+rangeShifter
+adjustSpeed(x,y,TempUp,false)
+end,0x57) --W
+
+down=createHotkey(function()
+TempUp=TempUp-rangeShifter
+adjustSpeed(x,y,TempUp,false)
+end,0x53) --S
+
+reset=createHotkey(function()
+TempUp=Top_Speed
+adjustSpeed(x,y,TempUp,false)
+end,0x20) --SPACE
+
+
+reverser=createHotkey(function()
+TempUp=-1
+adjustSpeed(x,y,TempUp,false)
+end,0x52)  --R
+
+mulInc=createHotkey(function()
+mul=mul*jerk
+end,0x45) --E
+
+mulDec=createHotkey(function()
+mul=mul/jerk
+end,0x44) --D
+
+
+
+[DISABLE]
+normal.destroy()
+up.destroy()
+down.destroy()
+reset.destroy()
+reverser.destroy()
+mulInc.destroy()
+mulDec.destroy()

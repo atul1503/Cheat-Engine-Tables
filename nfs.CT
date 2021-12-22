@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="38">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No Description"</Description>
+      <LastState Value="1" RealAddress="15BFBDD4"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>15BFBDD4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <LastState Value="8000" RealAddress="0134B274"/>
+      <VariableType>Float</VariableType>
+      <Address>nfs.exe+F4B274</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.10946697" RealAddress="00D974AC"/>
+      <VariableType>Float</VariableType>
+      <Address>nfs.exe+9974AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.2448765188" RealAddress="00D97864"/>
+      <VariableType>Float</VariableType>
+      <Address>nfs.exe+997864</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1116" RealAddress="0357EF38"/>
+      <VariableType>Float</VariableType>
+      <Address>0357EF38</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"No description"</Description>
+      <LastState Value="5.403168967E-35" RealAddress="068FA420"/>
+      <VariableType>Float</VariableType>
+      <Address>068FA420</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"No description"</Description>
+      <LastState Value="5.403371005E-35" RealAddress="068FA580"/>
+      <VariableType>Float</VariableType>
+      <Address>068FA580</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"No description"</Description>
+      <LastState Value="5.403472024E-35" RealAddress="068FA630"/>
+      <VariableType>Float</VariableType>
+      <Address>068FA630</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"No description"</Description>
+      <LastState Value="200" RealAddress="06A60BB0"/>
+      <VariableType>Float</VariableType>
+      <Address>06A60BB0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" RealAddress="1059071C"/>
+      <VariableType>Float</VariableType>
+      <Address>1059071C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" RealAddress="1091071C"/>
+      <VariableType>Float</VariableType>
+      <Address>1091071C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.9921875" RealAddress="1689754C"/>
+      <VariableType>Float</VariableType>
+      <Address>1689754C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"No description"</Description>
+      <LastState Value="212.3283997" RealAddress="1689E62C"/>
+      <VariableType>Float</VariableType>
+      <Address>1689E62C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.1960784346" RealAddress="1689ECB4"/>
+      <VariableType>Float</VariableType>
+      <Address>1689ECB4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.1960784346" RealAddress="1689EFD4"/>
+      <VariableType>Float</VariableType>
+      <Address>1689EFD4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"No description"</Description>
+      <LastState Value="572.1326904" RealAddress="1689FCD8"/>
+      <VariableType>Float</VariableType>
+      <Address>1689FCD8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.9921875" RealAddress="16949E2C"/>
+      <VariableType>Float</VariableType>
+      <Address>16949E2C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"No description"</Description>
+      <LastState Value="212.3283997" RealAddress="16950F0C"/>
+      <VariableType>Float</VariableType>
+      <Address>16950F0C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.984375" RealAddress="16950F2C"/>
+      <VariableType>Float</VariableType>
+      <Address>16950F2C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.1960784346" RealAddress="16951594"/>
+      <VariableType>Float</VariableType>
+      <Address>16951594</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.1960784346" RealAddress="169518B4"/>
+      <VariableType>Float</VariableType>
+      <Address>169518B4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"No description"</Description>
+      <LastState Value="572.1326904" RealAddress="169525B8"/>
+      <VariableType>Float</VariableType>
+      <Address>169525B8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.9921875" RealAddress="169FBF0C"/>
+      <VariableType>Float</VariableType>
+      <Address>169FBF0C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"No description"</Description>
+      <LastState Value="212.3283997" RealAddress="16A02FEC"/>
+      <VariableType>Float</VariableType>
+      <Address>16A02FEC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.1960784346" RealAddress="16A03674"/>
+      <VariableType>Float</VariableType>
+      <Address>16A03674</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.1960784346" RealAddress="16A03994"/>
+      <VariableType>Float</VariableType>
+      <Address>16A03994</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"No description"</Description>
+      <LastState Value="572.1326904" RealAddress="16A04698"/>
+      <VariableType>Float</VariableType>
+      <Address>16A04698</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"No description"</Description>
+      <LastState Value="61.94955826" RealAddress="1A166D8C"/>
+      <VariableType>Float</VariableType>
+      <Address>1A166D8C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>28</ID>
+      <Description>"No description"</Description>
+      <LastState Value="200" RealAddress="1CF37EC0"/>
+      <VariableType>Float</VariableType>
+      <Address>1CF37EC0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"No description"</Description>
+      <LastState Value="200" RealAddress="1CF37F74"/>
+      <VariableType>Float</VariableType>
+      <Address>1CF37F74</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>30</ID>
+      <Description>"No description"</Description>
+      <LastState Value="200" RealAddress="1CF38028"/>
+      <VariableType>Float</VariableType>
+      <Address>1CF38028</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"No description"</Description>
+      <LastState Value="200" RealAddress="1CF380DC"/>
+      <VariableType>Float</VariableType>
+      <Address>1CF380DC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" RealAddress="1F2316F4"/>
+      <VariableType>Float</VariableType>
+      <Address>1F2316F4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.10946697" RealAddress="2C33E144"/>
+      <VariableType>Float</VariableType>
+      <Address>2C33E144</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>34</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0.06228470057" RealAddress="366FB4F8"/>
+      <VariableType>Float</VariableType>
+      <Address>366FB4F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1.18488121" RealAddress="36701514"/>
+      <VariableType>Float</VariableType>
+      <Address>36701514</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"No description"</Description>
+      <LastState Value="1" RealAddress="36701CC0"/>
+      <VariableType>Float</VariableType>
+      <Address>36701CC0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"No description"</Description>
+      <LastState Value="0" RealAddress="36723894"/>
+      <VariableType>Float</VariableType>
+      <Address>36723894</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"No description"</Description>
+      <LastState Value="5.726362689E-29" RealAddress="367CF380"/>
+      <VariableType>Float</VariableType>
+      <Address>367CF380</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov [esi+00000084],edi (Gear no code)</Description>
+      <AddressString>nfs.exe+2FFFCF</AddressString>
+      <Before>
+        <Byte>8E</Byte>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>BE</Byte>
+        <Byte>84</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>54</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
