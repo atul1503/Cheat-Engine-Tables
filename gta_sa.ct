@@ -2,45 +2,52 @@
 <CheatTable CheatEngineTableVersion="38">
   <CheatEntries>
     <CheatEntry>
-      <ID>163</ID>
-      <Description>"STATIC LOC"</Description>
-      <Options moHideChildren="1"/>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0</Address>
+      <ID>262</ID>
+      <Description>"MAIN"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>159</ID>
-          <Description>"SPEED 1"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+68</Address>
+          <ID>163</ID>
+          <Description>"STATIC LOC"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>159</ID>
+              <Description>"SPEED 1"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+68</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>160</ID>
+              <Description>"SPEED 2"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+68+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>161</ID>
+              <Description>"SPEED 3"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+84</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>162</ID>
+              <Description>"ACCELERATION"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+7c</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>160</ID>
-          <Description>"SPEED 2"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+68+4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>161</ID>
-          <Description>"SPEED 3"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+84</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>162</ID>
-          <Description>"ACCELERATION"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+7c</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>223</ID>
-      <Description>"TELEPORTER"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : gta_sa.exe
+          <ID>223</ID>
+          <Description>"TELEPORTER"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
   Date   : 2020-08-03
   Author : atult
@@ -214,56 +221,56 @@ dealloc(newmem)
 "gta_sa.exe"+86EC2: E8 C9 F2 FF FF        -  call gta_sa.exe+86190
 }
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>224</ID>
-          <Description>"KEY"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>key</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>49</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>0</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>50</Key>
-              </Keys>
-              <Value>2</Value>
-              <ID>1</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>51</Key>
-              </Keys>
-              <Value>3</Value>
-              <ID>2</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>52</Key>
-              </Keys>
-              <Value>4</Value>
-              <ID>3</ID>
-            </Hotkey>
-          </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>224</ID>
+              <Description>"KEY"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>key</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>49</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>50</Key>
+                  </Keys>
+                  <Value>2</Value>
+                  <ID>1</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>51</Key>
+                  </Keys>
+                  <Value>3</Value>
+                  <ID>2</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>52</Key>
+                  </Keys>
+                  <Value>4</Value>
+                  <ID>3</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>233</ID>
-      <Description>"AERIAL CARS"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+        <CheatEntry>
+          <ID>233</ID>
+          <Description>"BOATS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 
 aobscanmodule(CAR_pter,gta_sa.exe,8B 86 F8 04 00 00 E9) // should be unique
 alloc(newmem,$1000)
@@ -297,177 +304,318 @@ dealloc(newmem)
 
 
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>135</ID>
-          <Description>"CAR LOCKED STATE"</Description>
-          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[crpa]+4f8</Address>
           <CheatEntries>
             <CheatEntry>
-              <ID>136</ID>
-              <Description>"CAR HEALTH"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-38</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>73</Key>
-                  </Keys>
-                  <Value>(CAR HEALTH)*2.0</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>137</ID>
-              <Description>"X SPEED"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>2</ID>
-                </Hotkey>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>66</Key>
-                  </Keys>
-                  <Value>(X SPEED)*2</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>138</ID>
-              <Description>"Y SPEED"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>66</Key>
-                  </Keys>
-                  <Value>(Y SPEED)*2</Value>
-                  <ID>0</ID>
-                </Hotkey>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>2</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>139</ID>
-              <Description>"Z SPEED"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Increase Value</Action>
-                  <Keys>
-                    <Key>87</Key>
-                  </Keys>
-                  <Value>0.1</Value>
-                  <ID>0</ID>
-                </Hotkey>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>1</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>164</ID>
-              <Description>"MASS"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-46c</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>165</ID>
-              <Description>"TURN MASS"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-46c+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>166</ID>
-              <Description>"GRIP"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-46c+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>140</ID>
-              <Description>"HOR FLIP"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8+4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>16</Key>
-                  </Keys>
-                  <Value>0.1</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>142</ID>
-              <Description>"HOR ROTATE"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8+4+8</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>82</Key>
-                  </Keys>
-                  <Value>0.8</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>150</ID>
-              <Description>"DRAG"</Description>
-              <VariableType>Float</VariableType>
-              <Address>-460</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>158</ID>
-              <Description>"STATIC LOC PTR"</Description>
-              <ShowAsHex>1</ShowAsHex>
+              <ID>135</ID>
+              <Description>"CAR LOCKED STATE"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="1" RealAddress="0D7267C8"/>
+              <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>-174</Address>
+              <Address>[crpa]+4f8</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>136</ID>
+                  <Description>"CAR HEALTH"</Description>
+                  <LastState Value="1000" RealAddress="0D726790"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-38</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>73</Key>
+                      </Keys>
+                      <Value>(CAR HEALTH)*2.0</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>137</ID>
+                  <Description>"X SPEED"</Description>
+                  <LastState Value="-0.2330633253" RealAddress="0D726314"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>66</Key>
+                      </Keys>
+                      <Value>(X SPEED)*2</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>138</ID>
+                  <Description>"Y SPEED"</Description>
+                  <LastState Value="-0.003220876912" RealAddress="0D726318"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>66</Key>
+                      </Keys>
+                      <Value>(Y SPEED)*2</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>139</ID>
+                  <Description>"Z SPEED"</Description>
+                  <LastState Value="0" RealAddress="0D72631C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+8</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Increase Value</Action>
+                      <Keys>
+                        <Key>87</Key>
+                      </Keys>
+                      <Value>0.1</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>164</ID>
+                  <Description>"MASS"</Description>
+                  <LastState Value="1600" RealAddress="0D72635C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-46c</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>165</ID>
+                  <Description>"TURN MASS"</Description>
+                  <LastState Value="3000" RealAddress="0D726360"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-46c+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>166</ID>
+                  <Description>"GRIP"</Description>
+                  <LastState Value="1" RealAddress="0D726364"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-46c+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>140</ID>
+                  <Description>"HOR FLIP"</Description>
+                  <LastState Value="0" RealAddress="0D726320"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+8+4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>16</Key>
+                      </Keys>
+                      <Value>0.1</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>142</ID>
+                  <Description>"HOR ROTATE"</Description>
+                  <LastState Value="0" RealAddress="0D726328"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+8+4+8</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>82</Key>
+                      </Keys>
+                      <Value>0.8</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>150</ID>
+                  <Description>"DRAG"</Description>
+                  <LastState Value="0.001099999994" RealAddress="0D726368"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-460</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>158</ID>
+                  <Description>"STATIC LOC PTR"</Description>
+                  <LastState Value="00C3131C" RealAddress="0D726654"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>-174</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>263</ID>
+                  <Description>"Gear System 3"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
+
+if synataxcheck then return end
+
+[ENABLE]
+
+local mul=1.1
+local climb_mul=3
+local gearMul=3
+local rangeShifter=0.3
+local Top_Speed=0.1
+local reverse_speed=0.2
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+local speedZString='Z SPEED road'
+
+--Instructions
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
+--climb_mul is the power for climbing mountains(the higher the stronger).Avoid this in normal driving conditions.
+--rangeShifter is the multiplier by which the range will be added to calculate the new top speed.
+--reverse_speed is the constant speed at which the vehicle will travel in the reverse direction at the time of activation of reverser hotkey.
+--Up is the initial top speed
+--In this,range is adjusted by constants.
+--Gear is increased by W and decreased by S
+--When trying to use this script in a game just adjust speedStrings , Top_Speed and rangeShifter depending on the game.
+
+
+local TempUp=Top_Speed
+local temp_mul=mul
+local rflag=false
+local dirx=0
+local diry=0
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+r=((x.Value^2)+(y.Value^2))^0.5
+if tempUp&gt;0 then
+	if r&lt;=tempUp then
+      if r*mul&lt;=tempUp then
+        if speedUp then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+        end
+      else
+        if speedUp then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+        end
+      end
+    else
+      if (r/gearMul)&gt;=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+      end
+	end
+else
+	if rflag==false then
+	    rflag=true
+		dirx=(x.Value/r)*(-1)
+		diry=(y.Value/r)*(-1)
+	end
+	  x.Value=dirx*reverse_speed
+	  y.Value=diry*reverse_speed
+	end
+end
+
+
+normal=createHotkey(function()
+adjustSpeed(x,y,TempUp,true)
+end,0x26) --UP key
+
+
+up=createHotkey(function()
+TempUp=TempUp+rangeShifter
+adjustSpeed(x,y,TempUp,false)
+end,0x57) --W
+
+down=createHotkey(function()
+TempUp=TempUp-rangeShifter
+adjustSpeed(x,y,TempUp,false)
+end,0x53) --S
+
+reset=createHotkey(function()
+TempUp=Top_Speed
+rflag=false
+adjustSpeed(x,y,TempUp,false)
+end,0x20) --SPACE
+
+
+mulInc=createHotkey(function()
+mul=climb_mul
+end,0x45) --E
+
+mulDec=createHotkey(function()
+mul=temp_mul
+end,0x44) --D
+
+reverser=createHotkey(function()
+TempUp=-1
+adjustSpeed(x,y,TempUp,false)
+end,0x52)
+
+
+[DISABLE]
+normal.destroy()
+up.destroy()
+down.destroy()
+reset.destroy()
+mulInc.destroy()
+mulDec.destroy()
+reverser.destroy()
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>234</ID>
-      <Description>"ROAD CARS"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Activated="1"/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+        <CheatEntry>
+          <ID>234</ID>
+          <Description>"ROAD CARS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 
 aobscanmodule(CAR_pter,gta_sa.exe,8B 86 F8 04 00 00 E9) // should be unique
 alloc(newmem,$1000)
@@ -500,158 +648,158 @@ dealloc(crp)
 dealloc(newmem)
 
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>235</ID>
-          <Description>"CAR LOCKED STATE"</Description>
-          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="1" RealAddress="0D81B4E0"/>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[crp]+4f8</Address>
           <CheatEntries>
             <CheatEntry>
-              <ID>236</ID>
-              <Description>"CAR HEALTH"</Description>
-              <LastState Value="91457872" RealAddress="0D81B4A8"/>
-              <VariableType>Float</VariableType>
-              <Address>-38</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>73</Key>
-                  </Keys>
-                  <Value>(CAR HEALTH)*2.0</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>237</ID>
-              <Description>"X SPEED road"</Description>
-              <LastState Value="0" RealAddress="0D81B02C"/>
-              <VariableType>Float</VariableType>
-              <Address>-4b4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>238</ID>
-              <Description>"Y SPEED road"</Description>
-              <LastState Value="0" RealAddress="0D81B030"/>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>2</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>239</ID>
-              <Description>"Z SPEED road"</Description>
-              <LastState Value="0.006762680598" RealAddress="0D81B034"/>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Increase Value</Action>
-                  <Keys>
-                    <Key>71</Key>
-                  </Keys>
-                  <Value>0.15</Value>
-                  <ID>0</ID>
-                </Hotkey>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>70</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>1</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>240</ID>
-              <Description>"MASS"</Description>
-              <LastState Value="100" RealAddress="0D81B074"/>
-              <VariableType>Float</VariableType>
-              <Address>-46c</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>241</ID>
-              <Description>"TURN MASS"</Description>
-              <LastState Value="39" RealAddress="0D81B078"/>
-              <VariableType>Float</VariableType>
-              <Address>-46c+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>242</ID>
-              <Description>"GRIP"</Description>
-              <LastState Value="1" RealAddress="0D81B07C"/>
-              <VariableType>Float</VariableType>
-              <Address>-46c+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>243</ID>
-              <Description>"HOR FLIP"</Description>
-              <LastState Value="0.1000000015" RealAddress="0D81B038"/>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8+4</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>16</Key>
-                  </Keys>
-                  <Value>0.1</Value>
-                  <ID>0</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>244</ID>
-              <Description>"HOR ROTATE road"</Description>
-              <LastState Value="-0.01641836949" RealAddress="0D81B040"/>
-              <VariableType>Float</VariableType>
-              <Address>-4b4+8+4+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>245</ID>
-              <Description>"DRAG"</Description>
-              <LastState Value="0.003500000108" RealAddress="0D81B080"/>
-              <VariableType>Float</VariableType>
-              <Address>-460</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>246</ID>
-              <Description>"STATIC LOC PTR"</Description>
-              <LastState Value="00C34F7C" RealAddress="0D81B36C"/>
-              <ShowAsHex>1</ShowAsHex>
+              <ID>235</ID>
+              <Description>"CAR LOCKED STATE"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="1" RealAddress="0D734FF0"/>
+              <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>-174</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>257</ID>
-              <Description>"Speeder"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
+              <Address>[crp]+4f8</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>236</ID>
+                  <Description>"CAR HEALTH"</Description>
+                  <LastState Value="1000" RealAddress="0D734FB8"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-38</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>73</Key>
+                      </Keys>
+                      <Value>(CAR HEALTH)*2.0</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>237</ID>
+                  <Description>"X SPEED road"</Description>
+                  <LastState Value="0" RealAddress="0D734B3C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>238</ID>
+                  <Description>"Y SPEED road"</Description>
+                  <LastState Value="0" RealAddress="0D734B40"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>239</ID>
+                  <Description>"Z SPEED road"</Description>
+                  <LastState Value="0" RealAddress="0D734B44"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+8</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Increase Value</Action>
+                      <Keys>
+                        <Key>71</Key>
+                      </Keys>
+                      <Value>0.15</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>70</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>240</ID>
+                  <Description>"MASS"</Description>
+                  <LastState Value="1300" RealAddress="0D734B84"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-46c</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>241</ID>
+                  <Description>"TURN MASS"</Description>
+                  <LastState Value="2200" RealAddress="0D734B88"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-46c+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>242</ID>
+                  <Description>"GRIP"</Description>
+                  <LastState Value="1" RealAddress="0D734B8C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-46c+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>243</ID>
+                  <Description>"HOR FLIP"</Description>
+                  <LastState Value="0" RealAddress="0D734B48"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+8+4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>16</Key>
+                      </Keys>
+                      <Value>0.1</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>244</ID>
+                  <Description>"HOR ROTATE road"</Description>
+                  <LastState Value="0" RealAddress="0D734B50"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-4b4+8+4+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>245</ID>
+                  <Description>"DRAG"</Description>
+                  <LastState Value="0.0008500000113" RealAddress="0D734B90"/>
+                  <VariableType>Float</VariableType>
+                  <Address>-460</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>246</ID>
+                  <Description>"STATIC LOC PTR"</Description>
+                  <LastState Value="00C2BABC" RealAddress="0D734E7C"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>-174</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>257</ID>
+                  <Description>"Speeder"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -672,13 +820,13 @@ end,0x26)
 
 hk1.destroy()
 </AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>256</ID>
-              <Description>"Gear System"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>256</ID>
+                  <Description>"Gear System"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -795,13 +943,13 @@ hk3.destroy()
 hk6.destroy()
 hk7.destroy()
 </AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>258</ID>
-              <Description>"Gear System 2"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>258</ID>
+                  <Description>"Gear System 2"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
 
 if synataxcheck then return end
 
@@ -921,23 +1069,24 @@ hk6.destroy()
 hk7.destroy()
 stop.destroy()
 </AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>261</ID>
-              <Description>"Gear System 3"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>261</ID>
+                  <Description>"Gear System 3"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
 
 if synataxcheck then return end
 
 [ENABLE]
 
-local mul=3
-local jerk=1.5
+local mul=1.1
+local climb_mul=3
 local gearMul=3
 local rangeShifter=0.3
 local Top_Speed=0.1
+local reverse_speed=0.2
 local speedXString='X SPEED road'
 local speedYString='Y SPEED road'
 local speedZString='Z SPEED road'
@@ -945,14 +1094,20 @@ local speedZString='Z SPEED road'
 --Instructions
 --mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
 --gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
---jerk is the multiplier/divider for mul.Increasing mul results in higher power and decreasing mul results in lower power.
---rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
+--climb_mul is the power for climbing mountains(the higher the stronger).Avoid this in normal driving conditions.
+--rangeShifter is the multiplier by which the range will be added to calculate the new top speed.
+--reverse_speed is the constant speed at which the vehicle will travel in the reverse direction at the time of activation of reverser hotkey.
 --Up is the initial top speed
 --In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
 --When trying to use this script in a game just adjust speedStrings , Top_Speed and rangeShifter depending on the game.
 
+
 local TempUp=Top_Speed
+local temp_mul=mul
+local rflag=false
+local dirx=0
+local diry=0
 
 
 t=getAddressList()
@@ -962,8 +1117,8 @@ z=t.getMemoryRecordByDescription(speedZString)
 
 
 function adjustSpeed(x,y,tempUp,speedUp)
-  if tempUp&gt;=Top_Speed then
-	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+if tempUp&gt;0 then
 	if r&lt;=tempUp then
       if r*mul&lt;=tempUp then
         if speedUp then
@@ -990,19 +1145,16 @@ function adjustSpeed(x,y,tempUp,speedUp)
         y.Value=y.Value*ratio
         z.Value=z.Value*ratio
       end
-    end
-  else
-    x.Value=x.Value*(-1)
-	y.Value=y.Value*(-1)
-	z.Value=z.Value*(-1)
-	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
-	gear=(r-Top_Speed)/rangeShifter
-	if (gear*100)%100~=0 then
-	  TempUp=Top_Speed+(gear+1)*rangeShifter
-	else
-	  TempUp=Top_Speed+(gear)*rangeShifter
-    end
-  end
+	end
+else
+	if rflag==false then
+	    rflag=true
+		dirx=(x.Value/r)*(-1)
+		diry=(y.Value/r)*(-1)
+	end
+	  x.Value=dirx*reverse_speed
+	  y.Value=diry*reverse_speed
+	end
 end
 
 
@@ -1023,23 +1175,23 @@ end,0x53) --S
 
 reset=createHotkey(function()
 TempUp=Top_Speed
+rflag=false
 adjustSpeed(x,y,TempUp,false)
 end,0x20) --SPACE
 
 
-reverser=createHotkey(function()
-TempUp=-1
-adjustSpeed(x,y,TempUp,false)
-end,0x52)  --R
-
 mulInc=createHotkey(function()
-mul=mul*jerk
+mul=climb_mul
 end,0x45) --E
 
 mulDec=createHotkey(function()
-mul=mul/jerk
+mul=temp_mul
 end,0x44) --D
 
+reverser=createHotkey(function()
+TempUp=-1
+adjustSpeed(x,y,TempUp,false)
+end,0x52)
 
 
 [DISABLE]
@@ -1047,17 +1199,17 @@ normal.destroy()
 up.destroy()
 down.destroy()
 reset.destroy()
-reverser.destroy()
 mulInc.destroy()
 mulDec.destroy()
+reverser.destroy()
 </AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>260</ID>
-              <Description>"Breaker"</Description>
-              <LastState Activated="1"/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>260</ID>
+                  <Description>"Breaker"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
 
 if syntaxcheck then return end
 
@@ -1082,18 +1234,18 @@ breaker.destroy()
 
 
 </AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>198</ID>
-      <Description>"CJ LOCATION AND SPEEDER"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : gta_sa.exe
+        <CheatEntry>
+          <ID>198</ID>
+          <Description>"CJ LOCATION AND SPEEDER"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
   Date   : 2020-08-03
   Author : atult
@@ -1192,74 +1344,74 @@ dealloc(newmem)
 "gta_sa.exe"+86EC2: E8 C9 F2 FF FF        -  call gta_sa.exe+86190
 }
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>199</ID>
-          <Description>"X"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[loc]</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>199</ID>
+              <Description>"X"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[loc]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>200</ID>
+              <Description>"Y"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[loc]+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>202</ID>
+              <Description>"Z"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[loc]+8</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Increase Value</Action>
+                  <Keys>
+                    <Key>66</Key>
+                  </Keys>
+                  <Value>15</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Decrease Value</Action>
+                  <Keys>
+                    <Key>78</Key>
+                  </Keys>
+                  <Value>15</Value>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>226</ID>
+              <Description>"HTKEY"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>htkey</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>87</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>227</ID>
+              <Description>"AMP"</Description>
+              <VariableType>Float</VariableType>
+              <Address>amp</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>200</ID>
-          <Description>"Y"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[loc]+4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>202</ID>
-          <Description>"Z"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[loc]+8</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Increase Value</Action>
-              <Keys>
-                <Key>66</Key>
-              </Keys>
-              <Value>15</Value>
-              <ID>0</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Decrease Value</Action>
-              <Keys>
-                <Key>78</Key>
-              </Keys>
-              <Value>15</Value>
-              <ID>1</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>226</ID>
-          <Description>"HTKEY"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>htkey</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>87</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>227</ID>
-          <Description>"AMP"</Description>
-          <VariableType>Float</VariableType>
-          <Address>amp</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>204</ID>
-      <Description>"CAR SPEED"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : gta_sa.exe
+          <ID>204</ID>
+          <Description>"CAR SPEED"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
   Date   : 2020-08-07
   Author : atult
@@ -1382,101 +1534,101 @@ dealloc(newmem)
 "gta_sa.exe"+13D5A1: 89 54 24 14        -  mov [esp+14],edx
 }
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>205</ID>
-          <Description>"FLAG"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>flag</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>38</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>0</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>87</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>1</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>83</Key>
-              </Keys>
-              <Value>2</Value>
-              <ID>2</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>40</Key>
-              </Keys>
-              <Value>2</Value>
-              <ID>3</ID>
-            </Hotkey>
-          </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>205</ID>
+              <Description>"FLAG"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>flag</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>38</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>87</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>1</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>83</Key>
+                  </Keys>
+                  <Value>2</Value>
+                  <ID>2</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>40</Key>
+                  </Keys>
+                  <Value>2</Value>
+                  <ID>3</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>206</ID>
+              <Description>"MULTIPLIER"</Description>
+              <VariableType>Float</VariableType>
+              <Address>multi</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>207</ID>
+              <Description>"X"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[ref]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>208</ID>
+              <Description>"Y"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[ref]+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>209</ID>
+              <Description>"Z"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[ref]+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>219</ID>
+              <Description>"FLIP"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[ref]+8+8</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>16</Key>
+                  </Keys>
+                  <Value>0.1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>210</ID>
+              <Description>"HEALTH"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[ref]+47c</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>206</ID>
-          <Description>"MULTIPLIER"</Description>
-          <VariableType>Float</VariableType>
-          <Address>multi</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>207</ID>
-          <Description>"X"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[ref]</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>208</ID>
-          <Description>"Y"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[ref]+4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>209</ID>
-          <Description>"Z"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[ref]+8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>219</ID>
-          <Description>"FLIP"</Description>
-          <VariableType>Float</VariableType>
-          <Address>[ref]+8+8</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>16</Key>
-              </Keys>
-              <Value>0.1</Value>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>210</ID>
-          <Description>"HEALTH"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[ref]+47c</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>218</ID>
-      <Description>"OHK(with armour)"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : gta_sa.exe
+          <ID>218</ID>
+          <Description>"OHK(with armour)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
   Date   : 2020-08-08
   Author : atult
@@ -1548,13 +1700,13 @@ dealloc(newmem)
 "gta_sa.exe"+33AE0F: 84 C0                             -  test al,al
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>222</ID>
-      <Description>"CAR FAST EXPLOSION"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : gta_sa.exe
+        </CheatEntry>
+        <CheatEntry>
+          <ID>222</ID>
+          <Description>"CAR FAST EXPLOSION"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
   Date   : 2020-08-12
   Author : atult
@@ -1619,14 +1771,14 @@ dealloc(newmem)
 "gta_sa.exe"+2D88C2: 83 F8 01              -  cmp eax,01
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>230</ID>
-      <Description>"SUPER JUMP"</Description>
-      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+        </CheatEntry>
+        <CheatEntry>
+          <ID>230</ID>
+          <Description>"SUPER JUMP"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 {$lua}
 
 if syntaxcheck then return end
@@ -1659,8 +1811,8 @@ registersymbol(super_jump)
 
 local multi=0.22
 local multiSpeeder=1.5
-local zBoost=0.5
-local zDownSpeed=0.012
+local zBoost=0.2
+local zDownSpeed=0.006
 local deg=10
 local y=0
 local x=0
@@ -1727,14 +1879,14 @@ dealloc(newmem)
 hk.destroy()
 
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>252</ID>
-      <Description>"SPEEDER "</Description>
-      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+        </CheatEntry>
+        <CheatEntry>
+          <ID>252</ID>
+          <Description>"SPEEDER "</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 
 aobscanmodule(super_jump1,gta_sa.exe,8B 08 8B 50 04 8B 40 08 8B 3D) // should be unique
 alloc(newmem,$150)
@@ -1766,49 +1918,49 @@ dealloc(speed_ptr1)
 dealloc(newmem)
 
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>253</ID>
-          <Description>"cj x"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[speed_ptr1]</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>66</Key>
-              </Keys>
-              <Value>(cj x)*4</Value>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>253</ID>
+              <Description>"cj x"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[speed_ptr1]</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>66</Key>
+                  </Keys>
+                  <Value>(cj x)*4</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>254</ID>
+              <Description>"cj y"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[speed_ptr1]+4</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>66</Key>
+                  </Keys>
+                  <Value>(cj y)*4</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>254</ID>
-          <Description>"cj y"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[speed_ptr1]+4</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>66</Key>
-              </Keys>
-              <Value>(cj y)*4</Value>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>259</ID>
-      <Description>"Super Jumper 2"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+          <ID>259</ID>
+          <Description>"Super Jumper 2"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 {$lua}
 
 if syntaxcheck then return end
@@ -1910,6 +2062,144 @@ dealloc(newmem)
 hk.destroy()
 
 </AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>264</ID>
+          <Description>"Super Jumper 3"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+--This is the super jump with turn
+
+{$asm}
+
+aobscanmodule(super_jump,gta_sa.exe,8B 08 8B 50 04 8B 40 08 8B 3D) // should be unique
+alloc(newmem,$150)
+alloc(speed_ptr,4)
+label(code)
+label(return)
+
+newmem:
+mov [speed_ptr],eax
+code:
+  mov ecx,[eax]
+  mov edx,[eax+04]
+  jmp return
+
+
+super_jump:
+  jmp newmem
+return:
+registersymbol(speed_ptr)
+registersymbol(super_jump)
+
+{$lua}
+
+--zDownSpeed=0.012 is gravity defying for gta san andreas.
+
+
+local multi=0.12
+local multiSpeeder=1.5
+local zUpSpeed=0.05
+local zDownSpeed=-0.025
+local deg=10
+local stopKey=0x53
+local slowKey=0x28
+local fastKey=0x26
+local xaddr="[speed_ptr]"
+local yaddr="[speed_ptr]+4"
+local zaddr="[speed_ptr]+8"
+
+function fwdSpeedModifier(speed,multiplier)
+if isKeyPressed(slowKey) then
+speed=speed/multiplier
+keyUp(slowKey)
+end
+if isKeyPressed(fastKey) then
+speed=speed*multiplier
+keyUp(fastKey)
+end
+return speed
+end
+
+
+hk=createHotkey(function()
+local multi=multi
+writeFloat("[speed_ptr]+4fc",100000.0)
+writeFloat("[speed_ptr]+504",100000.0)
+while(readFloat(xaddr)==0 and readFloat(yaddr)==0 and not isKeyPressed(stopKey)) do end
+keyUp(stopKey)
+x=readFloat(xaddr)
+y=readFloat(yaddr)
+r=((x^2)+(y^2))^0.5
+xdir=x/r
+ydir=y/r
+while not isKeyPressed(stopKey) do
+x=xdir*multi
+y=ydir*multi
+if isKeyPressed(0x25) then
+angle=math.rad(deg)
+xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
+ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
+keyUp(0x25)
+end
+if isKeyPressed(0x27) then
+angle=-math.rad(deg)
+xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
+ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
+keyUp(0x27)
+end
+writeFloat(xaddr,x)
+writeFloat(yaddr,y)
+writeFloat(zaddr,zUpSpeed)
+multi=fwdSpeedModifier(multi,multiSpeeder)
+end
+keyUp(stopKey)
+while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
+x=xdir*multi
+y=ydir*multi
+if isKeyPressed(0x25) then
+angle=math.rad(deg)
+xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
+ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
+keyUp(0x25)
+end
+if isKeyPressed(0x27) then
+angle=-math.rad(deg)
+xdir=xdir*math.cos(angle)-ydir*math.sin(angle)
+ydir=xdir*math.sin(angle)+ydir*math.cos(angle)
+keyUp(0x27)
+end
+writeFloat(xaddr,x)
+writeFloat(yaddr,y)
+writeFloat(zaddr,zDownSpeed)
+multi=fwdSpeedModifier(multi,multiSpeeder)
+end
+keyUp(stopKey)
+end,VK_CONTROL)
+
+
+{$asm}
+
+[DISABLE]
+
+super_jump:
+  db 8B 08 8B 50 04
+unregistersymbol(speed_ptr)
+unregistersymbol(super_jump)
+dealloc(speed_ptr)
+dealloc(newmem)
+
+{$lua}
+hk.destroy()
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3463,6 +3753,29 @@ hk.destroy()
         <Byte>24</Byte>
         <Byte>20</Byte>
         <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [eax+34],edx (time bomb location ref)</Description>
+      <AddressString>gta_sa.exe+19ADB1</AddressString>
+      <Before>
+        <Byte>50</Byte>
+        <Byte>30</Byte>
+        <Byte>8B</Byte>
+        <Byte>51</Byte>
+        <Byte>34</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>50</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>49</Byte>
+        <Byte>38</Byte>
+        <Byte>50</Byte>
+        <Byte>89</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
