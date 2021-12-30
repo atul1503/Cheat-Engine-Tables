@@ -18,7 +18,7 @@
         <CheatEntry>
           <ID>40</ID>
           <Description>"BALL SWING INST"</Description>
-          <LastState Value="3368747753" RealAddress="005434F9"/>
+          <LastState Value="47749593" RealAddress="005434F9"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005434F9</Address>
         </CheatEntry>
@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="4" RealAddress="009C5AC4"/>
+          <LastState Value="3" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -773,145 +773,6 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>78</ID>
-      <Description>"BALL MOVEMENT SCRIPT"</Description>
-      <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(newmem,$300)
-alloc(ball,4)
-label(code)
-label(return)
-registersymbol(ball)
-newmem:
-
-code:
-mov [ball],ecx
-  fstp dword ptr [ecx+000002D8]
-  jmp return
-
-movement:
-  jmp newmem
-  nop
-return:
-registersymbol(movement)
-
-{$lua}
-
-
---z=speedup x,y,z
---a=swing right
---d=swing left
---x=slow x,y,z
---k=hard bouncer
---l=low bouncer
-
---pr=sleep time
---multi=multiplier for x,y,z
---slow=slow for multiplier
---bouncerMultiplier=bouncer strength
---smal=swing
-
-
-
-
-local pr=0
-local multi=1.3
-local slow=0.8
-local bouncerMultiplier=1.5
-local smal=0.6
-local speedx,speedy,speedz
-
-
-hk2=createHotkey(function()
-                           speedx=readFloat("[ball]+2d8")
-                      speedy=readFloat("[ball]+2dc")
-                      speedz=readFloat("[ball]+2e0")
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*multi
-                      speedy=speedy*multi
-                      speedz=speedz*multi
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedy)
-                      writeFloat("[ball]+2e0",speedz)
-                      end
-                      end,0x5A)
-hk3=createHotkey(function()
-                           sleep(pr)
-                      speedx=readFloat("[ball]+2d8")
-                      if (readFloat("[ball]+2d8")) then
-                      speedx=speedx+smal
-                      writeFloat("[ball]+2d8",speedx)
-                      end
-                      end,0x41)
-hk4=createHotkey(function()
-                           sleep(pr)
-                      speedx=readFloat("[ball]+2d8")
-                      if (readFloat("[ball]+2d8")) then
-                      speedx=speedx-smal
-                      writeFloat("[ball]+2d8",speedx)
-                      end
-                      end,0x44)
-hk5=createHotkey(function()
-                           speedx=readFloat("[ball]+2d8")
-                      speedy=readFloat("[ball]+2dc")
-                      speedz=readFloat("[ball]+2e0")
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*slow
-                      speedy=speedy*slow
-                      speedz=speedz*slow
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedy)
-                      writeFloat("[ball]+2e0",speedz)
-                      end
-                      end,0x58)
-
-hk6=createHotkey(function()
-                           sleep(pr)
-                      speedz=readFloat("[ball]+2dc")
-                      if (readFloat("[ball]+2dc")) then
-                      speedz=speedz*bouncerMultiplier
-                      writeFloat("[ball]+2dc",speedz)
-                      end
-                      end,0x4B)
-
-hk7=createHotkey(function()
-                           sleep(pr)
-                      speedz=readFloat("[ball]+2dc")
-                      if (speedz) then
-                      speedz=speedz*(1/bouncerMultiplier)
-                      writeFloat("[ball]+2dc",speedz)
-                      end
-                      end,0x4C)
-
-
-
-{$asm}
-
-[DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-unregistersymbol(ball)
-unregistersymbol(movement)
-dealloc(ball)
-dealloc(newmem)
-
-{$lua}
-
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
-hk6.destroy()
-hk7.destroy()
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
       <ID>86</ID>
       <Description>"BALL ROTATION FINDER SCRIPT"</Description>
       <Options moAlwaysHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
@@ -1110,9 +971,9 @@ hk2.destroy()
     </CheatEntry>
     <CheatEntry>
       <ID>97</ID>
-      <Description>"BALL DOUBLE MOVEMENT SCRIPT"</Description>
+      <Description>"BALL MOVEMENT SCRIPT"</Description>
       <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -1142,11 +1003,15 @@ registersymbol(movement)
 --pos is the swing in positive direction.It should always be positive.
 --neg is the swing in negative direction.It should always be negative.
 --moves is the number of times to swing.
+--This script can be used to simulate actual swing movement of real cricket games.
+--If you want to make the ball swing in a particular direction continuously then set the pos or neg to some no. and then set its counterpart to zero,For example set pos=0.3 and neg=0 and then set moves to some high no. like 20 and set sleep to some low value like 20.
+--IF you want double swing then just set both pos and neg to some non-zero value and adjust the sleep variable.
+--Have fun!
 
-local pr=150
-local pos=0.6
-local neg=-0.8
-local moves=4
+local sleep_time=20
+local pos=0.3
+local neg=-0
+local moves=20
 
 
 function DubMover(change)
@@ -1166,7 +1031,7 @@ hk1=createHotkey(function()
 						else
 						  DubMover(neg)
 						end
-						sleep(pr)
+						sleep(sleep_time)
 						count=count+1
 					  end
                       end,0x41) --A
