@@ -268,7 +268,7 @@ dealloc(newmem)
           <ID>233</ID>
           <Description>"BOATS"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -309,7 +309,7 @@ dealloc(newmem)
               <ID>135</ID>
               <Description>"CAR LOCKED STATE"</Description>
               <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <LastState Value="1" RealAddress="0D7267C8"/>
+              <LastState Value="1" RealAddress="0D70C2A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
               <Address>[crpa]+4f8</Address>
@@ -317,7 +317,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>136</ID>
                   <Description>"CAR HEALTH"</Description>
-                  <LastState Value="1000" RealAddress="0D726790"/>
+                  <LastState Value="1000" RealAddress="0D70C268"/>
                   <VariableType>Float</VariableType>
                   <Address>-38</Address>
                   <Hotkeys>
@@ -333,8 +333,8 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>137</ID>
-                  <Description>"X SPEED"</Description>
-                  <LastState Value="-0.2330633253" RealAddress="0D726314"/>
+                  <Description>"X SPEED water"</Description>
+                  <LastState Value="0" RealAddress="0D70BDEC"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4</Address>
                   <Hotkeys>
@@ -358,8 +358,8 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>138</ID>
-                  <Description>"Y SPEED"</Description>
-                  <LastState Value="-0.003220876912" RealAddress="0D726318"/>
+                  <Description>"Y SPEED water"</Description>
+                  <LastState Value="0" RealAddress="0D70BDF0"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+4</Address>
                   <Hotkeys>
@@ -383,8 +383,8 @@ dealloc(newmem)
                 </CheatEntry>
                 <CheatEntry>
                   <ID>139</ID>
-                  <Description>"Z SPEED"</Description>
-                  <LastState Value="0" RealAddress="0D72631C"/>
+                  <Description>"Z SPEED water"</Description>
+                  <LastState Value="0.6000000238" RealAddress="0D70BDF4"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8</Address>
                   <Hotkeys>
@@ -409,28 +409,28 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>164</ID>
                   <Description>"MASS"</Description>
-                  <LastState Value="1600" RealAddress="0D72635C"/>
+                  <LastState Value="1900" RealAddress="0D70BE34"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>165</ID>
                   <Description>"TURN MASS"</Description>
-                  <LastState Value="3000" RealAddress="0D726360"/>
+                  <LastState Value="4795.899902" RealAddress="0D70BE38"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>166</ID>
                   <Description>"GRIP"</Description>
-                  <LastState Value="1" RealAddress="0D726364"/>
+                  <LastState Value="1" RealAddress="0D70BE3C"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>140</ID>
                   <Description>"HOR FLIP"</Description>
-                  <LastState Value="0" RealAddress="0D726320"/>
+                  <LastState Value="0.002768671373" RealAddress="0D70BDF8"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8+4</Address>
                   <Hotkeys>
@@ -447,7 +447,7 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>142</ID>
                   <Description>"HOR ROTATE"</Description>
-                  <LastState Value="0" RealAddress="0D726328"/>
+                  <LastState Value="0.8000000119" RealAddress="0D70BE00"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8+4+8</Address>
                   <Hotkeys>
@@ -464,14 +464,14 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>150</ID>
                   <Description>"DRAG"</Description>
-                  <LastState Value="0.001099999994" RealAddress="0D726368"/>
+                  <LastState Value="0.009999999776" RealAddress="0D70BE40"/>
                   <VariableType>Float</VariableType>
                   <Address>-460</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>158</ID>
                   <Description>"STATIC LOC PTR"</Description>
-                  <LastState Value="00C3131C" RealAddress="0D726654"/>
+                  <LastState Value="00C35D7C" RealAddress="0D70C12C"/>
                   <ShowAsHex>1</ShowAsHex>
                   <VariableType>4 Bytes</VariableType>
                   <Address>-174</Address>
@@ -493,9 +493,9 @@ local gearMul=3
 local rangeShifter=0.3
 local Top_Speed=0.1
 local reverse_speed=0.2
-local speedXString='X SPEED road'
-local speedYString='Y SPEED road'
-local speedZString='Z SPEED road'
+local speedXString='X SPEED water'
+local speedYString='Y SPEED water'
+local speedZString='Z SPEED water'
 
 --Instructions
 --mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
@@ -653,7 +653,6 @@ dealloc(newmem)
               <ID>235</ID>
               <Description>"CAR LOCKED STATE"</Description>
               <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <LastState Value="1" RealAddress="0D734FF0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
               <Address>[crp]+4f8</Address>
@@ -661,7 +660,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>236</ID>
                   <Description>"CAR HEALTH"</Description>
-                  <LastState Value="1000" RealAddress="0D734FB8"/>
                   <VariableType>Float</VariableType>
                   <Address>-38</Address>
                   <Hotkeys>
@@ -678,7 +676,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>237</ID>
                   <Description>"X SPEED road"</Description>
-                  <LastState Value="0" RealAddress="0D734B3C"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4</Address>
                   <Hotkeys>
@@ -695,7 +692,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>238</ID>
                   <Description>"Y SPEED road"</Description>
-                  <LastState Value="0" RealAddress="0D734B40"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+4</Address>
                   <Hotkeys>
@@ -712,7 +708,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>239</ID>
                   <Description>"Z SPEED road"</Description>
-                  <LastState Value="0" RealAddress="0D734B44"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8</Address>
                   <Hotkeys>
@@ -737,28 +732,24 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>240</ID>
                   <Description>"MASS"</Description>
-                  <LastState Value="1300" RealAddress="0D734B84"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>241</ID>
                   <Description>"TURN MASS"</Description>
-                  <LastState Value="2200" RealAddress="0D734B88"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>242</ID>
                   <Description>"GRIP"</Description>
-                  <LastState Value="1" RealAddress="0D734B8C"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>243</ID>
                   <Description>"HOR FLIP"</Description>
-                  <LastState Value="0" RealAddress="0D734B48"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8+4</Address>
                   <Hotkeys>
@@ -775,21 +766,18 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>244</ID>
                   <Description>"HOR ROTATE road"</Description>
-                  <LastState Value="0" RealAddress="0D734B50"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8+4+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>245</ID>
                   <Description>"DRAG"</Description>
-                  <LastState Value="0.0008500000113" RealAddress="0D734B90"/>
                   <VariableType>Float</VariableType>
                   <Address>-460</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>246</ID>
                   <Description>"STATIC LOC PTR"</Description>
-                  <LastState Value="00C2BABC" RealAddress="0D734E7C"/>
                   <ShowAsHex>1</ShowAsHex>
                   <VariableType>4 Bytes</VariableType>
                   <Address>-174</Address>
@@ -2066,7 +2054,7 @@ hk.destroy()
         <CheatEntry>
           <ID>264</ID>
           <Description>"Super Jumper 3"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 {$lua}
