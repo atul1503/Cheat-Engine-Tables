@@ -18,7 +18,7 @@
         <CheatEntry>
           <ID>40</ID>
           <Description>"BALL SWING INST"</Description>
-          <LastState Value="3351970537" RealAddress="005434F9"/>
+          <LastState Value="47749593" RealAddress="005434F9"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005434F9</Address>
         </CheatEntry>
@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="0" RealAddress="009C5AC4"/>
+          <LastState Value="1" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -973,7 +973,7 @@ hk2.destroy()
       <ID>97</ID>
       <Description>"BALL MOVEMENT SCRIPT"</Description>
       <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -1007,14 +1007,15 @@ registersymbol(movement)
 --If you want to make the ball swing in a particular direction continuously then set the pos or neg to some no. and then set its counterpart to zero,For example set pos=0.3 and neg=0 and then setswing_moves to some high no. like 20 and set sleep to some low value like 20.
 --Signs have to be put manually while setting the value of variables for pos,neg,upSpeed,downSpeed.
 --IF you want double swing then just set both pos and neg to some non-zero value and adjust the sleep variable.
+--Total time for swing should not be more than 750 milliseconds
 --Have fun!
 
-local sleep_time=30
-local pos=0.1
-local neg=-0.1
-local upSpeed=1
-local downSpeed=-1
-local swing_moves=10
+local sleep_time=150
+local pos=0.7
+local neg=-0.7
+local upSpeed=2
+local downSpeed=-2
+local swing_moves=5
 local bounce_moves=1
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
@@ -1057,7 +1058,11 @@ both=createHotkey(function()
 					    if count%2==0 then
 						  Mover(pos,LineAddr)
 						else
-						  Mover(neg,LineAddr)
+                          if count==1 then
+                            Mover(1.5*neg,LineAddr)
+                          else
+						    Mover(neg,LineAddr)
+                          end
 						end
 						sleep(sleep_time)
 						count=count+1
