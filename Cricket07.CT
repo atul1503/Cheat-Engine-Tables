@@ -919,8 +919,7 @@ registersymbol(movement)
 {$lua}
 local dub=1.4
 
-
-hk1=createHotkey(function()
+function Stroker()
                            sleep(500)
                       speedx=readFloat("[ball]+2d8")
                       speedy=readFloat("[ball]+2dc")
@@ -933,23 +932,12 @@ hk1=createHotkey(function()
                       writeFloat("[ball]+2dc",speedy)
                       writeFloat("[ball]+2e0",speedz)
                       end
-                      end,0x53)
+                      end --Function ends here
 
 
-hk2=createHotkey(function()
-                           sleep(500)
-                      speedx=readFloat("[ball]+2d8")
-                      speedy=readFloat("[ball]+2dc")
-                      speedz=readFloat("[ball]+2e0")
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*dub
-                      speedy=speedy*dub
-                      speedz=speedz*dub
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedy)
-                      writeFloat("[ball]+2e0",speedz)
-                      end
-                      end,0x57)
+hk1=createHotkey(Stroker,0x53)
+
+hk2=createHotkey(Stroker,0x57)
 
 {$asm}
 
@@ -1010,12 +998,15 @@ registersymbol(movement)
 --Total time for swing should not be more than 750 milliseconds
 --Have fun!
 
-local sleep_time=150
-local pos=0.7
-local neg=-0.7
+local sleep_time=75
+local multi_swing_sleep=100
+local pos=0.2
+local neg=-0.2
+local multi_pos=2
+local multi_neg=-2
 local upSpeed=2
 local downSpeed=-2
-local swing_moves=5
+local swing_moves=6
 local bounce_moves=1
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
@@ -1056,15 +1047,15 @@ both=createHotkey(function()
                       local count=0
 					  while count&lt;swing_moves do
 					    if count%2==0 then
-						  Mover(pos,LineAddr)
+						  Mover(multi_pos,LineAddr)
 						else
                           if count==1 then
-                            Mover(1.5*neg,LineAddr)
+                            Mover(multi_neg*1.5,LineAddr)
                           else
-						    Mover(neg,LineAddr)
+                            Mover(multi_neg,LineAddr)
                           end
 						end
-						sleep(sleep_time)
+						sleep(multi_swing_sleep)
 						count=count+1
 					  end
                       end,0x57) --W
