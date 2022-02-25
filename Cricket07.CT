@@ -18,7 +18,7 @@
         <CheatEntry>
           <ID>40</ID>
           <Description>"BALL SWING INST"</Description>
-          <LastState Value="47749593" RealAddress="005434F9"/>
+          <LastState Value="3368747753" RealAddress="005434F9"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005434F9</Address>
         </CheatEntry>
@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="0" RealAddress="009C5AC4"/>
+          <LastState Value="3" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -971,7 +971,7 @@ hk2.destroy()
       <ID>97</ID>
       <Description>"BALL MOVEMENT SCRIPT"</Description>
       <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 
@@ -1008,8 +1008,8 @@ registersymbol(movement)
 
 local sleep_time=50
 local multi_swing_sleep=50
-local pos=0.3
-local neg=-0.3
+local pos=0.2
+local neg=-0.2
 local multi_pos=0.7
 local multi_neg=-0.7
 local upSpeed=2
