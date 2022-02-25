@@ -1000,35 +1000,29 @@ registersymbol(movement)
 --pr means sleep time between different directions swings.
 --pos is the swing in positive direction.It should always be positive.
 --neg is the swing in negative direction.It should always be negative.
---moves is the number of times to swing.
 --This script can be used to simulate actual swing movement of real cricket games.
 --If you want to make the ball swing in a particular direction continuously then set the pos or neg to some no. and then set its counterpart to zero,For example set pos=0.3 and neg=0 and then setswing_moves to some high no. like 20 and set sleep to some low value like 20.
 --Signs have to be put manually while setting the value of variables for pos,neg,upSpeed,downSpeed.
 --IF you want double swing then just set both pos and neg to some non-zero value and adjust the sleep variable.
---Total time for swing should not be more than 750 milliseconds
 --Have fun!
 
-local sleep_time=100
-local multi_swing_sleep=100
+local sleep_time=50
+local multi_swing_sleep=50
 local pos=0.3
 local neg=-0.3
-local multi_pos=2
-local multi_neg=-2
+local multi_pos=0.7
+local multi_neg=-0.7
 local upSpeed=2
 local downSpeed=-2
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
 local literalLengthAddr="[ball]+2c8"
-local pitchLength=6
+local pitchLength=7
 
 
-function isBallInPitch(init)
+function isBallInPitch()
 local currLoc=readFloat(literalLengthAddr)
-  if init&lt;currLoc then
-    if currLoc&lt;pitchLength then return true else return false end
-  else
-    if currLoc&gt;(-pitchLength) then return true else  return false end
-  end
+if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength then return true else return false end
 end
 
 
@@ -1044,8 +1038,7 @@ function Mover(change,addr)
 
 
 left=createHotkey(function()
-                      local initBallLengthCoord=readFloat(literalLengthAddr)
-					  while isBallInPitch(initBallLengthCoord) do
+					  while isBallInPitch() do
 					    Mover(pos,LineAddr)
 						sleep(sleep_time)
 					  end
@@ -1054,8 +1047,7 @@ left=createHotkey(function()
 
 
 right=createHotkey(function()
-                      local initBallLengthCoord=readFloat(literalLengthAddr)
-					  while isBallInPitch(initBallLengthCoord) do
+					  while isBallInPitch() do
 					    Mover(neg,LineAddr)
 						sleep(sleep_time)
 					  end
@@ -1064,8 +1056,7 @@ right=createHotkey(function()
 
 both=createHotkey(function()
                       local count=0
-                      local initBallLengthCoord=readFloat(literalLengthAddr)
-					  while isBallInPitch(initBallLengthCoord) do
+					  while isBallInPitch() do
 					    if count%2==0 then
 						  Mover(multi_pos,LineAddr)
 						else
@@ -1077,8 +1068,7 @@ both=createHotkey(function()
                       end,0x57) --W
 
 up=createHotkey(function()
- local initBallLengthCoord=readFloat(literalLengthAddr)
- while isBallInPitch(initBallLengthCoord) do
+ while isBallInPitch() do
  Mover(upSpeed,LengthAddr)
  sleep(sleep_time)
  end
@@ -1086,8 +1076,7 @@ end,0x5A) --Z
 
 
 down=createHotkey(function()
- local initBallLengthCoord=readFloat(literalLengthAddr)
- while isBallInPitch(initBallLengthCoord) do
+ while isBallInPitch() do
  Mover(downSpeed,LengthAddr)
  sleep(sleep_time)
  end
