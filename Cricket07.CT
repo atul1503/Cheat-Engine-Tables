@@ -18,7 +18,7 @@
         <CheatEntry>
           <ID>40</ID>
           <Description>"BALL SWING INST"</Description>
-          <LastState Value="3368747753" RealAddress="005434F9"/>
+          <LastState Value="3351970537" RealAddress="005434F9"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005434F9</Address>
         </CheatEntry>
@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="3" RealAddress="009C5AC4"/>
+          <LastState Value="4" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -823,6 +823,8 @@ sleep(tr)
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
                       end,0x51)  --Q
+
+
 hk2=createHotkey(function()
 sleep(tr)
                       turn=readFloat("[rot]+10")
@@ -1004,20 +1006,24 @@ registersymbol(movement)
 --If you want to make the ball swing in a particular direction continuously then set the pos or neg to some no. and then set its counterpart to zero,For example set pos=0.3 and neg=0 and then setswing_moves to some high no. like 20 and set sleep to some low value like 20.
 --Signs have to be put manually while setting the value of variables for pos,neg,upSpeed,downSpeed.
 --IF you want double swing then just set both pos and neg to some non-zero value and adjust the sleep variable.
+--Before using the hotkeys wait for 1 ball so that all ball speeds can be identified by script.
+--If LazyAction is true then just after setting the ball pitch location ,in game, you can press the desired hotkey which will allow the swing to happen only when ball is in the pitch.
 --Have fun!
 
 local sleep_time=50
 local multi_swing_sleep=50
-local pos=0.2
-local neg=-0.2
+local pos=0.15
+local neg=-0.15
 local multi_pos=0.7
 local multi_neg=-0.7
 local upSpeed=2
 local downSpeed=-2
+local LazyAction=true
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
 local literalLengthAddr="[ball]+2c8"
 local pitchLength=7
+
 
 
 function isBallInPitch()
@@ -1038,6 +1044,7 @@ function Mover(change,addr)
 
 
 left=createHotkey(function()
+                      if LazyAction then while not isBallInPitch() do end end
 					  while isBallInPitch() do
 					    Mover(pos,LineAddr)
 						sleep(sleep_time)
@@ -1047,6 +1054,7 @@ left=createHotkey(function()
 
 
 right=createHotkey(function()
+                      if LazyAction then while not isBallInPitch() do end end
 					  while isBallInPitch() do
 					    Mover(neg,LineAddr)
 						sleep(sleep_time)
@@ -1056,6 +1064,7 @@ right=createHotkey(function()
 
 both=createHotkey(function()
                       local count=0
+                      if LazyAction then while not isBallInPitch() do end end
 					  while isBallInPitch() do
 					    if count%2==0 then
 						  Mover(multi_pos,LineAddr)
@@ -1066,6 +1075,7 @@ both=createHotkey(function()
 						count=count+1
 					  end
                       end,0x57) --W
+
 
 up=createHotkey(function()
  while isBallInPitch() do
@@ -3112,5 +3122,6 @@ down.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>+2c8</Comments>
+  <Comments>+2c8
+</Comments>
 </CheatTable>
