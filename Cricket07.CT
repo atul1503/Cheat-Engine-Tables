@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="1" RealAddress="009C5AC4"/>
+          <LastState Value="0" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -1012,14 +1012,25 @@ local sleep_time=100
 local multi_swing_sleep=100
 local pos=0.3
 local neg=-0.3
-local multi_pos=0.7
-local multi_neg=-0.7
+local multi_pos=2
+local multi_neg=-2
 local upSpeed=2
 local downSpeed=-2
-local swing_moves=6
-local bounce_moves=1
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
+local literalLengthAddr="[ball]+2c8"
+local pitchLength=6
+
+
+function isBallInPitch(init)
+local currLoc=readFloat(literalLengthAddr)
+  if init&lt;currLoc then
+    if currLoc&lt;pitchLength then return true else return false end
+  else
+    if currLoc&gt;(-pitchLength) then return true else  return false end
+  end
+end
+
 
 
 function Mover(change,addr)
@@ -1033,29 +1044,28 @@ function Mover(change,addr)
 
 
 left=createHotkey(function()
-                      local count=0
-					  while count&lt;swing_moves do
+                      local initBallLengthCoord=readFloat(literalLengthAddr)
+					  while isBallInPitch(initBallLengthCoord) do
 					    Mover(pos,LineAddr)
 						sleep(sleep_time)
-						count=count+1
 					  end
                       end,0x41) --A
 
 
 
 right=createHotkey(function()
-                      local count=0
-					  while count&lt;swing_moves do
+                      local initBallLengthCoord=readFloat(literalLengthAddr)
+					  while isBallInPitch(initBallLengthCoord) do
 					    Mover(neg,LineAddr)
 						sleep(sleep_time)
-						count=count+1
 					  end
                       end,0x44) --D
 
 
 both=createHotkey(function()
                       local count=0
-					  while count&lt;swing_moves do
+                      local initBallLengthCoord=readFloat(literalLengthAddr)
+					  while isBallInPitch(initBallLengthCoord) do
 					    if count%2==0 then
 						  Mover(multi_pos,LineAddr)
 						else
@@ -1067,21 +1077,19 @@ both=createHotkey(function()
                       end,0x57) --W
 
 up=createHotkey(function()
- local count=0
- while count&lt;bounce_moves do
+ local initBallLengthCoord=readFloat(literalLengthAddr)
+ while isBallInPitch(initBallLengthCoord) do
  Mover(upSpeed,LengthAddr)
  sleep(sleep_time)
- count=count+1
  end
 end,0x5A) --Z
 
 
 down=createHotkey(function()
- local count=0
- while count&lt;bounce_moves do
+ local initBallLengthCoord=readFloat(literalLengthAddr)
+ while isBallInPitch(initBallLengthCoord) do
  Mover(downSpeed,LengthAddr)
  sleep(sleep_time)
- count=count+1
  end
 end,0x58) --X
 
@@ -3115,7 +3123,5 @@ down.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>0.3 line
-5.2 length
-</Comments>
+  <Comments>+2c8</Comments>
 </CheatTable>
