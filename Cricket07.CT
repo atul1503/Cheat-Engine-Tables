@@ -18,7 +18,7 @@
         <CheatEntry>
           <ID>40</ID>
           <Description>"BALL SWING INST"</Description>
-          <LastState Value="3351970537" RealAddress="005434F9"/>
+          <LastState Value="1355481833" RealAddress="005434F9"/>
           <VariableType>4 Bytes</VariableType>
           <Address>005434F9</Address>
         </CheatEntry>
@@ -68,7 +68,7 @@
           <ID>150</ID>
           <Description>"Player Name Intial"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="77" RealAddress="009AE43C"/>
+          <LastState Value="71" RealAddress="009AE43C"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
           <Address>009AE43C</Address>
@@ -84,7 +84,7 @@
             <CheatEntry>
               <ID>152</ID>
               <Description>"Concentration"</Description>
-              <LastState Value="173" RealAddress="009AE49C"/>
+              <LastState Value="235" RealAddress="009AE49C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+60</Address>
@@ -100,7 +100,7 @@
             <CheatEntry>
               <ID>154</ID>
               <Description>"Attack and Defence"</Description>
-              <LastState Value="219" RealAddress="009AE49D"/>
+              <LastState Value="170" RealAddress="009AE49D"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+61</Address>
@@ -108,7 +108,7 @@
             <CheatEntry>
               <ID>155</ID>
               <Description>"Offside"</Description>
-              <LastState Value="186" RealAddress="009AE49E"/>
+              <LastState Value="182" RealAddress="009AE49E"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+62</Address>
@@ -116,7 +116,7 @@
             <CheatEntry>
               <ID>156</ID>
               <Description>"Legside"</Description>
-              <LastState Value="46" RealAddress="009AE49F"/>
+              <LastState Value="44" RealAddress="009AE49F"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+63</Address>
@@ -124,7 +124,7 @@
             <CheatEntry>
               <ID>157</ID>
               <Description>"Straight"</Description>
-              <LastState Value="109" RealAddress="009AE4A0"/>
+              <LastState Value="41" RealAddress="009AE4A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+64</Address>
@@ -132,7 +132,7 @@
             <CheatEntry>
               <ID>158</ID>
               <Description>"Frontfoot"</Description>
-              <LastState Value="251" RealAddress="009AE4A1"/>
+              <LastState Value="235" RealAddress="009AE4A1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+65</Address>
@@ -140,7 +140,7 @@
             <CheatEntry>
               <ID>159</ID>
               <Description>"Backfoot"</Description>
-              <LastState Value="194" RealAddress="009AE4A2"/>
+              <LastState Value="174" RealAddress="009AE4A2"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+66</Address>
@@ -148,7 +148,7 @@
             <CheatEntry>
               <ID>160</ID>
               <Description>"Discipline"</Description>
-              <LastState Value="149" RealAddress="009AE4AD"/>
+              <LastState Value="210" RealAddress="009AE4AD"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+71</Address>
@@ -156,7 +156,7 @@
             <CheatEntry>
               <ID>161</ID>
               <Description>"Seam and Accuracy"</Description>
-              <LastState Value="125" RealAddress="009AE4AE"/>
+              <LastState Value="48" RealAddress="009AE4AE"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+72</Address>
@@ -164,7 +164,7 @@
             <CheatEntry>
               <ID>162</ID>
               <Description>"Bouncer"</Description>
-              <LastState Value="31" RealAddress="009AE4AF"/>
+              <LastState Value="13" RealAddress="009AE4AF"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+73</Address>
@@ -172,7 +172,7 @@
             <CheatEntry>
               <ID>163</ID>
               <Description>"Slow ball"</Description>
-              <LastState Value="223" RealAddress="009AE4B0"/>
+              <LastState Value="206" RealAddress="009AE4B0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+74</Address>
@@ -180,7 +180,7 @@
             <CheatEntry>
               <ID>164</ID>
               <Description>"Inswing"</Description>
-              <LastState Value="223" RealAddress="009AE4B4"/>
+              <LastState Value="15" RealAddress="009AE4B4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+78</Address>
@@ -188,7 +188,7 @@
             <CheatEntry>
               <ID>165</ID>
               <Description>"Outswing"</Description>
-              <LastState Value="7" RealAddress="009AE4B5"/>
+              <LastState Value="20" RealAddress="009AE4B5"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+79</Address>
@@ -204,7 +204,7 @@
             <CheatEntry>
               <ID>149</ID>
               <Description>"No description"</Description>
-              <LastState Value="46" RealAddress="009AE49F"/>
+              <LastState Value="44" RealAddress="009AE49F"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+63</Address>
@@ -212,7 +212,7 @@
             <CheatEntry>
               <ID>148</ID>
               <Description>"No description"</Description>
-              <LastState Value="109" RealAddress="009AE4A0"/>
+              <LastState Value="41" RealAddress="009AE4A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+64</Address>
@@ -220,7 +220,7 @@
             <CheatEntry>
               <ID>147</ID>
               <Description>"No description"</Description>
-              <LastState Value="251" RealAddress="009AE4A1"/>
+              <LastState Value="235" RealAddress="009AE4A1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+65</Address>
@@ -228,7 +228,7 @@
             <CheatEntry>
               <ID>140</ID>
               <Description>"No description"</Description>
-              <LastState Value="194" RealAddress="009AE4A2"/>
+              <LastState Value="174" RealAddress="009AE4A2"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+66</Address>
@@ -236,7 +236,7 @@
             <CheatEntry>
               <ID>141</ID>
               <Description>"No description"</Description>
-              <LastState Value="46" RealAddress="009AE4A3"/>
+              <LastState Value="45" RealAddress="009AE4A3"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+67</Address>
@@ -244,7 +244,7 @@
             <CheatEntry>
               <ID>142</ID>
               <Description>"No description"</Description>
-              <LastState Value="194" RealAddress="009AE4A2"/>
+              <LastState Value="174" RealAddress="009AE4A2"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+66</Address>
@@ -252,7 +252,7 @@
             <CheatEntry>
               <ID>143</ID>
               <Description>"No description"</Description>
-              <LastState Value="46" RealAddress="009AE4A3"/>
+              <LastState Value="45" RealAddress="009AE4A3"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+67</Address>
@@ -260,7 +260,7 @@
             <CheatEntry>
               <ID>144</ID>
               <Description>"No description"</Description>
-              <LastState Value="174" RealAddress="009AE4A4"/>
+              <LastState Value="107" RealAddress="009AE4A4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+68</Address>
@@ -276,7 +276,7 @@
             <CheatEntry>
               <ID>146</ID>
               <Description>"No description"</Description>
-              <LastState Value="213" RealAddress="009AE4AC"/>
+              <LastState Value="200" RealAddress="009AE4AC"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Byte</VariableType>
               <Address>+70</Address>
@@ -1012,14 +1012,14 @@ registersymbol(movement)
 
 local sleep_time=50
 local multi_swing_sleep=50
-local pos=0.15
-local neg=-0.15
+local pos=0.3
+local neg=-0.3
 local multi_pos=0.7
 local multi_neg=-0.7
 local upSpeed=2
 local downSpeed=-2
 local bounceMoves=1
-local LazyAction=false
+local LazyAction=true
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
 local literalLengthAddr="[ball]+2c8"
@@ -1029,9 +1029,16 @@ local pitchLength=7
 
 function isBallInPitch()
 local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return false end
 if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength then return true else return false end
 end
 
+
+function waitForRunUpComplete()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return end
+if LazyAction then while not isBallInPitch() do end end
+end
 
 
 function Mover(change,addr)
@@ -1045,7 +1052,7 @@ function Mover(change,addr)
 
 
 left=createHotkey(function()
-                      if LazyAction then while not isBallInPitch() do end end
+                      waitForRunUpComplete()
 					  while isBallInPitch() do
 					    Mover(pos,LineAddr)
 						sleep(sleep_time)
@@ -1055,7 +1062,7 @@ left=createHotkey(function()
 
 
 right=createHotkey(function()
-                      if LazyAction then while not isBallInPitch() do end end
+                      waitForRunUpComplete()
 					  while isBallInPitch() do
 					    Mover(neg,LineAddr)
 						sleep(sleep_time)
@@ -1065,7 +1072,7 @@ right=createHotkey(function()
 
 both=createHotkey(function()
                       local count=0
-                      if LazyAction then while not isBallInPitch() do end end
+                      waitForRunUpComplete()
 					  while isBallInPitch() do
 					    if count%2==0 then
 						  Mover(multi_pos,LineAddr)
