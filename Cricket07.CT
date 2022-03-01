@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="262149" RealAddress="009C5AC4"/>
+          <LastState Value="0" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -301,7 +301,7 @@
           <AssemblerScript>[ENABLE]
 
 aobscanmodule(spin,Cricket07.exe,D9 5D 10 83 C4 14) // should be unique
-alloc(newmem,$300)
+alloc(newmem,100)
 alloc(rot,4)
 label(code)
 label(return)
@@ -426,7 +426,7 @@ hk6.destroy()
           <AssemblerScript>[ENABLE]
 
 aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(newmem,$180)
+alloc(newmem,$100)
 alloc(ball,4)
 label(code)
 label(return)
@@ -498,7 +498,7 @@ hk2.destroy()
           <AssemblerScript>[ENABLE]
 
 aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(newmem,$300)
+alloc(newmem,100)
 alloc(ball,4)
 label(code)
 label(return)
@@ -654,8 +654,8 @@ down.destroy()
           <AssemblerScript>[ENABLE]
 
 aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(ballmem,100)
-alloc(flagmem,100)
+alloc(ballmem,20)
+alloc(flagmem,20)
 alloc(ball,4)
 alloc(flag,4)
 registersymbol(ball)
@@ -688,7 +688,7 @@ nop 3
 
 
 {$lua}
-local dub=1.3
+local dub=1.5
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
 local speedYString="[ball]+2e0"
@@ -744,146 +744,25 @@ hk2.destroy()
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>66</ID>
-      <Description>"BALL ROTATION"</Description>
-      <Options moHideChildren="1"/>
-      <VariableType>Float</VariableType>
-      <Address>0</Address>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>81</Key>
-          </Keys>
-          <Value>400</Value>
-          <ID>0</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>69</Key>
-          </Keys>
-          <Value>-400</Value>
-          <ID>1</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>70</Key>
-          </Keys>
-          <Value>0</Value>
-          <ID>2</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>90</Key>
-          </Keys>
-          <Value>200</Value>
-          <ID>3</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>88</Key>
-          </Keys>
-          <Value>-200</Value>
-          <ID>4</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>78</Key>
-          </Keys>
-          <Value>3000</Value>
-          <ID>5</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>77</Key>
-          </Keys>
-          <Value>3000</Value>
-          <ID>6</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>75</Key>
-          </Keys>
-          <Value>300</Value>
-          <ID>7</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>76</Key>
-          </Keys>
-          <Value>300</Value>
-          <ID>8</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>79</Key>
-          </Keys>
-          <Value>150</Value>
-          <ID>9</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>80</Key>
-          </Keys>
-          <Value>100</Value>
-          <ID>10</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>84</Key>
-          </Keys>
-          <Value>300</Value>
-          <ID>11</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>89</Key>
-          </Keys>
-          <Value>300</Value>
-          <ID>12</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>85</Key>
-          </Keys>
-          <Value>150</Value>
-          <ID>13</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>73</Key>
-          </Keys>
-          <Value>150</Value>
-          <ID>14</ID>
-        </Hotkey>
-      </Hotkeys>
+      <ID>175</ID>
+      <Description>"Hotkey Setups"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>69</ID>
-          <Description>"SPIN HELPER"</Description>
+          <ID>66</ID>
+          <Description>"BALL ROTATION"</Description>
+          <Options moHideChildren="1"/>
           <VariableType>Float</VariableType>
-          <Address>-4</Address>
+          <Address>0</Address>
           <Hotkeys>
             <Hotkey>
               <Action>Set Value</Action>
               <Keys>
                 <Key>81</Key>
               </Keys>
-              <Value>1</Value>
+              <Value>400</Value>
               <ID>0</ID>
             </Hotkey>
             <Hotkey>
@@ -891,315 +770,397 @@ hk2.destroy()
               <Keys>
                 <Key>69</Key>
               </Keys>
-              <Value>1</Value>
+              <Value>-400</Value>
               <ID>1</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>70</Key>
+              </Keys>
+              <Value>0</Value>
+              <ID>2</ID>
             </Hotkey>
             <Hotkey>
               <Action>Set Value</Action>
               <Keys>
                 <Key>90</Key>
               </Keys>
-              <Value>1</Value>
-              <ID>2</ID>
+              <Value>200</Value>
+              <ID>3</ID>
             </Hotkey>
             <Hotkey>
               <Action>Set Value</Action>
               <Keys>
                 <Key>88</Key>
               </Keys>
-              <Value>1</Value>
+              <Value>-200</Value>
+              <ID>4</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>78</Key>
+              </Keys>
+              <Value>3000</Value>
+              <ID>5</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>77</Key>
+              </Keys>
+              <Value>3000</Value>
+              <ID>6</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>75</Key>
+              </Keys>
+              <Value>300</Value>
+              <ID>7</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>76</Key>
+              </Keys>
+              <Value>300</Value>
+              <ID>8</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>79</Key>
+              </Keys>
+              <Value>150</Value>
+              <ID>9</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>80</Key>
+              </Keys>
+              <Value>100</Value>
+              <ID>10</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>84</Key>
+              </Keys>
+              <Value>300</Value>
+              <ID>11</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>89</Key>
+              </Keys>
+              <Value>300</Value>
+              <ID>12</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>85</Key>
+              </Keys>
+              <Value>150</Value>
+              <ID>13</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>73</Key>
+              </Keys>
+              <Value>150</Value>
+              <ID>14</ID>
+            </Hotkey>
+          </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"SPIN HELPER"</Description>
+              <VariableType>Float</VariableType>
+              <Address>-4</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>81</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>69</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>1</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>90</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>2</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>88</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>3</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>78</Key>
+                  </Keys>
+                  <Value>1e-13</Value>
+                  <ID>4</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>77</Key>
+                  </Keys>
+                  <Value>1e-13</Value>
+                  <ID>5</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>75</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>6</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>76</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>7</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>79</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>8</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>80</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>9</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>84</Key>
+                  </Keys>
+                  <Value>-1</Value>
+                  <ID>10</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>89</Key>
+                  </Keys>
+                  <Value>-1</Value>
+                  <ID>11</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>85</Key>
+                  </Keys>
+                  <Value>-1</Value>
+                  <ID>12</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>73</Key>
+                  </Keys>
+                  <Value>-1</Value>
+                  <ID>13</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>70</ID>
+              <Description>"SPEED HELPER"</Description>
+              <VariableType>Float</VariableType>
+              <Address>-c</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>78</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>77</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"SWING(BOWL)"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Float</VariableType>
+          <Address>0</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>81</Key>
+              </Keys>
+              <Value>0.7</Value>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>69</Key>
+              </Keys>
+              <Value>0.7</Value>
+              <ID>1</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Increase Value</Action>
+              <Keys>
+                <Key>90</Key>
+              </Keys>
+              <Value>0.35</Value>
+              <ID>2</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Decrease Value</Action>
+              <Keys>
+                <Key>88</Key>
+              </Keys>
+              <Value>0.35</Value>
               <ID>3</ID>
             </Hotkey>
             <Hotkey>
               <Action>Set Value</Action>
               <Keys>
-                <Key>78</Key>
+                <Key>70</Key>
               </Keys>
-              <Value>1e-13</Value>
+              <Value>0</Value>
               <ID>4</ID>
             </Hotkey>
             <Hotkey>
               <Action>Set Value</Action>
               <Keys>
-                <Key>77</Key>
+                <Key>71</Key>
               </Keys>
-              <Value>1e-13</Value>
+              <Value>0</Value>
               <ID>5</ID>
             </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>75</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>6</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>76</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>7</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>79</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>8</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>80</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>9</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>84</Key>
-              </Keys>
-              <Value>-1</Value>
-              <ID>10</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>89</Key>
-              </Keys>
-              <Value>-1</Value>
-              <ID>11</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>85</Key>
-              </Keys>
-              <Value>-1</Value>
-              <ID>12</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>73</Key>
-              </Keys>
-              <Value>-1</Value>
-              <ID>13</ID>
-            </Hotkey>
           </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>72</ID>
+              <Description>"HEIGHT"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Increase Value</Action>
+                  <Keys>
+                    <Key>79</Key>
+                  </Keys>
+                  <Value>2</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Decrease Value</Action>
+                  <Keys>
+                    <Key>80</Key>
+                  </Keys>
+                  <Value>2</Value>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>73</ID>
+              <Description>"SPEED"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Increase Value</Action>
+                  <Keys>
+                    <Key>78</Key>
+                  </Keys>
+                  <Value>20</Value>
+                  <ID>1</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Decrease Value</Action>
+                  <Keys>
+                    <Key>77</Key>
+                  </Keys>
+                  <Value>20</Value>
+                  <ID>2</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Increase Value</Action>
+                  <Keys>
+                    <Key>75</Key>
+                  </Keys>
+                  <Value>5</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Decrease Value</Action>
+                  <Keys>
+                    <Key>76</Key>
+                  </Keys>
+                  <Value>5</Value>
+                  <ID>3</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>70</ID>
-          <Description>"SPEED HELPER"</Description>
+          <ID>74</ID>
+          <Description>"SWING(BAT)"</Description>
+          <Options moHideChildren="1"/>
           <VariableType>Float</VariableType>
-          <Address>-c</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>78</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>0</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>77</Key>
-              </Keys>
-              <Value>1</Value>
-              <ID>1</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>71</ID>
-      <Description>"SWING(BOWL)"</Description>
-      <Options moHideChildren="1"/>
-      <VariableType>Float</VariableType>
-      <Address>0</Address>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>81</Key>
-          </Keys>
-          <Value>0.7</Value>
-          <ID>0</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>69</Key>
-          </Keys>
-          <Value>0.7</Value>
-          <ID>1</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Increase Value</Action>
-          <Keys>
-            <Key>90</Key>
-          </Keys>
-          <Value>0.35</Value>
-          <ID>2</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Decrease Value</Action>
-          <Keys>
-            <Key>88</Key>
-          </Keys>
-          <Value>0.35</Value>
-          <ID>3</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>70</Key>
-          </Keys>
-          <Value>0</Value>
-          <ID>4</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>71</Key>
-          </Keys>
-          <Value>0</Value>
-          <ID>5</ID>
-        </Hotkey>
-      </Hotkeys>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>72</ID>
-          <Description>"HEIGHT"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+4</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Increase Value</Action>
-              <Keys>
-                <Key>79</Key>
-              </Keys>
-              <Value>2</Value>
-              <ID>0</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Decrease Value</Action>
-              <Keys>
-                <Key>80</Key>
-              </Keys>
-              <Value>2</Value>
-              <ID>1</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>73</ID>
-          <Description>"SPEED"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+8</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Increase Value</Action>
-              <Keys>
-                <Key>78</Key>
-              </Keys>
-              <Value>20</Value>
-              <ID>1</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Decrease Value</Action>
-              <Keys>
-                <Key>77</Key>
-              </Keys>
-              <Value>20</Value>
-              <ID>2</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Increase Value</Action>
-              <Keys>
-                <Key>75</Key>
-              </Keys>
-              <Value>5</Value>
-              <ID>0</ID>
-            </Hotkey>
-            <Hotkey>
-              <Action>Decrease Value</Action>
-              <Keys>
-                <Key>76</Key>
-              </Keys>
-              <Value>5</Value>
-              <ID>3</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>74</ID>
-      <Description>"SWING(BAT)"</Description>
-      <Options moHideChildren="1"/>
-      <VariableType>Float</VariableType>
-      <Address>0</Address>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>69</Key>
-          </Keys>
-          <Value>20</Value>
-          <ID>0</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>82</Key>
-          </Keys>
-          <Value>20</Value>
-          <ID>1</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>84</Key>
-          </Keys>
-          <Value>-20</Value>
-          <ID>2</ID>
-        </Hotkey>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>89</Key>
-          </Keys>
-          <Value>-20</Value>
-          <ID>3</ID>
-        </Hotkey>
-      </Hotkeys>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>75</ID>
-          <Description>"HEIGHT"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>76</ID>
-          <Description>"SPEED"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+8</Address>
+          <Address>0</Address>
           <Hotkeys>
             <Hotkey>
               <Action>Set Value</Action>
               <Keys>
                 <Key>69</Key>
               </Keys>
-              <Value>-20</Value>
+              <Value>20</Value>
               <ID>0</ID>
             </Hotkey>
             <Hotkey>
@@ -1207,7 +1168,7 @@ hk2.destroy()
               <Keys>
                 <Key>82</Key>
               </Keys>
-              <Value>-20</Value>
+              <Value>20</Value>
               <ID>1</ID>
             </Hotkey>
             <Hotkey>
@@ -1215,7 +1176,7 @@ hk2.destroy()
               <Keys>
                 <Key>84</Key>
               </Keys>
-              <Value>20</Value>
+              <Value>-20</Value>
               <ID>2</ID>
             </Hotkey>
             <Hotkey>
@@ -1223,10 +1184,58 @@ hk2.destroy()
               <Keys>
                 <Key>89</Key>
               </Keys>
-              <Value>20</Value>
+              <Value>-20</Value>
               <ID>3</ID>
             </Hotkey>
           </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>75</ID>
+              <Description>"HEIGHT"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>76</ID>
+              <Description>"SPEED"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>69</Key>
+                  </Keys>
+                  <Value>-20</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>82</Key>
+                  </Keys>
+                  <Value>-20</Value>
+                  <ID>1</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>84</Key>
+                  </Keys>
+                  <Value>20</Value>
+                  <ID>2</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>89</Key>
+                  </Keys>
+                  <Value>20</Value>
+                  <ID>3</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
