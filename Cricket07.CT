@@ -46,7 +46,7 @@
         <CheatEntry>
           <ID>55</ID>
           <Description>"balls in this over"</Description>
-          <LastState Value="2" RealAddress="009C5AC4"/>
+          <LastState Value="5" RealAddress="009C5AC4"/>
           <VariableType>4 Bytes</VariableType>
           <Address>Cricket07.exe+5C5AC4</Address>
         </CheatEntry>
@@ -783,7 +783,7 @@ nop 3
 
 
 {$lua}
-local dub=1.5
+
 local degChange=30
 local currDeg=0
 local speedXString="[ball]+2d8"
@@ -861,6 +861,7 @@ WithS.destroy()
 WithD.destroy()
 IncreaseAngle.destroy()
 DecreaseAngle.destroy()
+neutralizer.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
