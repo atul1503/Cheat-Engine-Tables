@@ -14,7 +14,7 @@
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.7056970596" RealAddress="009386CC"/>
+          <LastState Value="-0.9062137604" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +22,7 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-2428.643799" RealAddress="009386D8"/>
+          <LastState Value="-1060.307129" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +48,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="150.6342621" RealAddress="009386DC"/>
+          <LastState Value="-933.0202637" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +87,7 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="1662.725464" RealAddress="009386E0"/>
+          <LastState Value="4114.196777" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +113,7 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="31.72542572" RealAddress="009386E8"/>
+          <LastState Value="-26.30306244" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +121,7 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="-0.2695696354" RealAddress="009386EC"/>
+          <LastState Value="0.1709073484" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,7 +153,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="0.1333083361" RealAddress="009386F0"/>
+          <LastState Value="-21.75503349" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
@@ -168,7 +168,7 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="0.002243795199" RealAddress="009386FC"/>
+          <LastState Value="-0.1350738257" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -251,7 +251,7 @@
           <ID>70</ID>
           <Description>"Top Speed - Red Line"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="11.35009766" RealAddress="0CF646D8"/>
+          <LastState Value="1.232421875" RealAddress="0CF646D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>0CF646D8</Address>
@@ -259,7 +259,7 @@
             <CheatEntry>
               <ID>71</ID>
               <Description>"Top Speed - Engine Top Speed"</Description>
-              <LastState Value="18.91894531" RealAddress="0CF646D4"/>
+              <LastState Value="0.00001163856632" RealAddress="0CF646D4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-4</Address>
@@ -267,7 +267,7 @@
             <CheatEntry>
               <ID>60</ID>
               <Description>"Torque 1"</Description>
-              <LastState Value="0.990234375" RealAddress="0CF64688"/>
+              <LastState Value="0.8944273591" RealAddress="0CF64688"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50</Address>
@@ -275,7 +275,7 @@
             <CheatEntry>
               <ID>61</ID>
               <Description>"Torque 2"</Description>
-              <LastState Value="-26.27685547" RealAddress="0CF6468C"/>
+              <LastState Value="-708.7686157" RealAddress="0CF6468C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+4</Address>
@@ -283,7 +283,7 @@
             <CheatEntry>
               <ID>62</ID>
               <Description>"Torque 3"</Description>
-              <LastState Value="11.35632324" RealAddress="0CF64690"/>
+              <LastState Value="2.12890625" RealAddress="0CF64690"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8</Address>
@@ -291,7 +291,7 @@
             <CheatEntry>
               <ID>63</ID>
               <Description>"Torque 4"</Description>
-              <LastState Value="5.01386261" RealAddress="0CF64694"/>
+              <LastState Value="0.9296875" RealAddress="0CF64694"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4</Address>
@@ -299,7 +299,7 @@
             <CheatEntry>
               <ID>64</ID>
               <Description>"Torque 5"</Description>
-              <LastState Value="0.0001382877235" RealAddress="0CF64698"/>
+              <LastState Value="-3.663696289" RealAddress="0CF64698"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4</Address>
@@ -307,7 +307,7 @@
             <CheatEntry>
               <ID>65</ID>
               <Description>"Torque 6"</Description>
-              <LastState Value="1" RealAddress="0CF6469C"/>
+              <LastState Value="12.17690277" RealAddress="0CF6469C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4</Address>
@@ -315,7 +315,7 @@
             <CheatEntry>
               <ID>66</ID>
               <Description>"Torque 7"</Description>
-              <LastState Value="0.00007184460264" RealAddress="0CF646A0"/>
+              <LastState Value="13.41567707" RealAddress="0CF646A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4</Address>
@@ -323,7 +323,7 @@
             <CheatEntry>
               <ID>67</ID>
               <Description>"Torque 8"</Description>
-              <LastState Value="-2.50207618E38" RealAddress="0CF646A4"/>
+              <LastState Value="-0.6935748458" RealAddress="0CF646A4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4</Address>
@@ -331,7 +331,7 @@
             <CheatEntry>
               <ID>68</ID>
               <Description>"Torque 9"</Description>
-              <LastState Value="6" RealAddress="0CF646A8"/>
+              <LastState Value="0.6513722539" RealAddress="0CF646A8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4+4</Address>
@@ -1842,27 +1842,74 @@ dealloc(newmem)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>38</ID>
+          <ID>115</ID>
           <Description>"Unlimited Nitrous"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+          <AssemblerScript>{ Game   : speed.exe
+  Version: 
+  Date   : 2022-03-01
+  Author : atult
 
-aobscanmodule(nitro,Speed.exe,D9 9E F8 00 00 00 E8) // should be unique
-registersymbol(nitro)
+  This script does blah blah blah
+}
 
-nitro:
-      db 90 90 90 90 90 90 E8
+[ENABLE]
+
+aobscanmodule(unlimnitro,speed.exe,D9 9E F8 00 00 00 E8) // should be unique
+alloc(newmem,100)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+   fstp st(0)
+   mov [esi+f8],(float)1.0
+  jmp return
+
+unlimnitro:
+  jmp newmem
+  nop
+return:
+registersymbol(unlimnitro)
 
 [DISABLE]
 
-nitro:
+unlimnitro:
   db D9 9E F8 00 00 00
 
-unregistersymbol(nitro)
+unregistersymbol(unlimnitro)
+dealloc(newmem)
 
+{
+// ORIGINAL CODE - INJECTION POINT: speed.exe+292B06
 
-
+speed.exe+292AE1: 8B 01                          - mov eax,[ecx]
+speed.exe+292AE3: FF 50 04                       - call dword ptr [eax+04]
+speed.exe+292AE6: D8 0D 68 10 89 00              - fmul dword ptr [speed.exe+491068]
+speed.exe+292AEC: D8 05 6C 09 89 00              - fadd dword ptr [speed.exe+49096C]
+speed.exe+292AF2: D8 4C 24 28                    - fmul dword ptr [esp+28]
+speed.exe+292AF6: D9 5C 24 28                    - fstp dword ptr [esp+28]
+speed.exe+292AFA: D9 86 F8 00 00 00              - fld dword ptr [esi+000000F8]
+speed.exe+292B00: 55                             - push ebp
+speed.exe+292B01: D8 64 24 2C                    - fsub dword ptr [esp+2C]
+speed.exe+292B05: 57                             - push edi
+// ---------- INJECTING HERE ----------
+speed.exe+292B06: D9 9E F8 00 00 00              - fstp dword ptr [esi+000000F8]
+// ---------- DONE INJECTING  ----------
+speed.exe+292B0C: E8 FF 90 FD FF                 - call speed.exe+26BC10
+speed.exe+292B11: D9 5C 24 20                    - fstp dword ptr [esp+20]
+speed.exe+292B15: 83 C4 08                       - add esp,08
+speed.exe+292B18: D9 86 F8 00 00 00              - fld dword ptr [esi+000000F8]
+speed.exe+292B1E: C7 86 00 01 00 00 00 00 80 3F  - mov [esi+00000100],3F800000
+speed.exe+292B28: D8 15 68 09 89 00              - fcom dword ptr [speed.exe+490968]
+speed.exe+292B2E: DF E0                          - fnstsw ax
+speed.exe+292B30: F6 C4 41                       - test ah,41
+speed.exe+292B33: 74 08                          - je speed.exe+292B3D
+speed.exe+292B35: DD D8                          - fstp st(0)
+}
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -4480,6 +4527,101 @@ mapper.destroy()
         <Byte>24</Byte>
         <Byte>08</Byte>
         <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi+7C] (rev pointer)</Description>
+      <AddressString>speed.exe+29421E</AddressString>
+      <Before>
+        <Byte>14</Byte>
+        <Byte>D8</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>7C</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5F</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [ecx+30] my rev ptr</Description>
+      <AddressString>speed.exe+2A3F20</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>41</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edi,[esi+38] my gear ptr</Description>
+      <AddressString>speed.exe+292656</AddressString>
+      <Before>
+        <Byte>8A</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+        <Byte>57</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>7E</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi+000000F8] nitro sub</Description>
+      <AddressString>speed.exe+292B06</AddressString>
+      <Before>
+        <Byte>D8</Byte>
+        <Byte>64</Byte>
+        <Byte>24</Byte>
+        <Byte>2C</Byte>
+        <Byte>57</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>F8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>FF</Byte>
+        <Byte>90</Byte>
+        <Byte>FD</Byte>
+        <Byte>FF</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
