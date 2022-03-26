@@ -491,9 +491,9 @@ registersymbol(movement)
 --Have fun!
 
 local sleep_time=50
-local multi_swing_sleep=100
-local pos=0.3
-local neg=-0.3
+local multi_swing_sleep=300
+local pos=0.21
+local neg=-0.21
 local multi_pos=1
 local multi_neg=-1
 local upSpeed=2
@@ -604,6 +604,96 @@ right.destroy()
 both.destroy()
 up.destroy()
 down.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>182</ID>
+          <Description>"BALL MOVEMENT BY DEGREE"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
+alloc(newmem,100)
+alloc(ball,4)
+label(code)
+label(return)
+registersymbol(ball)
+newmem:
+
+code:
+mov [ball],ecx
+  fstp dword ptr [ecx+000002D8]
+  jmp return
+
+movement:
+  jmp newmem
+  nop
+return:
+registersymbol(movement)
+
+{$lua}
+
+local angle=2
+local angleChange=1
+local yAddr="[ball]+2e0"
+local xAddr="[ball]+2d8"
+
+
+left=createHotkey(function()
+                      local rad=math.rad(-angle)
+					  x=readFloat(xAddr)
+					  y=readFloat(yAddr)
+					  xn=x*math.cos(rad)-y*math.sin(rad)
+					  yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+                      end,0x41) --A
+
+
+right=createHotkey(function()
+                      local rad=math.rad(angle)
+					  x=readFloat(xAddr)
+					  y=readFloat(yAddr)
+					  xn=x*math.cos(rad)-y*math.sin(rad)
+					  yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+                      end,0x44) --D
+
+increaser=createHotkey(function()
+                      angle=angle+angleChange
+
+                      end,0x4B) --K
+
+decreaser=createHotkey(function()
+angle=angle-angleChange
+
+end,0x4c) --L
+
+neutral=createHotkey(function()
+angle=0
+
+end,0x5A) --Z
+
+{$asm}
+
+[DISABLE]
+
+movement:
+  db D9 99 D8 02 00 00
+
+unregistersymbol(ball)
+unregistersymbol(movement)
+dealloc(ball)
+dealloc(newmem)
+
+{$lua}
+
+left.destroy()
+right.destroy()
+neutral.destroy()
+increaser.destroy()
+decreaser.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -747,7 +837,9 @@ nop 3
 --press angularShotKey in bowler runup to confirm the use of angular shot.
 
 
-local degChange=30
+
+local degChange=7.5
+local shotboost=1
 local currDeg=0
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
@@ -781,9 +873,9 @@ function Stroker()
                       local speedz=readFloat(speedZString)
                       if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
                       speedx,speedy=calcRotatedSpeeds(speedx,speedy)
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedz)
-                      writeFloat("[ball]+2e0",speedy)
+                      writeFloat("[ball]+2d8",speedx*shotboost)
+                      writeFloat("[ball]+2dc",speedz*shotboost)
+                      writeFloat("[ball]+2e0",speedy*shotboost)
                       end
                       end --Function ends here
 
@@ -1345,6 +1437,21 @@ neutralizer.destroy()
               <ID>1</ID>
             </Hotkey>
           </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>181</ID>
+      <Description>"Debugging Address"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>180</ID>
+          <Description>"Flag whether the bowler thrw the ball or not "</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>Cricket07.exe+3EDBFE</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -2836,6 +2943,29 @@ neutralizer.destroy()
         <Byte>7B</Byte>
         <Byte>81</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [edx+08],eax batsman shot instruction</Description>
+      <AddressString>Cricket07.exe+1442DE</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>42</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>4B</Byte>
+        <Byte>04</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
