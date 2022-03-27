@@ -633,8 +633,8 @@ registersymbol(movement)
 
 {$lua}
 
-local angle=2
-local angleChange=1
+local angle=0.5
+local angleChange=0.5
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
 
@@ -663,12 +663,12 @@ right=createHotkey(function()
 increaser=createHotkey(function()
                       angle=angle+angleChange
 
-                      end,0x4B) --K
+                      end,0x4C) --L
 
 decreaser=createHotkey(function()
 angle=angle-angleChange
 
-end,0x4c) --L
+end,0x4B) --K
 
 neutral=createHotkey(function()
 angle=0
