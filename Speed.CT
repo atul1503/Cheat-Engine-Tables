@@ -1665,19 +1665,28 @@ hk5.destroy()
 [ENABLE]
 
 breakPower=1.06
+a=1/40 --s of 2^(a*x)
 
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
 
+local counter=0
 
 breaker=createHotkey(function()
-x.Value=x.Value/breakPower
-y.Value=y.Value/breakPower
+counter=counter+1
+factor=2^(a*counter)
+x.Value=x.Value/factor
+y.Value=y.Value/factor
 end,0x28)
+
+up=createHotkey(function()
+counter=0
+end,0x26)
 
 [DISABLE]
 
 breaker.destroy()
+up.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -1688,7 +1697,7 @@ breaker.destroy()
 
 [ENABLE]
 
-a=1/90 -- a of 2^(a*x)
+a=1/80 -- a of 2^(a*x)
 rotater=0
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
