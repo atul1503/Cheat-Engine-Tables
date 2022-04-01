@@ -973,9 +973,9 @@ if synataxcheck then return end
 
 [ENABLE]
 
-local mul=3
+local mul=1.1
 local gearMul=3
-local rangeShifter=20
+local rangeShifter=15
 local Top_Speed=8
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
@@ -1227,7 +1227,7 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1.02
+local mul=1.01
 
 
 speeder=createHotkey(function()
@@ -1682,23 +1682,32 @@ breaker.destroy()
         </CheatEntry>
         <CheatEntry>
           <ID>101</ID>
-          <Description>"Turner 1"</Description>
+          <Description>"Turner"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
 [ENABLE]
 
-turner=1.03
-rotater=0.005
+a=1/90 -- a of 2^(a*x)
+rotater=0
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
 
+local counter=0
+
+
 function slower()
-	xspeed.Value=xspeed.Value/turner
-	yspeed.Value=yspeed.Value/turner
+     counter=counter+1
+     factor=2^(a*counter)
+	xspeed.Value=xspeed.Value/factor
+	yspeed.Value=yspeed.Value/factor
 	end
+
+up=createHotkey(function()
+counter=0
+end,0x26)
 
 left=createHotkey(function()
 slower()
@@ -1714,6 +1723,7 @@ end,0x27)
 
 left.destroy()
 right.destroy()
+up.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -2032,11 +2042,11 @@ unregistersymbol(Inf_No_Collision)
 
 local mul=1.001
 local steerSpeed=0.2
-local deg=45
+local deg=90
 local firstXLabel='x1'
-local secondXLabel='X'
+local secondXLabel='x2'
 local firstYLabel='y1'
-local secondYLabel='Y'
+local secondYLabel='y2'
 
 
 Alist=getAddressList()
@@ -2075,7 +2085,7 @@ yspeed.Value=ycomp*r
 end
 end
 
-hk1=createHotkey(DirectionMagic,0x26)
+hk1=createHotkey(function() DirectionMagic(1) end,0x26)
 
 hk2=createHotkey(function()
 rotate.Value=rotate.Value-steerSpeed

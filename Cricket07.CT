@@ -633,10 +633,11 @@ registersymbol(movement)
 
 {$lua}
 
-local angle=0.5
+local angle=1
 local angleChange=0.5
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
+
 
 
 left=createHotkey(function()
@@ -838,7 +839,7 @@ nop 3
 
 
 
-local degChange=7.5
+local degChange=20
 local shotboost=1
 local currDeg=0
 local speedXString="[ball]+2d8"
@@ -867,7 +868,7 @@ end
 
 
 function Stroker()
-                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do sleep(50) end end
+                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do  end end
                       local speedx=readFloat(speedXString)
                       local speedy=readFloat(speedYString)
                       local speedz=readFloat(speedZString)
@@ -953,9 +954,9 @@ movement:
 
 
 
-local degChange=7.5
+local degChange=10
 local shotboost=1
-local currDeg=0
+local currDeg=degChange
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
 local speedYString="[ball]+2e0"
@@ -982,7 +983,7 @@ end
 
 
 function Stroker()
-                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do sleep(50) end end
+                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do end end
                       local speedx=readFloat(speedXString)
                       local speedy=readFloat(speedYString)
                       local speedz=readFloat(speedZString)
@@ -1555,14 +1556,7 @@ neutralizer.destroy()
       <CheatEntries>
         <CheatEntry>
           <ID>180</ID>
-          <Description>"Flag whether the bowler thrw the ball or not "</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>Cricket07.exe+3EDBFE</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>183</ID>
-          <Description>"Batsman reaction flag"</Description>
+          <Description>"is ball out of bowler's hand?"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
           <Address>Cricket07.exe+3EDBFE</Address>
