@@ -1232,6 +1232,7 @@ local mul=1.01
 
 speeder=createHotkey(function()
 t=getAddressList()
+counter=0
 x=t.getMemoryRecordByDescription('X SPEED')
 y=t.getMemoryRecordByDescription('Y SPEED')
 x.Value=x.Value*mul
@@ -1665,12 +1666,12 @@ hk5.destroy()
 [ENABLE]
 
 breakPower=1.06
-a=1/40 --s of 2^(a*x)
+local a=1/20 --s of 2^(a*x)
 
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
 
-local counter=0
+counter=0
 
 breaker=createHotkey(function()
 counter=counter+1
@@ -1679,14 +1680,11 @@ x.Value=x.Value/factor
 y.Value=y.Value/factor
 end,0x28)
 
-up=createHotkey(function()
-counter=0
-end,0x26)
 
 [DISABLE]
 
 breaker.destroy()
-up.destroy()
+
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -1697,14 +1695,14 @@ up.destroy()
 
 [ENABLE]
 
-a=1/80 -- a of 2^(a*x)
+local a=1/80 -- a of 2^(a*x)
 rotater=0
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
 
-local counter=0
+counter=0
 
 
 function slower()
@@ -1714,9 +1712,6 @@ function slower()
 	yspeed.Value=yspeed.Value/factor
 	end
 
-up=createHotkey(function()
-counter=0
-end,0x26)
 
 left=createHotkey(function()
 slower()
@@ -1732,7 +1727,6 @@ end,0x27)
 
 left.destroy()
 right.destroy()
-up.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
