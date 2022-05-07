@@ -634,9 +634,12 @@ registersymbol(movement)
 {$lua}
 
 local angle=1e-3
-local angleChange=0.5
+local angleChange=5e-4
+local yzangleChange=1
+local yzangle=2
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
+local zAddr="[ball]+2dc"
 local literalLengthAddr="[ball]+2c8"
 local pitchLength=7
 local LazyAction=true
@@ -668,7 +671,7 @@ left=createHotkey(function()
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
                       end
-                      end,0x41) --A
+                      end,0x4C) --L
 
 
 right=createHotkey(function()
@@ -682,22 +685,57 @@ right=createHotkey(function()
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
                       end
-                      end,0x44) --D
+                      end,0x52) --R
 
 increaser=createHotkey(function()
                       angle=angle+angleChange
 
-                      end,0x4C) --L
+                      end,0x64) --4
 
 decreaser=createHotkey(function()
 angle=angle-angleChange
 
-end,0x4B) --K
+end,0x66) --6
 
 neutral=createHotkey(function()
 angle=0
-
+yzangle=0
 end,0x5A) --Z
+
+ascend=createHotkey(function()
+waitForRunUpComplete()
+local rad=math.rad(yzangle)
+					  z=readFloat(zAddr)
+					  y=readFloat(yAddr)
+					  zn=z*math.cos(rad)-y*math.sin(rad)
+					  yn=z*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(zAddr,zn)
+					  writeFloat(yAddr,yn)
+end,0x41) --A
+
+descend=createHotkey(function()
+waitForRunUpComplete()
+local rad=math.rad(-yzangle)
+					  z=readFloat(zAddr)
+					  y=readFloat(yAddr)
+					  zn=z*math.cos(rad)-y*math.sin(rad)
+					  yn=z*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(zAddr,zn)
+					  writeFloat(yAddr,yn)
+end,0x44) --D
+
+
+ainc=createHotkey(function()
+                      yzangle=yzangle+yzangleChange
+
+                      end,0x38) --8
+
+dinc=createHotkey(function()
+                      yzangle=yzangle-yzangleChange
+
+                      end,0x32) --2
+
+
 
 {$asm}
 
@@ -718,6 +756,10 @@ right.destroy()
 neutral.destroy()
 increaser.destroy()
 decreaser.destroy()
+ascend.destroy()
+descend.destroy()
+ainc.destroy()
+dinc.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
