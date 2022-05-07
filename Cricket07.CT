@@ -633,14 +633,33 @@ registersymbol(movement)
 
 {$lua}
 
-local angle=1
+local angle=1e-3
 local angleChange=0.5
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
+local literalLengthAddr="[ball]+2c8"
+local pitchLength=7
+local LazyAction=true
+
+
+function isBallInPitch()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return false end
+if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength then return true else return false end
+end
+
+
+function waitForRunUpComplete()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return end
+if LazyAction then while not isBallInPitch() do end end
+end
 
 
 
 left=createHotkey(function()
+                      waitForRunUpComplete()
+                      while isBallInPitch() do
                       local rad=math.rad(-angle)
 					  x=readFloat(xAddr)
 					  y=readFloat(yAddr)
@@ -648,10 +667,13 @@ left=createHotkey(function()
 					  yn=x*math.sin(rad)+y*math.cos(rad)
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
+                      end
                       end,0x41) --A
 
 
 right=createHotkey(function()
+                      waitForRunUpComplete()
+                      while isBallInPitch() do
                       local rad=math.rad(angle)
 					  x=readFloat(xAddr)
 					  y=readFloat(yAddr)
@@ -659,6 +681,7 @@ right=createHotkey(function()
 					  yn=x*math.sin(rad)+y*math.cos(rad)
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
+                      end
                       end,0x44) --D
 
 increaser=createHotkey(function()

@@ -1227,7 +1227,7 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1.01
+local mul=1.015
 
 
 speeder=createHotkey(function()
@@ -1666,7 +1666,7 @@ hk5.destroy()
 [ENABLE]
 
 breakPower=1.06
-local a=1/20 --s of 2^(a*x)
+local a=1/40 --s of 2^(a*x)
 
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
@@ -1695,7 +1695,9 @@ breaker.destroy()
 
 [ENABLE]
 
-local a=1/80 -- a of 2^(a*x)
+
+local a=1/60 -- a of 2^(a*x)
+local minSpeed=15
 rotater=0
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
@@ -1704,12 +1706,24 @@ steer=list.getMemoryRecordByDescription('Steering Rotation')
 
 counter=0
 
+function calcR(x,y)
+r=((x^2)+(y^2))^(1/2)
+return r
+end
+
 
 function slower()
      counter=counter+1
      factor=2^(a*counter)
+     r=calcR(xspeed.Value/factor,yspeed.Value/factor)
+    if r&gt;minSpeed then
 	xspeed.Value=xspeed.Value/factor
 	yspeed.Value=yspeed.Value/factor
+    elseif not isKeyPressed(0x26) then
+     ratio=minSpeed/r
+     xspeed.Value=xspeed.Value*ratio
+	yspeed.Value=yspeed.Value*ratio
+    end
 	end
 
 
