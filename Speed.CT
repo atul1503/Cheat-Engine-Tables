@@ -2057,13 +2057,13 @@ unregistersymbol(Inf_No_Collision)
 
 [ENABLE]
 
-local mul=1.001
-local steerSpeed=0.2
-local deg=90
-local firstXLabel='x1'
-local secondXLabel='x2'
-local firstYLabel='y1'
-local secondYLabel='y2'
+local mul=1.0025
+local steerSpeed=0.15
+local deg=-180
+local firstXLabel='X'
+local secondXLabel='x1'
+local firstYLabel='Y'
+local secondYLabel='y1'
 
 
 Alist=getAddressList()
@@ -2075,11 +2075,12 @@ realx=Alist.getMemoryRecordByDescription(secondXLabel)
 realy=Alist.getMemoryRecordByDescription(secondYLabel)
 rotate=Alist.getMemoryRecordByDescription("Steering Rotation")
 
+t=createThread(DirectionMagic(0))
 
 function getUnitVector(x1,y1,x2,y2,theta)
 xcomp=(x1-x2)
 ycomp=(y1-y2)
-r=(((xcomp)^2)+((ycomp)^2))^0.5
+r=((xcomp^2)+(ycomp^2))^0.5
 xcomp=xcomp/r
 ycomp=ycomp/r
 theta=math.rad(theta)
@@ -2089,10 +2090,11 @@ return xcomp,ycomp
 end
 
 function DirectionMagic(speedUp)
+if x1==nil or y1==nil or realx==nil or realy==nil then return end
 xcomp,ycomp=getUnitVector(
 realx.Value,realy.Value,x1.Value,y1.Value,deg
 )
-r=(((xspeed.Value)^2)+((yspeed.Value)^2))^0.5
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if speedUp then
 xspeed.Value=xcomp*r*mul
 yspeed.Value=ycomp*r*mul
@@ -2102,23 +2104,20 @@ yspeed.Value=ycomp*r
 end
 end
 
-hk1=createHotkey(function() DirectionMagic(1) end,0x26)
 
 hk2=createHotkey(function()
 rotate.Value=rotate.Value-steerSpeed
-DirectionMagic(0)
 end,0x25)
 
 hk3=createHotkey(function()
 rotate.Value=rotate.Value+steerSpeed
-DirectionMagic(0)
 end,0x27)
 
 [DISABLE]
 
-hk1.destroy()
 hk2.destroy()
 hk3.destroy()
+t.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -2155,6 +2154,20 @@ mapper.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>129</ID>
+      <Description>"x1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02D94EF8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>130</ID>
+      <Description>"y1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02D94F00</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -4482,28 +4495,6 @@ mapper.destroy()
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :fstp dword ptr [ecx] (x1 for unit vector)</Description>
-      <AddressString>speed.exe+16A9</AddressString>
-      <Before>
-        <Byte>24</Byte>
-        <Byte>D8</Byte>
-        <Byte>08</Byte>
-        <Byte>DE</Byte>
-        <Byte>C1</Byte>
-      </Before>
-      <Actual>
-        <Byte>D9</Byte>
-        <Byte>19</Byte>
-      </Actual>
-      <After>
-        <Byte>D9</Byte>
-        <Byte>44</Byte>
-        <Byte>24</Byte>
-        <Byte>08</Byte>
-        <Byte>D8</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
       <Description>Code :fstp dword ptr [esi+7C] (rev pointer)</Description>
       <AddressString>speed.exe+29421E</AddressString>
       <Before>
@@ -4622,6 +4613,50 @@ mapper.destroy()
         <Byte>8B</Byte>
         <Byte>B1</Byte>
         <Byte>80</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi] (x1 address)</Description>
+      <AddressString>speed.exe+2A7099</AddressString>
+      <Before>
+        <Byte>D8</Byte>
+        <Byte>06</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>1E</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>46</Byte>
+        <Byte>04</Byte>
+        <Byte>D8</Byte>
+        <Byte>47</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [ecx] (x1 address candidate)</Description>
+      <AddressString>speed.exe+16A9</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>D8</Byte>
+        <Byte>08</Byte>
+        <Byte>DE</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>19</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>D8</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
