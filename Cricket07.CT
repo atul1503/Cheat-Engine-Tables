@@ -689,12 +689,10 @@ right=createHotkey(function()
 
 increaser=createHotkey(function()
                       angle=angle+angleChange
-
                       end,0x64) --4
 
 decreaser=createHotkey(function()
 angle=angle-angleChange
-
 end,0x66) --6
 
 neutral=createHotkey(function()
@@ -729,13 +727,12 @@ end,0x44) --D
 
 ainc=createHotkey(function()
                       yzangle=yzangle+yzangleChange
-
-                      end,0x38) --8
+                      end,0x68) --8
 
 dinc=createHotkey(function()
                       yzangle=yzangle-yzangleChange
 
-                      end,0x32) --2
+                      end,0x62) --2
 
 
 
