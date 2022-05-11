@@ -1093,6 +1093,114 @@ DecreaseAngle.destroy()
 neutralizer.destroy()
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>189</ID>
+          <Description>"BATSMAN SHOT SCRIPT ABSOLUTE DIRECTION"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
+alloc(ballmem,20)
+alloc(ball,4)
+registersymbol(ball)
+
+
+
+ballmem:
+mov [ball],ecx
+fstp dword ptr [ecx+000002D8]
+jmp "Cricket07.exe"+1434FF
+
+
+movement:
+  jmp ballmem
+  nop
+
+
+
+
+{$lua}
+
+--more reactive than version 3.
+--press clockWiseTurnKey or antiClockWiseTurnKey depending on the degree by which you want to rotate.
+--clockWiseTurnKey will turn your ball in clock wise direction and vice versa for antiClockWiseKey.
+--press angularShotKey in bowler runup to confirm the use of angular shot.
+
+
+
+local degChange=10
+local shotboost=1
+local currDeg=0
+local speedXString="[ball]+2d8"
+local speedZString="[ball]+2dc"
+local speedYString="[ball]+2e0"
+local isBallHitAddr="Cricket07.exe+5DA4FA"
+local angularShotKey=0x4A --J
+local clockWiseTurnKey=0x4B --K
+local antiClockWiseTurnKey=0x4C --L
+local neutralizerKey=0x5A --Z
+
+
+
+function calcRotatedSpeeds(x,y)
+local theta=math.rad(currDeg)
+local r=((x^2)+(y^2))^0.5
+return r*math.cos(theta),r*math.sin(theta)
+end
+
+function changeAngle(dir)
+currDeg=currDeg+(dir)*degChange
+end
+
+function neutralize()
+currDeg=0
+end
+
+
+function Stroker()
+                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do end end
+                      local speedx=readFloat(speedXString)
+                      local speedy=readFloat(speedYString)
+                      local speedz=readFloat(speedZString)
+                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
+                      speedx,speedy=calcRotatedSpeeds(speedx,speedy)
+                      writeFloat("[ball]+2d8",speedx*shotboost)
+                      writeFloat("[ball]+2dc",speedz*shotboost)
+                      writeFloat("[ball]+2e0",speedy*shotboost)
+                      end
+                      end --Function ends here
+
+
+shotHk=createHotkey(Stroker,angularShotKey)
+
+
+IncreaseAngle=createHotkey(function() changeAngle(1)  end,clockWiseTurnKey)
+
+DecreaseAngle=createHotkey(function() changeAngle(-1)  end,antiClockWiseTurnKey)
+
+neutralizer=createHotkey(neutralize,neutralizerKey)
+
+{$asm}
+
+[DISABLE]
+
+movement:
+  db D9 99 D8 02 00 00
+
+
+unregistersymbol(ball)
+dealloc(ball)
+dealloc(ballmem)
+
+{$lua}
+
+
+shotHk.destroy()
+IncreaseAngle.destroy()
+DecreaseAngle.destroy()
+neutralizer.destroy()
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>

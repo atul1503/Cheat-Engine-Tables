@@ -2057,9 +2057,9 @@ unregistersymbol(Inf_No_Collision)
 
 [ENABLE]
 
-local mul=1.0025
-local steerSpeed=0.15
-local deg=-180
+local mul=1.001
+local steerSpeed=0.1
+local deg=180
 local firstXLabel='X'
 local secondXLabel='x1'
 local firstYLabel='Y'
@@ -2075,7 +2075,6 @@ realx=Alist.getMemoryRecordByDescription(secondXLabel)
 realy=Alist.getMemoryRecordByDescription(secondYLabel)
 rotate=Alist.getMemoryRecordByDescription("Steering Rotation")
 
-t=createThread(DirectionMagic(0))
 
 function getUnitVector(x1,y1,x2,y2,theta)
 xcomp=(x1-x2)
@@ -2104,20 +2103,22 @@ yspeed.Value=ycomp*r
 end
 end
 
+hk1=createHotkey(function() DirectionMagic(1) end,0x26)
 
 hk2=createHotkey(function()
 rotate.Value=rotate.Value-steerSpeed
+DirectionMagic(0)
 end,0x25)
 
 hk3=createHotkey(function()
 rotate.Value=rotate.Value+steerSpeed
+DirectionMagic(0)
 end,0x27)
 
 [DISABLE]
-
+hk1.destroy()
 hk2.destroy()
 hk3.destroy()
-t.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -2156,18 +2157,18 @@ mapper.destroy()
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>129</ID>
+      <ID>119</ID>
       <Description>"x1"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>02D94EF8</Address>
+      <Address>02EB9EF8</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>130</ID>
+      <ID>120</ID>
       <Description>"y1"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>02D94F00</Address>
+      <Address>02EB9F00</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -5686,11 +5687,7 @@ mapper.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>2nd,4th and 5th are maximum 4 upgrades.
-x1 (for unit vector)
-! address which has 3 uequal values after a 1 before it is the
-ans
-</Comments>
+  <Comments>x1 unit vector: get all addresses starting with 02 and the one which is the second coordinate in the memory view is the one.</Comments>
   <DisassemblerComments>
     <DisassemblerComment>
       <Address>"Speed.exe"+2978F0</Address>
