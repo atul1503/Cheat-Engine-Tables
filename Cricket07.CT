@@ -491,8 +491,8 @@ registersymbol(movement)
 --Have fun!
 
 local bruteSpeed=60
-local bruteInitialZspeed=-8
-local sleep_time=30
+local bruteInitialZspeed=-10
+local sleep_time=120
 local multi_swing_sleep=300
 local pos=0.18
 local neg=-0.18
@@ -506,6 +506,7 @@ local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
 local frontAddr="[ball]+2e0"
 local literalLengthAddr="[ball]+2c8"
+local isBallHit="Cricket07.exe+5DA4FA"
 local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
 local pitchLength=10
 
@@ -514,7 +515,7 @@ local pitchLength=10
 function isBallInPitch()
 local currLoc=readFloat(literalLengthAddr)
 if currLoc==nil then return false end
-if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 then return true else return false end
+if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 and readByte(isBallHit)==0 then return true else return false end
 end
 
 
@@ -525,7 +526,7 @@ if LazyAction then while not isBallInPitch() do end end
 end
 
 function isSafeToRun()
-if readFloat(LineAddr)==nil or readFloat(LengthAddr)==nil or readFloat(frontAddr)==nil or readFloat(literalLengthAddr)==nil then return false else return true end
+if readFloat(LineAddr)==nil or readFloat(LengthAddr)==nil or readFloat(frontAddr)==nil or readFloat(literalLengthAddr)==nil  then return false else return true end
 end
 
 function Mover(change,addr)
@@ -665,6 +666,7 @@ local xAddr="[ball]+2d8"
 local zAddr="[ball]+2dc"
 local literalLengthAddr="[ball]+2c8"
 local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
+local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
 local LazyAction=true
 
@@ -672,7 +674,7 @@ local LazyAction=true
 function isBallInPitch()
 local currLoc=readFloat(literalLengthAddr)
 if currLoc==nil then return false end
-if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 then return true else return false end
+if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 and readByte(isBallHit)==0 then return true else return false end
 end
 
 
