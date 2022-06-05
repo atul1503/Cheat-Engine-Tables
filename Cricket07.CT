@@ -288,7 +288,7 @@ registersymbol(spin)
 {$lua}
 
 
-local start=50
+local start=100
 local mul=2
 local tr=120
 local rotationWithAorDforFast=3
@@ -309,18 +309,17 @@ sleep(tr)
 
 hk2=createHotkey(function()
 sleep(tr)
-                      turn=readFloat("[rot]+10")
                       turn1=readFloat("[rot]+10-4")
-                      turn=start+turn*mul
+                      turn=start
                       turn1=1
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
                       end,0x5A) --Z
 hk3=createHotkey(function()
 sleep(tr)
-                      turn=readFloat("[rot]+10")
+
                       turn1=readFloat("[rot]+10-4")
-                      turn=start+turn*mul
+                      turn=start
                       turn1=-1
                       writeFloat("[rot]+10",turn)
                       writeFloat("[rot]+10-4",turn1)
@@ -492,10 +491,10 @@ registersymbol(movement)
 
 local bruteSpeed=60
 local bruteInitialZspeed=-10
-local sleep_time=120
+local sleep_time=0
 local multi_swing_sleep=300
-local pos=0.18
-local neg=-0.18
+local pos=2.5e-4
+local neg=-2.5e-4
 local multi_pos=1
 local multi_neg=-1
 local upSpeed=2
