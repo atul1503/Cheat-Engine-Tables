@@ -2156,20 +2156,6 @@ mapper.destroy()
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
-    <CheatEntry>
-      <ID>119</ID>
-      <Description>"x1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>02EB9EF8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>120</ID>
-      <Description>"y1"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>02EB9F00</Address>
-    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
@@ -5687,7 +5673,8 @@ mapper.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>x1 unit vector: get all addresses starting with 02 and the one which is the second coordinate in the memory view is the one.</Comments>
+  <Comments>x1 unit vector: get all addresses starting with 02 and the one which is the second coordinate in the memory view is the one.
+</Comments>
   <DisassemblerComments>
     <DisassemblerComment>
       <Address>"Speed.exe"+2978F0</Address>

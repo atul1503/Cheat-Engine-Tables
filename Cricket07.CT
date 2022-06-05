@@ -490,10 +490,12 @@ registersymbol(movement)
 --If LazyAction is true then just after setting the ball pitch location ,in game, you can press the desired hotkey which will allow the swing to happen only when ball is in the pitch.
 --Have fun!
 
-local sleep_time=50
+local bruteSpeed=60
+local bruteInitialZspeed=-5
+local sleep_time=0
 local multi_swing_sleep=300
-local pos=0.21
-local neg=-0.21
+local pos=0.18
+local neg=-0.18
 local multi_pos=1
 local multi_neg=-1
 local upSpeed=2
@@ -502,8 +504,9 @@ local bounceMoves=1
 local LazyAction=true
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
+local frontAddr="[ball]+2e0"
 local literalLengthAddr="[ball]+2c8"
-local pitchLength=7
+local pitchLength=9
 
 
 
@@ -520,6 +523,9 @@ if currLoc==nil then return end
 if LazyAction then while not isBallInPitch() do end end
 end
 
+function isSafeToRun()
+if readFloat(LineAddr)==nil or readFloat(LengthAddr)==nil or readFloat(frontAddr)==nil or readFloat(literalLengthAddr)==nil then return false else return true end
+end
 
 function Mover(change,addr)
                       local speed=readFloat(addr)
@@ -585,6 +591,20 @@ local count=0
 end,0x58) --X
 
 
+brute=createHotkey(function()
+waitForRunUpComplete()
+if isSafeToRun()==false then return end
+local x=readFloat(LineAddr)
+local y=readFloat(frontAddr)
+local z=readFloat(LengthAddr)
+local r=((x^2)+(y^2)+(z^2))^0.5
+local ratio=bruteSpeed/r
+writeFloat(LineAddr,x*ratio)
+writeFloat(frontAddr,y*ratio)
+writeFloat(LengthAddr,bruteInitialZspeed)
+end,0x42) --B
+
+
 {$asm}
 
 [DISABLE]
@@ -604,6 +624,7 @@ right.destroy()
 both.destroy()
 up.destroy()
 down.destroy()
+brute.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -633,6 +654,7 @@ registersymbol(movement)
 
 {$lua}
 
+local pacemul=1.5
 local angle=1e-3
 local angleChange=5e-4
 local yzangleChange=1
@@ -700,6 +722,15 @@ angle=0
 yzangle=0
 end,0x5A) --Z
 
+
+fast=createHotkey(function()
+waitForRunUpComplete()
+writeFloat(xAddr,readFloat(xAddr)*pacemul)
+writeFloat(yAddr,readFloat(yAddr)*pacemul)
+end,0x46) --F
+
+
+
 ascend=createHotkey(function()
 waitForRunUpComplete()
 local rad=math.rad(yzangle)
@@ -750,6 +781,7 @@ dealloc(newmem)
 
 {$lua}
 
+fast.destroy()
 left.destroy()
 right.destroy()
 neutral.destroy()
@@ -1019,7 +1051,7 @@ movement:
 
 
 local degChange=10
-local shotboost=1
+local shotSpeed=30
 local currDeg=degChange
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
@@ -1053,9 +1085,11 @@ function Stroker()
                       local speedz=readFloat(speedZString)
                       if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
                       speedx,speedy=calcRotatedSpeeds(speedx,speedy)
-                      writeFloat("[ball]+2d8",speedx*shotboost)
-                      writeFloat("[ball]+2dc",speedz*shotboost)
-                      writeFloat("[ball]+2e0",speedy*shotboost)
+                      local r=((speedx^2)+(speedy^2)+(speedz^2))^0.5
+                      local ratio=shotSpeed/r
+                      writeFloat("[ball]+2d8",speedx*ratio)
+                      writeFloat("[ball]+2dc",speedz*ratio)
+                      writeFloat("[ball]+2e0",speedy*ratio)
                       end
                       end --Function ends here
 
@@ -3255,6 +3289,75 @@ neutralizer.destroy()
         <Byte>C4</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [ebp+10] (Bowl speed after pitching controller)</Description>
+      <AddressString>Cricket07.exe+146002</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>DE</Byte>
+        <Byte>E0</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>45</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>E0</Byte>
+        <Byte>8D</Byte>
+        <Byte>74</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fsub dword ptr [ebp+14] (Ball spin after pitching)</Description>
+      <AddressString>Cricket07.exe+1461CD</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>C0</Byte>
+        <Byte>56</Byte>
+        <Byte>78</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>65</Byte>
+        <Byte>14</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>4E</Byte>
+        <Byte>10</Byte>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fmul dword ptr [edi+18] (Ball backspin after pitching controller)</Description>
+      <AddressString>Cricket07.exe+146352</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>4F</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols>
     <SymbolEntry>
@@ -3796,6 +3899,6 @@ neutralizer.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>+2c8
+  <Comments>pitch length 17.75
 </Comments>
 </CheatTable>
