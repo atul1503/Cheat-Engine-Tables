@@ -288,7 +288,7 @@ registersymbol(spin)
 {$lua}
 
 
-local start=100
+local start=150
 local mul=2
 local tr=120
 local rotationWithAorDforFast=3
@@ -797,228 +797,6 @@ dinc.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>173</ID>
-          <Description>"BATSMAN SHOT SCRIPT 2"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(ballmem,20)
-alloc(flagmem,20)
-alloc(ball,4)
-alloc(flag,4)
-registersymbol(ball)
-registersymbol(movement)
-registersymbol(flag)
-
-
-flagmem:
-mov [flag],edx //+64
-mov [edx+64],ebx
-mov eax,[Cricket07.exe+417BC0]
-jmp "Cricket07.exe"+3D8FB
-
-
-
-ballmem:
-mov [ball],ecx
-fstp dword ptr [ecx+000002D8]
-jmp "Cricket07.exe"+1434FF
-
-
-movement:
-  jmp ballmem
-  nop
-
-"Cricket07.exe"+3D8F3:
-jmp flagmem
-nop 3
-
-
-
-{$lua}
-local dub=1.5
-local speedXString="[ball]+2d8"
-local speedZString="[ball]+2dc"
-local speedYString="[ball]+2e0"
-local isBallHitAddr="[flag]+64"
-
-
-function Stroker()
-                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do sleep(50) end end
-                      speedx=readFloat(speedXString)
-                      speedy=readFloat(speedYString)
-                      speedz=readFloat(speedZString)
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*dub
-                      speedy=speedy*dub
-                      speedz=speedz*dub
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedz)
-                      writeFloat("[ball]+2e0",speedy)
-                      end
-                      end --Function ends here
-
-
-hk1=createHotkey(Stroker,0x53)
-
-hk2=createHotkey(Stroker,0x57)
-
-{$asm}
-
-[DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-"Cricket07.exe"+3D8F3:
-mov [edx+64],ebx
-mov eax,[Cricket07.exe+417BC0]
-
-
-unregistersymbol(ball)
-unregistersymbol(flag)
-unregistersymbol(movement)
-dealloc(flagmem)
-dealloc(flag)
-dealloc(ball)
-dealloc(ballmem)
-
-{$lua}
-
-hk1.destroy()
-hk2.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>177</ID>
-          <Description>"BATSMAN SHOT SCRIPT 3 : The angular master"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(ballmem,20)
-alloc(flagmem,20)
-alloc(ball,4)
-alloc(flag,4)
-registersymbol(ball)
-registersymbol(movement)
-registersymbol(flag)
-
-
-flagmem:
-mov [flag],edx //+64
-mov [edx+64],ebx
-mov eax,[Cricket07.exe+417BC0]
-jmp "Cricket07.exe"+3D8FB
-
-
-
-ballmem:
-mov [ball],ecx
-fstp dword ptr [ecx+000002D8]
-jmp "Cricket07.exe"+1434FF
-
-
-movement:
-  jmp ballmem
-  nop
-
-"Cricket07.exe"+3D8F3:
-jmp flagmem
-nop 3
-
-
-
-{$lua}
-
---press clockWiseTurnKey or antiClockWiseTurnKey depending on the degree by which you want to rotate.
---clockWiseTurnKey will turn your ball in clock wise direction and vice versa for antiClockWiseKey.
---press angularShotKey in bowler runup to confirm the use of angular shot.
-
-
-
-local degChange=20
-local shotboost=1
-local currDeg=0
-local speedXString="[ball]+2d8"
-local speedZString="[ball]+2dc"
-local speedYString="[ball]+2e0"
-local isBallHitAddr="[flag]+64"
-local angularShotKey=0x4A --J
-local clockWiseTurnKey=0x4B --K
-local antiClockWiseTurnKey=0x4C --L
-local neutralizerKey=0x5A --Z
-
-
-
-function calcRotatedSpeeds(x,y)
-local theta=math.rad(currDeg)
-return x*math.cos(theta)-y*math.sin(theta),x*math.sin(theta)+y*math.cos(theta)
-end
-
-function changeAngle(dir)
-currDeg=currDeg+(dir)*degChange
-end
-
-function neutralize()
-currDeg=0
-end
-
-
-function Stroker()
-                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do  end end
-                      local speedx=readFloat(speedXString)
-                      local speedy=readFloat(speedYString)
-                      local speedz=readFloat(speedZString)
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx,speedy=calcRotatedSpeeds(speedx,speedy)
-                      writeFloat("[ball]+2d8",speedx*shotboost)
-                      writeFloat("[ball]+2dc",speedz*shotboost)
-                      writeFloat("[ball]+2e0",speedy*shotboost)
-                      end
-                      end --Function ends here
-
-
-shotHk=createHotkey(Stroker,angularShotKey)
-
-
-IncreaseAngle=createHotkey(function() changeAngle(1)  end,clockWiseTurnKey)
-
-DecreaseAngle=createHotkey(function() changeAngle(-1)  end,antiClockWiseTurnKey)
-
-neutralizer=createHotkey(neutralize,neutralizerKey)
-
-{$asm}
-
-[DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-"Cricket07.exe"+3D8F3:
-mov [edx+64],ebx
-mov eax,[Cricket07.exe+417BC0]
-
-
-unregistersymbol(ball)
-unregistersymbol(flag)
-unregistersymbol(movement)
-dealloc(flagmem)
-dealloc(flag)
-dealloc(ball)
-dealloc(ballmem)
-
-{$lua}
-
-
-shotHk.destroy()
-IncreaseAngle.destroy()
-DecreaseAngle.destroy()
-neutralizer.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>188</ID>
           <Description>"BATSMAN SHOT SCRIPT 4"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -1053,13 +831,15 @@ movement:
 
 
 
-local degChange=10
-local shotSpeed=35
+local degChange=0.5
+local shotSpeed=26
 local currDeg=degChange
+local sleepTime=30
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
 local speedYString="[ball]+2e0"
 local isBallHitAddr="Cricket07.exe+5DA4FA"
+local isBallOutOfFielderHand="Cricket07.exe+3EDD80"
 local angularShotKey=0x4A --J
 local clockWiseTurnKey=0x4B --K
 local antiClockWiseTurnKey=0x4C --L
@@ -1083,124 +863,20 @@ end
 
 function Stroker()
                 if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do end end
+                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
+                      local count=0
+while readByte(isBallHitAddr)==1 and readByte(isBallOutOfFielderHand)==0 do
                       local speedx=readFloat(speedXString)
                       local speedy=readFloat(speedYString)
                       local speedz=readFloat(speedZString)
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
                       speedx,speedy=calcRotatedSpeeds(speedx,speedy)
                       local r=((speedx^2)+(speedy^2)+(speedz^2))^0.5
                       local ratio=shotSpeed/r
-                      writeFloat("[ball]+2d8",speedx*ratio)
-                      writeFloat("[ball]+2dc",speedz*ratio)
-                      writeFloat("[ball]+2e0",speedy*ratio)
-                      end
-                      end --Function ends here
-
-
-shotHk=createHotkey(Stroker,angularShotKey)
-
-
-IncreaseAngle=createHotkey(function() changeAngle(1)  end,clockWiseTurnKey)
-
-DecreaseAngle=createHotkey(function() changeAngle(-1)  end,antiClockWiseTurnKey)
-
-neutralizer=createHotkey(neutralize,neutralizerKey)
-
-{$asm}
-
-[DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-
-unregistersymbol(ball)
-dealloc(ball)
-dealloc(ballmem)
-
-{$lua}
-
-
-shotHk.destroy()
-IncreaseAngle.destroy()
-DecreaseAngle.destroy()
-neutralizer.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>189</ID>
-          <Description>"BATSMAN SHOT SCRIPT ABSOLUTE DIRECTION"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(ballmem,20)
-alloc(ball,4)
-registersymbol(ball)
-
-
-
-ballmem:
-mov [ball],ecx
-fstp dword ptr [ecx+000002D8]
-jmp "Cricket07.exe"+1434FF
-
-
-movement:
-  jmp ballmem
-  nop
-
-
-
-
-{$lua}
-
---more reactive than version 3.
---press clockWiseTurnKey or antiClockWiseTurnKey depending on the degree by which you want to rotate.
---clockWiseTurnKey will turn your ball in clock wise direction and vice versa for antiClockWiseKey.
---press angularShotKey in bowler runup to confirm the use of angular shot.
-
-
-
-local degChange=10
-local shotboost=1
-local currDeg=0
-local speedXString="[ball]+2d8"
-local speedZString="[ball]+2dc"
-local speedYString="[ball]+2e0"
-local isBallHitAddr="Cricket07.exe+5DA4FA"
-local angularShotKey=0x4A --J
-local clockWiseTurnKey=0x4B --K
-local antiClockWiseTurnKey=0x4C --L
-local neutralizerKey=0x5A --Z
-
-
-
-function calcRotatedSpeeds(x,y)
-local theta=math.rad(currDeg)
-local r=((x^2)+(y^2))^0.5
-return r*math.cos(theta),r*math.sin(theta)
+                      writeFloat(speedXString,speedx*ratio)
+                      writeFloat(speedYString,speedy*ratio)
+                        writeFloat(speedZString,speedz*ratio)
+					  sleep(sleepTime)
 end
-
-function changeAngle(dir)
-currDeg=currDeg+(dir)*degChange
-end
-
-function neutralize()
-currDeg=0
-end
-
-
-function Stroker()
-                if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do end end
-                      local speedx=readFloat(speedXString)
-                      local speedy=readFloat(speedYString)
-                      local speedz=readFloat(speedZString)
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx,speedy=calcRotatedSpeeds(speedx,speedy)
-                      writeFloat("[ball]+2d8",speedx*shotboost)
-                      writeFloat("[ball]+2dc",speedz*shotboost)
-                      writeFloat("[ball]+2e0",speedy*shotboost)
                       end
                       end --Function ends here
 
@@ -1776,6 +1452,13 @@ neutralizer.destroy()
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
           <Address>Cricket07.exe+5DA4FA</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>190</ID>
+          <Description>"isBallOutOfFieldersHand"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>Cricket07.exe+3EDD80</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
