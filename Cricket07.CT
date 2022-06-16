@@ -490,6 +490,7 @@ registersymbol(movement)
 --Have fun!
 
 local bruteSpeed=60
+local p2br=-9.22 --pace to bounce ratio
 local bruteInitialZspeed=-10
 local sleep_time=0
 local multi_swing_sleep=300
@@ -606,6 +607,15 @@ writeFloat(LengthAddr,bruteInitialZspeed)
 end,0x42) --B
 
 
+p2bh=createHotkey(function() --pace to bounce hotkey
+waitForRunUpComplete()
+if isSafeToRun()==false then return end
+local x=readFloat(frontAddr)
+--print(readFloat(LengthAddr))
+writeFloat(LengthAddr,math.abs(x)/p2br)
+end,0x54) --T
+
+
 {$asm}
 
 [DISABLE]
@@ -626,6 +636,7 @@ both.destroy()
 up.destroy()
 down.destroy()
 brute.destroy()
+p2bh.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -1461,6 +1472,12 @@ neutralizer.destroy()
           <Address>Cricket07.exe+3EDD80</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>193</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>034738A8</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
