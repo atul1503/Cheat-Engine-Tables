@@ -510,7 +510,7 @@ local literalLengthAddr="[ball]+2c8"
 local heightAddr="[ball]+2c4"
 local isBallHit="Cricket07.exe+5DA4FA"
 local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
-local pitchLength=10
+local pitchLength=9.0329828262329
 
 
 
