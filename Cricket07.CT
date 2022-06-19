@@ -290,10 +290,10 @@ registersymbol(spin)
 
 local start=150
 local mul=2
-local tr=120
+local tr=0
 local rotationWithAorDforFast=3
-local rotationWithAorDforSpin=3
-local use_rotationWithAorDforSpin_forGoogly=true
+local rotationWithAorDforSpin=1.5
+local use_rotationWithAorDforSpin_forGoogly=false
 
 
 hk1=createHotkey(function()
@@ -489,14 +489,11 @@ registersymbol(movement)
 --If LazyAction is true then just after setting the ball pitch location ,in game, you can press the desired hotkey which will allow the swing to happen only when ball is in the pitch.
 --Have fun!
 
-local bruteSpeed=60
-local p2br=-9.22 --pace to bounce ratio
-local bruteInitialZspeed=-8.8
-local afterPitchUpSpeed=4.95
+
 local sleep_time=0
 local multi_swing_sleep=300
-local pos=3e-4
-local neg=-3e-4
+local pos=3.3e-4
+local neg=-3.3e-4
 local multi_pos=1
 local multi_neg=-1
 local upSpeed=2
@@ -595,35 +592,6 @@ local count=0
 end,0x58) --X
 
 
-brute=createHotkey(function()
-waitForRunUpComplete()
-if isSafeToRun()==false then return end
-local x=readFloat(LineAddr)
-local y=readFloat(frontAddr)
-local z=readFloat(LengthAddr)
-local r=((x^2)+(y^2)+(z^2))^0.5
-local ratio=bruteSpeed/r
-writeFloat(LineAddr,x*ratio)
-writeFloat(frontAddr,y*ratio)
-writeFloat(LengthAddr,bruteInitialZspeed)
-end,0x42) --B
-
-
-brute2=createHotkey(function()
-if isSafeToRun()==false then return end
-while readFloat(literalLengthAddr)&lt;-9.0329828262329 or readFloat(literalLengthAddr)&gt;9.0329828262329 do
-  if readFloat(literalLengthAddr)&lt;0 then
-    writeFloat(frontAddr,bruteSpeed)
-  else
-       writeFloat(frontAddr,-bruteSpeed)
-  end
-  writeFloat(LengthAddr,bruteInitialZspeed)
-end
-while readFloat(LengthAddr)&lt;0 do end
-writeFloat(LengthAddr,afterPitchUpSpeed)
-end,0x54) --T
-
-
 
 {$asm}
 
@@ -644,8 +612,6 @@ right.destroy()
 both.destroy()
 up.destroy()
 down.destroy()
-brute.destroy()
-brute2.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -676,8 +642,8 @@ registersymbol(movement)
 {$lua}
 
 local pacemul=1.5
-local angle=1e-3
-local angleChange=5e-4
+local angle=5e-4
+local angleChange=1e-4
 local yzangleChange=1
 local yzangle=2
 local yAddr="[ball]+2e0"
@@ -851,10 +817,9 @@ movement:
 
 
 
-local degChange=0.5
+local degChange=10
 local shotSpeed=26
 local currDeg=degChange
-local sleepTime=30
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
 local speedYString="[ball]+2e0"
@@ -884,8 +849,6 @@ end
 function Stroker()
                 if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do end end
                       if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      local count=0
-while readByte(isBallHitAddr)==1 and readByte(isBallOutOfFielderHand)==0 do
                       local speedx=readFloat(speedXString)
                       local speedy=readFloat(speedYString)
                       local speedz=readFloat(speedZString)
@@ -894,9 +857,7 @@ while readByte(isBallHitAddr)==1 and readByte(isBallOutOfFielderHand)==0 do
                       local ratio=shotSpeed/r
                       writeFloat(speedXString,speedx*ratio)
                       writeFloat(speedYString,speedy*ratio)
-                        writeFloat(speedZString,speedz*ratio)
-					  sleep(sleepTime)
-end
+                      writeFloat(speedZString,speedz*ratio)
                       end
                       end --Function ends here
 
