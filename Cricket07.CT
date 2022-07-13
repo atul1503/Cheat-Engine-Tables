@@ -818,7 +818,7 @@ movement:
 
 
 local degChange=10
-local shotSpeed=26
+local shotSpeed=32
 local currDeg=degChange
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"

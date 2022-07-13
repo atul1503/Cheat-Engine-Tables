@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="38">
+<CheatTable CheatEngineTableVersion="42">
   <CheatEntries>
     <CheatEntry>
       <ID>262</ID>
       <Description>"MAIN"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -45,7 +44,6 @@
           <ID>223</ID>
           <Description>"TELEPORTER"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
@@ -268,7 +266,6 @@ dealloc(newmem)
           <ID>233</ID>
           <Description>"BOATS"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -467,7 +464,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>263</ID>
                   <Description>"Gear System 3"</Description>
-                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 
@@ -601,7 +597,6 @@ reverser.destroy()
           <ID>234</ID>
           <Description>"ROAD CARS"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -641,7 +636,6 @@ dealloc(newmem)
               <ID>235</ID>
               <Description>"CAR LOCKED STATE"</Description>
               <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <LastState Value="1" RealAddress="0D738268"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
               <Address>[crp]+4f8</Address>
@@ -649,7 +643,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>236</ID>
                   <Description>"CAR HEALTH"</Description>
-                  <LastState Value="983.2532959" Activated="1" RealAddress="0D738230"/>
                   <VariableType>Float</VariableType>
                   <Address>-38</Address>
                   <Hotkeys>
@@ -666,7 +659,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>237</ID>
                   <Description>"X SPEED road"</Description>
-                  <LastState Value="0.009352638386" RealAddress="0D737DB4"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4</Address>
                   <Hotkeys>
@@ -683,7 +675,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>238</ID>
                   <Description>"Y SPEED road"</Description>
-                  <LastState Value="0.09944063425" RealAddress="0D737DB8"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+4</Address>
                   <Hotkeys>
@@ -700,7 +691,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>239</ID>
                   <Description>"Z SPEED road"</Description>
-                  <LastState Value="-0.00490796566" RealAddress="0D737DBC"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8</Address>
                   <Hotkeys>
@@ -725,28 +715,24 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>240</ID>
                   <Description>"MASS"</Description>
-                  <LastState Value="500" RealAddress="0D737DFC"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>241</ID>
                   <Description>"TURN MASS"</Description>
-                  <LastState Value="161.6999969" RealAddress="0D737E00"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>242</ID>
                   <Description>"GRIP"</Description>
-                  <LastState Value="1" RealAddress="0D737E04"/>
                   <VariableType>Float</VariableType>
                   <Address>-46c+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>243</ID>
                   <Description>"HOR FLIP"</Description>
-                  <LastState Value="-0.002023002366" RealAddress="0D737DC0"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8+4</Address>
                   <Hotkeys>
@@ -763,21 +749,18 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>244</ID>
                   <Description>"HOR ROTATE road"</Description>
-                  <LastState Value="-0.0001464915986" RealAddress="0D737DC8"/>
                   <VariableType>Float</VariableType>
                   <Address>-4b4+8+4+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>245</ID>
                   <Description>"DRAG"</Description>
-                  <LastState Value="0.002000000095" RealAddress="0D737E08"/>
                   <VariableType>Float</VariableType>
                   <Address>-460</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>246</ID>
                   <Description>"STATIC LOC PTR"</Description>
-                  <LastState Value="00C3479C" RealAddress="0D7380F4"/>
                   <ShowAsHex>1</ShowAsHex>
                   <VariableType>4 Bytes</VariableType>
                   <Address>-174</Address>
@@ -785,7 +768,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>257</ID>
                   <Description>"Speeder"</Description>
-                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 
@@ -812,7 +794,6 @@ hk1.destroy()
                 <CheatEntry>
                   <ID>256</ID>
                   <Description>"Gear System"</Description>
-                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 
@@ -935,7 +916,6 @@ hk7.destroy()
                 <CheatEntry>
                   <ID>258</ID>
                   <Description>"Gear System 2"</Description>
-                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 
@@ -1061,7 +1041,6 @@ stop.destroy()
                 <CheatEntry>
                   <ID>261</ID>
                   <Description>"Gear System 3"</Description>
-                  <LastState Activated="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 
@@ -1195,7 +1174,6 @@ reverser.destroy()
                 <CheatEntry>
                   <ID>260</ID>
                   <Description>"Breaker"</Description>
-                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>{$lua}
 
@@ -1231,7 +1209,6 @@ breaker.destroy()
           <ID>198</ID>
           <Description>"CJ LOCATION AND SPEEDER"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
@@ -1397,7 +1374,6 @@ dealloc(newmem)
           <ID>204</ID>
           <Description>"CAR SPEED"</Description>
           <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
@@ -1614,7 +1590,6 @@ dealloc(newmem)
         <CheatEntry>
           <ID>218</ID>
           <Description>"OHK(with armour)"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
@@ -1692,7 +1667,6 @@ dealloc(newmem)
         <CheatEntry>
           <ID>222</ID>
           <Description>"CAR FAST EXPLOSION"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : gta_sa.exe
   Version: 
@@ -1764,7 +1738,6 @@ dealloc(newmem)
           <ID>230</ID>
           <Description>"SUPER JUMP"</Description>
           <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 {$lua}
@@ -1872,7 +1845,6 @@ hk.destroy()
           <ID>252</ID>
           <Description>"SPEEDER "</Description>
           <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -1946,7 +1918,6 @@ dealloc(newmem)
         <CheatEntry>
           <ID>259</ID>
           <Description>"Super Jumper 2"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 {$lua}
@@ -2054,7 +2025,6 @@ hk.destroy()
         <CheatEntry>
           <ID>264</ID>
           <Description>"Super Jumper 3"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 {$lua}
@@ -2098,11 +2068,13 @@ local deg=20
 local stopKey=0x53
 local slowKey=0x28
 local fastKey=0x26
+local zinc=0x55
+local zdec=0x44
 local xaddr="[speed_ptr]"
 local yaddr="[speed_ptr]+4"
 local zaddr="[speed_ptr]+8"
 
-function fwdSpeedModifier(speed,multiplier)
+function fwdSpeedModifier(speed,multiplier,zspeed)
 if isKeyPressed(slowKey) then
 speed=speed/multiplier
 keyUp(slowKey)
@@ -2111,12 +2083,22 @@ if isKeyPressed(fastKey) then
 speed=speed*multiplier
 keyUp(fastKey)
 end
-return speed
+if isKeyPressed(zinc) then
+zspeed=zspeed*multiplier
+end
+keyUp(zinc)
+if isKeyPressed(zdec) then
+zspeed=zspeed/multiplier
+end
+keyUp(zdec)
+return speed,zspeed
 end
 
 
 hk=createHotkey(function()
 local multi=multi
+local zUpSpeed=zUpSpeed
+local zDownSpeed=zDownSpeed
 writeFloat("[speed_ptr]+4fc",100000.0)
 writeFloat("[speed_ptr]+504",100000.0)
 while(readFloat(xaddr)==0 and readFloat(yaddr)==0 and not isKeyPressed(stopKey)) do end
@@ -2144,7 +2126,7 @@ end
 writeFloat(xaddr,x)
 writeFloat(yaddr,y)
 writeFloat(zaddr,zUpSpeed)
-multi=fwdSpeedModifier(multi,multiSpeeder)
+multi,zUpSpeed=fwdSpeedModifier(multi,multiSpeeder,zUpSpeed)
 end
 keyUp(stopKey)
 while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
@@ -2165,7 +2147,7 @@ end
 writeFloat(xaddr,x)
 writeFloat(yaddr,y)
 writeFloat(zaddr,zDownSpeed)
-multi=fwdSpeedModifier(multi,multiSpeeder)
+multi,zDownSpeed=fwdSpeedModifier(multi,multiSpeeder,zDownSpeed)
 end
 keyUp(stopKey)
 end,VK_CONTROL)
