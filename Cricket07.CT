@@ -498,6 +498,7 @@ local multi_pos=1
 local multi_neg=-1
 local bounceMul=1.7
 local bounceMoves=1
+local seamMult=1.4
 local LazyAction=true
 local LineAddr="[ball]+2d8"
 local LengthAddr="[ball]+2dc"
@@ -510,22 +511,9 @@ local pitchLength=9.0329828262329
 
 
 
-function isBallInPitch()
-local currLoc=readFloat(literalLengthAddr)
-if currLoc==nil then return false end
-if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 and readByte(isBallHit)==0 then return true else return false end
-end
+package.path=package.path..";C:\\Users\\atult\\Documents\\My Cheat Tables\\?"
+local util=require("util")
 
-
-function waitForRunUpComplete()
-local currLoc=readFloat(literalLengthAddr)
-if currLoc==nil then return end
-if LazyAction then while not isBallInPitch() do end end
-end
-
-function isSafeToRun()
-if readFloat(LineAddr)==nil or readFloat(LengthAddr)==nil or readFloat(frontAddr)==nil or readFloat(literalLengthAddr)==nil  then return false else return true end
-end
 
 function Mover(change,addr)
                       local speed=readFloat(addr)
@@ -538,8 +526,9 @@ function Mover(change,addr)
 
 
 left=createHotkey(function()
-                      waitForRunUpComplete()
-					  while isBallInPitch() do
+if util.isSafeToRun()==false then return end
+                      util.waitForRunUpComplete()
+					  while util.isBallInPitch() do
 					    Mover(pos,LineAddr)
 						sleep(sleep_time)
 					  end
@@ -548,8 +537,9 @@ left=createHotkey(function()
 
 
 right=createHotkey(function()
-                      waitForRunUpComplete()
-					  while isBallInPitch() do
+if util.isSafeToRun()==false then return end
+                      util.waitForRunUpComplete()
+					  while util.isBallInPitch() do
 					    Mover(neg,LineAddr)
 						sleep(sleep_time)
 					  end
@@ -557,9 +547,10 @@ right=createHotkey(function()
 
 
 both=createHotkey(function()
-                      local count=0
-                      waitForRunUpComplete()
-					  while isBallInPitch() do
+                      if util.isSafeToRun()==false then return end
+					  local count=0
+                      util.waitForRunUpComplete()
+					  while util.isBallInPitch() do
 					    if count%2==0 then
 						  Mover(multi_pos,LineAddr)
 						else
@@ -572,7 +563,8 @@ both=createHotkey(function()
 
 
 up=createHotkey(function()
-waitForRunUpComplete()
+if util.isSafeToRun()==false then return end
+util.waitForRunUpComplete()
 while readFloat(LengthAddr)&lt;0 do end
 x=readFloat(LengthAddr)
 writeFloat(LengthAddr,x*bounceMul)
@@ -580,12 +572,21 @@ end,0x5A) --Z
 
 
 down=createHotkey(function()
-waitForRunUpComplete()
+if util.isSafeToRun()==false then return end
+util.waitForRunUpComplete()
 while readFloat(LengthAddr)&lt;0 do end
 x=readFloat(LengthAddr)
 writeFloat(LengthAddr,x/bounceMul)
 end,0x58) --X
 
+
+seamMovement=createHotkey(function()
+if util.isSafeToRun()==false then return end
+util.waitForRunUpComplete()
+while readFloat(LengthAddr)&lt;0 do end
+y=readFloat(LineAddr)
+writeFloat(LineAddr,y*seamMult)
+end,0x4E) --N
 
 
 {$asm}
@@ -607,6 +608,7 @@ right.destroy()
 both.destroy()
 up.destroy()
 down.destroy()
+seamMovement.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>

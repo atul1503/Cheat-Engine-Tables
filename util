@@ -1,0 +1,32 @@
+util={}
+
+function util.magnitude(x,y)
+return ((x^2)+(y^2))^0.5
+end
+
+function util.isBallInPitch()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return false end
+if currLoc>(-pitchLength) and currLoc<pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 and readByte(isBallHit)==0 then return true else return false end
+end
+
+function util.waitForRunUpComplete()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return end
+if LazyAction then while not isBallInPitch() do end end
+end
+
+function util.isSafeToRun()
+if readFloat(LineAddr)==nil or readFloat(LengthAddr)==nil or readFloat(frontAddr)==nil or readFloat(literalLengthAddr)==nil  then return false else return true end
+end
+
+function util.Mover(change,addr)
+                      local speed=readFloat(addr)
+                      if (readFloat(addr)) then
+                      speed=speed+change
+                      writeFloat(addr,speed)
+                      end
+                      end
+
+
+return util

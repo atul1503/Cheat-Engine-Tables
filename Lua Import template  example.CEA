@@ -1,0 +1,166 @@
+[ENABLE]
+
+aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
+alloc(newmem,100)
+alloc(ball,4)
+label(code)
+label(return)
+registersymbol(ball)
+newmem:
+
+code:
+mov [ball],ecx
+  fstp dword ptr [ecx+000002D8]
+  jmp return
+
+movement:
+  jmp newmem
+  nop
+return:
+registersymbol(movement)
+
+{$lua}
+
+
+--pr means sleep time between different directions swings.
+--pos is the swing in positive direction.It should always be positive.
+--neg is the swing in negative direction.It should always be negative.
+--This script can be used to simulate actual swing movement of real cricket games.
+--If you want to make the ball swing in a particular direction continuously then set the pos or neg to some no. and then set its counterpart to zero,For example set pos=0.3 and neg=0 and then setswing_moves to some high no. like 20 and set sleep to some low value like 20.
+--Signs have to be put manually while setting the value of variables for pos,neg,upSpeed,downSpeed.
+--IF you want double swing then just set both pos and neg to some non-zero value and adjust the sleep variable.
+--Before using the hotkeys wait for 1 ball so that all ball speeds can be identified by script.
+--If LazyAction is true then just after setting the ball pitch location ,in game, you can press the desired hotkey which will allow the swing to happen only when ball is in the pitch.
+--Have fun!
+
+
+local sleep_time=0
+local multi_swing_sleep=300
+local pos=3.3e-4
+local neg=-3.3e-4
+local multi_pos=1
+local multi_neg=-1
+local bounceMul=1.7
+local bounceMoves=1
+local seamMult=1.4
+local LazyAction=true
+local LineAddr="[ball]+2d8"
+local LengthAddr="[ball]+2dc"
+local frontAddr="[ball]+2e0"
+local literalLengthAddr="[ball]+2c8"
+local heightAddr="[ball]+2c4"
+local isBallHit="Cricket07.exe+5DA4FA"
+local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
+local pitchLength=9.0329828262329
+
+
+package.path=package.path..";C:\\Users\\atult\\Documents\\My Cheat Tables\\?.lua"
+local util=require('util.lua')
+
+
+function isBallInPitch()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return false end
+if currLoc>(-pitchLength) and currLoc<pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 and readByte(isBallHit)==0 then return true else return false end
+end
+
+
+function waitForRunUpComplete()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return end
+if LazyAction then while not isBallInPitch() do end end
+end
+
+function isSafeToRun()
+if readFloat(LineAddr)==nil or readFloat(LengthAddr)==nil or readFloat(frontAddr)==nil or readFloat(literalLengthAddr)==nil  then return false else return true end
+end
+
+function Mover(change,addr)
+                      local speed=readFloat(addr)
+                      if (readFloat(addr)) then
+                      speed=speed+change
+                      writeFloat(addr,speed)
+                      end
+                      end
+
+
+
+left=createHotkey(function()
+                      waitForRunUpComplete()
+					  while isBallInPitch() do
+					    Mover(pos,LineAddr)
+						sleep(sleep_time)
+					  end
+                      end,0x41) --A
+
+
+
+right=createHotkey(function()
+                      waitForRunUpComplete()
+					  while isBallInPitch() do
+					    Mover(neg,LineAddr)
+						sleep(sleep_time)
+					  end
+                      end,0x44) --D
+
+
+both=createHotkey(function()
+                      local count=0
+                      waitForRunUpComplete()
+					  while isBallInPitch() do
+					    if count%2==0 then
+						  Mover(multi_pos,LineAddr)
+						else
+                            Mover(multi_neg,LineAddr)
+						end
+						sleep(multi_swing_sleep)
+						count=count+1
+					  end
+                      end,0x57) --W
+
+
+up=createHotkey(function()
+waitForRunUpComplete()
+while readFloat(LengthAddr)<0 do end
+x=readFloat(LengthAddr)
+writeFloat(LengthAddr,x*bounceMul)
+end,0x5A) --Z
+
+
+down=createHotkey(function()
+waitForRunUpComplete()
+while readFloat(LengthAddr)<0 do end
+x=readFloat(LengthAddr)
+writeFloat(LengthAddr,x/bounceMul)
+end,0x58) --X
+
+
+seamMovement=createHotkey(function()
+if not util.isSafeToRun() then return end
+waitForRunUpComplete()
+while readFloat(LengthAddr)<0 do end
+y=readFloat(LineAddr)
+writeFloat(LineAddr,y*seamMult)
+end,0x4E) --N
+
+
+{$asm}
+
+[DISABLE]
+
+movement:
+  db D9 99 D8 02 00 00
+
+unregistersymbol(ball)
+unregistersymbol(movement)
+dealloc(ball)
+dealloc(newmem)
+
+{$lua}
+
+left.destroy()
+right.destroy()
+both.destroy()
+up.destroy()
+down.destroy()
+seamMovement.destroy()

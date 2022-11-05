@@ -1696,46 +1696,46 @@ breaker.destroy()
 [ENABLE]
 
 
-local a=1/60 -- a of 2^(a*x)
-local minSpeed=15
-rotater=0
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
+turnSpeed=20
 
-counter=0
 
-function calcR(x,y)
-r=((x^2)+(y^2))^(1/2)
-return r
+
+cachedSpeed=-1
+
+
+
+
+
+
+function constant()
+if isKeyPressed(0x26) then return end
+local r=((xspeed.Value^2)+(yspeed.Value^2))^(0.5)
+cachedSpeed=r
+local ratio=turnSpeed/r
+xspeed.Value=xspeed.Value*ratio
+yspeed.Value=yspeed.Value*ratio
 end
 
-
-function slower()
-     counter=counter+1
-     factor=2^(a*counter)
-     r=calcR(xspeed.Value/factor,yspeed.Value/factor)
-    if r&gt;minSpeed then
-	xspeed.Value=xspeed.Value/factor
-	yspeed.Value=yspeed.Value/factor
-    elseif not isKeyPressed(0x26) then
-     ratio=minSpeed/r
-     xspeed.Value=xspeed.Value*ratio
-	yspeed.Value=yspeed.Value*ratio
-    end
-	end
-
-
 left=createHotkey(function()
-slower()
-steer.Value=steer.Value-rotater
+constant()
 end,0x25)
 
 right=createHotkey(function()
-slower()
-steer.Value=steer.Value+rotater
+constant()
 end,0x27)
+
+straight=createHotkey(function()
+if cachedSpeed&lt;=0 then return end
+local r=((xspeed.Value^2)+(yspeed.Value^2))^(0.5)
+local ratio=cachedSpeed/r
+xspeed.Value=xspeed.Value*ratio
+yspeed.Value=yspeed.Value*ratio
+cachedSpeed=-1
+end,0x26)
 
 [DISABLE]
 
