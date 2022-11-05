@@ -639,10 +639,9 @@ registersymbol(movement)
 {$lua}
 
 local pacemul=1.5
-local angle=5e-4
-local angleChange=1e-4
-local yzangleChange=1
+local angle=1e-4
 local yzangle=2
+local seamangle=2.5
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
 local zAddr="[ball]+2dc"
@@ -695,18 +694,37 @@ right=createHotkey(function()
                       end
                       end,0x52) --R
 
-increaser=createHotkey(function()
-                      angle=angle+angleChange
-                      end,0x64) --4
 
-decreaser=createHotkey(function()
-angle=angle-angleChange
-end,0x66) --6
+RandomSeam=createHotkey(function()
+waitForRunUpComplete()
+while isBallInPitch() do
+if readFloat(zAddr)&gt;0 then
+if math.random(2)==2 then
+local rad=math.rad(seamangle)
+					  x=readFloat(xAddr)
+					  y=readFloat(yAddr)
+					  xn=x*math.cos(rad)-y*math.sin(rad)
+					  yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+return
+else
+local rad=math.rad(-seamangle)
+					  x=readFloat(xAddr)
+					  y=readFloat(yAddr)
+					  xn=x*math.cos(rad)-y*math.sin(rad)
+					  yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+return
+end
 
-neutral=createHotkey(function()
-angle=0
-yzangle=0
-end,0x5A) --Z
+end
+
+end
+
+end,0x4E) ---N
+
 
 
 fast=createHotkey(function()
@@ -742,15 +760,6 @@ local rad=math.rad(-yzangle)
 end,0x44) --D
 
 
-ainc=createHotkey(function()
-                      yzangle=yzangle+yzangleChange
-                      end,0x68) --8
-
-dinc=createHotkey(function()
-                      yzangle=yzangle-yzangleChange
-
-                      end,0x62) --2
-
 
 
 {$asm}
@@ -770,13 +779,9 @@ dealloc(newmem)
 fast.destroy()
 left.destroy()
 right.destroy()
-neutral.destroy()
-increaser.destroy()
-decreaser.destroy()
 ascend.destroy()
 descend.destroy()
-ainc.destroy()
-dinc.destroy()
+RandomSeam.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
