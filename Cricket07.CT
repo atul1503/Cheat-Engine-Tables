@@ -639,9 +639,9 @@ registersymbol(movement)
 {$lua}
 
 local pacemul=1.5
-local angle=1e-4
+local angle=5e-4
 local yzangle=2
-local seamangle=1.5
+local seamangle=2
 local seamHeight=0.1
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
@@ -671,7 +671,7 @@ end
 
 left=createHotkey(function()
                       waitForRunUpComplete()
-                      while isBallInPitch() do
+                      while isBallInPitch() and readByte(isBallHit)==0 do
                       local rad=math.rad(-angle)
 					  x=readFloat(xAddr)
 					  y=readFloat(yAddr)
@@ -685,7 +685,7 @@ left=createHotkey(function()
 
 right=createHotkey(function()
                       waitForRunUpComplete()
-                      while isBallInPitch() do
+                      while isBallInPitch() and readByte(isBallHit)==0 do
                       local rad=math.rad(angle)
 					  x=readFloat(xAddr)
 					  y=readFloat(yAddr)
@@ -1479,12 +1479,6 @@ switch.destroy()
           <Address>Cricket07.exe+3EDD80</Address>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>192</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>033CEF64</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
