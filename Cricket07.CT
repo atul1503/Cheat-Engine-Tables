@@ -641,7 +641,9 @@ registersymbol(movement)
 local pacemul=1.5
 local angle=5e-4
 local yzangle=2
-local seamangle=2
+local ascendVelocity=8
+local descendVelocity=4
+local seamangle=1.5
 local seamHeight=0.1
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
@@ -666,6 +668,19 @@ local currLoc=readFloat(literalLengthAddr)
 if currLoc==nil then return end
 if LazyAction then while not isBallInPitch() do end end
 end
+
+
+function beforePitch(callBeforePitch)
+--- callBeforePitch is a function which should be called which we want to run when the ball is just about to hit the pitch
+waitForRunUpComplete()
+while isBallInPitch() do
+if readFloat(literalHeightAddr)&lt;seamHeight then
+callBeforePitch()
+return
+end
+end
+end
+
 
 
 
@@ -697,33 +712,35 @@ right=createHotkey(function()
                       end,0x52) --R
 
 
+
 RandomSeam=createHotkey(function()
 waitForRunUpComplete()
-while isBallInPitch() do
-if readFloat(literalHeightAddr)&lt;seamHeight then
-if math.random(2)==2 then
-local rad=math.rad(seamangle)
+  while isBallInPitch() do
+    if readFloat(literalHeightAddr)&lt;seamHeight then
+      if math.random(2)==2 then
+          local rad=math.rad(seamangle)
 					  x=readFloat(xAddr)
 					  y=readFloat(yAddr)
 					  xn=x*math.cos(rad)-y*math.sin(rad)
 					  yn=x*math.sin(rad)+y*math.cos(rad)
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
-return
-else
-local rad=math.rad(-seamangle)
+                      return
+     else
+         local rad=math.rad(-seamangle)
 					  x=readFloat(xAddr)
 					  y=readFloat(yAddr)
 					  xn=x*math.cos(rad)-y*math.sin(rad)
 					  yn=x*math.sin(rad)+y*math.cos(rad)
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
-return
-end
+                      return
 
-end
+     end
 
-end
+   end
+
+  end
 
 end,0x4E) ---N
 
@@ -738,27 +755,16 @@ end,0x46) --F
 
 
 ascend=createHotkey(function()
-waitForRunUpComplete()
-local rad=math.rad(yzangle)
-					 local z=readFloat(zAddr)
-					  local y=readFloat(yAddr)
-                      if not z then return end
-					 local zn=z*math.cos(rad)-y*math.sin(rad)
-					  local yn=z*math.sin(rad)+y*math.cos(rad)
-					  writeFloat(zAddr,zn)
-					  writeFloat(yAddr,yn)
+beforePitch(
+function() writeFloat(zAddr,readFloat(zAddr)+ascendVelocity)
+end)
 end,0x41) --A
 
+
 descend=createHotkey(function()
-waitForRunUpComplete()
-local rad=math.rad(-yzangle)
-				local	  z=readFloat(zAddr)
-				local	  y=readFloat(yAddr)
-                if not z then return end
-				local	  zn=z*math.cos(rad)-y*math.sin(rad)
-				local	  yn=z*math.sin(rad)+y*math.cos(rad)
-					  writeFloat(zAddr,zn)
-					  writeFloat(yAddr,yn)
+beforePitch(
+function() writeFloat(zAddr,readFloat(zAddr)-descendVelocity)
+end)
 end,0x44) --D
 
 
