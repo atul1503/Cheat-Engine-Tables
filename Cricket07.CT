@@ -641,8 +641,8 @@ registersymbol(movement)
 local pacemul=1.5
 local angle=5e-4
 local yzangle=2
-local ascendVelocity=8
-local descendVelocity=4
+local ascendVelocity=4
+local descendVelocity=3
 local seamangle=1.5
 local seamHeight=0.1
 local yAddr="[ball]+2e0"
@@ -900,6 +900,86 @@ shotHk.destroy()
 IncreaseAngle.destroy()
 DecreaseAngle.destroy()
 neutralizer.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>192</ID>
+          <Description>"Delivery Constrainer"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
+alloc(newmem,100)
+alloc(ball,4)
+label(code)
+label(return)
+registersymbol(ball)
+newmem:
+
+code:
+mov [ball],ecx
+  fstp dword ptr [ecx+000002D8]
+  jmp return
+
+movement:
+  jmp newmem
+  nop
+return:
+registersymbol(movement)
+
+{$lua}
+
+
+local leaveSpeed=40
+local dropSpeed=-6
+local yAddr="[ball]+2e0"
+local xAddr="[ball]+2d8"
+local zAddr="[ball]+2dc"
+local literalLengthAddr="[ball]+2c8"
+local literalHeightAddr="[ball]+2c4"
+local literalWidthAddr="[ball]+2c0"
+local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
+local isBallHit="Cricket07.exe+5DA4FA"
+local pitchLength=10
+local LazyAction=true
+
+
+
+restrict=createHotkey(function()
+if readFloat(yAddr)==nil then return end
+while readByte(isBallOutOfBowlersHandAddr)==0 do end
+local x=readFloat(literalLengthAddr)
+local y=readFloat(literalWidthAddr)
+local z=readFloat(literalHeightAddr)
+local r=(readFloat(xAddr)^2+readFloat(yAddr)^2+readFloat(zAddr)^2)^0.5
+local ratio=leaveSpeed/r
+writeFloat(xAddr,readFloat(xAddr)*ratio)
+writeFloat(yAddr,readFloat(yAddr)*ratio)
+writeFloat(zAddr,dropSpeed)
+
+writeFloat(literalLengthAddr,x)
+writeFloat(literalWidthAddr,y)
+writeFloat(literalHeightAddr,z)
+end,0x4E) --N
+
+
+
+{$asm}
+
+[DISABLE]
+
+movement:
+  db D9 99 D8 02 00 00
+
+unregistersymbol(ball)
+unregistersymbol(movement)
+dealloc(ball)
+dealloc(newmem)
+
+
+{$lua}
+
+restrict.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>

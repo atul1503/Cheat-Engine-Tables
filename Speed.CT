@@ -2057,9 +2057,9 @@ unregistersymbol(Inf_No_Collision)
 
 [ENABLE]
 
-local mul=1.001
+local mul=1
 local steerSpeed=0.1
-local deg=180
+local deg=0
 local firstXLabel='X'
 local secondXLabel='x1'
 local firstYLabel='Y'
@@ -2155,6 +2155,26 @@ mapper.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>02F03758</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>117</ID>
+      <Description>"x1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02F03658</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>118</ID>
+      <Description>"y1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02F03660</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
