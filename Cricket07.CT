@@ -930,8 +930,10 @@ registersymbol(movement)
 {$lua}
 
 
-local leaveSpeed=40
-local dropSpeed=-6
+local leaveSpeed=50
+local dropSpeed=-7
+local upSpeed=9
+local pitchDetectHeight=0.1
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
 local zAddr="[ball]+2dc"
@@ -956,10 +958,11 @@ local ratio=leaveSpeed/r
 writeFloat(xAddr,readFloat(xAddr)*ratio)
 writeFloat(yAddr,readFloat(yAddr)*ratio)
 writeFloat(zAddr,dropSpeed)
-
 writeFloat(literalLengthAddr,x)
 writeFloat(literalWidthAddr,y)
 writeFloat(literalHeightAddr,z)
+while not (readFloat(literalHeightAddr)&lt;pitchDetectHeight and readFloat(zAddr)&gt;0) do end
+writeFloat(zAddr,upSpeed)
 end,0x4E) --N
 
 
