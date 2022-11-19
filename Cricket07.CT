@@ -932,7 +932,7 @@ registersymbol(movement)
 
 local leaveSpeed=50
 local dropSpeed=-7
-local upSpeed=9
+local upSpeed=7
 local pitchDetectHeight=0.1
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
@@ -944,6 +944,13 @@ local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
 local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
 local LazyAction=true
+
+
+function isBallInPitch()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return false end
+if currLoc&gt;(-pitchLength) and currLoc&lt;pitchLength and readByte(isBallOutOfBowlersHandAddr)==1 and readByte(isBallHit)==0 then return true else return false end
+end
 
 
 
@@ -962,7 +969,8 @@ writeFloat(literalLengthAddr,x)
 writeFloat(literalWidthAddr,y)
 writeFloat(literalHeightAddr,z)
 while not (readFloat(literalHeightAddr)&lt;pitchDetectHeight and readFloat(zAddr)&gt;0) do end
-writeFloat(zAddr,upSpeed)
+
+while isBallInPitch() do writeFloat(zAddr,upSpeed) end
 end,0x4E) --N
 
 
