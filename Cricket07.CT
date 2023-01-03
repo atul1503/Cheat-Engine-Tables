@@ -930,9 +930,9 @@ registersymbol(movement)
 {$lua}
 
 
-local leaveSpeed=50
-local dropSpeed=-7
-local upSpeed=7
+local leaveSpeed=25
+local dropSpeed=-3.5
+local upSpeed=3.5
 local pitchDetectHeight=0.1
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
@@ -1576,6 +1576,67 @@ switch.destroy()
           <Address>Cricket07.exe+3EDD80</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>195</ID>
+      <Description>"FielderSetter"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+
+[ENABLE]
+
+local instructionAddress=0x005E73FD
+local fielders={
+	f1={x=2865.843994,y=-1749.775635,nx=1900,ny=-1200},
+    f2={x=-1154.778198,y=-487.0852661,nx=2000,ny=2000}
+}
+
+local errorVal=4
+
+
+setField=createHotkey(function()
+function debugger_onBreakpoint()
+ for k,f in pairs(fielders) do
+    --print(f.x,readFloat(EAX))
+	if compare(EAX,f) then
+		writeFloat(EAX,f.nx)
+		writeFloat(EAX+8,f.ny)
+	end
+ end
+
+debug_continueFromBreakpoint(co_run)
+return 1
+end
+
+openProcess("Cricket07.exe")
+debugProcess()
+debug_setBreakpoint(instructionAddress)
+end,0x45) --E
+
+
+function compare(eax,fielderTable)
+--print(readFloat(eax))
+Eax=math.floor(math.abs(readFloat(eax)))
+Eaxplus8=math.floor(math.abs(readFloat(eax+8)))
+x=math.floor(math.abs(fielderTable.x))
+y=math.floor(math.abs(fielderTable.y))
+--print(Eax,x,Eaxplus8,y)
+if math.abs(Eax-x)&lt;errorVal and math.abs(Eaxplus8-y)&lt;errorVal  then return true else return false end
+end
+
+
+removeBP=createHotkey(function()
+debug_removeBreakpoint(instructionAddress)
+end,0x46) --F
+
+
+
+[DISABLE]
+
+setField.destroy()
+removeBP.destroy()
+</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3157,6 +3218,170 @@ switch.destroy()
         <Byte>24</Byte>
         <Byte>10</Byte>
         <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [eax] (Fielder address pointer) </Description>
+      <AddressString>Cricket07.exe+1F0643</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+        <Byte>FF</Byte>
+        <Byte>50</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>A6</Byte>
+        <Byte>D8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [ecx],edx (Another fielder address pointer)(different kind of address)</Description>
+      <AddressString>Cricket07.exe+4CC58</AddressString>
+      <Before>
+        <Byte>0D</Byte>
+        <Byte>50</Byte>
+        <Byte>62</Byte>
+        <Byte>78</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>11</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+        <Byte>8B</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fmul dword ptr [esi+000000D0](Fielder mover)</Description>
+      <AddressString>Cricket07.exe+1EDEFB</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>8E</Byte>
+        <Byte>D0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi+000000D4](Different fielder mover 2)</Description>
+      <AddressString>Cricket07.exe+1EDF6C</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>D8</Byte>
+        <Byte>64</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>D4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>14</Byte>
+        <Byte>C2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [ebx+08],eax (Custom field set import value)</Description>
+      <AddressString>Cricket07.exe+921EC</AddressString>
+      <Before>
+        <Byte>10</Byte>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>43</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>4B</Byte>
+        <Byte>0C</Byte>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [esi+04] (Another fielder Address ptr)</Description>
+      <AddressString>Cricket07.exe+1E371B</AddressString>
+      <Before>
+        <Byte>C4</Byte>
+        <Byte>0C</Byte>
+        <Byte>D8</Byte>
+        <Byte>46</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+        <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[eax] (Very imp instruction about player coords)</Description>
+      <AddressString>Cricket07.exe+1E73FD</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>11</Byte>
+        <Byte>FF</Byte>
+        <Byte>52</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>8D</Byte>
+        <Byte>4E</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>11</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
