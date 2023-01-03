@@ -1026,6 +1026,68 @@ lmr.Active=false
 switch.destroy()
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>195</ID>
+          <Description>"FielderSetter"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+
+[ENABLE]
+
+local instructionAddress=0x005E73FD
+local fielders={
+	f1={x=-1258.917969,y=-568.7433472,nx=1900,ny=-1200},
+    f2={x=-1253.338013,y=-256.1333923,nx=2000,ny=2000},
+    f3={x=44,y=44,nx=100,ny=100}
+}
+
+local errorVal=4
+
+
+setField=createHotkey(function()
+function debugger_onBreakpoint()
+ for k,f in pairs(fielders) do
+    --print(f.x,readFloat(EAX))
+	if compare(EAX,f) then
+		writeFloat(EAX,f.nx)
+		writeFloat(EAX+8,f.ny)
+	end
+ end
+
+debug_continueFromBreakpoint(co_run)
+return 1
+end
+
+openProcess("Cricket07.exe")
+debugProcess()
+debug_setBreakpoint(instructionAddress)
+end,0x45) --E
+
+
+function compare(eax,fielderTable)
+--print(readFloat(eax))
+Eax=math.floor(math.abs(readFloat(eax)))
+Eaxplus8=math.floor(math.abs(readFloat(eax+8)))
+x=math.floor(math.abs(fielderTable.x))
+y=math.floor(math.abs(fielderTable.y))
+--print(Eax,x,Eaxplus8,y)
+if math.abs(Eax-x)&lt;errorVal and math.abs(Eaxplus8-y)&lt;errorVal  then return true else return false end
+end
+
+
+removeBP=createHotkey(function()
+debug_removeBreakpoint(instructionAddress)
+end,0x46) --F
+
+
+
+[DISABLE]
+
+setField.destroy()
+removeBP.destroy()
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -1576,67 +1638,6 @@ switch.destroy()
           <Address>Cricket07.exe+3EDD80</Address>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>195</ID>
-      <Description>"FielderSetter"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
-
-
-[ENABLE]
-
-local instructionAddress=0x005E73FD
-local fielders={
-	f1={x=2865.843994,y=-1749.775635,nx=1900,ny=-1200},
-    f2={x=-1154.778198,y=-487.0852661,nx=2000,ny=2000}
-}
-
-local errorVal=4
-
-
-setField=createHotkey(function()
-function debugger_onBreakpoint()
- for k,f in pairs(fielders) do
-    --print(f.x,readFloat(EAX))
-	if compare(EAX,f) then
-		writeFloat(EAX,f.nx)
-		writeFloat(EAX+8,f.ny)
-	end
- end
-
-debug_continueFromBreakpoint(co_run)
-return 1
-end
-
-openProcess("Cricket07.exe")
-debugProcess()
-debug_setBreakpoint(instructionAddress)
-end,0x45) --E
-
-
-function compare(eax,fielderTable)
---print(readFloat(eax))
-Eax=math.floor(math.abs(readFloat(eax)))
-Eaxplus8=math.floor(math.abs(readFloat(eax+8)))
-x=math.floor(math.abs(fielderTable.x))
-y=math.floor(math.abs(fielderTable.y))
---print(Eax,x,Eaxplus8,y)
-if math.abs(Eax-x)&lt;errorVal and math.abs(Eaxplus8-y)&lt;errorVal  then return true else return false end
-end
-
-
-removeBP=createHotkey(function()
-debug_removeBreakpoint(instructionAddress)
-end,0x46) --F
-
-
-
-[DISABLE]
-
-setField.destroy()
-removeBP.destroy()
-</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
