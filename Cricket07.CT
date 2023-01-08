@@ -883,6 +883,10 @@ local fielders={
 local errorVal=4
 
 
+
+--if over changes without single or thriple then just do vertical side change. If single or thriple do horizontal side change.
+
+
 setField=createHotkey(function()
 function debugger_onBreakpoint()
  for k,f in pairs(fielders) do
