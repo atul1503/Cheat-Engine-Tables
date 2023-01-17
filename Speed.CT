@@ -788,7 +788,8 @@ breaker.destroy()
 
 [ENABLE]
 
-local turnSpeed=5e-4
+local speedConstant=3e-4
+local timeConstant=1e-2
 
 
 list=getAddressList()
@@ -796,11 +797,13 @@ xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
 
+local turnCounts=0
 
 function turn()
 local r=((xspeed.Value^2)+(yspeed.Value^2))^(1/2)
-xspeed.Value=xspeed.Value/(1+r*turnSpeed)
-yspeed.Value=yspeed.Value/(1+r*turnSpeed)
+xspeed.Value=xspeed.Value/(1+turnCounts*timeConstant+r*speedConstant)
+yspeed.Value=yspeed.Value/(1+turnCounts*timeConstant+r*speedConstant)
+turnCounts=turnCounts+1
 end
 
 
@@ -812,11 +815,16 @@ right=createHotkey(function()
 turn()
 end,0x27)
 
+front=createHotkey(function()
+turnCounts=0
+end,0x26)
+
 
 [DISABLE]
 
 left.destroy()
 right.destroy()
+front.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
