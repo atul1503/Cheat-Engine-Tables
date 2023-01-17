@@ -788,7 +788,7 @@ breaker.destroy()
 
 [ENABLE]
 
-local turnSpeed=4e-4
+local turnSpeed=5e-4
 
 
 list=getAddressList()
