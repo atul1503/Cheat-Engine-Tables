@@ -8,13 +8,11 @@
       <ID>56</ID>
       <Description>"ADDRESSES"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>25</ID>
           <Description>"Car Rotation"</Description>
-          <LastState Value="0.6442773938" RealAddress="009386CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386CC</Address>
@@ -22,7 +20,6 @@
         <CheatEntry>
           <ID>9</ID>
           <Description>"X"</Description>
-          <LastState Value="-1413.477051" RealAddress="009386D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>Speed.exe+5386D8</Address>
@@ -48,7 +45,6 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Z"</Description>
-          <LastState Value="44.08170319" RealAddress="009386DC"/>
           <VariableType>Float</VariableType>
           <Address>009386DC</Address>
           <Hotkeys>
@@ -87,7 +83,6 @@
         <CheatEntry>
           <ID>14</ID>
           <Description>"Y"</Description>
-          <LastState Value="4049.963379" RealAddress="009386E0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E0</Address>
@@ -113,7 +108,6 @@
         <CheatEntry>
           <ID>16</ID>
           <Description>"X SPEED"</Description>
-          <LastState Value="0" RealAddress="009386E8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386E8</Address>
@@ -121,7 +115,6 @@
         <CheatEntry>
           <ID>17</ID>
           <Description>"Z SPEED"</Description>
-          <LastState Value="0" RealAddress="009386EC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386EC</Address>
@@ -153,14 +146,12 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"Y SPEED"</Description>
-          <LastState Value="0" RealAddress="009386F0"/>
           <VariableType>Float</VariableType>
           <Address>009386F0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>23</ID>
           <Description>"WEIGHT"</Description>
-          <LastState Value="1345" RealAddress="009386F4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386F4</Address>
@@ -168,7 +159,6 @@
         <CheatEntry>
           <ID>22</ID>
           <Description>"Steering Rotation"</Description>
-          <LastState Value="0" RealAddress="009386FC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>009386FC</Address>
@@ -176,7 +166,6 @@
         <CheatEntry>
           <ID>30</ID>
           <Description>"Traction"</Description>
-          <LastState Value="0.0007434944273" RealAddress="00938704"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00938704</Address>
@@ -251,7 +240,6 @@
           <ID>70</ID>
           <Description>"Top Speed - Red Line"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="0.625" RealAddress="0CF646D8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>0CF646D8</Address>
@@ -259,7 +247,6 @@
             <CheatEntry>
               <ID>71</ID>
               <Description>"Top Speed - Engine Top Speed"</Description>
-              <LastState Value="0.09375" RealAddress="0CF646D4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-4</Address>
@@ -267,7 +254,6 @@
             <CheatEntry>
               <ID>60</ID>
               <Description>"Torque 1"</Description>
-              <LastState Value="-2.742275483E38" RealAddress="0CF64688"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50</Address>
@@ -275,7 +261,6 @@
             <CheatEntry>
               <ID>61</ID>
               <Description>"Torque 2"</Description>
-              <LastState Value="0.45703125" RealAddress="0CF6468C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+4</Address>
@@ -283,7 +268,6 @@
             <CheatEntry>
               <ID>62</ID>
               <Description>"Torque 3"</Description>
-              <LastState Value="1" RealAddress="0CF64690"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8</Address>
@@ -291,7 +275,6 @@
             <CheatEntry>
               <ID>63</ID>
               <Description>"Torque 4"</Description>
-              <LastState Value="18.61010742" RealAddress="0CF64694"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4</Address>
@@ -299,7 +282,6 @@
             <CheatEntry>
               <ID>64</ID>
               <Description>"Torque 5"</Description>
-              <LastState Value="-3.850158691" RealAddress="0CF64698"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4</Address>
@@ -307,7 +289,6 @@
             <CheatEntry>
               <ID>65</ID>
               <Description>"Torque 6"</Description>
-              <LastState Value="0.00003184842717" RealAddress="0CF6469C"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4</Address>
@@ -315,7 +296,6 @@
             <CheatEntry>
               <ID>66</ID>
               <Description>"Torque 7"</Description>
-              <LastState Value="0.5735763311" RealAddress="0CF646A0"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4</Address>
@@ -323,7 +303,6 @@
             <CheatEntry>
               <ID>67</ID>
               <Description>"Torque 8"</Description>
-              <LastState Value="-0.8191521168" RealAddress="0CF646A4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4</Address>
@@ -331,7 +310,6 @@
             <CheatEntry>
               <ID>68</ID>
               <Description>"Torque 9"</Description>
-              <LastState Value="0" RealAddress="0CF646A8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>-50+8+4+4+4+4+4+4</Address>
@@ -344,521 +322,11 @@
       <ID>57</ID>
       <Description>"SCRIPTS"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>52</ID>
-          <Description>"Gear System"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1+3e-3
-local rangeMultiplier=1.5
-local Up=13
-local Down=0
-local div=0.85
-local motion=1
-local speedXString='X SPEED'
-local speedYString='Y SPEED'
-
-
---Instructions
---mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
---rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
---Up is the initial top speed
--- Down is the initial bottom speed
---div is the speed for bigger brakes.If however you want to slow down just change to a lower gear
---motion is the threshold for the speed of the car so that script may start to work normally.
---Gear is increased by W and decreased by S
-
-local TempUp=Up
-local TempDown=Down
-
-
-
-hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=motion then
-if r&gt;TempUp then
-ratio=TempUp/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-elseif r&lt;TempDown then
-ratio=TempDown/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-else
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-end
-end
-end,0x26)
-
-
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription(speedXString)
-y=getAddressList().getMemoryRecordByDescription(speedYString)
-x.Value=x.Value*div
-y.Value=y.Value*div
-end,0x28)
-
-
-hk3=createHotkey(function()
-TempDown=TempUp
-TempUp=TempUp*rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=motion then
-ratio=TempDown/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Gear Up')
-end,0x57)
-
-hk6=createHotkey(function()
-TempUp=TempDown
-TempDown=TempDown/rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=motion then
-mid=(TempUp+TempDown)/2
-ratio=mid/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Gear Down')
-end,0x53)
-
-hk7=createHotkey(function()
-TempUp=Up
-TempDown=Down
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;=motion then
-ratio=TempUp/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
-speak('Reset')
-end,0x20)
-
-
-
-
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk6.destroy()
-hk7.destroy()
-
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>87</ID>
-          <Description>"Gear System 2"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-
-[ENABLE]
-
-local mul=1+3e-3
-local gearMul=1.05
-local rangeMultiplier=1.7
-local Up=18
-local Down=0
-local div=0.85
-local motion=1
-local speedXString='X SPEED'
-local speedYString='Y SPEED'
-
-
---Instructions
---Version 2 goes into the realistic side of gear systems in cars.It pushes the car speed in the gear speed range gradually instead of instantly(which happens in version 1).
---mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
---rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
---Up is the initial top speed
--- Down is the initial bottom speed
---div is the speed for bigger brakes.If however you want to slow down just change to a lower gear
---motion is the threshold for the speed of the car so that script may start to work normally.
---Gear is increased by W and decreased by S
-
-local TempUp=Up
-local TempDown=Down
-
-
-
-function adjustSpeed(x,y,tempUp,tempDown)
-
-	r=((x.Value^2)+(y.Value^2))^0.5
-	if r&lt;tempDown then
-		if r*gearMul&lt;=tempDown then
-			x.Value=x.Value*gearMul
-			y.Value=y.Value*gearMul
-		else
-			ratio=tempDown/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	elseif r&gt;=tempDown and r&lt;tempUp then
-		if r*mul&lt;=tempUp then
-			x.Value=x.Value*mul
-			y.Value=y.Value*mul
-		else
-			ratio=tempUp/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	else
-		if r/gearMul&gt;tempUp then
-			x.Value=x.Value/gearMul
-			y.Value=y.Value/gearMul
-		else
-			ratio=tempUp/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	end
-end
-
-
-hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-adjustSpeed(x,y,TempUp,TempDown)
-end,0x26)
-
-
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription(speedXString)
-y=getAddressList().getMemoryRecordByDescription(speedYString)
-x.Value=x.Value*div
-y.Value=y.Value*div
-end,0x28)
-
-
-hk3=createHotkey(function()
-TempDown=TempUp
-TempUp=TempUp*rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-adjustSpeed(x,y,TempUp,TempDown)
-speak('Gear Up')
-end,0x57)
-
-hk6=createHotkey(function()
-TempUp=TempDown
-TempDown=TempDown/rangeMultiplier
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-adjustSpeed(x,y,TempUp,TempDown)
-speak('Gear Down')
-end,0x53)
-
-hk7=createHotkey(function()
-TempUp=Up
-TempDown=Down
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-adjustSpeed(x,y,TempUp,TempDown)
-speak('Reset')
-end,0x52)
-
-
-
-
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk6.destroy()
-hk7.destroy()
-
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>88</ID>
-          <Description>"Gear System 3"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-
-[ENABLE]
-
-local mul=1+3e-3
-local gearMul=5
-local rangeMultiplier=1.5
-local Up=18
-local Down=0
-local motion=1
-local speedXString='X SPEED'
-local speedYString='Y SPEED'
-
-
---Instructions
---mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
---rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
---Up is the initial top speed
--- Down is the initial bottom speed
---motion is the threshold for the speed of the car so that script may start to work normally.
---Gear is increased by W and decreased by S
-
-local TempUp=Up
-local TempDown=Down
-
-
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-
-
-
-function adjustSpeed(x,y,tempUp,tempDown,speedUp)
-
-	r=((x.Value^2)+(y.Value^2))^0.5
-	if r&lt;tempDown then
-		if r*gearMul&lt;=tempDown then
-			x.Value=x.Value*gearMul
-			y.Value=y.Value*gearMul
-		else
-			ratio=tempDown/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	elseif r&gt;=tempDown and r&lt;tempUp then
-		if r*mul&lt;=tempUp then
-			if speedUp then
-				x.Value=x.Value*mul
-				y.Value=y.Value*mul
-            else
-                x.Value=x.Value/mul
-				y.Value=y.Value/mul
-			end
-		else
-			ratio=tempUp/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	else
-		if r/gearMul&gt;tempUp then
-			x.Value=x.Value/gearMul
-			y.Value=y.Value/gearMul
-		else
-			ratio=tempUp/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	end
-end
-
-
-hk1=createHotkey(function()
-adjustSpeed(x,y,TempUp,TempDown,1)
-end,0x26)
-
-
-left=createHotkey(function()
-adjustSpeed(x,y,TempUp,TempDown,0)
-end,0x25)
-
-right=createHotkey(function()
-adjustSpeed(x,y,TempUp,TempDown,0)
-end,0x27)
-
-
-hk3=createHotkey(function()
-TempDown=TempUp
-TempUp=TempUp*rangeMultiplier
-adjustSpeed(x,y,TempUp,TempDown)
-end,0x57)
-
-hk6=createHotkey(function()
-TempUp=TempDown
-TempDown=TempDown/rangeMultiplier
-adjustSpeed(x,y,TempUp,TempDown,1)
-end,0x53)
-
-hk7=createHotkey(function()
-TempUp=Up
-TempDown=Down
-adjustSpeed(x,y,TempUp,TempDown,1)
-end,0x20)
-
-
-
-
-
-[DISABLE]
-hk1.destroy()
-hk3.destroy()
-hk6.destroy()
-hk7.destroy()
-left.destroy()
-right.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>99</ID>
-          <Description>"Gear System 4"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-
-local mul=1.002
-local gearMul=3
-local rangeShifter=20
-local HandlingGearNumber=2
-local SpeedGearNumber=4
-local Up=15
-local Down=0
-local motion=1
-local speedXString='X SPEED'
-local speedYString='Y SPEED'
-
-
---Instructions
---mul is the speed by which the car will accelerate if the speed of the car is in range of (TempUp,TempDown)
---gearMul is the speed by which the car will be forced such that finally the speed of the car comes under the range of (TempUp,TempDown).Setting a higher value for gearMul will result in huge jerks but lower value for this will result in late input reaction.
---rangeMultiplier is the multiplier by which the range will be multiplied to calculate the new bottom and top speed.
---Up is the initial top speed
--- Down is the initial bottom speed
---motion is the threshold for the speed of the car so that script may start to work normally.
---In this,range is adjusted by constants.
---Gear is increased by W and decreased by S
---SpeedGearNumber is the gear no. at which the car will we directly triggered to.For eg if SpeedGearNumber is 4 then Car will be at 4th gear after a hotkey is pressed.Currently speed gear can be triggered by M hotkey.
---HandlingGearNumber is the gear at which good handling is expected.
-
-local TempUp=Up
-local TempDown=Down
-
-
-t=getAddressList()
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-
-
-function startupHandler()
-         r=((x.Value^2)+(y.Value^2))^0.5
-         if r&lt;motion then
-            TempUp=Up
-            TempDown=Down
-         end
-end
-
-function adjustSpeed(x,y,tempUp,tempDown,speedUp)
-	r=((x.Value^2)+(y.Value^2))^0.5
-	if r&lt;tempDown then
-		if r*gearMul&lt;=tempDown then
-			x.Value=x.Value*gearMul
-			y.Value=y.Value*gearMul
-		else
-			ratio=tempDown/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	elseif r&gt;=tempDown and r&lt;tempUp then
-		if r*mul&lt;=tempUp then
-			if speedUp then
-				x.Value=x.Value*mul
-				y.Value=y.Value*mul
-            else
-                x.Value=x.Value/mul
-				y.Value=y.Value/mul
-			end
-		else
-			ratio=tempUp/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	else
-		if r/gearMul&gt;tempUp then
-			x.Value=x.Value/gearMul
-			y.Value=y.Value/gearMul
-		else
-			ratio=tempUp/r
-			x.Value=x.Value*ratio
-			y.Value=y.Value*ratio
-		end
-	end
-end
-
-
-hk1=createHotkey(function()
-adjustSpeed(x,y,TempUp,TempDown,1)
-end,0x26)
-
-
-hk3=createHotkey(function()
-TempDown=TempUp
-TempUp=TempUp+rangeShifter
-end,0x57)
-
-hk6=createHotkey(function()
-TempUp=TempDown
-TempDown=TempDown-rangeShifter
-end,0x53)
-
-hk7=createHotkey(function()
-TempUp=Up
-TempDown=Down
-end,0x20)
-
-hk8=createHotkey(function()
-TempUp=Down+SpeedGearNumber*rangeShifter
-TempDown=Down+(SpeedGearNumber-1)*rangeShifter
-end,0x4D)
-
-hk9=createHotkey(function()
-TempUp=Down+HandlingGearNumber*rangeShifter
-TempDown=Down+(HandlingGearNumber-1)*rangeShifter
-end,0x48)
-
-
-[DISABLE]
-hk1.destroy()
-hk3.destroy()
-hk6.destroy()
-hk7.destroy()
-hk8.destroy()
-hk9.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>103</ID>
           <Description>"Gear System 5"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -994,7 +462,6 @@ hk9.destroy()
         <CheatEntry>
           <ID>109</ID>
           <Description>"Gear System 6"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -1111,7 +578,6 @@ reverser.destroy()
         <CheatEntry>
           <ID>111</ID>
           <Description>"Gear system 7"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -1251,34 +717,6 @@ reverser.destroy()
         <CheatEntry>
           <ID>45</ID>
           <Description>"Speeder 1"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1.015
-
-
-speeder=createHotkey(function()
-t=getAddressList()
-counter=0
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-end,0x26)
-
-[DISABLE]
-speeder.destroy()
-
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>44</ID>
-          <Description>"Speeder 2"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -1286,416 +724,35 @@ if syntaxcheck then return end
 [ENABLE]
 
 local mul=1
-local turnSpeedConstant=1+6e-2   --increasing this number will slow down your car more aggressively during corners
-local mulAtFirstGear=1.1
-local rotater=0.1
-local greatLaunchFlag=0
-local firstGearSpeed=40
-local minturnspeed=32
-local turnSpeedFlag=0
-local easyTurnSwitch=0
-local div=1-2e-2
-local boost=2
-local restoreAfterDrop=0
+local df=0.5 --down force
 
-
---Automatic assignment vars:
-local turner=mul*turnSpeedConstant
-local restore=0
-local br=0
-local maintainMin=1
-
-
-hk1=createHotkey(function()
 t=getAddressList()
 x=t.getMemoryRecordByDescription('X SPEED')
 y=t.getMemoryRecordByDescription('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-if turnSpeedFlag~=0 then
-maintainMin=1
-end
-if turnSpeedFlag~=0 and restore==1 and restoreAfterDrop~=0 then
-ratio=br/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-ro.Value=0
-restore=0
-end
-if greatLaunchFlag~=0 then
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&gt;firstGearSpeed then
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-elseif r*mulAtFirstGear&gt;firstGearSpeed then
-ratio=firstGearSpeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-else
-x.Value=x.Value*mulAtFirstGear
-y.Value=y.Value*mulAtFirstGear
-end
-else
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-end
-end,0x26)
+z=t.getMemoryRecordByDescription('Z SPEED')
 
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*div
-y.Value=y.Value*div
-end,0x28)
-
-hk3=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*boost
-y.Value=y.Value*boost
-end,0x42)
-
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-r=((x.Value^2)+(y.Value^2))^0.5
-if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value-rotater
-if turnSpeedFlag~=0 then
-if restore~=1 and restoreAfterDrop~=0 then
-br=r
-restore=1
-end
-if maintainMin~=0 then
-if  r&gt;minturnspeed then
-x.Value=x.Value/turner
-y.Value=y.Value/turner
-elseif r&gt;2 then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-maintainMin=0
-end
-end
-end
-end,0x25)
-
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-r=((x.Value^2)+(y.Value^2))^0.5
-if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value+rotater
-if turnSpeedFlag~=0 then
-if restore~=1 and restoreAfterDrop~=0 then
-br=r
-restore=1
-end
-if maintainMin~=0 then
-if r&gt;minturnspeed then
-x.Value=x.Value/turner
-y.Value=y.Value/turner
-elseif r&gt;2 then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-maintainMin=0
-end
-end
-end
-end,0x27)
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>58</ID>
-          <Description>"Speeder 3"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1.04
-local mulAtFirstGear=1.1
-local rotater=0.0125
-local greatLaunchFlag=0
-local firstGearSpeed=40
-local minturnspeed=32
-local minturnAtBrake=1
-local turnSpeedFlag=0
-local div=1-2e-2
-local boost=2
-
-
-
-hk1=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription('X SPEED')
-y=t.getMemoryRecordByDescription('Y SPEED')
+speeder=createHotkey(function()
 x.Value=x.Value*mul
 y.Value=y.Value*mul
 end,0x26)
 
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-if minturnAtBrake then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-else
-x.Value=x.Value*div
-y.Value=y.Value*div
-end
-end,0x28)
-
-hk3=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*boost
-y.Value=y.Value*boost
-end,0x42)
-
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-r=((x.Value^2)+(y.Value^2))^0.5
-if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value-rotater
-if turnSpeedFlag~=0 and isKeyPressed(0x26)==false then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
+left=createHotkey(function()
+z.Value=z.Value-df*math.abs(z.Value)
 end,0x25)
 
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-z=getAddressList().getMemoryRecord(5)
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-r=((x.Value^2)+(y.Value^2))^0.5
-if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value+rotater
-if turnSpeedFlag~=0 and isKeyPressed(0x26)==false then
-ratio=minturnspeed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end
+right=createHotkey(function()
+z.Value=z.Value-df*math.abs(z.Value)
 end,0x27)
 
 [DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>80</ID>
-          <Description>"Speeder 4"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1+1e-3
-local degAngle=10
-local rotater=0.05
-local easyTurnSwitch=0
-local topSpeed=200
-local div=1.125
-local boost=2
-local overLimitMultiplier=(1/mul)
-
-hk1=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-r=(((x.Value)^2)+((y.Value)^2))^0.5
-if r&lt;topSpeed then
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-else
-x.Value=x.Value*overLimitMultiplier
-y.Value=y.Value*overLimitMultiplier
-end
-end,0x26)
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value/div
-y.Value=y.Value/div
-end,0x28)
-
-hk3=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*boost
-y.Value=y.Value*boost
-end,0x42)
-
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecord('X SPEED')
-y=getAddressList().getMemoryRecord('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value-rotater
-if tonumber(ro.Value)&lt;0 and not isKeyPressed(0x26) then
-theta=degAngle*(math.pi/180)
-xn=x.Value*math.cos(theta)-y.Value*math.sin(theta)
-yn=x.Value*math.sin(theta)+y.Value*math.cos(theta)
-x.Value=xn
-y.Value=yn
-end
-end,0x25)
-
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value+rotater
-if tonumber(ro.Value)&gt;0 and not isKeyPressed(0x26) then
-theta=degAngle*(math.pi/180)
-xn=x.Value*math.cos(theta)+y.Value*math.sin(theta)
-yn=(-1)*x.Value*math.sin(theta)+y.Value*math.cos(theta)
-x.Value=xn
-y.Value=yn
-end
-end,0x27)
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>85</ID>
-          <Description>"Speeder 5"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
-[ENABLE]
-
-local mul=1+7e-3
-local rotater=0.075
-local easyTurnSwitch=0
-local topSpeed=200
-local div=1.125
-local boost=2
-local overLimitMultiplier=(1/mul)
-
-function calcdegAngle(x)
-return x*5
-end
-
-
-hk1=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-r=(((x.Value)^2)+((y.Value)^2))^0.5
-if r&lt;topSpeed then
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-else
-x.Value=x.Value*overLimitMultiplier
-y.Value=y.Value*overLimitMultiplier
-end
-end,0x26)
-
-hk2=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value/div
-y.Value=y.Value/div
-end,0x28)
-
-hk3=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-x.Value=x.Value*boost
-y.Value=y.Value*boost
-end,0x42)
-
-hk4=createHotkey(function()
-x=getAddressList().getMemoryRecord('X SPEED')
-y=getAddressList().getMemoryRecord('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value-rotater
-if tonumber(ro.Value)&lt;0 then
-theta=calcdegAngle(-ro.Value)*(math.pi/180)
-xn=x.Value*math.cos(theta)-y.Value*math.sin(theta)
-yn=x.Value*math.sin(theta)+y.Value*math.cos(theta)
-x.Value=xn
-y.Value=yn
-end
-end,0x25)
-
-hk5=createHotkey(function()
-x=getAddressList().getMemoryRecordByDescription('X SPEED')
-y=getAddressList().getMemoryRecordByDescription('Y SPEED')
-ro=getAddressList().getMemoryRecordByDescription('Steering Rotation')
-if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-ro.Value=ro.Value+rotater
-if tonumber(ro.Value)&gt;0 then
-theta=calcdegAngle(ro.Value)*(math.pi/180)
-xn=x.Value*math.cos(theta)+y.Value*math.sin(theta)
-yn=(-1)*x.Value*math.sin(theta)+y.Value*math.cos(theta)
-x.Value=xn
-y.Value=yn
-end
-end,0x27)
-
-[DISABLE]
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
+speeder.destroy()
+left.destroy()
+right.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
           <ID>100</ID>
           <Description>"Breaker"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -1726,53 +783,35 @@ breaker.destroy()
         <CheatEntry>
           <ID>101</ID>
           <Description>"Turner"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
 [ENABLE]
+
+local turnSpeed=4e-4
 
 
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
-turnSpeed=20
 
 
-
-cachedSpeed=-1
-
-
-
-
-
-
-function constant()
-if isKeyPressed(0x26) then return end
-local r=((xspeed.Value^2)+(yspeed.Value^2))^(0.5)
-cachedSpeed=r
-local ratio=turnSpeed/r
-xspeed.Value=xspeed.Value*ratio
-yspeed.Value=yspeed.Value*ratio
+function turn()
+local r=((xspeed.Value^2)+(yspeed.Value^2))^(1/2)
+xspeed.Value=xspeed.Value/(1+r*turnSpeed)
+yspeed.Value=yspeed.Value/(1+r*turnSpeed)
 end
 
+
 left=createHotkey(function()
-constant()
+turn()
 end,0x25)
 
 right=createHotkey(function()
-constant()
+turn()
 end,0x27)
 
-straight=createHotkey(function()
-if cachedSpeed&lt;=0 then return end
-local r=((xspeed.Value^2)+(yspeed.Value^2))^(0.5)
-local ratio=cachedSpeed/r
-xspeed.Value=xspeed.Value*ratio
-yspeed.Value=yspeed.Value*ratio
-cachedSpeed=-1
-end,0x26)
 
 [DISABLE]
 
@@ -1783,7 +822,6 @@ right.destroy()
         <CheatEntry>
           <ID>110</ID>
           <Description>"Slow Down with timer"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -1833,7 +871,6 @@ timerObj.destroy()
         <CheatEntry>
           <ID>51</ID>
           <Description>"Turn Off Rev Limiter"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -1871,7 +908,6 @@ dealloc(newmem)
         <CheatEntry>
           <ID>115</ID>
           <Description>"Unlimited Nitrous"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : speed.exe
   Version: 
@@ -1942,7 +978,6 @@ speed.exe+292B35: DD D8                          - fstp st(0)
         <CheatEntry>
           <ID>39</ID>
           <Description>"Unlimited Speedbreaker"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -1994,7 +1029,6 @@ Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
         <CheatEntry>
           <ID>84</ID>
           <Description>"No Cooldown"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -2015,7 +1049,6 @@ unregistersymbol(no_cooldown)
         <CheatEntry>
           <ID>83</ID>
           <Description>"No Collision"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
@@ -2039,7 +1072,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>46</ID>
           <Description>"Power Instruction"</Description>
-          <LastState Value="3625468377" RealAddress="0066BB37"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0066BB37</Address>
@@ -2047,7 +1079,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>79</ID>
           <Description>"Static Grip Instruction"</Description>
-          <LastState Value="412120280" RealAddress="0069E0F0"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0069E0F0</Address>
@@ -2055,7 +1086,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>74</ID>
           <Description>"Dynamic Grip Instruction"</Description>
-          <LastState Value="545342681" RealAddress="0069DAD1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0069DAD1</Address>
@@ -2063,7 +1093,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>47</ID>
           <Description>"Top Speed Instruction"</Description>
-          <LastState Value="3629662425" RealAddress="0066C653"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0066C653</Address>
@@ -2071,7 +1100,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>55</ID>
           <Description>"Nitrous Power Instruction"</Description>
-          <LastState Value="3624157657" RealAddress="006A0446"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>006A0446</Address>
@@ -2079,7 +1107,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>113</ID>
           <Description>"Drag/Aerodynamics of car Instruction"</Description>
-          <LastState Value="3631235545" RealAddress="0068D91E"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>speed.exe+28D91E </Address>
@@ -2087,7 +1114,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>81</ID>
           <Description>"Steering Instruction"</Description>
-          <LastState Value="2372681944" RealAddress="0068D839"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0068D839</Address>
@@ -2095,7 +1121,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>86</ID>
           <Description>"Brake Instruction"</Description>
-          <LastState Value="143672537" RealAddress="0068E22F"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>0068E22F</Address>
@@ -2103,7 +1128,6 @@ unregistersymbol(Inf_No_Collision)
         <CheatEntry>
           <ID>98</ID>
           <Description>"DirectionTest Script"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -2176,7 +1200,6 @@ hk3.destroy()
         <CheatEntry>
           <ID>108</ID>
           <Description>"Copy paster from address to address"</Description>
-          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -2208,36 +1231,6 @@ mapper.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>116</ID>
-      <Description>"No description"</Description>
-      <LastState Value="44.01917267" RealAddress="00983EB8"/>
-      <VariableType>Float</VariableType>
-      <Address>speed.exe+583EB8</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>117</ID>
-      <Description>"No description"</Description>
-      <LastState Value="44.01917267" RealAddress="00983F98"/>
-      <VariableType>Float</VariableType>
-      <Address>speed.exe+583F98</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>118</ID>
-      <Description>"y1"</Description>
-      <LastState Value="4050.104736" RealAddress="00983EB0"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>00983EB0</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>119</ID>
-      <Description>"x1"</Description>
-      <LastState Value="1413.516357" RealAddress="00983EB4"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>00983EB4</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -4727,6 +3720,120 @@ mapper.destroy()
         <Byte>24</Byte>
         <Byte>08</Byte>
         <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [ecx+1C] (Police heat level: affects police)</Description>
+      <AddressString>speed.exe+9400</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>41</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [esi+1C] (Police heat 2)</Description>
+      <AddressString>speed.exe+907B</AddressString>
+      <Before>
+        <Byte>53</Byte>
+        <Byte>55</Byte>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>F1</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>46</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>57</Byte>
+        <Byte>E8</Byte>
+        <Byte>FC</Byte>
+        <Byte>BA</Byte>
+        <Byte>3B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [esi+1C],edx (Police heat writer)</Description>
+      <AddressString>speed.exe+9326</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+        <Byte>5F</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>56</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>5E</Byte>
+        <Byte>5D</Byte>
+        <Byte>5B</Byte>
+        <Byte>64</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [edx+5C],ecx (Traffic hits related)</Description>
+      <AddressString>speed.exe+29DFD</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>8B</Byte>
+        <Byte>54</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4A</Byte>
+        <Byte>5C</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>0D</Byte>
+        <Byte>0C</Byte>
+        <Byte>E0</Byte>
+        <Byte>91</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov ecx,[eax] (Police looks at you with this address)</Description>
+      <AddressString>speed.exe+4283B</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>1D</Byte>
+        <Byte>6C</Byte>
+        <Byte>09</Byte>
+        <Byte>89</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

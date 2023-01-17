@@ -875,23 +875,23 @@ switch.destroy()
 
 local instructionAddress=0x005E73FD
 local fielders={
-	f1={x=-1258.917969,y=-568.7433472,nx=-1900,ny=1200},
-    f2={x=1244.383423,y=86.10932159,nx=-1900,ny=-2000},
-    f3={x=44,y=44,nx=-100,ny=100}
+	f1={x=-1258.917969,y=-568.7433472,nx=-1900,ny=1200,ON=true},
+    f2={x=1244.383423,y=86.10932159,nx=-1900,ny=-2000,ON=true},
+    f3={x=44,y=44,nx=-100,ny=100,ON=true}
 }
 
 local errorVal=4
 
 
 
---if over changes without single or thriple then just do vertical side change. If single or thriple do horizontal side change.
+--if over changes without single or thriple then just do vertical side change. If single or thriple do horizontal side change.If you want to turn off one filder then set ON value to false otherwise true.
 
 
 setField=createHotkey(function()
 function debugger_onBreakpoint()
  for k,f in pairs(fielders) do
     --print(f.x,readFloat(EAX))
-	if compare(EAX,f) then
+	if  f.ON and compare(EAX,f) then
 		writeFloat(EAX,f.nx)
 		writeFloat(EAX+8,f.ny)
 	end
