@@ -1231,7 +1231,7 @@ mapper.destroy()
         </CheatEntry>
         <CheatEntry>
           <ID>117</ID>
-          <Description>"No Busted/ Cops can't see you"</Description>
+          <Description>"(Cops can't see/bust you) when not in roadblocks"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : speed.exe
   Version: 
@@ -1300,6 +1300,12 @@ speed.exe+3391F: CC                 - int 3
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>118</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1784B8F4</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
