@@ -666,7 +666,7 @@ movement:
 
 
 local degChange=10
-local shotSpeed=32
+local shotSpeed=25
 local currDeg=degChange
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
@@ -1446,7 +1446,7 @@ changeVerticalSide.destroy()
           <Description>"SWING/SPIN METER"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>03486F44</Address>
+          <Address>0</Address>
           <Hotkeys>
             <Hotkey>
               <Action>Set Value</Action>
@@ -1469,10 +1469,16 @@ changeVerticalSide.destroy()
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>196</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>02EE1750</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>197</ID>
       <Description>"No Description"</Description>
       <VariableType>Float</VariableType>
-      <Address>03C1F38C</Address>
+      <Address>02EE1738</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3218,6 +3224,30 @@ changeVerticalSide.destroy()
         <Byte>04</Byte>
         <Byte>89</Byte>
         <Byte>11</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[ecx+eax+08] (Bowler initial runup Coordinate related)</Description>
+      <AddressString>Cricket07.exe+1E5A9A</AddressString>
+      <Before>
+        <Byte>C0</Byte>
+        <Byte>03</Byte>
+        <Byte>C0</Byte>
+        <Byte>03</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>54</Byte>
+        <Byte>01</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>10</Byte>
+        <Byte>89</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
