@@ -477,11 +477,12 @@ registersymbol(movement)
 {$lua}
 
 local pacemul=1.5
-local angle=5e-4
+local angle=2e-3
 local yzangle=2
 local ascendVelocity=4
 local descendVelocity=3
 local seamangle=1.5
+local spinangle=5
 local seamHeight=0.1
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
@@ -506,6 +507,7 @@ local currLoc=readFloat(literalLengthAddr)
 if currLoc==nil then return end
 if LazyAction then while not isBallInPitch() do end end
 end
+
 
 
 function beforePitch(callBeforePitch)
@@ -606,6 +608,32 @@ end)
 end,0x44) --D
 
 
+RTurn=createHotkey(function()
+beforePitch(function()
+local rad=math.rad(spinangle)
+					  local x=0
+					  local y=readFloat(yAddr)
+					  local xn=x*math.cos(rad)-y*math.sin(rad)
+					  local yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+end)
+end,0x4B) --K
+
+
+LTurn=createHotkey(function()
+beforePitch(function()
+local rad=math.rad(-spinangle)
+					  local x=0
+					  local y=readFloat(yAddr)
+					  local xn=x*math.cos(rad)-y*math.sin(rad)
+					  local yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+end)
+end,0x4A) --J
+
+
 
 
 {$asm}
@@ -628,6 +656,8 @@ right.destroy()
 ascend.destroy()
 descend.destroy()
 RandomSeam.destroy()
+LTurn.destroy()
+RTurn.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -875,9 +905,9 @@ switch.destroy()
 
 local instructionAddress=0x005E73FD
 local fielders={
-	f1={x=-1258.917969,y=-568.7433472,nx=-1900,ny=1200,ON=true},
-    f2={x=1244.383423,y=86.10932159,nx=-1900,ny=-2000,ON=true},
-    f3={x=44,y=44,nx=-100,ny=100,ON=true}
+	f1={x=-1258.917969,y=-568.7433472,nx=-1900,ny=1200,ON=false},
+    f2={x=1244.383423,y=86.10932159,nx=-1900,ny=-2000,ON=false},
+    f3={x=-148.967865,y=380.6951904,nx=-100,ny=380.695,ON=true}
 }
 
 local errorVal=4
@@ -1467,18 +1497,6 @@ changeVerticalSide.destroy()
           </Hotkeys>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>196</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>02EE1750</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>197</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>02EE1738</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3227,7 +3245,7 @@ changeVerticalSide.destroy()
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mov edx,[ecx+eax+08] (Bowler initial runup Coordinate related)</Description>
+      <Description>Code :mov edx,[ecx+eax+08] (Bowler initial runup Coordinate)</Description>
       <AddressString>Cricket07.exe+1E5A9A</AddressString>
       <Before>
         <Byte>C0</Byte>
@@ -3248,6 +3266,115 @@ changeVerticalSide.destroy()
         <Byte>24</Byte>
         <Byte>10</Byte>
         <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [esi+000000F0] (Another fileder address copy)</Description>
+      <AddressString>Cricket07.exe+1EF513</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>D8</Byte>
+        <Byte>60</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+        <Byte>F0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>27</Byte>
+        <Byte>D9</Byte>
+        <Byte>C9</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[edx+00000084] (Player attribute: Bowling style of Bowler)</Description>
+      <AddressString>Cricket07.exe+171A4A</AddressString>
+      <Before>
+        <Byte>93</Byte>
+        <Byte>D4</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>82</Byte>
+        <Byte>84</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C1</Byte>
+        <Byte>E8</Byte>
+        <Byte>09</Byte>
+        <Byte>F6</Byte>
+        <Byte>D0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :test byte ptr [ebx+00000160],01 (Variations of the bowler)</Description>
+      <AddressString>Cricket07.exe+AEDCA</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>97</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F6</Byte>
+        <Byte>83</Byte>
+        <Byte>60</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>12</Byte>
+        <Byte>E8</Byte>
+        <Byte>48</Byte>
+        <Byte>D4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [esi+0000035C],40800000 (Bowler Runup Time Lag)</Description>
+      <AddressString>Cricket07.exe+170E25</AddressString>
+      <Before>
+        <Byte>9E</Byte>
+        <Byte>58</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>86</Byte>
+        <Byte>5C</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>80</Byte>
+        <Byte>40</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>9E</Byte>
+        <Byte>60</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
