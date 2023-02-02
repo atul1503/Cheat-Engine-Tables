@@ -611,7 +611,7 @@ end,0x44) --D
 RTurn=createHotkey(function()
 beforePitch(function()
 local rad=math.rad(spinangle)
-					  local x=0
+					  local x=readFloat(xAddr)
 					  local y=readFloat(yAddr)
 					  local xn=x*math.cos(rad)-y*math.sin(rad)
 					  local yn=x*math.sin(rad)+y*math.cos(rad)
@@ -624,7 +624,7 @@ end,0x4B) --K
 LTurn=createHotkey(function()
 beforePitch(function()
 local rad=math.rad(-spinangle)
-					  local x=0
+					  local x=readFloat(xAddr)
 					  local y=readFloat(yAddr)
 					  local xn=x*math.cos(rad)-y*math.sin(rad)
 					  local yn=x*math.sin(rad)+y*math.cos(rad)
