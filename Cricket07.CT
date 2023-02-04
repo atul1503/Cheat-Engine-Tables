@@ -450,6 +450,61 @@ hk2.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>198</ID>
+          <Description>"Turn off Swing/Spin Limit"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(negativeDir,Cricket07.exe,75 09 D9 5F 74) // should be unique
+aobscanmodule(positiveDir,Cricket07.exe,7A 16 D8 15 84 A9 78 00) // should be unique
+
+
+negativeDir:
+ db 90 90 D9 5F 74
+
+positiveDir:
+ db 90 90 D8 15 84 A9 78 00
+
+
+
+[DISABLE]
+
+negativeDir:
+  db 75 09 D9 5F 74
+
+positiveDir:
+ db 7A 16 D8 15 84 A9 78 00
+
+{
+// ORIGINAL CODE - INJECTION POINT: Cricket07.exe+16E9D3
+
+Cricket07.exe+16E9B0: F6 C4 41           - test ah,41
+Cricket07.exe+16E9B3: 75 06              - jne Cricket07.exe+16E9BB
+Cricket07.exe+16E9B5: D8 25 24 A0 79 00  - fsub dword ptr [Cricket07.exe+39A024]
+Cricket07.exe+16E9BB: D8 15 C0 56 78 00  - fcom dword ptr [Cricket07.exe+3856C0]
+Cricket07.exe+16E9C1: DF E0              - fnstsw ax
+Cricket07.exe+16E9C3: F6 C4 05           - test ah,05
+Cricket07.exe+16E9C6: 7A 16              - jp Cricket07.exe+16E9DE
+Cricket07.exe+16E9C8: D8 15 84 A9 78 00  - fcom dword ptr [Cricket07.exe+38A984]
+Cricket07.exe+16E9CE: DF E0              - fnstsw ax
+Cricket07.exe+16E9D0: F6 C4 41           - test ah,41
+// ---------- INJECTING HERE ----------
+Cricket07.exe+16E9D3: 75 09              - jne Cricket07.exe+16E9DE
+// ---------- DONE INJECTING  ----------
+Cricket07.exe+16E9D5: D9 5F 74           - fstp dword ptr [edi+74]
+Cricket07.exe+16E9D8: 5F                 - pop edi
+Cricket07.exe+16E9D9: 5E                 - pop esi
+Cricket07.exe+16E9DA: 83 C4 0C           - add esp,0C
+Cricket07.exe+16E9DD: C3                 - ret 
+Cricket07.exe+16E9DE: 5F                 - pop edi
+Cricket07.exe+16E9DF: DD D8              - fstp st(0)
+Cricket07.exe+16E9E1: 5E                 - pop esi
+Cricket07.exe+16E9E2: 83 C4 0C           - add esp,0C
+Cricket07.exe+16E9E5: C3                 - ret 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>182</ID>
           <Description>"BALL MOVEMENT BY DEGREE"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -632,6 +687,7 @@ local rad=math.rad(-spinangle)
 					  writeFloat(yAddr,yn)
 end)
 end,0x4A) --J
+
 
 
 
@@ -3375,6 +3431,314 @@ changeVerticalSide.destroy()
         <Byte>60</Byte>
         <Byte>03</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of cmp [ecx+62],ax</Description>
+      <AddressString>Cricket07.exe+11FB4</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>66</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>60</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>39</Byte>
+        <Byte>41</Byte>
+        <Byte>62</Byte>
+      </Actual>
+      <After>
+        <Byte>B2</Byte>
+        <Byte>02</Byte>
+        <Byte>75</Byte>
+        <Byte>0F</Byte>
+        <Byte>66</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of cmp [ecx+62],ax</Description>
+      <AddressString>Cricket07.exe+11FD5</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>66</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>5E</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>39</Byte>
+        <Byte>41</Byte>
+        <Byte>62</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>0E</Byte>
+        <Byte>66</Byte>
+        <Byte>39</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[ecx+64] (Batsman Skill instruction)</Description>
+      <AddressString>Cricket07.exe+1558C2</AddressString>
+      <Before>
+        <Byte>86</Byte>
+        <Byte>FC</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>51</Byte>
+        <Byte>64</Byte>
+      </Actual>
+      <After>
+        <Byte>C1</Byte>
+        <Byte>EA</Byte>
+        <Byte>12</Byte>
+        <Byte>83</Byte>
+        <Byte>E2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fadd dword ptr [esi+0000015C] (Wierdo 1)</Description>
+      <AddressString>Cricket07.exe+1B8CE4</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>83</Byte>
+        <Byte>7E</Byte>
+        <Byte>7C</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>86</Byte>
+        <Byte>5C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>5C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fadd dword ptr [esi+00000190] (Wierdo 2)</Description>
+      <AddressString>Cricket07.exe+1B8A28</AddressString>
+      <Before>
+        <Byte>4C</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>86</Byte>
+        <Byte>90</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>96</Byte>
+        <Byte>90</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of fcom dword ptr [Cricket07.exe+38A984]</Description>
+      <AddressString>Cricket07.exe+16E9C8</AddressString>
+      <Before>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>05</Byte>
+        <Byte>7A</Byte>
+        <Byte>16</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>15</Byte>
+        <Byte>84</Byte>
+        <Byte>A9</Byte>
+        <Byte>78</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>41</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of fnstsw ax</Description>
+      <AddressString>Cricket07.exe+16E9CE</AddressString>
+      <Before>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+      </Actual>
+      <After>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>41</Byte>
+        <Byte>75</Byte>
+        <Byte>09</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of test ah,41</Description>
+      <AddressString>Cricket07.exe+16E9D0</AddressString>
+      <Before>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>41</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>09</Byte>
+        <Byte>D9</Byte>
+        <Byte>5F</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jne Cricket07.exe+16E9DE</Description>
+      <AddressString>Cricket07.exe+16E9D3</AddressString>
+      <Before>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </Before>
+      <Actual>
+        <Byte>75</Byte>
+        <Byte>09</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5F</Byte>
+        <Byte>74</Byte>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jne Cricket07.exe+16E9BB</Description>
+      <AddressString>Cricket07.exe+16E9B3</AddressString>
+      <Before>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>41</Byte>
+      </Before>
+      <Actual>
+        <Byte>75</Byte>
+        <Byte>06</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>25</Byte>
+        <Byte>24</Byte>
+        <Byte>A0</Byte>
+        <Byte>79</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jmp Cricket07.exe+16E9BB</Description>
+      <AddressString>Cricket07.exe+16E999</AddressString>
+      <Before>
+        <Byte>05</Byte>
+        <Byte>24</Byte>
+        <Byte>A0</Byte>
+        <Byte>79</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>EB</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>47</Byte>
+        <Byte>74</Byte>
+        <Byte>D8</Byte>
+        <Byte>25</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of fcom dword ptr [Cricket07.exe+3856C0]</Description>
+      <AddressString>Cricket07.exe+16E9BB</AddressString>
+      <Before>
+        <Byte>25</Byte>
+        <Byte>24</Byte>
+        <Byte>A0</Byte>
+        <Byte>79</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>15</Byte>
+        <Byte>C0</Byte>
+        <Byte>56</Byte>
+        <Byte>78</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>05</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jp Cricket07.exe+16E9DE</Description>
+      <AddressString>Cricket07.exe+16E9C6</AddressString>
+      <Before>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
+        <Byte>F6</Byte>
+        <Byte>C4</Byte>
+        <Byte>05</Byte>
+      </Before>
+      <Actual>
+        <Byte>7A</Byte>
+        <Byte>16</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>15</Byte>
+        <Byte>84</Byte>
+        <Byte>A9</Byte>
+        <Byte>78</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
