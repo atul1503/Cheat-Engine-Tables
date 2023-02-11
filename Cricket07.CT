@@ -869,11 +869,9 @@ registersymbol(movement)
 
 {$lua}
 
-
-local leaveSpeed=25
-local dropSpeed=-3.5
-local upSpeed=3.5
-local pitchDetectHeight=0.1
+local upSpeed=5
+local downSpeed=-8
+local throwSpeed=50
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
 local zAddr="[ball]+2dc"
@@ -883,7 +881,26 @@ local literalWidthAddr="[ball]+2c0"
 local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
 local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
+local seamHeight=0.1
 local LazyAction=true
+
+
+function afterPitch(callAfterPitch)
+waitForRunUpComplete()
+while isBallInPitch() do
+if readFloat(literalHeightAddr)&lt;seamHeight and readFloat(zAddr)&gt;0 then
+callAfterPitch()
+return
+end
+end
+end
+
+function waitForRunUpComplete()
+local currLoc=readFloat(literalLengthAddr)
+if currLoc==nil then return end
+if LazyAction then while not isBallInPitch() do end end
+end
+
 
 
 function isBallInPitch()
@@ -895,22 +912,20 @@ end
 
 
 restrict=createHotkey(function()
-if readFloat(yAddr)==nil then return end
-while readByte(isBallOutOfBowlersHandAddr)==0 do end
-local x=readFloat(literalLengthAddr)
-local y=readFloat(literalWidthAddr)
-local z=readFloat(literalHeightAddr)
-local r=(readFloat(xAddr)^2+readFloat(yAddr)^2+readFloat(zAddr)^2)^0.5
-local ratio=leaveSpeed/r
-writeFloat(xAddr,readFloat(xAddr)*ratio)
-writeFloat(yAddr,readFloat(yAddr)*ratio)
-writeFloat(zAddr,dropSpeed)
-writeFloat(literalLengthAddr,x)
-writeFloat(literalWidthAddr,y)
-writeFloat(literalHeightAddr,z)
-while not (readFloat(literalHeightAddr)&lt;pitchDetectHeight and readFloat(zAddr)&gt;0) do end
-
-while isBallInPitch() do writeFloat(zAddr,upSpeed) end
+if readFloat(xAddr)==nil then return end
+waitForRunUpComplete()
+local x=readFloat(xAddr)
+local y=readFloat(yAddr)
+local z=readFloat(zAddr)
+local r=((x^2)+(y^2))^0.5
+local ratio=throwSpeed/r
+writeFloat(xAddr,x*ratio)
+writeFloat(yAddr,y*ratio)
+writeFloat(zAddr,downSpeed)
+afterPitch(function()
+writeFloat(literalHeightAddr,0)
+writeFloat(zAddr,upSpeed)
+end)
 end,0x4E) --N
 
 
