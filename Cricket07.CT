@@ -869,9 +869,10 @@ registersymbol(movement)
 
 {$lua}
 
-local upSpeed=5
+local upSpeed=8
 local downSpeed=-8
 local throwSpeed=50
+local heightLimit=0.7 --0.7
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
 local zAddr="[ball]+2dc"
@@ -883,6 +884,9 @@ local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
 local seamHeight=0.1
 local LazyAction=true
+
+--keep the upSpeed atleast 8 or above for this script to work
+
 
 
 function afterPitch(callAfterPitch)
@@ -923,8 +927,13 @@ writeFloat(xAddr,x*ratio)
 writeFloat(yAddr,y*ratio)
 writeFloat(zAddr,downSpeed)
 afterPitch(function()
-writeFloat(literalHeightAddr,0)
-writeFloat(zAddr,upSpeed)
+while isBallInPitch() do
+ if readFloat(literalHeightAddr)&lt;heightLimit then
+    writeFloat(zAddr,upSpeed)
+ else
+     writeFloat(literalHeightAddr,heightLimit)
+ end
+end
 end)
 end,0x4E) --N
 
