@@ -869,8 +869,8 @@ registersymbol(movement)
 
 {$lua}
 
-local upSpeed=8
-local downSpeed=-8
+local upSpeed=10
+local downSpeed=-6
 local throwSpeed=50
 local heightLimit=0.7 --0.7
 local yAddr="[ball]+2e0"
@@ -927,6 +927,7 @@ writeFloat(xAddr,x*ratio)
 writeFloat(yAddr,y*ratio)
 writeFloat(zAddr,downSpeed)
 afterPitch(function()
+local prevUpSpeed=readFloat(zAddr)
 while isBallInPitch() do
  if readFloat(literalHeightAddr)&lt;heightLimit then
     writeFloat(zAddr,upSpeed)
@@ -934,6 +935,7 @@ while isBallInPitch() do
      writeFloat(literalHeightAddr,heightLimit)
  end
 end
+writeFloat(zAddr,prevUpSpeed)
 end)
 end,0x4E) --N
 
