@@ -532,7 +532,7 @@ registersymbol(movement)
 {$lua}
 
 local pacemul=1.5
-local angle=2e-3
+local angle=1e-3
 local yzangle=2
 local ascendVelocity=4
 local descendVelocity=3
@@ -869,7 +869,7 @@ registersymbol(movement)
 
 {$lua}
 
-local upSpeed=10
+local upSpeed=16
 local downSpeed=-6
 local throwSpeed=50
 local heightLimit=0.7 --0.7
