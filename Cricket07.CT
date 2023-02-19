@@ -869,8 +869,8 @@ registersymbol(movement)
 
 {$lua}
 
-local upSpeed=16
-local downSpeed=-6
+local upSpeed=4.8
+local downSpeed=-8
 local throwSpeed=50
 local heightLimit=0.7 --0.7
 local yAddr="[ball]+2e0"
@@ -886,7 +886,6 @@ local seamHeight=0.1
 local LazyAction=true
 
 --keep the upSpeed atleast 8 or above for this script to work
-
 
 
 function afterPitch(callAfterPitch)
@@ -918,25 +917,18 @@ end
 restrict=createHotkey(function()
 if readFloat(xAddr)==nil then return end
 waitForRunUpComplete()
-local x=readFloat(xAddr)
-local y=readFloat(yAddr)
-local z=readFloat(zAddr)
+local x,y,z=readFloat(xAddr),readFloat(yAddr),readFloat(zAddr)
 local r=((x^2)+(y^2))^0.5
 local ratio=throwSpeed/r
 writeFloat(xAddr,x*ratio)
 writeFloat(yAddr,y*ratio)
+while readFloat(literalHeightAddr)&gt;seamHeight do
 writeFloat(zAddr,downSpeed)
-afterPitch(function()
-local prevUpSpeed=readFloat(zAddr)
+end --end of while
+writeFloat(literalHeightAddr,0)
 while isBallInPitch() do
- if readFloat(literalHeightAddr)&lt;heightLimit then
-    writeFloat(zAddr,upSpeed)
- else
-     writeFloat(literalHeightAddr,heightLimit)
- end
-end
-writeFloat(zAddr,prevUpSpeed)
-end)
+writeFloat(zAddr,upSpeed)
+end --end of while
 end,0x4E) --N
 
 
