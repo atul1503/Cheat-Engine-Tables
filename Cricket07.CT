@@ -952,39 +952,6 @@ restrict.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>191</ID>
-          <Description>"Length Fixer"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
- if syntaxcheck then return end
-
-[ENABLE]
-
-local bowlLength=4.5
-
-
-al=getAddressList()
-local lmr=al.getMemoryRecordByDescription("length")
-local hotkey=0x52 --R
-
-switch=createHotkey(function()
-lmr.Active=false
-if tonumber(lmr.Value)&lt;0 then
-   lmr.Value=bowlLength
-else
-   lmr.Value=(-bowlLength)
-end
-lmr.Active=true
-end,hotkey)
-
-
-[DISABLE]
-local lmr=getAddressList().getMemoryRecordByDescription("length")
-lmr.Active=false
-switch.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>195</ID>
           <Description>"FielderSetter"</Description>
           <VariableType>Auto Assembler Script</VariableType>
