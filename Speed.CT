@@ -732,6 +732,65 @@ unregistersymbol(no_cooldown)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>122</ID>
+          <Description>"Become Invisible to Cops"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : speed.exe
+  Version: 
+  Date   : 2023-02-23
+  Author : atult
+
+  When this script is turned on :
+   The cops can't even see you no matter your heat level.
+   Even if you are standing right in front of them, they won't know you where you are.
+   Even in roadblocks they can't see you.
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT1,speed.exe,8B 10 8D 4E 10 89 11 8B 50 04 89 51 04 8B 40 08) // should be unique
+
+INJECT1:
+ db 90 90 8D 4E 10 89 11 90 90 90 89 51 04 90 90 90
+
+
+
+[DISABLE]
+
+INJECT1:
+  db 8B 10 8D 4E 10 89 11 8B 50 04 89 51 04 8B 40 08
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: speed.exe+18106
+
+speed.exe+180F0: 56        - push esi
+speed.exe+180F1: 8B F1     - mov esi,ecx
+speed.exe+180F3: 8A 46 2C  - mov al,[esi+2C]
+speed.exe+180F6: 84 C0     - test al,al
+speed.exe+180F8: 74 7F     - je speed.exe+18179
+speed.exe+180FA: 8B 4E 1C  - mov ecx,[esi+1C]
+speed.exe+180FD: 85 C9     - test ecx,ecx
+speed.exe+180FF: 74 2B     - je speed.exe+1812C
+speed.exe+18101: 8B 01     - mov eax,[ecx]
+speed.exe+18103: FF 50 60  - call dword ptr [eax+60]
+// ---------- INJECTING HERE ----------
+speed.exe+18106: 8B 10     - mov edx,[eax]
+// ---------- DONE INJECTING  ----------
+speed.exe+18108: 8D 4E 10  - lea ecx,[esi+10]
+speed.exe+1810B: 89 11     - mov [ecx],edx
+speed.exe+1810D: 8B 50 04  - mov edx,[eax+04]
+speed.exe+18110: 89 51 04  - mov [ecx+04],edx
+speed.exe+18113: 8B 40 08  - mov eax,[eax+08]
+speed.exe+18116: 89 41 08  - mov [ecx+08],eax
+speed.exe+18119: 8B 4E 1C  - mov ecx,[esi+1C]
+speed.exe+1811C: 8B 11     - mov edx,[ecx]
+speed.exe+1811E: FF 52 54  - call dword ptr [edx+54]
+speed.exe+18121: 8B 10     - mov edx,[eax]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>83</ID>
           <Description>"No Collision"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -917,76 +976,6 @@ end,0x41) --A
 
 [DISABLE]
 mapper.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>117</ID>
-          <Description>"(Cops can't see/bust you) when not in roadblocks"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : speed.exe
-  Version: 
-  Date   : 2023-01-21
-  Author : atult
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-aobscanmodule(INJECT,speed.exe,8A 81 14 01 00 00 C3) // should be unique
-alloc(newmem,$1000)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  mov [ecx+00000114],0
-  mov al,[ecx+00000114]
-  jmp return
-
-INJECT:
-  jmp newmem
-  nop
-return:
-registersymbol(INJECT)
-
-[DISABLE]
-
-INJECT:
-  db 8A 81 14 01 00 00
-
-unregistersymbol(INJECT)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: speed.exe+33910
-
-speed.exe+33906: C3                 - ret 
-speed.exe+33907: CC                 - int 3 
-speed.exe+33908: CC                 - int 3 
-speed.exe+33909: CC                 - int 3 
-speed.exe+3390A: CC                 - int 3 
-speed.exe+3390B: CC                 - int 3 
-speed.exe+3390C: CC                 - int 3 
-speed.exe+3390D: CC                 - int 3 
-speed.exe+3390E: CC                 - int 3 
-speed.exe+3390F: CC                 - int 3 
-// ---------- INJECTING HERE ----------
-speed.exe+33910: 8A 81 14 01 00 00  - mov al,[ecx+00000114]
-// ---------- DONE INJECTING  ----------
-speed.exe+33916: C3                 - ret 
-speed.exe+33917: CC                 - int 3 
-speed.exe+33918: CC                 - int 3 
-speed.exe+33919: CC                 - int 3 
-speed.exe+3391A: CC                 - int 3 
-speed.exe+3391B: CC                 - int 3 
-speed.exe+3391C: CC                 - int 3 
-speed.exe+3391D: CC                 - int 3 
-speed.exe+3391E: CC                 - int 3 
-speed.exe+3391F: CC                 - int 3 
-}
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
@@ -1304,97 +1293,6 @@ speed.exe+3391F: CC                 - int 3
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>118</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>00938788</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>119</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>00938788</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>120</ID>
-      <Description>"Cops dissappear script"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : speed.exe
-  Version: 
-  Date   : 2023-02-20
-  Author : atult
-
-  This script does blah blah blah
-}
-
-[ENABLE]
-
-
-aobscanmodule(INJECT,speed.exe,8B 08 8B 50 04 8B 40 08 89 4C 24 60) // should be unique
-alloc(newmem,$1000)
-
-label(code)
-label(return)
-
-newmem:
-
-code:
-  mov [eax],0
-  mov [eax+4],0
-  mov [eax+8],0
-  mov ecx,[eax]
-  mov edx,[eax+04]
-  jmp return
-
-INJECT:
-  jmp newmem
-return:
-registersymbol(INJECT)
-
-[DISABLE]
-
-INJECT:
-  db 8B 08 8B 50 04
-
-unregistersymbol(INJECT)
-dealloc(newmem)
-
-{
-// ORIGINAL CODE - INJECTION POINT: speed.exe+20412
-
-speed.exe+203FD: CC                    - int 3 
-speed.exe+203FE: CC                    - int 3 
-speed.exe+203FF: CC                    - int 3 
-speed.exe+20400: 81 EC 8C 00 00 00     - sub esp,0000008C
-speed.exe+20406: 56                    - push esi
-speed.exe+20407: 57                    - push edi
-speed.exe+20408: 8B F9                 - mov edi,ecx
-speed.exe+2040A: 8B 4F 4C              - mov ecx,[edi+4C]
-speed.exe+2040D: 8B 01                 - mov eax,[ecx]
-speed.exe+2040F: FF 50 20              - call dword ptr [eax+20]
-// ---------- INJECTING HERE ----------
-speed.exe+20412: 8B 08                 - mov ecx,[eax]
-// ---------- DONE INJECTING  ----------
-speed.exe+20414: 8B 50 04              - mov edx,[eax+04]
-speed.exe+20417: 8B 40 08              - mov eax,[eax+08]
-speed.exe+2041A: 89 4C 24 60           - mov [esp+60],ecx
-speed.exe+2041E: 8B 4F 4C              - mov ecx,[edi+4C]
-speed.exe+20421: 89 44 24 68           - mov [esp+68],eax
-speed.exe+20425: 8D 84 24 88 00 00 00  - lea eax,[esp+00000088]
-speed.exe+2042C: 89 54 24 64           - mov [esp+64],edx
-speed.exe+20430: 8B 11                 - mov edx,[ecx]
-speed.exe+20432: 50                    - push eax
-speed.exe+20433: FF 52 34              - call dword ptr [edx+34]
-}
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>121</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>17836844</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3009,28 +2907,6 @@ speed.exe+20433: FF 52 34              - call dword ptr [edx+34]
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Change of fstp dword ptr [ecx]</Description>
-      <AddressString>Speed.exe+16A9</AddressString>
-      <Before>
-        <Byte>24</Byte>
-        <Byte>D8</Byte>
-        <Byte>08</Byte>
-        <Byte>DE</Byte>
-        <Byte>C1</Byte>
-      </Before>
-      <Actual>
-        <Byte>D9</Byte>
-        <Byte>19</Byte>
-      </Actual>
-      <After>
-        <Byte>D9</Byte>
-        <Byte>44</Byte>
-        <Byte>24</Byte>
-        <Byte>08</Byte>
-        <Byte>D8</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
       <Description>Code :fmul dword ptr [edi] (Torques) (can be 15) </Description>
       <AddressString>Speed.exe+26C248</AddressString>
       <Before>
@@ -3403,32 +3279,6 @@ speed.exe+20433: FF 52 34              - call dword ptr [edx+34]
         <Byte>24</Byte>
         <Byte>0C</Byte>
         <Byte>D9</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Change of fadd dword ptr [esi+00000168]</Description>
-      <AddressString>Speed.exe+440E5</AddressString>
-      <Before>
-        <Byte>44</Byte>
-        <Byte>24</Byte>
-        <Byte>5C</Byte>
-        <Byte>85</Byte>
-        <Byte>ED</Byte>
-      </Before>
-      <Actual>
-        <Byte>D8</Byte>
-        <Byte>86</Byte>
-        <Byte>68</Byte>
-        <Byte>01</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>C7</Byte>
-        <Byte>44</Byte>
-        <Byte>24</Byte>
-        <Byte>14</Byte>
-        <Byte>FF</Byte>
       </After>
     </CodeEntry>
     <CodeEntry>
@@ -4024,6 +3874,28 @@ speed.exe+20433: FF 52 34              - call dword ptr [edx+34]
         <Byte>24</Byte>
         <Byte>14</Byte>
         <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov edx,[eax] (Police looks at you with this)</Description>
+      <AddressString>speed.exe+18106</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+        <Byte>FF</Byte>
+        <Byte>50</Byte>
+        <Byte>60</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>8D</Byte>
+        <Byte>4E</Byte>
+        <Byte>10</Byte>
+        <Byte>89</Byte>
+        <Byte>11</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

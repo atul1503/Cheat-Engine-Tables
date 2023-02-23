@@ -768,7 +768,7 @@ movement:
 
 
 local degChange=10
-local shotSpeed=25
+local shotSpeed=34
 local currDeg=degChange
 local speedXString="[ball]+2d8"
 local speedZString="[ball]+2dc"
@@ -869,8 +869,10 @@ registersymbol(movement)
 
 {$lua}
 
-local upSpeed=4.8
-local downSpeed=-8
+--upspeed(6,4.8) and downSpeed(-7,-4.8) is also good for 50
+
+local upSpeed=6
+local downSpeed=-7
 local throwSpeed=50
 local heightLimit=0.7 --0.7
 local yAddr="[ball]+2e0"
