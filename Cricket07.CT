@@ -553,6 +553,8 @@ local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
 local LazyAction=true
 
+local edgeSign=-1
+
 
 function isBallInPitch()
 local currLoc=readFloat(literalLengthAddr)
@@ -707,12 +709,12 @@ end)
 end,0x4A) --J
 
 Edge=createHotkey(function()
+if readFloat(xAddr)==nil then return end
 afterPitch(function()
-
 local x,y=readFloat(xAddr),readFloat(yAddr)
 while isBallInPitch() do end
 if readByte(isBallHit)~=0 then
-local rad=math.rad(math.random(-edgeAngle,edgeAngle))
+local rad=math.rad(edgeAngle*edgeSign)
 local xn=x*math.cos(rad)-y*math.sin(rad)
 					  local yn=x*math.sin(rad)+y*math.cos(rad)
 					  writeFloat(xAddr,xn)
@@ -725,6 +727,9 @@ end)
 end,0x45) --E
 
 
+changeEdgeSign=createHotkey(function()
+edgeSign=(-edgeSign)
+end,0x54) --T
 
 
 
