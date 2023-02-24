@@ -534,8 +534,8 @@ registersymbol(movement)
 local pacemul=1.5
 local angle=1e-3
 local yzangle=2
-local edgeAngle=45
-local edgeHeightMultiplier=2
+local edgeAngle=30
+local edgeHeightMultiplier=1
 local ascendVelocity=4
 local descendVelocity=3
 local seamangle=1.5
@@ -708,9 +708,10 @@ end,0x4A) --J
 
 Edge=createHotkey(function()
 afterPitch(function()
+
 local x,y=readFloat(xAddr),readFloat(yAddr)
-while readByte(isBallHit)==0 or isBallInPitch() do end
-if readByte(isBallHit)==1 then
+while isBallInPitch() do end
+if readByte(isBallHit)~=0 then
 local rad=math.rad(math.random(-edgeAngle,edgeAngle))
 local xn=x*math.cos(rad)-y*math.sin(rad)
 					  local yn=x*math.sin(rad)+y*math.cos(rad)
