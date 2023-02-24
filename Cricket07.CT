@@ -534,6 +534,8 @@ registersymbol(movement)
 local pacemul=1.5
 local angle=1e-3
 local yzangle=2
+local edgeAngle=45
+local edgeHeightMultiplier=2
 local ascendVelocity=4
 local descendVelocity=3
 local seamangle=1.5
@@ -704,6 +706,23 @@ local rad=math.rad(-spinangle)
 end)
 end,0x4A) --J
 
+Edge=createHotkey(function()
+afterPitch(function()
+local x,y=readFloat(xAddr),readFloat(yAddr)
+while readByte(isBallHit)==0 or isBallInPitch() do end
+if readByte(isBallHit)==1 then
+local rad=math.rad(math.random(-edgeAngle,edgeAngle))
+local xn=x*math.cos(rad)-y*math.sin(rad)
+					  local yn=x*math.sin(rad)+y*math.cos(rad)
+					  writeFloat(xAddr,xn)
+					  writeFloat(yAddr,yn)
+					  local z=readFloat(zAddr)
+					  if z&gt;0 then writeFloat(zAddr,z*edgeHeightMultiplier) else writeFloat(zAddr,z*edgeHeightMultiplier*-1) end
+
+end
+end)
+end,0x45) --E
+
 
 
 
@@ -730,6 +749,7 @@ descend.destroy()
 RandomSeam.destroy()
 LTurn.destroy()
 RTurn.destroy()
+Edge.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -3509,6 +3529,29 @@ changeVerticalSide.destroy()
         <Byte>90</Byte>
         <Byte>01</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[esi+28] Field setting related</Description>
+      <AddressString>Cricket07.exe+1E6AE3</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>F1</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>46</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>57</Byte>
+        <Byte>8B</Byte>
+        <Byte>7C</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

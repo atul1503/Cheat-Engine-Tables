@@ -1294,6 +1294,34 @@ mapper.destroy()
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+    <CheatEntry>
+      <ID>123</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02E648F8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>127</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02E64900</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>128</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02E648D8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>129</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>02E648E0</Address>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
@@ -3896,6 +3924,28 @@ mapper.destroy()
         <Byte>10</Byte>
         <Byte>89</Byte>
         <Byte>11</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [edi] (Wheel coord)</Description>
+      <AddressString>speed.exe+2A4519</AddressString>
+      <Before>
+        <Byte>47</Byte>
+        <Byte>04</Byte>
+        <Byte>D8</Byte>
+        <Byte>60</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>20</Byte>
+        <Byte>D9</Byte>
+        <Byte>C0</Byte>
+        <Byte>D8</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
