@@ -510,7 +510,7 @@ Cricket07.exe+16E9E5: C3                 - ret
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{
 
-edgeAngle is the max angle at which edge will occur. edgeDivider will be divided from edgeAngle to determine the minimum edge.
+max edge angle and min edge angle determine the maximum and minumum angle of the edge.
 if the height of ball after hitting bat is less than minEdgeHeightForHeightMultiplier then the upward speed of ball will be multipled by edgeHeightMultiplier so that the ball reaches the slip fielder at catching height.
 
 }
@@ -546,7 +546,7 @@ local angle=1e-3
 local yzangle=2
 local MaxEdgeAngle=30
 local MinEdgeAngle=10
-local minEdgeHeightForHeightMultiplier=0.2
+local minEdgeHeightForHeightMultiplier=0.4
 local edgeHeightMultiplier=2
 local ascendVelocity=4
 local descendVelocity=3
@@ -732,7 +732,14 @@ local xn=x*math.cos(rad)-y*math.sin(rad)
 					  writeFloat(xAddr,xn)
 					  writeFloat(yAddr,yn)
 					  local z=readFloat(zAddr)
-					  if z&gt;0 and readFloat(literalHeightAddr)&lt;minEdgeHeightForHeightMultiplier then writeFloat(zAddr,z*edgeHeightMultiplier) else writeFloat(zAddr,z*edgeHeightMultiplier*-1) end
+					  if z&gt;0 and readFloat(literalHeightAddr)&lt;minEdgeHeightForHeightMultiplier then
+                      writeFloat(zAddr,z*edgeHeightMultiplier)
+                      elseif z&gt;0 then
+                      writeFloat(zAddr,0)
+                      elseif readFloat(literalHeightAddr)&lt;minEdgeHeightForHeightMultiplier then
+                      writeFloat(zAddr,z*edgeHeightMultiplier*-1)
+                      end
+
 
 end
 end)
