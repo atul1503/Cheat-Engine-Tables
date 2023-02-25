@@ -1009,25 +1009,41 @@ restrict.destroy()
 
 local instructionAddress=0x005E73FD
 local fielders={
-	f1={x=-1258.917969,y=-568.7433472,nx=-1900,ny=1200,ON=false},
-    f2={x=1244.383423,y=86.10932159,nx=-1900,ny=-2000,ON=false},
-    f3={x=-148.967865,y=380.6951904,nx=-100,ny=380.695,ON=true}
+	f1={x=-1258.917969,y=-568.7433472,nx=-1900,ny=1200,ON=true},
+    f2={x=1244.383423,y=86.10932159,nx=-1900,ny=-2000,ON=true},
+    f3={x=-148.967865,y=380.6951904,nx=-100,ny=380.695,ON=true},
+    f4={x=1229.603149,y=-406.2952271,nx=500,ny=500,ON=true}
 }
 
 local errorVal=4
 
 
 
---if over changes without single or thriple then just do vertical side change. If single or thriple do horizontal side change.If you want to turn off one filder then set ON value to false otherwise true.
-
-
 setField=createHotkey(function()
 function debugger_onBreakpoint()
  for k,f in pairs(fielders) do
     --print(f.x,readFloat(EAX))
-	if  f.ON and compare(EAX,f) then
+	if  f.ON and compare(EAX,f,false) then
 		writeFloat(EAX,f.nx)
 		writeFloat(EAX+8,f.ny)
+        --f.corner=1
+    elseif f.ON and compare(EAX,f,true) then
+        if f.corner==1 then
+         writeFloat(EAX,-f.nx)
+         writeFloat(EAX+8,f.ny)
+         --f.corner=2
+        elseif f.corner==2 then
+         writeFloat(EAX,f.nx)
+         writeFloat(EAX+8,-f.ny)
+         --f.corner=3
+        elseif f.corner==3 then
+         writeFloat(EAX,-f.nx)
+         writeFloat(EAX+8,-f.ny)
+         --f.corner=4
+        elseif f.corner==4 then
+         writeFloat(EAX,f.x)
+         writeFloat(EAX+8,f.y)
+        end
 	end
  end
 
@@ -1041,12 +1057,17 @@ debug_setBreakpoint(instructionAddress)
 end,0x45) --E
 
 
-function compare(eax,fielderTable)
+function compare(eax,fielderTable,reversecheck)
 --print(readFloat(eax))
 Eax=math.floor(math.abs(readFloat(eax)))
 Eaxplus8=math.floor(math.abs(readFloat(eax+8)))
-x=math.floor(math.abs(fielderTable.x))
-y=math.floor(math.abs(fielderTable.y))
+if not reversecheck then
+   x=math.floor(math.abs(fielderTable.x))
+   y=math.floor(math.abs(fielderTable.y))
+else
+   x=math.floor(math.abs(fielderTable.nx))
+   y=math.floor(math.abs(fielderTable.ny))
+end
 --print(Eax,x,Eaxplus8,y)
 if math.abs(Eax-x)&lt;errorVal and math.abs(Eaxplus8-y)&lt;errorVal  then return true else return false end
 end
@@ -1057,27 +1078,27 @@ debug_removeBreakpoint(instructionAddress)
 end,0x46) --F
 
 
-changeHorizontalSide=createHotkey(function()
+changeSides=createHotkey(function()
 for k,f in pairs(fielders) do
- f.x=f.x*(-1)
- f.nx=f.nx*(-1)
+ --f.x=f.x*(-1)
+ --f.nx=f.nx*(-1)
+ if f.corner==nil then
+    f.corner=1
+ elseif f.corner&lt;4 then
+    f.corner=f.corner+1
+ else
+     f.corner=nil
+ end
 end
 end,0x48) --H
 
-changeVerticalSide=createHotkey(function()
-for k,f in pairs(fielders) do
- f.y=(-f.y)
- f.ny=(-f.ny)
- end
-end,0x56) --V
 
 
 [DISABLE]
 
 setField.destroy()
 removeBP.destroy()
-changeHorizontalSide.destroy()
-changeVerticalSide.destroy()
+changeSides.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
