@@ -508,7 +508,16 @@ Cricket07.exe+16E9E5: C3                 - ret
           <ID>182</ID>
           <Description>"BALL MOVEMENT BY DEGREE"</Description>
           <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+          <AssemblerScript>{
+
+edgeAngle is the max angle at which edge will occur. edgeDivider will be divided from edgeAngle to determine the minimum edge.
+
+}
+
+
+[ENABLE]
+
+
 
 aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
 alloc(newmem,100)
@@ -534,7 +543,8 @@ registersymbol(movement)
 local pacemul=1.5
 local angle=1e-3
 local yzangle=2
-local edgeAngle=30
+local MaxEdgeAngle=30
+local MinEdgeAngle=10
 local edgeHeightMultiplier=1
 local ascendVelocity=4
 local descendVelocity=3
@@ -714,7 +724,7 @@ afterPitch(function()
 local x,y=readFloat(xAddr),readFloat(yAddr)
 while isBallInPitch() do end
 if readByte(isBallHit)~=0 then
-local rad=math.rad(edgeAngle*edgeSign)
+local rad=math.rad(math.random(MinEdgeAngle,MaxEdgeAngle)*edgeSign)
 local xn=x*math.cos(rad)-y*math.sin(rad)
 					  local yn=x*math.sin(rad)+y*math.cos(rad)
 					  writeFloat(xAddr,xn)
