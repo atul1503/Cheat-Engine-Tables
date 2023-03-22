@@ -1951,7 +1951,7 @@ registersymbol(super_jump)
 {$lua}
 
 --zDownSpeed=0.012 is gravity defying for gta san andreas.
-
+-- boost more than 1000 is too much for game to handle.
 
 local multi=0.12
 local multiSpeeder=1.5
@@ -1959,7 +1959,7 @@ local zUpSpeed=0.05
 local zDownSpeed=6e-3
 local deg=10
 local boost=16
-local flyiter=2e3
+local flyiter=1e5
 local stopKey=0x53
 local slowKey=0x28
 local fastKey=0x26
@@ -2074,10 +2074,10 @@ while readFloat(zaddr)&lt;=0 do end
 writeFloat("[speed_ptr]+4fc",100000.0)
 writeFloat("[speed_ptr]+504",100000.0)
 local x,y,z=readFloat(xaddr),readFloat(yaddr),readFloat(zaddr)
-writeFloat(xaddr,x*boost)
-writeFloat(yaddr,y*boost)
 local i=0
 while i&lt;flyiter do
+writeFloat(xaddr,x*boost)
+writeFloat(yaddr,y*boost)
 writeFloat(zaddr,1)
 i=i+1
 end
