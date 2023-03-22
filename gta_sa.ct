@@ -1958,7 +1958,8 @@ local multiSpeeder=1.5
 local zUpSpeed=0.05
 local zDownSpeed=6e-3
 local deg=10
-local boost=64
+local boost=16
+local flyiter=2e3
 local stopKey=0x53
 local slowKey=0x28
 local fastKey=0x26
@@ -2076,7 +2077,7 @@ local x,y,z=readFloat(xaddr),readFloat(yaddr),readFloat(zaddr)
 writeFloat(xaddr,x*boost)
 writeFloat(yaddr,y*boost)
 local i=0
-while i&lt;1e4 do
+while i&lt;flyiter do
 writeFloat(zaddr,1)
 i=i+1
 end
