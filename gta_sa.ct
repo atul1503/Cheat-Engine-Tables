@@ -1956,7 +1956,7 @@ registersymbol(super_jump)
 local multi=0.12
 local multiSpeeder=1.5
 local zUpSpeed=0.05
-local zDownSpeed=6e-3
+local zDownSpeed=1e-2
 local deg=10
 local boost=4
 local flyiter=1e4
