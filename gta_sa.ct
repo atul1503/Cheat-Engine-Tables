@@ -1956,10 +1956,10 @@ registersymbol(super_jump)
 local multi=0.12
 local multiSpeeder=1.5
 local zUpSpeed=0.05
-local zDownSpeed=1e-2
+local zDownSpeed=-7e-2
 local deg=10
 local boost=4
-local flyiter=1e4
+local flyiter=5e3
 local jumpIterVelocity=0.1
 local stopKey=0x53
 local slowKey=0x28
@@ -2082,6 +2082,11 @@ writeFloat(yaddr,y*boost)
 writeFloat(zaddr,jumpIterVelocity)
 i=i+1
 end
+while readFloat(zaddr)&gt;=0 do end
+while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
+writeFloat(zaddr,zDownSpeed)
+end
+keyUp(stopKey)
 end
 
 
