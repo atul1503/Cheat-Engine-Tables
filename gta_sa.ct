@@ -3703,6 +3703,32 @@ hk2.destroy()
         <Byte>89</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov bl,[ecx+000000B9] cj is in air or not flag</Description>
+      <AddressString>gta_sa.exe+1434EE</AddressString>
+      <Before>
+        <Byte>C2</Byte>
+        <Byte>01</Byte>
+        <Byte>74</Byte>
+        <Byte>40</Byte>
+        <Byte>53</Byte>
+      </Before>
+      <Actual>
+        <Byte>8A</Byte>
+        <Byte>99</Byte>
+        <Byte>B9</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>55</Byte>
+        <Byte>56</Byte>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols>
     <SymbolEntry>
