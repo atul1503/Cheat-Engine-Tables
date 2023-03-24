@@ -1958,9 +1958,9 @@ local multiSpeeder=1.5
 local zUpSpeed=0.05
 local zDownSpeed=-8e-2
 local deg=10
-local boost=0.5
+local boost=0.8
 local flyiter=1e4
-local jumpIterVelocity=0.1
+local jumpIterVelocity=0.5
 local stopKey=0x53
 local slowKey=0x28
 local fastKey=0x26
@@ -2086,6 +2086,8 @@ i=i+1
 end
 while readFloat(zaddr)&gt;=0 do end
 while readFloat(zaddr)~=0 and (not isKeyPressed(stopKey) ) do
+writeFloat(xaddr,x*ratio)
+writeFloat(yaddr,y*ratio)
 writeFloat(zaddr,zDownSpeed)
 end
 keyUp(stopKey)
