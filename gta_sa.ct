@@ -1050,9 +1050,9 @@ if synataxcheck then return end
 
 local mul=1.1
 local climb_mul=3
-local gearMul=3
-local rangeShifter=0.15
-local Top_Speed=0.1
+local gearMul=1.3
+local rangeShifter=0.2
+local Top_Speed=0.05
 local reverse_speed=0.2
 local speedXString='X SPEED road'
 local speedYString='Y SPEED road'
@@ -1081,6 +1081,20 @@ t=getAddressList()
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)
 z=t.getMemoryRecordByDescription(speedZString)
+
+timer=createTimer()
+timer.Interval=200
+timer.OnTimer=function()
+if x==nil or x.Value==nil then return end
+if isKeyPressed(0x26)  then --up key
+adjustSpeed(x,y,TempUp,true)
+else
+adjustSpeed(x,y,TempUp,false)
+end
+end
+
+timer.Enabled=true
+
 
 
 function adjustSpeed(x,y,tempUp,speedUp)
@@ -1125,9 +1139,6 @@ else
 end
 
 
-normal=createHotkey(function()
-adjustSpeed(x,y,TempUp,true)
-end,0x26) --UP key
 
 
 up=createHotkey(function()
@@ -1162,13 +1173,13 @@ end,0x52)
 
 
 [DISABLE]
-normal.destroy()
 up.destroy()
 down.destroy()
 reset.destroy()
 mulInc.destroy()
 mulDec.destroy()
 reverser.destroy()
+timer.destroy()
 </AssemblerScript>
                 </CheatEntry>
                 <CheatEntry>
@@ -1958,8 +1969,8 @@ local multiSpeeder=1.5
 local zUpSpeed=0.05
 local zDownSpeed=-8e-2
 local deg=10
-local boost=1.29
-local flyiter=1e4
+local boost=0.2
+local flyiter=5e2
 local jumpIterVelocity=0.5
 local stopKey=0x53
 local slowKey=0x28
