@@ -1,0 +1,138 @@
+{$lua}
+
+if synataxcheck then return end
+
+[ENABLE]
+
+local mul=1.1
+local climb_mul=3
+local gearMul=1.3
+local rangeShifter=0.2
+local Top_Speed=0.05
+local reverse_speed=0.2
+local speedXString='X SPEED road'
+local speedYString='Y SPEED road'
+local speedZString='Z SPEED road'
+
+--Instructions
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
+--climb_mul is the power for climbing mountains(the higher the stronger).Avoid this in normal driving conditions.
+--rangeShifter is the multiplier by which the range will be added to calculate the new top speed.
+--reverse_speed is the constant speed at which the vehicle will travel in the reverse direction at the time of activation of reverser hotkey.
+--Up is the initial top speed
+--In this,range is adjusted by constants.
+--Gear is increased by W and decreased by S
+--When trying to use this script in a game just adjust speedStrings , Top_Speed and rangeShifter depending on the game.
+
+
+local TempUp=Top_Speed
+local temp_mul=mul
+local rflag=false
+local dirx=0
+local diry=0
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+z=t.getMemoryRecordByDescription(speedZString)
+
+timer=createTimer()
+timer.Interval=200
+timer.OnTimer=function()
+if x==nil or x.Value==nil then return end
+if isKeyPressed(0x26)  then --up key
+adjustSpeed(x,y,TempUp,true)
+else
+adjustSpeed(x,y,TempUp,false)
+end
+end
+
+timer.Enabled=true
+
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+if tempUp>0 then
+	if r<=tempUp then
+      if r*mul<=tempUp then
+        if speedUp then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+          z.Value=z.Value*mul
+        end
+      else
+        if speedUp then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+          z.Value=z.Value*ratio
+        end
+      end
+    else
+      if (r/gearMul)>=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+        z.Value=z.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+	end
+else
+	if rflag==false then
+	    rflag=true
+		dirx=(x.Value/r)*(-1)
+		diry=(y.Value/r)*(-1)
+	end
+	  x.Value=dirx*reverse_speed
+	  y.Value=diry*reverse_speed
+	end
+end
+
+
+
+
+up=createHotkey(function()
+TempUp=TempUp+rangeShifter
+adjustSpeed(x,y,TempUp,false)
+end,0x57) --W
+
+down=createHotkey(function()
+TempUp=TempUp-rangeShifter
+adjustSpeed(x,y,TempUp,false)
+end,0x53) --S
+
+reset=createHotkey(function()
+TempUp=Top_Speed
+rflag=false
+adjustSpeed(x,y,TempUp,false)
+end,0x20) --SPACE
+
+
+mulInc=createHotkey(function()
+mul=climb_mul
+end,0x45) --E
+
+mulDec=createHotkey(function()
+mul=temp_mul
+end,0x44) --D
+
+reverser=createHotkey(function()
+TempUp=-1
+adjustSpeed(x,y,TempUp,false)
+end,0x52)
+
+
+[DISABLE]
+up.destroy()
+down.destroy()
+reset.destroy()
+mulInc.destroy()
+mulDec.destroy()
+reverser.destroy()
+timer.destroy()
