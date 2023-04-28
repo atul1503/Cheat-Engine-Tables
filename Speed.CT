@@ -271,24 +271,33 @@ if synataxcheck then return end
 
 [ENABLE]
 
-local mul=1.05
-local gearMul=1.05
+local mul=1.01
+local climb_mul=3
+local gearMul=1.3
 local rangeShifter=20
-local Top_Speed=8
+local Top_Speed=5
+local reverse_speed=0.2
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
 local speedZString='Z SPEED'
 
 --Instructions
---mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed
---gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed
---rangeMultiplier is the multiplier by which the range will be added to calculate the new top speed.
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
+--climb_mul is the power for climbing mountains(the higher the stronger).Avoid this in normal driving conditions.
+--rangeShifter is the multiplier by which the range will be added to calculate the new top speed.
+--reverse_speed is the constant speed at which the vehicle will travel in the reverse direction at the time of activation of reverser hotkey.
 --Up is the initial top speed
 --In this,range is adjusted by constants.
 --Gear is increased by W and decreased by S
 --When trying to use this script in a game just adjust speedStrings , Top_Speed and rangeShifter depending on the game.
 
+
 local TempUp=Top_Speed
+local temp_mul=mul
+local rflag=false
+local dirx=0
+local diry=0
 
 
 t=getAddressList()
@@ -296,10 +305,24 @@ x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)
 z=t.getMemoryRecordByDescription(speedZString)
 
+timer=createTimer()
+timer.Interval=200
+timer.OnTimer=function()
+if x==nil or x.Value==nil then return end
+if isKeyPressed(0x26)  then --up key
+adjustSpeed(x,y,TempUp,true)
+else
+adjustSpeed(x,y,TempUp,false)
+end
+end
+
+timer.Enabled=true
+
+
 
 function adjustSpeed(x,y,tempUp,speedUp)
-  if tempUp&gt;=Top_Speed then
-	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+if tempUp&gt;0 then
 	if r&lt;=tempUp then
       if r*mul&lt;=tempUp then
         if speedUp then
@@ -326,65 +349,45 @@ function adjustSpeed(x,y,tempUp,speedUp)
         y.Value=y.Value*ratio
         z.Value=z.Value*ratio
       end
-    end
-  else
-    x.Value=x.Value*(-1)
-	y.Value=y.Value*(-1)
-	z.Value=z.Value*(-1)
-	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
-	gear=(r-Top_Speed)/rangeShifter
-	if (gear*100)%100~=0 then
-	  TempUp=Top_Speed+(gear+1)*rangeShifter
-	else
-	  TempUp=Top_Speed+(gear)*rangeShifter
-    end
-  end
-end
-
-function getSpeed()
-return ((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	end
+else
+	if rflag==false then
+	    rflag=true
+		dirx=(x.Value/r)*(-1)
+		diry=(y.Value/r)*(-1)
+	end
+	  x.Value=dirx*reverse_speed
+	  y.Value=diry*reverse_speed
+	end
 end
 
 
-function lessThanMaxEnsurer()
-while getSpeed()&gt;TempUp
-do
-  r=getSpeed()
-  if (r/gearMul)&gt;TempUp then
-    x.Value=x.Value/gearMul
-	y.Value=y.Value/gearMul
-	z.Value=z.Value/gearMul
-  else
-    local ratio=TempUp/r
-	x.Value=x.Value*ratio
-    y.Value=y.Value*ratio
-    z.Value=z.Value*ratio
-  end
-end
-end
-
-
-
-normal=createHotkey(function()
-adjustSpeed(x,y,TempUp,true)
-end,0x26)
 
 
 up=createHotkey(function()
 TempUp=TempUp+rangeShifter
 adjustSpeed(x,y,TempUp,false)
-end,0x57)
+end,0x57) --W
 
 down=createHotkey(function()
 TempUp=TempUp-rangeShifter
-lessThanMaxEnsurer()
-end,0x53)
+adjustSpeed(x,y,TempUp,false)
+end,0x53) --S
 
 reset=createHotkey(function()
 TempUp=Top_Speed
-lessThanMaxEnsurer()
-end,0x20)
+rflag=false
+adjustSpeed(x,y,TempUp,false)
+end,0x20) --SPACE
 
+
+mulInc=createHotkey(function()
+mul=climb_mul
+end,0x45) --E
+
+mulDec=createHotkey(function()
+mul=temp_mul
+end,0x44) --D
 
 reverser=createHotkey(function()
 TempUp=-1
@@ -393,11 +396,13 @@ end,0x52)
 
 
 [DISABLE]
-normal.destroy()
 up.destroy()
 down.destroy()
 reset.destroy()
+mulInc.destroy()
+mulDec.destroy()
 reverser.destroy()
+timer.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -463,9 +468,7 @@ breaker.destroy()
 
 [ENABLE]
 
-local speedConstant=5e-4
-local timeConstant=3e-2
-local lowSpeedThreshold=20
+local turn=0.1
 
 
 list=getAddressList()
@@ -473,35 +476,20 @@ xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
 
-local turnCounts=0
-
-function turn()
-local r=((xspeed.Value^2)+(yspeed.Value^2))^(1/2)
-if r/(1+turnCounts*timeConstant+r*speedConstant)&lt;lowSpeedThreshold then return end
-xspeed.Value=xspeed.Value/(1+turnCounts*timeConstant+r*speedConstant)
-yspeed.Value=yspeed.Value/(1+turnCounts*timeConstant+r*speedConstant)
-turnCounts=turnCounts+1
-end
-
 
 left=createHotkey(function()
-turn()
+steer.Value=steer.Value-turn
 end,0x25)
 
 right=createHotkey(function()
-turn()
+steer.Value=steer.Value+turn
 end,0x27)
-
-front=createHotkey(function()
-turnCounts=0
-end,0x26)
 
 
 [DISABLE]
 
 left.destroy()
 right.destroy()
-front.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -3918,6 +3906,51 @@ mapper.destroy()
         <Byte>D9</Byte>
         <Byte>C0</Byte>
         <Byte>D8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [edi] (Car camera x coord)</Description>
+      <AddressString>speed.exe+2ECF99</AddressString>
+      <Before>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+        <Byte>D9</Byte>
+        <Byte>E0</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>1F</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>C9</Byte>
+        <Byte>D9</Byte>
+        <Byte>5F</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fmul dword ptr [esi+18] (Game speed)</Description>
+      <AddressString>speed.exe+2F6D9D</AddressString>
+      <Before>
+        <Byte>46</Byte>
+        <Byte>2C</Byte>
+        <Byte>83</Byte>
+        <Byte>F8</Byte>
+        <Byte>03</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>4E</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>3D</Byte>
+        <Byte>78</Byte>
+        <Byte>2B</Byte>
+        <Byte>98</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
