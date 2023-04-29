@@ -438,19 +438,15 @@ speeder.destroy()
 
 [ENABLE]
 
-breakPower=1.06
-local a=1/40 --s of 2^(a*x)
+local breakPower=1.06
 
 x=getAddressList().getMemoryRecordByDescription('X SPEED')
 y=getAddressList().getMemoryRecordByDescription('Y SPEED')
 
-counter=0
 
 breaker=createHotkey(function()
-counter=counter+1
-factor=2^(a*counter)
-x.Value=x.Value/factor
-y.Value=y.Value/factor
+x.Value=x.Value/breakPower
+y.Value=y.Value/breakPower
 end,0x28)
 
 
@@ -696,6 +692,72 @@ Speed.exe+2EDDE3: 75 27              - jne Speed.exe+2EDE0C
 Speed.exe+2EDDE5: D9 44 24 08        - fld dword ptr [esp+08]
 Speed.exe+2EDDE9: 68 00 00 80 3F     - push 3F800000
 Speed.exe+2EDDEE: D8 35 E4 1A 90 00  - fdiv dword ptr [Speed.exe+501AE4]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>123</ID>
+          <Description>"Half the game speed"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(GameSpeed,speed.exe,D8 4E 18 8B 3D 78 2B 98 00) // should be unique
+alloc(newmem,70)
+alloc(Gspeed,4)
+label(code)
+label(return)
+
+Gspeed:
+dd (float)0.008
+
+newmem:
+
+code:
+  fmul dword ptr [Gspeed]
+  mov edi,[speed.exe+582B78]
+  jmp return
+
+GameSpeed:
+  jmp newmem
+  nop 4
+return:
+registersymbol(GameSpeed)
+
+[DISABLE]
+
+GameSpeed:
+  db D8 4E 18 8B 3D 78 2B 98 00
+
+unregistersymbol(GameSpeed)
+dealloc(Gspeed)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: speed.exe+2F6D9D
+
+speed.exe+2F6D79: FF 52 08              - call dword ptr [edx+08]
+speed.exe+2F6D7C: 8B CE                 - mov ecx,esi
+speed.exe+2F6D7E: 50                    - push eax
+speed.exe+2F6D7F: E8 FC A1 FF FF        - call speed.exe+2F0F80
+speed.exe+2F6D84: EB 0E                 - jmp speed.exe+2F6D94
+speed.exe+2F6D86: C7 46 24 00 00 80 3F  - mov [esi+24],3F800000
+speed.exe+2F6D8D: C7 46 2C 00 00 00 00  - mov [esi+2C],00000000
+speed.exe+2F6D94: D9 46 24              - fld dword ptr [esi+24]
+speed.exe+2F6D97: 8B 46 2C              - mov eax,[esi+2C]
+speed.exe+2F6D9A: 83 F8 03              - cmp eax,03
+// ---------- INJECTING HERE ----------
+speed.exe+2F6D9D: D8 4E 18              - fmul dword ptr [esi+18]
+// ---------- DONE INJECTING  ----------
+speed.exe+2F6DA0: 8B 3D 78 2B 98 00     - mov edi,[speed.exe+582B78]
+speed.exe+2F6DA6: D9 56 1C              - fst dword ptr [esi+1C]
+speed.exe+2F6DA9: 0F 85 9D 00 00 00     - jne speed.exe+2F6E4C
+speed.exe+2F6DAF: D8 1D A4 01 8B 00     - fcomp dword ptr [speed.exe+4B01A4]
+speed.exe+2F6DB5: DF E0                 - fnstsw ax
+speed.exe+2F6DB7: F6 C4 41              - test ah,41
+speed.exe+2F6DBA: 0F 8B 8E 00 00 00     - jnp speed.exe+2F6E4E
+speed.exe+2F6DC0: 53                    - push ebx
+speed.exe+2F6DC1: E8 7A 60 D6 FF        - call speed.exe+5CE40
+speed.exe+2F6DC6: D9 05 D8 85 98 00     - fld dword ptr [speed.exe+5885D8]
 }
 </AssemblerScript>
         </CheatEntry>
