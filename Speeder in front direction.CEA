@@ -4,21 +4,22 @@
 
 
 local mul=1+4e-4
-local ratio=2
+local ratio=0.5
 
--- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game.
+-- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
 
 
 list=getAddressList()
-xspeed=list.getMemoryRecordByDescription('X SPEED')
-yspeed=list.getMemoryRecordByDescription('Y SPEED')
-steer=list.getMemoryRecordByDescription('Steering Rotation')
+xspeed=list.getMemoryRecordByDescription('speed x')
+yspeed=list.getMemoryRecordByDescription('speed y')
+steer=list.getMemoryRecordByDescription('steer')
 
 
 
 function rotate()
-theta=math.rad(-ratio*steer.Value)
+if xspeed==nil or xspeed.Value=="??" then return end
+theta=math.rad(ratio*steer.Value)
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
 x=xspeed.Value/r

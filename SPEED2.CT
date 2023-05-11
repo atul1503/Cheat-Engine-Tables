@@ -72,81 +72,47 @@
       <Description>"Speeder Script"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{$lua}
-if syntaxcheck then return end
 
 [ENABLE]
 
-local mul=1+1e-2
-local topSpeed=180
-local stop=0.85
-local rotation=0.15
-local superBoost=2
-local easyTurnSwitch=0
-local limiter=(1/mul)
+
+local mul=1+4e-4
+local ratio=0.5
+
+-- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
 
-hk1=createHotkey(function()
-t=getAddressList()
-turnFlag=0
-x=t.getMemoryRecordByDescription("speed x")
-y=t.getMemoryRecordByDescription("speed y")
-r=((x.Value^2)+(y.Value^2))^0.5
-if r&lt;topSpeed then
-x.Value=x.Value*mul
-y.Value=y.Value*mul
-else
-x.Value=x.Value*limiter
-y.Value=y.Value*limiter
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('speed x')
+yspeed=list.getMemoryRecordByDescription('speed y')
+steer=list.getMemoryRecordByDescription('steer')
+
+
+
+function rotate()
+if xspeed==nil or xspeed.Value=="??" then return end
+theta=math.rad(ratio*steer.Value)
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
 end
-end,0x26)
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
 
 
-hk2=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription("speed x")
-y=t.getMemoryRecordByDescription("speed y")
-x.Value=x.Value*stop
-y.Value=y.Value*stop
-end,0x28)
-
-hk3=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription("speed x")
-y=t.getMemoryRecordByDescription("speed y")
-ro=t.getMemoryRecordByDescription("Wheel Rotation")
-if tonumber(ro.Value)&lt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-end,0x25)
-
-
-hk4=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription("speed x")
-y=t.getMemoryRecordByDescription("speed y")
-ro=t.getMemoryRecordByDescription("Wheel Rotation")
-if tonumber(ro.Value)&gt;0 and easyTurnSwitch~=0 then
-ro.Value=0
-end
-end,0x27)
-
-hk5=createHotkey(function()
-t=getAddressList()
-x=t.getMemoryRecordByDescription("speed x")
-y=t.getMemoryRecordByDescription("speed y")
-x.Value=x.Value*superBoost
-y.Value=y.Value*superBoost
-end,0x42)
 
 
 [DISABLE]
-
-
-hk1.destroy()
-hk2.destroy()
-hk3.destroy()
-hk4.destroy()
-hk5.destroy()
+timer.destroy()
 </AssemblerScript>
     </CheatEntry>
   </CheatEntries>
@@ -340,6 +306,28 @@ hk5.destroy()
         <Byte>24</Byte>
         <Byte>14</Byte>
         <Byte>DF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [esi],ecx (x speed by damage)</Description>
+      <AddressString>SPEED2.EXE+1936D1</AddressString>
+      <Before>
+        <Byte>C6</Byte>
+        <Byte>70</Byte>
+        <Byte>D9</Byte>
+        <Byte>5E</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>0E</Byte>
+      </Actual>
+      <After>
+        <Byte>5F</Byte>
+        <Byte>5E</Byte>
+        <Byte>8B</Byte>
+        <Byte>E5</Byte>
+        <Byte>5D</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
@@ -1961,4 +1949,6 @@ hk5.destroy()
       </Elements>
     </Structure>
   </Structures>
+  <Comments>yspeed=xspeed+4
+steeringSpeed=xspeed+18</Comments>
 </CheatTable>
