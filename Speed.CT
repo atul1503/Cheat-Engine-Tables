@@ -20,7 +20,7 @@
 
 
 local mul=1+4e-4
-local ratio=100
+local ratio=2
 
 
 list=getAddressList()
@@ -28,16 +28,11 @@ xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
 face=list.getMemoryRecordByDescription('Car Rotation')
-curr=nil
 
 
 
 function rotate()
-if curr==nil then
-curr=face.Value
-else
-if tonumber(steer.Value)&gt;0 then sign=-1 else sign=1 end
-theta=math.rad(ratio*math.abs(curr-face.Value)*sign)
+theta=math.rad(-ratio*steer.Value)
 curr=face.Value
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
@@ -47,7 +42,6 @@ xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
 xspeed.Value=xcomp*r*mul
 yspeed.Value=ycomp*r*mul
-end
 end
 
 timer=createTimer()
@@ -516,7 +510,7 @@ breaker.destroy()
 
 [ENABLE]
 
-local turn=0.1
+local turn=0.05
 
 
 list=getAddressList()
@@ -526,10 +520,12 @@ steer=list.getMemoryRecordByDescription('Steering Rotation')
 
 
 left=createHotkey(function()
+--if tonumber(steer.Value)&gt;0 then steer.Value=0 end
 steer.Value=steer.Value-turn
 end,0x25)
 
 right=createHotkey(function()
+--if tonumber(steer.Value)&lt;0 then steer.Value=0 end
 steer.Value=steer.Value+turn
 end,0x27)
 
