@@ -11,6 +11,58 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>134</ID>
+          <Description>"Speeder with front direction"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+
+local mul=1+4e-4
+local ratio=100
+
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('X SPEED')
+yspeed=list.getMemoryRecordByDescription('Y SPEED')
+steer=list.getMemoryRecordByDescription('Steering Rotation')
+face=list.getMemoryRecordByDescription('Car Rotation')
+curr=nil
+
+
+
+function rotate()
+if curr==nil then
+curr=face.Value
+else
+if tonumber(steer.Value)&gt;0 then sign=-1 else sign=1 end
+theta=math.rad(ratio*math.abs(curr-face.Value)*sign)
+curr=face.Value
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
+end
+end
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
+
+
+
+
+[DISABLE]
+timer.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>103</ID>
           <Description>"Gear System 5"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -1110,58 +1162,6 @@ end,0x26)
 [DISABLE]
 hk1.destroy()
 
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>134</ID>
-          <Description>"Car direction mover script"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
-
-[ENABLE]
-
-
-local mul=1+4e-4
-local ratio=100
-
-
-list=getAddressList()
-xspeed=list.getMemoryRecordByDescription('X SPEED')
-yspeed=list.getMemoryRecordByDescription('Y SPEED')
-steer=list.getMemoryRecordByDescription('Steering Rotation')
-face=list.getMemoryRecordByDescription('Car Rotation')
-curr=nil
-
-
-
-function rotate()
-if curr==nil then
-curr=face.Value
-else
-if tonumber(steer.Value)&gt;0 then sign=-1 else sign=1 end
-theta=math.rad(ratio*math.abs(curr-face.Value)*sign)
-curr=face.Value
-r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
-if r==0 then return end
-x=xspeed.Value/r
-y=yspeed.Value/r
-xcomp=x*math.cos(theta)-y*math.sin(theta)
-ycomp=x*math.sin(theta)+y*math.cos(theta)
-xspeed.Value=xcomp*r*mul
-yspeed.Value=ycomp*r*mul
-end
-end
-
-timer=createTimer()
-timer.Interval=50
-timer.OnTimer=rotate
-timer.Enabled=true
-
-
-
-
-[DISABLE]
-timer.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
