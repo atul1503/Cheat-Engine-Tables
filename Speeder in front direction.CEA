@@ -1,0 +1,41 @@
+{$lua}
+
+[ENABLE]
+
+
+local mul=1+4e-4
+local ratio=2
+
+-- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game.
+
+
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('X SPEED')
+yspeed=list.getMemoryRecordByDescription('Y SPEED')
+steer=list.getMemoryRecordByDescription('Steering Rotation')
+
+
+
+function rotate()
+theta=math.rad(-ratio*steer.Value)
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
+end
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
+
+
+
+
+[DISABLE]
+timer.destroy()
