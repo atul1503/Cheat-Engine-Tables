@@ -489,6 +489,35 @@ right.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>124</ID>
+          <Description>"Friction script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+friction=1.01
+
+tbl=getAddressList()
+x=tbl.getMemoryRecordByDescription("X SPEED")
+y=tbl.getMemoryRecordByDescription("Y SPEED")
+
+
+timer=createTimer()
+timer.Interval=100
+timer.Enabled=true
+timer.OnTimer=function()
+if not isKeyPressed(0x26)  then --UP key
+x.Value=x.Value/friction
+y.Value=y.Value/friction
+end
+end
+
+[DISABLE]
+timer.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>110</ID>
           <Description>"Slow Down with timer"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -927,12 +956,12 @@ unregistersymbol(Inf_No_Collision)
 
 [ENABLE]
 
-local mul=1
+local mul=1.01
 local steerSpeed=0.1
-local deg=90
-local firstXLabel='X'
+local deg=-5
+local firstXLabel='x2'
 local secondXLabel='x1'
-local firstYLabel='Y'
+local firstYLabel='y2'
 local secondYLabel='y1'
 
 
@@ -1026,6 +1055,113 @@ end,0x41) --A
 
 [DISABLE]
 mapper.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>133</ID>
+          <Description>"Angle check script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+
+Alist=getAddressList()
+xspeed=Alist.getMemoryRecordByDescription("X SPEED")
+yspeed=Alist.getMemoryRecordByDescription("Y SPEED")
+x1m=Alist.getMemoryRecordByDescription("x1")
+y1m=Alist.getMemoryRecordByDescription("y1")
+x2m=Alist.getMemoryRecordByDescription("x2")
+y2m=Alist.getMemoryRecordByDescription("y2")
+x3m=Alist.getMemoryRecordByDescription("x3")
+y3m=Alist.getMemoryRecordByDescription("y3")
+rotate=Alist.getMemoryRecordByDescription("Steering Rotation")
+
+
+
+
+function getUnitVectorAndDirection(x1,y1,x2,y2)
+xcomp=(x1-x2)
+ycomp=(y1-y2)
+r=((xcomp^2)+(ycomp^2))^0.5
+xcomp=xcomp/r
+ycomp=ycomp/r
+return xcomp,ycomp,math.deg(math.atan(ycomp/xcomp))
+end
+
+function getCompsAndAbs(xpri,ypri)
+r=((xpri^2)+(ypri^2))^0.5
+xpri=xpri/r
+ypri=ypri/r
+return xpri,ypri,r
+end
+
+
+
+
+
+hk1=createHotkey(function()
+local xa,xa,x1x2Angle=getUnitVectorAndDirection(x1m.Value,y1m.Value,x2m.Value,y2m.Value)
+local xb,yb,x2x3Angle=getUnitVectorAndDirection(x2m.Value,y2m.Value,x3m.Value,y3m.Value)
+print("Difference in angle "..(x2x3Angle-x1x2Angle).."\n")
+end,0x26)
+
+
+[DISABLE]
+hk1.destroy()
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>134</ID>
+          <Description>"Car direction mover script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+
+local mul=1+4e-4
+local ratio=100
+
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('X SPEED')
+yspeed=list.getMemoryRecordByDescription('Y SPEED')
+steer=list.getMemoryRecordByDescription('Steering Rotation')
+face=list.getMemoryRecordByDescription('Car Rotation')
+curr=nil
+
+
+
+function rotate()
+if curr==nil then
+curr=face.Value
+else
+if tonumber(steer.Value)&gt;0 then sign=-1 else sign=1 end
+theta=math.rad(ratio*math.abs(curr-face.Value)*sign)
+curr=face.Value
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
+end
+end
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
+
+
+
+
+[DISABLE]
+timer.destroy()
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
@@ -3879,7 +4015,7 @@ mapper.destroy()
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :fstp dword ptr [ecx] (Car side mirror coord)</Description>
+      <Description>Code :fstp dword ptr [ecx] (Car all parts coord)</Description>
       <AddressString>speed.exe+16A9</AddressString>
       <Before>
         <Byte>24</Byte>
@@ -4013,6 +4149,100 @@ mapper.destroy()
         <Byte>78</Byte>
         <Byte>2B</Byte>
         <Byte>98</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fadd dword ptr [esi] (Car direction important coordinate)</Description>
+      <AddressString>speed.exe+2A7094</AddressString>
+      <Before>
+        <Byte>D5</Byte>
+        <Byte>FF</Byte>
+        <Byte>D9</Byte>
+        <Byte>47</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>06</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>0C</Byte>
+        <Byte>D9</Byte>
+        <Byte>1E</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [esp] (important)</Description>
+      <AddressString>speed.exe+16A2</AddressString>
+      <Before>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>18</Byte>
+        <Byte>DE</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>04</Byte>
+        <Byte>24</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>08</Byte>
+        <Byte>DE</Byte>
+        <Byte>C1</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fsub dword ptr [esi+38] (Best important instruction with 009386C8 in ebp)</Description>
+      <AddressString>speed.exe+28B8FB</AddressString>
+      <Before>
+        <Byte>10</Byte>
+        <Byte>D9</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>66</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>14</Byte>
+        <Byte>D9</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub esp,000001A4 (Important function wheel speed related)</Description>
+      <AddressString>speed.exe+2AA020</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>81</Byte>
+        <Byte>EC</Byte>
+        <Byte>A4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>53</Byte>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>B4</Byte>
+        <Byte>24</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
@@ -5042,7 +5272,7 @@ mapper.destroy()
       </Elements>
     </Structure>
   </Structures>
-  <Comments>x1 unit vector: get all addresses starting with 02 and the one which is the second coordinate in the memory view is the one.
+  <Comments>x2 se A0 address piche hai. -5 angle hai.
 </Comments>
   <DisassemblerComments>
     <DisassemblerComment>

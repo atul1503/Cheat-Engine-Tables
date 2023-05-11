@@ -1626,6 +1626,18 @@ changeSides.destroy()
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+    <CheatEntry>
+      <ID>199</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>034B9A10</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>200</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>0019FD24</Address>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
