@@ -40,8 +40,10 @@ x=xspeed.Value/r
 y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
-xspeed.Value=xcomp*r*mul
-yspeed.Value=ycomp*r*mul
+local dmul=1
+if isKeyPressed(0x26) then dmul=mul end
+xspeed.Value=xcomp*r*dmul
+yspeed.Value=ycomp*r*dmul
 end
 
 timer=createTimer()
