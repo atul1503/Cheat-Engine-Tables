@@ -82,9 +82,9 @@
 
 [ENABLE]
 
-
+local turn=0.1
 local mul=1+4e-3
-local ratio=0.5
+local ratio=-0.5
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
@@ -97,9 +97,11 @@ steer=list.getMemoryRecordByDescription('steer')
 
 
 
+
 function rotate()
 if xspeed==nil or xspeed.Value=="??" then return end
-theta=math.rad(ratio*steer.Value)
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+theta=math.rad(-ratio*steer.Value)
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
 x=xspeed.Value/r
