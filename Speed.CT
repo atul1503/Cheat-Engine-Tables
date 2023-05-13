@@ -19,8 +19,10 @@
 [ENABLE]
 
 
-local mul=1+4e-4
-local ratio=2
+local turn=0.2
+local mul=1+4e-3
+local ratio=1.8
+
 
 
 list=getAddressList()
@@ -32,6 +34,7 @@ face=list.getMemoryRecordByDescription('Car Rotation')
 
 
 function rotate()
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
 theta=math.rad(-ratio*steer.Value)
 curr=face.Value
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
@@ -512,7 +515,7 @@ breaker.destroy()
 
 [ENABLE]
 
-local turn=0.05
+local turn=0.2
 
 
 list=getAddressList()
@@ -522,12 +525,12 @@ steer=list.getMemoryRecordByDescription('Steering Rotation')
 
 
 left=createHotkey(function()
---if tonumber(steer.Value)&gt;0 then steer.Value=0 end
+--if tonumber(steer.Value)&gt;0 then steer.Value=0 return end
 steer.Value=steer.Value-turn
 end,0x25)
 
 right=createHotkey(function()
---if tonumber(steer.Value)&lt;0 then steer.Value=0 end
+--if tonumber(steer.Value)&lt;0 then steer.Value=0 return end
 steer.Value=steer.Value+turn
 end,0x27)
 
@@ -1121,19 +1124,16 @@ xspeed=Alist.getMemoryRecordByDescription("X SPEED")
 yspeed=Alist.getMemoryRecordByDescription("Y SPEED")
 x1m=Alist.getMemoryRecordByDescription("x1")
 y1m=Alist.getMemoryRecordByDescription("y1")
-x2m=Alist.getMemoryRecordByDescription("x2")
-y2m=Alist.getMemoryRecordByDescription("y2")
-x3m=Alist.getMemoryRecordByDescription("x3")
-y3m=Alist.getMemoryRecordByDescription("y3")
 rotate=Alist.getMemoryRecordByDescription("Steering Rotation")
 
-
+prev=nil
 
 
 function getUnitVectorAndDirection(x1,y1,x2,y2)
 xcomp=(x1-x2)
 ycomp=(y1-y2)
 r=((xcomp^2)+(ycomp^2))^0.5
+if r==0 then return end
 xcomp=xcomp/r
 ycomp=ycomp/r
 return xcomp,ycomp,math.deg(math.atan(ycomp/xcomp))
@@ -1141,20 +1141,39 @@ end
 
 function getCompsAndAbs(xpri,ypri)
 r=((xpri^2)+(ypri^2))^0.5
+if r==0 then return end
 xpri=xpri/r
 ypri=ypri/r
 return xpri,ypri,r
 end
 
-
+function findAngle(xc,yc)
+r=((xc^2)+(yc^2))^0.5
+if r==0 then return end
+xc=xc/r
+yc=yc/r
+return math.deg(math.atan(yc/xc))
+end
 
 
 
 hk1=createHotkey(function()
-local xa,xa,x1x2Angle=getUnitVectorAndDirection(x1m.Value,y1m.Value,x2m.Value,y2m.Value)
-local xb,yb,x2x3Angle=getUnitVectorAndDirection(x2m.Value,y2m.Value,x3m.Value,y3m.Value)
-print("Difference in angle "..(x2x3Angle-x1x2Angle).."\n")
+if prev==nil then
+prev={}
+prev.x=x1m.Value
+prev.y=y1m.Value
+else
+--momentumAngle=findAngle(xspeed.Value,yspeed.Value)
+xcomp,ycomp,partAngle=getUnitVectorAndDirection(prev.x,prev.y,x1m.Value,y1m.Value)
+prev.x=x1m.Value
+prev.y=y1m.Value
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if xcomp==nil then return end
+xspeed.Value=xcomp*r*-1
+yspeed.Value=ycomp*r*-1
+end
 end,0x26)
+
 
 
 [DISABLE]
@@ -4243,6 +4262,28 @@ hk1.destroy()
         <Byte>24</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [ecx],edx (Literally wheel coords)</Description>
+      <AddressString>speed.exe+2AAC73</AddressString>
+      <Before>
+        <Byte>DE</Byte>
+        <Byte>C1</Byte>
+        <Byte>D8</Byte>
+        <Byte>46</Byte>
+        <Byte>38</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>11</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>54</Byte>
+        <Byte>24</Byte>
+        <Byte>38</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols>
     <SymbolEntry>
@@ -5271,6 +5312,7 @@ hk1.destroy()
     </Structure>
   </Structures>
   <Comments>x2 se A0 address piche hai. -5 angle hai.
+1.550781 is the difference between original X and any of the side wheels or something.
 </Comments>
   <DisassemblerComments>
     <DisassemblerComment>

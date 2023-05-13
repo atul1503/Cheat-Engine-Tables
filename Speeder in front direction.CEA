@@ -3,23 +3,24 @@
 [ENABLE]
 
 
+local turn=0.2
 local mul=1+4e-3
-local ratio=2.2
-local turn=0.1
+local ratio=1.8
+
 
 
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
+face=list.getMemoryRecordByDescription('Car Rotation')
 
 
 
 function rotate()
 if xspeed==nil or xspeed.Value=="??" then return end
-if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn  end
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
 theta=math.rad(-ratio*steer.Value)
-curr=face.Value
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
 x=xspeed.Value/r
