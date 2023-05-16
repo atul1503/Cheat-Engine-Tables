@@ -28,7 +28,7 @@
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>0</Address>
+      <Address>09E55290</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>1</ID>
@@ -82,7 +82,7 @@
 
 [ENABLE]
 
-local turn=0.1
+local turn=2
 local mul=1+4e-3
 local ratio=-0.5
 
@@ -96,11 +96,17 @@ yspeed=list.getMemoryRecordByDescription('speed y')
 steer=list.getMemoryRecordByDescription('steer')
 
 
+left=createHotkey(function()
+steer.Value=steer.Value+turn
+end,0x25)
+
+right=createHotkey(function()
+steer.Value=steer.Value-turn
+end,0x27)
 
 
 function rotate()
 if xspeed==nil or xspeed.Value=="??" then return end
-if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
 theta=math.rad(-ratio*steer.Value)
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
@@ -123,6 +129,8 @@ timer.Enabled=true
 
 
 [DISABLE]
+left.destroy()
+right.destroy()
 timer.destroy()
 </AssemblerScript>
     </CheatEntry>
