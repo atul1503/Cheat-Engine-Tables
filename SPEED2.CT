@@ -28,7 +28,7 @@
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>09E55290</Address>
+      <Address>09F91290</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>1</ID>
@@ -56,7 +56,7 @@
           <Description>"Wheel Rotation"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>+18</Address>
+          <Address>0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>16</ID>
@@ -82,9 +82,12 @@
 
 [ENABLE]
 
-local turn=2
+local turn=0.2
 local mul=1+4e-3
 local ratio=-0.5
+--ratio is good at -0.5 for grip
+local speedlimit=120
+local minSpeed=0
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
@@ -115,9 +118,11 @@ y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
 local dmul=1
-if isKeyPressed(0x26) then dmul=mul end
+if isKeyPressed(0x26) and r&lt;speedlimit then dmul=mul else if r&gt;speedlimit then dmul=(speedlimit/r) end
+if r&lt;minSpeed then dmul=(minSpeed/r) end
 xspeed.Value=xcomp*r*dmul
 yspeed.Value=ycomp*r*dmul
+end
 end
 
 timer=createTimer()
@@ -347,6 +352,29 @@ timer.destroy()
         <Byte>8B</Byte>
         <Byte>E5</Byte>
         <Byte>5D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov ecx,[esi+20] ([[speedx-70]])</Description>
+      <AddressString>SPEED2.EXE+1AB996</AddressString>
+      <Before>
+        <Byte>EC</Byte>
+        <Byte>0C</Byte>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>F1</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>56</Byte>
+        <Byte>5C</Byte>
+        <Byte>57</Byte>
+        <Byte>8D</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

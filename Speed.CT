@@ -19,9 +19,9 @@
 [ENABLE]
 
 
-local turn=0.025
-local mul=1+4e-3
-local ratio=1.8
+local mul=1+4e-4
+local ratio=2
+
 
 
 
@@ -29,13 +29,12 @@ list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('X SPEED')
 yspeed=list.getMemoryRecordByDescription('Y SPEED')
 steer=list.getMemoryRecordByDescription('Steering Rotation')
-face=list.getMemoryRecordByDescription('Car Rotation')
 
 
 
 function rotate()
+if xspeed.Value=="??" or xspeed.Value==nil then return end
 theta=math.rad(-ratio*steer.Value)
-curr=face.Value
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
 x=xspeed.Value/r
@@ -514,7 +513,7 @@ breaker.destroy()
 
 [ENABLE]
 
-local turn=0.025
+local turn=0.2
 
 
 list=getAddressList()
@@ -945,62 +944,6 @@ unregistersymbol(Inf_No_Collision)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>46</ID>
-          <Description>"Power Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0066BB37</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>79</ID>
-          <Description>"Static Grip Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0069E0F0</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>74</ID>
-          <Description>"Dynamic Grip Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0069DAD1</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>47</ID>
-          <Description>"Top Speed Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0066C653</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>55</ID>
-          <Description>"Nitrous Power Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>006A0446</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>113</ID>
-          <Description>"Drag/Aerodynamics of car Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>speed.exe+28D91E </Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>81</ID>
-          <Description>"Steering Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0068D839</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>86</ID>
-          <Description>"Brake Instruction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0068E22F</Address>
-        </CheatEntry>
-        <CheatEntry>
           <ID>98</ID>
           <Description>"DirectionTest Script"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -1179,6 +1122,62 @@ end,0x26)
 hk1.destroy()
 
 </AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>86</ID>
+          <Description>"Brake Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0068E22F</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>79</ID>
+          <Description>"Static Grip Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0069E0F0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>74</ID>
+          <Description>"Dynamic Grip Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0069DAD1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>81</ID>
+          <Description>"Steering Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0068D839</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>55</ID>
+          <Description>"Nitrous Power Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>006A0446</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>46</ID>
+          <Description>"Power Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0066BB37</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"Top Speed Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0066C653</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>113</ID>
+          <Description>"Drag/Aerodynamics of car Instruction"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>speed.exe+28D91E </Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -1495,6 +1494,12 @@ hk1.destroy()
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>135</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>02CD0664</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -4281,6 +4286,78 @@ hk1.destroy()
         <Byte>24</Byte>
         <Byte>38</Byte>
         <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[edx+000000B4] (Money watcher in car shop)</Description>
+      <AddressString>speed.exe+3ADF00</AddressString>
+      <Before>
+        <Byte>74</Byte>
+        <Byte>69</Byte>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>82</Byte>
+        <Byte>B4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>10</Byte>
+        <Byte>50</Byte>
+        <Byte>68</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[eax+10] (Bounty watcher)</Description>
+      <AddressString>speed.exe+16EDC4</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>C2</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [eax+14] (Police vehicles tagged)</Description>
+      <AddressString>speed.exe+1EE247</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>40</Byte>
+        <Byte>14</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>08</Byte>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

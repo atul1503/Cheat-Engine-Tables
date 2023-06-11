@@ -1627,16 +1627,11 @@ changeSides.destroy()
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>199</ID>
-      <Description>"No Description"</Description>
+      <ID>202</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>034B9A10</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>200</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>0019FD24</Address>
+      <Address>03C52380</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -3679,6 +3674,52 @@ changeSides.destroy()
         <Byte>89</Byte>
         <Byte>32</Byte>
         <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [esi+28],ecx</Description>
+      <AddressString>Cricket07.exe+1697D1</AddressString>
+      <Before>
+        <Byte>5E</Byte>
+        <Byte>30</Byte>
+        <Byte>8B</Byte>
+        <Byte>56</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4E</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>56</Byte>
+        <Byte>2C</Byte>
+        <Byte>5E</Byte>
+        <Byte>5B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [esi+30] (Ball length blue marker)</Description>
+      <AddressString>Cricket07.exe+16D864</AddressString>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>AC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>46</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>5E</Byte>
+        <Byte>24</Byte>
+        <Byte>DF</Byte>
+        <Byte>E0</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
