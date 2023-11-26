@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>13</ID>
       <Description>"Infinite health and fast movement speed"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -87,7 +87,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>15</ID>
       <Description>"No wanted level"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -231,7 +231,7 @@ dealloc(newmem)
       <ID>32</ID>
       <Description>"Walk Speeder"</Description>
       <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version:
@@ -326,7 +326,7 @@ unregistersymbol(fastbit)
         <CheatEntry>
           <ID>33</ID>
           <Description>"Helper timer"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -335,7 +335,7 @@ unregistersymbol(fastbit)
 timer=createTimer()
 timer.Interval=50
 timer.OnTimer=function()
-if isKeyPressed(0x26) and isKeyPressed(0xA0)  then writeInteger("fastbit",1) else writeInteger("fastbit",0) end
+if isKeyPressed(0x26) and (isKeyPressed(0xA0) or isKeyPressed(0x20) )  then writeInteger("fastbit",1) else writeInteger("fastbit",0) end
 --up and lshift
 end
 
