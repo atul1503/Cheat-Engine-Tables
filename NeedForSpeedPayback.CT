@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"x"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="0" RealAddress="AA97DC80"/>
+      <VariableType>Float</VariableType>
+      <Address>AA97DC80</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>115</ID>
+          <Description>"y"</Description>
+          <LastState Value="0" RealAddress="AA97DC88"/>
+          <VariableType>Float</VariableType>
+          <Address>+8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"speeder using description"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+
+[ENABLE]
+local mul=1.06
+local div=1.1
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription("x")
+y=t.getMemoryRecordByDescription("y")
+
+
+hk1=createHotkey(function()
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end,0x26)
+
+
+hk2=createHotkey(function()
+x.Value=x.Value/div
+y.Value=y.Value/div
+end,0x28)
+
+
+[DISABLE]
+hk2.destroy()
+hk1.destroy()
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :movups xmm1,[rcx-70] (gear +1)</Description>
+      <Address>1411EC027</Address>
+      <ModuleName>NeedForSpeedPayback.exe</ModuleName>
+      <ModuleNameOffset>11EC027</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>40</Byte>
+        <Byte>80</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>49</Byte>
+        <Byte>90</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>48</Byte>
+        <Byte>90</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm0,[rax+00000080] (handling related)</Description>
+      <Address>1412899EB</Address>
+      <ModuleName>NeedForSpeedPayback.exe</ModuleName>
+      <ModuleNameOffset>12899EB</ModuleNameOffset>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>32</Byte>
+        <Byte>C0</Byte>
+        <Byte>EB</Byte>
+        <Byte>36</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>80</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>7F</Byte>
+        <Byte>07</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm0,[r8] (x speed watcher)</Description>
+      <Address>140F23D45</Address>
+      <ModuleName>NeedForSpeedPayback.exe</ModuleName>
+      <ModuleNameOffset>F23D45</ModuleNameOffset>
+      <Before>
+        <Byte>82</Byte>
+        <Byte>08</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>C0</Byte>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub [rdi+08],eax (money subtracter in tune in shop)</Description>
+      <Address>1417F7D48</Address>
+      <ModuleName>NeedForSpeedPayback.exe</ModuleName>
+      <ModuleNameOffset>17F7D48</ModuleNameOffset>
+      <Before>
+        <Byte>EB</Byte>
+        <Byte>06</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>47</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>06</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+18] (drift angle value)</Description>
+      <Address>14698B694</Address>
+      <ModuleName>NeedForSpeedPayback.exe</ModuleName>
+      <ModuleNameOffset>698B694</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>EC</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>B8</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>addr(y speed)=addr(x speed+8)
+</Comments>
+</CheatTable>

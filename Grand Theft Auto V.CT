@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="27">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"xspeed"</Description>
+      <VariableType>Float</VariableType>
+      <Address>2141D468F80</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"yspeed"</Description>
+          <VariableType>Float</VariableType>
+          <Address>+4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"zspeed"</Description>
+          <VariableType>Float</VariableType>
+          <Address>+8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Auto Assemble script"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local mul=1.01
+local div=1.01
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription("xspeed")
+y=t.getMemoryRecordByDescription("yspeed")
+
+
+hk=createHotkey(function()
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end,0x26)
+
+hk1=createHotkey(function()
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end,0x28)
+
+
+[DISABLE]
+hk.destroy()
+hk1.destroy()
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :movss xmm2,[rax] (x car speed)</Description>
+      <Address>7FF7627B784B</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>19784B</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm12,[rsi+60] (x coord car pointer)</Description>
+      <Address>7FF76379F7F4</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>117F7F4</ModuleNameOffset>
+      <Before>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>B7</Byte>
+        <Byte>50</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>66</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C1</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
