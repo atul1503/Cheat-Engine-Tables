@@ -32,7 +32,7 @@ newmem:
 
 code:
   mov [rdi],(float)300
-  mov [rdi+384],(float)2
+  mov [rdi+384],(float)1
   movss xmm2,[rdi]
   mov edx,05CF478F
   jmp return
