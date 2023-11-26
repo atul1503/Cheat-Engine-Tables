@@ -1,0 +1,83 @@
+[ENABLE]
+
+aobscanmodule(INJECT,GTA5.exe,B3 F3 0F 11 83 28 03 00 00) // should be unique
+alloc(newmem,$2000,"GTA5.exe"+779E52)
+alloc(mul,4)
+alloc(limit,4)
+alloc(fastbit,4)
+registersymbol(fastbit)
+label(code)
+label(return)
+
+
+newmem:
+ cmp [fastbit],1
+ jne code
+  // back up registers
+  sub rsp,20
+  movups [rsp],xmm0
+  movups [rsp+10],xmm1
+
+  // magnitude of 2d vec
+  movss xmm0,[rbx+320]
+  movss xmm1,[rbx+324]
+  mulss xmm0,xmm0
+  mulss xmm1,xmm1
+  addss xmm0,xmm1
+  sqrtss xmm0,xmm0
+
+  // compare limit
+  movss xmm1,[limit]
+  ucomiss xmm0,xmm1
+  jae code
+
+// speeder:
+  movss xmm1,[mul]
+
+  movss xmm0,[rbx+320]
+  mulss xmm0,xmm1
+  movss [rbx+320],xmm0
+
+  movss xmm0,[rbx+324]
+  mulss xmm0,xmm1
+  movss [rbx+324],xmm0
+
+code:
+  // restore registers
+  movups xmm0,[rsp]
+  movups xmm1,[rsp+10]
+  add rsp,20
+
+  // original code
+  mov [rbxptr],rbx
+  movss [rbx+328],xmm0
+  jmp return
+
+mul:
+dd (float)2
+
+limit:
+dd (float)5
+
+
+
+INJECT+01:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT+01:
+  db F3 0F 11 83 28 03 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+dealloc(mul)
+dealloc(limit)
+dealloc(fastbit)
+unregistersymbol(fastbit)
+

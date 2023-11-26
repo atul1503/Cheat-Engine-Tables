@@ -4,14 +4,14 @@ if synataxcheck then return end
 
 [ENABLE]
 
-local mul=3
+local mul=1.03
 local jerk=1.5
 local gearMul=3
-local rangeShifter=0.3
-local Top_Speed=0.1
-local speedXString='X SPEED road'
-local speedYString='Y SPEED road'
-local speedZString='Z SPEED road'
+local rangeShifter=3
+local Top_Speed=2
+local speedXString='xspeed'
+local speedYString='yspeed'
+local speedZString='zspeed'
 
 --Instructions
 --mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
@@ -83,12 +83,12 @@ end,0x26) --UP key
 
 
 up=createHotkey(function()
-TempUp=TempUp+rangeShifter
+TempUp=TempUp*rangeShifter
 adjustSpeed(x,y,TempUp,false)
 end,0x57) --W
 
 down=createHotkey(function()
-TempUp=TempUp-rangeShifter
+TempUp=TempUp/rangeShifter
 adjustSpeed(x,y,TempUp,false)
 end,0x53) --S
 
