@@ -86,7 +86,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>15</ID>
       <Description>"No wanted level"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -157,7 +157,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>18</ID>
       <Description>"Unlimited ammo"</Description>
-      <LastState/>
+      <LastState Activated="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -224,6 +224,90 @@ dealloc(newmem)
 "GTA5.exe"+EB9C9A: F6 82 A0 10 00 00 02     -  test byte ptr [rdx+000010A0],02
 "GTA5.exe"+EB9CA1: 74 2A                    -  je GTA5.exe+EB9CCD
 }
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"Super Jumper"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : GTA5.exe
+  Version:
+  Date   : 2023-11-30
+  Author : atult
+
+  You can change the power of z speed using z_power and can change the power of movement speed with power variable.This script can go uncontrollable at times.
+}
+
+[ENABLE]
+
+aobscanmodule(superjump,GTA5.exe,48 8B F0 F3 41 0F 5C 3E) // should be unique
+alloc(newmem,$1000,"GTA5.exe"+7798F5)
+alloc(min_z_speed,4)
+alloc(power,4)
+alloc(z_power,4)
+label(code)
+label(return)
+
+newmem:
+sub rsp,20
+movups [rsp],xmm0
+movups [rsp+10],xmm1
+
+
+movss xmm0,[min_z_speed]
+ucomiss xmm9,xmm0
+jbe code
+
+movss xmm1,[power]
+movss xmm0,[z_power]
+
+mulss xmm7,xmm1
+mulss xmm8,xmm1
+mulss xmm9,xmm0
+
+
+
+
+code:
+ //restore registers
+  movups xmm0,[rsp]
+  movups xmm1,[rsp+10]
+  add rsp,20
+
+  mov rsi,rax
+  subss xmm7,[r14]
+  jmp return
+
+
+z_power:
+dd (float)5
+
+power:
+dd (float)5
+
+min_z_speed:
+dd (float)0.65
+
+
+superjump:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(superjump)
+
+[DISABLE]
+
+superjump:
+  db 48 8B F0 F3 41 0F 5C 3E
+
+unregistersymbol(superjump)
+dealloc(newmem)
+dealloc(min_z_speed)
+dealloc(z_power)
+dealloc(power)
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
@@ -308,7 +392,7 @@ code:
 
 
 const_speed:
-dd (float)20
+dd (float)30
 
 
 
@@ -679,24 +763,28 @@ mulDec.destroy()
           <ID>3</ID>
           <Description>"xspeed"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="-0.7505971789" RealAddress="1E4EF860FF0"/>
           <VariableType>Float</VariableType>
           <Address>[carxptr]</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>4</ID>
               <Description>"yspeed"</Description>
+              <LastState Value="1.458582044" RealAddress="1E4EF860FF4"/>
               <VariableType>Float</VariableType>
               <Address>+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>5</ID>
               <Description>"zspeed"</Description>
+              <LastState Value="-0.3953178525" RealAddress="1E4EF860FF8"/>
               <VariableType>Float</VariableType>
               <Address>+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>9</ID>
               <Description>"rotation"</Description>
+              <LastState Value="0.01476685517" RealAddress="1E4EF861008"/>
               <VariableType>Float</VariableType>
               <Address>+18</Address>
             </CheatEntry>
@@ -734,7 +822,7 @@ mulDec.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movaps xmm12,[rsi+60] (x coord car pointer)</Description>
-      <Address>7FF651A4F7F4</Address>
+      <Address>7FF67882F7F4</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>117F7F4</ModuleNameOffset>
       <Before>
@@ -761,7 +849,7 @@ mulDec.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss xmm2,[rdi] (player health)</Description>
-      <Address>7FF6652FDFC0</Address>
+      <Address>7FF677ACDFC0</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>41DFC0</ModuleNameOffset>
       <Before>
@@ -979,7 +1067,7 @@ mulDec.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss [rbx+00000328],xmm0 (partial player velocity z velocity)</Description>
-      <Address>7FF665659E52</Address>
+      <Address>7FF677E29E52</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>779E52</ModuleNameOffset>
       <Before>
@@ -1062,6 +1150,36 @@ mulDec.destroy()
         <Byte>3F</Byte>
         <Byte>4C</Byte>
         <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm7,[rbx+00000320] (instrcution directly affects movement when in air)</Description>
+      <Address>7FF677E298DB</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>7798DB</ModuleNameOffset>
+      <Before>
+        <Byte>BD</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>BB</Byte>
+        <Byte>20</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>83</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
