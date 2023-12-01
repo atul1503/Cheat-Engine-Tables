@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>13</ID>
       <Description>"Infinite health and fast movement speed"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -86,7 +86,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>15</ID>
       <Description>"No wanted level"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -157,7 +157,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>18</ID>
       <Description>"Unlimited ammo"</Description>
-      <LastState Activated="1"/>
+      <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -229,6 +229,7 @@ dealloc(newmem)
     <CheatEntry>
       <ID>35</ID>
       <Description>"Super Jumper"</Description>
+      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
       <LastState/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : GTA5.exe
@@ -236,7 +237,7 @@ dealloc(newmem)
   Date   : 2023-11-30
   Author : atult
 
-  You can change the power of z speed using z_power and can change the power of movement speed with power variable.This script can go uncontrollable at times.
+  With const_speed it will jump with magnitude const_speed. But you have to keep on pressing the up and space button.
 }
 
 [ENABLE]
@@ -244,27 +245,46 @@ dealloc(newmem)
 aobscanmodule(superjump,GTA5.exe,48 8B F0 F3 41 0F 5C 3E) // should be unique
 alloc(newmem,$1000,"GTA5.exe"+7798F5)
 alloc(min_z_speed,4)
-alloc(power,4)
-alloc(z_power,4)
+alloc(const_speed,4)
+alloc(fastbit,4)
+registersymbol(fastbit)
 label(code)
 label(return)
 
 newmem:
-sub rsp,20
+sub rsp,40
 movups [rsp],xmm0
 movups [rsp+10],xmm1
-
+movups [rsp+20],xmm2
+movups [rsp+30],xmm3
 
 movss xmm0,[min_z_speed]
 ucomiss xmm9,xmm0
 jbe code
 
-movss xmm1,[power]
-movss xmm0,[z_power]
+cmp [fastbit],1
+jne code
 
+//calc magnitude
+movss xmm0,xmm7
+mulss xmm0,xmm0
+movss xmm1,xmm8
+mulss xmm1,xmm1
+movss xmm2,xmm9
+mulss xmm2,xmm2
+addss xmm0,xmm1
+addss xmm0,xmm2
+sqrtss xmm0,xmm0
+
+//calc multiplier as xmm1
+movss xmm1,[const_speed]
+divss xmm1,xmm0
+
+
+//multiplying all 3 by multiplier
 mulss xmm7,xmm1
 mulss xmm8,xmm1
-mulss xmm9,xmm0
+mulss xmm9,xmm1
 
 
 
@@ -273,18 +293,17 @@ code:
  //restore registers
   movups xmm0,[rsp]
   movups xmm1,[rsp+10]
-  add rsp,20
+  movups xmm2,[rsp+20]
+  movups xmm3,[rsp+30]
+  add rsp,40
 
   mov rsi,rax
   subss xmm7,[r14]
   jmp return
 
 
-z_power:
-dd (float)5
-
-power:
-dd (float)5
+const_speed:
+dd (float)60
 
 min_z_speed:
 dd (float)0.65
@@ -306,9 +325,36 @@ superjump:
 unregistersymbol(superjump)
 dealloc(newmem)
 dealloc(min_z_speed)
-dealloc(z_power)
-dealloc(power)
+dealloc(const_speed)
+dealloc(fastbit)
+unregistersymbol(fastbit)
+
 </AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"Helper timer"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=function()
+if isKeyPressed(0x20) then writeInteger("fastbit",1) else writeInteger("fastbit",0) end
+--spacebar
+end
+
+
+
+
+[DISABLE]
+timer.destroy()
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>32</ID>
@@ -346,26 +392,31 @@ dd (float)300
   movups [rsp+20],xmm2
   movups [rsp+30],xmm3
 
-  // magnitude of 2d vec
+  // magnitude of 3d vec
   movss xmm0,[rbx+320]
   movss xmm1,[rbx+324]
+  movss xmm2,[rsp]
   mulss xmm0,xmm0
   mulss xmm1,xmm1
+  mulss xmm2,xmm2
   addss xmm0,xmm1
+  addss xmm0,xmm2
   sqrtss xmm0,xmm0
 
 
 
+  //health compare
   movss xmm2,[min_h]
   movss xmm3,[rbx+280]
   ucomiss xmm2,xmm3
   jae code
+
+
+  //fastbit compare
   cmp [fastbit],1
   jne code
-  // compare limit
+
   movss xmm1,[const_speed]
-  ucomiss xmm0,xmm1
-  jae code
 
 // speeder:
   divss xmm1,xmm0
@@ -377,6 +428,10 @@ dd (float)300
   movss xmm0,[rbx+324]
   mulss xmm0,xmm1
   movss [rbx+324],xmm0
+
+  movss xmm0,[rsp]
+  mulss xmm0,xmm1
+  movss [rsp],xmm0
 
 code:
   // restore registers
@@ -392,7 +447,7 @@ code:
 
 
 const_speed:
-dd (float)30
+dd (float)50
 
 
 
@@ -430,7 +485,7 @@ timer=createTimer()
 timer.Interval=50
 timer.OnTimer=function()
 if isKeyPressed(0x26) and (isKeyPressed(0xA0) or isKeyPressed(0x20) )  then writeInteger("fastbit",1) else writeInteger("fastbit",0) end
---up and lshift
+--up and lshift or space
 end
 
 
@@ -763,28 +818,24 @@ mulDec.destroy()
           <ID>3</ID>
           <Description>"xspeed"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="-0.7505971789" RealAddress="1E4EF860FF0"/>
           <VariableType>Float</VariableType>
           <Address>[carxptr]</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>4</ID>
               <Description>"yspeed"</Description>
-              <LastState Value="1.458582044" RealAddress="1E4EF860FF4"/>
               <VariableType>Float</VariableType>
               <Address>+4</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>5</ID>
               <Description>"zspeed"</Description>
-              <LastState Value="-0.3953178525" RealAddress="1E4EF860FF8"/>
               <VariableType>Float</VariableType>
               <Address>+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>9</ID>
               <Description>"rotation"</Description>
-              <LastState Value="0.01476685517" RealAddress="1E4EF861008"/>
               <VariableType>Float</VariableType>
               <Address>+18</Address>
             </CheatEntry>
@@ -1067,7 +1118,7 @@ mulDec.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss [rbx+00000328],xmm0 (partial player velocity z velocity)</Description>
-      <Address>7FF677E29E52</Address>
+      <Address>7FF6856D9E52</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>779E52</ModuleNameOffset>
       <Before>
@@ -1154,7 +1205,7 @@ mulDec.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss xmm7,[rbx+00000320] (instrcution directly affects movement when in air)</Description>
-      <Address>7FF677E298DB</Address>
+      <Address>7FF6856D98DB</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>7798DB</ModuleNameOffset>
       <Before>
