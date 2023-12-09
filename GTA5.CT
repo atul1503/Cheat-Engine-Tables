@@ -578,6 +578,129 @@ dealloc(newmem)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>39</ID>
+          <Description>"Player Speed Pointer Exposer "</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
+  Version: 
+  Date   : 2023-12-09
+  Author : atult
+
+  The rax here is the pointer that will be exposed.
+  [rax+8] is z speed of player.
+
+}
+
+[ENABLE]
+
+aobscanmodule(PlayerSpeedInject,GTA5.exe,8B 48 08 89 4B 08 8B 40 0C 89 43 0C EB) // should be unique
+alloc(newmem,$1000,"GTA5.exe"+8F1D8F)
+alloc(PlayerRax,4)
+registersymbol(PlayerRax)
+label(code)
+label(return)
+
+newmem:
+mov [PlayerRax],rax
+
+code:
+  mov ecx,[rax+08]
+  mov [rbx+08],ecx
+  jmp return
+
+PlayerSpeedInject:
+  jmp newmem
+  nop
+return:
+registersymbol(PlayerSpeedInject)
+
+[DISABLE]
+
+PlayerSpeedInject:
+  db 8B 48 08 89 4B 08
+
+unregistersymbol(PlayerSpeedInject)
+unregistersymbol(PlayerRax)
+dealloc(newmem)
+dealloc(PlayerRax)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "GTA5.exe"+8F1D8F
+
+"GTA5.exe"+8F1D6F: E8 FC 06 00 00        -  call GTA5.exe+8F2470
+"GTA5.exe"+8F1D74: 48 85 C0              -  test rax,rax
+"GTA5.exe"+8F1D77: 74 24                 -  je GTA5.exe+8F1D9D
+"GTA5.exe"+8F1D79: 48 8B 10              -  mov rdx,[rax]
+"GTA5.exe"+8F1D7C: 48 8B C8              -  mov rcx,rax
+"GTA5.exe"+8F1D7F: FF 92 68 03 00 00     -  call qword ptr [rdx+00000368]
+"GTA5.exe"+8F1D85: 8B 08                 -  mov ecx,[rax]
+"GTA5.exe"+8F1D87: 89 0B                 -  mov [rbx],ecx
+"GTA5.exe"+8F1D89: 8B 48 04              -  mov ecx,[rax+04]
+"GTA5.exe"+8F1D8C: 89 4B 04              -  mov [rbx+04],ecx
+// ---------- INJECTING HERE ----------
+"GTA5.exe"+8F1D8F: 8B 48 08              -  mov ecx,[rax+08]
+"GTA5.exe"+8F1D92: 89 4B 08              -  mov [rbx+08],ecx
+// ---------- DONE INJECTING  ----------
+"GTA5.exe"+8F1D95: 8B 40 0C              -  mov eax,[rax+0C]
+"GTA5.exe"+8F1D98: 89 43 0C              -  mov [rbx+0C],eax
+"GTA5.exe"+8F1D9B: EB 1B                 -  jmp GTA5.exe+8F1DB8
+"GTA5.exe"+8F1D9D: 48 85 FF              -  test rdi,rdi
+"GTA5.exe"+8F1DA0: 74 0E                 -  je GTA5.exe+8F1DB0
+"GTA5.exe"+8F1DA2: 48 8B 07              -  mov rax,[rdi]
+"GTA5.exe"+8F1DA5: 48 8B CF              -  mov rcx,rdi
+"GTA5.exe"+8F1DA8: FF 90 68 03 00 00     -  call qword ptr [rax+00000368]
+"GTA5.exe"+8F1DAE: EB D5                 -  jmp GTA5.exe+8F1D85
+"GTA5.exe"+8F1DB0: 48 8B CB              -  mov rcx,rbx
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>42</ID>
+              <Description>"x speed"</Description>
+              <LastState Value="-0.3806856275" RealAddress="1C7D5A0BD20"/>
+              <VariableType>Float</VariableType>
+              <Address>[PlayerRax]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"y speed"</Description>
+              <LastState Value="-1.18209219" RealAddress="1C7D5A0BD24"/>
+              <VariableType>Float</VariableType>
+              <Address>[PlayerRax]+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"z speed"</Description>
+              <LastState Value="-30.49282265" RealAddress="1C7D5A0BD28"/>
+              <VariableType>Float</VariableType>
+              <Address>[PlayerRax]+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>46</ID>
+              <Description>"x coord"</Description>
+              <LastState Value="-48.66394424" RealAddress="1C7D5A0BD10"/>
+              <VariableType>Float</VariableType>
+              <Address>[PlayerRax]-8-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"y coord"</Description>
+              <LastState Value="-1053.921753" RealAddress="1C7D5A0BD14"/>
+              <VariableType>Float</VariableType>
+              <Address>[PlayerRax]-8-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>44</ID>
+              <Description>"z coord"</Description>
+              <LastState Value="128" RealAddress="1C7D5A0BD18"/>
+              <VariableType>Float</VariableType>
+              <Address>[PlayerRax]-8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>19</ID>
           <Description>"Car pointer Activator"</Description>
           <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
