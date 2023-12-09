@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Infinite health and fast movement speed"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -93,7 +93,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>15</ID>
           <Description>"No wanted level"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -1188,7 +1188,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss [rbx+00000328],xmm0 (partial player velocity z velocity)</Description>
-      <Address>7FF6856D9E52</Address>
+      <Address>7FF6CFAF9E52</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>779E52</ModuleNameOffset>
       <Before>
@@ -1218,7 +1218,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movss [rdi+00000328],xmm0 (partial velocity pointer when jump)</Description>
-      <Address>7FF69896F48C</Address>
+      <Address>7FF6CFF1F48C</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>B9F48C</ModuleNameOffset>
       <Before>
@@ -1355,6 +1355,83 @@ brake.destroy()
         <Byte>44</Byte>
         <Byte>24</Byte>
         <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :addss xmm7,dword ptr [rax] (player x speed instruction, the address keeps on changing)</Description>
+      <Address>7FF6CFB28548</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>7A8548</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>2C</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm0,[rcx+60] (coordinate z)</Description>
+      <Address>7FF6D0793DFC</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>1413DFC</ModuleNameOffset>
+      <Before>
+        <Byte>50</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>42</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>41</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>42</Byte>
+        <Byte>30</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov ecx,[rax+08] (z speed player real one)</Description>
+      <Address>7FF6CFC71D8F</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>8F1D8F</ModuleNameOffset>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>04</Byte>
+        <Byte>89</Byte>
+        <Byte>4B</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>4B</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
