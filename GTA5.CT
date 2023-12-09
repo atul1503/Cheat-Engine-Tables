@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Infinite health and fast movement speed"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -93,7 +93,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>15</ID>
           <Description>"No wanted level"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -235,7 +235,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>35</ID>
-          <Description>"Super Jumper"</Description>
+          <Description>"Super Jumper - Beta"</Description>
           <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
@@ -365,7 +365,7 @@ timer.destroy()
         </CheatEntry>
         <CheatEntry>
           <ID>32</ID>
-          <Description>"Walk Speeder"</Description>
+          <Description>"Walk Speeder - Beta"</Description>
           <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
@@ -581,7 +581,7 @@ dealloc(newmem)
           <ID>39</ID>
           <Description>"Player Speed Pointer Exposer "</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -657,46 +657,84 @@ dealloc(PlayerRax)
 </AssemblerScript>
           <CheatEntries>
             <CheatEntry>
+              <ID>47</ID>
+              <Description>"Player Speeder"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+
+
+[ENABLE]
+
+local mov_speed=50
+
+
+x=getAddressList().getMemoryRecordByDescription("x speed")
+y=getAddressList().getMemoryRecordByDescription("y speed")
+z=getAddressList().getMemoryRecordByDescription("z speed")
+
+
+
+hk=createHotkey(function()
+r=(((x.Value)^2)+((y.Value)^2)+((z.Value)^2))^0.5
+ratio=mov_speed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+z.Value=z.Value*ratio
+end,0x26,0x10) -- up and shift at the same time
+
+
+
+
+[DISABLE]
+hk.destroy()
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
               <ID>42</ID>
               <Description>"x speed"</Description>
-              <LastState Value="-0.3806856275" RealAddress="1C7D5A0BD20"/>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="0" RealAddress="1C7D5A0FEF0"/>
               <VariableType>Float</VariableType>
               <Address>[PlayerRax]</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>43</ID>
-              <Description>"y speed"</Description>
-              <LastState Value="-1.18209219" RealAddress="1C7D5A0BD24"/>
-              <VariableType>Float</VariableType>
-              <Address>[PlayerRax]+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>41</ID>
-              <Description>"z speed"</Description>
-              <LastState Value="-30.49282265" RealAddress="1C7D5A0BD28"/>
-              <VariableType>Float</VariableType>
-              <Address>[PlayerRax]+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>46</ID>
-              <Description>"x coord"</Description>
-              <LastState Value="-48.66394424" RealAddress="1C7D5A0BD10"/>
-              <VariableType>Float</VariableType>
-              <Address>[PlayerRax]-8-8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>45</ID>
-              <Description>"y coord"</Description>
-              <LastState Value="-1053.921753" RealAddress="1C7D5A0BD14"/>
-              <VariableType>Float</VariableType>
-              <Address>[PlayerRax]-8-4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>44</ID>
-              <Description>"z coord"</Description>
-              <LastState Value="128" RealAddress="1C7D5A0BD18"/>
-              <VariableType>Float</VariableType>
-              <Address>[PlayerRax]-8</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>43</ID>
+                  <Description>"y speed"</Description>
+                  <LastState Value="0" RealAddress="1C7D5A0FEF4"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerRax]+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>41</ID>
+                  <Description>"z speed"</Description>
+                  <LastState Value="0.00001463098943" RealAddress="1C7D5A0FEF8"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerRax]+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>46</ID>
+                  <Description>"x coord"</Description>
+                  <LastState Value="-130.6109467" RealAddress="1C7D5A0FEE0"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerRax]-8-8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>45</ID>
+                  <Description>"y coord"</Description>
+                  <LastState Value="-2539.63623" RealAddress="1C7D5A0FEE4"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerRax]-8-4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>44</ID>
+                  <Description>"z coord"</Description>
+                  <LastState Value="5.999994755" RealAddress="1C7D5A0FEE8"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[PlayerRax]-8</Address>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
