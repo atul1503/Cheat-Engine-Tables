@@ -4,11 +4,12 @@ if synataxcheck then return end
 
 [ENABLE]
 
-local mul=1.03
-local jerk=1.5
+local mul=1.1
+local jerk=2
 local gearMul=3
-local rangeShifter=3
-local Top_Speed=2
+local rangeShifter=2
+local Top_Speed=8
+local div=1.08
 local speedXString='xspeed'
 local speedYString='yspeed'
 local speedZString='zspeed'
@@ -112,6 +113,12 @@ mul=mul/jerk
 end,0x44) --D
 
 
+brake=createHotkey(function()
+x.Value=x.Value/div
+y.Value=y.Value/div
+end,0x28) --Down
+
+
 
 [DISABLE]
 normal.destroy()
@@ -121,3 +128,4 @@ reset.destroy()
 reverser.destroy()
 mulInc.destroy()
 mulDec.destroy()
+brake.destroy()

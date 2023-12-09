@@ -2,11 +2,18 @@
 <CheatTable CheatEngineTableVersion="27">
   <CheatEntries>
     <CheatEntry>
-      <ID>13</ID>
-      <Description>"Infinite health and fast movement speed"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+      <ID>38</ID>
+      <Description>"Scripts"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Infinite health and fast movement speed"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version: 
   Date   : 2023-11-11
   Author : atult
@@ -31,7 +38,7 @@ newmem:
 
 code:
   mov [rdi],(float)400
-  mov [rdi+384],(float)1
+  mov [rdi+384],(float)1.5
   movss xmm2,[rdi]
   mov edx,05CF478F
   jmp return
@@ -82,13 +89,13 @@ dealloc(newmem)
 "GTA5.exe"+41DFFC: BA A0 00 00 00              -  mov edx,000000A0
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>15</ID>
-      <Description>"No wanted level"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"No wanted level"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version: 
   Date   : 2023-11-11
   Author : atult
@@ -153,13 +160,13 @@ dealloc(newmem)
 "GTA5.exe"+69D6DE: EB 12                       -  jmp GTA5.exe+69D6F2
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>18</ID>
-      <Description>"Unlimited ammo"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"Unlimited ammo"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version: 
   Date   : 2023-11-11
   Author : atult
@@ -225,14 +232,14 @@ dealloc(newmem)
 "GTA5.exe"+EB9CA1: 74 2A                    -  je GTA5.exe+EB9CCD
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>35</ID>
-      <Description>"Super Jumper"</Description>
-      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"Super Jumper"</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version:
   Date   : 2023-11-30
   Author : atult
@@ -330,13 +337,13 @@ dealloc(fastbit)
 unregistersymbol(fastbit)
 
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>36</ID>
-          <Description>"Helper timer"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
+          <CheatEntries>
+            <CheatEntry>
+              <ID>36</ID>
+              <Description>"Helper timer"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -353,16 +360,16 @@ end
 [DISABLE]
 timer.destroy()
 </AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>32</ID>
-      <Description>"Walk Speeder"</Description>
-      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"Walk Speeder"</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version:
   Date   : 2023-11-12
   Author : atult
@@ -471,13 +478,13 @@ dealloc(fastbit)
 unregistersymbol(fastbit)
 
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>33</ID>
-          <Description>"Helper timer"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
+          <CheatEntries>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"Helper timer"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -494,15 +501,15 @@ end
 [DISABLE]
 timer.destroy()
 </AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>30</ID>
-      <Description>"Long jump script"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"Long jump script"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version: 
   Date   : 2023-11-12
   Author : atult
@@ -569,14 +576,14 @@ dealloc(newmem)
 "GTA5.exe"+2A4727: 72 09                 -  jb GTA5.exe+2A4732
 }
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>19</ID>
-      <Description>"Car pointer Activator"</Description>
-      <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : GTA5.exe
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"Car pointer Activator"</Description>
+          <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : GTA5.exe
   Version: 
   Date   : 2023-11-12
   Author : atult
@@ -650,13 +657,13 @@ dealloc(newmem)
 "GTA5.exe"+197877: 80 78 4B 00              -  cmp byte ptr [rax+4B],00
 }
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>6</ID>
-          <Description>"Speed mode"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
+          <CheatEntries>
+            <CheatEntry>
+              <ID>6</ID>
+              <Description>"Speed mode"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -683,13 +690,66 @@ end,0x28)
 hk.destroy()
 hk1.destroy()
 </AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>20</ID>
-          <Description>"Gear mode"</Description>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
+            </CheatEntry>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"Speed mode 2"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local turn=-1e-3
+local mul=1+4e-3
+local ratio=-2
+
+-- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
+
+
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('xspeed')
+yspeed=list.getMemoryRecordByDescription('yspeed')
+steer=list.getMemoryRecordByDescription('rotation')
+
+
+
+
+function rotate()
+if xspeed==nil or xspeed.Value=="??" or steer==nil or steer.Value=="Nan" then return end
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+theta=math.rad(-ratio*steer.Value)
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+local dmul=1
+if isKeyPressed(0x26) then dmul=mul end
+xspeed.Value=xcomp*r*dmul
+yspeed.Value=ycomp*r*dmul
+end
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
+
+
+
+
+[DISABLE]
+timer.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"Gear mode"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
 
 if synataxcheck then return end
 
@@ -700,6 +760,7 @@ local jerk=2
 local gearMul=3
 local rangeShifter=2
 local Top_Speed=8
+local div=1.12
 local speedXString='xspeed'
 local speedYString='yspeed'
 local speedZString='zspeed'
@@ -803,6 +864,12 @@ mul=mul/jerk
 end,0x44) --D
 
 
+brake=createHotkey(function()
+x.Value=x.Value/div
+y.Value=y.Value/div
+end,0x28) --Down
+
+
 
 [DISABLE]
 normal.destroy()
@@ -812,32 +879,35 @@ reset.destroy()
 reverser.destroy()
 mulInc.destroy()
 mulDec.destroy()
+brake.destroy()
 </AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>3</ID>
-          <Description>"xspeed"</Description>
-          <Options moAllowManualCollapseAndExpand="1"/>
-          <VariableType>Float</VariableType>
-          <Address>[carxptr]</Address>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>4</ID>
-              <Description>"yspeed"</Description>
-              <VariableType>Float</VariableType>
-              <Address>+4</Address>
             </CheatEntry>
             <CheatEntry>
-              <ID>5</ID>
-              <Description>"zspeed"</Description>
+              <ID>3</ID>
+              <Description>"xspeed"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
               <VariableType>Float</VariableType>
-              <Address>+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>9</ID>
-              <Description>"rotation"</Description>
-              <VariableType>Float</VariableType>
-              <Address>+18</Address>
+              <Address>[carxptr]</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4</ID>
+                  <Description>"yspeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5</ID>
+                  <Description>"zspeed"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"rotation"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>+18</Address>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -1231,6 +1301,60 @@ mulDec.destroy()
         <Byte>0F</Byte>
         <Byte>10</Byte>
         <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :subss xmm6,[rax+38] (Car camera closeness from height)</Description>
+      <Address>7FF70B385B7E</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F05B7E</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>70</Byte>
+        <Byte>48</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>70</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :subss xmm6,[rax+38] (camera reverse height from car)(First one)</Description>
+      <Address>7FF7ABC05B7E</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F05B7E</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>70</Byte>
+        <Byte>48</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>70</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
