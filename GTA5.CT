@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>49</ID>
           <Description>"z velocity reference for player. exact till 1 decimal place."</Description>
-          <LastState Value="0.03691996261" RealAddress="7FF7969DB438"/>
+          <LastState Value="0.02453767508" RealAddress="7FF6658CB438"/>
           <VariableType>Float</VariableType>
           <Address>GTA5.exe+24BB438</Address>
         </CheatEntry>
@@ -27,7 +27,7 @@
         <CheatEntry>
           <ID>13</ID>
           <Description>"Infinite health and fast movement speed"</Description>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
@@ -615,8 +615,8 @@ dealloc(newmem)
 
 aobscanmodule(PlayerSpeedInject,GTA5.exe,8B 48 08 89 4B 08 8B 40 0C 89 43 0C EB) // should be unique
 alloc(newmem,$1000,"GTA5.exe"+8F1D8F)
-alloc(PlayerRax,4)
-alloc(Playerbase,4)
+alloc(PlayerRax,8)
+alloc(Playerbase,8)
 alloc(minH,4)
 registersymbol(PlayerRax)
 registersymbol(Playerbase)
@@ -637,7 +637,7 @@ jb code
 cmp [rax],0
 je code
 
-//mov [Playerbase],rdi
+mov [Playerbase],rdi
 mov [PlayerRax],rax
 
 code:
@@ -739,7 +739,7 @@ if r==0 then return end
 ratio=mov_speed/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
-z.Value=10
+z.Value=80
 end,0x26,0x20) -- up and shift at the same time
 
 
@@ -751,45 +751,52 @@ jump.destroy()
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
+              <ID>54</ID>
+              <Description>"Player Health"</Description>
+              <LastState Value="400" RealAddress="2189E501E50"/>
+              <VariableType>Float</VariableType>
+              <Address>[Playerbase]+280</Address>
+            </CheatEntry>
+            <CheatEntry>
               <ID>42</ID>
               <Description>"x speed"</Description>
               <Options moAllowManualCollapseAndExpand="1"/>
-              <LastState Value="5.479614258" RealAddress="1B31254CFF0"/>
+              <LastState Value="-0.1677971482" RealAddress="218A4C6BF00"/>
               <VariableType>Float</VariableType>
               <Address>[PlayerRax]</Address>
               <CheatEntries>
                 <CheatEntry>
                   <ID>43</ID>
                   <Description>"y speed"</Description>
-                  <LastState Value="-8.727333069" RealAddress="1B31254CFF4"/>
+                  <LastState Value="-0.03567393497" RealAddress="218A4C6BF04"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>41</ID>
                   <Description>"z speed"</Description>
-                  <LastState Value="0.1263871342" RealAddress="1B31254CFF8"/>
+                  <LastState Value="0.01806927472" RealAddress="218A4C6BF08"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>46</ID>
                   <Description>"x coord"</Description>
-                  <LastState Value="565.0569458" RealAddress="1B31254CFE0"/>
+                  <LastState Value="-37.60736847" RealAddress="218A4C6BEF0"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]-8-8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>45</ID>
                   <Description>"y coord"</Description>
-                  <LastState Value="-2550.862061" RealAddress="1B31254CFE4"/>
+                  <LastState Value="-1459.629517" RealAddress="218A4C6BEF4"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]-8-4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>44</ID>
                   <Description>"z coord"</Description>
-                  <LastState Value="6.408484459" RealAddress="1B31254CFE8"/>
+                  <LastState Value="31.3744812" RealAddress="218A4C6BEF8"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]-8</Address>
                 </CheatEntry>
@@ -920,7 +927,7 @@ hk1.destroy()
 
 [ENABLE]
 
-local turn=-1e-1
+local turn=-4e-1
 local mul=1+8e-3
 local ratio=-2
 local breakStrength=1.1
@@ -1113,28 +1120,24 @@ brake.destroy()
               <ID>3</ID>
               <Description>"xspeed"</Description>
               <Options moAllowManualCollapseAndExpand="1"/>
-              <LastState Value="0" RealAddress="1B37B2A9D30"/>
               <VariableType>Float</VariableType>
               <Address>[carxptr]</Address>
               <CheatEntries>
                 <CheatEntry>
                   <ID>4</ID>
                   <Description>"yspeed"</Description>
-                  <LastState Value="1" RealAddress="1B37B2A9D34"/>
                   <VariableType>Float</VariableType>
                   <Address>+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5</ID>
                   <Description>"zspeed"</Description>
-                  <LastState Value="0" RealAddress="1B37B2A9D38"/>
                   <VariableType>Float</VariableType>
                   <Address>+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>9</ID>
                   <Description>"rotation"</Description>
-                  <LastState Value="1" RealAddress="1B37B2A9D48"/>
                   <VariableType>Float</VariableType>
                   <Address>+18</Address>
                 </CheatEntry>
@@ -1642,7 +1645,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov ecx,[rax+08] (z speed player real one)</Description>
-      <Address>7FF794E11D8F</Address>
+      <Address>7FF663D01D8F</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>8F1D8F</ModuleNameOffset>
       <Before>
@@ -1746,7 +1749,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movaps xmm1,[rax+r10+10] (z velocity while coming down)</Description>
-      <Address>7FF7EDFAC4C7</Address>
+      <Address>7FF79598C4C7</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>146C4C7</ModuleNameOffset>
       <Before>
@@ -1774,7 +1777,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov ecx,[rax+08] (z velocity when going down)</Description>
-      <Address>7FF7ED431D8F</Address>
+      <Address>7FF794E11D8F</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>8F1D8F</ModuleNameOffset>
       <Before>
@@ -1799,7 +1802,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov rax,[rax+50] (rax and rdi are linked to the health and speed pointer)</Description>
-      <Address>7FF7ED43B3A5</Address>
+      <Address>7FF794E1B3A5</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>8FB3A5</ModuleNameOffset>
       <Before>
@@ -1825,7 +1828,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :movaps xmm1,[rax+r10+10] (z speed when going down)</Description>
-      <Address>7FF7EDFAC4C7</Address>
+      <Address>7FF79598C4C7</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>146C4C7</ModuleNameOffset>
       <Before>
@@ -1849,6 +1852,85 @@ brake.destroy()
         <Byte>41</Byte>
         <Byte>08</Byte>
         <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps [rax+10],xmm4 (z speed when going down)</Description>
+      <Address>7FF79598C786</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>146C786</ModuleNameOffset>
+      <Before>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>53</Byte>
+        <Byte>A8</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>60</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>41</Byte>
+        <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :addps xmm0,[rcx+rax+10] (z speed when going down 2)</Description>
+      <Address>7FF79597A092</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>145A092</ModuleNameOffset>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>44</Byte>
+        <Byte>01</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>44</Byte>
+        <Byte>01</Byte>
+        <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps [rax+10],xmm4 (z another down)</Description>
+      <Address>7FF79598C786</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>146C786</ModuleNameOffset>
+      <Before>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>53</Byte>
+        <Byte>A8</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>60</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>41</Byte>
+        <Byte>10</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
