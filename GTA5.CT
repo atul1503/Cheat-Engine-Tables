@@ -259,7 +259,7 @@ dealloc(newmem)
           <CheatEntries>
             <CheatEntry>
               <ID>68</ID>
-              <Description>"No reload 2"</Description>
+              <Description>"No reload"</Description>
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : GTA5.exe
@@ -272,7 +272,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-aobscanmodule(INJECT,GTA5.exe,66 3B 5F 56 7D 35) // should be unique
+aobscanmodule(unlim_clip,GTA5.exe,66 3B 5F 56 7D 35) // should be unique
 alloc(newmem,200,"GTA5.exe"+D5309B)
 
 label(code)
@@ -289,22 +289,22 @@ code:
   jnl GTA5.exe+D530D6
   jmp return
 
-INJECT:
+unlim_clip:
   jmp newmem
   nop
 return:
-registersymbol(INJECT)
+registersymbol(unlim_clip)
 
 [DISABLE]
 
-INJECT:
+unlim_clip:
   db 66 3B 5F 56 7D 35
 
-unregistersymbol(INJECT)
+unregistersymbol(unlim_clip)
 dealloc(newmem)
 
 {
-// ORIGINAL CODE - INJECTION POINT: "GTA5.exe"+D5309B
+// ORIGINAL CODE - unlim_clipION POINT: "GTA5.exe"+D5309B
 
 "GTA5.exe"+D5307D: 85 DB                 -  test ebx,ebx
 "GTA5.exe"+D5307F: 79 04                 -  jns GTA5.exe+D53085
@@ -316,10 +316,10 @@ dealloc(newmem)
 "GTA5.exe"+D5308E: 66 89 5F 54           -  mov [rdi+54],bx
 "GTA5.exe"+D53092: F6 82 CA 08 00 00 01  -  test byte ptr [rdx+000008CA],01
 "GTA5.exe"+D53099: 74 06                 -  je GTA5.exe+D530A1
-// ---------- INJECTING HERE ----------
+// ---------- injecting here ----------
 "GTA5.exe"+D5309B: 66 3B 5F 56           -  cmp bx,[rdi+56]
 "GTA5.exe"+D5309F: 7D 35                 -  jnl GTA5.exe+D530D6
-// ---------- DONE INJECTING  ----------
+// ---------- DONE injecting  ----------
 "GTA5.exe"+D530A1: 0F BF CB              -  movsx ecx,bx
 "GTA5.exe"+D530A4: 3B C8                 -  cmp ecx,eax
 "GTA5.exe"+D530A6: 0F 4D C8              -  cmovge ecx,eax
