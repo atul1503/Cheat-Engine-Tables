@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>49</ID>
           <Description>"z velocity reference for player. exact till 1 decimal place."</Description>
-          <LastState Value="0.02453767508" RealAddress="7FF6658CB438"/>
+          <LastState Value="-0.002757579787" RealAddress="7FF79AA5B438"/>
           <VariableType>Float</VariableType>
           <Address>GTA5.exe+24BB438</Address>
         </CheatEntry>
@@ -107,22 +107,22 @@ dealloc(newmem)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>15</ID>
+          <ID>59</ID>
           <Description>"No wanted level"</Description>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : GTA5.exe
   Version: 
-  Date   : 2023-11-11
+  Date   : 2024-01-03
   Author : atult
 
-  No wanted level
+  This script makes wanted level 0
 }
 
 [ENABLE]
 
-aobscanmodule(wanted_level,GTA5.exe,8B 90 98 00 00 00 83 EA 02 74 20) // should be unique
-alloc(newmem,$1000,"GTA5.exe"+69D6BF)
+aobscanmodule(nopolice,GTA5.exe,8B 90 98 00 00 00 83 EA 02 74 2A) // should be unique
+alloc(newmem,200,"GTA5.exe"+69D778)
 
 label(code)
 label(return)
@@ -134,46 +134,46 @@ code:
   mov edx,[rax+00000098]
   jmp return
 
-wanted_level:
+nopolice:
   jmp newmem
   nop
 return:
-registersymbol(wanted_level)
+registersymbol(nopolice)
 
 [DISABLE]
 
-wanted_level:
+nopolice:
   db 8B 90 98 00 00 00
 
-unregistersymbol(wanted_level)
+unregistersymbol(nopolice)
 dealloc(newmem)
 
 {
-// ORIGINAL CODE - INJECTION POINT: "GTA5.exe"+69D6BF
+// ORIGINAL CODE - INJECTION POINT: "GTA5.exe"+69D778
 
-"GTA5.exe"+69D69D: FF CA                       -  dec edx
-"GTA5.exe"+69D69F: 75 51                       -  jne GTA5.exe+69D6F2
-"GTA5.exe"+69D6A1: 0F 28 F7                    -  movaps xmm6,xmm7
-"GTA5.exe"+69D6A4: EB 4C                       -  jmp GTA5.exe+69D6F2
-"GTA5.exe"+69D6A6: F3 0F 10 35 B2 2B 24 01     -  movss xmm6,[GTA5.exe+18E0260]
-"GTA5.exe"+69D6AE: EB 42                       -  jmp GTA5.exe+69D6F2
-"GTA5.exe"+69D6B0: E8 E7 4D 25 00              -  call GTA5.exe+8F249C
-"GTA5.exe"+69D6B5: 48 85 C0                    -  test rax,rax
-"GTA5.exe"+69D6B8: 74 38                       -  je GTA5.exe+69D6F2
-"GTA5.exe"+69D6BA: E8 DD 4D 25 00              -  call GTA5.exe+8F249C
+"GTA5.exe"+69D754: C3                       -  ret 
+"GTA5.exe"+69D755: 90                       -  nop 
+"GTA5.exe"+69D756: 3E C0 48 83 EC           -  ror byte ptr [rax-7D],-14
+"GTA5.exe"+69D75B: 38 0F                    -  cmp [rdi],cl
+"GTA5.exe"+69D75D: 29 74 24 20              -  sub [rsp+20],esi
+"GTA5.exe"+69D761: F3 0F 10 35 EB 0D 22 01  -  movss xmm6,[GTA5.exe+18BE554]
+"GTA5.exe"+69D769: E8 2E 4D 25 00           -  call GTA5.exe+8F249C
+"GTA5.exe"+69D76E: 48 85 C0                 -  test rax,rax
+"GTA5.exe"+69D771: 74 42                    -  je GTA5.exe+69D7B5
+"GTA5.exe"+69D773: E8 24 4D 25 00           -  call GTA5.exe+8F249C
 // ---------- INJECTING HERE ----------
-"GTA5.exe"+69D6BF: 8B 90 98 00 00 00           -  mov edx,[rax+00000098]
+"GTA5.exe"+69D778: 8B 90 98 00 00 00        -  mov edx,[rax+00000098]
 // ---------- DONE INJECTING  ----------
-"GTA5.exe"+69D6C5: 83 EA 02                    -  sub edx,02
-"GTA5.exe"+69D6C8: 74 20                       -  je GTA5.exe+69D6EA
-"GTA5.exe"+69D6CA: FF CA                       -  dec edx
-"GTA5.exe"+69D6CC: 74 D3                       -  je GTA5.exe+69D6A1
-"GTA5.exe"+69D6CE: FF CA                       -  dec edx
-"GTA5.exe"+69D6D0: 74 0E                       -  je GTA5.exe+69D6E0
-"GTA5.exe"+69D6D2: FF CA                       -  dec edx
-"GTA5.exe"+69D6D4: 75 1C                       -  jne GTA5.exe+69D6F2
-"GTA5.exe"+69D6D6: F3 0F 10 35 E6 2A 24 01     -  movss xmm6,[GTA5.exe+18E01C4]
-"GTA5.exe"+69D6DE: EB 12                       -  jmp GTA5.exe+69D6F2
+"GTA5.exe"+69D77E: 83 EA 02                 -  sub edx,02
+"GTA5.exe"+69D781: 74 2A                    -  je GTA5.exe+69D7AD
+"GTA5.exe"+69D783: FF CA                    -  dec edx
+"GTA5.exe"+69D785: 74 1C                    -  je GTA5.exe+69D7A3
+"GTA5.exe"+69D787: FF CA                    -  dec edx
+"GTA5.exe"+69D789: 74 0E                    -  je GTA5.exe+69D799
+"GTA5.exe"+69D78B: FF CA                    -  dec edx
+"GTA5.exe"+69D78D: 75 26                    -  jne GTA5.exe+69D7B5
+"GTA5.exe"+69D78F: F3 0F 10 35 2D 2A 24 01  -  movss xmm6,[GTA5.exe+18E01C4]
+"GTA5.exe"+69D797: EB 1C                    -  jmp GTA5.exe+69D7B5
 }
 </AssemblerScript>
         </CheatEntry>
@@ -418,12 +418,9 @@ dd (float)300
   // magnitude of 3d vec
   movss xmm0,[rbx+320]
   movss xmm1,[rbx+324]
-  movss xmm2,[rsp]
   mulss xmm0,xmm0
   mulss xmm1,xmm1
-  mulss xmm2,xmm2
   addss xmm0,xmm1
-  addss xmm0,xmm2
   sqrtss xmm0,xmm0
 
 
@@ -452,10 +449,6 @@ dd (float)300
   mulss xmm0,xmm1
   movss [rbx+324],xmm0
 
-  movss xmm0,[rsp]
-  mulss xmm0,xmm1
-  movss [rsp],xmm0
-
 code:
   // restore registers
   movups xmm0,[rsp]
@@ -470,7 +463,7 @@ code:
 
 
 const_speed:
-dd (float)50
+dd (float)30
 
 
 
@@ -713,7 +706,7 @@ dealloc(minH)
 
 [ENABLE]
 
-local mov_speed=25
+local mov_speed=20
 
 
 x=getAddressList().getMemoryRecordByDescription("x speed")
@@ -723,12 +716,11 @@ z=getAddressList().getMemoryRecordByDescription("z speed")
 
 
 hk=createHotkey(function()
-r=(((x.Value)^2)+((y.Value)^2)+((z.Value)^2))^0.5
+r=(((x.Value)^2)+((y.Value)^2))^0.5
 if r==0 then return end
 ratio=mov_speed/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
-z.Value=z.Value*ratio
 end,0x26,0x10) -- up and shift at the same time
 
 
@@ -739,7 +731,7 @@ if r==0 then return end
 ratio=mov_speed/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
-z.Value=80
+z.Value=10
 end,0x26,0x20) -- up and shift at the same time
 
 
@@ -753,7 +745,7 @@ jump.destroy()
             <CheatEntry>
               <ID>54</ID>
               <Description>"Player Health"</Description>
-              <LastState Value="400" RealAddress="2189E501E50"/>
+              <LastState Value="400" RealAddress="1DDCABAB070"/>
               <VariableType>Float</VariableType>
               <Address>[Playerbase]+280</Address>
             </CheatEntry>
@@ -761,42 +753,42 @@ jump.destroy()
               <ID>42</ID>
               <Description>"x speed"</Description>
               <Options moAllowManualCollapseAndExpand="1"/>
-              <LastState Value="-0.1677971482" RealAddress="218A4C6BF00"/>
+              <LastState Value="0" RealAddress="1DDDBFD6D10"/>
               <VariableType>Float</VariableType>
               <Address>[PlayerRax]</Address>
               <CheatEntries>
                 <CheatEntry>
                   <ID>43</ID>
                   <Description>"y speed"</Description>
-                  <LastState Value="-0.03567393497" RealAddress="218A4C6BF04"/>
+                  <LastState Value="1" RealAddress="1DDDBFD6D14"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>41</ID>
                   <Description>"z speed"</Description>
-                  <LastState Value="0.01806927472" RealAddress="218A4C6BF08"/>
+                  <LastState Value="0" RealAddress="1DDDBFD6D18"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]+8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>46</ID>
                   <Description>"x coord"</Description>
-                  <LastState Value="-37.60736847" RealAddress="218A4C6BEF0"/>
+                  <LastState Value="1" RealAddress="1DDDBFD6D00"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]-8-8</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>45</ID>
                   <Description>"y coord"</Description>
-                  <LastState Value="-1459.629517" RealAddress="218A4C6BEF4"/>
+                  <LastState Value="0" RealAddress="1DDDBFD6D04"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]-8-4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>44</ID>
                   <Description>"z coord"</Description>
-                  <LastState Value="31.3744812" RealAddress="218A4C6BEF8"/>
+                  <LastState Value="0" RealAddress="1DDDBFD6D08"/>
                   <VariableType>Float</VariableType>
                   <Address>[PlayerRax]-8</Address>
                 </CheatEntry>
@@ -894,7 +886,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-local mul=1.02
+local mul=1.05
 local div=1.1
 
 t=getAddressList()
@@ -927,8 +919,8 @@ hk1.destroy()
 
 [ENABLE]
 
-local turn=-4e-1
-local mul=1+8e-3
+local turn=-4e-3
+local mul=1+1e-2
 local ratio=-2
 local breakStrength=1.1
 
@@ -1120,24 +1112,49 @@ brake.destroy()
               <ID>3</ID>
               <Description>"xspeed"</Description>
               <Options moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="-0.004839596339" RealAddress="1DDD12EBB90"/>
               <VariableType>Float</VariableType>
               <Address>[carxptr]</Address>
               <CheatEntries>
                 <CheatEntry>
                   <ID>4</ID>
                   <Description>"yspeed"</Description>
+                  <LastState Value="0.2749014199" RealAddress="1DDD12EBB94"/>
                   <VariableType>Float</VariableType>
                   <Address>+4</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>5</ID>
                   <Description>"zspeed"</Description>
+                  <LastState Value="-0.0003957241424" RealAddress="1DDD12EBB98"/>
                   <VariableType>Float</VariableType>
                   <Address>+8</Address>
                 </CheatEntry>
                 <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"x coord"</Description>
+                  <LastState Value="388.20755" RealAddress="1DDD12EBB80"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[carxptr]-8-4-4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"y coord"</Description>
+                  <LastState Value="-978.8990479" RealAddress="1DDD12EBB84"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[carxptr]-8-4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>55</ID>
+                  <Description>"z coord"</Description>
+                  <LastState Value="29.42570114" RealAddress="1DDD12EBB88"/>
+                  <VariableType>Float</VariableType>
+                  <Address>[carxptr]-8</Address>
+                </CheatEntry>
+                <CheatEntry>
                   <ID>9</ID>
                   <Description>"rotation"</Description>
+                  <LastState Value="1.598514557" RealAddress="1DDD12EBBA8"/>
                   <VariableType>Float</VariableType>
                   <Address>+18</Address>
                 </CheatEntry>
@@ -1370,7 +1387,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov edx,[rax+00000098] (Police wanted level)</Description>
-      <Address>7FF79B7DD6BF</Address>
+      <Address>7FF798C3D6BF</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>69D6BF</ModuleNameOffset>
       <Before>
@@ -1645,7 +1662,7 @@ brake.destroy()
     </CodeEntry>
     <CodeEntry>
       <Description>Code :mov ecx,[rax+08] (z speed player real one)</Description>
-      <Address>7FF663D01D8F</Address>
+      <Address>7FF63BCE1D8F</Address>
       <ModuleName>GTA5.exe</ModuleName>
       <ModuleNameOffset>8F1D8F</ModuleNameOffset>
       <Before>
@@ -1931,6 +1948,263 @@ brake.destroy()
         <Byte>29</Byte>
         <Byte>41</Byte>
         <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm1,[rax+0C] (Weight pointer - in the region of attributes of vehicle)</Description>
+      <Address>7FF760E02242</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>282242</ModuleNameOffset>
+      <Before>
+        <Byte>15</Byte>
+        <Byte>12</Byte>
+        <Byte>C3</Byte>
+        <Byte>63</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>2E</Byte>
+        <Byte>CE</Byte>
+        <Byte>74</Byte>
+        <Byte>07</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulss xmm11,[rax+6C] (Brake attribute vehicle)</Description>
+      <Address>7FF69C405ADE</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>FA5ADE</ModuleNameOffset>
+      <Before>
+        <Byte>1D</Byte>
+        <Byte>76</Byte>
+        <Byte>8A</Byte>
+        <Byte>91</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>58</Byte>
+        <Byte>6C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>9F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm12,[r15+58] (shift speed related to acceleration) (explore this one)</Description>
+      <Address>7FF69C3F7A23</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F97A23</ModuleNameOffset>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>73</Byte>
+        <Byte>04</Byte>
+        <Byte>74</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>67</Byte>
+        <Byte>58</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>06</Byte>
+        <Byte>F3</Byte>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulss xmm2,[rbx+rax*4+04] (Gear ratios)</Description>
+      <Address>7FF761B17DFE</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F97DFE</ModuleNameOffset>
+      <Before>
+        <Byte>66</Byte>
+        <Byte>3B</Byte>
+        <Byte>D6</Byte>
+        <Byte>7E</Byte>
+        <Byte>7C</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>54</Byte>
+        <Byte>83</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>B4</Byte>
+        <Byte>81</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :divss xmm0,[rbx+3C] (something like torque)</Description>
+      <Address>7FF799537B2E</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F97B2E</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>43</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5E</Byte>
+        <Byte>43</Byte>
+        <Byte>3C</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>C7</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulss xmm9,[rsi+0000012C] (car weight)</Description>
+      <Address>7FF73C2E635E</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F6635E</ModuleNameOffset>
+      <Before>
+        <Byte>80</Byte>
+        <Byte>68</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>8E</Byte>
+        <Byte>2C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>83</Byte>
+        <Byte>68</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm0,[r13+000008AC] (something like torque 2)</Description>
+      <Address>7FF7989113C8</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>3713C8</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>D0</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>85</Byte>
+        <Byte>AC</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>C7</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm6,[rbx+00000C3C] (car gravity)</Description>
+      <Address>7FF73C35D168</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>FDD168</ModuleNameOffset>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>AC</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>B3</Byte>
+        <Byte>3C</Byte>
+        <Byte>0C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>0F</Byte>
+        <Byte>BF</Byte>
+        <Byte>8B</Byte>
+        <Byte>70</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulss xmm1,[rdi+34] (something related to drive force)</Description>
+      <Address>7FF799531CB5</Address>
+      <ModuleName>GTA5.exe</ModuleName>
+      <ModuleNameOffset>F91CB5</ModuleNameOffset>
+      <Before>
+        <Byte>15</Byte>
+        <Byte>9F</Byte>
+        <Byte>C8</Byte>
+        <Byte>92</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>4F</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C2</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
