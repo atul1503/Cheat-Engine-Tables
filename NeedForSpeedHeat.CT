@@ -2,97 +2,248 @@
 <CheatTable CheatEngineTableVersion="27">
   <CheatEntries>
     <CheatEntry>
-      <ID>203</ID>
-      <Description>"x coord"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
-      <VariableType>Float</VariableType>
-      <Address>0</Address>
-      <Hotkeys>
-        <Hotkey>
-          <Action>Set Value</Action>
-          <Keys>
-            <Key>84</Key>
-          </Keys>
-          <Value>5379</Value>
-          <ID>0</ID>
-        </Hotkey>
-      </Hotkeys>
+      <ID>218</ID>
+      <Description>"MAIN"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>204</ID>
-          <Description>"z"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+4</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>84</Key>
-              </Keys>
-              <Value>64</Value>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>205</ID>
-          <Description>"y"</Description>
-          <VariableType>Float</VariableType>
-          <Address>+8</Address>
-          <Hotkeys>
-            <Hotkey>
-              <Action>Set Value</Action>
-              <Keys>
-                <Key>84</Key>
-              </Keys>
-              <Value>-345</Value>
-              <ID>0</ID>
-            </Hotkey>
-          </Hotkeys>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>187</ID>
-      <Description>"xspeed"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
-      <LastState Value="0" RealAddress="CDC62E70"/>
-      <VariableType>Float</VariableType>
-      <Address>CDC62E70</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>202</ID>
-          <Description>"zspeed"</Description>
-          <LastState Value="0" RealAddress="CDC62E74"/>
-          <VariableType>Float</VariableType>
-          <Address>+4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>186</ID>
-          <Description>"yspeed"</Description>
-          <LastState Value="0" RealAddress="CDC62E78"/>
-          <VariableType>Float</VariableType>
-          <Address>+8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>189</ID>
-          <Description>"steer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>0</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>188</ID>
-      <Description>"speeder"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
+          <ID>217</ID>
+          <Description>"Location pointer exposer"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : NeedForSpeedHeat.exe
+  Version: 
+  Date   : 2023-12-10
+  Author : atult
+
+  This script does blah blah blah
+}
 
 [ENABLE]
 
-local mul=1.03
-local div=1.1
+aobscanmodule(INJECT,NeedForSpeedHeat.exe,0F 5C 1C 08 4C 89 D9) // should be unique
+alloc(newmem,$1000,"NeedForSpeedHeat.exe"+B5F4B4C)
+alloc(locationptr,4)
+registersymbol(locationptr)
+alloc(val,4)
+label(code)
+label(return)
+
+newmem:
+push rdi
+mov rdi,rax
+add rdi,rcx
+
+sub rsp,10
+movups [rsp],xmm0
+
+movss xmm0,[rax+rcx+1C]
+ucomiss xmm0,[val]
+jne code
+mov [locationptr],rdi
+
+code:
+movups xmm0,[rsp]
+add rsp,10
+
+pop rdi
+
+subps xmm3,[rax+rcx]
+mov rcx,r11
+jmp return
+
+INJECT:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(INJECT)
+
+
+val:
+dd (float)1.0
+
+
+[DISABLE]
+
+INJECT:
+  db 0F 5C 1C 08 4C 89 D9
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+dealloc(locationptr)
+unregistersymbol(locationptr)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NeedForSpeedHeat.exe"+B5F4B4C
+
+"NeedForSpeedHeat.exe"+B5F4B22: 0F 10 1E                       -  movups xmm3,[rsi]
+"NeedForSpeedHeat.exe"+B5F4B25: F7 F1                          -  div ecx
+"NeedForSpeedHeat.exe"+B5F4B27: 41 8B 43 08                    -  mov eax,[r11+08]
+"NeedForSpeedHeat.exe"+B5F4B2B: 8D 0C 9D 3C 00 00 00           -  lea ecx,[rbx*4+0000003C]
+"NeedForSpeedHeat.exe"+B5F4B32: 83 E1 C0                       -  and ecx,-40
+"NeedForSpeedHeat.exe"+B5F4B35: 66 0F 70 C2 C9                 -  pshufd xmm0,xmm2-37
+"NeedForSpeedHeat.exe"+B5F4B3A: 0F AF CA                       -  imul ecx,edx
+"NeedForSpeedHeat.exe"+B5F4B3D: 48 8D 54 24 20                 -  lea rdx,[rsp+20]
+"NeedForSpeedHeat.exe"+B5F4B42: C1 E0 04                       -  shl eax,04
+"NeedForSpeedHeat.exe"+B5F4B45: 49 03 88 A0 08 00 00           -  add rcx,[r8+000008A0]
+// ---------- INJECTING HERE ----------
+"NeedForSpeedHeat.exe"+B5F4B4C: 0F 5C 1C 08                    -  subps xmm3,[rax+rcx]
+"NeedForSpeedHeat.exe"+B5F4B50: 4C 89 D9                       -  mov rcx,r11
+// ---------- DONE INJECTING  ----------
+"NeedForSpeedHeat.exe"+B5F4B53: 66 0F 70 CB C9                 -  pshufd xmm1,xmm3-37
+"NeedForSpeedHeat.exe"+B5F4B58: 0F 59 D8                       -  mulps xmm3,xmm0
+"NeedForSpeedHeat.exe"+B5F4B5B: 0F 59 D1                       -  mulps xmm2,xmm1
+"NeedForSpeedHeat.exe"+B5F4B5E: 0F 5C DA                       -  subps xmm3,xmm2
+"NeedForSpeedHeat.exe"+B5F4B61: 66 0F 70 C3 C9                 -  pshufd xmm0,xmm3-37
+"NeedForSpeedHeat.exe"+B5F4B66: 66 0F 7F 44 24 20              -  movdqa [rsp+20],xmm0
+"NeedForSpeedHeat.exe"+B5F4B6C: E8 AF 9C 1F F6                 -  call NeedForSpeedHeat.exe+17EE820
+"NeedForSpeedHeat.exe"+B5F4B71: 48 8B 5C 24 48                 -  mov rbx,[rsp+48]
+"NeedForSpeedHeat.exe"+B5F4B76: 48 8B 74 24 50                 -  mov rsi,[rsp+50]
+"NeedForSpeedHeat.exe"+B5F4B7B: 48 83 C4 30                    -  add rsp,30
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>203</ID>
+              <Description>"x coord"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <VariableType>Float</VariableType>
+              <Address>[locationptr]</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>84</Key>
+                  </Keys>
+                  <Value>5379</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>209</ID>
+                  <Description>"Teleporter"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
+
+[ENABLE]
+
+--find x coord and y coord and z coord for this to work
+
+east={x=5379,z=64,y=-345}
+west={x=-1266.57,z=253,y=994}
+safehouse={x=5129,z=64,y=-1615}
+
+x=getAddressList().getMemoryRecordByDescription("x coord")
+y=getAddressList().getMemoryRecordByDescription("y coord")
+z=getAddressList().getMemoryRecordByDescription("z coord")
+
+function teleporter(t)
+x.Value=t.x
+y.Value=t.y
+z.Value=t.z
+end
+
+
+eastporter=createHotkey(function()
+teleporter(east)
+end,0x31)
+
+westporter=createHotkey(function()
+teleporter(west)
+end,0x32)
+ 
+safehouseporter=createHotkey(function()
+teleporter(safehouse)
+end,0x33)
+
+
+[DISABLE]
+eastporter.destroy()
+westporter.destroy()
+safehouseporter.destroy()
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>204</ID>
+                  <Description>"z coord"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>+4</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>84</Key>
+                      </Keys>
+                      <Value>64</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>205</ID>
+                  <Description>"y coord"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>+8</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>84</Key>
+                      </Keys>
+                      <Value>-345</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>187</ID>
+          <Description>"xspeed"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <VariableType>Float</VariableType>
+          <Address>0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>202</ID>
+              <Description>"zspeed"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>186</ID>
+              <Description>"yspeed"</Description>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>189</ID>
+              <Description>"steer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>0</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>188</ID>
+          <Description>"speeder"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local mul=1.1
+local div=1.3
 
 t=getAddressList()
 x=t.getMemoryRecordByDescription("xspeed")
@@ -100,6 +251,7 @@ y=t.getMemoryRecordByDescription("yspeed")
 
 
 hk=createHotkey(function()
+if isKeyPressed(0x27) or isKeyPressed(0x25) then return end
 x.Value=x.Value*mul
 y.Value=y.Value*mul
 end,0x26)
@@ -114,13 +266,13 @@ end,0x28)
 hk.destroy()
 hk1.destroy()
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>190</ID>
-      <Description>"speeder in front direction"</Description>
-      <LastState/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
+        </CheatEntry>
+        <CheatEntry>
+          <ID>190</ID>
+          <Description>"speeder in front direction"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -167,13 +319,8 @@ timer.Enabled=true
 [DISABLE]
 timer.destroy()
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>206</ID>
-      <Description>"0.0006493506371"</Description>
-      <LastState Value="0.0006493506371" RealAddress="CDCEA44C"/>
-      <VariableType>Float</VariableType>
-      <Address>CDCEA44C</Address>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -441,10 +588,515 @@ timer.destroy()
         <Byte>BB</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movups xmm1,[rcx+rax] (car steer)</Description>
+      <Address>14B5FF2FE</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>B5FF2FE</ModuleNameOffset>
+      <Before>
+        <Byte>80</Byte>
+        <Byte>E0</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>0C</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>D8</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm0,[rdi+000000CC] (speedometer)</Description>
+      <Address>14B8D587D</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>B8D587D</ModuleNameOffset>
+      <Before>
+        <Byte>A7</Byte>
+        <Byte>F7</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>03</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>87</Byte>
+        <Byte>CC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>8F</Byte>
+        <Byte>C4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :add rax,[r8+000008D0] (Pointer to pointer of base of speed address)</Description>
+      <Address>14B60284E</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>B60284E</ModuleNameOffset>
+      <Before>
+        <Byte>E1</Byte>
+        <Byte>04</Byte>
+        <Byte>0F</Byte>
+        <Byte>AF</Byte>
+        <Byte>C2</Byte>
+      </Before>
+      <Actual>
+        <Byte>49</Byte>
+        <Byte>03</Byte>
+        <Byte>80</Byte>
+        <Byte>D0</Byte>
+        <Byte>08</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>0C</Byte>
+        <Byte>01</Byte>
+        <Byte>4C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov rcx,r8 (gear no)</Description>
+      <Address>7FFA81B112F8</Address>
+      <ModuleName>VCRUNTIME140.dll</ModuleName>
+      <ModuleNameOffset>12F8</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>F9</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>F2</Byte>
+      </Before>
+      <Actual>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>C8</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>A4</Byte>
+        <Byte>5E</Byte>
+        <Byte>5F</Byte>
+        <Byte>C3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movups [rbx+000000C0],xmm0 (Power dispaly value)</Description>
+      <Address>14226F7B8</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>226F7B8</ModuleNameOffset>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>83</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>8F</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm0,[rcx+0000041C] (Nitrous)</Description>
+      <Address>14BE45A10</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>BE45A10</ModuleNameOffset>
+      <Before>
+        <Byte>2F</Byte>
+        <Byte>48</Byte>
+        <Byte>5C</Byte>
+        <Byte>73</Byte>
+        <Byte>15</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>1C</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5F</Byte>
+        <Byte>C1</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm2,[rax+60] (Nitrous reducer) (-0.25)</Description>
+      <Address>14BE4BD72</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>BE4BD72</ModuleNameOffset>
+      <Before>
+        <Byte>62</Byte>
+        <Byte>57</Byte>
+        <Byte>F7</Byte>
+        <Byte>EB</Byte>
+        <Byte>05</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>50</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>06</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of subss xmm0,[rbx+0000041C]</Description>
+      <Address>14BE4BDB9</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>BE4BDB9</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>83</Byte>
+        <Byte>1C</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>54</Byte>
+        <Byte>05</Byte>
+        <Byte>E8</Byte>
+        <Byte>EB</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rdx+r9*8+00000B70],xmm1 (Live tuning writer)</Description>
+      <Address>14C10FDDB</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>C10FDDB</ModuleNameOffset>
+      <Before>
+        <Byte>CA</Byte>
+        <Byte>6C</Byte>
+        <Byte>0B</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>42</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>8C</Byte>
+        <Byte>CA</Byte>
+        <Byte>70</Byte>
+        <Byte>0B</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>83</Byte>
+        <Byte>C2</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulss xmm8,[rax+50] (Nitrous power)</Description>
+      <Address>14BE43A65</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>BE43A65</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>80</Byte>
+        <Byte>78</Byte>
+        <Byte>65</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>40</Byte>
+        <Byte>50</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulss xmm7,[rdi+0000040C] (Nitrous power 2) (Best)</Description>
+      <Address>14BE43A37</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>BE43A37</ModuleNameOffset>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>FC</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>BF</Byte>
+        <Byte>0C</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>F9</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
+  <Structures StructVersion="2">
+    <Structure Name="unnamed structure" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="48" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="64" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="80" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="96" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="100" Vartype="Float" Bytesize="4" RLECount="11" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="144" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="160" Vartype="Float" Bytesize="4" RLECount="14" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="216" Vartype="Byte" Bytesize="1" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="224" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="240" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="272" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="288" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="304" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="320" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="368" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="384" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="400" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="432" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="480" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="512" Vartype="Float" Bytesize="4" RLECount="16" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="576" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="592" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="600" Vartype="Byte" Bytesize="1" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="608" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="640" Vartype="4 Bytes" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="688" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="704" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="736" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="752" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="784" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="800" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="816" Vartype="4 Bytes" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="848" Vartype="Float" Bytesize="4" RLECount="56" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1072" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1088" Vartype="Float" Bytesize="4" RLECount="28" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1200" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1216" Vartype="Float" Bytesize="4" RLECount="28" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1328" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1344" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1360" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1376" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1392" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1408" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1440" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1456" Vartype="Float" Bytesize="4" RLECount="36" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1600" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1616" Vartype="Float" Bytesize="4" RLECount="36" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1760" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1776" Vartype="Float" Bytesize="4" RLECount="24" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1872" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1888" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1920" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1936" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1952" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="1968" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2000" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2016" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2048" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2064" Vartype="Float" Bytesize="4" RLECount="14" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2120" Vartype="String" Bytesize="9" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2129" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2130" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2132" Vartype="Float" Bytesize="4" RLECount="21" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2216" Vartype="Byte" Bytesize="1" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2228" Vartype="Float" Bytesize="4" RLECount="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2248" Vartype="String" Bytesize="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2256" Vartype="Float" Bytesize="4" RLECount="36" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2400" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2416" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2432" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2433" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2437" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2440" Vartype="Float" Bytesize="4" RLECount="20" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2520" Vartype="String" Bytesize="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2528" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2560" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2565" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2568" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2616" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2618" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2620" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2622" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2624" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2656" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2657" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2661" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2664" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2672" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2673" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2678" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2680" Vartype="Float" Bytesize="4" RLECount="15" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2740" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2741" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2745" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2746" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2748" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2760" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2762" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2764" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2766" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2768" Vartype="Float" Bytesize="4" RLECount="22" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2856" Vartype="String" Bytesize="10" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2866" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2868" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2880" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2881" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2885" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2888" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2936" Vartype="Byte" Bytesize="1" RLECount="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2941" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2946" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2948" Vartype="Float" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2952" Vartype="String" Bytesize="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2960" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2968" Vartype="Byte" Bytesize="1" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="2980" Vartype="Float" Bytesize="4" RLECount="7" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3008" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3024" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3040" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3044" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3056" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3060" Vartype="Float" Bytesize="4" RLECount="7" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3088" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3104" Vartype="Float" Bytesize="4" RLECount="22" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3192" Vartype="String" Bytesize="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3205" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3207" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3209" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3212" Vartype="Float" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3216" Vartype="4 Bytes" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3232" Vartype="Float" Bytesize="4" RLECount="29" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3348" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3353" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3356" Vartype="Float" Bytesize="4" RLECount="13" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3408" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3409" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3413" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3416" Vartype="Float" Bytesize="4" RLECount="12" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3464" Vartype="Byte" Bytesize="1" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3472" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3480" Vartype="String" Bytesize="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3488" Vartype="Float" Bytesize="4" RLECount="8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3520" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3524" Vartype="Float" Bytesize="4" RLECount="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3544" Vartype="Byte" Bytesize="1" RLECount="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3549" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3553" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3556" Vartype="Float" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3560" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3564" Vartype="Float" Bytesize="4" RLECount="11" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3608" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3610" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3612" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3614" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3616" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3620" Vartype="Float" Bytesize="4" RLECount="11" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3664" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3668" Vartype="Float" Bytesize="4" RLECount="11" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3712" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3716" Vartype="Float" Bytesize="4" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3728" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3729" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3733" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3736" Vartype="Float" Bytesize="4" RLECount="42" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3904" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3905" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3910" Vartype="Byte" Bytesize="1" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3912" Vartype="Float" Bytesize="4" RLECount="10" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3952" Vartype="String" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="3956" Vartype="Float" Bytesize="4" RLECount="15" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4016" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4021" Vartype="Byte" Bytesize="1" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4022" Vartype="2 Bytes" Bytesize="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4024" Vartype="Float" Bytesize="4" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4032" Vartype="Byte" Bytesize="1" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4036" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4052" Vartype="String" Bytesize="5" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4057" Vartype="Byte" Bytesize="1" RLECount="3" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4060" Vartype="Float" Bytesize="4" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4064" Vartype="Double" Bytesize="8" RLECount="2" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="4080" Vartype="Float" Bytesize="4" RLECount="4" DisplayMethod="Unsigned Integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
   <Comments>x,z,y
-5379,64,-345 : gas station
+5379,64,-345 : East gas station
 5129,64,-1615 : safehouse
+-1266.57,253,994: west
 </Comments>
 </CheatTable>
