@@ -320,6 +320,138 @@ timer.Enabled=true
 timer.destroy()
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>221</ID>
+          <Description>"Nitrous Pointer Script"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : NeedForSpeedHeat.exe
+  Version:
+  Date   : 2024-02-11
+  Author : atult
+
+  This script exposes the address stored in rcx register since this address is the base address for nitrous related addresses.
+
+  To use this efficiently, before starting any race , activate it and then go back to the game , activate the nitrous, then come back to cheat engine and deactivate this script. This will make sure that only the player's nitrous values are captured.
+  These values will remain correct until you change time modes(day/night) of the game. Once if you change the time mode, you have to redo the steps mentioned.
+
+  Good values::
+
+  Nitrous power: 3
+  Nitrous : 10
+
+  This will give good boost for 5 seconds.
+
+}
+
+[ENABLE]
+
+aobscanmodule(nitro,NeedForSpeedHeat.exe,F3 0F 10 81 1C 04 00 00) // should be unique
+alloc(newmem,150,"NeedForSpeedHeat.exe"+BE45A10)
+alloc(nitro_rcx,4)
+registersymbol(nitro_rcx)
+label(code)
+label(return)
+
+newmem:
+mov [nitro_rcx],rcx
+
+code:
+  movss xmm0,[rcx+0000041C]
+  jmp return
+
+nitro:
+  jmp newmem
+  nop
+  nop
+  nop
+return:
+registersymbol(nitro)
+
+[DISABLE]
+
+nitro:
+  db F3 0F 10 81 1C 04 00 00
+
+unregistersymbol(nitro)
+unregistersymbol(nitro_rdi)
+dealloc(newmem)
+dealloc(nitro_rcx)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: "NeedForSpeedHeat.exe"+BE45A10
+
+"NeedForSpeedHeat.exe"+BE459E7: 4E 8B 0C CF                    -  mov r9,[rdi+r9*8]
+"NeedForSpeedHeat.exe"+BE459EB: 5F                             -  pop rdi
+"NeedForSpeedHeat.exe"+BE459EC: 4C 87 0C 24                    -  xchg [rsp],r9
+"NeedForSpeedHeat.exe"+BE459F0: C3                             -  ret
+"NeedForSpeedHeat.exe"+BE459F1: E8 66 66 66 66                 -  call 1B24AC05C
+"NeedForSpeedHeat.exe"+BE459F6: 66 2E 0F 1F 84 00 00 00 00 00  -  nop cs:[rax+rax+00000000]
+"NeedForSpeedHeat.exe"+BE45A00: 48 8B 81 50 03 00 00           -  mov rax,[rcx+00000350]
+"NeedForSpeedHeat.exe"+BE45A07: 0F 57 C9                       -  xorps xmm1,xmm1
+"NeedForSpeedHeat.exe"+BE45A0A: 0F 2F 48 5C                    -  comiss xmm1,[rax+5C]
+"NeedForSpeedHeat.exe"+BE45A0E: 73 15                          -  jae NeedForSpeedHeat.exe+BE45A25
+// ---------- INJECTING HERE ----------
+"NeedForSpeedHeat.exe"+BE45A10: F3 0F 10 81 1C 04 00 00        -  movss xmm0,[rcx+0000041C]
+// ---------- DONE INJECTING  ----------
+"NeedForSpeedHeat.exe"+BE45A18: F3 0F 5F C1                    -  maxss xmm0,xmm1
+"NeedForSpeedHeat.exe"+BE45A1C: F3 0F 5D 05 44 1B 50 F7        -  minss xmm0,[NeedForSpeedHeat.exe+3347568]
+"NeedForSpeedHeat.exe"+BE45A24: C3                             -  ret
+"NeedForSpeedHeat.exe"+BE45A25: 0F 57 C0                       -  xorps xmm0,xmm0
+"NeedForSpeedHeat.exe"+BE45A28: F3 0F 5F C1                    -  maxss xmm0,xmm1
+"NeedForSpeedHeat.exe"+BE45A2C: F3 0F 5D 05 34 1B 50 F7        -  minss xmm0,[NeedForSpeedHeat.exe+3347568]
+"NeedForSpeedHeat.exe"+BE45A34: C3                             -  ret
+"NeedForSpeedHeat.exe"+BE45A35: 49 89 C8                       -  mov r8,rcx
+"NeedForSpeedHeat.exe"+BE45A38: 48 21 0C 24                    -  and [rsp],rcx
+"NeedForSpeedHeat.exe"+BE45A3C: 48 03 14 24                    -  add rdx,[rsp]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>223</ID>
+              <Description>"Nitrous"</Description>
+              <LastState Value="0.6132445931" RealAddress="22AB1677C"/>
+              <VariableType>Float</VariableType>
+              <Address>[nitro_rcx]+40C+10</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                  </Keys>
+                  <Value>5</Value>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>18</Key>
+                  </Keys>
+                  <Value>0</Value>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>222</ID>
+              <Description>"Nitrous Power"</Description>
+              <LastState Value="3" RealAddress="22AB1676C"/>
+              <VariableType>Float</VariableType>
+              <Address>[nitro_rcx]+40C</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                  </Keys>
+                  <Value>3</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
@@ -782,36 +914,6 @@ timer.destroy()
         <Byte>10</Byte>
         <Byte>06</Byte>
         <Byte>0F</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Change of subss xmm0,[rbx+0000041C]</Description>
-      <Address>14BE4BDB9</Address>
-      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
-      <ModuleNameOffset>BE4BDB9</ModuleNameOffset>
-      <Before>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>0F</Byte>
-        <Byte>28</Byte>
-        <Byte>C1</Byte>
-      </Before>
-      <Actual>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>5C</Byte>
-        <Byte>83</Byte>
-        <Byte>1C</Byte>
-        <Byte>04</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>0F</Byte>
-        <Byte>54</Byte>
-        <Byte>05</Byte>
-        <Byte>E8</Byte>
-        <Byte>EB</Byte>
       </After>
     </CodeEntry>
     <CodeEntry>
