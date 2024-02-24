@@ -11,7 +11,7 @@
         <CheatEntry>
           <ID>224</ID>
           <Description>"No Damage"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : NeedForSpeedHeat.exe
   Version: 
@@ -51,6 +51,79 @@ dealloc(newmem)
 
 
 </AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>225</ID>
+          <Description>"1st Gear"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="2.75" RealAddress="21C631450"/>
+          <VariableType>Float</VariableType>
+          <Address>21C631450</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>234</ID>
+              <Description>"Red Line RPM"</Description>
+              <LastState Value="7750" RealAddress="21C631340"/>
+              <VariableType>Float</VariableType>
+              <Address>-110</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>226</ID>
+              <Description>"Torque 1"</Description>
+              <LastState Value="800" RealAddress="21C631380"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>227</ID>
+              <Description>"Torque 2"</Description>
+              <LastState Value="800" RealAddress="21C631384"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>228</ID>
+              <Description>"Torque 3"</Description>
+              <LastState Value="800" RealAddress="21C631388"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>229</ID>
+              <Description>"Torque 4"</Description>
+              <LastState Value="800" RealAddress="21C63138C"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+8+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>230</ID>
+              <Description>"Torque 5"</Description>
+              <LastState Value="800" RealAddress="21C631390"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+8+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>231</ID>
+              <Description>"Torque 6"</Description>
+              <LastState Value="800" RealAddress="21C631394"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+8+8+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>232</ID>
+              <Description>"Torque 7"</Description>
+              <LastState Value="800" RealAddress="21C631398"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+8+8+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>233</ID>
+              <Description>"Torque 8"</Description>
+              <LastState Value="800" RealAddress="21C63139C"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0+8+8+8+4</Address>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>217</ID>
@@ -1363,13 +1436,21 @@ dealloc(nitro_rdi)
 5379,64,-345 : East gas station
 5129,64,-1615 : safehouse
 -1266.57,253,994: west
+
 BS:20 OOO:U f:1.13 f:0.97 f:0.75 f:0.63 f:0.55 
 to search for gear ratios of subaru impreza with elite upgrades of engine.
+
 top speed is controlled by 2 addresses: which are two values: 7600 ad 7600 after 1000 before the gear ratios for the same car.
+
 BS:12 OOO:U f:2.75 f:2.069 f:1.69
 for bmw m3 gtr. Will be second one.
+
 BS:12 OOO:U f:3.829 f:2.359 f:1.69
 for nissan skyline le. 6th one.
+
 1st gear -110 is the address of top speed.
-</Comments>
+
+1st gear -B4 is also interesting for torque.
+
+1st gear -D0 is where torque starts. There are nearly 8 torques from there.</Comments>
 </CheatTable>
