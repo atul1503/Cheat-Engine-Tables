@@ -9,6 +9,50 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>224</ID>
+          <Description>"No Damage"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : NeedForSpeedHeat.exe
+  Version: 
+  Date   : 2024-02-16
+  Author : atult
+
+  No one will get damage. Not even the cops or ped cars.
+}
+
+[ENABLE]
+
+aobscanmodule(no_damage,NeedForSpeedHeat.exe,F3 0F 10 41 20 C3 48) // should be unique
+alloc(newmem,100,"NeedForSpeedHeat.exe"+6C49E10)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rcx+20],42C80000
+  movss xmm0,[rcx+20]
+  jmp return
+
+no_damage:
+  jmp newmem
+return:
+registersymbol(no_damage)
+
+[DISABLE]
+
+no_damage:
+  db F3 0F 10 41 20
+
+unregistersymbol(no_damage)
+dealloc(newmem)
+
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>217</ID>
           <Description>"Location pointer exposer"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
@@ -323,97 +367,103 @@ timer.destroy()
         <CheatEntry>
           <ID>221</ID>
           <Description>"Nitrous Pointer Script"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : NeedForSpeedHeat.exe
-  Version:
+  Version: 
   Date   : 2024-02-11
   Author : atult
 
-  This script exposes the address stored in rcx register since this address is the base address for nitrous related addresses.
-
-  To use this efficiently, before starting any race , activate it and then go back to the game , activate the nitrous, then come back to cheat engine and deactivate this script. This will make sure that only the player's nitrous values are captured.
-  These values will remain correct until you change time modes(day/night) of the game. Once if you change the time mode, you have to redo the steps mentioned.
-
-  Good values::
-
-  Nitrous power: 3
-  Nitrous : 10
-
-  This will give good boost for 5 seconds.
-
+  This script exposes the address stored in rdi register since this address is the base address for nitrous related addresses.
 }
 
 [ENABLE]
 
-aobscanmodule(nitro,NeedForSpeedHeat.exe,F3 0F 10 81 1C 04 00 00) // should be unique
-alloc(newmem,150,"NeedForSpeedHeat.exe"+BE45A10)
-alloc(nitro_rcx,4)
-registersymbol(nitro_rcx)
+aobscanmodule(INJECT,NeedForSpeedHeat.exe,F3 0F 59 BF 0C 04 00 00) // should be unique
+alloc(newmem,150,"NeedForSpeedHeat.exe"+BE43A37)
+alloc(nitro_rdi,4)
+registersymbol(nitro_rdi)
 label(code)
 label(return)
 
 newmem:
-mov [nitro_rcx],rcx
+mov [nitro_rdi],rdi
 
 code:
-  movss xmm0,[rcx+0000041C]
+  mulss xmm7,[rdi+0000040C]
   jmp return
 
-nitro:
+INJECT:
   jmp newmem
   nop
   nop
   nop
 return:
-registersymbol(nitro)
+registersymbol(INJECT)
 
 [DISABLE]
 
-nitro:
-  db F3 0F 10 81 1C 04 00 00
+INJECT:
+  db F3 0F 59 BF 0C 04 00 00
 
-unregistersymbol(nitro)
+
+unregistersymbol(nitro_rdi)
+unregistersymbol(INJECT)
 unregistersymbol(nitro_rdi)
 dealloc(newmem)
-dealloc(nitro_rcx)
-
+dealloc(nitro_rdi)
 
 {
-// ORIGINAL CODE - INJECTION POINT: "NeedForSpeedHeat.exe"+BE45A10
+// ORIGINAL CODE - INJECTION POINT: "NeedForSpeedHeat.exe"+BE43A37
 
-"NeedForSpeedHeat.exe"+BE459E7: 4E 8B 0C CF                    -  mov r9,[rdi+r9*8]
-"NeedForSpeedHeat.exe"+BE459EB: 5F                             -  pop rdi
-"NeedForSpeedHeat.exe"+BE459EC: 4C 87 0C 24                    -  xchg [rsp],r9
-"NeedForSpeedHeat.exe"+BE459F0: C3                             -  ret
-"NeedForSpeedHeat.exe"+BE459F1: E8 66 66 66 66                 -  call 1B24AC05C
-"NeedForSpeedHeat.exe"+BE459F6: 66 2E 0F 1F 84 00 00 00 00 00  -  nop cs:[rax+rax+00000000]
-"NeedForSpeedHeat.exe"+BE45A00: 48 8B 81 50 03 00 00           -  mov rax,[rcx+00000350]
-"NeedForSpeedHeat.exe"+BE45A07: 0F 57 C9                       -  xorps xmm1,xmm1
-"NeedForSpeedHeat.exe"+BE45A0A: 0F 2F 48 5C                    -  comiss xmm1,[rax+5C]
-"NeedForSpeedHeat.exe"+BE45A0E: 73 15                          -  jae NeedForSpeedHeat.exe+BE45A25
+"NeedForSpeedHeat.exe"+BE43A07: E8 74 29 C2 F5              -  call NeedForSpeedHeat.exe+1A66380
+"NeedForSpeedHeat.exe"+BE43A0C: F3 41 0F 5C FC              -  subss xmm7,xmm12
+"NeedForSpeedHeat.exe"+BE43A11: 0F 28 F0                    -  movaps xmm6,xmm0
+"NeedForSpeedHeat.exe"+BE43A14: 48 8D 8F 34 04 00 00        -  lea rcx,[rdi+00000434]
+"NeedForSpeedHeat.exe"+BE43A1B: 0F 28 CF                    -  movaps xmm1,xmm7
+"NeedForSpeedHeat.exe"+BE43A1E: E8 5D 29 C2 F5              -  call NeedForSpeedHeat.exe+1A66380
+"NeedForSpeedHeat.exe"+BE43A23: 0F 28 F8                    -  movaps xmm7,xmm0
+"NeedForSpeedHeat.exe"+BE43A26: F3 0F 58 FE                 -  addss xmm7,xmm6
+"NeedForSpeedHeat.exe"+BE43A2A: F3 0F 59 3D 06 6F 50 F7     -  mulss xmm7,[NeedForSpeedHeat.exe+334A938]
+"NeedForSpeedHeat.exe"+BE43A32: F3 41 0F 59 FC              -  mulss xmm7,xmm12
 // ---------- INJECTING HERE ----------
-"NeedForSpeedHeat.exe"+BE45A10: F3 0F 10 81 1C 04 00 00        -  movss xmm0,[rcx+0000041C]
+"NeedForSpeedHeat.exe"+BE43A37: F3 0F 59 BF 0C 04 00 00     -  mulss xmm7,[rdi+0000040C]
 // ---------- DONE INJECTING  ----------
-"NeedForSpeedHeat.exe"+BE45A18: F3 0F 5F C1                    -  maxss xmm0,xmm1
-"NeedForSpeedHeat.exe"+BE45A1C: F3 0F 5D 05 44 1B 50 F7        -  minss xmm0,[NeedForSpeedHeat.exe+3347568]
-"NeedForSpeedHeat.exe"+BE45A24: C3                             -  ret
-"NeedForSpeedHeat.exe"+BE45A25: 0F 57 C0                       -  xorps xmm0,xmm0
-"NeedForSpeedHeat.exe"+BE45A28: F3 0F 5F C1                    -  maxss xmm0,xmm1
-"NeedForSpeedHeat.exe"+BE45A2C: F3 0F 5D 05 34 1B 50 F7        -  minss xmm0,[NeedForSpeedHeat.exe+3347568]
-"NeedForSpeedHeat.exe"+BE45A34: C3                             -  ret
-"NeedForSpeedHeat.exe"+BE45A35: 49 89 C8                       -  mov r8,rcx
-"NeedForSpeedHeat.exe"+BE45A38: 48 21 0C 24                    -  and [rsp],rcx
-"NeedForSpeedHeat.exe"+BE45A3C: 48 03 14 24                    -  add rdx,[rsp]
+"NeedForSpeedHeat.exe"+BE43A3F: 41 0F 2F F9                 -  comiss xmm7,xmm9
+"NeedForSpeedHeat.exe"+BE43A43: 0F 86 CB 00 00 00           -  jbe NeedForSpeedHeat.exe+BE43B14
+"NeedForSpeedHeat.exe"+BE43A49: 48 8B 87 50 03 00 00        -  mov rax,[rdi+00000350]
+"NeedForSpeedHeat.exe"+BE43A50: 44 0F 28 C7                 -  movaps xmm8,xmm7
+"NeedForSpeedHeat.exe"+BE43A54: 44 0F 28 D7                 -  movaps xmm10,xmm7
+"NeedForSpeedHeat.exe"+BE43A58: F3 44 0F 59 97 30 04 00 00  -  mulss xmm10,[rdi+00000430]
+"NeedForSpeedHeat.exe"+BE43A61: 80 78 65 00                 -  cmp byte ptr [rax+65],00
+"NeedForSpeedHeat.exe"+BE43A65: F3 44 0F 59 40 50           -  mulss xmm8,[rax+50]
+"NeedForSpeedHeat.exe"+BE43A6B: F3 45 0F 58 C3              -  addss xmm8,xmm11
+"NeedForSpeedHeat.exe"+BE43A70: 75 3D                       -  jne NeedForSpeedHeat.exe+BE43AAF
 }
 </AssemblerScript>
           <CheatEntries>
             <CheatEntry>
+              <ID>222</ID>
+              <Description>"Nitrous Power"</Description>
+              <VariableType>Float</VariableType>
+              <Address>[nitro_rdi]+40C</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                  </Keys>
+                  <Value>10</Value>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
               <ID>223</ID>
               <Description>"Nitrous"</Description>
-              <LastState Value="0.6132445931" RealAddress="22AB1677C"/>
               <VariableType>Float</VariableType>
-              <Address>[nitro_rcx]+40C+10</Address>
+              <Address>[nitro_rdi]+40C+10</Address>
               <Hotkeys>
                 <Hotkey>
                   <Action>Set Value</Action>
@@ -421,31 +471,6 @@ dealloc(nitro_rcx)
                     <Key>17</Key>
                   </Keys>
                   <Value>5</Value>
-                  <ID>0</ID>
-                </Hotkey>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>18</Key>
-                  </Keys>
-                  <Value>0</Value>
-                  <ID>1</ID>
-                </Hotkey>
-              </Hotkeys>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>222</ID>
-              <Description>"Nitrous Power"</Description>
-              <LastState Value="3" RealAddress="22AB1676C"/>
-              <VariableType>Float</VariableType>
-              <Address>[nitro_rcx]+40C</Address>
-              <Hotkeys>
-                <Hotkey>
-                  <Action>Set Value</Action>
-                  <Keys>
-                    <Key>17</Key>
-                  </Keys>
-                  <Value>3</Value>
                   <ID>0</ID>
                 </Hotkey>
               </Hotkeys>
@@ -1006,6 +1031,144 @@ dealloc(nitro_rcx)
         <Byte>0F</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :ucomiss xmm0,[rdi+00000FB8] (Something related to torque)</Description>
+      <Address>141AC8008</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>1AC8008</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>34</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>2E</Byte>
+        <Byte>87</Byte>
+        <Byte>B8</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>11</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>54</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rdi+00000130],ebx (gear no.)</Description>
+      <Address>14C10917B</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>C10917B</ModuleNameOffset>
+      <Before>
+        <Byte>8F</Byte>
+        <Byte>4A</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>9F</Byte>
+        <Byte>30</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>45</Byte>
+        <Byte>C1</Byte>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rdx],eax (Money pointer when buying car)</Description>
+      <Address>146D0B5C3</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>6D0B5C3</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>41</Byte>
+        <Byte>8B</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>44</Byte>
+        <Byte>19</Byte>
+        <Byte>F7</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rbx+00000A68] (Rpm)</Description>
+      <Address>14BEA53B5</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>BEA53B5</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>88</Byte>
+        <Byte>47</Byte>
+        <Byte>31</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>83</Byte>
+        <Byte>68</Byte>
+        <Byte>0A</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>47</Byte>
+        <Byte>34</Byte>
+        <Byte>8B</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :ucomiss xmm0,[rdi+00000FB8] (torque related to gear)</Description>
+      <Address>141AC8008</Address>
+      <ModuleName>NeedForSpeedHeat.exe</ModuleName>
+      <ModuleNameOffset>1AC8008</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>34</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>2E</Byte>
+        <Byte>87</Byte>
+        <Byte>B8</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>11</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>54</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
   <Structures StructVersion="2">
@@ -1200,5 +1363,13 @@ dealloc(nitro_rcx)
 5379,64,-345 : East gas station
 5129,64,-1615 : safehouse
 -1266.57,253,994: west
+BS:20 OOO:U f:1.13 f:0.97 f:0.75 f:0.63 f:0.55 
+to search for gear ratios of subaru impreza with elite upgrades of engine.
+top speed is controlled by 2 addresses: which are two values: 7600 ad 7600 after 1000 before the gear ratios for the same car.
+BS:12 OOO:U f:2.75 f:2.069 f:1.69
+for bmw m3 gtr. Will be second one.
+BS:12 OOO:U f:3.829 f:2.359 f:1.69
+for nissan skyline le. 6th one.
+1st gear -110 is the address of top speed.
 </Comments>
 </CheatTable>
