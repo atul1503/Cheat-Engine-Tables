@@ -54,74 +54,84 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>225</ID>
-          <Description>"1st Gear"</Description>
+          <Description>"1st Gear ratio"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <LastState Value="2.75" RealAddress="21C631450"/>
+          <LastState Value="2.857000113" RealAddress="24A1FC2E0"/>
           <VariableType>Float</VariableType>
-          <Address>21C631450</Address>
+          <Address>24A1FC2E0+0</Address>
           <CheatEntries>
+            <CheatEntry>
+              <ID>226</ID>
+              <Description>"Torque 1"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="471.4250183" RealAddress="24A1FC210"/>
+              <VariableType>Float</VariableType>
+              <Address>-D0</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>227</ID>
+                  <Description>"Torque 2"</Description>
+                  <LastState Value="511.3916626" RealAddress="24A1FC214"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>228</ID>
+                  <Description>"Torque 3"</Description>
+                  <LastState Value="533.1916504" RealAddress="24A1FC218"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>229</ID>
+                  <Description>"Torque 4"</Description>
+                  <LastState Value="545" RealAddress="24A1FC21C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+8+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>230</ID>
+                  <Description>"Torque 5"</Description>
+                  <LastState Value="515.9333496" RealAddress="24A1FC220"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+8+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>231</ID>
+                  <Description>"Torque 6"</Description>
+                  <LastState Value="480.5083313" RealAddress="24A1FC224"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+8+8+4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>232</ID>
+                  <Description>"Torque 7"</Description>
+                  <LastState Value="442.5563965" RealAddress="24A1FC228"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+8+8+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>233</ID>
+                  <Description>"Torque 8"</Description>
+                  <LastState Value="383.3166504" RealAddress="24A1FC22C"/>
+                  <VariableType>Float</VariableType>
+                  <Address>+8+8+8+4</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
             <CheatEntry>
               <ID>234</ID>
               <Description>"Red Line RPM"</Description>
-              <LastState Value="7750" RealAddress="21C631340"/>
+              <LastState Value="72500" RealAddress="24A1FC1D0"/>
               <VariableType>Float</VariableType>
               <Address>-110</Address>
             </CheatEntry>
             <CheatEntry>
-              <ID>226</ID>
-              <Description>"Torque 1"</Description>
-              <LastState Value="800" RealAddress="21C631380"/>
+              <ID>235</ID>
+              <Description>"Reverse Gear ratio"</Description>
+              <LastState Value="2.89199996" RealAddress="24A1FC2D8"/>
               <VariableType>Float</VariableType>
-              <Address>-D0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>227</ID>
-              <Description>"Torque 2"</Description>
-              <LastState Value="800" RealAddress="21C631384"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>228</ID>
-              <Description>"Torque 3"</Description>
-              <LastState Value="800" RealAddress="21C631388"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>229</ID>
-              <Description>"Torque 4"</Description>
-              <LastState Value="800" RealAddress="21C63138C"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+8+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>230</ID>
-              <Description>"Torque 5"</Description>
-              <LastState Value="800" RealAddress="21C631390"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+8+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>231</ID>
-              <Description>"Torque 6"</Description>
-              <LastState Value="800" RealAddress="21C631394"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+8+8+4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>232</ID>
-              <Description>"Torque 7"</Description>
-              <LastState Value="800" RealAddress="21C631398"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+8+8+8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>233</ID>
-              <Description>"Torque 8"</Description>
-              <LastState Value="800" RealAddress="21C63139C"/>
-              <VariableType>Float</VariableType>
-              <Address>-D0+8+8+8+4</Address>
+              <Address>-8</Address>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -1436,21 +1446,21 @@ dealloc(nitro_rdi)
 5379,64,-345 : East gas station
 5129,64,-1615 : safehouse
 -1266.57,253,994: west
-
 BS:20 OOO:U f:1.13 f:0.97 f:0.75 f:0.63 f:0.55 
 to search for gear ratios of subaru impreza with elite upgrades of engine.
-
 top speed is controlled by 2 addresses: which are two values: 7600 ad 7600 after 1000 before the gear ratios for the same car.
-
 BS:12 OOO:U f:2.75 f:2.069 f:1.69
 for bmw m3 gtr. Will be second one.
-
 BS:12 OOO:U f:3.829 f:2.359 f:1.69
-for nissan skyline le. 6th one.
-
+for nissan skyline le. 2nd one.
 1st gear -110 is the address of top speed.
-
 1st gear -B4 is also interesting for torque.
+1st gear -D0 is where torque starts. There are nearly 8 torques from there.
 
-1st gear -D0 is where torque starts. There are nearly 8 torques from there.</Comments>
+chevrolet pickup truck:
+BS:12 OOO:U f:2.94 f:1.67 f:1.00
+second one.
+
+lancer evolution: 
+BS:12 OOO:U f:2.857 f:1.86 f:1.444</Comments>
 </CheatTable>
