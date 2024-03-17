@@ -545,6 +545,65 @@ dealloc(nitro_rdi)
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+    <CheatEntry>
+      <ID>236</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>2578A2A60</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>237</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>2578A2AF8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>238</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>2578A2B00</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>263</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>23967F6A0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>264</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>23967F6D4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>265</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>23967F6D8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>266</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>23967F6DC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>267</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>23967F6E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>268</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>23967F6E4</Address>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
@@ -1421,8 +1480,11 @@ BS:12 OOO:U f:2.94 f:1.67 f:1.00
 second one.
 lancer evolution: 
 BS:12 OOO:U f:2.857 f:1.86 f:1.444
-
 nissan skyline 2000:
 BS:12 OOO:U f:3.321 f:2.076 f:1.307
+
+Pagani huayra steering hanlding memory attribute AOB: 00 00 A0 42 00 00 02 43 00 00 48 43 00 40 53 43 53 D5 61 43 00 40 6C 43 00 00 7A 43 00 00 84 42 CD CC 59 42 01 00 46 42 01 00 46 42 01 00 46 42
+
+
 </Comments>
 </CheatTable>

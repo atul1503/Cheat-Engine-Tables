@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>75</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>D4AC07C8</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :movaps xmm9,[rcx] (z coord)</Description>
+      <AddressString>ACU.exe+BA34</AddressString>
+      <Before>
+        <Byte>0C</Byte>
+        <Byte>24</Byte>
+        <Byte>0F</Byte>
+        <Byte>57</Byte>
+        <Byte>D2</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>09</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>CB</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

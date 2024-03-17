@@ -152,33 +152,7 @@ JustCause3.exe+46F95AE: 48 8B 4E 60                 - mov rcx,[rsi+60]
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
-      <Description>Code :mov edx,[rcx+00000228] (Ammo)</Description>
-      <AddressString>JustCause3.exe+3C54948</AddressString>
-      <Before>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>74</Byte>
-        <Byte>38</Byte>
-      </Before>
-      <Actual>
-        <Byte>8B</Byte>
-        <Byte>91</Byte>
-        <Byte>28</Byte>
-        <Byte>02</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>85</Byte>
-        <Byte>D2</Byte>
-        <Byte>74</Byte>
-        <Byte>2B</Byte>
-        <Byte>48</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Code :mov ebx,[r12+00000228] (machine gun ammo)</Description>
+      <Description>Code :mov ebx,[r12+00000228] (ammo)</Description>
       <AddressString>JustCause3.exe+46F957F</AddressString>
       <Before>
         <Byte>C1</Byte>
