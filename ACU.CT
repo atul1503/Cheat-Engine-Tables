@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-  <CheatEntries/>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>133BEDAE8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>154</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>7FF4F7FB5E80</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>155</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>15776C350</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>156</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>15776C354</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>157</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>15776C358</Address>
+    </CheatEntry>
+  </CheatEntries>
   <CheatCodes>
     <CodeEntry>
       <Description>Code :cmp [rax+28],edi (Money watcher)</Description>
@@ -48,6 +82,78 @@
         <Byte>CC</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm0,[rax+30] (x coord)</Description>
+      <AddressString>ACU.exe+1E855F4</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>42</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>40</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CF</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps [r8],xmm0 (health display writer)</Description>
+      <AddressString>ACU.exe+275252B</AddressString>
+      <Before>
+        <Byte>C3</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>B5</Byte>
+        <Byte>24</Byte>
+        <Byte>75</Byte>
+        <Byte>02</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps [rbx],xmm0 (Another health display writer)</Description>
+      <AddressString>ACU.exe+27523BE</AddressString>
+      <Before>
+        <Byte>5B</Byte>
+        <Byte>C3</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>03</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>81</Byte>
+        <Byte>C4</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
+  <Comments>good coord: 637.77,93.52,2</Comments>
 </CheatTable>
