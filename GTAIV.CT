@@ -16,6 +16,7 @@
             <CheatEntry>
               <ID>117</ID>
               <Description>"Player X coord ref"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>GTAIV.exe+D736B0</Address>
             </CheatEntry>
@@ -48,6 +49,30 @@
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+18</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>128</ID>
+              <Description>"player x coord"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[player_addr_ptr]+100</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>129</ID>
+                  <Description>"player y coord"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>[player_addr_ptr]+104</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>130</ID>
+                  <Description>"player z coord"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>[player_addr_ptr]+108</Address>
                 </CheatEntry>
               </CheatEntries>
             </CheatEntry>
@@ -109,6 +134,85 @@ timer.Enabled=true
 
 [DISABLE]
 timer.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>127</ID>
+              <Description>"Player coords capture"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : GTAIV.exe
+  Version: 
+  Date   : 2024-06-09
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,GTAIV.exe,F3 0F 10 B9 00 01 00 00 F3 0F 11 44 24 04) // should be unique
+alloc(newmem,$1000)
+alloc(player_addr_ptr,4)
+registersymbol(player_addr_ptr)
+label(code)
+label(return)
+
+newmem:
+push edx
+mov edx,[GTAIV.exe+"D736B0"]
+cmp [ecx+100],edx
+jne code
+mov [player_addr_ptr],ecx
+pop edx
+
+code:
+  pop edx
+  movss xmm7,[ecx+00000100]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop 3
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F3 0F 10 B9 00 01 00 00
+
+dealloc(player_addr_ptr)
+unregistersymbol(player_addr_ptr)
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GTAIV.exe+352A59
+
+GTAIV.exe+352A2E: CC                       - int 3 
+GTAIV.exe+352A2F: CC                       - int 3 
+GTAIV.exe+352A30: 55                       - push ebp
+GTAIV.exe+352A31: 8B EC                    - mov ebp,esp
+GTAIV.exe+352A33: 83 E4 F0                 - and esp,-10
+GTAIV.exe+352A36: 83 EC 70                 - sub esp,70
+GTAIV.exe+352A39: F3 0F 10 81 D4 00 00 00  - movss xmm0,[ecx+000000D4]
+GTAIV.exe+352A41: F3 0F 10 A1 D0 00 00 00  - movss xmm4,[ecx+000000D0]
+GTAIV.exe+352A49: F3 0F 10 A9 E0 00 00 00  - movss xmm5,[ecx+000000E0]
+GTAIV.exe+352A51: F3 0F 10 89 08 01 00 00  - movss xmm1,[ecx+00000108]
+// ---------- INJECTING HERE ----------
+GTAIV.exe+352A59: F3 0F 10 B9 00 01 00 00  - movss xmm7,[ecx+00000100]
+// ---------- DONE INJECTING  ----------
+GTAIV.exe+352A61: F3 0F 11 44 24 04        - movss [esp+04],xmm0
+GTAIV.exe+352A67: F3 0F 10 81 D8 00 00 00  - movss xmm0,[ecx+000000D8]
+GTAIV.exe+352A6F: F3 0F 11 44 24 08        - movss [esp+08],xmm0
+GTAIV.exe+352A75: F3 0F 10 81 E4 00 00 00  - movss xmm0,[ecx+000000E4]
+GTAIV.exe+352A7D: F3 0F 11 44 24 14        - movss [esp+14],xmm0
+GTAIV.exe+352A83: F3 0F 10 81 E8 00 00 00  - movss xmm0,[ecx+000000E8]
+GTAIV.exe+352A8B: F3 0F 11 44 24 18        - movss [esp+18],xmm0
+GTAIV.exe+352A91: F3 0F 10 81 F0 00 00 00  - movss xmm0,[ecx+000000F0]
+GTAIV.exe+352A99: F3 0F 11 44 24 20        - movss [esp+20],xmm0
+GTAIV.exe+352A9F: F3 0F 10 81 F4 00 00 00  - movss xmm0,[ecx+000000F4]
+}
 </AssemblerScript>
             </CheatEntry>
           </CheatEntries>
@@ -1007,5 +1111,6 @@ timer.destroy()
     </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
-  <Comments>x y z</Comments>
+  <Comments>x y z
+</Comments>
 </CheatTable>
