@@ -74,6 +74,27 @@
                   <VariableType>Float</VariableType>
                   <Address>[player_addr_ptr]+108</Address>
                 </CheatEntry>
+                <CheatEntry>
+                  <ID>133</ID>
+                  <Description>"player x speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>[player_addr_ptr]+100+38-8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>131</ID>
+                  <Description>"player z speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>[player_addr_ptr]+100+38</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>132</ID>
+                  <Description>"player y speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>[player_addr_ptr]+100+38-4</Address>
+                </CheatEntry>
               </CheatEntries>
             </CheatEntry>
           </CheatEntries>
@@ -134,6 +155,36 @@ timer.Enabled=true
 
 [DISABLE]
 timer.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>134</ID>
+              <Description>"Player run speeder"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+-- Please turn on this script: "Player coords capture"
+
+[ENABLE]
+
+local const=4000
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription("player x speed")
+y=t.getMemoryRecordByDescription("player y speed")
+
+hk1=createHotkey(function()
+local r=((x.Value^2)+(y.Value^2))^0.5
+local ratio=const/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end,0x26,0xA0) -- up and shift
+
+
+
+[DISABLE]
+hk1.destroy()
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
