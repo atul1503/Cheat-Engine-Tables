@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="42">
+<CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
       <ID>16</ID>
@@ -542,7 +542,7 @@ registersymbol(movement)
 {$lua}
 
 local pacemul=1.5
-local angle=1e-3
+local angle=3e-4
 local yzangle=2
 local MaxEdgeAngle=30
 local MinEdgeAngle=5
@@ -1625,13 +1625,6 @@ changeSides.destroy()
           </Hotkeys>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>202</ID>
-      <Description>"No description"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>03C52380</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
