@@ -386,6 +386,61 @@ timer.destroy()
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
+              <ID>142</ID>
+              <Description>"Player Speeder"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+-- speeds up the player by teleporting him forward
+
+-- Please turn on this script: "Player coords capture"
+
+[ENABLE]
+
+local speed=10
+local sleeptime=50
+
+local t=getAddressList()
+local x=t.getMemoryRecordByDescription("player x coord")
+local y=t.getMemoryRecordByDescription("player y coord")
+
+local coords={nil,nil}
+
+hk1=createHotkey(function()
+ sleep(sleeptime)
+if coords[0] == nil then
+   coords[0]={x=x.Value,y=y.Value}
+elseif coords[1] == nil then
+     sleep(sleeptime)
+     coords[1]={x=x.Value,y=y.Value}
+     local dcoord={x=nil,y=nil}
+     dcoord.x=coords[1].x-coords[0].x
+     dcoord.y=coords[1].y-coords[0].y
+     local normalized={x=nil,y=nil}
+     local r=((dcoord.x^2)+(dcoord.y^2))^0.5
+     normalized.x=dcoord.x/r
+     normalized.y=dcoord.y/r
+     if isKeyPressed(0xA0) then
+       x.Value=x.Value+(normalized.x)*speed
+       y.Value=y.Value+(normalized.y)*speed
+     end
+     coords[0]=nil
+     coords[1]=nil
+end
+end,0x26,0xA0) -- up and shift
+
+
+
+
+
+[DISABLE]
+hk1.destroy()
+
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
               <ID>137</ID>
               <Description>"Gear system"</Description>
               <VariableType>Auto Assembler Script</VariableType>
