@@ -30,22 +30,29 @@
           <CheatEntries>
             <CheatEntry>
               <ID>36</ID>
-              <Description>"speed x"</Description>
+              <Description>"car speed x"</Description>
               <Options moAllowManualCollapseAndExpand="1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
-              <Address>073F4820</Address>
+              <Address>07299180</Address>
               <CheatEntries>
                 <CheatEntry>
                   <ID>30</ID>
-                  <Description>"speed y"</Description>
+                  <Description>"car speed y"</Description>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+4</Address>
                 </CheatEntry>
                 <CheatEntry>
+                  <ID>138</ID>
+                  <Description>"car speed z"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>+8</Address>
+                </CheatEntry>
+                <CheatEntry>
                   <ID>34</ID>
-                  <Description>"steer"</Description>
+                  <Description>"car steer"</Description>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>+18</Address>
@@ -68,18 +75,18 @@
                   <Address>[player_addr_ptr]+104</Address>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>130</ID>
-                  <Description>"player z coord"</Description>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>Float</VariableType>
-                  <Address>[player_addr_ptr]+108</Address>
-                </CheatEntry>
-                <CheatEntry>
                   <ID>133</ID>
                   <Description>"player x speed"</Description>
                   <ShowAsSigned>0</ShowAsSigned>
                   <VariableType>Float</VariableType>
                   <Address>[player_addr_ptr]+100+38-8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>130</ID>
+                  <Description>"player z coord"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>[player_addr_ptr]+108</Address>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>131</ID>
@@ -106,6 +113,216 @@
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
+              <ID>135</ID>
+              <Description>"Unlimited health"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : GTAIV.exe
+  Version: 
+  Date   : 2024-06-11
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,GTAIV.exe,D9 81 9C 0E 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+mov [ecx+e9c],(float)200
+code:
+  fld dword ptr [ecx+00000E9C]
+  jmp return
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db D9 81 9C 0E 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GTAIV.exe+62AC20
+
+GTAIV.exe+62AC10: 0F 85 6A B9 EC FF  - jne GTAIV.exe+4F6580
+GTAIV.exe+62AC16: 33 C0              - xor eax,eax
+GTAIV.exe+62AC18: C3                 - ret 
+GTAIV.exe+62AC19: CC                 - int 3 
+GTAIV.exe+62AC1A: CC                 - int 3 
+GTAIV.exe+62AC1B: CC                 - int 3 
+GTAIV.exe+62AC1C: CC                 - int 3 
+GTAIV.exe+62AC1D: CC                 - int 3 
+GTAIV.exe+62AC1E: CC                 - int 3 
+GTAIV.exe+62AC1F: CC                 - int 3 
+// ---------- INJECTING HERE ----------
+GTAIV.exe+62AC20: D9 81 9C 0E 00 00  - fld dword ptr [ecx+00000E9C]
+// ---------- DONE INJECTING  ----------
+GTAIV.exe+62AC26: C3                 - ret 
+GTAIV.exe+62AC27: CC                 - int 3 
+GTAIV.exe+62AC28: CC                 - int 3 
+GTAIV.exe+62AC29: CC                 - int 3 
+GTAIV.exe+62AC2A: CC                 - int 3 
+GTAIV.exe+62AC2B: CC                 - int 3 
+GTAIV.exe+62AC2C: CC                 - int 3 
+GTAIV.exe+62AC2D: CC                 - int 3 
+GTAIV.exe+62AC2E: CC                 - int 3 
+GTAIV.exe+62AC2F: CC                 - int 3 
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>140</ID>
+              <Description>"No police"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : GTAIV.exe
+  Version: 
+  Date   : 2024-06-14
+  Author : atult
+
+  The wanted level will be 0.
+}
+
+[ENABLE]
+
+aobscanmodule(no_police,GTAIV.exe,8B 81 84 03 00 00 C3) // should be unique
+alloc(newmem,$500)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [ecx+384],(byte)0
+  mov eax,[ecx+00000384]
+  jmp return
+
+no_police:
+  jmp newmem
+  nop
+return:
+registersymbol(no_police)
+
+[DISABLE]
+
+no_police:
+  db 8B 81 84 03 00 00
+
+unregistersymbol(no_police)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GTAIV.exe+61D7C0
+
+GTAIV.exe+61D7B6: CC                 - int 3 
+GTAIV.exe+61D7B7: CC                 - int 3 
+GTAIV.exe+61D7B8: CC                 - int 3 
+GTAIV.exe+61D7B9: CC                 - int 3 
+GTAIV.exe+61D7BA: CC                 - int 3 
+GTAIV.exe+61D7BB: CC                 - int 3 
+GTAIV.exe+61D7BC: CC                 - int 3 
+GTAIV.exe+61D7BD: CC                 - int 3 
+GTAIV.exe+61D7BE: CC                 - int 3 
+GTAIV.exe+61D7BF: CC                 - int 3 
+// ---------- INJECTING HERE ----------
+GTAIV.exe+61D7C0: 8B 81 84 03 00 00  - mov eax,[ecx+00000384]
+// ---------- DONE INJECTING  ----------
+GTAIV.exe+61D7C6: C3                 - ret 
+GTAIV.exe+61D7C7: CC                 - int 3 
+GTAIV.exe+61D7C8: CC                 - int 3 
+GTAIV.exe+61D7C9: CC                 - int 3 
+GTAIV.exe+61D7CA: CC                 - int 3 
+GTAIV.exe+61D7CB: CC                 - int 3 
+GTAIV.exe+61D7CC: CC                 - int 3 
+GTAIV.exe+61D7CD: CC                 - int 3 
+GTAIV.exe+61D7CE: CC                 - int 3 
+GTAIV.exe+61D7CF: CC                 - int 3 
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>139</ID>
+              <Description>"Unlimited ammo"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : GTAIV.exe
+  Version: 
+  Date   : 2024-06-14
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(unlim_ammo,GTAIV.exe,0F B7 47 60 83 C4 04) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [edi+60],(word)1000
+  movzx eax,word ptr [edi+60]
+  add esp,04
+  jmp return
+
+unlim_ammo:
+  jmp newmem
+  nop 2
+return:
+registersymbol(unlim_ammo)
+
+[DISABLE]
+
+unlim_ammo:
+  db 0F B7 47 60 83 C4 04
+
+unregistersymbol(unlim_ammo)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GTAIV.exe+7663A0
+
+GTAIV.exe+766383: 83 7E 14 00     - cmp dword ptr [esi+14],00
+GTAIV.exe+766387: 74 2E           - je GTAIV.exe+7663B7
+GTAIV.exe+766389: 57              - push edi
+GTAIV.exe+76638A: E8 71 E3 FF FF  - call GTAIV.exe+764700
+GTAIV.exe+76638F: 8B F8           - mov edi,eax
+GTAIV.exe+766391: 85 FF           - test edi,edi
+GTAIV.exe+766393: 74 21           - je GTAIV.exe+7663B6
+GTAIV.exe+766395: FF 77 18        - push [edi+18]
+GTAIV.exe+766398: E8 B3 FA F8 FF  - call GTAIV.exe+6F5E50
+GTAIV.exe+76639D: 8B 48 04        - mov ecx,[eax+04]
+// ---------- INJECTING HERE ----------
+GTAIV.exe+7663A0: 0F B7 47 60     - movzx eax,word ptr [edi+60]
+// ---------- DONE INJECTING  ----------
+GTAIV.exe+7663A4: 83 C4 04        - add esp,04
+GTAIV.exe+7663A7: 83 C1 03        - add ecx,03
+GTAIV.exe+7663AA: 50              - push eax
+GTAIV.exe+7663AB: 8D 04 49        - lea eax,[ecx+ecx*2]
+GTAIV.exe+7663AE: 8D 0C 86        - lea ecx,[esi+eax*4]
+GTAIV.exe+7663B1: E8 EA F4 FF FF  - call GTAIV.exe+7658A0
+GTAIV.exe+7663B6: 5F              - pop edi
+GTAIV.exe+7663B7: 5E              - pop esi
+GTAIV.exe+7663B8: C3              - ret 
+GTAIV.exe+7663B9: CC              - int 3 
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
               <ID>35</ID>
               <Description>"Speeder with turn"</Description>
               <VariableType>Auto Assembler Script</VariableType>
@@ -116,15 +333,16 @@
 local turn=-0.1
 local mul=1+4e-3
 local ratio=-2
+local div=1.1
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
 
 
 list=getAddressList()
-xspeed=list.getMemoryRecordByDescription('speed x')
-yspeed=list.getMemoryRecordByDescription('speed y')
-steer=list.getMemoryRecordByDescription('steer')
+xspeed=list.getMemoryRecordByDescription('car speed x')
+yspeed=list.getMemoryRecordByDescription('car speed y')
+steer=list.getMemoryRecordByDescription('car steer')
 
 
 
@@ -143,7 +361,11 @@ local dmul=1
 if isKeyPressed(0x26) then dmul=mul end
 xspeed.Value=xcomp*r*dmul
 yspeed.Value=ycomp*r*dmul
+if isKeyPressed(0x28) then dmul=1/div end
+xspeed.Value=xcomp*r*dmul
+yspeed.Value=ycomp*r*dmul
 end
+
 
 timer=createTimer()
 timer.Interval=50
@@ -158,6 +380,135 @@ timer.destroy()
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
+              <ID>137</ID>
+              <Description>"Gear system"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+
+if synataxcheck then return end
+
+[ENABLE]
+
+local mul=1.1
+local jerk=2
+local gearMul=3
+local gearArr={0,8,16,30,64,128}
+local maxGearArrIndex=6
+local gearArrIndex=1
+local div=1.12
+local speedXString='car speed x'
+local speedYString='car speed y'
+local speedZString='car speed z'
+
+--Instructions
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
+--gearArr is the array of top speeds of each gear.
+--maxGearArrIndex is the length of the gearArr array.
+--gearArrIndex points to the index of the gear the car is in at a particular point in time. But initially this value should be 1 only.
+--jerk is the multiplier/divider for mul.Increasing mul results in higher power and decreasing mul results in lower power.
+--Gear is increased by W and decreased by S
+--When trying to use this script in a game just adjust speedStrings , gearArr values accordin to the game.
+--If you want to increase the size the number of gears then make gearArr array bigger and set the maxGearArrIndex to the size of the gearArr array.
+
+local TempUp=gearArr[gearArrIndex]
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+z=t.getMemoryRecordByDescription(speedZString)
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+  if tempUp&gt;=gearArr[gearArrIndex] then
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	if r&lt;=tempUp then
+      if r*mul&lt;=tempUp then
+        if speedUp then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+          z.Value=z.Value*mul
+        end
+      else
+        if speedUp then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+          z.Value=z.Value*ratio
+        end
+      end
+    else
+      if (r/gearMul)&gt;=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+        z.Value=z.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    end
+  end
+end
+
+
+normal=createHotkey(function()
+adjustSpeed(x,y,TempUp,true)
+end,0x26) --UP key
+
+
+up=createHotkey(function()
+if gearArrIndex &lt; maxGearArrIndex then
+   gearArrIndex=gearArrIndex+1
+   TempUp=gearArr[gearArrIndex]
+end
+adjustSpeed(x,y,TempUp,false)
+end,0x57) --W
+
+down=createHotkey(function()
+if gearArrIndex &gt; 1 then
+   gearArrIndex=gearArrIndex-1
+   TempUp=gearArr[gearArrIndex]
+end
+adjustSpeed(x,y,TempUp,false)
+end,0x53) --S
+
+reset=createHotkey(function()
+gearArrIndex=1
+TempUp=gearArr[gearArrIndex]
+adjustSpeed(x,y,TempUp,false)
+end,0x20) --SPACE
+
+
+mulInc=createHotkey(function()
+mul=mul*jerk
+end,0x45) --E
+
+mulDec=createHotkey(function()
+mul=mul/jerk
+end,0x44) --D
+
+
+brake=createHotkey(function()
+x.Value=x.Value/div
+y.Value=y.Value/div
+end,0x28) --Down
+
+
+
+[DISABLE]
+normal.destroy()
+up.destroy()
+down.destroy()
+reset.destroy()
+mulInc.destroy()
+mulDec.destroy()
+brake.destroy()
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
               <ID>134</ID>
               <Description>"Player run speeder"</Description>
               <VariableType>Auto Assembler Script</VariableType>
@@ -168,11 +519,12 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local const=4000
+local const=700
 
 t=getAddressList()
 x=t.getMemoryRecordByDescription("player x speed")
 y=t.getMemoryRecordByDescription("player y speed")
+z=t.getMemoryRecordByDescription("player z speed")
 
 hk1=createHotkey(function()
 local r=((x.Value^2)+(y.Value^2))^0.5
@@ -180,6 +532,8 @@ local ratio=const/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
 end,0x26,0xA0) -- up and shift
+
+
 
 
 
@@ -1158,6 +1512,32 @@ GTAIV.exe+352A9F: F3 0F 10 81 F4 00 00 00  - movss xmm0,[ecx+000000F4]
         <Byte>10</Byte>
         <Byte>B9</Byte>
         <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[ecx+00000384] (Wanted level)</Description>
+      <AddressString>GTAIV.exe+61D7C0</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>81</Byte>
+        <Byte>84</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
