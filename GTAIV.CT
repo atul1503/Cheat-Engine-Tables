@@ -121,7 +121,11 @@
   Date   : 2024-06-11
   Author : atult
 
-  This script does blah blah blah
+  Makes you invinsible from dying in most cases.
+
+  You are safe from damages like bullets, explosions, physical combat, fall damage of any intensity.
+
+  But you can still die if you are in a car and the car explodes.
 }
 
 [ENABLE]
@@ -133,7 +137,7 @@ label(code)
 label(return)
 
 newmem:
-mov [ecx+e9c],(float)200
+mov [ecx+e9c],(float)600
 code:
   fld dword ptr [ecx+00000E9C]
   jmp return
@@ -182,15 +186,15 @@ GTAIV.exe+62AC2F: CC                 - int 3
 </AssemblerScript>
             </CheatEntry>
             <CheatEntry>
-              <ID>140</ID>
-              <Description>"No police"</Description>
+              <ID>141</ID>
+              <Description>"No Police"</Description>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : GTAIV.exe
   Version: 
   Date   : 2024-06-14
   Author : atult
 
-  The wanted level will be 0.
+  The wanted level will be set to 0.
 }
 
 [ENABLE]
@@ -202,9 +206,11 @@ label(code)
 label(return)
 
 newmem:
+cmp ,[ecx+384],(byte)6
+jg code
+mov [ecx+384],(byte)0
 
 code:
-  mov [ecx+384],(byte)0
   mov eax,[ecx+00000384]
   jmp return
 
