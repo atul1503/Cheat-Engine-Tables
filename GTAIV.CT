@@ -34,7 +34,7 @@
               <Options moAllowManualCollapseAndExpand="1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
-              <Address>07299180</Address>
+              <Address>07681F90</Address>
               <CheatEntries>
                 <CheatEntry>
                   <ID>30</ID>
@@ -260,6 +260,7 @@ GTAIV.exe+61D7CF: CC                 - int 3
             <CheatEntry>
               <ID>139</ID>
               <Description>"Unlimited ammo"</Description>
+              <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>{ Game   : GTAIV.exe
   Version: 
@@ -394,26 +395,24 @@ if syntaxcheck then return end
 
 -- speeds up the player by teleporting him forward
 
--- Please turn on this script: "Player coords capture"
+-- Please turn on this script: "Player coords capture" to capture player coords addresses. For other games, any other mechanism will also work.
 
 [ENABLE]
 
 local speed=10
-local sleeptime=50
+local sleeptime=0
 
-local t=getAddressList()
-local x=t.getMemoryRecordByDescription("player x coord")
-local y=t.getMemoryRecordByDescription("player y coord")
+local xstr="[player_addr_ptr]+100"
+local ystr="[player_addr_ptr]+104"
 
 local coords={nil,nil}
 
 hk1=createHotkey(function()
- sleep(sleeptime)
 if coords[0] == nil then
-   coords[0]={x=x.Value,y=y.Value}
+   coords[0]={x=readFloat(xstr),y=readFloat(ystr)}
 elseif coords[1] == nil then
      sleep(sleeptime)
-     coords[1]={x=x.Value,y=y.Value}
+     coords[1]={x=readFloat(xstr),y=readFloat(ystr)}
      local dcoord={x=nil,y=nil}
      dcoord.x=coords[1].x-coords[0].x
      dcoord.y=coords[1].y-coords[0].y
@@ -422,8 +421,8 @@ elseif coords[1] == nil then
      normalized.x=dcoord.x/r
      normalized.y=dcoord.y/r
      if isKeyPressed(0xA0) then
-       x.Value=x.Value+(normalized.x)*speed
-       y.Value=y.Value+(normalized.y)*speed
+        writeFloat(xstr,readFloat(xstr)+(normalized.x)*speed)
+        writeFloat(ystr,readFloat(ystr)+(normalized.y)*speed)
      end
      coords[0]=nil
      coords[1]=nil
