@@ -7,7 +7,7 @@
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>0D43E1C0</Address>
+      <Address>[ball]+60</Address>
       <Hotkeys>
         <Hotkey>
           <Action>Set Value</Action>
@@ -101,69 +101,85 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>14</ID>
-      <Description>"Goal script"</Description>
+      <ID>16</ID>
+      <Description>"Ball coords capture"</Description>
+      <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
-if syntaxcheck then return end
+      <AssemblerScript>{ Game   : fifa.exe
+  Version: 
+  Date   : 2024-06-16
+  Author : atult
+
+  This script does blah blah blah
+}
 
 [ENABLE]
 
-local speed=1/32
-local targetx=180
-local targety=30
-local targetz=0
+aobscanmodule(ball_coord,fifa.exe,0F 28 50 60 8B 45 0C) // should be unique
+alloc(newmem,$400)
+alloc(ball,4)
+registersymbol(ball)
+label(code)
+label(return)
 
--- speed is the speed by which the ball will try to reach the goal
--- close_speed is the speed by which the ball will reach the goal
--- targetx,  targety and targetz are the coordinates of the goal which the ball will try to reach.
+newmem:
+mov [ball],eax
 
--- keep in mind that never use this hotkey when the goalkeeper or the first striker has hit the ball and the ball has not reached their other team member (in case of first strike) or grounded (in case of goalkeeper kick).
+code:
+  movaps xmm2,[eax+60]
+  mov eax,[ebp+0C]
+  jmp return
 
-x=getAddressList().getMemoryRecordByDescription("ball x speed")
-y=getAddressList().getMemoryRecordByDescription("ball y speed")
-z=getAddressList().getMemoryRecordByDescription("ball z speed")
-xcoord=getAddressList().getMemoryRecordByDescription("ball x coord")
-ycoord=getAddressList().getMemoryRecordByDescription("ball y coord")
-zcoord=getAddressList().getMemoryRecordByDescription("ball z coord")
-
-hk1=createHotkey(function()
-if tonumber(xcoord.Value)&gt;targetx then
-	x.Value=x.Value-speed
-end
-
-if tonumber(xcoord.Value)&lt;targetx then
-	x.Value=x.Value+speed
-end
-
-if tonumber(ycoord.Value)&gt;targety then
-	y.Value=y.Value-speed
-end
-
-if tonumber(ycoord.Value)&lt;targety then
-	y.Value=y.Value+speed
-end
-
-if tonumber(zcoord.Value)&gt;targetz then
-	z.Value=z.Value-speed
-end
-
-if tonumber(zcoord.Value)&lt;targetz then
-	z.Value=z.Value+speed
-end
-
-end,0x26)
-
+ball_coord:
+  jmp newmem
+  nop 2
+return:
+registersymbol(ball_coord)
 
 [DISABLE]
-hk1.destroy()
+
+ball_coord:
+  db 0F 28 50 60 8B 45 0C
+
+unregistersymbol(ball_coord)
+dealloc(newmem)
+unregistersymbol(ball)
+dealloc(ball)
+
+{
+// ORIGINAL CODE - INJECTION POINT: fifa.exe+6C4A65
+
+fifa.exe+6C4A3D: 0F 28 EB              - movaps xmm5,xmm3
+fifa.exe+6C4A40: 80 BE 50 04 00 00 00  - cmp byte ptr [esi+00000450],00
+fifa.exe+6C4A47: 0F C6 EB 01           - shufps xmm5,xmm3,01
+fifa.exe+6C4A4B: 0F 58 C5              - addps xmm0,xmm5
+fifa.exe+6C4A4E: 0F 58 C3              - addps xmm0,xmm3
+fifa.exe+6C4A51: 0F C6 C0 00           - shufps xmm0,xmm0,00
+fifa.exe+6C4A55: 0F 51 C0              - sqrtps xmm0,xmm0
+fifa.exe+6C4A58: 0F 5E C8              - divps xmm1,xmm0
+fifa.exe+6C4A5B: 0F 28 80 80 00 00 00  - movaps xmm0,[eax+00000080]
+fifa.exe+6C4A62: 0F 59 CA              - mulps xmm1,xmm2
+// ---------- INJECTING HERE ----------
+fifa.exe+6C4A65: 0F 28 50 60           - movaps xmm2,[eax+60]
+// ---------- DONE INJECTING  ----------
+fifa.exe+6C4A69: 8B 45 0C              - mov eax,[ebp+0C]
+fifa.exe+6C4A6C: 0F 28 18              - movaps xmm3,[eax]
+fifa.exe+6C4A6F: 0F 59 C3              - mulps xmm0,xmm3
+fifa.exe+6C4A72: 0F 58 C2              - addps xmm0,xmm2
+fifa.exe+6C4A75: 0F 29 54 24 10        - movaps [esp+10],xmm2
+fifa.exe+6C4A7A: 0F 29 44 24 60        - movaps [esp+60],xmm0
+fifa.exe+6C4A7F: 74 35                 - je fifa.exe+6C4AB6
+fifa.exe+6C4A81: 0F 5C C4              - subps xmm0,xmm4
+fifa.exe+6C4A84: 0F 59 C1              - mulps xmm0,xmm1
+fifa.exe+6C4A87: 0F 28 C8              - movaps xmm1,xmm0
+}
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>15</ID>
-      <Description>"Extreme goal script"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
+      <CheatEntries>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"Extreme goal script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
 if syntaxcheck then return end
 
 [ENABLE]
@@ -246,6 +262,67 @@ end,0x26)
 [DISABLE]
 hk1.destroy()
 </AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Goal script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local speed=1/32
+local targetx=180
+local targety=30
+local targetz=0
+
+-- speed is the speed by which the ball will try to reach the goal
+-- close_speed is the speed by which the ball will reach the goal
+-- targetx,  targety and targetz are the coordinates of the goal which the ball will try to reach.
+
+-- keep in mind that never use this hotkey when the goalkeeper or the first striker has hit the ball and the ball has not reached their other team member (in case of first strike) or grounded (in case of goalkeeper kick).
+
+x=getAddressList().getMemoryRecordByDescription("ball x speed")
+y=getAddressList().getMemoryRecordByDescription("ball y speed")
+z=getAddressList().getMemoryRecordByDescription("ball z speed")
+xcoord=getAddressList().getMemoryRecordByDescription("ball x coord")
+ycoord=getAddressList().getMemoryRecordByDescription("ball y coord")
+zcoord=getAddressList().getMemoryRecordByDescription("ball z coord")
+
+hk1=createHotkey(function()
+if tonumber(xcoord.Value)&gt;targetx then
+	x.Value=x.Value-speed
+end
+
+if tonumber(xcoord.Value)&lt;targetx then
+	x.Value=x.Value+speed
+end
+
+if tonumber(ycoord.Value)&gt;targety then
+	y.Value=y.Value-speed
+end
+
+if tonumber(ycoord.Value)&lt;targety then
+	y.Value=y.Value+speed
+end
+
+if tonumber(zcoord.Value)&gt;targetz then
+	z.Value=z.Value-speed
+end
+
+if tonumber(zcoord.Value)&lt;targetz then
+	z.Value=z.Value+speed
+end
+
+end,0x26)
+
+
+[DISABLE]
+hk1.destroy()
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
