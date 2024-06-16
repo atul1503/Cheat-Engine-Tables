@@ -7,7 +7,7 @@
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>0D4341C0</Address>
+      <Address>0D43E1C0</Address>
       <Hotkeys>
         <Hotkey>
           <Action>Set Value</Action>
@@ -99,6 +99,153 @@
           <Address>+20+4</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Goal script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local speed=1/32
+local targetx=180
+local targety=30
+local targetz=0
+
+-- speed is the speed by which the ball will try to reach the goal
+-- close_speed is the speed by which the ball will reach the goal
+-- targetx,  targety and targetz are the coordinates of the goal which the ball will try to reach.
+
+-- keep in mind that never use this hotkey when the goalkeeper or the first striker has hit the ball and the ball has not reached their other team member (in case of first strike) or grounded (in case of goalkeeper kick).
+
+x=getAddressList().getMemoryRecordByDescription("ball x speed")
+y=getAddressList().getMemoryRecordByDescription("ball y speed")
+z=getAddressList().getMemoryRecordByDescription("ball z speed")
+xcoord=getAddressList().getMemoryRecordByDescription("ball x coord")
+ycoord=getAddressList().getMemoryRecordByDescription("ball y coord")
+zcoord=getAddressList().getMemoryRecordByDescription("ball z coord")
+
+hk1=createHotkey(function()
+if tonumber(xcoord.Value)&gt;targetx then
+	x.Value=x.Value-speed
+end
+
+if tonumber(xcoord.Value)&lt;targetx then
+	x.Value=x.Value+speed
+end
+
+if tonumber(ycoord.Value)&gt;targety then
+	y.Value=y.Value-speed
+end
+
+if tonumber(ycoord.Value)&lt;targety then
+	y.Value=y.Value+speed
+end
+
+if tonumber(zcoord.Value)&gt;targetz then
+	z.Value=z.Value-speed
+end
+
+if tonumber(zcoord.Value)&lt;targetz then
+	z.Value=z.Value+speed
+end
+
+end,0x26)
+
+
+[DISABLE]
+hk1.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Extreme goal script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local speed=1/16
+local close_speed=0.8
+local targetx=-180
+local goalArea=150
+local targety=0
+local targetz=0
+
+
+-- speed is the speed by which the ball will try to reach the goal if it is far from goalArea.
+-- close_speed is the speed by which the ball will reach the goal if it is nearer to the goalArea.
+-- targetx,  targety and targetz are the coordinates of the goal which the ball will try to reach.
+-- goalArea is the x coordinate by reaching which the ball will move with close_speed towards the goal. This should be higher than speed.
+
+-- keep in mind that never use this hotkey when the goalkeeper or the first striker has hit the ball and the ball has not reached their other team member (in case of first strike) or grounded (in case of goalkeeper kick).
+
+
+
+
+
+x=getAddressList().getMemoryRecordByDescription("ball x speed")
+y=getAddressList().getMemoryRecordByDescription("ball y speed")
+z=getAddressList().getMemoryRecordByDescription("ball z speed")
+xcoord=getAddressList().getMemoryRecordByDescription("ball x coord")
+ycoord=getAddressList().getMemoryRecordByDescription("ball y coord")
+zcoord=getAddressList().getMemoryRecordByDescription("ball z coord")
+
+hk1=createHotkey(function()
+if math.abs(tonumber(xcoord.Value))&gt;=math.abs(goalArea) then
+   if tonumber(xcoord.Value)&lt;targetx then
+	 x.Value=x.Value+close_speed
+   else
+       x.Value=x.Value-close_speed
+   end
+else
+   if tonumber(xcoord.Value)&lt;targetx then
+	 x.Value=x.Value+speed
+   else
+       x.Value=x.Value-speed
+   end
+
+end
+
+if math.abs(tonumber(xcoord.Value))&gt;=math.abs(goalArea) then
+   if tonumber(ycoord.Value)&lt;targety then
+	 y.Value=y.Value+close_speed
+   else
+       y.Value=y.Value-close_speed
+   end
+else
+   if tonumber(ycoord.Value)&lt;targety then
+	 y.Value=y.Value+speed
+   else
+       y.Value=y.Value-speed
+   end
+
+end
+
+if math.abs(tonumber(xcoord.Value))&gt;=math.abs(goalArea) then
+   if tonumber(zcoord.Value)&lt;targetz then
+	 z.Value=z.Value+close_speed
+   else
+       z.Value=z.Value-close_speed
+   end
+else
+   if tonumber(zcoord.Value)&lt;targetz then
+	 z.Value=z.Value+speed
+   else
+       z.Value=z.Value-speed
+   end
+
+end
+
+end,0x26)
+
+
+[DISABLE]
+hk1.destroy()
+</AssemblerScript>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
