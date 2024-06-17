@@ -176,6 +176,90 @@ fifa.exe+6C4A87: 0F 28 C8              - movaps xmm1,xmm0
 </AssemblerScript>
       <CheatEntries>
         <CheatEntry>
+          <ID>17</ID>
+          <Description>"Multiple goal script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local delta=5
+
+local coords={
+{x=140,y=30,z=0,speed=5/128000},
+{x=180,y=0,z=0,speed=7/12800}
+}
+
+-- coords is the array of coords which will be the target to reach by the ball.
+-- the first coord of coords array(that is coords[1]) will be reached first then the second one will be reached.
+-- each coordinate has four values, x coord ,y coord, z coord and speed by which that coordinate will be reached.
+-- each coordinate can't be reached exactly so that is why delta is present. delta is like the amount of error that is allowed.
+-- you can have more coordinates also in this array but accordingly modify the hotkey function.
+
+-- keep in mind that never use this hotkey when the goalkeeper or the first striker has hit the ball and the ball has not reached their other team member (in case of first strike) or grounded (in case of goalkeeper kick).
+
+x=getAddressList().getMemoryRecordByDescription("ball x speed")
+y=getAddressList().getMemoryRecordByDescription("ball y speed")
+z=getAddressList().getMemoryRecordByDescription("ball z speed")
+xcoord=getAddressList().getMemoryRecordByDescription("ball x coord")
+ycoord=getAddressList().getMemoryRecordByDescription("ball y coord")
+zcoord=getAddressList().getMemoryRecordByDescription("ball z coord")
+
+function reach(targetx,targety,targetz,speed)
+local hasReached=false
+while hasReached==false do
+    if tonumber(xcoord.Value)&gt;targetx then
+	    x.Value=x.Value-speed
+    end
+
+    if tonumber(xcoord.Value)&lt;targetx then
+	    x.Value=x.Value+speed
+    end
+
+    if tonumber(ycoord.Value)&gt;targety then
+	    y.Value=y.Value-speed
+    end
+
+    if tonumber(ycoord.Value)&lt;targety then
+	    y.Value=y.Value+speed
+    end
+
+    if tonumber(zcoord.Value)&gt;targetz then
+	    z.Value=z.Value-speed
+    end
+
+    if tonumber(zcoord.Value)&lt;targetz then
+	    z.Value=z.Value+speed
+    end
+
+    if math.abs(tonumber(xcoord.Value)-targetx)&lt;delta then
+       if math.abs(tonumber(ycoord.Value)-targety)&lt;delta then
+          if math.abs(tonumber(zcoord.Value)-targetz)&lt;delta then
+             speak("reached there sir")
+             hasReached=true
+          end
+       end
+    end
+    if isKeyPressed(0x53) then --S
+       speak("broke out of the loop")
+       break
+    end
+end
+end
+
+
+hk1=createHotkey(function()
+reach(coords[1].x,coords[1].y,coords[1].z,coords[1].speed)
+reach(coords[2].x,coords[2].y,coords[2].z,coords[2].speed)
+end,0x57) --W
+
+
+[DISABLE]
+hk1.destroy()
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>15</ID>
           <Description>"Extreme goal script"</Description>
           <VariableType>Auto Assembler Script</VariableType>
