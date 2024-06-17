@@ -187,8 +187,9 @@ if syntaxcheck then return end
 local delta=5
 
 local coords={
-{x=140,y=30,z=0,speed=5/128000},
-{x=180,y=0,z=0,speed=7/12800}
+{x=-100,y=50,z=0,speed=4/128000},
+{x=-140,y=25,z=0,speed=4/128000},
+{x=-180,y=12.5,z=0,speed=7/12800}
 }
 
 -- coords is the array of coords which will be the target to reach by the ball.
@@ -252,6 +253,7 @@ end
 hk1=createHotkey(function()
 reach(coords[1].x,coords[1].y,coords[1].z,coords[1].speed)
 reach(coords[2].x,coords[2].y,coords[2].z,coords[2].speed)
+reach(coords[3].x,coords[3].y,coords[3].z,coords[3].speed)
 end,0x57) --W
 
 
