@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"y speed"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>17BB795DA98</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"x speed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>-8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"z speed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>-4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Gear system"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+if synataxcheck then return end
+
+[ENABLE]
+
+local mul=1.05
+local jerk=2
+local gearMul=3
+local gearArr={13,17,30,45,100}
+local maxGearArrIndex=5
+local gearArrIndex=1
+local div=1.12
+local speedXString='x speed'
+local speedYString='y speed'
+local speedZString='z speed'
+
+--Instructions
+--mul is the multiplier by which the car will accelerate if the speed of the car is lower than top speed.
+--gearMul is the multiplier by which the speed of the car will be brought down if it is higher than the top Speed.
+--gearArr is the array of top speeds of each gear.
+--maxGearArrIndex is the length of the gearArr array.
+--gearArrIndex points to the index of the gear the car is in at a particular point in time. But initially this value should be 1 only.
+--jerk is the multiplier/divider for mul.Increasing mul results in higher power and decreasing mul results in lower power.
+--Gear is increased by W and decreased by S
+--When trying to use this script in a game just adjust speedStrings , gearArr values accordin to the game.
+--If you want to increase the size the number of gears then make gearArr array bigger and set the maxGearArrIndex to the size of the gearArr array.
+
+local TempUp=gearArr[gearArrIndex]
+
+
+t=getAddressList()
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+z=t.getMemoryRecordByDescription(speedZString)
+
+
+function adjustSpeed(x,y,tempUp,speedUp)
+  if tempUp&gt;=gearArr[gearArrIndex] then
+	r=((x.Value^2)+(y.Value^2)+(z.Value^2))^0.5
+	if r&lt;=tempUp then
+      if r*mul&lt;=tempUp then
+        if speedUp then
+          x.Value=x.Value*mul
+          y.Value=y.Value*mul
+          z.Value=z.Value*mul
+        end
+      else
+        if speedUp then
+          local ratio=tempUp/r
+          x.Value=x.Value*ratio
+          y.Value=y.Value*ratio
+          z.Value=z.Value*ratio
+        end
+      end
+    else
+      if (r/gearMul)&gt;=tempUp then
+        x.Value=x.Value/gearMul
+        y.Value=y.Value/gearMul
+        z.Value=z.Value/gearMul
+      else
+        local ratio=tempUp/r
+        x.Value=x.Value*ratio
+        y.Value=y.Value*ratio
+        z.Value=z.Value*ratio
+      end
+    end
+  end
+end
+
+
+normal=createHotkey(function()
+adjustSpeed(x,y,TempUp,true)
+end,0x26) --UP key
+
+
+up=createHotkey(function()
+if gearArrIndex &lt; maxGearArrIndex then
+   gearArrIndex=gearArrIndex+1
+   TempUp=gearArr[gearArrIndex]
+end
+adjustSpeed(x,y,TempUp,false)
+end,0x57) --W
+
+down=createHotkey(function()
+if gearArrIndex &gt; 1 then
+   gearArrIndex=gearArrIndex-1
+   TempUp=gearArr[gearArrIndex]
+end
+adjustSpeed(x,y,TempUp,false)
+end,0x53) --S
+
+reset=createHotkey(function()
+gearArrIndex=1
+TempUp=gearArr[gearArrIndex]
+adjustSpeed(x,y,TempUp,false)
+end,0x20) --SPACE
+
+
+mulInc=createHotkey(function()
+mul=mul*jerk
+end,0x45) --E
+
+mulDec=createHotkey(function()
+mul=mul/jerk
+end,0x44) --D
+
+
+brake=createHotkey(function()
+x.Value=x.Value/div
+y.Value=y.Value/div
+end,0x28) --Down
+
+
+
+[DISABLE]
+normal.destroy()
+up.destroy()
+down.destroy()
+reset.destroy()
+mulInc.destroy()
+mulDec.destroy()
+brake.destroy()
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :addsd xmm0,[rcx+20] (gear something)</Description>
+      <AddressString>acs.exe+2CCE4D</AddressString>
+      <Before>
+        <Byte>28</Byte>
+        <Byte>C1</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>D9</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>41</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>41</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm2,[rbx+00000528] (maybe wheel speed)</Description>
+      <AddressString>acs.exe+2EA83A</AddressString>
+      <Before>
+        <Byte>A3</Byte>
+        <Byte>74</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>93</Byte>
+        <Byte>28</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>D0</Byte>
+        <Byte>76</Byte>
+        <Byte>05</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+00000118] (y speed) (first one)</Description>
+      <AddressString>acs.exe+31A7E</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>82</Byte>
+        <Byte>18</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C5</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
