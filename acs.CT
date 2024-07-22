@@ -7,7 +7,7 @@
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>17BB795DA98</Address>
+      <Address>[speedrdx]+118</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>4</ID>
@@ -22,6 +22,13 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>-4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"steer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>+C</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -38,8 +45,8 @@ if synataxcheck then return end
 local mul=1.05
 local jerk=2
 local gearMul=3
-local gearArr={13,17,30,45,100}
-local maxGearArrIndex=5
+local gearArr={13,17,30,45,65,100}
+local maxGearArrIndex=6
 local gearArrIndex=1
 local div=1.12
 local speedXString='x speed'
@@ -102,7 +109,7 @@ end
 
 normal=createHotkey(function()
 adjustSpeed(x,y,TempUp,true)
-end,0x26) --UP key
+end,0x5807) --UP key
 
 
 up=createHotkey(function()
@@ -111,7 +118,7 @@ if gearArrIndex &lt; maxGearArrIndex then
    TempUp=gearArr[gearArrIndex]
 end
 adjustSpeed(x,y,TempUp,false)
-end,0x57) --W
+end,0x5830) --W
 
 down=createHotkey(function()
 if gearArrIndex &gt; 1 then
@@ -119,7 +126,7 @@ if gearArrIndex &gt; 1 then
    TempUp=gearArr[gearArrIndex]
 end
 adjustSpeed(x,y,TempUp,false)
-end,0x53) --S
+end,0x5831) --S
 
 reset=createHotkey(function()
 gearArrIndex=1
@@ -128,19 +135,11 @@ adjustSpeed(x,y,TempUp,false)
 end,0x20) --SPACE
 
 
-mulInc=createHotkey(function()
-mul=mul*jerk
-end,0x45) --E
-
-mulDec=createHotkey(function()
-mul=mul/jerk
-end,0x44) --D
-
 
 brake=createHotkey(function()
 x.Value=x.Value/div
 y.Value=y.Value/div
-end,0x28) --Down
+end,0x5806) --Down
 
 
 
@@ -149,9 +148,145 @@ normal.destroy()
 up.destroy()
 down.destroy()
 reset.destroy()
-mulInc.destroy()
-mulDec.destroy()
 brake.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Front speeder"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local turn=-(1/320)
+local mul=1+4e-3
+local ratio=1/16
+
+-- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
+
+
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('x speed')
+yspeed=list.getMemoryRecordByDescription('y speed')
+steer=list.getMemoryRecordByDescription('steer')
+
+
+
+
+function rotate()
+if xspeed==nil or xspeed.Value=="??" then return end
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+theta=math.rad(-ratio*steer.Value)
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+local dmul=1
+if isKeyPressed(0x26) then dmul=mul end
+xspeed.Value=xcomp*r*dmul
+yspeed.Value=ycomp*r*dmul
+if isKeyPressed(0x28) then dmul=mul end
+xspeed.Value=xcomp*r/dmul
+yspeed.Value=ycomp*r/dmul
+end
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
+
+
+
+
+[DISABLE]
+timer.destroy()
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Speed capture script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : acs.exe
+  Version: 
+  Date   : 2024-07-22
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(speedy,acs.exe,8B 82 18 01 00 00 F3) // should be unique
+alloc(newmem,$1000,speedy)
+alloc(speedrdx,8)
+alloc(flag,4)
+registersymbol(flag)
+registersymbol(speedrdx)
+label(code)
+label(return)
+
+newmem:
+cmp [flag],0
+jne code
+mov [speedrdx],rdx
+mov [flag],1
+
+code:
+  mov eax,[rdx+00000118]
+  jmp return
+
+speedy:
+  jmp newmem
+  nop
+return:
+registersymbol(speedy)
+
+flag:
+db
+
+[DISABLE]
+
+speedy:
+  db 8B 82 18 01 00 00
+
+unregistersymbol(speedrdx)
+unregistersymbol(speedy)
+dealloc(newmem)
+unregistersymbol(flag)
+dealloc(speedrdx)
+dealloc(flag)
+
+{
+// ORIGINAL CODE - INJECTION POINT: acs.exe+31A7E
+
+acs.exe+31A46: F3 0F 59 81 E0 00 00 00  - mulss xmm0,[rcx+000000E0]
+acs.exe+31A4E: F3 0F 59 99 F8 00 00 00  - mulss xmm3,[rcx+000000F8]
+acs.exe+31A56: F3 0F 59 89 E8 00 00 00  - mulss xmm1,[rcx+000000E8]
+acs.exe+31A5E: F3 0F 58 F0              - addss xmm6,xmm0
+acs.exe+31A62: F3 0F 58 F1              - addss xmm6,xmm1
+acs.exe+31A66: F3 0F 59 A9 F0 00 00 00  - mulss xmm5,[rcx+000000F0]
+acs.exe+31A6E: 48 8B 4C 24 60           - mov rcx,[rsp+60]
+acs.exe+31A73: 89 01                    - mov [rcx],eax
+acs.exe+31A75: 8B 82 14 01 00 00        - mov eax,[rdx+00000114]
+acs.exe+31A7B: 89 41 04                 - mov [rcx+04],eax
+// ---------- INJECTING HERE ----------
+acs.exe+31A7E: 8B 82 18 01 00 00        - mov eax,[rdx+00000118]
+// ---------- DONE INJECTING  ----------
+acs.exe+31A84: F3 44 0F 58 C5           - addss xmm8,xmm5
+acs.exe+31A89: F3 44 0F 58 C3           - addss xmm8,xmm3
+acs.exe+31A8E: 89 41 08                 - mov [rcx+08],eax
+acs.exe+31A91: F3 0F 10 8A 24 01 00 00  - movss xmm1,[rdx+00000124]
+acs.exe+31A99: F3 0F 10 A2 28 01 00 00  - movss xmm4,[rdx+00000128]
+acs.exe+31AA1: F3 0F 10 92 20 01 00 00  - movss xmm2,[rdx+00000120]
+acs.exe+31AA9: 0F 28 C4                 - movaps xmm0,xmm4
+acs.exe+31AAC: F3 0F 59 E7              - mulss xmm4,xmm7
+acs.exe+31AB0: 0F 28 D9                 - movaps xmm3,xmm1
+acs.exe+31AB3: F3 0F 59 C6              - mulss xmm0,xmm6
+}
 </AssemblerScript>
     </CheatEntry>
   </CheatEntries>
@@ -210,7 +345,7 @@ brake.destroy()
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mov eax,[rdx+00000118] (y speed) (first one)</Description>
+      <Description>Code :mov eax,[rdx+00000118] (y speed)</Description>
       <AddressString>acs.exe+31A7E</AddressString>
       <Before>
         <Byte>00</Byte>
