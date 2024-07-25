@@ -2,17 +2,17 @@
 
 [ENABLE]
 
-local turn=0.1
-local mul=1+4e-3
-local ratio=-0.5
+local turn=0
+local mul=1+8e-3
+local ratio=3.5
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
-
+-- But most of the time, adjust the ratio and keep the turn to 0 and if its turning very less or too much then slightly slow and then turn. Trust me slowing down will still keep you ahead of everyone.
 
 
 list=getAddressList()
-xspeed=list.getMemoryRecordByDescription('speed x')
-yspeed=list.getMemoryRecordByDescription('speed y')
+xspeed=list.getMemoryRecordByDescription('x speed')
+yspeed=list.getMemoryRecordByDescription('y speed')
 steer=list.getMemoryRecordByDescription('steer')
 
 
@@ -28,10 +28,16 @@ x=xspeed.Value/r
 y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
-local dmul=1
-if isKeyPressed(0x26) then dmul=mul end
-xspeed.Value=xcomp*r*dmul
-yspeed.Value=ycomp*r*dmul
+xspeed.Value=xcomp*r
+yspeed.Value=ycomp*r
+if isKeyPressed(0x26) then
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
+end
+if isKeyPressed(0x28) then
+xspeed.Value=xcomp*r/(mul*1.01)
+yspeed.Value=ycomp*r/(mul*1.01)
+end
 end
 
 timer=createTimer()

@@ -159,9 +159,9 @@ brake.destroy()
 
 [ENABLE]
 
-local turn=-(1/320)
-local mul=1+4e-3
-local ratio=1/16
+local turn=0 --1/7
+local mul=1+8e-3
+local ratio=2
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
@@ -185,13 +185,16 @@ x=xspeed.Value/r
 y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
-local dmul=1
-if isKeyPressed(0x26) then dmul=mul end
-xspeed.Value=xcomp*r*dmul
-yspeed.Value=ycomp*r*dmul
-if isKeyPressed(0x28) then dmul=mul end
-xspeed.Value=xcomp*r/dmul
-yspeed.Value=ycomp*r/dmul
+xspeed.Value=xcomp*r
+yspeed.Value=ycomp*r
+if isKeyPressed(0x26) then
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
+end
+if isKeyPressed(0x28) then
+xspeed.Value=xcomp*r/(mul*1.01)
+yspeed.Value=ycomp*r/(mul*1.01)
+end
 end
 
 timer=createTimer()
@@ -368,6 +371,34 @@ acs.exe+31AB3: F3 0F 59 C6              - mulss xmm0,xmm6
         <Byte>0F</Byte>
         <Byte>58</Byte>
         <Byte>C5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :comiss xmm8,[rbx+00000284] (Points)</Description>
+      <AddressString>acs.exe+224CB8</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>E0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>83</Byte>
+        <Byte>84</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>76</Byte>
+        <Byte>0A</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
