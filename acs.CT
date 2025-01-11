@@ -152,66 +152,9 @@ brake.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>7</ID>
-      <Description>"Front speeder"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
-
-[ENABLE]
-
-local turn=0 --1/7
-local mul=1+8e-3
-local ratio=2
-
--- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
-
-
-
-list=getAddressList()
-xspeed=list.getMemoryRecordByDescription('x speed')
-yspeed=list.getMemoryRecordByDescription('y speed')
-steer=list.getMemoryRecordByDescription('steer')
-
-
-
-
-function rotate()
-if xspeed==nil or xspeed.Value=="??" then return end
-if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
-theta=math.rad(-ratio*steer.Value)
-r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
-if r==0 then return end
-x=xspeed.Value/r
-y=yspeed.Value/r
-xcomp=x*math.cos(theta)-y*math.sin(theta)
-ycomp=x*math.sin(theta)+y*math.cos(theta)
-xspeed.Value=xcomp*r
-yspeed.Value=ycomp*r
-if isKeyPressed(0x26) then
-xspeed.Value=xcomp*r*mul
-yspeed.Value=ycomp*r*mul
-end
-if isKeyPressed(0x28) then
-xspeed.Value=xcomp*r/(mul*1.01)
-yspeed.Value=ycomp*r/(mul*1.01)
-end
-end
-
-timer=createTimer()
-timer.Interval=50
-timer.OnTimer=rotate
-timer.Enabled=true
-
-
-
-
-[DISABLE]
-timer.destroy()
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
       <ID>8</ID>
       <Description>"Speed capture script"</Description>
+      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : acs.exe
   Version: 
@@ -291,6 +234,66 @@ acs.exe+31AB0: 0F 28 D9                 - movaps xmm3,xmm1
 acs.exe+31AB3: F3 0F 59 C6              - mulss xmm0,xmm6
 }
 </AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Front speeder"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+local turn=0 --1/7
+local mul=1+8e-3
+local ratio=3.8
+
+-- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
+
+
+
+list=getAddressList()
+xspeed=list.getMemoryRecordByDescription('x speed')
+yspeed=list.getMemoryRecordByDescription('y speed')
+steer=list.getMemoryRecordByDescription('steer')
+
+
+
+
+function rotate()
+if xspeed==nil or xspeed.Value=="??" then return end
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+theta=math.rad(-ratio*steer.Value)
+r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
+if r==0 then return end
+x=xspeed.Value/r
+y=yspeed.Value/r
+xcomp=x*math.cos(theta)-y*math.sin(theta)
+ycomp=x*math.sin(theta)+y*math.cos(theta)
+xspeed.Value=xcomp*r
+yspeed.Value=ycomp*r
+if isKeyPressed(0x26) then
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
+end
+if isKeyPressed(0x28) then
+xspeed.Value=xcomp*r/(mul*1.03)
+yspeed.Value=ycomp*r/(mul*1.03)
+end
+end
+
+timer=createTimer()
+timer.Interval=50
+timer.OnTimer=rotate
+timer.Enabled=true
+
+
+
+
+[DISABLE]
+timer.destroy()
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>

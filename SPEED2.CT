@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="42">
+<CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
       <ID>13</ID>
@@ -28,7 +28,7 @@
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>09F91290</Address>
+      <Address>0E3D1390</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>1</ID>
@@ -82,11 +82,10 @@
 
 [ENABLE]
 
-local turn=0.2
-local mul=1+4e-3
+local turn=0.05
+local mul=1+1e-2
 local ratio=-0.5
 --ratio is good at -0.5 for grip
-local speedlimit=120
 local minSpeed=0
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
@@ -117,11 +116,10 @@ x=xspeed.Value/r
 y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
-local dmul=1
-if isKeyPressed(0x26) and r&lt;speedlimit then dmul=mul else if r&gt;speedlimit then dmul=(speedlimit/r) end
-if r&lt;minSpeed then dmul=(minSpeed/r) end
-xspeed.Value=xcomp*r*dmul
-yspeed.Value=ycomp*r*dmul
+
+if isKeyPressed(0x26) then
+xspeed.Value=xcomp*r*mul
+yspeed.Value=ycomp*r*mul
 end
 end
 

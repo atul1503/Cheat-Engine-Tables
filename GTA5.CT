@@ -19,6 +19,12 @@
           <VariableType>Float</VariableType>
           <Address>GTA5.exe+24A5AF4</Address>
         </CheatEntry>
+        <CheatEntry>
+          <ID>87</ID>
+          <Description>"Z speed while going down. Exact till before decimal."</Description>
+          <VariableType>Float</VariableType>
+          <Address>GTA5.exe+24BB430</Address>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -55,8 +61,8 @@ label(return)
 newmem:
 
 code:
-  mov [rdi],(float)400
-  mov [rdi+384],(float)1.5
+  mov [rdi],(float)500
+  mov [rdi+384],(float)1.01
   movss xmm2,[rdi]
   mov edx,05CF478F
   jmp return
@@ -778,12 +784,39 @@ dealloc(minH)
 [ENABLE]
 
 local mov_speed=20
-
+local jumpSpeed=20
 
 x=getAddressList().getMemoryRecordByDescription("player x speed")
 y=getAddressList().getMemoryRecordByDescription("player y speed")
 z=getAddressList().getMemoryRecordByDescription("player z speed")
 
+
+local upSpeed=jumpSpeed
+
+function getUpSpeed(val,direction)
+if direction == "up" then
+   if val&gt;0 then
+      val=val*2
+   else
+       if val&gt;-1 and val&lt;0 then
+          val=1
+       else
+           val=val/2
+       end
+   end
+else
+    if val&lt;0 then
+       val=val*2
+    else
+        if val&lt;1 then
+           val=-1
+        else
+           val=val/2
+        end
+    end
+end
+return val
+end
 
 
 hk=createHotkey(function()
@@ -795,15 +828,29 @@ y.Value=y.Value*ratio
 end,0x26,0x10) -- up and shift at the same time
 
 
+jump=createHotkey(function() -- jump only works with hoptoit cheatcode
+while not isKeyPressed(0x53) do
+  r=(((x.Value)^2)+((y.Value)^2))^0.5
+  if r==0 then return end
+  ratio=mov_speed/r
+  x.Value=x.Value*ratio
+  y.Value=y.Value*ratio
+  z.Value=upSpeed
 
-jump=createHotkey(function()
-r=(((x.Value)^2)+((y.Value)^2))^0.5
-if r==0 then return end
-ratio=mov_speed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-z.Value=10
-end,0x26,0x20) -- up and shift at the same time
+  if isKeyPressed(0x55) then -- U
+     upSpeed=getUpSpeed(upSpeed,"up")
+     keyUp(0x55)
+  end
+  if isKeyPressed(0x44) then -- D
+     upSpeed=getUpSpeed(upSpeed,"down")
+     keyUp(0x44)
+  end
+
+end
+upSpeed=jumpSpeed
+x.Value=0
+y.Value=0
+end,0x26,0x20) -- up and space at the same time
 
 
 
@@ -1002,7 +1049,7 @@ dealloc(newmem)
 
 [ENABLE]
 
-local mul=1.04
+local mul=1.02
 local div=1.1
 
 t=getAddressList()
@@ -1062,7 +1109,7 @@ hk1.destroy()
 [ENABLE]
 
 local turn=-4e-3
-local mul=1+1e-2
+local mul=1
 local ratio=-2
 local breakStrength=1.1
 
@@ -2313,7 +2360,7 @@ brake.destroy()
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :movss xmm0,[r13+000008AC] (something like torque 2)</Description>
+      <Description>Code :movss xmm0,[r13+000008AC] (Horsepower)</Description>
       <AddressString>GTA5.exe+3713C8</AddressString>
       <Before>
         <Byte>00</Byte>
@@ -2632,6 +2679,108 @@ brake.destroy()
         <Byte>00</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps [rdx+rax+10],xmm4 (z speed while going down writer)</Description>
+      <AddressString>GTA5.exe+146EA77</AddressString>
+      <Before>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>64</Byte>
+        <Byte>02</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>24</Byte>
+        <Byte>02</Byte>
+        <Byte>49</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm4,[rdx+rcx+10] (has player rax at r9 and can access fall vector memory)</Description>
+      <AddressString>GTA5.exe+145FCB6</AddressString>
+      <Before>
+        <Byte>30</Byte>
+        <Byte>C9</Byte>
+        <Byte>0F</Byte>
+        <Byte>56</Byte>
+        <Byte>C4</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>64</Byte>
+        <Byte>0A</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :subps xmm7,[r9+20] z speed while falling down. One address</Description>
+      <AddressString>GTA5.exe+146C4EB</AddressString>
+      <Before>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>51</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>79</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>7F</Byte>
+        <Byte>14</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of cmp dword ptr [GTA5.exe+1EA7604],02</Description>
+      <AddressString>GTA5.exe+449D40</AddressString>
+      <Before>
+        <Byte>90</Byte>
+        <Byte>68</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>83</Byte>
+        <Byte>3D</Byte>
+        <Byte>BD</Byte>
+        <Byte>D8</Byte>
+        <Byte>A5</Byte>
+        <Byte>01</Byte>
+        <Byte>02</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>40</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
   <Comments>movement speed=health+384
@@ -2639,5 +2788,6 @@ brake.destroy()
 airport location : x=-1500,y=-2500,z=14
 home location: x=-25,y=-1447,z=31
 the map folllows xy coordinate system. x coord is the horizontal coord and y the vertical.
+drag for deveste to reach 150mph: 0.0001226511376
 </Comments>
 </CheatTable>
