@@ -20,6 +20,71 @@
               <VariableType>Float</VariableType>
               <Address>GTAIV.exe+D736B0</Address>
             </CheatEntry>
+            <CheatEntry>
+              <ID>154</ID>
+              <Description>"carx ptr 1"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"GTAIV.exe"+01200184</Address>
+              <Offsets>
+                <Offset>260</Offset>
+                <Offset>4</Offset>
+                <Offset>154</Offset>
+                <Offset>4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>150</ID>
+              <Description>"carx ptr 2"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"GTAIV.exe"+00EB629C</Address>
+              <Offsets>
+                <Offset>260</Offset>
+                <Offset>4</Offset>
+                <Offset>154</Offset>
+                <Offset>4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"carx ptr 3"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"GTAIV.exe"+00E845FC</Address>
+              <Offsets>
+                <Offset>260</Offset>
+                <Offset>4</Offset>
+                <Offset>154</Offset>
+                <Offset>4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>148</ID>
+              <Description>"carx ptr 4"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"GTAIV.exe"+00E845F8</Address>
+              <Offsets>
+                <Offset>260</Offset>
+                <Offset>4</Offset>
+                <Offset>154</Offset>
+                <Offset>4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>147</ID>
+              <Description>"carx ptr 4"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"GTAIV.exe"+00DF6598</Address>
+              <Offsets>
+                <Offset>260</Offset>
+                <Offset>4</Offset>
+                <Offset>154</Offset>
+                <Offset>4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
@@ -34,7 +99,14 @@
               <Options moAllowManualCollapseAndExpand="1"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
-              <Address>07681F90</Address>
+              <Address>"GTAIV.exe"+01200184</Address>
+              <Offsets>
+                <Offset>260</Offset>
+                <Offset>4</Offset>
+                <Offset>154</Offset>
+                <Offset>4</Offset>
+                <Offset>38</Offset>
+              </Offsets>
               <CheatEntries>
                 <CheatEntry>
                   <ID>30</ID>
@@ -399,7 +471,7 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local speed=10
+local speed=20
 local sleeptime=0
 
 local xstr="[player_addr_ptr]+100"
@@ -579,19 +651,18 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local const=700
+local const=1000
 
 t=getAddressList()
 x=t.getMemoryRecordByDescription("player x speed")
 y=t.getMemoryRecordByDescription("player y speed")
-z=t.getMemoryRecordByDescription("player z speed")
 
 hk1=createHotkey(function()
 local r=((x.Value^2)+(y.Value^2))^0.5
-local ratio=const/r
+local ratio=(const)/r
 x.Value=x.Value*ratio
 y.Value=y.Value*ratio
-end,0x26,0xA0) -- up and shift
+end,0x26,0xA0) -- up and lshift
 
 
 
@@ -1598,6 +1669,32 @@ GTAIV.exe+352A9F: F3 0F 10 81 F4 00 00 00  - movss xmm0,[ecx+000000F4]
         <Byte>CC</Byte>
         <Byte>CC</Byte>
         <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>something bike related:mov ecx,[edx+00000110]</Description>
+      <AddressString>GTAIV.exe+724A8F</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+        <Byte>74</Byte>
+        <Byte>1D</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>8A</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+        <Byte>8A</Byte>
+        <Byte>14</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

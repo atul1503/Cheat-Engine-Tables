@@ -125,7 +125,7 @@
 [ENABLE]
 
 local turn=0.05
-local mul=1+1e-2
+local mul=1+5e-3
 local ratio=-0.5
 --ratio is good at -0.5 for grip
 local minSpeed=0
@@ -159,7 +159,13 @@ y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
 
+if isKeyPressed(0x25) then
+   steer.Value=steer.Value+turn
+end
 
+if isKeyPressed(0x27) then
+   steer.Value=steer.Value-turn
+end
 
 xspeed.Value=xcomp*r
 yspeed.Value=ycomp*r

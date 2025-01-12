@@ -250,6 +250,26 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>204</ID>
+      <Description>"Pointers"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>201</ID>
+          <Description>"rotation ptr 1"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DC</Offset>
+            <Offset>4</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
       <ID>174</ID>
       <Description>"Scripts"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
@@ -557,6 +577,7 @@ local spinangle=2
 local seamHeight=0.1
 local ascendMul=1.2
 local downThrust=-8
+local ballAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+10+2D0-2D8"
 local yAddr="[ball]+2e0"
 local xAddr="[ball]+2d8"
 local zAddr="[ball]+2dc"
@@ -1117,7 +1138,13 @@ changeSides.destroy()
           <Options moHideChildren="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>0</Address>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DC</Offset>
+            <Offset>4</Offset>
+            <Offset>34</Offset>
+          </Offsets>
           <Hotkeys>
             <Hotkey>
               <Action>Set Value</Action>
