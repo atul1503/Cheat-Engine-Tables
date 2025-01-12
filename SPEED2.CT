@@ -3,7 +3,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>13</ID>
-      <Description>"References"</Description>
+      <Description>"Addresses"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
@@ -14,71 +14,113 @@
           <VariableType>Float</VariableType>
           <Address>SPEED2.EXE+42BEDC</Address>
         </CheatEntry>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"speed x"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"SPEED2.EXE"+0049CDA8</Address>
+          <Offsets>
+            <Offset>6C</Offset>
+            <Offset>14</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1</ID>
+              <Description>"speed y"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>15</ID>
+              <Description>"speed z"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"steer"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"Wheel Rotation"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"Traction"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+20</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>14</ID>
+              <Description>"x dummy location"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+90</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"xspeed ptr 1"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"SPEED2.EXE"+0049CDA8</Address>
+          <Offsets>
+            <Offset>6C</Offset>
+            <Offset>14</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"xspeed ptr 2"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"SPEED2.EXE"+0046B2F8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>D4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"xspeed ptr 3"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"SPEED2.EXE"+0046B2EC</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>A0</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Money"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>SPEED2.EXE+461E74</Address>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>17</ID>
-      <Description>"Money"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>SPEED2.EXE+461E74</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>0</ID>
-      <Description>"speed x"</Description>
+      <ID>24</ID>
+      <Description>"Scripts"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>0E3D1390</Address>
+      <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>1</ID>
-          <Description>"speed y"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>+4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>15</ID>
-          <Description>"speed z"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>+8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>18</ID>
-          <Description>"steer"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>+18</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5</ID>
-          <Description>"Wheel Rotation"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>0</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>16</ID>
-          <Description>"Traction"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>+20</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>14</ID>
-          <Description>"x dummy location"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>+90</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>2</ID>
-      <Description>"Speeder Script"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
+          <ID>2</ID>
+          <Description>"Speeder Script"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -117,10 +159,17 @@ y=yspeed.Value/r
 xcomp=x*math.cos(theta)-y*math.sin(theta)
 ycomp=x*math.sin(theta)+y*math.cos(theta)
 
+
+
+xspeed.Value=xcomp*r
+yspeed.Value=ycomp*r
+
 if isKeyPressed(0x26) then
-xspeed.Value=xcomp*r*mul
-yspeed.Value=ycomp*r*mul
+xspeed.Value=xspeed.Value*mul
+yspeed.Value=yspeed.Value*mul
 end
+
+
 end
 
 timer=createTimer()
@@ -136,6 +185,8 @@ left.destroy()
 right.destroy()
 timer.destroy()
 </AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
