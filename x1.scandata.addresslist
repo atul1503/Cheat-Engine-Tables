@@ -1,7 +1,7 @@
 ()=Addresses
-7FF62899B438=z velocity reference for player. exact till 1 decimal place.
-7FF628985AF4=vehicle speed in mph
-7FF62899B430=Z speed while going down. Exact till before decimal.
+7FF7FB14B438=z velocity reference for player. exact till 1 decimal place.
+7FF7FB135AF4=vehicle speed in mph
+7FF7FB14B430=Z speed while going down. Exact till before decimal.
 ()=Scripts
 ()=Infinite health and fast movement speed
 ()=No wanted level
@@ -15,13 +15,13 @@
 ()=Player Speed Pointer Exposer 
 ()=Player Speeder
 ()=Player speeder using teleportation
-2E35FD0ADD0=Player Health
-2E366505AD0=player x speed
-2E366505AD4=player y speed
-2E366505AD8=player z speed
-2E366505AC0=player x coord
-2E366505AC4=player y coord
-2E366505AC8=player z coord
+1F16343ADD0=Player Health
+1F169C354D0=player x speed
+1F169C354D4=player y speed
+1F169C354D8=player z speed
+1F169C354C0=player x coord
+1F169C354C4=player y coord
+1F169C354C8=player z coord
 ()=Car pointer Activator
 ()=Speed mode
 ()=Test mode
@@ -35,3 +35,4 @@
 ([carxptr]-8-4)=y coord
 ([carxptr]-8)=z coord
 00000018=rotation
+1F169C354D0=x1
