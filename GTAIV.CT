@@ -618,6 +618,80 @@ GTAIV.exe+7663B8: C3              - ret
 GTAIV.exe+7663B9: CC              - int 3 
 }
 </AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>309</ID>
+                  <Description>"Unlimited clip"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : GTAIV.exe
+  Version:
+  Date   : 2025-01-13
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(unlim_clip,GTAIV.exe,89 46 5C 5E C2 04 00) // should be unique
+alloc(newmem,$100)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [esi+5C],#5
+  pop esi
+  ret 0004
+  jmp return
+
+unlim_clip:
+  jmp newmem
+  nop 2
+return:
+registersymbol(unlim_clip)
+
+[DISABLE]
+
+unlim_clip:
+  db 89 46 5C 5E C2 04 00
+
+unregistersymbol(unlim_clip)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: GTAIV.exe+763831
+
+GTAIV.exe+763810: 56                    - push esi
+GTAIV.exe+763811: 8B F1                 - mov esi,ecx
+GTAIV.exe+763813: FF 76 18              - push [esi+18]
+GTAIV.exe+763816: E8 35 26 F9 FF        - call GTAIV.exe+6F5E50
+GTAIV.exe+76381B: 0F BF 80 86 00 00 00  - movsx eax,word ptr [eax+00000086]
+GTAIV.exe+763822: 8B 54 24 0C           - mov edx,[esp+0C]
+GTAIV.exe+763826: 83 C4 04              - add esp,04
+GTAIV.exe+763829: 3B D0                 - cmp edx,eax
+GTAIV.exe+76382B: 0F 4F D0              - cmovg edx,eax
+GTAIV.exe+76382E: 0F B7 C2              - movzx eax,dx
+// ---------- INJECTING HERE ----------
+GTAIV.exe+763831: 89 46 5C              - mov [esi+5C],eax
+// ---------- DONE INJECTING  ----------
+GTAIV.exe+763834: 5E                    - pop esi
+GTAIV.exe+763835: C2 04 00              - ret 0004
+GTAIV.exe+763838: CC                    - int 3
+GTAIV.exe+763839: CC                    - int 3
+GTAIV.exe+76383A: CC                    - int 3
+GTAIV.exe+76383B: CC                    - int 3
+GTAIV.exe+76383C: CC                    - int 3
+GTAIV.exe+76383D: CC                    - int 3
+GTAIV.exe+76383E: CC                    - int 3
+GTAIV.exe+76383F: CC                    - int 3
+}
+
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>35</ID>
