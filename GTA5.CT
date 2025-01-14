@@ -25,6 +25,254 @@
           <VariableType>Float</VariableType>
           <Address>GTA5.exe+24BB430</Address>
         </CheatEntry>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"xspeed pointer 1"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01C58DA0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"xspeed pointer 2"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01C58E28</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>96</ID>
+          <Description>"xspeed pointer 3"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01F4DE50</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"xspeed pointer 4"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01F4F080</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"xspeed pointer 5"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+024ADCF0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>99</ID>
+          <Description>"xspeed pointer 6"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+025FE150</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>132</ID>
+          <Description>"x down speed ptr 1"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01C58DA0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>170</Offset>
+            <Offset>10</Offset>
+            <Offset>30</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>133</ID>
+          <Description>"x down speed ptr 2"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01C58E28</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>278</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>134</ID>
+          <Description>"x down speed ptr 3"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01F4F080</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>170</Offset>
+            <Offset>10</Offset>
+            <Offset>30</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>137</ID>
+          <Description>"x down speed ptr 4"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+024ADCF0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>170</Offset>
+            <Offset>10</Offset>
+            <Offset>30</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>150</ID>
+          <Description>"x down speed ptr 5"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01C58E28</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>170</Offset>
+            <Offset>10</Offset>
+            <Offset>410</Offset>
+            <Offset>30</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>152</ID>
+          <Description>"x down speed ptr 6"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01F4BD30</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>278</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+            <Offset>58</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>154</ID>
+          <Description>"x down speed ptr 7"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01F4EBA8</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>278</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+            <Offset>BD0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>54</ID>
+          <Description>"Player Health"</Description>
+          <VariableType>Float</VariableType>
+          <Address>[Playerbase]+280</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"player x speed"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01C58DA0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>50</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"player y speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"player z speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>46</ID>
+              <Description>"player x coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-8-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"player y coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-8-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>44</ID>
+              <Description>"player z coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>155</ID>
+          <Description>"x speed down"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"GTA5.exe"+01F4F080</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>178</Offset>
+            <Offset>170</Offset>
+            <Offset>10</Offset>
+            <Offset>30</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>156</ID>
+              <Description>"y speed down"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>157</ID>
+              <Description>"z speed down"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -334,6 +582,180 @@ dealloc(newmem)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>47</ID>
+          <Description>"Player Speeder"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+-- This script allows player to run faster and jump/fly.
+-- To jump/fly, press up+space key.
+-- To run, press up+shift key.
+-- mov_speed is the speed of your walk or run.
+-- moveAirSpeed is the speed by which you will move horizontally while flying/jumping.
+-- jumpSpeed is the vertical speed at which you will move while going down. Keep it above 0 to stop yourself from falling down.
+-- initjumpSpeed is the speed with which you will jump up initially when you press up+space key.
+-- Press s to stop flying when in the air.
+
+
+[ENABLE]
+
+local mov_speed=25
+local movAirSpeed=50
+local jumpSpeed=2
+local initjumpSpeed=20
+
+x=getAddressList().getMemoryRecordByDescription("player x speed")
+y=getAddressList().getMemoryRecordByDescription("player y speed")
+z=getAddressList().getMemoryRecordByDescription("player z speed")
+xd=getAddressList().getMemoryRecordByDescription("x speed down")
+yd=getAddressList().getMemoryRecordByDescription("y speed down")
+zd=getAddressList().getMemoryRecordByDescription("z speed down")
+
+local upSpeed=jumpSpeed
+local xunit=0
+local yunit=0
+
+
+
+
+function getUpSpeed(val,direction)
+if direction == "up" then
+   if val&gt;0 then
+      val=val*2
+   else
+       if val&gt;-1 and val&lt;0 then
+          val=1
+       else
+           val=val/2
+       end
+   end
+else
+    if val&lt;0 then
+       val=val*2
+    else
+        if val&lt;1 then
+           val=-1
+        else
+           val=val/2
+        end
+    end
+end
+return val
+end
+
+
+hk=createHotkey(function()
+r=(((x.Value)^2)+((y.Value)^2))^0.5
+if r==0 then return end
+ratio=movAirSpeed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end,0x26,0x10) -- up and shift at the same time
+
+
+jump=createHotkey(function() -- jump only works with hoptoit cheatcode
+  local xval=tonumber(x.Value)
+  local yval=tonumber(y.Value)
+  local zval=tonumber(z.Value)
+  if tonumber(xval)==nil or tonumber(yval)==nil or tonumber(zval)==nil then
+     return
+  end
+
+  r=(((xval)^2)+((yval)^2))^0.5
+  if r==0 then return end
+  xunit=xval/r
+  yunit=yval/r
+  ratio=movAirSpeed/r
+  x.Value=xval*ratio
+  y.Value=yval*ratio
+  z.Value=initjumpSpeed
+
+  t.Enabled=true
+end,0x26,0x20) -- up and space at the same time
+
+
+
+function jp2()
+if tonumber(xd.Value)==nil then return end
+  if isKeyPressed(0x53) then t.Enabled=false xd.Value=0 yd.Value=0 end
+  r=((xd.Value^2)+(yd.Value^2))^0.5
+  if r==0 then return end
+  ratio=movAirSpeed/r
+  xd.Value=xunit*r*ratio
+  yd.Value=yunit*r*ratio
+  zd.Value=upSpeed
+end
+
+
+t=createTimer()
+t.Interval=25
+t.Enabled=false
+t.OnTimer=jp2
+
+
+
+
+[DISABLE]
+hk.destroy()
+jump.destroy()
+t.destroy()
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"Player speeder using teleportation"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+-- speeds up the player by teleporting him forward
+
+-- Please turn on this script: "Player coords capture" to capture player coords addresses. For other games, any other mechanism will also work.
+
+[ENABLE]
+
+local speed=10
+local sleeptime=0
+
+local xstr="[PlayerRax]-8-8"
+local ystr="[PlayerRax]-8-4"
+
+local coords={nil,nil}
+
+hk1=createHotkey(function()
+if coords[0] == nil then
+   coords[0]={x=readFloat(xstr),y=readFloat(ystr)}
+elseif coords[1] == nil then
+     sleep(sleeptime)
+     coords[1]={x=readFloat(xstr),y=readFloat(ystr)}
+     local dcoord={x=nil,y=nil}
+     dcoord.x=coords[1].x-coords[0].x
+     dcoord.y=coords[1].y-coords[0].y
+     local normalized={x=nil,y=nil}
+     local r=((dcoord.x^2)+(dcoord.y^2))^0.5
+     normalized.x=dcoord.x/r
+     normalized.y=dcoord.y/r
+     if isKeyPressed(0xA0) then
+        writeFloat(xstr,readFloat(xstr)+(normalized.x)*speed)
+        writeFloat(ystr,readFloat(ystr)+(normalized.y)*speed)
+     end
+     coords[0]=nil
+     coords[1]=nil
+end
+end,0x26,0xA0) -- up and shift
+
+
+
+
+
+[DISABLE]
+hk1.destroy()
+
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>35</ID>
           <Description>"Super Jumper - Beta"</Description>
           <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
@@ -353,7 +775,9 @@ alloc(newmem,$1000,"GTA5.exe"+7798F5)
 alloc(min_z_speed,4)
 alloc(const_speed,4)
 alloc(fastbit,4)
+alloc(playerRax,4)
 registersymbol(fastbit)
+registersymbol(playerRax)
 label(code)
 label(return)
 
@@ -370,6 +794,12 @@ jbe code
 
 cmp [fastbit],1
 jne code
+
+//send r14 aka x speed to playerRax
+push rdx
+mov rdx,r14
+mov [playerRax],rdx
+pop rdx
 
 //calc magnitude
 movss xmm0,xmm7
@@ -409,7 +839,7 @@ code:
 
 
 const_speed:
-dd (float)60
+dd (float)20
 
 min_z_speed:
 dd (float)0.65
@@ -433,8 +863,9 @@ dealloc(newmem)
 dealloc(min_z_speed)
 dealloc(const_speed)
 dealloc(fastbit)
+dealloc(playerRax)
 unregistersymbol(fastbit)
-
+unregistersymbol(playerRax)
 </AssemblerScript>
           <CheatEntries>
             <CheatEntry>
@@ -664,302 +1095,6 @@ dealloc(newmem)
 "GTA5.exe"+2A4727: 72 09                 -  jb GTA5.exe+2A4732
 }
 </AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>39</ID>
-          <Description>"Player Speed Pointer Exposer "</Description>
-          <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{ Game   : GTA5.exe
-  Version:
-  Date   : 2023-12-09
-  Author : atult
-
-  The rax here is the pointer that will be exposed.
-  [rax+8] is z speed of player.
-
-  For the player pointer to be captured,make sure the health of the player is above minH value.
-
-}
-
-[ENABLE]
-
-aobscanmodule(PlayerSpeedInject,GTA5.exe,8B 48 08 89 4B 08 8B 40 0C 89 43 0C EB) // should be unique
-alloc(newmem,$1000,"GTA5.exe"+8F1D8F)
-alloc(PlayerRax,8)
-alloc(Playerbase,8)
-alloc(minH,4)
-registersymbol(PlayerRax)
-registersymbol(Playerbase)
-label(code)
-label(return)
-
-newmem:
-
-sub rsp,20
-movups [rsp],xmm0
-movups [rsp+10],xmm1
-
-movss xmm1,[rdi+280]
-movss xmm0,[minH]
-ucomiss xmm1,xmm0
-jb code
-
-cmp [rax],0
-je code
-
-mov [Playerbase],rdi
-mov [PlayerRax],rax
-
-code:
-  movups xmm1,[rsp+10]
-  movups xmm0,[rsp]
-  add rsp,20
-
-  mov ecx,[rax+08]
-  mov [rbx+08],ecx
-  jmp return
-
-PlayerSpeedInject:
-  jmp newmem
-  nop
-return:
-registersymbol(PlayerSpeedInject)
-
-minH:
-dd (float)380
-
-
-[DISABLE]
-
-PlayerSpeedInject:
-  db 8B 48 08 89 4B 08
-
-
-unregistersymbol(PlayerSpeedInject)
-unregistersymbol(PlayerRax)
-unregistersymbol(Playerbase)
-dealloc(newmem)
-dealloc(Playerbase)
-dealloc(PlayerRax)
-dealloc(minH)
-
-{
-// ORIGINAL CODE - INJECTION POINT: "GTA5.exe"+8F1D8F
-
-"GTA5.exe"+8F1D6F: E8 FC 06 00 00        -  call GTA5.exe+8F2470
-"GTA5.exe"+8F1D74: 48 85 C0              -  test rax,rax
-"GTA5.exe"+8F1D77: 74 24                 -  je GTA5.exe+8F1D9D
-"GTA5.exe"+8F1D79: 48 8B 10              -  mov rdx,[rax]
-"GTA5.exe"+8F1D7C: 48 8B C8              -  mov rcx,rax
-"GTA5.exe"+8F1D7F: FF 92 68 03 00 00     -  call qword ptr [rdx+00000368]
-"GTA5.exe"+8F1D85: 8B 08                 -  mov ecx,[rax]
-"GTA5.exe"+8F1D87: 89 0B                 -  mov [rbx],ecx
-"GTA5.exe"+8F1D89: 8B 48 04              -  mov ecx,[rax+04]
-"GTA5.exe"+8F1D8C: 89 4B 04              -  mov [rbx+04],ecx
-// ---------- INJECTING HERE ----------
-"GTA5.exe"+8F1D8F: 8B 48 08              -  mov ecx,[rax+08]
-"GTA5.exe"+8F1D92: 89 4B 08              -  mov [rbx+08],ecx
-// ---------- DONE INJECTING  ----------
-"GTA5.exe"+8F1D95: 8B 40 0C              -  mov eax,[rax+0C]
-"GTA5.exe"+8F1D98: 89 43 0C              -  mov [rbx+0C],eax
-"GTA5.exe"+8F1D9B: EB 1B                 -  jmp GTA5.exe+8F1DB8
-"GTA5.exe"+8F1D9D: 48 85 FF              -  test rdi,rdi
-"GTA5.exe"+8F1DA0: 74 0E                 -  je GTA5.exe+8F1DB0
-"GTA5.exe"+8F1DA2: 48 8B 07              -  mov rax,[rdi]
-"GTA5.exe"+8F1DA5: 48 8B CF              -  mov rcx,rdi
-"GTA5.exe"+8F1DA8: FF 90 68 03 00 00     -  call qword ptr [rax+00000368]
-"GTA5.exe"+8F1DAE: EB D5                 -  jmp GTA5.exe+8F1D85
-"GTA5.exe"+8F1DB0: 48 8B CB              -  mov rcx,rbx
-}
-</AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>47</ID>
-              <Description>"Player Speeder"</Description>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
-
-
-[ENABLE]
-
-local mov_speed=20
-local jumpSpeed=20
-
-x=getAddressList().getMemoryRecordByDescription("player x speed")
-y=getAddressList().getMemoryRecordByDescription("player y speed")
-z=getAddressList().getMemoryRecordByDescription("player z speed")
-
-
-local upSpeed=jumpSpeed
-
-function getUpSpeed(val,direction)
-if direction == "up" then
-   if val&gt;0 then
-      val=val*2
-   else
-       if val&gt;-1 and val&lt;0 then
-          val=1
-       else
-           val=val/2
-       end
-   end
-else
-    if val&lt;0 then
-       val=val*2
-    else
-        if val&lt;1 then
-           val=-1
-        else
-           val=val/2
-        end
-    end
-end
-return val
-end
-
-
-hk=createHotkey(function()
-r=(((x.Value)^2)+((y.Value)^2))^0.5
-if r==0 then return end
-ratio=mov_speed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end,0x26,0x10) -- up and shift at the same time
-
-
-jump=createHotkey(function() -- jump only works with hoptoit cheatcode
-while not isKeyPressed(0x53) do
-  r=(((x.Value)^2)+((y.Value)^2))^0.5
-  if r==0 then return end
-  ratio=mov_speed/r
-  x.Value=x.Value*ratio
-  y.Value=y.Value*ratio
-  z.Value=upSpeed
-
-  if isKeyPressed(0x55) then -- U
-     upSpeed=getUpSpeed(upSpeed,"up")
-     keyUp(0x55)
-  end
-  if isKeyPressed(0x44) then -- D
-     upSpeed=getUpSpeed(upSpeed,"down")
-     keyUp(0x44)
-  end
-
-end
-upSpeed=jumpSpeed
-x.Value=0
-y.Value=0
-end,0x26,0x20) -- up and space at the same time
-
-
-
-[DISABLE]
-hk.destroy()
-jump.destroy()
-
-</AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>72</ID>
-              <Description>"Player speeder using teleportation"</Description>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>{$lua}
-if syntaxcheck then return end
-
--- speeds up the player by teleporting him forward
-
--- Please turn on this script: "Player coords capture" to capture player coords addresses. For other games, any other mechanism will also work.
-
-[ENABLE]
-
-local speed=10
-local sleeptime=0
-
-local xstr="[PlayerRax]-8-8"
-local ystr="[PlayerRax]-8-4"
-
-local coords={nil,nil}
-
-hk1=createHotkey(function()
-if coords[0] == nil then
-   coords[0]={x=readFloat(xstr),y=readFloat(ystr)}
-elseif coords[1] == nil then
-     sleep(sleeptime)
-     coords[1]={x=readFloat(xstr),y=readFloat(ystr)}
-     local dcoord={x=nil,y=nil}
-     dcoord.x=coords[1].x-coords[0].x
-     dcoord.y=coords[1].y-coords[0].y
-     local normalized={x=nil,y=nil}
-     local r=((dcoord.x^2)+(dcoord.y^2))^0.5
-     normalized.x=dcoord.x/r
-     normalized.y=dcoord.y/r
-     if isKeyPressed(0xA0) then
-        writeFloat(xstr,readFloat(xstr)+(normalized.x)*speed)
-        writeFloat(ystr,readFloat(ystr)+(normalized.y)*speed)
-     end
-     coords[0]=nil
-     coords[1]=nil
-end
-end,0x26,0xA0) -- up and shift
-
-
-
-
-
-[DISABLE]
-hk1.destroy()
-
-
-</AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>54</ID>
-              <Description>"Player Health"</Description>
-              <VariableType>Float</VariableType>
-              <Address>[Playerbase]+280</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>42</ID>
-              <Description>"player x speed"</Description>
-              <Options moAllowManualCollapseAndExpand="1"/>
-              <VariableType>Float</VariableType>
-              <Address>[PlayerRax]</Address>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>43</ID>
-                  <Description>"player y speed"</Description>
-                  <VariableType>Float</VariableType>
-                  <Address>[PlayerRax]+4</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>41</ID>
-                  <Description>"player z speed"</Description>
-                  <VariableType>Float</VariableType>
-                  <Address>[PlayerRax]+8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>46</ID>
-                  <Description>"player x coord"</Description>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>Float</VariableType>
-                  <Address>[PlayerRax]-8-8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>45</ID>
-                  <Description>"player y coord"</Description>
-                  <VariableType>Float</VariableType>
-                  <Address>[PlayerRax]-8-4</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>44</ID>
-                  <Description>"player z coord"</Description>
-                  <VariableType>Float</VariableType>
-                  <Address>[PlayerRax]-8</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>19</ID>
@@ -2752,33 +2887,6 @@ brake.destroy()
         <Byte>0F</Byte>
         <Byte>7F</Byte>
         <Byte>14</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>Change of cmp dword ptr [GTA5.exe+1EA7604],02</Description>
-      <AddressString>GTA5.exe+449D40</AddressString>
-      <Before>
-        <Byte>90</Byte>
-        <Byte>68</Byte>
-        <Byte>03</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>83</Byte>
-        <Byte>3D</Byte>
-        <Byte>BD</Byte>
-        <Byte>D8</Byte>
-        <Byte>A5</Byte>
-        <Byte>01</Byte>
-        <Byte>02</Byte>
-      </Actual>
-      <After>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>10</Byte>
-        <Byte>40</Byte>
-        <Byte>04</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
