@@ -267,6 +267,140 @@
             <Offset>34</Offset>
           </Offsets>
         </CheatEntry>
+        <CheatEntry>
+          <ID>211</ID>
+          <Description>"ball ptr 1"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>4</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>213</ID>
+          <Description>"ball ptr 2"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>14</Offset>
+            <Offset>5C</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>214</ID>
+          <Description>"ball ptr 3"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>13C</Offset>
+            <Offset>C</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>215</ID>
+          <Description>"ball ptr 4"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>68</Offset>
+            <Offset>18</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>217</ID>
+          <Description>"ball ptr 5"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>CC</Offset>
+            <Offset>14</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>218</ID>
+          <Description>"ball ptr 6"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+006003B8</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>4</Offset>
+            <Offset>34</Offset>
+            <Offset>94</Offset>
+            <Offset>1F0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>219</ID>
+          <Description>"ball ptr 7"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+005D9980</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>4</Offset>
+            <Offset>34</Offset>
+            <Offset>38</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>220</ID>
+          <Description>"ball ptr 8"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>CC</Offset>
+            <Offset>24</Offset>
+            <Offset>38</Offset>
+            <Offset>3C</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>221</ID>
+          <Description>"ball ptr 9"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>13C</Offset>
+            <Offset>1D8</Offset>
+            <Offset>20</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>223</ID>
+          <Description>"ball ptr 10"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"Cricket07.exe"+00417580</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>DC</Offset>
+            <Offset>68</Offset>
+            <Offset>28</Offset>
+            <Offset>38</Offset>
+            <Offset>40</Offset>
+          </Offsets>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -400,76 +534,6 @@ hk6.destroy()
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>96</ID>
-          <Description>"BATSMAN SHOT SCRIPT"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
-
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(newmem,$100)
-alloc(ball,4)
-label(code)
-label(return)
-registersymbol(ball)
-newmem:
-
-code:
-mov [ball],ecx
-  fstp dword ptr [ecx+000002D8]
-  jmp return
-
-movement:
-  jmp newmem
-  nop
-return:
-registersymbol(movement)
-
-{$lua}
-local dub=1.4
-local speedXString="[ball]+2d8"
-local speedZString="[ball]+2dc"
-local speedYString="[ball]+2e0"
-
-
-function Stroker()
-                      while readFloat("Cricket07.exe+5E79BC")==0 do end
-                      speedx=readFloat(speedXString)
-                      speedy=readFloat(speedYString)
-                      speedz=readFloat(speedZString)
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
-                      speedx=speedx*dub
-                      speedy=speedy*dub
-                      speedz=speedz*dub
-                      writeFloat("[ball]+2d8",speedx)
-                      writeFloat("[ball]+2dc",speedz)
-                      writeFloat("[ball]+2e0",speedy)
-                      end
-                      end --Function ends here
-
-
-hk1=createHotkey(Stroker,0x53)
-
-hk2=createHotkey(Stroker,0x57)
-
-{$asm}
-
-[DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-unregistersymbol(ball)
-unregistersymbol(movement)
-dealloc(ball)
-dealloc(newmem)
-
-{$lua}
-
-hk1.destroy()
-hk2.destroy()
-</AssemblerScript>
-        </CheatEntry>
-        <CheatEntry>
           <ID>198</ID>
           <Description>"Turn off Swing/Spin Limit"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -536,33 +600,13 @@ if the height of ball after hitting bat is less than minEdgeHeightForHeightMulti
 }
 
 
-[ENABLE]
-
-
-
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(newmem,100)
-alloc(ball,4)
-label(code)
-label(return)
-registersymbol(ball)
-newmem:
-
-code:
-mov [ball],ecx
-  fstp dword ptr [ecx+000002D8]
-  jmp return
-
-movement:
-  jmp newmem
-  nop
-return:
-registersymbol(movement)
-
 {$lua}
 
+
+[ENABLE]
+
 local pacemul=1.5
-local angle=3e-4
+local angle=6e-4
 local yzangle=2
 local MaxEdgeAngle=30
 local MinEdgeAngle=5
@@ -577,12 +621,11 @@ local spinangle=2
 local seamHeight=0.1
 local ascendMul=1.2
 local downThrust=-8
-local ballAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+10+2D0-2D8"
-local yAddr="[ball]+2e0"
-local xAddr="[ball]+2d8"
-local zAddr="[ball]+2dc"
-local literalLengthAddr="[ball]+2c8"
-local literalHeightAddr="[ball]+2c4"
+local yAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2e0"
+local xAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2d8"
+local zAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2dc"
+local literalLengthAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2c8"
+local literalHeightAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2c4"
 local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
 local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
@@ -773,19 +816,7 @@ end,0x54) --T
 
 
 
-{$asm}
-
 [DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-unregistersymbol(ball)
-unregistersymbol(movement)
-dealloc(ball)
-dealloc(newmem)
-
-{$lua}
 
 fast.destroy()
 left.destroy()
@@ -801,31 +832,11 @@ changeEdgeSign.destroy()
         </CheatEntry>
         <CheatEntry>
           <ID>188</ID>
-          <Description>"BATSMAN SHOT SCRIPT 4"</Description>
+          <Description>"BATSMAN SHOT SCRIPT"</Description>
           <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+          <AssemblerScript>{$lua}
 
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(ballmem,20)
-alloc(ball,4)
-registersymbol(ball)
-
-
-
-ballmem:
-mov [ball],ecx
-fstp dword ptr [ecx+000002D8]
-jmp "Cricket07.exe"+1434FF
-
-
-movement:
-  jmp ballmem
-  nop
-
-
-
-
-{$lua}
+[ENABLE]
 
 --more reactive than version 3.
 --press clockWiseTurnKey or antiClockWiseTurnKey depending on the degree by which you want to rotate.
@@ -837,9 +848,9 @@ movement:
 local degChange=10
 local shotSpeed=34
 local currDeg=degChange
-local speedXString="[ball]+2d8"
-local speedZString="[ball]+2dc"
-local speedYString="[ball]+2e0"
+local speedXString="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2d8"
+local speedZString="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2dc"
+local speedYString="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2e0"
 local isBallHitAddr="Cricket07.exe+5DA4FA"
 local isBallOutOfFielderHand="Cricket07.exe+3EDD80"
 local angularShotKey=0x4A --J
@@ -865,7 +876,7 @@ end
 
 function Stroker()
                 if readInteger(isBallHitAddr)~=nil then while readInteger(isBallHitAddr)==0 do end end
-                      if readFloat("[ball]+2d8") and readFloat("[ball]+2dc") and readFloat("[ball]+2e0") then
+                      if readFloat(speedXString) and readFloat(speedZString) and readFloat(speedYString) then
                       local speedx=readFloat(speedXString)
                       local speedy=readFloat(speedYString)
                       local speedz=readFloat(speedZString)
@@ -888,19 +899,9 @@ DecreaseAngle=createHotkey(function() changeAngle(-1)  end,antiClockWiseTurnKey)
 
 neutralizer=createHotkey(neutralize,neutralizerKey)
 
-{$asm}
+
 
 [DISABLE]
-
-movement:
-  db D9 99 D8 02 00 00
-
-
-unregistersymbol(ball)
-dealloc(ball)
-dealloc(ballmem)
-
-{$lua}
 
 
 shotHk.destroy()
@@ -913,28 +914,10 @@ neutralizer.destroy()
           <ID>192</ID>
           <Description>"Delivery Constrainer"</Description>
           <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+          <AssemblerScript>{$lua}
 
-aobscanmodule(movement,Cricket07.exe,D9 99 D8 02 00 00 D9 81) // should be unique
-alloc(newmem,100)
-alloc(ball,4)
-label(code)
-label(return)
-registersymbol(ball)
-newmem:
+[ENABLE]
 
-code:
-mov [ball],ecx
-  fstp dword ptr [ecx+000002D8]
-  jmp return
-
-movement:
-  jmp newmem
-  nop
-return:
-registersymbol(movement)
-
-{$lua}
 
 --upspeed(6,4.8) and downSpeed(-7,-4.8) is also good for 50
 
@@ -942,12 +925,12 @@ local upSpeed=6
 local downSpeed=-7
 local throwSpeed=50
 local heightLimit=0.7 --0.7
-local yAddr="[ball]+2e0"
-local xAddr="[ball]+2d8"
-local zAddr="[ball]+2dc"
-local literalLengthAddr="[ball]+2c8"
-local literalHeightAddr="[ball]+2c4"
-local literalWidthAddr="[ball]+2c0"
+local yAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2e0"
+local xAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2d8"
+local zAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2dc"
+local literalLengthAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2c8"
+local literalHeightAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2c4"
+local literalWidthAddr="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2c0"
 local isBallOutOfBowlersHandAddr="Cricket07.exe+3EDBFE"
 local isBallHit="Cricket07.exe+5DA4FA"
 local pitchLength=10
@@ -1002,20 +985,8 @@ end,0x4E) --N
 
 
 
-{$asm}
-
 [DISABLE]
 
-movement:
-  db D9 99 D8 02 00 00
-
-unregistersymbol(ball)
-unregistersymbol(movement)
-dealloc(ball)
-dealloc(newmem)
-
-
-{$lua}
 
 restrict.destroy()
 </AssemblerScript>
