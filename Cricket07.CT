@@ -846,7 +846,7 @@ changeEdgeSign.destroy()
 
 
 local degChange=10
-local shotSpeed=34
+local shotSpeed=40
 local currDeg=degChange
 local speedXString="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2d8"
 local speedZString="[[[[Cricket07.exe+00417580]+34]+4]+DC]+2dc"

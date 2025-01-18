@@ -38,10 +38,10 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>95</ID>
-          <Description>"xspeed pointer 2"</Description>
+          <ID>96</ID>
+          <Description>"xspeed pointer 3"</Description>
           <VariableType>Float</VariableType>
-          <Address>"GTA5.exe"+01C58E28</Address>
+          <Address>"GTA5.exe"+01F4DE50</Address>
           <Offsets>
             <Offset>70</Offset>
             <Offset>50</Offset>
@@ -49,10 +49,10 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>96</ID>
-          <Description>"xspeed pointer 3"</Description>
+          <ID>95</ID>
+          <Description>"xspeed pointer 2"</Description>
           <VariableType>Float</VariableType>
-          <Address>"GTA5.exe"+01F4DE50</Address>
+          <Address>"GTA5.exe"+01C58E28</Address>
           <Offsets>
             <Offset>70</Offset>
             <Offset>50</Offset>
@@ -677,13 +677,18 @@ end,0x26,0x20) -- up and space at the same time
 
 function jp2()
 if tonumber(xd.Value)==nil then return end
-  if isKeyPressed(0x53) then t.Enabled=false xd.Value=0 yd.Value=0 end
+  if isKeyPressed(0x53) then t.Enabled=false xd.Value=0 yd.Value=0 upSpeed=jumpSpeed end
   r=((xd.Value^2)+(yd.Value^2))^0.5
   if r==0 then return end
   ratio=movAirSpeed/r
   xd.Value=xunit*r*ratio
   yd.Value=yunit*r*ratio
   zd.Value=upSpeed
+
+
+  if isKeyPressed(0x55) then upSpeed=getUpSpeed(upSpeed,"up") end -- U
+  if isKeyPressed(0x44) then upSpeed=getUpSpeed(upSpeed,"down") end -- D
+
 end
 
 
@@ -1244,7 +1249,7 @@ hk1.destroy()
 [ENABLE]
 
 local turn=-0
-local mul=1+2e-3
+local mul=1+4e-3
 local ratio=-2
 local breakStrength=1.1
 
