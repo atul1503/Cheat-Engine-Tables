@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheatTable CheatEngineTableVersion="42">
+<CheatTable CheatEngineTableVersion="45">
   <Forms>
-    <CETrainer Class="TTrainerForm" Encoding="Ascii85">eN*SB)=ArRI]zAvEZDF=U7.eOHe$gN.W$$g.l??x/,WmB-!xVnPc*gdg(+OcSRi(=?da%71jZgGaZ2dQ@E(6Adyem}eS{DK*.:JF*2sk}#]w)kalP9QU?ThSbfX8@/wUgppcY}C+7H66eU@$z;-C:L*49l4VQfGLex5-g*){[i+NCw2bG87{sXp;DnOYHBWF=LHV9w%%0}Ef50CxgEcn5q?Rxn=jv]:21w2?1E9MAJi$Om=eBRup-IIOg4;9$l2DW#f?kR?ReEg+OB2Qu@]Z-4@?LjM7!x_e5^g:x@deCKrF3i5s-do:CQRlu%,L#j@0rPw.X(jc.C2pxqy1,MKOTgvJzg/ys2b.1kMxgaDQC{CPHOnXxK^(OYlb1lrGd51}p%/]6k#o1S_+MaEXh%H6swshEZs.zQ,T@%V]]ZIb7djH(egSYFpeken/f9tA#%vf+]$.3uYfBhczNW/T3x4+4hbeHemf9Do$lxtPFfQ{$^dm)v=KL%cBRnJ-3[NXf7*ap.y-WWY5rtrm$D3_O$%Ne*OhVfw,$NsP%k$yO6)5Aa-pKfUJcnpcSL*!?055gEX13upl]1;m0SEg4a6UG.:MW-rav?2sZN$ZRo6V:SvkO:]5MwLr?r$?)iB*@gAmv09WXcM;+N!f+ICwUjfbeRhqr/u4]zj1A(VHe98?GLnxb-S:gc(5{nKJLOZnuzQQj@YU8E+;5!UmXR@tKmCrV5+Z)wpW6vfYdsym-0=2)UW^Ahc2G5Yeix@J-R4Gb:ZyN%C+#:Oh/AfJ4b(3</CETrainer>
+    <CETrainer Class="TTrainerForm" Encoding="Ascii85">eN*SB)=ArR,I9S?C/]]hP+/o)h+o=6!gi*4!i{wX%4?}MzG/vDo?g;?3qQg=u_Vv*.tSaD35-2X.+=N%.dz}N(zv+(+FHidK07?igwwnPe#ZFB4sbKu4]D3yZ$[sF]Q:3De}=btTz_f2yw5W,)O;VG0iBDSm7NXfASiMu#Tw$O]5F/GLBSSaI]vO)rc+0si?c(SAIw;ja*2[B5a3Q2gztbastV?I7u9!*ToT{9UgSa@uoE2Pp,{-(tyRmmrD^ki*eM9z35#h7g?Zqkp%.4t94Zj^4:6LdBEKxn4lSy4jt@H+@h/e1).i*g;;4.@YBgGlt:0QX(?zkAQN%Og,8)l^EPp8kD[zfzE^K0YNHkEwv[[crr1t(iO4#Q^m[-YpN$AY-mVzbuSFqQC7}Y62MeVk9+mUZta)i7JDOdV4dI=7V,/Sw!;+[z0A:/xn*qTuFa1iOlMs0tC9].Df-,Z@f]YpQ4ckkP_MH{T;T]r@{DBNB_-r_p.:dbEHE88B]/)x,S$:aJvkBKRKabwCQd%z0DEwo^L+u[aO=8l?Z4O,C;ZrZ0CT09.?D):v;0uI6]!R;)0w+(sZ3iy?jmFa{;g:@8NiWu$6Sas4m/5owtGw#TQfQn9=%jr(!j,.n,BQvPZ4kXYfa3j+^7N)sRT@Q44A#9xG.#xi9#;S3aE?!}:@ytLx!Xo9lQup_^3)sgO?,(w;VvM[Zc%+!F6tJk9?34ibS3cQZ1*;5n;#!NhJ+C7+i:k_}WWuf$iS6_0q7vn@8[ShrsXv^L/V4.a^RI</CETrainer>
   </Forms>
   <CheatEntries>
     <CheatEntry>
@@ -14,12 +14,15 @@
           <ID>134</ID>
           <Description>"Speeder with front direction"</Description>
           <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
+          <AssemblerScript>
+
+{$lua}
 
 [ENABLE]
 
 
-local mul=1+4e-4
+local turn=0.05
+local mul=1+4e-3
 local ratio=2
 
 
@@ -45,6 +48,14 @@ local dmul=1
 if isKeyPressed(0x26) then dmul=mul end
 xspeed.Value=xcomp*r*dmul
 yspeed.Value=ycomp*r*dmul
+
+if isKeyPressed(0x28) then dmul=1/mul end
+xspeed.Value=xcomp*r*dmul
+yspeed.Value=ycomp*r*dmul
+
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn end
+if isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+
 end
 
 timer=createTimer()
