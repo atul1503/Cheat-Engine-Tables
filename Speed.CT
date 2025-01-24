@@ -14,9 +14,7 @@
           <ID>134</ID>
           <Description>"Speeder with front direction"</Description>
           <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>
-
-{$lua}
+          <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -853,6 +851,80 @@ speed.exe+2F6DC6: D9 05 D8 85 98 00     - fld dword ptr [speed.exe+5885D8]
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>135</ID>
+          <Description>"Npc freezer"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : speed.exe
+  Date   : 2025-01-24
+  Author : atult
+
+  Freezes all vehicles except the player vehicle. May NOT work if the game code has changed.
+}
+
+[ENABLE]
+
+aobscanmodule(stop_other_cars,speed.exe,D9 5E 20 D9 C0 D8 4E) // should be unique
+alloc(newmem,30)
+
+label(code)
+label(return)
+
+newmem:
+cmp esi,Speed.exe+5386C8
+je code
+mov [esi+20],(float)0.0
+mov [esi+24],(float)0.0
+mov [esi+28],(float)0.0
+
+
+code:
+  fstp dword ptr [esi+20]
+  fld st(0)
+  jmp return
+
+stop_other_cars:
+  jmp newmem
+return:
+registersymbol(stop_other_cars)
+
+[DISABLE]
+
+stop_other_cars:
+  db D9 5E 20 D9 C0
+
+unregistersymbol(stop_other_cars)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: speed.exe+297955
+
+speed.exe+29793A: D9 44 24 58        - fld dword ptr [esp+58]
+speed.exe+29793E: D8 4E 3C           - fmul dword ptr [esi+3C]
+speed.exe+297941: 8D 7E 60           - lea edi,[esi+60]
+speed.exe+297944: 57                 - push edi
+speed.exe+297945: 81 C5 90 00 00 00  - add ebp,00000090
+speed.exe+29794B: D9 C0              - fld st(0)
+speed.exe+29794D: 55                 - push ebp
+speed.exe+29794E: D8 4E 50           - fmul dword ptr [esi+50]
+speed.exe+297951: 57                 - push edi
+speed.exe+297952: D8 46 20           - fadd dword ptr [esi+20]
+// ---------- INJECTING HERE ----------
+speed.exe+297955: D9 5E 20           - fstp dword ptr [esi+20]
+// ---------- DONE INJECTING  ----------
+speed.exe+297958: D9 C0              - fld st(0)
+speed.exe+29795A: D8 4E 54           - fmul dword ptr [esi+54]
+speed.exe+29795D: D8 46 24           - fadd dword ptr [esi+24]
+speed.exe+297960: D9 5E 24           - fstp dword ptr [esi+24]
+speed.exe+297963: D8 4E 58           - fmul dword ptr [esi+58]
+speed.exe+297966: D8 46 28           - fadd dword ptr [esi+28]
+speed.exe+297969: D9 5E 28           - fstp dword ptr [esi+28]
+speed.exe+29796C: D9 44 24 64        - fld dword ptr [esp+64]
+speed.exe+297970: D8 0F              - fmul dword ptr [edi]
+speed.exe+297972: D9 1F              - fstp dword ptr [edi]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>84</ID>
           <Description>"No Cooldown"</Description>
           <VariableType>Auto Assembler Script</VariableType>
@@ -1505,12 +1577,6 @@ hk1.destroy()
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>135</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>02CD0664</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
