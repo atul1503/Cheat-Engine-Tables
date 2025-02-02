@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>312</ID>
+      <Description>"POINTERS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>292</ID>
+          <Description>"First Wheel Speed Pointer 9"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB28</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>F78</Offset>
+            <Offset>288</Offset>
+            <Offset>E00</Offset>
+            <Offset>1F0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>291</ID>
+          <Description>"First Wheel Speed Pointer 8"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09587FC0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>790</Offset>
+            <Offset>EA8</Offset>
+            <Offset>18</Offset>
+            <Offset>120</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>281</ID>
+          <Description>"First Wheel Speed Pointer 7"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB28</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>E00</Offset>
+            <Offset>1E0</Offset>
+            <Offset>30</Offset>
+            <Offset>68</Offset>
+            <Offset>360</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>276</ID>
+          <Description>"First Wheel Speed Pointer 6"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09587FC0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>790</Offset>
+            <Offset>EA8</Offset>
+            <Offset>118</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>275</ID>
+          <Description>"First Wheel Speed Pointer 5"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB20</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>1E0</Offset>
+            <Offset>30</Offset>
+            <Offset>350</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>268</ID>
+          <Description>"First Wheel Speed Pointer 4"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB20</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>1E0</Offset>
+            <Offset>C8</Offset>
+            <Offset>330</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>262</ID>
+          <Description>"First Wheel Speed Pointer 3"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+095E19B0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>E00</Offset>
+            <Offset>C8</Offset>
+            <Offset>C8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>261</ID>
+          <Description>"First Wheel Speed Pointer 2"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092EB920</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>C8</Offset>
+            <Offset>318</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>260</ID>
+          <Description>"First Wheel Speed Pointer 18"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09587FC0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>118</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>257</ID>
+          <Description>"First Wheel Speed Pointer 17"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB20</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>E00</Offset>
+            <Offset>1E0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>255</ID>
+          <Description>"First Wheel Speed Pointer 16"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB20</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>1E0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>311</ID>
+          <Description>"First Wheel Speed Pointer 15"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09589D10</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>790</Offset>
+            <Offset>E00</Offset>
+            <Offset>C8</Offset>
+            <Offset>88</Offset>
+            <Offset>80</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>310</ID>
+          <Description>"First Wheel Speed Pointer 14"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09587FC0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>4F8</Offset>
+            <Offset>288</Offset>
+            <Offset>E00</Offset>
+            <Offset>18</Offset>
+            <Offset>128</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>306</ID>
+          <Description>"First Wheel Speed Pointer 13"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09587FC0</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>790</Offset>
+            <Offset>DB8</Offset>
+            <Offset>18</Offset>
+            <Offset>120</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>301</ID>
+          <Description>"First Wheel Speed Pointer 12"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09589D10</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>C8</Offset>
+            <Offset>88</Offset>
+            <Offset>40</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>296</ID>
+          <Description>"First Wheel Speed Pointer 11"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+09589D10</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>E00</Offset>
+            <Offset>C8</Offset>
+            <Offset>88</Offset>
+            <Offset>B8</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>293</ID>
+          <Description>"First Wheel Speed Pointer 10"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB20</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>4F8</Offset>
+            <Offset>288</Offset>
+            <Offset>E00</Offset>
+            <Offset>1E0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>254</ID>
+          <Description>"First Wheel Speed Pointer 1"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB28</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>1F0</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>313</ID>
+      <Description>"ADDRESSES"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>314</ID>
+          <Description>"Wheel 1"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <VariableType>Float</VariableType>
+          <Address>"ForzaHorizon5.exe"+092DAB20</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>DB8</Offset>
+            <Offset>1E0</Offset>
+            <Offset>30</Offset>
+            <Offset>350</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>315</ID>
+              <Description>"Wheel 2"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+A80</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>316</ID>
+              <Description>"Wheel 3"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+A80+A80</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>317</ID>
+              <Description>"Wheel 4"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+A80+A80+A80</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>318</ID>
+      <Description>"SCRIPTS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>319</ID>
+          <Description>"Wheel Speeder"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+--  This script allows you to increase or decrease all 4 wheels of your car.
+
+
+[ENABLE]
+
+
+local mul=1+1e-1
+local div=3
+
+
+t=getAddressList()
+w1=t.getMemoryRecordByDescription("Wheel 1")
+w2=t.getMemoryRecordByDescription("Wheel 2")
+w3=t.getMemoryRecordByDescription("Wheel 3")
+w4=t.getMemoryRecordByDescription("Wheel 4")
+
+
+speeder=createHotkey(function()
+w1.Value=w1.Value*mul
+w2.Value=w2.Value*mul
+w3.Value=w3.Value*mul
+w4.Value=w4.Value*mul
+end,0x26) --up
+
+
+slower=createHotkey(function()
+w1.Value=w1.Value/div
+w2.Value=w2.Value/div
+w3.Value=w3.Value/div
+w4.Value=w4.Value/div
+end,0x28) --down
+
+
+
+[DISABLE]
+
+speeder.destroy()
+slower.destroy()
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>+A80 for one wheel to another
+speed*1.375 = one of the wheel speeds +- 5
+</Comments>
+</CheatTable>
