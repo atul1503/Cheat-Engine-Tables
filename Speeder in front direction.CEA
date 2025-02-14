@@ -2,13 +2,14 @@
 
 [ENABLE]
 
-local turn=0
-local mul=1+8e-3
-local ratio=3.5
+local turn=0.1
+local mul=1+10e-3
+local ratio=-2.2
+local turnWt=1.025
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 -- But most of the time, adjust the ratio and keep the turn to 0 and if its turning very less or too much then slightly slow and then turn. Trust me slowing down will still keep you ahead of everyone.
-
+-- turnWt is useful because the higher it is the tighter will be the steer if you are not turning the car. This means that the car will try to follow a straight line unless you are turning it. A value of 1.05 is good. Anything higher is also good.
 
 list=getAddressList()
 xspeed=list.getMemoryRecordByDescription('x speed')
@@ -20,7 +21,8 @@ steer=list.getMemoryRecordByDescription('steer')
 
 function rotate()
 if xspeed==nil or xspeed.Value=="??" then return end
-if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn else steer.Value=steer.Value/turnWt  end
+
 theta=math.rad(-ratio*steer.Value)
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
@@ -35,8 +37,8 @@ xspeed.Value=xcomp*r*mul
 yspeed.Value=ycomp*r*mul
 end
 if isKeyPressed(0x28) then
-xspeed.Value=xcomp*r/(mul*1.01)
-yspeed.Value=ycomp*r/(mul*1.01)
+xspeed.Value=xcomp*r/(mul*1.02)
+yspeed.Value=ycomp*r/(mul*1.02)
 end
 end
 
