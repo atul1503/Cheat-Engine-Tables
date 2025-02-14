@@ -702,7 +702,7 @@ GTAIV.exe+76383F: CC                    - int 3
 [ENABLE]
 
 local turn=-0.2
-local mul=1+4e-3
+local mul=1+1e-2
 local ratio=-2
 local div=1.1
 
@@ -940,10 +940,11 @@ brake.destroy()
 
 [ENABLE]
 
-local turn=-50
+local turn=-30
 local mul=1+8e-3
 local ratio=-1.5e-2
 local div=1.1
+local turnWt=1.1
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 
@@ -959,7 +960,7 @@ steer=list.getMemoryRecordByDescription('bike steer')
 
 function rotate()
 if xspeed==nil or xspeed.Value=="??" then return end
-if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
+if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn else steer.Value=steer.Value/turnWt end
 theta=math.rad(-ratio*steer.Value)
 r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
 if r==0 then return end
@@ -998,7 +999,7 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local const=500
+local const=2000
 
 t=getAddressList()
 x=t.getMemoryRecordByDescription("player x speed")
@@ -2070,6 +2071,113 @@ GTAIV.exe+352A9F: F3 0F 10 81 F4 00 00 00  - movss xmm0,[ecx+000000F4]
         <Byte>F3</Byte>
         <Byte>0F</Byte>
         <Byte>11</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Vehicle engine health :fld dword ptr [eax+000010AC] : -4000 it will blast : -ve value will cause it to burn</Description>
+      <AddressString>GTAIV.exe+63A6F2</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>80</Byte>
+        <Byte>AC</Byte>
+        <Byte>10</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Boat speed related :movss xmm0,[ecx+00000110]</Description>
+      <AddressString>GTAIV.exe+3537F1</AddressString>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>12</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>10</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C2</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>boat x speed :movss [esi+00000130],xmm2</Description>
+      <AddressString>GTAIV.exe+351B13</AddressString>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>96</Byte>
+        <Byte>30</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>86</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>car somethign accessor :addss xmm0,[esi+44]</Description>
+      <AddressString>GTAIV.exe+24E705</AddressString>
+      <Before>
+        <Byte>46</Byte>
+        <Byte>40</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>C4</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>46</Byte>
+        <Byte>44</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>46</Byte>
+        <Byte>44</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
