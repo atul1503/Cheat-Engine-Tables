@@ -764,7 +764,8 @@ if syntaxcheck then return end
 
 [ENABLE]
 
-local speed=10
+local speed=20
+local slow_speed=3.5
 local sleeptime=0
 
 local xstr="[player_addr_ptr]+100"
@@ -783,6 +784,7 @@ elseif coords[1] == nil then
      dcoord.y=coords[1].y-coords[0].y
      local normalized={x=nil,y=nil}
      local r=((dcoord.x^2)+(dcoord.y^2))^0.5
+     if r==0 then return end
      normalized.x=dcoord.x/r
      normalized.y=dcoord.y/r
      if isKeyPressed(0xA0) then
@@ -796,11 +798,36 @@ end,0x26,0xA0) -- up and shift
 
 
 
+hk2=createHotkey(function()
+if coords[0] == nil then
+   coords[0]={x=readFloat(xstr),y=readFloat(ystr)}
+elseif coords[1] == nil then
+     sleep(sleeptime)
+     coords[1]={x=readFloat(xstr),y=readFloat(ystr)}
+     local dcoord={x=nil,y=nil}
+     dcoord.x=coords[1].x-coords[0].x
+     dcoord.y=coords[1].y-coords[0].y
+     local normalized={x=nil,y=nil}
+     local r=((dcoord.x^2)+(dcoord.y^2))^0.5
+     if r==0 then return end
+     normalized.x=dcoord.x/r
+     normalized.y=dcoord.y/r
+     if isKeyPressed(0x5A) then
+        writeFloat(xstr,readFloat(xstr)+(normalized.x)*slow_speed)
+        writeFloat(ystr,readFloat(ystr)+(normalized.y)*slow_speed)
+     end
+     coords[0]=nil
+     coords[1]=nil
+end
+end,0x26,0x5A) -- up and z
+
+
+
 
 
 [DISABLE]
 hk1.destroy()
-
+hk2.destroy()
 
 </AssemblerScript>
             </CheatEntry>
