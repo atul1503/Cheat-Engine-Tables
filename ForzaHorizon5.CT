@@ -377,10 +377,10 @@ slower.destroy()
 
 [ENABLE]
 
-local turn=0.1
+local turn=0.05
 local mul=1+10e-3
-local ratio=-2.2
-local turnWt=1.025
+local ratio=-1.8*1.1*1.05
+local turnWt=1.1
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
 -- But most of the time, adjust the ratio and keep the turn to 0 and if its turning very less or too much then slightly slow and then turn. Trust me slowing down will still keep you ahead of everyone.
