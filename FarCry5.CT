@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"10 ammo everytime"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : FarCry5.exe
+  Version: 
+  Date   : 2025-09-26
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(unlimammo,FC_m64.dll,44 89 83 88 01 00 00) // should be unique
+alloc(newmem,$1000,unlimammo)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rbx+00000188],#30
+  jmp return
+
+unlimammo:
+  jmp newmem
+  nop 2
+return:
+registersymbol(unlimammo)
+
+[DISABLE]
+
+unlimammo:
+  db 44 89 83 88 01 00 00
+
+unregistersymbol(unlimammo)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: FC_m64.dll+A92DDFC
+
+FC_m64.dll+A92DDD6: 48 83 EC 20           - sub rsp,20
+FC_m64.dll+A92DDDA: 89 D7                 - mov edi,edx
+FC_m64.dll+A92DDDC: 48 89 CB              - mov rbx,rcx
+FC_m64.dll+A92DDDF: 3B 91 88 01 00 00     - cmp edx,[rcx+00000188]
+FC_m64.dll+A92DDE5: 74 3C                 - je FC_m64.dll+A92DE23
+FC_m64.dll+A92DDE7: E8 84 E5 3C F7        - call FC_m64.dll+1CFC370
+FC_m64.dll+A92DDEC: 39 F8                 - cmp eax,edi
+FC_m64.dll+A92DDEE: C6 83 C4 00 00 00 01  - mov byte ptr [rbx+000000C4],01
+FC_m64.dll+A92DDF5: 41 89 F8              - mov r8d,edi
+FC_m64.dll+A92DDF8: 44 0F 4C C0           - cmovl r8d,eax
+// ---------- INJECTING HERE ----------
+FC_m64.dll+A92DDFC: 44 89 83 88 01 00 00  - mov [rbx+00000188],r8d
+// ---------- DONE INJECTING  ----------
+FC_m64.dll+A92DE03: 85 FF                 - test edi,edi
+FC_m64.dll+A92DE05: 7E 07                 - jle FC_m64.dll+A92DE0E
+FC_m64.dll+A92DE07: C6 83 D0 01 00 00 00  - mov byte ptr [rbx+000001D0],00
+FC_m64.dll+A92DE0E: 48 8B 8B E0 01 00 00  - mov rcx,[rbx+000001E0]
+FC_m64.dll+A92DE15: 48 85 C9              - test rcx,rcx
+FC_m64.dll+A92DE18: 74 09                 - je FC_m64.dll+A92DE23
+FC_m64.dll+A92DE1A: 48 8B 01              - mov rax,[rcx]
+FC_m64.dll+A92DE1D: FF 90 E8 00 00 00     - call qword ptr [rax+000000E8]
+FC_m64.dll+A92DE23: 48 8B 5C 24 30        - mov rbx,[rsp+30]
+FC_m64.dll+A92DE28: 48 83 C4 20           - add rsp,20
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :cmp [rbx+00000188],edi (ammo watcher)</Description>
+      <AddressString>FC_m64.dll+A8DD286</AddressString>
+      <Before>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>74</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>39</Byte>
+        <Byte>BB</Byte>
+        <Byte>88</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>7C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [rbx+00000188],r8d (ammo writer)</Description>
+      <AddressString>FC_m64.dll+A92DDFC</AddressString>
+      <Before>
+        <Byte>F8</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>4C</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>83</Byte>
+        <Byte>88</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+        <Byte>7E</Byte>
+        <Byte>07</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss xmm0,[rcx+18] (Health reader)</Description>
+      <AddressString>FC_m64.dll+83445B0</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>1F</Byte>
+        <Byte>44</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>41</Byte>
+        <Byte>1C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rbx+0C] (Money watcher in shop)</Description>
+      <AddressString>FC_m64.dll+AD43447</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>B9</Byte>
+        <Byte>8F</Byte>
+        <Byte>13</Byte>
+        <Byte>F7</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps [rcx+00000120],xmm0 (Y coord reader when jumping)</Description>
+      <AddressString>FC_m64.dll+EFC52B2</AddressString>
+      <Before>
+        <Byte>28</Byte>
+        <Byte>02</Byte>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>CB</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>81</Byte>
+        <Byte>20</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>74</Byte>
+        <Byte>3C</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>Health initially is 150 float.
+</Comments>
+</CheatTable>
