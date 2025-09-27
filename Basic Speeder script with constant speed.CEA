@@ -1,0 +1,38 @@
+{$lua}
+
+[ENABLE]
+
+-- This script ensures that while pressing UP, you(or any character or object whose speed is in the cheat table with 'speedXString' and 'speedYString' as the name of memory records representing the x and y speeds of the object) moves with constant speed in whichever direction it is moving.
+-- That speed can be set by this speed variable below.
+-- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
+
+
+local speed=20
+local speedXString='x'
+local speedYString='y'
+
+
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+
+
+
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+local r=((x.Value^2)+(y.Value^2))^0.5
+local ratio=speed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end,0x26)
+
+
+
+
+
+
+[DISABLE]
+hk1.destroy()
+

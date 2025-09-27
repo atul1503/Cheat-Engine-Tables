@@ -1,0 +1,33 @@
+{$lua}
+
+[ENABLE]
+
+local speed=20
+local speedXString='x'
+local speedYString='y'
+
+
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+
+
+
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+local r=((x.Value^2)+(y.Value^2))^0.5
+local ratio=speed/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end,0x26)
+
+
+
+
+
+
+[DISABLE]
+hk1.destroy()
+

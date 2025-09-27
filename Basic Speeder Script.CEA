@@ -1,0 +1,33 @@
+{$lua}
+
+[ENABLE]
+
+local mul=1+3e-3
+local speedXString='X SPEED'
+local speedYString='Y SPEED'
+
+
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+
+
+local TempUp=Up
+local TempDown=Down
+
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+x.Value=x.Value*mul
+y.Value=y.Value*mul
+end,0x26)
+
+
+
+
+
+
+[DISABLE]
+hk1.destroy()
+
