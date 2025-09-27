@@ -127,6 +127,78 @@ hk2.destroy()
 
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Geared Speeder"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- This script ensures that while pressing UP, you(or any character or object whose speed is in the cheat table with 'speedXString' and 'speedYString' as the name of memory records representing the x and y speeds of the object) moves with constant speed in whichever direction it is moving.
+-- That speed can be set by this speed variable below.
+-- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
+
+
+
+local speedTable={10,30,50}
+local index=1
+local speedXString='xspeed'
+local speedYString='yspeed'
+
+t=getAddressList()
+
+x=t.getMemoryRecordByDescription(speedXString)
+y=t.getMemoryRecordByDescription(speedYString)
+
+
+function getLength(thistable)
+local count=0
+  for index,value in pairs(thistable) do
+      count=count+1
+  end
+return count
+end
+
+incGear=createHotkey(function()
+if index&gt;=getLength(speedTable) then return end
+index=index+1
+end,0x57)
+
+decGear=createHotkey(function()
+if index&lt;=1 then return end
+index=index-1
+end,0x53)
+
+
+
+hk1=createHotkey(function()
+t=getAddressList()
+if x==nil or y==nil then return end
+local r=((x.Value^2)+(y.Value^2))^0.5
+local ratio=speedTable[index]/r
+x.Value=x.Value*ratio
+y.Value=y.Value*ratio
+end,0x26)
+
+
+hk2=createHotkey(function()
+if x==nil or y==nil then return end
+x.Value=0
+y.Value=0
+end,0x28)
+
+
+
+
+[DISABLE]
+hk1.destroy()
+hk2.destroy()
+incGear.destroy()
+decGear.destroy()
+
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -140,14 +212,14 @@ hk2.destroy()
           <Description>"Health"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>171ED684068</Address>
+          <Address>171F0453E88</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4</ID>
           <Description>"xspeed"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>172309694E8</Address>
+          <Address>172515067A8</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
