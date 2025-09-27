@@ -6,6 +6,7 @@ local mul=1+3e-3
 local speedXString='X SPEED'
 local speedYString='Y SPEED'
 
+t=getAddressList()
 
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)

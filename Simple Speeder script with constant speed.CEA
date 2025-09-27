@@ -6,6 +6,7 @@ local speed=20
 local speedXString='x'
 local speedYString='y'
 
+t=getAddressList()
 
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)

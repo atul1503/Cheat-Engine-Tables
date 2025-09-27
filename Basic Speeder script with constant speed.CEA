@@ -8,9 +8,10 @@
 
 
 local speed=20
-local speedXString='x'
-local speedYString='y'
+local speedXString='xspeed'
+local speedYString='yspeed'
 
+t=getAddressList()
 
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)
@@ -29,10 +30,16 @@ y.Value=y.Value*ratio
 end,0x26)
 
 
+hk2=createHotkey(function()
+t=getAddressList()
+x.Value=0
+y.Value=0
+end,0x28)
 
 
 
 
 [DISABLE]
 hk1.destroy()
+hk2.destroy()
 

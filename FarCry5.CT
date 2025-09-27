@@ -89,10 +89,11 @@ FC_m64.dll+A92DE28: 48 83 C4 20           - add rsp,20
 -- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
 
 
-local speed=20
+local speed=30
 local speedXString='xspeed'
 local speedYString='yspeed'
 
+t=getAddressList()
 
 x=t.getMemoryRecordByDescription(speedXString)
 y=t.getMemoryRecordByDescription(speedYString)
@@ -122,6 +123,7 @@ end,0x28)
 
 [DISABLE]
 hk1.destroy()
+hk2.destroy()
 
 </AssemblerScript>
         </CheatEntry>
@@ -136,15 +138,16 @@ hk1.destroy()
         <CheatEntry>
           <ID>2</ID>
           <Description>"Health"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>171EE942B68</Address>
+          <Address>171ED684068</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4</ID>
           <Description>"xspeed"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>1716E76D6F8</Address>
+          <Address>172309694E8</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
