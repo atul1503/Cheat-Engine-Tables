@@ -430,22 +430,261 @@ decGear.destroy()
                 <Offset>2A8</Offset>
               </Offsets>
             </CheatEntry>
+            <CheatEntry>
+              <ID>56</ID>
+              <Description>"X Speed Pointer 1"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F3EC60</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>220</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"X Speed Pointer 2"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E9E590</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>90</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>58</ID>
+              <Description>"X Speed Pointer 3"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F33E80</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>10</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"X Speed Pointer 4"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F32658</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>60</Offset>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"X Speed Pointer 5"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04D949B8</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>100</Offset>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"X Speed Pointer 6"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"X Speed Pointer 7"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E783E0</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>63</ID>
+              <Description>"X Speed Pointer 8"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F43078</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>30</Offset>
+                <Offset>70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>64</ID>
+              <Description>"X Speed Pointer 9"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04D95350</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>20</Offset>
+                <Offset>18</Offset>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>40</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"X Speed Pointer 10"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04EC5010</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>20</Offset>
+                <Offset>18</Offset>
+                <Offset>20</Offset>
+                <Offset>0</Offset>
+                <Offset>228</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"X Speed Pointer 11"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04EC5018</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>20</Offset>
+                <Offset>18</Offset>
+                <Offset>220</Offset>
+                <Offset>0</Offset>
+                <Offset>40</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"X Speed Pointer 12"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F43078</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>20</Offset>
+                <Offset>18</Offset>
+                <Offset>688</Offset>
+                <Offset>8</Offset>
+                <Offset>70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"X Speed Pointer 13"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F43078</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>20</Offset>
+                <Offset>18</Offset>
+                <Offset>6C8</Offset>
+                <Offset>8</Offset>
+                <Offset>70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"X Speed Pointer 14"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F43078</Address>
+              <Offsets>
+                <Offset>448</Offset>
+                <Offset>260</Offset>
+                <Offset>E0</Offset>
+                <Offset>20</Offset>
+                <Offset>18</Offset>
+                <Offset>6C8</Offset>
+                <Offset>38</Offset>
+                <Offset>70</Offset>
+              </Offsets>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>2</ID>
+          <ID>33</ID>
           <Description>"Health"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>171F0453E88</Address>
+          <Address>"FC_m64.dll"+04E78408</Address>
+          <Offsets>
+            <Offset>18</Offset>
+            <Offset>48</Offset>
+            <Offset>20</Offset>
+            <Offset>48</Offset>
+            <Offset>0</Offset>
+          </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>4</ID>
+          <ID>70</ID>
           <Description>"xspeed"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
-          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>16DC03DED38</Address>
+          <Address>"FC_m64.dll"+04F3EC60</Address>
+          <Offsets>
+            <Offset>448</Offset>
+            <Offset>260</Offset>
+            <Offset>E0</Offset>
+            <Offset>8</Offset>
+            <Offset>A8</Offset>
+            <Offset>10</Offset>
+            <Offset>0</Offset>
+            <Offset>220</Offset>
+          </Offsets>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
@@ -672,6 +911,29 @@ decGear.destroy()
         <Byte>BC</Byte>
         <Byte>24</Byte>
         <Byte>E0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :sub [rdi+4C],edx (Grenade ammo subtractor)</Description>
+      <AddressString>FC_m64.dll+AD8CFA6</AddressString>
+      <Before>
+        <Byte>39</Byte>
+        <Byte>D3</Byte>
+        <Byte>0F</Byte>
+        <Byte>42</Byte>
+        <Byte>D3</Byte>
+      </Before>
+      <Actual>
+        <Byte>29</Byte>
+        <Byte>57</Byte>
+        <Byte>4C</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>D3</Byte>
+        <Byte>85</Byte>
+        <Byte>DB</Byte>
+        <Byte>74</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
