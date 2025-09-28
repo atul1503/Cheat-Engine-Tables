@@ -89,7 +89,7 @@ FC_m64.dll+A92DE28: 48 83 C4 20           - add rsp,20
 -- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
 
 
-local speed=30
+local speed=100
 local speedXString='xspeed'
 local speedYString='yspeed'
 
@@ -141,7 +141,7 @@ hk2.destroy()
 
 
 
-local speedTable={10,30,50}
+local speedTable={10,30,50,80}
 local index=1
 local speedXString='xspeed'
 local speedYString='yspeed'
@@ -208,6 +208,231 @@ decGear.destroy()
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>32</ID>
+          <Description>"POINTERS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>15</ID>
+              <Description>"Health Pointer 1"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>20</Offset>
+                <Offset>48</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"Health Pointer 2"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>20</Offset>
+                <Offset>50</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>17</ID>
+              <Description>"Health Pointer 3"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>20</Offset>
+                <Offset>4C</Offset>
+                <Offset>A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"Health Pointer 4"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>0</Offset>
+                <Offset>18</Offset>
+                <Offset>20</Offset>
+                <Offset>48</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"Health Pointer 5"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E8FAF0</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>88</Offset>
+                <Offset>8</Offset>
+                <Offset>88</Offset>
+                <Offset>D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"Health Pointer 6"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>0</Offset>
+                <Offset>18</Offset>
+                <Offset>20</Offset>
+                <Offset>38</Offset>
+                <Offset>4</Offset>
+                <Offset>A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>21</ID>
+              <Description>"Health Pointer 7"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>48</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>23</ID>
+              <Description>"Health Pointer 8"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>8</Offset>
+                <Offset>3E8</Offset>
+                <Offset>20</Offset>
+                <Offset>4C</Offset>
+                <Offset>A0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>24</ID>
+              <Description>"Health Pointer 9"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E78408</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>8</Offset>
+                <Offset>4A8</Offset>
+                <Offset>20</Offset>
+                <Offset>48</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>25</ID>
+              <Description>"Health Pointer 10"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E73340</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>20</Offset>
+                <Offset>4C</Offset>
+                <Offset>F0</Offset>
+                <Offset>1B8</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>26</ID>
+              <Description>"Health Pointer 11"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04D96A28</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>B8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>80</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>27</ID>
+              <Description>"Health Pointer 12"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E9A908</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>B8</Offset>
+                <Offset>A8</Offset>
+                <Offset>70</Offset>
+                <Offset>0</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>28</ID>
+              <Description>"Health Pointer 13"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04E783E0</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>B8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>120</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>29</ID>
+              <Description>"Health Pointer 15"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04D949B8</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>B8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>B0</Offset>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>31</ID>
+              <Description>"Health Pointer 16"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F3EC48</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>48</Offset>
+                <Offset>B8</Offset>
+                <Offset>A8</Offset>
+                <Offset>10</Offset>
+                <Offset>0</Offset>
+                <Offset>2A8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>2</ID>
           <Description>"Health"</Description>
           <ShowAsSigned>0</ShowAsSigned>
@@ -217,9 +442,10 @@ decGear.destroy()
         <CheatEntry>
           <ID>4</ID>
           <Description>"xspeed"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>172515067A8</Address>
+          <Address>16DC03DED38</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>6</ID>
