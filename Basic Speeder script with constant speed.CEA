@@ -2,44 +2,85 @@
 
 [ENABLE]
 
--- This script ensures that while pressing UP, you(or any character or object whose speed is in the cheat table with 'speedXString' and 'speedYString' as the name of memory records representing the x and y speeds of the object) moves with constant speed in whichever direction it is moving.
--- That speed can be set by this speed variable below.
--- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
+-- This script ensures that while pressing UP (↑), you (or any character/object
+-- whose x and y speed are in the cheat table as 'xspeed' and 'yspeed'),
+-- move at a constant speed in whichever direction you are already traveling.
+--
+-- ⚡ Unlike the "gear" version, here the target speed magnitude is fixed
+--   to one constant value (100 by default).
+--
+-- ⚡ When UP is pressed, it normalizes the current (x,y) velocity to that fixed length.
+-- ⚡ When DOWN is pressed, both speeds are set to 0 (instant stop).
+--
+-- ✨ Safety improvements:
+--   1. Resolves memory records dynamically (no stale references).
+--   2. Avoids division-by-zero issues if the current velocity is 0.
+--   3. Proper cleanup in [DISABLE].
 
+-- Set your constant speed magnitude here:
+local speed=100
 
-local speed=20
+-- Names of the cheat table entries corresponding to velocity components.
 local speedXString='xspeed'
 local speedYString='yspeed'
 
-t=getAddressList()
+----------------------------------------------------------------------
+-- Get memory record handles fresh each time (avoid stale references)
+----------------------------------------------------------------------
+local function getRecords()
+  local t=getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
 
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
+----------------------------------------------------------------------
+-- Normalize current x,y velocities to the constant speed
+-- Called when UP arrow is pressed (0x26).
+----------------------------------------------------------------------
+local function normalizeSpeed()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end        -- safety: no records
 
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
 
+  if r < 0.0001 then return end              -- avoid division by zero
 
+  local ratio = speed/r
+  xr.Value = vx*ratio
+  yr.Value = vy*ratio
+end
 
+----------------------------------------------------------------------
+-- Stop function: set both velocity components to 0
+-- Called when DOWN arrow is pressed (0x28).
+----------------------------------------------------------------------
+local function stopSpeed()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value=0
+    yr.Value=0
+  end
+end
 
+----------------------------------------------------------------------
+-- Hotkeys
+-- UP arrow (0x26): normalize vector to constant speed
+-- DOWN arrow (0x28): stop movement (zero velocity)
+----------------------------------------------------------------------
 
 hk1=createHotkey(function()
-t=getAddressList()
-local r=((x.Value^2)+(y.Value^2))^0.5
-local ratio=speed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
+  normalizeSpeed()
 end,0x26)
 
-
 hk2=createHotkey(function()
-t=getAddressList()
-x.Value=0
-y.Value=0
+  stopSpeed()
 end,0x28)
 
-
-
-
 [DISABLE]
-hk1.destroy()
-hk2.destroy()
 
+-- Clean up hotkeys properly, so multiple enables/disables don’t leave “ghost” hotkeys
+if hk1 then hk1.destroy() hk1=nil end
+if hk2 then hk2.destroy() hk2=nil end

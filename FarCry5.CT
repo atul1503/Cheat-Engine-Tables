@@ -165,47 +165,88 @@ dealloc(newmem)
 
 [ENABLE]
 
--- This script ensures that while pressing UP, you(or any character or object whose speed is in the cheat table with 'speedXString' and 'speedYString' as the name of memory records representing the x and y speeds of the object) moves with constant speed in whichever direction it is moving.
--- That speed can be set by this speed variable below.
--- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
+-- This script ensures that while pressing UP (↑), you (or any character/object
+-- whose x and y speed are in the cheat table as 'xspeed' and 'yspeed'),
+-- move at a constant speed in whichever direction you are already traveling.
+--
+-- ⚡ Unlike the "gear" version, here the target speed magnitude is fixed
+--   to one constant value (100 by default).
+--
+-- ⚡ When UP is pressed, it normalizes the current (x,y) velocity to that fixed length.
+-- ⚡ When DOWN is pressed, both speeds are set to 0 (instant stop).
+--
+-- ✨ Safety improvements:
+--   1. Resolves memory records dynamically (no stale references).
+--   2. Avoids division-by-zero issues if the current velocity is 0.
+--   3. Proper cleanup in [DISABLE].
 
+-- Set your constant speed magnitude here:
+local speed=40
 
-local speed=100
+-- Names of the cheat table entries corresponding to velocity components.
 local speedXString='xspeed'
 local speedYString='yspeed'
 
-t=getAddressList()
+----------------------------------------------------------------------
+-- Get memory record handles fresh each time (avoid stale references)
+----------------------------------------------------------------------
+local function getRecords()
+  local t=getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
 
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
+----------------------------------------------------------------------
+-- Normalize current x,y velocities to the constant speed
+-- Called when UP arrow is pressed (0x26).
+----------------------------------------------------------------------
+local function normalizeSpeed()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end        -- safety: no records
 
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
 
+  if r &lt; 0.0001 then return end              -- avoid division by zero
 
+  local ratio = speed/r
+  xr.Value = vx*ratio
+  yr.Value = vy*ratio
+end
 
+----------------------------------------------------------------------
+-- Stop function: set both velocity components to 0
+-- Called when DOWN arrow is pressed (0x28).
+----------------------------------------------------------------------
+local function stopSpeed()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value=0
+    yr.Value=0
+  end
+end
 
+----------------------------------------------------------------------
+-- Hotkeys
+-- UP arrow (0x26): normalize vector to constant speed
+-- DOWN arrow (0x28): stop movement (zero velocity)
+----------------------------------------------------------------------
 
 hk1=createHotkey(function()
-t=getAddressList()
-local r=((x.Value^2)+(y.Value^2))^0.5
-local ratio=speed/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
+  normalizeSpeed()
 end,0x26)
 
-
 hk2=createHotkey(function()
-t=getAddressList()
-x.Value=0
-y.Value=0
+  stopSpeed()
 end,0x28)
 
-
-
-
 [DISABLE]
-hk1.destroy()
-hk2.destroy()
 
+-- Clean up hotkeys properly, so multiple enables/disables don’t leave “ghost” hotkeys
+if hk1 then hk1.destroy() hk1=nil end
+if hk2 then hk2.destroy() hk2=nil end
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -216,68 +257,115 @@ hk2.destroy()
 
 [ENABLE]
 
--- This script ensures that while pressing UP, you(or any character or object whose speed is in the cheat table with 'speedXString' and 'speedYString' as the name of memory records representing the x and y speeds of the object) moves with constant speed in whichever direction it is moving.
--- That speed can be set by this speed variable below.
--- This can work on any game you just have to ensure that you have the name of the address of x speed and y speed variable in the cheat table with the specified names in the variables below.
+-- This script ensures that while pressing UP (↑), you (or any character/object
+-- whose speed is represented in the cheat table with memory records named
+-- 'xspeed' and 'yspeed') move with constant speed in whichever direction you're currently going.
+--
+-- ⚡ The constant speed comes from the 'speedTable' below, where you can pick gears
+--   (10, 20, 40, 80) with W/S hotkeys.
+-- ⚡ While pressing UP, it normalizes your velocity vector (x/y) to have length = gear speed.
+-- ⚡ Pressing DOWN instantly zeroes out velocity (a quick stop).
+--
+-- ✨ Improvements over the crashing version:
+--   1. Freshly fetches memory records each time (so no stale references).
+--   2. Handles missing memory records gracefully (if nil, script no-ops instead of crashing).
+--   3. Division by zero guard (if x=y=0, skip math).
+--   4. Proper cleanup in [DISABLE] to avoid duplicate hotkeys.
 
-
-
+-- List of available speeds (like “gears”)
 local speedTable={10,20,40,80}
-local index=1
+local index=1  -- current gear index (starts at 1)
+
+-- Names of the cheat table entries holding velocity components
 local speedXString='xspeed'
 local speedYString='yspeed'
 
-t=getAddressList()
-
-x=t.getMemoryRecordByDescription(speedXString)
-y=t.getMemoryRecordByDescription(speedYString)
-
-
-function getLength(thistable)
-local count=0
-  for index,value in pairs(thistable) do
-      count=count+1
-  end
-return count
+----------------------------------------------------------------------
+-- Utility: get length of Lua table (since we cycle through speedTable)
+----------------------------------------------------------------------
+local function getLen(tbl)
+  local count=0
+  for _ in pairs(tbl) do count=count+1 end
+  return count
 end
 
+----------------------------------------------------------------------
+-- Helper: resolve memory record handles every time
+-- This avoids stale references when you save/load tables or re-open CE
+----------------------------------------------------------------------
+local function getRecords()
+  local t=getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
+
+----------------------------------------------------------------------
+-- Main action: normalize current velocity to selected 'gear' speed
+--  Called when UP arrow is pressed (0x26).
+----------------------------------------------------------------------
+local function normalizeSpeed()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end -- safety: no addresses, no adjustments
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  if r &lt; 0.0001 then return end  -- guard: avoid division by zero if stationary
+
+  local ratio = speedTable[index]/r
+  xr.Value = vx*ratio
+  yr.Value = vy*ratio
+end
+
+----------------------------------------------------------------------
+-- Stop action: sets both speed components to 0 instantly
+--  Called when DOWN arrow is pressed (0x28).
+----------------------------------------------------------------------
+local function stopSpeed()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value=0
+    yr.Value=0
+  end
+end
+
+----------------------------------------------------------------------
+-- Hotkeys setup
+-- W (0x57): gear up
+-- S (0x53): gear down
+-- UP arrow (0x26): normalize velocity
+-- DOWN arrow (0x28): stop immediately
+----------------------------------------------------------------------
+
 incGear=createHotkey(function()
-if index&gt;=getLength(speedTable) then return end
-index=index+1
+  if index &lt; getLen(speedTable) then
+    index=index+1
+  end
 end,0x57)
 
 decGear=createHotkey(function()
-if index&lt;=1 then return end
-index=index-1
+  if index &gt; 1 then
+    index=index-1
+  end
 end,0x53)
 
-
-
 hk1=createHotkey(function()
-t=getAddressList()
-if x==nil or y==nil then return end
-local r=((x.Value^2)+(y.Value^2))^0.5
-local ratio=speedTable[index]/r
-x.Value=x.Value*ratio
-y.Value=y.Value*ratio
-end,0x26)
-
+  normalizeSpeed()
+end,0x26)   -- UP arrow
 
 hk2=createHotkey(function()
-if x==nil or y==nil then return end
-x.Value=0
-y.Value=0
-end,0x28)
-
-
-
+  stopSpeed()
+end,0x28)   -- DOWN arrow
 
 [DISABLE]
-hk1.destroy()
-hk2.destroy()
-incGear.destroy()
-decGear.destroy()
 
+-- Clean up hotkeys properly so they don't pile up after script disable/enable cycles
+if hk1 then hk1.destroy() hk1=nil end
+if hk2 then hk2.destroy() hk2=nil end
+if incGear then incGear.destroy() incGear=nil end
+if decGear then decGear.destroy() decGear=nil end
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
