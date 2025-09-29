@@ -9,7 +9,7 @@
       <CheatEntries>
         <CheatEntry>
           <ID>1</ID>
-          <Description>"30 ammo for all weapons"</Description>
+          <Description>"30 ammo for all non melee weapons"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{ Game   : FarCry5.exe
   Version: 
@@ -141,7 +141,7 @@ hk2.destroy()
 
 
 
-local speedTable={10,30,50,80}
+local speedTable={10,20,40,80}
 local index=1
 local speedXString='xspeed'
 local speedYString='yspeed'
@@ -197,6 +197,133 @@ hk2.destroy()
 incGear.destroy()
 decGear.destroy()
 
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"No Fall From Jump"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : FarCry5.exe
+  Version: 
+  Date   : 2025-09-28
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(NoFall,FC_m64.dll,0F 85 8D 00 00 00 0F 28 8F) // should be unique
+alloc(newmem,$250,NoFall)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  je FC_m64.dll+6BB3925
+  jmp return
+
+NoFall:
+  jmp newmem
+  nop
+return:
+registersymbol(NoFall)
+
+[DISABLE]
+
+NoFall:
+  db 0F 85 8D 00 00 00
+
+unregistersymbol(NoFall)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: FC_m64.dll+6BB3892
+
+FC_m64.dll+6BB384F: 0F 29 5C 24 60                 - movaps [rsp+60],xmm3
+FC_m64.dll+6BB3854: F3 0F 11 BC 24 80 00 00 00     - movss [rsp+00000080],xmm7
+FC_m64.dll+6BB385D: F3 44 0F 11 84 24 84 00 00 00  - movss [rsp+00000084],xmm8
+FC_m64.dll+6BB3867: 0F 29 64 24 50                 - movaps [rsp+50],xmm4
+FC_m64.dll+6BB386C: 0F 29 44 24 70                 - movaps [rsp+70],xmm0
+FC_m64.dll+6BB3871: E8 0A 73 9B FC                 - call FC_m64.FCE_ItemRenderer_IsCurrentThumbnailsProcessDone+2820
+FC_m64.dll+6BB3876: 44 0F 28 84 24 90 00 00 00     - movaps xmm8,[rsp+00000090]
+FC_m64.dll+6BB387F: 40 84 F6                       - test sil,sil
+FC_m64.dll+6BB3882: 48 8B B4 24 D0 00 00 00        - mov rsi,[rsp+000000D0]
+FC_m64.dll+6BB388A: 0F 28 BC 24 A0 00 00 00        - movaps xmm7,[rsp+000000A0]
+// ---------- INJECTING HERE ----------
+FC_m64.dll+6BB3892: 0F 85 8D 00 00 00              - jne FC_m64.dll+6BB3925
+// ---------- DONE INJECTING  ----------
+FC_m64.dll+6BB3898: 0F 28 8F B0 00 00 00           - movaps xmm1,[rdi+000000B0]
+FC_m64.dll+6BB389F: 0F 59 4F 10                    - mulps xmm1,[rdi+10]
+FC_m64.dll+6BB38A3: 0F 28 D1                       - movaps xmm2,xmm1
+FC_m64.dll+6BB38A6: 0F 28 C1                       - movaps xmm0,xmm1
+FC_m64.dll+6BB38A9: 0F C6 C1 00                    - shufps xmm0,xmm1,00
+FC_m64.dll+6BB38AD: 0F C6 D1 55                    - shufps xmm2,xmm1,55
+FC_m64.dll+6BB38B1: 0F 58 D0                       - addps xmm2,xmm0
+FC_m64.dll+6BB38B4: 0F C6 C9 AA                    - shufps xmm1,xmm1,-56
+FC_m64.dll+6BB38B8: 0F 58 D1                       - addps xmm2,xmm1
+FC_m64.dll+6BB38BB: F3 0F 59 97 88 00 00 00        - mulss xmm2,[rdi+00000088]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>73</ID>
+          <Description>"No Fall Damage"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : FarCry5.exe
+  Version: 
+  Date   : 2025-09-29
+  Author : atult
+
+  Nobody suffers fall damage. Fall damage is pointless anyway. You don't kill enemies by throwing them from a cliff. You shoot them.
+}
+
+[ENABLE]
+
+aobscanmodule(no_fall_damage,FC_m64.dll,F3 0F 11 41 18 45) // should be unique
+
+registersymbol(no_fall_damage)
+
+no_fall_damage:
+  db 90 90 90 90 90
+
+[DISABLE]
+
+no_fall_damage:
+  db F3 0F 11 41 18
+
+unregistersymbol(no_fall_damage)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: FC_m64.dll+1080A55
+
+FC_m64.dll+1080A2F: CC                    - int 3 
+FC_m64.dll+1080A30: 4C 8B DC              - mov r11,rsp
+FC_m64.dll+1080A33: 57                    - push rdi
+FC_m64.dll+1080A34: 48 81 EC 00 01 00 00  - sub rsp,00000100
+FC_m64.dll+1080A3B: F3 0F 10 41 1C        - movss xmm0,[rcx+1C]
+FC_m64.dll+1080A40: 48 8B F9              - mov rdi,rcx
+FC_m64.dll+1080A43: F3 0F 10 59 18        - movss xmm3,[rcx+18]
+FC_m64.dll+1080A48: F3 0F 5D C1           - minss xmm0,xmm1
+FC_m64.dll+1080A4C: 0F 2E C3              - ucomiss xmm0,xmm3
+FC_m64.dll+1080A4F: 0F 84 BD 01 00 00     - je FC_m64.dll+1080C12
+// ---------- INJECTING HERE ----------
+FC_m64.dll+1080A55: F3 0F 11 41 18        - movss [rcx+18],xmm0
+// ---------- DONE INJECTING  ----------
+FC_m64.dll+1080A5A: 45 84 C9              - test r9b,r9b
+FC_m64.dll+1080A5D: 0F 85 AF 01 00 00     - jne FC_m64.dll+1080C12
+FC_m64.dll+1080A63: 48 8B 41 08           - mov rax,[rcx+08]
+FC_m64.dll+1080A67: 48 85 C0              - test rax,rax
+FC_m64.dll+1080A6A: 0F 84 A2 01 00 00     - je FC_m64.dll+1080C12
+FC_m64.dll+1080A70: 44 38 49 14           - cmp [rcx+14],r9b
+FC_m64.dll+1080A74: 0F 84 98 01 00 00     - je FC_m64.dll+1080C12
+FC_m64.dll+1080A7A: 48 8B 40 08           - mov rax,[rax+08]
+FC_m64.dll+1080A7E: 49 89 5B 10           - mov [r11+10],rbx
+FC_m64.dll+1080A82: 49 89 6B 18           - mov [r11+18],rbp
+}
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
@@ -934,6 +1061,56 @@ decGear.destroy()
         <Byte>85</Byte>
         <Byte>DB</Byte>
         <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rbx+34],xmm2 (Jump Velocity watcher)</Description>
+      <AddressString>FC_m64.dll+6BB38C7</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>D6</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>53</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>EA</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of movss [rcx+18],xmm0</Description>
+      <AddressString>FC_m64.dll+1080A55</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>BD</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>45</Byte>
+        <Byte>84</Byte>
+        <Byte>C9</Byte>
+        <Byte>0F</Byte>
+        <Byte>85</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
