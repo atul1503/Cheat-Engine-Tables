@@ -159,7 +159,7 @@ dealloc(newmem)
         </CheatEntry>
         <CheatEntry>
           <ID>86</ID>
-          <Description>"Jumper with Constant "</Description>
+          <Description>"Long Jump"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 
@@ -175,20 +175,16 @@ dealloc(newmem)
 -- ⚡ When UP is pressed, it normalizes the current (x,y) velocity to that fixed length.
 -- ⚡ When DOWN is pressed, both speeds are set to 0 (instant stop).
 -- ⚡ When UP + SPACE are pressed together, performs a long sustained jump.
---
--- ✨ Safety improvements:
---   1. Resolves memory records dynamically (no stale references).
---   2. Avoids division-by-zero issues if the current velocity is 0.
---   3. Proper cleanup in [DISABLE].
+-- ⚡ When S is pressed, EMERGENCY STOP - cancels jump and zeros all speeds.
 
 -- Set your constant speed magnitude here:
 local speed=10
 
 -- Jump settings:
-local jumpSpeedUp=27         -- Upward (z-axis) velocity during uphill phase
-local jumpSpeedDown=-15      -- Downward (z-axis) velocity during downhill phase
-local jumpHorizontalSpeed=60 -- Horizontal speed during jump
-local uphillDuration=10000   -- Duration of uphill phase in milliseconds (10 seconds)
+local jumpSpeedUp=6         -- Upward (z-axis) velocity during uphill phase
+local jumpSpeedDown=-6     -- Downward (z-axis) velocity during downhill phase
+local jumpHorizontalSpeed=30 -- Horizontal speed during jump
+local uphillDuration=3000   -- Duration of uphill phase in milliseconds (10 seconds)
 local updateInterval=50      -- How often to update speeds during jump (milliseconds)
 local landingThreshold=0.5   -- Z-speed threshold to detect landing (close to 0)
 
@@ -249,6 +245,25 @@ local function cleanupJumpTimer()
 
   jumpPhase = nil
   previousZSpeed = 0
+end
+
+----------------------------------------------------------------------
+-- EMERGENCY STOP: Cancel everything and zero all speeds
+-- Called when S key is pressed (0x53).
+----------------------------------------------------------------------
+local function emergencyStop()
+  -- Cancel any active jump immediately
+  if isJumpActive then
+    cleanupJumpTimer()
+  end
+
+  -- Zero all speeds
+  local xr, yr, zr = getRecords()
+  if not xr or not yr or not zr then return end
+
+  xr.Value = 0
+  yr.Value = 0
+  zr.Value = 0
 end
 
 ----------------------------------------------------------------------
@@ -415,6 +430,7 @@ end
 -- UP arrow (0x26): normalize vector to constant speed (disabled during jump)
 -- DOWN arrow (0x28): stop ALL movement and cancel jump
 -- UP + SPACE (0x26 + 0x20): perform sustained long jump
+-- S (0x53): EMERGENCY STOP - cancel jump and zero all speeds immediately
 ----------------------------------------------------------------------
 
 hk1=createHotkey(function()
@@ -426,10 +442,14 @@ hk2=createHotkey(function()
 end,0x28)
 
 -- Jump hotkey: UP (0x26) + SPACE (0x20) combination
--- Note: Register as separate hotkey with different key combination
 hk3=createHotkey(function()
   performJump()
 end, VK_UP, VK_SPACE)
+
+-- Emergency stop hotkey: S key (0x53)
+hk4=createHotkey(function()
+  emergencyStop()
+end,0x53)
 
 [DISABLE]
 
@@ -451,6 +471,34 @@ previousZSpeed = 0
 if hk1 then hk1.destroy() hk1=nil end
 if hk2 then hk2.destroy() hk2=nil end
 if hk3 then hk3.destroy() hk3=nil end
+if hk4 then hk4.destroy() hk4=nil end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"Free all game timers"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+// The address FC_m64.dll+30BBD0 is a jump to the real elapsed-time function.
+// We will overwrite this jump with code that immediately returns 0.0,
+// effectively freezing the timer by making the elapsed time always zero.
+
+define(ElapsedTimeFunc_jmp, FC_m64.dll+30BBD0)
+registersymbol(ElapsedTimeFunc_jmp)
+
+ElapsedTimeFunc_jmp:
+  // xorps xmm0, xmm0   ; Set return value (xmm0) to 0.0
+  // ret                ; Return from the function
+  // nop                ; Pad to 5 bytes to match the original jmp
+  db 0F 57 C0 C3 90
+
+[DISABLE]
+// Restore the original jump instruction: jmp FC_m64.dll+6292F60
+ElapsedTimeFunc_jmp:
+  db E9 8B 73 F8 05
+
+unregistersymbol(ElapsedTimeFunc_jmp)
+
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
@@ -1244,6 +1292,19 @@ FC_m64.dll+6BB38BB: F3 0F 59 97 88 00 00 00        - mulss xmm2,[rdi+00000088]
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+    <CheatEntry>
+      <ID>93</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>25F7071D31C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>94</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>25F7071D2F8+20</Address>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
@@ -1498,6 +1559,30 @@ FC_m64.dll+6BB38BB: F3 0F 59 97 88 00 00 00        - mulss xmm2,[rdi+00000088]
         <Byte>28</Byte>
         <Byte>EA</Byte>
         <Byte>F3</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of subss xmm0,xmm1</Description>
+      <AddressString>FC_m64.dll+D68D3FB</AddressString>
+      <Before>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>43</Byte>
+        <Byte>74</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C1</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5F</Byte>
+        <Byte>C6</Byte>
         <Byte>0F</Byte>
       </After>
     </CodeEntry>
