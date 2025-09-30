@@ -476,7 +476,7 @@ if hk4 then hk4.destroy() hk4=nil end
         </CheatEntry>
         <CheatEntry>
           <ID>95</ID>
-          <Description>"Free all game timers"</Description>
+          <Description>"Freeze all game timers"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 // The address FC_m64.dll+30BBD0 is a jump to the real elapsed-time function.
@@ -1291,19 +1291,6 @@ FC_m64.dll+6BB38BB: F3 0F 59 97 88 00 00 00        - mulss xmm2,[rdi+00000088]
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>93</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>25F7071D31C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>94</ID>
-      <Description>"No description"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>25F7071D2F8+20</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
