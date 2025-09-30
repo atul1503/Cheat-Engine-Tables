@@ -158,6 +158,302 @@ dealloc(newmem)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>86</ID>
+          <Description>"Jumper with Constant "</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- This script ensures that while pressing UP (↑), you (or any character/object
+-- whose x and y speed are in the cheat table as 'xspeed' and 'yspeed'),
+-- move at a constant speed in whichever direction you are already traveling.
+--
+-- ⚡ Unlike the "gear" version, here the target speed magnitude is fixed
+--   to one constant value (100 by default).
+--
+-- ⚡ When UP is pressed, it normalizes the current (x,y) velocity to that fixed length.
+-- ⚡ When DOWN is pressed, both speeds are set to 0 (instant stop).
+-- ⚡ When UP + SPACE are pressed together, performs a long sustained jump.
+--
+-- ✨ Safety improvements:
+--   1. Resolves memory records dynamically (no stale references).
+--   2. Avoids division-by-zero issues if the current velocity is 0.
+--   3. Proper cleanup in [DISABLE].
+
+-- Set your constant speed magnitude here:
+local speed=10
+
+-- Jump settings:
+local jumpSpeedUp=27         -- Upward (z-axis) velocity during uphill phase
+local jumpSpeedDown=-15      -- Downward (z-axis) velocity during downhill phase
+local jumpHorizontalSpeed=60 -- Horizontal speed during jump
+local uphillDuration=10000   -- Duration of uphill phase in milliseconds (10 seconds)
+local updateInterval=50      -- How often to update speeds during jump (milliseconds)
+local landingThreshold=0.5   -- Z-speed threshold to detect landing (close to 0)
+
+-- Names of the cheat table entries corresponding to velocity components.
+local speedXString='xspeed'
+local speedYString='yspeed'
+local speedZString='zspeed'
+
+-- Jump state tracking - FORCE CLEAN STATE ON ENABLE
+local jumpTimer=nil
+local jumpPhase=nil
+local jumpStartTime=0
+local previousZSpeed=0
+local isJumpActive=false
+
+-- Clean up any leftover state from previous enable/disable cycle
+if jumpTimer then
+  pcall(function()
+    jumpTimer.Enabled = false
+    jumpTimer.destroy()
+  end)
+  jumpTimer = nil
+end
+isJumpActive = false
+jumpPhase = nil
+
+----------------------------------------------------------------------
+-- Get memory record handles fresh each time (avoid stale references)
+----------------------------------------------------------------------
+local function getRecords()
+  local t=getAddressList()
+  if not t then return nil, nil, nil end
+
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  local zr = t.getMemoryRecordByDescription(speedZString)
+  return xr, yr, zr
+end
+
+----------------------------------------------------------------------
+-- Clean up jump timer safely (DEFINED EARLY)
+----------------------------------------------------------------------
+local function cleanupJumpTimer()
+  -- Prevent re-entry if already not active
+  if not isJumpActive and not jumpTimer then return end
+
+  isJumpActive = false
+
+  if jumpTimer then
+    -- Disable first to stop callbacks
+    pcall(function() jumpTimer.Enabled = false end)
+    -- Small delay to ensure no callback is mid-execution
+    sleep(updateInterval + 10)
+    -- Now safe to destroy
+    pcall(function() jumpTimer.destroy() end)
+    jumpTimer = nil
+  end
+
+  jumpPhase = nil
+  previousZSpeed = 0
+end
+
+----------------------------------------------------------------------
+-- Normalize current x,y velocities to the constant speed
+-- Called when UP arrow is pressed (0x26).
+----------------------------------------------------------------------
+local function normalizeSpeed()
+  -- Don't interfere with active jump
+  if isJumpActive then
+    return
+  end
+
+  local xr, yr = getRecords()
+  if not xr or not yr then return end        -- safety: no records
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  if r &lt; 0.0001 then return end              -- avoid division by zero
+
+  local ratio = speed/r
+  xr.Value = vx*ratio
+  yr.Value = vy*ratio
+end
+
+----------------------------------------------------------------------
+-- Stop function: set all velocity components to 0 and cancel jump
+-- Called when DOWN arrow is pressed (0x28).
+----------------------------------------------------------------------
+local function stopSpeed()
+  -- First, cancel any active jump
+  if isJumpActive then
+    cleanupJumpTimer()
+    -- Extra wait to ensure timer is fully stopped
+    sleep(100)
+  end
+
+  local xr, yr, zr = getRecords()
+  if not xr or not yr or not zr then return end
+
+  xr.Value=0
+  yr.Value=0
+  zr.Value=0
+end
+
+----------------------------------------------------------------------
+-- Check if player has landed (zspeed is near 0 during downhill phase)
+----------------------------------------------------------------------
+local function hasLanded(currentZSpeed)
+  -- During downhill, if zspeed becomes close to 0, we've likely hit the ground
+  if jumpPhase == 'downhill' then
+    local zSpeedAbs = math.abs(currentZSpeed)
+    if zSpeedAbs &lt; landingThreshold then
+      return true
+    end
+  end
+  return false
+end
+
+----------------------------------------------------------------------
+-- Maintain jump speeds continuously during flight
+----------------------------------------------------------------------
+local function maintainJumpSpeed(timer)
+  -- Check if we're still in an active jump (prevents use-after-destroy)
+  if not isJumpActive or not jumpTimer then
+    return
+  end
+
+  local xr, yr, zr = getRecords()
+  if not xr or not yr or not zr then
+    cleanupJumpTimer()
+    return
+  end
+
+  local currentZSpeed = tonumber(zr.Value) or 0
+
+  -- Check if we've landed
+  if hasLanded(currentZSpeed) then
+    cleanupJumpTimer()
+    return
+  end
+
+  local elapsed = GetTickCount() - jumpStartTime
+
+  -- Determine current phase and vertical speed
+  local targetZSpeed = 0
+
+  if elapsed &lt; uphillDuration then
+    -- Uphill phase
+    jumpPhase = 'uphill'
+    targetZSpeed = jumpSpeedUp
+  else
+    -- Downhill phase (continues until landing)
+    jumpPhase = 'downhill'
+    targetZSpeed = jumpSpeedDown
+  end
+
+  -- Set vertical speed
+  zr.Value = targetZSpeed
+
+  -- Maintain horizontal speed
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  if r &gt; 0.0001 then
+    local ratio = jumpHorizontalSpeed/r
+    xr.Value = vx*ratio
+    yr.Value = vy*ratio
+  end
+
+  -- Store current zspeed for next iteration
+  previousZSpeed = currentZSpeed
+end
+
+----------------------------------------------------------------------
+-- Jump function: initiate sustained jump with uphill/downhill phases
+-- Called when UP + SPACE are pressed together.
+----------------------------------------------------------------------
+local function performJump()
+  -- Don't start new jump if one is already active
+  if isJumpActive then
+    return
+  end
+
+  local xr, yr, zr = getRecords()
+  if not xr or not yr or not zr then return end
+
+  -- Clean up any existing jump (shouldn't happen due to above check, but safe)
+  cleanupJumpTimer()
+
+  -- Mark jump as active
+  isJumpActive = true
+
+  -- Record start time
+  jumpStartTime = GetTickCount()
+  previousZSpeed = 0
+  jumpPhase = 'uphill'
+
+  -- Get current horizontal direction for the jump
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  -- Set initial speeds
+  zr.Value = jumpSpeedUp
+
+  if r &gt; 0.0001 then
+    local ratio = jumpHorizontalSpeed/r
+    xr.Value = vx*ratio
+    yr.Value = vy*ratio
+  end
+
+  -- Create timer to maintain speeds throughout jump
+  jumpTimer = createTimer(nil, false)
+  jumpTimer.Interval = updateInterval
+  jumpTimer.OnTimer = maintainJumpSpeed
+  jumpTimer.Enabled = true
+end
+
+----------------------------------------------------------------------
+-- Hotkeys
+-- UP arrow (0x26): normalize vector to constant speed (disabled during jump)
+-- DOWN arrow (0x28): stop ALL movement and cancel jump
+-- UP + SPACE (0x26 + 0x20): perform sustained long jump
+----------------------------------------------------------------------
+
+hk1=createHotkey(function()
+  normalizeSpeed()
+end,0x26)
+
+hk2=createHotkey(function()
+  stopSpeed()
+end,0x28)
+
+-- Jump hotkey: UP (0x26) + SPACE (0x20) combination
+-- Note: Register as separate hotkey with different key combination
+hk3=createHotkey(function()
+  performJump()
+end, VK_UP, VK_SPACE)
+
+[DISABLE]
+
+-- Mark as inactive to prevent callbacks
+isJumpActive = false
+
+-- Clean up jump timer first
+if jumpTimer then
+  pcall(function() jumpTimer.Enabled = false end)
+  sleep(updateInterval + 10)  -- Wait for any pending callbacks
+  pcall(function() jumpTimer.destroy() end)
+  jumpTimer = nil
+end
+
+jumpPhase = nil
+previousZSpeed = 0
+
+-- Clean up hotkeys properly, so multiple enables/disables don't leave "ghost" hotkeys
+if hk1 then hk1.destroy() hk1=nil end
+if hk2 then hk2.destroy() hk2=nil end
+if hk3 then hk3.destroy() hk3=nil end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>8</ID>
           <Description>"Constant Speeder"</Description>
           <VariableType>Auto Assembler Script</VariableType>
