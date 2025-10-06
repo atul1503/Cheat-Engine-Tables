@@ -259,9 +259,11 @@ if _G.rightHotkey then
 end
 
 -- Configuration
-_G.turn = 1.5
+-- (_G.turn/_G.ratio) = 1.764 is great for assetto corsa game.
+
+_G.turn = 1
 _G.mul = 1 + 8e-3
-_G.ratio = 0.85
+_G.ratio = 0.566
 
 -- Initialize memory records
 local function initMemoryRecords()
