@@ -154,7 +154,7 @@ brake.destroy()
     <CheatEntry>
       <ID>8</ID>
       <Description>"Speed capture script"</Description>
-      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>{ Game   : acs.exe
   Version: 
@@ -242,55 +242,174 @@ acs.exe+31AB3: F3 0F 59 C6              - mulss xmm0,xmm6
           <AssemblerScript>{$lua}
 
 [ENABLE]
-
-local turn=0 --1/7
-local mul=1+8e-3
-local ratio=3.8
-
--- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
-
-
-
-list=getAddressList()
-xspeed=list.getMemoryRecordByDescription('x speed')
-yspeed=list.getMemoryRecordByDescription('y speed')
-steer=list.getMemoryRecordByDescription('steer')
-
-
-
-
-function rotate()
-if xspeed==nil or xspeed.Value=="??" then return end
-if isKeyPressed(0x25) then steer.Value=steer.Value-turn elseif isKeyPressed(0x27) then steer.Value=steer.Value+turn end
-theta=math.rad(-ratio*steer.Value)
-r=((xspeed.Value^2)+(yspeed.Value^2))^0.5
-if r==0 then return end
-x=xspeed.Value/r
-y=yspeed.Value/r
-xcomp=x*math.cos(theta)-y*math.sin(theta)
-ycomp=x*math.sin(theta)+y*math.cos(theta)
-xspeed.Value=xcomp*r
-yspeed.Value=ycomp*r
-if isKeyPressed(0x26) then
-xspeed.Value=xcomp*r*mul
-yspeed.Value=ycomp*r*mul
-end
-if isKeyPressed(0x28) then
-xspeed.Value=xcomp*r/(mul*1.03)
-yspeed.Value=ycomp*r/(mul*1.03)
-end
+-- Clean up any existing timers/hotkeys from previous runs
+if _G.carTimer then
+    pcall(function() _G.carTimer.destroy() end)
+    _G.carTimer = nil
 end
 
-timer=createTimer()
-timer.Interval=50
-timer.OnTimer=rotate
-timer.Enabled=true
+if _G.leftHotkey then
+    pcall(function() _G.leftHotkey.destroy() end)
+    _G.leftHotkey = nil
+end
 
+if _G.rightHotkey then
+    pcall(function() _G.rightHotkey.destroy() end)
+    _G.rightHotkey = nil
+end
 
+-- Configuration
+_G.turn = 1.5
+_G.mul = 1 + 8e-3
+_G.ratio = 0.85
 
+-- Initialize memory records
+local function initMemoryRecords()
+    local list = getAddressList()
+    if not list then return false end
+
+    _G.xspeed = list.getMemoryRecordByDescription('x speed')
+    _G.yspeed = list.getMemoryRecordByDescription('y speed')
+    _G.steer = list.getMemoryRecordByDescription('steer')
+
+    if not _G.xspeed or not _G.yspeed or not _G.steer then
+        return false
+    end
+
+    return true
+end
+
+-- Safe memory operations
+local function getSafeValue(record)
+    if not record then return 0 end
+
+    local success, value = pcall(function()
+        local val = record.Value
+        if val == nil or val == "??" or val == "" then return 0 end
+        return tonumber(val) or 0
+    end)
+
+    return success and value or 0
+end
+
+local function setSafeValue(record, value)
+    if not record then return false end
+    if not value or value ~= value or math.abs(value) &gt; 1e10 then return false end
+
+    local success = pcall(function() record.Value = value end)
+    return success
+end
+
+-- Main rotation logic
+local function rotate()
+    local xVal = getSafeValue(_G.xspeed)
+    local yVal = getSafeValue(_G.yspeed)
+    local steerVal = getSafeValue(_G.steer)
+
+    -- Auto-decay steer when no keys pressed
+    local leftPressed = isKeyPressed(0x25)
+    local rightPressed = isKeyPressed(0x27)
+
+    if not leftPressed and not rightPressed and steerVal ~= 0 then
+        local decay = 0.5
+        local newSteer = steerVal * decay
+        if math.abs(newSteer) &lt; 0.001 then newSteer = 0 end
+        setSafeValue(_G.steer, newSteer)
+        steerVal = newSteer
+    end
+
+    -- Calculate rotation
+    local theta = math.rad(-_G.ratio * steerVal)
+    local r = math.sqrt(xVal^2 + yVal^2)
+
+    if r &lt; 1e-10 then return end
+
+    -- Normalize and rotate
+    local x = xVal / r
+    local y = yVal / r
+    local xcomp = x * math.cos(theta) - y * math.sin(theta)
+    local ycomp = x * math.sin(theta) + y * math.cos(theta)
+
+    -- Apply base rotation
+    local newX = xcomp * r
+    local newY = ycomp * r
+
+    -- Check for key modifiers
+    local upPressed = isKeyPressed(0x26)
+    local downPressed = isKeyPressed(0x28)
+
+    if upPressed then
+        newX = newX * _G.mul
+        newY = newY * _G.mul
+    end
+
+    if downPressed then
+        newX = newX / (_G.mul * 1.03)
+        newY = newY / (_G.mul * 1.03)
+    end
+
+    -- Set new values
+    setSafeValue(_G.xspeed, newX)
+    setSafeValue(_G.yspeed, newY)
+end
+
+-- Steer adjustment function
+local function handleSteerAdjustment(adjustment)
+    if not _G.steer then return end
+
+    local currentVal = getSafeValue(_G.steer)
+    setSafeValue(_G.steer, currentVal + adjustment)
+end
+
+-- Initialize everything
+if not initMemoryRecords() then
+    return
+end
+
+-- Create timer
+_G.carTimer = createTimer(getMainForm())
+_G.carTimer.Interval = 50
+_G.carTimer.OnTimer = function()
+    pcall(rotate)
+end
+
+-- Create hotkeys
+_G.leftHotkey = createHotkey(function()
+    handleSteerAdjustment(_G.turn)
+end, 0x25)  -- Left arrow
+
+_G.rightHotkey = createHotkey(function()
+    handleSteerAdjustment(-_G.turn)
+end, 0x27)  -- Right arrow
+
+-- Enable the timer
+_G.carTimer.Enabled = true
 
 [DISABLE]
-timer.destroy()
+-- Clean up all created objects
+if _G.carTimer then
+    _G.carTimer.Enabled = false
+    pcall(function() _G.carTimer.destroy() end)
+    _G.carTimer = nil
+end
+
+if _G.leftHotkey then
+    pcall(function() _G.leftHotkey.destroy() end)
+    _G.leftHotkey = nil
+end
+
+if _G.rightHotkey then
+    pcall(function() _G.rightHotkey.destroy() end)
+    _G.rightHotkey = nil
+end
+
+-- Clear global references
+_G.xspeed = nil
+_G.yspeed = nil
+_G.steer = nil
+_G.turn = nil
+_G.mul = nil
+_G.ratio = nil
 </AssemblerScript>
         </CheatEntry>
       </CheatEntries>
