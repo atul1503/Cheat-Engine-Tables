@@ -158,6 +158,60 @@ dealloc(newmem)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
+          <ID>102</ID>
+          <Description>"No Recoil"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : FarCry®5
+  Version: 
+  Date   : 2025-10-17
+  Author : atult
+
+  Disables recoil for player.
+}
+
+[ENABLE]
+
+aobscanmodule(NoRecoil,FC_m64.dll,F3 0F 11 83 88 00 00 00 40) // should be unique
+
+NoRecoil:
+db 90 90 90 90 90 90 90 90
+
+[DISABLE]
+
+NoRecoil:
+  db F3 0F 11 83 88 00 00 00
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: FC_m64.dll+19E885B
+
+FC_m64.dll+19E881C: F3 44 0F 5C C0              - subss xmm8,xmm0
+FC_m64.dll+19E8821: F3 0F 10 84 24 08 01 00 00  - movss xmm0,[rsp+00000108]
+FC_m64.dll+19E882A: F3 0F 11 83 9C 00 00 00     - movss [rbx+0000009C],xmm0
+FC_m64.dll+19E8832: F3 0F 11 83 90 00 00 00     - movss [rbx+00000090],xmm0
+FC_m64.dll+19E883A: F3 0F 11 8B 98 00 00 00     - movss [rbx+00000098],xmm1
+FC_m64.dll+19E8842: F3 0F 11 8B 94 00 00 00     - movss [rbx+00000094],xmm1
+FC_m64.dll+19E884A: 44 89 AB 88 00 00 00        - mov [rbx+00000088],r13d
+FC_m64.dll+19E8851: EB 10                       - jmp FC_m64.dll+19E8863
+FC_m64.dll+19E8853: F3 41 0F 5C C0              - subss xmm0,xmm8
+FC_m64.dll+19E8858: 45 32 E4                    - xor r12b,r12b
+// ---------- INJECTING HERE ----------
+FC_m64.dll+19E885B: F3 0F 11 83 88 00 00 00     - movss [rbx+00000088],xmm0
+// ---------- DONE INJECTING  ----------
+FC_m64.dll+19E8863: 40 B5 01                    - mov bpl,01
+FC_m64.dll+19E8866: F3 0F 10 83 90 00 00 00     - movss xmm0,[rbx+00000090]
+FC_m64.dll+19E886E: 0F 2E C7                    - ucomiss xmm0,xmm7
+FC_m64.dll+19E8871: 74 11                       - je FC_m64.dll+19E8884
+FC_m64.dll+19E8873: F3 41 0F 5C C0              - subss xmm0,xmm8
+FC_m64.dll+19E8878: F3 0F 5F C7                 - maxss xmm0,xmm7
+FC_m64.dll+19E887C: F3 0F 11 83 90 00 00 00     - movss [rbx+00000090],xmm0
+FC_m64.dll+19E8884: F3 0F 10 83 94 00 00 00     - movss xmm0,[rbx+00000094]
+FC_m64.dll+19E888C: 0F 2E C7                    - ucomiss xmm0,xmm7
+FC_m64.dll+19E888F: 74 11                       - je FC_m64.dll+19E88A2
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
           <ID>86</ID>
           <Description>"Long Jump"</Description>
           <VariableType>Auto Assembler Script</VariableType>
