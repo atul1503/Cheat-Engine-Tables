@@ -2,41 +2,27 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>3</ID>
-      <Description>"y speed"</Description>
+      <ID>9</ID>
+      <Description>"Using Content Manager?"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Float</VariableType>
-      <Address>[speedrdx]+118</Address>
+      <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>4</ID>
-          <Description>"x speed"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>-8</Address>
+          <ID>11</ID>
+          <Description>"Yes."</Description>
+          <GroupHeader>1</GroupHeader>
         </CheatEntry>
         <CheatEntry>
-          <ID>5</ID>
-          <Description>"z speed"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>-4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>6</ID>
-          <Description>"steer"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>+C</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>2</ID>
-      <Description>"Gear system"</Description>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{$lua}
+          <ID>10</ID>
+          <Description>"No."</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2</ID>
+              <Description>"Gear system"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
 
 if synataxcheck then return end
 
@@ -150,13 +136,44 @@ down.destroy()
 reset.destroy()
 brake.destroy()
 </AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>8</ID>
-      <Description>"Speed capture script"</Description>
-      <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : acs.exe
+            </CheatEntry>
+            <CheatEntry>
+              <ID>3</ID>
+              <Description>"y speed"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[speedrdx]+118</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>4</ID>
+                  <Description>"x speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>-8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>5</ID>
+                  <Description>"z speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>-4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6</ID>
+                  <Description>"steer"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>+C</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"Speed capture script"</Description>
+              <Options moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : acs.exe
   Version: 
   Date   : 2024-07-22
   Author : atult
@@ -234,12 +251,12 @@ acs.exe+31AB0: 0F 28 D9                 - movaps xmm3,xmm1
 acs.exe+31AB3: F3 0F 59 C6              - mulss xmm0,xmm6
 }
 </AssemblerScript>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>7</ID>
-          <Description>"Front speeder"</Description>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>{$lua}
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>7</ID>
+                  <Description>"Front speeder"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
 
 [ENABLE]
 -- Clean up any existing timers/hotkeys from previous runs
@@ -411,6 +428,10 @@ _G.turn = nil
 _G.mul = nil
 _G.ratio = nil
 </AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -521,6 +542,32 @@ _G.ratio = nil
         <Byte>41</Byte>
         <Byte>0F</Byte>
         <Byte>28</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+00000118]</Description>
+      <AddressString>acs.exe+33F81E</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>82</Byte>
+        <Byte>18</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C5</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
