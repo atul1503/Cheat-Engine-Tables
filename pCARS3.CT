@@ -1,4 +1,27 @@
-{$lua}
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>276</ID>
+      <Description>"xspeed"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Double</VariableType>
+      <Address>873EA458</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>277</ID>
+          <Description>"yspeed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
+          <Address>+8+8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>279</ID>
+      <Description>"Gear system"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
 
 [ENABLE]
 
@@ -76,7 +99,7 @@ local function normalizeSpeed()
   local r = math.sqrt(vx*vx + vy*vy)
 
   -- Guard: if nearly stationary, skip to avoid division by zero / jitter
-  if r < (speedTable[1] or 1) then return end
+  if r &lt; (speedTable[1] or 1) then return end
 
   local target = speedTable[index] or r
   local ratio = target / r
@@ -97,13 +120,13 @@ end
 -- Hotkeys
 -- =========================
 incGear = createHotkey(function()
-  if index < getLen(speedTable) then
+  if index &lt; getLen(speedTable) then
     index = index + 1
   end
 end, VK_W)
 
 decGear = createHotkey(function()
-  if index > 1 then
+  if index &gt; 1 then
     index = index - 1
   end
 end, VK_S)
@@ -148,3 +171,68 @@ speedXString = nil
 speedYString = nil
 alwaysEnforce = nil
 
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :movsd xmm0,[rcx+00000088] (y speed)</Description>
+      <AddressString>pCARS3.exe+FA15B0</AddressString>
+      <Before>
+        <Byte>8F</Byte>
+        <Byte>A8</Byte>
+        <Byte>59</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>88</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>C0</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsd xmm0,[rcx+78] (x speed)</Description>
+      <AddressString>pCARS3.exe+FA158B</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>41</Byte>
+        <Byte>78</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>C0</Byte>
+        <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>x=x
+y=x+8+8
+z=x+8
+
+So x,z,y where z is up and down and all are in double precision.</Comments>
+</CheatTable>
