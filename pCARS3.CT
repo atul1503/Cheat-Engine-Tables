@@ -6,7 +6,7 @@
       <Description>"xspeed"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Double</VariableType>
-      <Address>90D25298</Address>
+      <Address>87590998</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>277</ID>
@@ -264,6 +264,35 @@ alwaysEnforce = nil
         <Byte>5A</Byte>
         <Byte>C0</Byte>
         <Byte>F3</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :subss xmm10,[rdi+00001174] (steer)(first one)</Description>
+      <AddressString>pCARS3.exe+10189B8</AddressString>
+      <Before>
+        <Byte>0D</Byte>
+        <Byte>0C</Byte>
+        <Byte>DE</Byte>
+        <Byte>2C</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>97</Byte>
+        <Byte>74</Byte>
+        <Byte>11</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>AF</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
