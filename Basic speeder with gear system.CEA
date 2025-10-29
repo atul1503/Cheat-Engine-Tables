@@ -14,6 +14,8 @@
 -- =========================
 -- Config
 -- =========================
+local inGearMul=1.02
+local outGearMul=1.1
 speedTable = speedTable or {2,4,8,16,16*1.5,16*1.5^2,16*1.5^3,16*1.5^4}
 index = index or 1  -- current gear index (persist across re-enables if you want)
 
@@ -57,6 +59,29 @@ local function getLen(tbl)
   return count
 end
 
+local function setEventually(xr,yr,vx,vy,r,target,delta)
+      if r>target then
+          if r/delta>=target then
+             xr.Value=vx/delta
+             yr.Value=vy/delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      else
+          if r*delta<=target then
+             xr.Value=vx*delta
+             yr.Value=vy*delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      end
+end
+
+
 local function getRecords()
   local t=getAddressList()
   local xr = t and t.getMemoryRecordByDescription(speedXString) or nil
@@ -78,11 +103,24 @@ local function normalizeSpeed()
   -- Guard: if nearly stationary, skip to avoid division by zero / jitter
   if r < (speedTable[1] or 1) then return end
 
-  local target = speedTable[index] or r
-  local ratio = target / r
-
-  xr.Value = vx * ratio
-  yr.Value = vy * ratio
+  if index<=1 then
+    local target = speedTable[index] or r
+    local ratio = target / r
+    xr.Value = vx * ratio
+    yr.Value = vy * ratio
+  else
+      local minsp=speedTable[index-1]
+      local maxsp=speedTable[index]
+      if r<minsp then
+         setEventually(xr,yr,vx,vy,r,minsp,outGearMul)
+      else
+          if r>maxsp then
+             setEventually(xr,yr,vx,vy,r,maxsp,outGearMul)
+          else
+              setEventually(xr,yr,vx,vy,r,maxsp,inGearMul)
+          end
+      end
+  end
 end
 
 local function stopSpeed()

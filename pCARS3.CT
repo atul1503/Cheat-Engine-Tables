@@ -6,7 +6,7 @@
       <Description>"xspeed"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Double</VariableType>
-      <Address>873EA458</Address>
+      <Address>90D25298</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>277</ID>
@@ -37,6 +37,8 @@
 -- =========================
 -- Config
 -- =========================
+local inGearMul=1.02
+local outGearMul=1.1
 speedTable = speedTable or {2,4,8,16,16*1.5,16*1.5^2,16*1.5^3,16*1.5^4}
 index = index or 1  -- current gear index (persist across re-enables if you want)
 
@@ -80,6 +82,29 @@ local function getLen(tbl)
   return count
 end
 
+local function setEventually(xr,yr,vx,vy,r,target,delta)
+      if r&gt;target then
+          if r/delta&gt;=target then
+             xr.Value=vx/delta
+             yr.Value=vy/delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      else
+          if r*delta&lt;=target then
+             xr.Value=vx*delta
+             yr.Value=vy*delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      end
+end
+
+
 local function getRecords()
   local t=getAddressList()
   local xr = t and t.getMemoryRecordByDescription(speedXString) or nil
@@ -101,11 +126,24 @@ local function normalizeSpeed()
   -- Guard: if nearly stationary, skip to avoid division by zero / jitter
   if r &lt; (speedTable[1] or 1) then return end
 
-  local target = speedTable[index] or r
-  local ratio = target / r
-
-  xr.Value = vx * ratio
-  yr.Value = vy * ratio
+  if index&lt;=1 then
+    local target = speedTable[index] or r
+    local ratio = target / r
+    xr.Value = vx * ratio
+    yr.Value = vy * ratio
+  else
+      local minsp=speedTable[index-1]
+      local maxsp=speedTable[index]
+      if r&lt;minsp then
+         setEventually(xr,yr,vx,vy,r,minsp,outGearMul)
+      else
+          if r&gt;maxsp then
+             setEventually(xr,yr,vx,vy,r,maxsp,outGearMul)
+          else
+              setEventually(xr,yr,vx,vy,r,maxsp,inGearMul)
+          end
+      end
+  end
 end
 
 local function stopSpeed()
@@ -233,6 +271,6 @@ alwaysEnforce = nil
   <Comments>x=x
 y=x+8+8
 z=x+8
-
-So x,z,y where z is up and down and all are in double precision.</Comments>
+So x,z,y where z is up and down and all are in double precision.
+</Comments>
 </CheatTable>
