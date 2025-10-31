@@ -16,7 +16,7 @@
 -- =========================
 local inGearMul=1.02
 local outGearMul=1.1
-speedTable = speedTable or {2,4,8,16,16*1.5,16*1.5^2,16*1.5^3,16*1.5^4}
+speedTable = speedTable or {18,24.66,44.84,53.81,89.68}
 index = index or 1  -- current gear index (persist across re-enables if you want)
 
 -- Memory record descriptions for velocity components
@@ -25,7 +25,7 @@ speedYString = 'yspeed'
 
 -- Timer behavior
 local TICK_MS = 50
-alwaysEnforce = true  -- true = always keep speed at current gear (no need to hold UP)
+alwaysEnforce = alwaysEnforce or true  -- true = always keep speed at current gear (no need to hold UP)
 
 -- Virtual-key codes
 local VK_UP   = 0x26
@@ -126,8 +126,8 @@ end
 local function stopSpeed()
   local xr, yr = getRecords()
   if xr and yr then
-    xr.Value = 0
-    yr.Value = 0
+    xr.Value = xr.Value/outGearMul
+    yr.Value = yr.Value/outGearMul
   end
 end
 

@@ -8,30 +8,6 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>321</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+02908770</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>400</Offset>
-            <Offset>AB8</Offset>
-            <Offset>10</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>322</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+02860E58</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>350</Offset>
-            <Offset>AB8</Offset>
-            <Offset>1F0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
           <ID>323</ID>
           <Description>"steer pointer"</Description>
           <VariableType>Float</VariableType>
@@ -69,19 +45,6 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>327</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+029097B8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>1F0</Offset>
-            <Offset>AB8</Offset>
-            <Offset>10</Offset>
-            <Offset>28</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
           <ID>328</ID>
           <Description>"steer pointer"</Description>
           <VariableType>Float</VariableType>
@@ -95,19 +58,6 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>329</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+02860E58</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>350</Offset>
-            <Offset>AB8</Offset>
-            <Offset>78</Offset>
-            <Offset>1E0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
           <ID>330</ID>
           <Description>"steer pointer"</Description>
           <VariableType>Float</VariableType>
@@ -118,19 +68,6 @@
             <Offset>AB8</Offset>
             <Offset>FD0</Offset>
             <Offset>10</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>331</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0290B3D8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>400</Offset>
-            <Offset>AB8</Offset>
-            <Offset>8</Offset>
-            <Offset>90</Offset>
           </Offsets>
         </CheatEntry>
         <CheatEntry>
@@ -173,90 +110,6 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>335</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+02860E58</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>400</Offset>
-            <Offset>AB8</Offset>
-            <Offset>10</Offset>
-            <Offset>8</Offset>
-            <Offset>1F0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>336</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0284F238</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>400</Offset>
-            <Offset>AB8</Offset>
-            <Offset>78</Offset>
-            <Offset>C0</Offset>
-            <Offset>1E0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>337</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0298CDE8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>90</Offset>
-            <Offset>AB8</Offset>
-            <Offset>48</Offset>
-            <Offset>28</Offset>
-            <Offset>778</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>338</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0298CDE8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>90</Offset>
-            <Offset>AB8</Offset>
-            <Offset>48</Offset>
-            <Offset>28</Offset>
-            <Offset>808</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>339</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0298CDD8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>90</Offset>
-            <Offset>AB8</Offset>
-            <Offset>48</Offset>
-            <Offset>100</Offset>
-            <Offset>F8</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>340</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0298CDD8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>90</Offset>
-            <Offset>AB8</Offset>
-            <Offset>48</Offset>
-            <Offset>100</Offset>
-            <Offset>458</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
           <ID>341</ID>
           <Description>"steer pointer"</Description>
           <VariableType>Float</VariableType>
@@ -267,20 +120,6 @@
             <Offset>AB8</Offset>
             <Offset>78</Offset>
             <Offset>E8</Offset>
-            <Offset>1E0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>342</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0284F238</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>400</Offset>
-            <Offset>AB8</Offset>
-            <Offset>1F0</Offset>
-            <Offset>70</Offset>
             <Offset>1E0</Offset>
           </Offsets>
         </CheatEntry>
@@ -296,20 +135,6 @@
             <Offset>1F0</Offset>
             <Offset>560</Offset>
             <Offset>1E8</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>344</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0284F220</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>350</Offset>
-            <Offset>AB8</Offset>
-            <Offset>FD0</Offset>
-            <Offset>78</Offset>
-            <Offset>1E0</Offset>
           </Offsets>
         </CheatEntry>
         <CheatEntry>
@@ -343,21 +168,6 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>347</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0298CDE8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>400</Offset>
-            <Offset>AB8</Offset>
-            <Offset>8</Offset>
-            <Offset>8</Offset>
-            <Offset>F8</Offset>
-            <Offset>7E8</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
           <ID>348</ID>
           <Description>"steer pointer"</Description>
           <VariableType>Float</VariableType>
@@ -370,36 +180,6 @@
             <Offset>8</Offset>
             <Offset>40</Offset>
             <Offset>1F0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>349</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0298CDD8</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>140</Offset>
-            <Offset>AB8</Offset>
-            <Offset>10</Offset>
-            <Offset>0</Offset>
-            <Offset>100</Offset>
-            <Offset>458</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>350</ID>
-          <Description>"steer pointer"</Description>
-          <VariableType>Float</VariableType>
-          <Address>"pCARS3.exe"+0284F238</Address>
-          <Offsets>
-            <Offset>6D4</Offset>
-            <Offset>350</Offset>
-            <Offset>AB8</Offset>
-            <Offset>FD0</Offset>
-            <Offset>78</Offset>
-            <Offset>68</Offset>
-            <Offset>1E0</Offset>
           </Offsets>
         </CheatEntry>
         <CheatEntry>
@@ -574,8 +354,8 @@ pCARS3.exe+FA15C7: 74 2F                    - je pCARS3.exe+FA15F8
 -- Config
 -- =========================
 local inGearMul=1.02
-local outGearMul=1.1
-speedTable = speedTable or {2,4,8,16,16*1.5,16*1.5^2,16*1.5^3,16*1.5^4}
+local outGearMul=1.05
+speedTable = speedTable or {24.66,44.84,53.81,89.68}
 index = index or 1  -- current gear index (persist across re-enables if you want)
 
 -- Memory record descriptions for velocity components
@@ -584,7 +364,7 @@ speedYString = 'yspeed'
 
 -- Timer behavior
 local TICK_MS = 50
-alwaysEnforce = true  -- true = always keep speed at current gear (no need to hold UP)
+alwaysEnforce = alwaysEnforce or true  -- true = always keep speed at current gear (no need to hold UP)
 
 -- Virtual-key codes
 local VK_UP   = 0x26
@@ -685,8 +465,8 @@ end
 local function stopSpeed()
   local xr, yr = getRecords()
   if xr and yr then
-    xr.Value = 0
-    yr.Value = 0
+    xr.Value = xr.Value/outGearMul
+    yr.Value = yr.Value/outGearMul
   end
 end
 
@@ -790,8 +570,8 @@ do
   -- Configuration
   AutoSteer.descs       = { xspeed = 'xspeed', yspeed = 'yspeed', steer = 'steer' }
   AutoSteer.turn        = 0       -- steering increment per tick while holding L/R
-  AutoSteer.accelFactor = 1.01      -- slight acceleration factor when pressing Up
-  AutoSteer.ratio       = -2      -- degrees per unit of steer; change sign to invert
+  AutoSteer.accelFactor = 1.02      -- slight acceleration factor when pressing Up
+  AutoSteer.ratio       = -2.5      -- degrees per unit of steer; change sign to invert
   AutoSteer.turnDamp    = 1.025     -- &gt;1.0 to decay steer toward 0 when no input
   AutoSteer.maxSteer    = nil       -- e.g., 45 to clamp, or nil to disable clamping
   AutoSteer.interval    = 50        -- ms between ticks
@@ -864,7 +644,7 @@ do
       nx = nx * AutoSteer.accelFactor
       ny = ny * AutoSteer.accelFactor
     elseif isKeyPressed(VK_DOWN) then
-      local denom = AutoSteer.accelFactor * 1.02
+      local denom = AutoSteer.accelFactor * 1.1
       nx = nx / denom
       ny = ny / denom
     end
@@ -918,15 +698,15 @@ end
               <Address>+8+8</Address>
             </CheatEntry>
             <CheatEntry>
-              <ID>359</ID>
+              <ID>361</ID>
               <Description>"steer"</Description>
               <VariableType>Float</VariableType>
-              <Address>"pCARS3.exe"+02908770</Address>
+              <Address>"pCARS3.exe"+0284F238</Address>
               <Offsets>
                 <Offset>6D4</Offset>
-                <Offset>400</Offset>
+                <Offset>90</Offset>
                 <Offset>AB8</Offset>
-                <Offset>10</Offset>
+                <Offset>1F0</Offset>
               </Offsets>
             </CheatEntry>
           </CheatEntries>
@@ -1015,6 +795,33 @@ end
         <Byte>0F</Byte>
         <Byte>5C</Byte>
         <Byte>AF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulsd xmm0,[rax+r9+10]</Description>
+      <AddressString>pCARS3.exe+1151548</AddressString>
+      <Before>
+        <Byte>87</Byte>
+        <Byte>08</Byte>
+        <Byte>12</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>42</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>44</Byte>
+        <Byte>08</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F2</Byte>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>04</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
