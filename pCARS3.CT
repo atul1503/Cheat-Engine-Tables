@@ -354,8 +354,8 @@ pCARS3.exe+FA15C7: 74 2F                    - je pCARS3.exe+FA15F8
 -- Config
 -- =========================
 local inGearMul=1.02
-local outGearMul=1.05
-speedTable = speedTable or {24.66,44.84,53.81,89.68}
+local outGearMul=1.03
+speedTable = speedTable or {20.66,44.84,53.81,89.68}
 index = index or 1  -- current gear index (persist across re-enables if you want)
 
 -- Memory record descriptions for velocity components
@@ -364,7 +364,7 @@ speedYString = 'yspeed'
 
 -- Timer behavior
 local TICK_MS = 50
-alwaysEnforce = alwaysEnforce or true  -- true = always keep speed at current gear (no need to hold UP)
+alwaysEnforce = alwaysEnforce or false  -- true = always keep speed at current gear (no need to hold UP)
 
 -- Virtual-key codes
 local VK_UP   = 0x26
@@ -569,11 +569,11 @@ do
 
   -- Configuration
   AutoSteer.descs       = { xspeed = 'xspeed', yspeed = 'yspeed', steer = 'steer' }
-  AutoSteer.turn        = 0       -- steering increment per tick while holding L/R
+  AutoSteer.turn        = 0.6       -- steering increment per tick while holding L/R
   AutoSteer.accelFactor = 1.02      -- slight acceleration factor when pressing Up
-  AutoSteer.ratio       = -2.5      -- degrees per unit of steer; change sign to invert
+  AutoSteer.ratio       = -4      -- degrees per unit of steer; change sign to invert
   AutoSteer.turnDamp    = 1.025     -- &gt;1.0 to decay steer toward 0 when no input
-  AutoSteer.maxSteer    = nil       -- e.g., 45 to clamp, or nil to disable clamping
+  AutoSteer.maxSteer    = 1.5       -- e.g., 45 to clamp, or nil to disable clamping
   AutoSteer.interval    = 50        -- ms between ticks
   AutoSteer.epsilon     = 1e-6      -- avoids division by 0 / denormals
 
@@ -644,7 +644,7 @@ do
       nx = nx * AutoSteer.accelFactor
       ny = ny * AutoSteer.accelFactor
     elseif isKeyPressed(VK_DOWN) then
-      local denom = AutoSteer.accelFactor * 1.1
+      local denom = AutoSteer.accelFactor * 1.02
       nx = nx / denom
       ny = ny / denom
     end
@@ -691,6 +691,13 @@ end
           <Address>[xspd]+78</Address>
           <CheatEntries>
             <CheatEntry>
+              <ID>366</ID>
+              <Description>"zspeed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
               <ID>277</ID>
               <Description>"yspeed"</Description>
               <ShowAsSigned>0</ShowAsSigned>
@@ -698,8 +705,16 @@ end
               <Address>+8+8</Address>
             </CheatEntry>
             <CheatEntry>
+              <ID>367</ID>
+              <Description>"friction coefficient"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>+18</Address>
+            </CheatEntry>
+            <CheatEntry>
               <ID>361</ID>
               <Description>"steer"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>"pCARS3.exe"+0284F238</Address>
               <Offsets>
@@ -708,6 +723,15 @@ end
                 <Offset>AB8</Offset>
                 <Offset>1F0</Offset>
               </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>363</ID>
+                  <Description>"dir"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>-14</Address>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -798,30 +822,88 @@ end
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mulsd xmm0,[rax+r9+10]</Description>
-      <AddressString>pCARS3.exe+1151548</AddressString>
+      <Description>Code :movss [rdi+0000591C],xmm6 (Turning angle)</Description>
+      <AddressString>pCARS3.exe+FAD835</AddressString>
       <Before>
-        <Byte>87</Byte>
-        <Byte>08</Byte>
-        <Byte>12</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
+        <Byte>5E</Byte>
+        <Byte>C3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5A</Byte>
+        <Byte>FE</Byte>
       </Before>
       <Actual>
-        <Byte>F2</Byte>
-        <Byte>42</Byte>
+        <Byte>F3</Byte>
         <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>B7</Byte>
+        <Byte>1C</Byte>
         <Byte>59</Byte>
-        <Byte>44</Byte>
-        <Byte>08</Byte>
-        <Byte>10</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
       </Actual>
       <After>
         <Byte>F2</Byte>
-        <Byte>41</Byte>
         <Byte>0F</Byte>
         <Byte>11</Byte>
-        <Byte>04</Byte>
+        <Byte>7F</Byte>
+        <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movss [rdi+00001174],xmm8 (steer writer)</Description>
+      <AddressString>pCARS3.exe+1018DDC</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>F1</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>87</Byte>
+        <Byte>74</Byte>
+        <Byte>11</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>45</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>C0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movsd xmm2,[rax+00000090] (friction coefficient)</Description>
+      <AddressString>pCARS3.exe+1051D18</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>38</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CB</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>40</Byte>
+        <Byte>60</Byte>
+        <Byte>66</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
