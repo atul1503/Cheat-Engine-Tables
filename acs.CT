@@ -10,7 +10,1050 @@
         <CheatEntry>
           <ID>11</ID>
           <Description>"Yes."</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
           <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"SCRIPTS"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>67</ID>
+                  <Description>"Front speeder"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
+
+[ENABLE]
+-- Clean up any existing timers/hotkeys from previous runs
+if _G.carTimer then
+    pcall(function() _G.carTimer.destroy() end)
+    _G.carTimer = nil
+end
+
+if _G.leftHotkey then
+    pcall(function() _G.leftHotkey.destroy() end)
+    _G.leftHotkey = nil
+end
+
+if _G.rightHotkey then
+    pcall(function() _G.rightHotkey.destroy() end)
+    _G.rightHotkey = nil
+end
+
+-- Configuration
+_G.turn = 0.1
+_G.mul = 1 + 8e-4
+_G.ratio = -0.2
+
+-- Initialize memory records
+local function initMemoryRecords()
+    local list = getAddressList()
+    if not list then return false end
+
+    _G.xspeed = list.getMemoryRecordByDescription('xspeedcm')
+    _G.yspeed = list.getMemoryRecordByDescription('yspeedcm')
+    _G.steer = list.getMemoryRecordByDescription('steercm')
+
+    if not _G.xspeed or not _G.yspeed or not _G.steer then
+        return false
+    end
+
+    return true
+end
+
+-- Safe memory operations
+local function getSafeValue(record)
+    if not record then return 0 end
+
+    local success, value = pcall(function()
+        local val = record.Value
+        if val == nil or val == "??" or val == "" then return 0 end
+        return tonumber(val) or 0
+    end)
+
+    return success and value or 0
+end
+
+local function setSafeValue(record, value)
+    if not record then return false end
+    if not value or value ~= value or math.abs(value) &gt; 1e10 then return false end
+
+    local success = pcall(function() record.Value = value end)
+    return success
+end
+
+-- Main rotation logic
+local function rotate()
+    local xVal = getSafeValue(_G.xspeed)
+    local yVal = getSafeValue(_G.yspeed)
+    local steerVal = getSafeValue(_G.steer)
+
+    -- Auto-decay steer when no keys pressed
+    local leftPressed = isKeyPressed(0x25)
+    local rightPressed = isKeyPressed(0x27)
+
+    if not leftPressed and not rightPressed and steerVal ~= 0 then
+        local decay = 0.9
+        local newSteer = steerVal * decay
+        if math.abs(newSteer) &lt; 0.001 then newSteer = 0 end
+        setSafeValue(_G.steer, newSteer)
+        steerVal = newSteer
+    end
+
+    -- Calculate rotation
+    local theta = math.rad(-_G.ratio * steerVal)
+    local r = math.sqrt(xVal^2 + yVal^2)
+
+    if r &lt; 1e-10 then return end
+
+    -- Normalize and rotate
+    local x = xVal / r
+    local y = yVal / r
+    local xcomp = x * math.cos(theta) - y * math.sin(theta)
+    local ycomp = x * math.sin(theta) + y * math.cos(theta)
+
+    -- Apply base rotation
+    local newX = xcomp * r
+    local newY = ycomp * r
+
+    -- Check for key modifiers
+    local upPressed = isKeyPressed(0x26)
+    local downPressed = isKeyPressed(0x28)
+
+    if upPressed then
+        newX = newX * _G.mul
+        newY = newY * _G.mul
+    end
+
+    if downPressed then
+        newX = newX / (_G.mul * 1.03)
+        newY = newY / (_G.mul * 1.03)
+    end
+
+    -- Set new values
+    setSafeValue(_G.xspeed, newX)
+    setSafeValue(_G.yspeed, newY)
+end
+
+-- Steer adjustment function
+local function handleSteerAdjustment(adjustment)
+    if not _G.steer then return end
+
+    local currentVal = getSafeValue(_G.steer)
+    setSafeValue(_G.steer, currentVal + adjustment)
+end
+
+-- Initialize everything
+if not initMemoryRecords() then
+    return
+end
+
+-- Create timer
+_G.carTimer = createTimer(getMainForm())
+_G.carTimer.Interval = 50
+_G.carTimer.OnTimer = function()
+    pcall(rotate)
+end
+
+-- Create hotkeys
+_G.leftHotkey = createHotkey(function()
+    handleSteerAdjustment(_G.turn)
+end, 0x25)  -- Left arrow
+
+_G.rightHotkey = createHotkey(function()
+    handleSteerAdjustment(-_G.turn)
+end, 0x27)  -- Right arrow
+
+-- Enable the timer
+_G.carTimer.Enabled = true
+
+[DISABLE]
+-- Clean up all created objects
+if _G.carTimer then
+    _G.carTimer.Enabled = false
+    pcall(function() _G.carTimer.destroy() end)
+    _G.carTimer = nil
+end
+
+if _G.leftHotkey then
+    pcall(function() _G.leftHotkey.destroy() end)
+    _G.leftHotkey = nil
+end
+
+if _G.rightHotkey then
+    pcall(function() _G.rightHotkey.destroy() end)
+    _G.rightHotkey = nil
+end
+
+-- Clear global references
+_G.xspeed = nil
+_G.yspeed = nil
+_G.steer = nil
+_G.turn = nil
+_G.mul = nil
+_G.ratio = nil
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>69</ID>
+                  <Description>"Gear system"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- This script ensures that while pressing UP (↑), you (or any character/object
+-- whose speed is represented in the cheat table with memory records named
+-- 'xspeed' and 'yspeed') move with constant speed in whichever direction you're currently going.
+--
+-- ⚡ The constant speed comes from the 'speedTable' below, where you can pick gears
+--   (10, 20, 40, 80) with W/S hotkeys.
+-- ⚡ While pressing UP, it normalizes your velocity vector (x/y) to have length = gear speed.
+-- ⚡ Pressing DOWN instantly zeroes out velocity (a quick stop).
+--
+-- ✨ Improvements over the crashing version:
+--   1. Freshly fetches memory records each time (so no stale references).
+--   2. Handles missing memory records gracefully (if nil, script no-ops instead of crashing).
+--   3. Division by zero guard (if x=y=0, skip math).
+--   4. Proper cleanup in [DISABLE] to avoid duplicate hotkeys.
+
+-- List of available speeds (like “gears”)
+local speedTable={2,4,8,16,32}
+local index=1  -- current gear index (starts at 1)
+
+-- Names of the cheat table entries holding velocity components
+local speedXString='xspeedcm'
+local speedYString='yspeedcm'
+
+----------------------------------------------------------------------
+-- Utility: get length of Lua table (since we cycle through speedTable)
+----------------------------------------------------------------------
+local function getLen(tbl)
+  local count=0
+  for _ in pairs(tbl) do count=count+1 end
+  return count
+end
+
+----------------------------------------------------------------------
+-- Helper: resolve memory record handles every time
+-- This avoids stale references when you save/load tables or re-open CE
+----------------------------------------------------------------------
+local function getRecords()
+  local t=getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
+
+----------------------------------------------------------------------
+-- Main action: normalize current velocity to selected 'gear' speed
+--  Called when UP arrow is pressed (0x26).
+----------------------------------------------------------------------
+local function normalizeSpeed()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end -- safety: no addresses, no adjustments
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  if r &lt; 0.0001 then return end  -- guard: avoid division by zero if stationary
+
+  local ratio = speedTable[index]/r
+  xr.Value = vx*ratio
+  yr.Value = vy*ratio
+end
+
+----------------------------------------------------------------------
+-- Stop action: sets both speed components to 0 instantly
+--  Called when DOWN arrow is pressed (0x28).
+----------------------------------------------------------------------
+local function stopSpeed()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value=0
+    yr.Value=0
+  end
+end
+
+----------------------------------------------------------------------
+-- Hotkeys setup
+-- W (0x57): gear up
+-- S (0x53): gear down
+-- UP arrow (0x26): normalize velocity
+-- DOWN arrow (0x28): stop immediately
+----------------------------------------------------------------------
+
+incGear=createHotkey(function()
+  if index &lt; getLen(speedTable) then
+    index=index+1
+  end
+end,0x57)
+
+decGear=createHotkey(function()
+  if index &gt; 1 then
+    index=index-1
+  end
+end,0x53)
+
+hk1=createHotkey(function()
+  normalizeSpeed()
+end,0x26)   -- UP arrow
+
+hk2=createHotkey(function()
+  stopSpeed()
+end,0x28)   -- DOWN arrow
+
+[DISABLE]
+
+-- Clean up hotkeys properly so they don't pile up after script disable/enable cycles
+if hk1 then hk1.destroy() hk1=nil end
+if hk2 then hk2.destroy() hk2=nil end
+if incGear then incGear.destroy() incGear=nil end
+if decGear then decGear.destroy() decGear=nil end
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"POINTERS"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>15</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>17</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>18</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>19</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000260</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>160</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>20</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>270</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>21</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>270</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>22</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>270</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>120</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>24</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>120</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>25</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000260</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>0</Offset>
+                    <Offset>60</Offset>
+                    <Offset>160</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>26</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>0</Offset>
+                    <Offset>60</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>27</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                    <Offset>60</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>30</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>31</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>308</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>32</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>0</Offset>
+                    <Offset>60</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>34</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>35</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>0</Offset>
+                    <Offset>60</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>33</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>0</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>29</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>36</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>8</Offset>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>38</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000370</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>18</Offset>
+                    <Offset>130</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>39</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000370</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>8</Offset>
+                    <Offset>48</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>40</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000370</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>41</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>37</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>0</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>42</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>0</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>44</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>30</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>45</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000260</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>160</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>43</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>20</Offset>
+                    <Offset>40</Offset>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>47</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>48</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000370</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>20</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>18</Offset>
+                    <Offset>130</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000370</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>10</Offset>
+                    <Offset>48</Offset>
+                    <Offset>120</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>50</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>30</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>46</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000370</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>308</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>52</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>50</Offset>
+                    <Offset>60</Offset>
+                    <Offset>30</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000260</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>300</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>160</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>58</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>54</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>50</Offset>
+                    <Offset>F8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>53</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>55</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"THREADSTACK0"-00000358</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>270</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>60</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                    <Offset>60</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>59</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559C08</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>300</Offset>
+                    <Offset>0</Offset>
+                    <Offset>60</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>28</ID>
+                  <Description>"x speed pointer"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>0</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"ADDRESS"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>62</ID>
+                  <Description>"xspeedcm"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>1DC</Offset>
+                    <Offset>48</Offset>
+                    <Offset>118</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C8</Offset>
+                    <Offset>1B8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>63</ID>
+                      <Description>"yspeedcm"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Float</VariableType>
+                      <Address>+10</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>65</ID>
+                      <Description>"steercm"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Float</VariableType>
+                      <Address>+28</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>10</ID>
@@ -545,31 +1588,35 @@ _G.ratio = nil
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Code :mov eax,[rdx+00000118]</Description>
-      <AddressString>acs.exe+33F81E</AddressString>
+      <Description>Code :movsd xmm0,[rcx+00000130](list of friction coeff)</Description>
+      <AddressString>DWrite.dll+18EDFF7</AddressString>
       <Before>
+        <Byte>84</Byte>
+        <Byte>8C</Byte>
+        <Byte>08</Byte>
         <Byte>00</Byte>
         <Byte>00</Byte>
-        <Byte>89</Byte>
-        <Byte>41</Byte>
-        <Byte>04</Byte>
       </Before>
       <Actual>
-        <Byte>8B</Byte>
-        <Byte>82</Byte>
-        <Byte>18</Byte>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>30</Byte>
         <Byte>01</Byte>
         <Byte>00</Byte>
         <Byte>00</Byte>
       </Actual>
       <After>
-        <Byte>F3</Byte>
-        <Byte>44</Byte>
         <Byte>0F</Byte>
-        <Byte>58</Byte>
-        <Byte>C5</Byte>
+        <Byte>57</Byte>
+        <Byte>C9</Byte>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
+  <Comments>-c is x
+</Comments>
 </CheatTable>
