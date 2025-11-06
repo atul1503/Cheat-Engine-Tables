@@ -1570,6 +1570,22 @@ if decGear then decGear.destroy() decGear=nil end
                     </CheatEntry>
                   </CheatEntries>
                 </CheatEntry>
+                <CheatEntry>
+                  <ID>110</ID>
+                  <Description>"Friction Coeff"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>"acs.exe"+01559AF0</Address>
+                  <Offsets>
+                    <Offset>130</Offset>
+                    <Offset>C0</Offset>
+                    <Offset>118</Offset>
+                    <Offset>60</Offset>
+                    <Offset>28</Offset>
+                    <Offset>60</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
