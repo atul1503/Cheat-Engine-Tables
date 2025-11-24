@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"SCRIPTS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Grip Speeder"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+[ENABLE]
+do
+  --[[
+    AutoSteer v2 (safer + documented)
+
+    Requirements:
+      - Address list contains three Memory Records with these descriptions:
+          xspeed (float), yspeed (float), steer (float)
+        Adjust the descriptions in AutoSteer.descs if yours differ.
+
+    Controls:
+      - Left/Right arrows adjust steer (turn).
+      - When no left/right input, steer decays toward 0 (turnDamp).
+      - Up arrow accelerates slightly (accelFactor).
+      - Down arrow brakes slightly (accelFactor * 1.02).
+
+    Tuning:
+      - ratio: degrees per unit of 'steer' used to rotate the (xs, ys) vector.
+               Flip sign (e.g., -5 to +5) if the car turns the wrong way.
+      - turn: how much 'steer' changes per tick when holding L/R.
+      - turnDamp: &gt; 1.0 → stronger tendency to go straight when not turning.
+      - accelFactor: &gt; 1.0 → how quickly speed increases when pressing Up.
+      - maxSteer: set to a number to clamp steering magnitude (or nil for no clamp).
+      - interval: timer tick in ms (lower → more responsive, more CPU).
+  ]]
+
+  -- Kill any previous instance to avoid duplicate timers
+  if AutoSteer and AutoSteer.timer then
+    pcall(function() AutoSteer.timer.OnTimer = nil end)
+    pcall(function() AutoSteer.timer.Enabled = false end)
+    pcall(function() AutoSteer.timer.destroy() end)
+  end
+
+  AutoSteer = {}
+
+  -- Configuration
+  AutoSteer.descs       = { xspeed = 'x speed', yspeed = 'y speed', steer = 'steer' }
+  AutoSteer.turn        = 0.5       -- steering increment per tick while holding L/R
+  AutoSteer.accelFactor = 1.01      -- slight acceleration factor when pressing Up
+  AutoSteer.ratio       = -2      -- degrees per unit of steer; change sign to invert
+  AutoSteer.turnDamp    = 1.025     -- &gt;1.0 to decay steer toward 0 when no input
+  AutoSteer.maxSteer    = nil       -- e.g., 45 to clamp, or nil to disable clamping
+  AutoSteer.interval    = 50        -- ms between ticks
+  AutoSteer.epsilon     = 1e-6      -- avoids division by 0 / denormals
+
+  -- Virtual-key codes
+  local VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN = 0x25, 0x27, 0x26, 0x28
+
+  -- Helpers (kept local to this chunk)
+  local function safeGetRecordByDescription(desc)
+    local al = getAddressList()
+    if not al then return nil end
+    local ok, rec = pcall(function() return al.getMemoryRecordByDescription(desc) end)
+    if not ok then return nil end
+    return rec
+  end
+
+  local function readRecNumber(rec)
+    local ok, v = pcall(function() return rec.Value end)
+    if not ok or v == nil or v == '??' then return nil end
+    return tonumber(v)
+  end
+
+  local function safeWrite(rec, val)
+    if not rec or val == nil then return false end
+    local ok = pcall(function() rec.Value = val end)
+    return ok
+  end
+
+  local function clamp(x, lo, hi)
+    if lo and x &lt; lo then return lo end
+    if hi and x &gt; hi then return hi end
+    return x
+  end
+
+  function AutoSteer._rotate()
+    -- Resolve records fresh every tick to avoid use-after-free if user edits/deletes records
+    local xsRec = safeGetRecordByDescription(AutoSteer.descs.xspeed)
+    local ysRec = safeGetRecordByDescription(AutoSteer.descs.yspeed)
+    local stRec = safeGetRecordByDescription(AutoSteer.descs.steer)
+    if not xsRec or not ysRec or not stRec then return end
+
+    local xs = readRecNumber(xsRec)
+    local ys = readRecNumber(ysRec)
+    local st = readRecNumber(stRec)
+    if not xs or not ys or not st then return end
+
+    -- Adjust steering based on input, or damp toward zero
+    if isKeyPressed(VK_LEFT) then
+      st = st - AutoSteer.turn
+    elseif isKeyPressed(VK_RIGHT) then
+      st = st + AutoSteer.turn
+    else
+      st = st / AutoSteer.turnDamp
+    end
+
+    if AutoSteer.maxSteer then
+      st = clamp(st, -AutoSteer.maxSteer, AutoSteer.maxSteer)
+    end
+    safeWrite(stRec, st)
+
+    -- Rotate the velocity vector by theta (theta in radians)
+    local theta = math.rad(AutoSteer.ratio * st)
+    local c, s = math.cos(theta), math.sin(theta)
+    local nx = (xs * c - ys * s)
+    local ny = (xs * s + ys * c)
+
+    -- Throttle / brake
+    if isKeyPressed(VK_UP) then
+      nx = nx * AutoSteer.accelFactor
+      ny = ny * AutoSteer.accelFactor
+    elseif isKeyPressed(VK_DOWN) then
+      local denom = AutoSteer.accelFactor * 1.02
+      nx = nx / denom
+      ny = ny / denom
+    end
+
+    safeWrite(xsRec, nx)
+    safeWrite(ysRec, ny)
+  end
+
+  -- Create and start timer; owner set to main form so CE cleans it with the UI
+  local owner = getMainForm and getMainForm() or nil
+  AutoSteer.timer = createTimer(owner)
+  AutoSteer.timer.Interval = AutoSteer.interval
+  AutoSteer.timer.Enabled = false
+  AutoSteer.timer.OnTimer = AutoSteer._rotate
+  AutoSteer.timer.Enabled = true
+end
+
+[DISABLE]
+if AutoSteer then
+  if AutoSteer.timer then
+    pcall(function() AutoSteer.timer.OnTimer = nil end)
+    pcall(function() AutoSteer.timer.Enabled = false end)
+    pcall(function() AutoSteer.timer.destroy() end)
+  end
+  AutoSteer.timer = nil
+  AutoSteer._rotate = nil
+  AutoSteer = nil
+end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Gear system"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+
+[ENABLE]
+
+--------------------------------------------------------------------------------
+-- Gear-Locked Movement with Timer (50 ms)
+-- - Holds constant speed (selected from speedTable) while you hold UP (↑)
+-- - W/S changes gear
+-- - DOWN (↓) stops immediately
+-- - Timer-based enforcement every 50 ms for smooth, continuous control
+-- - Full cleanup on enable AND disable (prevents zombie timers or duplicate hotkeys)
+--------------------------------------------------------------------------------
+
+-- =========================
+-- Config
+-- =========================
+local inGearMul=1.02
+local outGearMul=1.1
+speedTable = speedTable or {18,24.66,44.84,53.81,89.68}
+index = index or 1  -- current gear index (persist across re-enables if you want)
+
+-- Memory record descriptions for velocity components
+speedXString = 'x speed'
+speedYString = 'y speed'
+
+-- Timer behavior
+local TICK_MS = 50
+alwaysEnforce = alwaysEnforce or true  -- true = always keep speed at current gear (no need to hold UP)
+
+-- Virtual-key codes
+local VK_UP   = 0x26
+local VK_DOWN = 0x28
+local VK_W    = 0x57
+local VK_S    = 0x53
+
+-- =========================
+-- Safety: pre-clean any leftovers from prior enable cycles
+-- (Prevents zombie timers and duplicate hotkeys if user toggles script repeatedly)
+-- =========================
+local function safeDestroy(obj)
+  if obj then
+    pcall(function() obj.destroy() end)
+  end
+end
+
+-- Kill any old items before creating new ones
+safeDestroy(gearTimer)  gearTimer = nil
+safeDestroy(hk1)        hk1 = nil
+safeDestroy(hk2)        hk2 = nil
+safeDestroy(incGear)    incGear = nil
+safeDestroy(decGear)    decGear = nil
+
+-- =========================
+-- Utilities
+-- =========================
+local function getLen(tbl)
+  local count=0
+  for _ in pairs(tbl) do count=count+1 end
+  return count
+end
+
+local function setEventually(xr,yr,vx,vy,r,target,delta)
+      if r&gt;target then
+          if r/delta&gt;=target then
+             xr.Value=vx/delta
+             yr.Value=vy/delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      else
+          if r*delta&lt;=target then
+             xr.Value=vx*delta
+             yr.Value=vy*delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      end
+end
+
+
+local function getRecords()
+  local t=getAddressList()
+  local xr = t and t.getMemoryRecordByDescription(speedXString) or nil
+  local yr = t and t.getMemoryRecordByDescription(speedYString) or nil
+  return xr, yr
+end
+
+-- =========================
+-- Core actions
+-- =========================
+local function normalizeSpeed()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  -- Guard: if nearly stationary, skip to avoid division by zero / jitter
+  if r &lt; (speedTable[1] or 1) then return end
+
+  if index&lt;=1 then
+    local target = speedTable[index] or r
+    local ratio = target / r
+    xr.Value = vx * ratio
+    yr.Value = vy * ratio
+  else
+      local minsp=speedTable[index-1]
+      local maxsp=speedTable[index]
+      if r&lt;minsp then
+         setEventually(xr,yr,vx,vy,r,minsp,outGearMul)
+      else
+          if r&gt;maxsp then
+             setEventually(xr,yr,vx,vy,r,maxsp,outGearMul)
+          else
+              setEventually(xr,yr,vx,vy,r,maxsp,inGearMul)
+          end
+      end
+  end
+end
+
+local function stopSpeed()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value = xr.Value/outGearMul
+    yr.Value = yr.Value/outGearMul
+  end
+end
+
+-- =========================
+-- Hotkeys
+-- =========================
+incGear = createHotkey(function()
+  if index &lt; getLen(speedTable) then
+    index = index + 1
+  end
+end, VK_W)
+
+decGear = createHotkey(function()
+  if index &gt; 1 then
+    index = index - 1
+  end
+end, VK_S)
+
+-- Optional single-tap normalize (kept from your original behavior)
+hk1 = createHotkey(function()
+  normalizeSpeed()
+end, VK_UP)
+
+hk2 = createHotkey(function()
+  stopSpeed()
+end, VK_DOWN)
+
+-- =========================
+-- Timer: 50 ms enforcement loop
+-- - Holds gear speed while UP is held
+-- - Or always enforce if alwaysEnforce = true
+-- =========================
+gearTimer = createTimer(nil, false)
+gearTimer.Interval = TICK_MS
+gearTimer.OnTimer = function(t)
+  if alwaysEnforce or isKeyPressed(VK_UP) then
+    normalizeSpeed()
+  end
+end
+gearTimer.Enabled = true
+
+[DISABLE]
+
+-- Full cleanup (destroy timer and hotkeys; nil references)
+if gearTimer then pcall(function() gearTimer.destroy() end) gearTimer = nil end
+
+if hk1 then pcall(function() hk1.destroy() end) hk1 = nil end
+if hk2 then pcall(function() hk2.destroy() end) hk2 = nil end
+if incGear then pcall(function() incGear.destroy() end) incGear = nil end
+if decGear then pcall(function() decGear.destroy() end) decGear = nil end
+
+-- Optional: also clear config/state so re-enable starts fresh
+speedTable = nil
+index = nil
+speedXString = nil
+speedYString = nil
+alwaysEnforce = nil
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"POINTERS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>43</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02423190</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>A0</Offset>
+            <Offset>8</Offset>
+            <Offset>188</Offset>
+            <Offset>90</Offset>
+            <Offset>120</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02421690</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>228</Offset>
+            <Offset>10</Offset>
+            <Offset>240</Offset>
+            <Offset>90</Offset>
+            <Offset>88</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424070</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>90</Offset>
+            <Offset>100</Offset>
+            <Offset>1E0</Offset>
+            <Offset>38</Offset>
+            <Offset>418</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424070</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>90</Offset>
+            <Offset>100</Offset>
+            <Offset>1E8</Offset>
+            <Offset>38</Offset>
+            <Offset>420</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02420310</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>158</Offset>
+            <Offset>10</Offset>
+            <Offset>20</Offset>
+            <Offset>20</Offset>
+            <Offset>A8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02422410</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>170</Offset>
+            <Offset>8</Offset>
+            <Offset>188</Offset>
+            <Offset>90</Offset>
+            <Offset>1B8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424070</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>20</Offset>
+            <Offset>18</Offset>
+            <Offset>8</Offset>
+            <Offset>420</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02422408</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>250</Offset>
+            <Offset>28</Offset>
+            <Offset>C0</Offset>
+            <Offset>240</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424070</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>28</Offset>
+            <Offset>248</Offset>
+            <Offset>38</Offset>
+            <Offset>418</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424070</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>28</Offset>
+            <Offset>248</Offset>
+            <Offset>10</Offset>
+            <Offset>450</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>90</Offset>
+            <Offset>0</Offset>
+            <Offset>48</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>DD8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>27</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>98</Offset>
+            <Offset>8</Offset>
+            <Offset>38</Offset>
+            <Offset>40</Offset>
+            <Offset>DD8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425858</Address>
+          <Offsets>
+            <Offset>90</Offset>
+            <Offset>38</Offset>
+            <Offset>40</Offset>
+            <Offset>D88</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>D0</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>DD8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>98</Offset>
+            <Offset>48</Offset>
+            <Offset>40</Offset>
+            <Offset>DD8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>90</Offset>
+            <Offset>0</Offset>
+            <Offset>30</Offset>
+            <Offset>DE0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425868</Address>
+          <Offsets>
+            <Offset>D0</Offset>
+            <Offset>40</Offset>
+            <Offset>E28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425858</Address>
+          <Offsets>
+            <Offset>90</Offset>
+            <Offset>20</Offset>
+            <Offset>D90</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>D0</Offset>
+            <Offset>40</Offset>
+            <Offset>DD8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424020</Address>
+          <Offsets>
+            <Offset>1B8</Offset>
+            <Offset>8</Offset>
+            <Offset>C0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425868</Address>
+          <Offsets>
+            <Offset>118</Offset>
+            <Offset>E28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>198</Offset>
+            <Offset>DC8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02425870</Address>
+          <Offsets>
+            <Offset>B8</Offset>
+            <Offset>DE0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"x speed pointer"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"pCARS2AVX.exe"+02424020</Address>
+          <Offsets>
+            <Offset>278</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"ADDRESSES"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"x speed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
+          <Address>"pCARS2AVX.exe"+02424020</Address>
+          <Offsets>
+            <Offset>278</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"y speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>+8+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>3</ID>
+              <Description>"steer"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>-58</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :mov eax,[rdx+1C] (SPEED knower)</Description>
+      <AddressString>pCARS2AVX.exe+4B0298</AddressString>
+      <Before>
+        <Byte>42</Byte>
+        <Byte>18</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>1C</Byte>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :vmovsd xmm0,[rax+78] (x pointer)</Description>
+      <AddressString>pCARS2AVX.exe+F955D0</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FB</Byte>
+        <Byte>10</Byte>
+        <Byte>40</Byte>
+        <Byte>78</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>FB</Byte>
+        <Byte>5C</Byte>
+        <Byte>F1</Byte>
+        <Byte>C5</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>x,z,y: Double
+</Comments>
+</CheatTable>
