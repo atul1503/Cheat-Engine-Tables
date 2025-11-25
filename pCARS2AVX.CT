@@ -360,7 +360,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>43</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02423190</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -375,7 +376,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>42</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02421690</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -390,7 +392,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>41</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424070</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -405,7 +408,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>40</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424070</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -420,7 +424,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>39</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02420310</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -435,7 +440,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>38</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02422410</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -450,7 +456,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>37</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424070</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -464,7 +471,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>34</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02422408</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -478,7 +486,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>33</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424070</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -492,7 +501,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>31</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424070</Address>
           <Offsets>
             <Offset>78</Offset>
@@ -506,7 +516,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>32</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>90</Offset>
@@ -520,7 +531,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>27</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>98</Offset>
@@ -533,7 +545,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>24</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425858</Address>
           <Offsets>
             <Offset>90</Offset>
@@ -545,7 +558,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>23</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>D0</Offset>
@@ -557,7 +571,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>21</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>98</Offset>
@@ -569,7 +584,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>20</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>90</Offset>
@@ -581,7 +597,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>19</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425868</Address>
           <Offsets>
             <Offset>D0</Offset>
@@ -592,7 +609,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>18</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425858</Address>
           <Offsets>
             <Offset>90</Offset>
@@ -603,7 +621,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>17</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>D0</Offset>
@@ -614,7 +633,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>16</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424020</Address>
           <Offsets>
             <Offset>1B8</Offset>
@@ -625,7 +645,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>15</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425868</Address>
           <Offsets>
             <Offset>118</Offset>
@@ -635,7 +656,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>14</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>198</Offset>
@@ -645,7 +667,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>13</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02425870</Address>
           <Offsets>
             <Offset>B8</Offset>
@@ -655,7 +678,8 @@ alwaysEnforce = nil
         <CheatEntry>
           <ID>12</ID>
           <Description>"x speed pointer"</Description>
-          <VariableType>Float</VariableType>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
           <Address>"pCARS2AVX.exe"+02424020</Address>
           <Offsets>
             <Offset>278</Offset>
@@ -670,13 +694,19 @@ alwaysEnforce = nil
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>48</ID>
+          <ID>49</ID>
           <Description>"x speed"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Double</VariableType>
-          <Address>"pCARS2AVX.exe"+02424020</Address>
+          <Address>"pCARS2AVX.exe"+02423190</Address>
           <Offsets>
-            <Offset>278</Offset>
+            <Offset>78</Offset>
+            <Offset>0</Offset>
+            <Offset>A0</Offset>
+            <Offset>8</Offset>
+            <Offset>188</Offset>
+            <Offset>90</Offset>
+            <Offset>120</Offset>
           </Offsets>
           <CheatEntries>
             <CheatEntry>
@@ -685,6 +715,13 @@ alwaysEnforce = nil
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Double</VariableType>
               <Address>+8+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>51</ID>
+              <Description>"inverseMass"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>+8+8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>3</ID>
