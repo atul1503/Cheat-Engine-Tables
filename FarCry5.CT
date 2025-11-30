@@ -1407,6 +1407,180 @@ if decGear then decGear.destroy() decGear=nil end
                 <Offset>40</Offset>
               </Offsets>
             </CheatEntry>
+            <CheatEntry>
+              <ID>108</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85430</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>30</Offset>
+                <Offset>0</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85430</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>B8</Offset>
+                <Offset>F0</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>110</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85420</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>30</Offset>
+                <Offset>0</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F855F8</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>30</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>112</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85430</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>B8</Offset>
+                <Offset>38</Offset>
+                <Offset>0</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>113</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85420</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>30</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>114</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F855F8</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>30</Offset>
+                <Offset>0</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85420</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>108</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F855F8</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>108</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F85430</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>108</Offset>
+                <Offset>8</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>118</ID>
+              <Description>"vehicle x velocity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"FC_m64.dll"+04F855F8</Address>
+              <Offsets>
+                <Offset>230</Offset>
+                <Offset>30</Offset>
+                <Offset>0</Offset>
+                <Offset>48</Offset>
+                <Offset>128</Offset>
+                <Offset>0</Offset>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
@@ -1464,26 +1638,42 @@ if decGear then decGear.destroy() decGear=nil end
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>96</ID>
+          <ID>119</ID>
           <Description>"vxspeed"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>1BFBB3167B0</Address>
+          <Address>"FC_m64.dll"+04F855F8</Address>
+          <Offsets>
+            <Offset>230</Offset>
+            <Offset>30</Offset>
+            <Offset>0</Offset>
+            <Offset>48</Offset>
+            <Offset>128</Offset>
+            <Offset>0</Offset>
+            <Offset>78</Offset>
+          </Offsets>
           <CheatEntries>
             <CheatEntry>
-              <ID>97</ID>
+              <ID>121</ID>
               <Description>"vyspeed"</Description>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+4</Address>
             </CheatEntry>
             <CheatEntry>
-              <ID>100</ID>
+              <ID>120</ID>
               <Description>"vsteer"</Description>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>+18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>122</ID>
+              <Description>"anti grip"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-4</Address>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -2013,6 +2203,33 @@ if decGear then decGear.destroy() decGear=nil end
         <Byte>01</Byte>
         <Byte>F3</Byte>
         <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulps xmm6,[rax+00000220] (+C=inverse grip)</Description>
+      <AddressString>FC_m64.dll+F0F91F9</AddressString>
+      <Before>
+        <Byte>58</Byte>
+        <Byte>F1</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>F5</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>B0</Byte>
+        <Byte>20</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>CE</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
