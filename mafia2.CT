@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-  <CheatEntries/>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>3ADF2138</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"No Description"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>75261ED4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>0583114C</Address>
+    </CheatEntry>
+  </CheatEntries>
   <CheatCodes>
     <CodeEntry>
       <Description>Code :mov eax,[eax+0C] (clip)</Description>
@@ -51,7 +70,55 @@
         <Byte>D9</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov eax,[eax+0C] (Total ammo)</Description>
+      <AddressString>mafia2.exe+523EA3</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+        <Byte>0C</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>7D</Byte>
+        <Byte>02</Byte>
+        <Byte>33</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :comiss xmm0,[esi+4C] (Timer)</Description>
+      <AddressString>mafia2.exe+49338A</AddressString>
+      <Before>
+        <Byte>FA</Byte>
+        <Byte>FF</Byte>
+        <Byte>0F</Byte>
+        <Byte>57</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>46</Byte>
+        <Byte>4C</Byte>
+      </Actual>
+      <After>
+        <Byte>76</Byte>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>4E</Byte>
+        <Byte>3C</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
-  <Comments>Health is in float and its around 720 initially</Comments>
+  <Comments>Health is in float and its around 720 initially
+</Comments>
 </CheatTable>
