@@ -1,64 +1,86 @@
 {$lua}
 if syntaxcheck then return end
 
--- speeds up the player by teleporting him forward
-
 [ENABLE]
 
 local speed = 10
 local sleeptime = 0
 
--- 1. Get the Address List
 local al = getAddressList()
-
--- 2. Find the records by their Description name
 local x_rec = al.getMemoryRecordByDescription("x coord")
 local y_rec = al.getMemoryRecordByDescription("y coord")
 
--- Safety check: ensure records exist before running the hotkey
 if x_rec == nil or y_rec == nil then
-   print("Error: Could not find 'x coord' or 'y coord' inside the Cheat Table.")
+   print("Error: 'x coord' or 'y coord' records not found.")
    return
 end
 
-local coords = {nil,nil}
+local coords = {nil, nil}
 
 hk1 = createHotkey(function()
-   -- 3. Get the dynamic address from the records
-   local xAddr = x_rec.CurrentAddress
-   local yAddr = y_rec.CurrentAddress
+    -- 1. Get Addresses
+    local xAddr = x_rec.CurrentAddress
+    local yAddr = y_rec.CurrentAddress
 
-   -- If address is 0 (pointer is null), stop to prevent crash
-   if xAddr == 0 or yAddr == 0 then return end
+    -- 2. Basic Safety: Address must exist
+    if xAddr == 0 or yAddr == 0 then return end
 
-   if coords[0] == nil then
-      coords[0] = {x=readFloat(xAddr), y=readFloat(yAddr)}
-   elseif coords[1] == nil then
-      sleep(sleeptime)
-      coords[1] = {x=readFloat(xAddr), y=readFloat(yAddr)}
+    -- 3. Read Values into local variables first
+    local currentX = readFloat(xAddr)
+    local currentY = readFloat(yAddr)
 
-      local dcoord = {x=nil, y=nil}
-      dcoord.x = coords[1].x - coords[0].x
-      dcoord.y = coords[1].y - coords[0].y
+    -- 4. CRITICAL FIX: specific check if readFloat returned nil
+    if currentX == nil or currentY == nil then return end
 
-      local normalized = {x=nil, y=nil}
-      local r = ((dcoord.x^2) + (dcoord.y^2))^0.5
+    -- Logic Flow
+    if coords[0] == nil then
+        -- Initialize start point
+        coords[0] = {x=currentX, y=currentY}
 
-      -- Add check to prevent division by zero if player didn't move
-      if r > 0 then
-          normalized.x = dcoord.x / r
-          normalized.y = dcoord.y / r
+    elseif coords[1] == nil then
+        sleep(sleeptime)
 
-          if isKeyPressed(0xA0) then
-             writeFloat(xAddr, readFloat(xAddr) + (normalized.x)*speed)
-             writeFloat(yAddr, readFloat(yAddr) + (normalized.y)*speed)
-          end
-      end
+        -- Update values after sleep (in case they changed)
+        currentX = readFloat(xAddr)
+        currentY = readFloat(yAddr)
+        if currentX == nil or currentY == nil then return end -- Check again
 
-      coords[0] = nil
-      coords[1] = nil
-   end
-end, 0x26, 0xA0) -- up and shift
+        coords[1] = {x=currentX, y=currentY}
+
+        -- Double check that coords[0] is still valid numbers before math
+        if coords[0].x == nil or coords[0].y == nil then
+            coords[0] = {x=currentX, y=currentY} -- Reset if corrupted
+            coords[1] = nil
+            return
+        end
+
+        local dcoord = {x=nil, y=nil}
+
+        -- The Error happened here previously. Now it is safe.
+        dcoord.x = coords[1].x - coords[0].x
+        dcoord.y = coords[1].y - coords[0].y
+
+        local normalized = {x=nil, y=nil}
+        local r = ((dcoord.x^2) + (dcoord.y^2))^0.5
+
+        -- Prevent divide by zero if player is standing still
+        if r > 0 then
+            normalized.x = dcoord.x / r
+            normalized.y = dcoord.y / r
+
+            if isKeyPressed(0xA0) then
+                local newX = currentX + (normalized.x * speed)
+                local newY = currentY + (normalized.y * speed)
+                writeFloat(xAddr, newX)
+                writeFloat(yAddr, newY)
+            end
+        end
+
+        -- Reset for next cycle
+        coords[0] = nil
+        coords[1] = nil
+    end
+end, 0x26, 0xA0) -- Up Arrow + Shift
 
 [DISABLE]
 if hk1 then hk1.destroy() end
