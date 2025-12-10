@@ -1,0 +1,98 @@
+{$lua}
+
+[ENABLE]
+
+-- GEAR SETTINGS
+-- Define your different speeds here.
+local gears = { 50,75,100,150,200 }
+
+-- Start at this gear index (e.g., 2 means start at speed 100)
+local currentGearIndex = 1
+
+-- Names of the cheat table entries
+local speedXString = 'x speed'
+local speedYString = 'y speed'
+
+----------------------------------------------------------------------
+-- HELPER: Get memory records safely
+----------------------------------------------------------------------
+local function getRecords()
+  local t = getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Apply the speed of the CURRENT GEAR
+-- (Triggered by UP Arrow)
+----------------------------------------------------------------------
+local function applyGas()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  -- Must be moving slightly for this to work
+  if r < 0.0001 then return end
+
+  -- Get target speed from table
+  local targetSpeed = gears[currentGearIndex]
+
+  local ratio = targetSpeed / r
+  xr.Value = vx * ratio
+  yr.Value = vy * ratio
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Stop (Triggered by DOWN Arrow)
+----------------------------------------------------------------------
+local function applyBrake()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value = 0
+    yr.Value = 0
+  end
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Shift Gears (Triggered by W / S)
+----------------------------------------------------------------------
+local function shiftGear(direction)
+  if direction == "up" then
+    if currentGearIndex < #gears then
+      currentGearIndex = currentGearIndex + 1
+    else
+    end
+  elseif direction == "down" then
+    if currentGearIndex > 1 then
+      currentGearIndex = currentGearIndex - 1
+    else
+    end
+  end
+end
+
+----------------------------------------------------------------------
+-- HOTKEYS
+-- 0x26 = UP Arrow   (Gas / Apply Speed)
+-- 0x28 = DOWN Arrow (Brake / Stop)
+-- 0x57 = W Key      (Gear Up)
+-- 0x53 = S Key      (Gear Down)
+----------------------------------------------------------------------
+
+hkGas = createHotkey(function() applyGas() end, 0x26)
+hkBrake = createHotkey(function() applyBrake() end, 0x28)
+
+-- Changed to W (0x57) and S (0x53)
+hkGearUp = createHotkey(function() shiftGear("up") end, 0x57)
+hkGearDown = createHotkey(function() shiftGear("down") end, 0x53)
+
+
+[DISABLE]
+
+if hkGas then hkGas.destroy(); hkGas=nil end
+if hkBrake then hkBrake.destroy(); hkBrake=nil end
+if hkGearDown then hkGearDown.destroy(); hkGearDown=nil end
+if hkGearUp then hkGearUp.destroy(); hkGearUp=nil end
