@@ -2,22 +2,447 @@
 <CheatTable CheatEngineTableVersion="45">
   <CheatEntries>
     <CheatEntry>
-      <ID>0</ID>
-      <Description>"No Description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>3ADF2138</Address>
+      <ID>58</ID>
+      <Description>"ADDRESS(ES)"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"POINTERS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>121</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>12C</Offset>
+                <Offset>24</Offset>
+                <Offset>4</Offset>
+                <Offset>24C</Offset>
+                <Offset>190</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>124</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"PhysXCooking.dll"+00040FF8</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>4</Offset>
+                <Offset>24</Offset>
+                <Offset>0</Offset>
+                <Offset>A0</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BE930</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>12C</Offset>
+                <Offset>24</Offset>
+                <Offset>4</Offset>
+                <Offset>24C</Offset>
+                <Offset>190</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>119</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BE8D8</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>24</Offset>
+                <Offset>20</Offset>
+                <Offset>254</Offset>
+                <Offset>190</Offset>
+                <Offset>98</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>118</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+01557968</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>4</Offset>
+                <Offset>24</Offset>
+                <Offset>78</Offset>
+                <Offset>98</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>117</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+0144C5FC</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>4</Offset>
+                <Offset>24</Offset>
+                <Offset>78</Offset>
+                <Offset>9C</Offset>
+                <Offset>164</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+0144C5FC</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>4</Offset>
+                <Offset>24</Offset>
+                <Offset>0</Offset>
+                <Offset>A0</Offset>
+                <Offset>E8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>107</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+00431094</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>4</Offset>
+                <Offset>24</Offset>
+                <Offset>78</Offset>
+                <Offset>9C</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"MpOav.dll"+000443F0</Address>
+              <Offsets>
+                <Offset>E8</Offset>
+                <Offset>38</Offset>
+                <Offset>5C</Offset>
+                <Offset>4</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+0042D9D0</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>24</Offset>
+                <Offset>14</Offset>
+                <Offset>10</Offset>
+                <Offset>480</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"PhysXCooking.dll"+00041078</Address>
+              <Offsets>
+                <Offset>E8</Offset>
+                <Offset>38</Offset>
+                <Offset>5C</Offset>
+                <Offset>0</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+0144C5FC</Address>
+              <Offsets>
+                <Offset>E8</Offset>
+                <Offset>38</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>25C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+00B27A4C</Address>
+              <Offsets>
+                <Offset>E8</Offset>
+                <Offset>38</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+00431234</Address>
+              <Offsets>
+                <Offset>E8</Offset>
+                <Offset>38</Offset>
+                <Offset>4</Offset>
+                <Offset>4</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>82</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+0042CAC4</Address>
+              <Offsets>
+                <Offset>E8</Offset>
+                <Offset>38</Offset>
+                <Offset>5C</Offset>
+                <Offset>4</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>76</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>24</Offset>
+                <Offset>20</Offset>
+                <Offset>254</Offset>
+                <Offset>190</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>75</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BDF08</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>24</Offset>
+                <Offset>20</Offset>
+                <Offset>254</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>125</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"MpOav.dll"+00043FF0</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>24</Offset>
+                <Offset>14</Offset>
+                <Offset>10</Offset>
+                <Offset>480</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>74</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016B4C9C</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>1C</Offset>
+                <Offset>8</Offset>
+                <Offset>20</Offset>
+                <Offset>254</Offset>
+                <Offset>190</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"APEX_Particles.dll"+00052974</Address>
+              <Offsets>
+                <Offset>EC</Offset>
+                <Offset>24</Offset>
+                <Offset>0</Offset>
+                <Offset>18</Offset>
+                <Offset>1C8</Offset>
+                <Offset>48</Offset>
+                <Offset>D0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"y coord ref"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>mafia2.exe+18C00D0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>127</ID>
+          <Description>"y coord"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"mafia2.exe"+016BE8D8</Address>
+          <Offsets>
+            <Offset>EC</Offset>
+            <Offset>1C</Offset>
+            <Offset>24</Offset>
+            <Offset>20</Offset>
+            <Offset>254</Offset>
+            <Offset>190</Offset>
+            <Offset>98</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"x coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"z coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"x speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"y speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+18+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>1</ID>
-      <Description>"No Description"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>75261ED4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>3</ID>
-      <Description>"No description"</Description>
-      <VariableType>Float</VariableType>
-      <Address>0583114C</Address>
+      <ID>66</ID>
+      <Description>"SCRIPTS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>65</ID>
+          <Description>"Speeder with teleportation"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+-- speeds up the player by teleporting him forward
+
+[ENABLE]
+
+local speed = 10
+local sleeptime = 0
+
+-- 1. Get the Address List
+local al = getAddressList()
+
+-- 2. Find the records by their Description name
+local x_rec = al.getMemoryRecordByDescription("x coord")
+local y_rec = al.getMemoryRecordByDescription("y coord")
+
+-- Safety check: ensure records exist before running the hotkey
+if x_rec == nil or y_rec == nil then
+   print("Error: Could not find 'x coord' or 'y coord' inside the Cheat Table.")
+   return
+end
+
+local coords = {nil,nil}
+
+hk1 = createHotkey(function()
+   -- 3. Get the dynamic address from the records
+   local xAddr = x_rec.CurrentAddress
+   local yAddr = y_rec.CurrentAddress
+
+   -- If address is 0 (pointer is null), stop to prevent crash
+   if xAddr == 0 or yAddr == 0 then return end
+
+   if coords[0] == nil then
+      coords[0] = {x=readFloat(xAddr), y=readFloat(yAddr)}
+   elseif coords[1] == nil then
+      sleep(sleeptime)
+      coords[1] = {x=readFloat(xAddr), y=readFloat(yAddr)}
+
+      local dcoord = {x=nil, y=nil}
+      dcoord.x = coords[1].x - coords[0].x
+      dcoord.y = coords[1].y - coords[0].y
+
+      local normalized = {x=nil, y=nil}
+      local r = ((dcoord.x^2) + (dcoord.y^2))^0.5
+
+      -- Add check to prevent division by zero if player didn't move
+      if r &gt; 0 then
+          normalized.x = dcoord.x / r
+          normalized.y = dcoord.y / r
+
+          if isKeyPressed(0xA0) then
+             writeFloat(xAddr, readFloat(xAddr) + (normalized.x)*speed)
+             writeFloat(yAddr, readFloat(yAddr) + (normalized.y)*speed)
+          end
+      end
+
+      coords[0] = nil
+      coords[1] = nil
+   end
+end, 0x26, 0xA0) -- up and shift
+
+[DISABLE]
+if hk1 then hk1.destroy() end
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -114,6 +539,78 @@
         <Byte>56</Byte>
         <Byte>8B</Byte>
         <Byte>4E</Byte>
+        <Byte>3C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fld dword ptr [esi+000000EC] (y coord)(with most counts)</Description>
+      <AddressString>PhysXCore.dll+2C48A</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>D8</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+        <Byte>EC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D8</Byte>
+        <Byte>60</Byte>
+        <Byte>04</Byte>
+        <Byte>D9</Byte>
+        <Byte>86</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mov [ecx+20],edx (y speed)</Description>
+      <AddressString>PhysXCore.dll+131161</AddressString>
+      <Before>
+        <Byte>51</Byte>
+        <Byte>1C</Byte>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>04</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>08</Byte>
+        <Byte>89</Byte>
+        <Byte>51</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :fstp dword ptr [ecx+38] (Alt x speed)</Description>
+      <AddressString>PhysXCore.dll+14896E</AddressString>
+      <Before>
+        <Byte>D9</Byte>
+        <Byte>59</Byte>
+        <Byte>34</Byte>
+        <Byte>D9</Byte>
+        <Byte>CB</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>59</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>C9</Byte>
+        <Byte>D9</Byte>
+        <Byte>59</Byte>
         <Byte>3C</Byte>
       </After>
     </CodeEntry>
