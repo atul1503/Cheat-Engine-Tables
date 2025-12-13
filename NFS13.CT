@@ -171,7 +171,7 @@ end
           <CheatEntries>
             <CheatEntry>
               <ID>102</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF99D8</Address>
               <Offsets>
@@ -183,7 +183,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>103</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E98</Address>
               <Offsets>
@@ -195,7 +195,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>106</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90A8</Address>
               <Offsets>
@@ -208,7 +208,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>110</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CEDB00</Address>
               <Offsets>
@@ -222,7 +222,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>111</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90A8</Address>
               <Offsets>
@@ -236,7 +236,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>113</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E4C</Address>
               <Offsets>
@@ -251,7 +251,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>115</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF8480</Address>
               <Offsets>
@@ -266,7 +266,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>114</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E98</Address>
               <Offsets>
@@ -281,7 +281,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>116</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90AC</Address>
               <Offsets>
@@ -296,7 +296,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>117</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF99D8</Address>
               <Offsets>
@@ -311,7 +311,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>118</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90AC</Address>
               <Offsets>
@@ -326,7 +326,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>119</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF99D8</Address>
               <Offsets>
@@ -341,7 +341,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>120</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90A8</Address>
               <Offsets>
@@ -356,7 +356,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>121</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E98</Address>
               <Offsets>
@@ -371,7 +371,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>123</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E98</Address>
               <Offsets>
@@ -386,7 +386,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>124</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E98</Address>
               <Offsets>
@@ -401,7 +401,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>125</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90A8</Address>
               <Offsets>
@@ -416,7 +416,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>126</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CEDB04</Address>
               <Offsets>
@@ -431,7 +431,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>122</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90AC</Address>
               <Offsets>
@@ -446,7 +446,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>129</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90A8</Address>
               <Offsets>
@@ -461,7 +461,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>130</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF8480</Address>
               <Offsets>
@@ -476,7 +476,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>131</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E4C</Address>
               <Offsets>
@@ -491,7 +491,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>132</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CEDB00</Address>
               <Offsets>
@@ -506,7 +506,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>133</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CEDB00</Address>
               <Offsets>
@@ -521,7 +521,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>134</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF99D8</Address>
               <Offsets>
@@ -536,7 +536,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>135</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CEDB00</Address>
               <Offsets>
@@ -551,7 +551,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>136</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E48</Address>
               <Offsets>
@@ -566,7 +566,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>137</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90AC</Address>
               <Offsets>
@@ -581,7 +581,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>139</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E48</Address>
               <Offsets>
@@ -596,7 +596,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>140</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF7E98</Address>
               <Offsets>
@@ -611,7 +611,7 @@ end
             </CheatEntry>
             <CheatEntry>
               <ID>105</ID>
-              <Description>"pointerscan result"</Description>
+              <Description>"x speed pointer"</Description>
               <VariableType>Float</VariableType>
               <Address>"NFS13.exe"+00CF90AC</Address>
               <Offsets>
