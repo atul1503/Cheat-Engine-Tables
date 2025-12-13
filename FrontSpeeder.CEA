@@ -1,0 +1,142 @@
+{$lua}
+[ENABLE]
+do
+  --[[
+    AutoSteer v2 (safer + documented)
+
+    Requirements:
+      - Address list contains three Memory Records with these descriptions:
+          xspeed (float), yspeed (float), steer (float)
+        Adjust the descriptions in AutoSteer.descs if yours differ.
+
+    Controls:
+      - Left/Right arrows adjust steer (turn).
+      - When no left/right input, steer decays toward 0 (turnDamp).
+      - Up arrow accelerates slightly (accelFactor).
+      - Down arrow brakes slightly (accelFactor * 1.02).
+
+    Tuning:
+      - ratio: degrees per unit of 'steer' used to rotate the (xs, ys) vector.
+               Flip sign (e.g., -5 to +5) if the car turns the wrong way.
+      - turn: how much 'steer' changes per tick when holding L/R.
+      - turnDamp: > 1.0 → stronger tendency to go straight when not turning.
+      - accelFactor: > 1.0 → how quickly speed increases when pressing Up.
+      - maxSteer: set to a number to clamp steering magnitude (or nil for no clamp).
+      - interval: timer tick in ms (lower → more responsive, more CPU).
+  ]]
+
+  -- Kill any previous instance to avoid duplicate timers
+  if AutoSteer and AutoSteer.timer then
+    pcall(function() AutoSteer.timer.OnTimer = nil end)
+    pcall(function() AutoSteer.timer.Enabled = false end)
+    pcall(function() AutoSteer.timer.destroy() end)
+  end
+
+  AutoSteer = {}
+
+  -- Configuration
+  AutoSteer.descs       = { xspeed = 'xspeed', yspeed = 'yspeed', steer = 'steer' }
+  AutoSteer.turn        = -0.1       -- steering increment per tick while holding L/R
+  AutoSteer.accelFactor = 1.01      -- slight acceleration factor when pressing Up
+  AutoSteer.ratio       = -2      -- degrees per unit of steer; change sign to invert
+  AutoSteer.turnDamp    = 1.025     -- >1.0 to decay steer toward 0 when no input
+  AutoSteer.maxSteer    = nil       -- e.g., 45 to clamp, or nil to disable clamping
+  AutoSteer.interval    = 50        -- ms between ticks
+  AutoSteer.epsilon     = 1e-6      -- avoids division by 0 / denormals
+
+  -- Virtual-key codes
+  local VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN = 0x25, 0x27, 0x26, 0x28
+
+  -- Helpers (kept local to this chunk)
+  local function safeGetRecordByDescription(desc)
+    local al = getAddressList()
+    if not al then return nil end
+    local ok, rec = pcall(function() return al.getMemoryRecordByDescription(desc) end)
+    if not ok then return nil end
+    return rec
+  end
+
+  local function readRecNumber(rec)
+    local ok, v = pcall(function() return rec.Value end)
+    if not ok or v == nil or v == '??' then return nil end
+    return tonumber(v)
+  end
+
+  local function safeWrite(rec, val)
+    if not rec or val == nil then return false end
+    local ok = pcall(function() rec.Value = val end)
+    return ok
+  end
+
+  local function clamp(x, lo, hi)
+    if lo and x < lo then return lo end
+    if hi and x > hi then return hi end
+    return x
+  end
+
+  function AutoSteer._rotate()
+    -- Resolve records fresh every tick to avoid use-after-free if user edits/deletes records
+    local xsRec = safeGetRecordByDescription(AutoSteer.descs.xspeed)
+    local ysRec = safeGetRecordByDescription(AutoSteer.descs.yspeed)
+    local stRec = safeGetRecordByDescription(AutoSteer.descs.steer)
+    if not xsRec or not ysRec or not stRec then return end
+
+    local xs = readRecNumber(xsRec)
+    local ys = readRecNumber(ysRec)
+    local st = readRecNumber(stRec)
+    if not xs or not ys or not st then return end
+
+    -- Adjust steering based on input, or damp toward zero
+    if isKeyPressed(VK_LEFT) then
+      st = st - AutoSteer.turn
+    elseif isKeyPressed(VK_RIGHT) then
+      st = st + AutoSteer.turn
+    else
+      st = st / AutoSteer.turnDamp
+    end
+
+    if AutoSteer.maxSteer then
+      st = clamp(st, -AutoSteer.maxSteer, AutoSteer.maxSteer)
+    end
+    safeWrite(stRec, st)
+
+    -- Rotate the velocity vector by theta (theta in radians)
+    local theta = math.rad(AutoSteer.ratio * st)
+    local c, s = math.cos(theta), math.sin(theta)
+    local nx = (xs * c - ys * s)
+    local ny = (xs * s + ys * c)
+
+    -- Throttle / brake
+    if isKeyPressed(VK_UP) then
+      nx = nx * AutoSteer.accelFactor
+      ny = ny * AutoSteer.accelFactor
+    elseif isKeyPressed(VK_DOWN) then
+      local denom = AutoSteer.accelFactor * 1.02
+      nx = nx / denom
+      ny = ny / denom
+    end
+
+    safeWrite(xsRec, nx)
+    safeWrite(ysRec, ny)
+  end
+
+  -- Create and start timer; owner set to main form so CE cleans it with the UI
+  local owner = getMainForm and getMainForm() or nil
+  AutoSteer.timer = createTimer(owner)
+  AutoSteer.timer.Interval = AutoSteer.interval
+  AutoSteer.timer.Enabled = false
+  AutoSteer.timer.OnTimer = AutoSteer._rotate
+  AutoSteer.timer.Enabled = true
+end
+
+[DISABLE]
+if AutoSteer then
+  if AutoSteer.timer then
+    pcall(function() AutoSteer.timer.OnTimer = nil end)
+    pcall(function() AutoSteer.timer.Enabled = false end)
+    pcall(function() AutoSteer.timer.destroy() end)
+  end
+  AutoSteer.timer = nil
+  AutoSteer._rotate = nil
+  AutoSteer = nil
+end

@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"SCRIPTS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"Front Speeder"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+[ENABLE]
+do
+  --[[
+    AutoSteer v2 (safer + documented)
+
+    Requirements:
+      - Address list contains three Memory Records with these descriptions:
+          xspeed (float), yspeed (float), steer (float)
+        Adjust the descriptions in AutoSteer.descs if yours differ.
+
+    Controls:
+      - Left/Right arrows adjust steer (turn).
+      - When no left/right input, steer decays toward 0 (turnDamp).
+      - Up arrow accelerates slightly (accelFactor).
+      - Down arrow brakes slightly (accelFactor * 1.02).
+
+    Tuning:
+      - ratio: degrees per unit of 'steer' used to rotate the (xs, ys) vector.
+               Flip sign (e.g., -5 to +5) if the car turns the wrong way.
+      - turn: how much 'steer' changes per tick when holding L/R.
+      - turnDamp: &gt; 1.0 → stronger tendency to go straight when not turning.
+      - accelFactor: &gt; 1.0 → how quickly speed increases when pressing Up.
+      - maxSteer: set to a number to clamp steering magnitude (or nil for no clamp).
+      - interval: timer tick in ms (lower → more responsive, more CPU).
+  ]]
+
+  -- Kill any previous instance to avoid duplicate timers
+  if AutoSteer and AutoSteer.timer then
+    pcall(function() AutoSteer.timer.OnTimer = nil end)
+    pcall(function() AutoSteer.timer.Enabled = false end)
+    pcall(function() AutoSteer.timer.destroy() end)
+  end
+
+  AutoSteer = {}
+
+  -- Configuration
+  AutoSteer.descs       = { xspeed = 'xspeed', yspeed = 'yspeed', steer = 'steer' }
+  AutoSteer.turn        = -0.1       -- steering increment per tick while holding L/R
+  AutoSteer.accelFactor = 1.01      -- slight acceleration factor when pressing Up
+  AutoSteer.ratio       = -2      -- degrees per unit of steer; change sign to invert
+  AutoSteer.turnDamp    = 1.025     -- &gt;1.0 to decay steer toward 0 when no input
+  AutoSteer.maxSteer    = nil       -- e.g., 45 to clamp, or nil to disable clamping
+  AutoSteer.interval    = 50        -- ms between ticks
+  AutoSteer.epsilon     = 1e-6      -- avoids division by 0 / denormals
+
+  -- Virtual-key codes
+  local VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN = 0x25, 0x27, 0x26, 0x28
+
+  -- Helpers (kept local to this chunk)
+  local function safeGetRecordByDescription(desc)
+    local al = getAddressList()
+    if not al then return nil end
+    local ok, rec = pcall(function() return al.getMemoryRecordByDescription(desc) end)
+    if not ok then return nil end
+    return rec
+  end
+
+  local function readRecNumber(rec)
+    local ok, v = pcall(function() return rec.Value end)
+    if not ok or v == nil or v == '??' then return nil end
+    return tonumber(v)
+  end
+
+  local function safeWrite(rec, val)
+    if not rec or val == nil then return false end
+    local ok = pcall(function() rec.Value = val end)
+    return ok
+  end
+
+  local function clamp(x, lo, hi)
+    if lo and x &lt; lo then return lo end
+    if hi and x &gt; hi then return hi end
+    return x
+  end
+
+  function AutoSteer._rotate()
+    -- Resolve records fresh every tick to avoid use-after-free if user edits/deletes records
+    local xsRec = safeGetRecordByDescription(AutoSteer.descs.xspeed)
+    local ysRec = safeGetRecordByDescription(AutoSteer.descs.yspeed)
+    local stRec = safeGetRecordByDescription(AutoSteer.descs.steer)
+    if not xsRec or not ysRec or not stRec then return end
+
+    local xs = readRecNumber(xsRec)
+    local ys = readRecNumber(ysRec)
+    local st = readRecNumber(stRec)
+    if not xs or not ys or not st then return end
+
+    -- Adjust steering based on input, or damp toward zero
+    if isKeyPressed(VK_LEFT) then
+      st = st - AutoSteer.turn
+    elseif isKeyPressed(VK_RIGHT) then
+      st = st + AutoSteer.turn
+    else
+      st = st / AutoSteer.turnDamp
+    end
+
+    if AutoSteer.maxSteer then
+      st = clamp(st, -AutoSteer.maxSteer, AutoSteer.maxSteer)
+    end
+    safeWrite(stRec, st)
+
+    -- Rotate the velocity vector by theta (theta in radians)
+    local theta = math.rad(AutoSteer.ratio * st)
+    local c, s = math.cos(theta), math.sin(theta)
+    local nx = (xs * c - ys * s)
+    local ny = (xs * s + ys * c)
+
+    -- Throttle / brake
+    if isKeyPressed(VK_UP) then
+      nx = nx * AutoSteer.accelFactor
+      ny = ny * AutoSteer.accelFactor
+    elseif isKeyPressed(VK_DOWN) then
+      local denom = AutoSteer.accelFactor * 1.02
+      nx = nx / denom
+      ny = ny / denom
+    end
+
+    safeWrite(xsRec, nx)
+    safeWrite(ysRec, ny)
+  end
+
+  -- Create and start timer; owner set to main form so CE cleans it with the UI
+  local owner = getMainForm and getMainForm() or nil
+  AutoSteer.timer = createTimer(owner)
+  AutoSteer.timer.Interval = AutoSteer.interval
+  AutoSteer.timer.Enabled = false
+  AutoSteer.timer.OnTimer = AutoSteer._rotate
+  AutoSteer.timer.Enabled = true
+end
+
+[DISABLE]
+if AutoSteer then
+  if AutoSteer.timer then
+    pcall(function() AutoSteer.timer.OnTimer = nil end)
+    pcall(function() AutoSteer.timer.Enabled = false end)
+    pcall(function() AutoSteer.timer.destroy() end)
+  end
+  AutoSteer.timer = nil
+  AutoSteer._rotate = nil
+  AutoSteer = nil
+end
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>95</ID>
+      <Description>"ADDRESS(es)"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>141</ID>
+          <Description>"POINTERS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>102</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF99D8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>2C0</Offset>
+                <Offset>194</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E98</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>14C</Offset>
+                <Offset>9C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90A8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>680</Offset>
+                <Offset>58C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>110</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CEDB00</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>230</Offset>
+                <Offset>17C</Offset>
+                <Offset>4</Offset>
+                <Offset>490</Offset>
+                <Offset>430</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90A8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>230</Offset>
+                <Offset>17C</Offset>
+                <Offset>4</Offset>
+                <Offset>700</Offset>
+                <Offset>138</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>113</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E4C</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>230</Offset>
+                <Offset>17C</Offset>
+                <Offset>4</Offset>
+                <Offset>E4</Offset>
+                <Offset>0</Offset>
+                <Offset>550</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF8480</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>AB0</Offset>
+                <Offset>15C</Offset>
+                <Offset>20</Offset>
+                <Offset>410</Offset>
+                <Offset>38C</Offset>
+                <Offset>484</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>114</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E98</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>230</Offset>
+                <Offset>17C</Offset>
+                <Offset>4</Offset>
+                <Offset>E4</Offset>
+                <Offset>680</Offset>
+                <Offset>4DC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90AC</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>AB0</Offset>
+                <Offset>15C</Offset>
+                <Offset>20</Offset>
+                <Offset>410</Offset>
+                <Offset>40C</Offset>
+                <Offset>138</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>117</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF99D8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>410</Offset>
+                <Offset>9C</Offset>
+                <Offset>3C8</Offset>
+                <Offset>484</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>118</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90AC</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>410</Offset>
+                <Offset>9C</Offset>
+                <Offset>448</Offset>
+                <Offset>138</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>119</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF99D8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>700</Offset>
+                <Offset>228</Offset>
+                <Offset>40C</Offset>
+                <Offset>8C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90A8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>700</Offset>
+                <Offset>2A8</Offset>
+                <Offset>374</Offset>
+                <Offset>58C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>121</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E98</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>450</Offset>
+                <Offset>174</Offset>
+                <Offset>20</Offset>
+                <Offset>490</Offset>
+                <Offset>398</Offset>
+                <Offset>4DC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>123</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E98</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>670</Offset>
+                <Offset>16C</Offset>
+                <Offset>4</Offset>
+                <Offset>C0</Offset>
+                <Offset>680</Offset>
+                <Offset>4DC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>124</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E98</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>670</Offset>
+                <Offset>16C</Offset>
+                <Offset>4</Offset>
+                <Offset>C0</Offset>
+                <Offset>210</Offset>
+                <Offset>68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>125</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90A8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>184</Offset>
+                <Offset>4</Offset>
+                <Offset>390</Offset>
+                <Offset>43C</Offset>
+                <Offset>13C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>126</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CEDB04</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>184</Offset>
+                <Offset>4</Offset>
+                <Offset>390</Offset>
+                <Offset>448</Offset>
+                <Offset>4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>122</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90AC</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>450</Offset>
+                <Offset>174</Offset>
+                <Offset>20</Offset>
+                <Offset>490</Offset>
+                <Offset>418</Offset>
+                <Offset>13C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>129</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90A8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>90</Offset>
+                <Offset>74</Offset>
+                <Offset>0</Offset>
+                <Offset>138</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>130</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF8480</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>90</Offset>
+                <Offset>678</Offset>
+                <Offset>0</Offset>
+                <Offset>8C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>131</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E4C</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>AB0</Offset>
+                <Offset>15C</Offset>
+                <Offset>4</Offset>
+                <Offset>490</Offset>
+                <Offset>380</Offset>
+                <Offset>58C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>132</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CEDB00</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>AB0</Offset>
+                <Offset>15C</Offset>
+                <Offset>4</Offset>
+                <Offset>490</Offset>
+                <Offset>1A8</Offset>
+                <Offset>454</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>133</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CEDB00</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>84</Offset>
+                <Offset>B4</Offset>
+                <Offset>390</Offset>
+                <Offset>46C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>134</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF99D8</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>84</Offset>
+                <Offset>B4</Offset>
+                <Offset>680</Offset>
+                <Offset>4DC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>135</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CEDB00</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>294</Offset>
+                <Offset>4</Offset>
+                <Offset>9C</Offset>
+                <Offset>700</Offset>
+                <Offset>548</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>136</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E48</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>294</Offset>
+                <Offset>4</Offset>
+                <Offset>9C</Offset>
+                <Offset>210</Offset>
+                <Offset>68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>137</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90AC</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>294</Offset>
+                <Offset>20</Offset>
+                <Offset>B4</Offset>
+                <Offset>228</Offset>
+                <Offset>118</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>139</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E48</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>AB0</Offset>
+                <Offset>15C</Offset>
+                <Offset>4</Offset>
+                <Offset>688</Offset>
+                <Offset>0</Offset>
+                <Offset>8C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>140</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF7E98</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>AB0</Offset>
+                <Offset>15C</Offset>
+                <Offset>4</Offset>
+                <Offset>678</Offset>
+                <Offset>0</Offset>
+                <Offset>88</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"pointerscan result"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"NFS13.exe"+00CF90AC</Address>
+              <Offsets>
+                <Offset>B0</Offset>
+                <Offset>10</Offset>
+                <Offset>88</Offset>
+                <Offset>0</Offset>
+                <Offset>550</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>142</ID>
+          <Description>"xspeed"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <VariableType>Float</VariableType>
+          <Address>"NFS13.exe"+00CF7E98</Address>
+          <Offsets>
+            <Offset>B0</Offset>
+            <Offset>10</Offset>
+            <Offset>14C</Offset>
+            <Offset>9C</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"steer"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+8+8+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>91</ID>
+              <Description>"yspeed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :movaps [eax+20],xmm4 (wheel spin for my car)(+8+4)</Description>
+      <AddressString>NFS13.exe+5C2A8E</AddressString>
+      <Before>
+        <Byte>5E</Byte>
+        <Byte>0F</Byte>
+        <Byte>C6</Byte>
+        <Byte>E0</Byte>
+        <Byte>84</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>29</Byte>
+        <Byte>60</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>5B</Byte>
+        <Byte>8B</Byte>
+        <Byte>E5</Byte>
+        <Byte>5D</Byte>
+        <Byte>C2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm0,[eax+000000B0] (x speed)</Description>
+      <AddressString>NFS13.exe+AEB3B</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+        <Byte>75</Byte>
+        <Byte>11</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>80</Byte>
+        <Byte>B0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>04</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :movaps xmm2,[ecx+000000C0] (steer)</Description>
+      <AddressString>NFS13.exe+1C9165</AddressString>
+      <Before>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>1C</Byte>
+        <Byte>75</Byte>
+        <Byte>09</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>91</Byte>
+        <Byte>C0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>03</Byte>
+        <Byte>0F</Byte>
+        <Byte>57</Byte>
+        <Byte>D2</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
