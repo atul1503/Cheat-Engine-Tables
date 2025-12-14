@@ -52,7 +52,7 @@ do
   AutoSteer.turn        = -0.1       -- steering increment per tick while holding L/R
   AutoSteer.accelFactor = 1.01      -- slight acceleration factor when pressing Up
   AutoSteer.ratio       = -2      -- degrees per unit of steer; change sign to invert
-  AutoSteer.turnDamp    = 1.025     -- &gt;1.0 to decay steer toward 0 when no input
+  AutoSteer.turnDamp    = 1.05     -- &gt;1.0 to decay steer toward 0 when no input
   AutoSteer.maxSteer    = nil       -- e.g., 45 to clamp, or nil to disable clamping
   AutoSteer.interval    = 50        -- ms between ticks
   AutoSteer.epsilon     = 1e-6      -- avoids division by 0 / denormals
@@ -651,6 +651,13 @@ end
               <VariableType>Float</VariableType>
               <Address>+8</Address>
             </CheatEntry>
+            <CheatEntry>
+              <ID>145</ID>
+              <Description>"inverseMass"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-24</Address>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
@@ -733,6 +740,33 @@ end
         <Byte>0F</Byte>
         <Byte>57</Byte>
         <Byte>D2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :mulps xmm0,[esi+00000080] (inverse mass)</Description>
+      <AddressString>NFS13.exe+507885</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>0F</Byte>
+        <Byte>28</Byte>
+        <Byte>07</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>86</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>86</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
