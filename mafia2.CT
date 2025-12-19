@@ -14,6 +14,570 @@
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
+              <ID>766</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BE7DC</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>767</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BD0A0</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>284</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>768</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016B4C9C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>D8</Offset>
+                <Offset>B4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>769</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016B4C9C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>394</Offset>
+                <Offset>AC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>770</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>94</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>771</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BFDAC</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>230</Offset>
+                <Offset>4C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>772</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BE930</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>428</Offset>
+                <Offset>A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>765</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BE930</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>773</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BFD88</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>230</Offset>
+                <Offset>DC</Offset>
+                <Offset>60</Offset>
+                <Offset>B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>775</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BE8C0</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>604</Offset>
+                <Offset>2A4</Offset>
+                <Offset>0</Offset>
+                <Offset>54</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>776</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BE8C4</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>2D8</Offset>
+                <Offset>2A4</Offset>
+                <Offset>4</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>774</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BDEBC</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>200</Offset>
+                <Offset>C8</Offset>
+                <Offset>18</Offset>
+                <Offset>B4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>778</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016C6670</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>50</Offset>
+                <Offset>50</Offset>
+                <Offset>1C</Offset>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>779</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016C6838</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>50</Offset>
+                <Offset>138</Offset>
+                <Offset>48</Offset>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>781</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BE8DC</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>1D8</Offset>
+                <Offset>A0</Offset>
+                <Offset>10C</Offset>
+                <Offset>308</Offset>
+                <Offset>A4</Offset>
+                <Offset>118</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>782</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BD0A4</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>1D8</Offset>
+                <Offset>A0</Offset>
+                <Offset>10C</Offset>
+                <Offset>298</Offset>
+                <Offset>B0</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>780</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016C6B10</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>50</Offset>
+                <Offset>138</Offset>
+                <Offset>48</Offset>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>783</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BEA48</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>248</Offset>
+                <Offset>60</Offset>
+                <Offset>DC</Offset>
+                <Offset>D8</Offset>
+                <Offset>8</Offset>
+                <Offset>98</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>786</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BD09C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>138</Offset>
+                <Offset>94</Offset>
+                <Offset>30</Offset>
+                <Offset>200</Offset>
+                <Offset>94</Offset>
+                <Offset>1D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>788</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>60</Offset>
+                <Offset>90</Offset>
+                <Offset>2A4</Offset>
+                <Offset>AC</Offset>
+                <Offset>110</Offset>
+                <Offset>9C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>787</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>60</Offset>
+                <Offset>90</Offset>
+                <Offset>2A4</Offset>
+                <Offset>AC</Offset>
+                <Offset>0</Offset>
+                <Offset>A4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>784</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BFD18</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>248</Offset>
+                <Offset>60</Offset>
+                <Offset>DC</Offset>
+                <Offset>F8</Offset>
+                <Offset>54</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>785</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018C14A8</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>138</Offset>
+                <Offset>94</Offset>
+                <Offset>10C</Offset>
+                <Offset>8</Offset>
+                <Offset>4</Offset>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>790</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BE934</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>A4</Offset>
+                <Offset>194</Offset>
+                <Offset>64</Offset>
+                <Offset>164</Offset>
+                <Offset>90</Offset>
+                <Offset>BC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>792</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016C1050</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>14</Offset>
+                <Offset>B4</Offset>
+                <Offset>8</Offset>
+                <Offset>3C4</Offset>
+                <Offset>230</Offset>
+                <Offset>158</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>791</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016B6440</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>14</Offset>
+                <Offset>B4</Offset>
+                <Offset>154</Offset>
+                <Offset>90</Offset>
+                <Offset>A0</Offset>
+                <Offset>90</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>793</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018C8088</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>2A4</Offset>
+                <Offset>120</Offset>
+                <Offset>260</Offset>
+                <Offset>28</Offset>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>794</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018C807C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>2A4</Offset>
+                <Offset>120</Offset>
+                <Offset>480</Offset>
+                <Offset>4</Offset>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>795</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BE678</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>94</Offset>
+                <Offset>240</Offset>
+                <Offset>6C</Offset>
+                <Offset>78</Offset>
+                <Offset>0</Offset>
+                <Offset>68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>796</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016BFD88</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>94</Offset>
+                <Offset>240</Offset>
+                <Offset>6C</Offset>
+                <Offset>78</Offset>
+                <Offset>60</Offset>
+                <Offset>B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>797</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BE930</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>10</Offset>
+                <Offset>D0</Offset>
+                <Offset>2C</Offset>
+                <Offset>A8</Offset>
+                <Offset>3C</Offset>
+                <Offset>A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>798</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BD0A4</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>10</Offset>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>3C</Offset>
+                <Offset>A8</Offset>
+                <Offset>C4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>799</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BF460</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>D8</Offset>
+                <Offset>B4</Offset>
+                <Offset>180</Offset>
+                <Offset>AC</Offset>
+                <Offset>0</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>800</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016B4C9C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>D8</Offset>
+                <Offset>B4</Offset>
+                <Offset>2A0</Offset>
+                <Offset>4</Offset>
+                <Offset>7C</Offset>
+                <Offset>A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>801</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018C8F20</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>34</Offset>
+                <Offset>0</Offset>
+                <Offset>17C</Offset>
+                <Offset>10</Offset>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>802</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018C809C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>34</Offset>
+                <Offset>10</Offset>
+                <Offset>C</Offset>
+                <Offset>0</Offset>
+                <Offset>18</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>804</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>8C</Offset>
+                <Offset>8</Offset>
+                <Offset>BC</Offset>
+                <Offset>30</Offset>
+                <Offset>200</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>803</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+018BFF04</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>8</Offset>
+                <Offset>8C</Offset>
+                <Offset>8</Offset>
+                <Offset>BC</Offset>
+                <Offset>368</Offset>
+                <Offset>AC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>805</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016C6208</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>80</Offset>
+                <Offset>1C</Offset>
+                <Offset>1C</Offset>
+                <Offset>20</Offset>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>806</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016C66F8</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+                <Offset>118</Offset>
+                <Offset>80</Offset>
+                <Offset>1C</Offset>
+                <Offset>1C</Offset>
+                <Offset>20</Offset>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>764</ID>
+              <Description>"health pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"mafia2.exe"+016B4C9C</Address>
+              <Offsets>
+                <Offset>D0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
               <ID>121</ID>
               <Description>"y coord pointer"</Description>
               <VariableType>Float</VariableType>
@@ -238,6 +802,17 @@
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>807</ID>
+          <Description>"Health"</Description>
+          <VariableType>Float</VariableType>
+          <Address>"mafia2.exe"+018BE930</Address>
+          <Offsets>
+            <Offset>D0</Offset>
+            <Offset>428</Offset>
+            <Offset>A8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
           <ID>2</ID>
           <Description>"y coord ref"</Description>
           <ShowAsSigned>0</ShowAsSigned>
@@ -245,8 +820,15 @@
           <Address>mafia2.exe+18C00D0</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>759</ID>
+          <Description>"car y speed ref"</Description>
+          <VariableType>Float</VariableType>
+          <Address>mafia2.exe+18C0C98</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>127</ID>
           <Description>"y coord"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
           <VariableType>Float</VariableType>
           <Address>"mafia2.exe"+016BE8D8</Address>
           <Offsets>
@@ -495,6 +1077,200 @@ if hk1 then hk1.destroy() end
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+    <CheatEntry>
+      <ID>8071</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+[ENABLE]
+
+--------------------------------------------------------------------------------
+-- Gear-Locked Movement with Timer (50 ms)
+-- - Holds constant speed (selected from speedTable) while you hold UP (↑)
+-- - W/S changes gear
+-- - DOWN (↓) stops immediately
+-- - Timer-based enforcement every 50 ms for smooth, continuous control
+-- - Full cleanup on enable AND disable (prevents zombie timers or duplicate hotkeys)
+--------------------------------------------------------------------------------
+
+-- =========================
+-- Config
+-- =========================
+local inGearMul=1.02
+local outGearMul=1.1
+speedTable = speedTable or {2,5,10,15,18,24.66,44.84,53.81,89.68}
+index = index or 1  -- current gear index (persist across re-enables if you want)
+
+-- Memory record descriptions for velocity components
+speedXString = 'x'
+speedYString = 'y'
+
+-- Timer behavior
+local TICK_MS = 50
+alwaysEnforce = alwaysEnforce or true  -- true = always keep speed at current gear (no need to hold UP)
+
+-- Virtual-key codes
+local VK_UP   = 0x26
+local VK_DOWN = 0x28
+local VK_W    = 0x57
+local VK_S    = 0x53
+
+-- =========================
+-- Safety: pre-clean any leftovers from prior enable cycles
+-- (Prevents zombie timers and duplicate hotkeys if user toggles script repeatedly)
+-- =========================
+local function safeDestroy(obj)
+  if obj then
+    pcall(function() obj.destroy() end)
+  end
+end
+
+-- Kill any old items before creating new ones
+safeDestroy(gearTimer)  gearTimer = nil
+safeDestroy(hk1)        hk1 = nil
+safeDestroy(hk2)        hk2 = nil
+safeDestroy(incGear)    incGear = nil
+safeDestroy(decGear)    decGear = nil
+
+-- =========================
+-- Utilities
+-- =========================
+local function getLen(tbl)
+  local count=0
+  for _ in pairs(tbl) do count=count+1 end
+  return count
+end
+
+local function setEventually(xr,yr,vx,vy,r,target,delta)
+      if r&gt;target then
+          if r/delta&gt;=target then
+             xr.Value=vx/delta
+             yr.Value=vy/delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      else
+          if r*delta&lt;=target then
+             xr.Value=vx*delta
+             yr.Value=vy*delta
+          else
+             local ratio=target/r
+             xr.Value=xr.Value*ratio
+             yr.Value=yr.Value*ratio
+          end
+      end
+end
+
+
+local function getRecords()
+  local t=getAddressList()
+  local xr = t and t.getMemoryRecordByDescription(speedXString) or nil
+  local yr = t and t.getMemoryRecordByDescription(speedYString) or nil
+  return xr, yr
+end
+
+-- =========================
+-- Core actions
+-- =========================
+local function normalizeSpeed()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  -- Guard: if nearly stationary, skip to avoid division by zero / jitter
+  if r &lt; (speedTable[1] or 1) then return end
+
+  if index&lt;=1 then
+    local target = speedTable[index] or r
+    local ratio = target / r
+    xr.Value = vx * ratio
+    yr.Value = vy * ratio
+  else
+      local minsp=speedTable[index-1]
+      local maxsp=speedTable[index]
+      if r&lt;minsp then
+         setEventually(xr,yr,vx,vy,r,minsp,outGearMul)
+      else
+          if r&gt;maxsp then
+             setEventually(xr,yr,vx,vy,r,maxsp,outGearMul)
+          else
+              setEventually(xr,yr,vx,vy,r,maxsp,inGearMul)
+          end
+      end
+  end
+end
+
+local function stopSpeed()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value = xr.Value/outGearMul
+    yr.Value = yr.Value/outGearMul
+  end
+end
+
+-- =========================
+-- Hotkeys
+-- =========================
+incGear = createHotkey(function()
+  if index &lt; getLen(speedTable) then
+    index = index + 1
+  end
+end, VK_W)
+
+decGear = createHotkey(function()
+  if index &gt; 1 then
+    index = index - 1
+  end
+end, VK_S)
+
+-- Optional single-tap normalize (kept from your original behavior)
+hk1 = createHotkey(function()
+  normalizeSpeed()
+end, VK_UP)
+
+hk2 = createHotkey(function()
+  stopSpeed()
+end, VK_DOWN)
+
+-- =========================
+-- Timer: 50 ms enforcement loop
+-- - Holds gear speed while UP is held
+-- - Or always enforce if alwaysEnforce = true
+-- =========================
+gearTimer = createTimer(nil, false)
+gearTimer.Interval = TICK_MS
+gearTimer.OnTimer = function(t)
+  if alwaysEnforce or isKeyPressed(VK_UP) then
+    normalizeSpeed()
+  end
+end
+gearTimer.Enabled = true
+
+[DISABLE]
+
+-- Full cleanup (destroy timer and hotkeys; nil references)
+if gearTimer then pcall(function() gearTimer.destroy() end) gearTimer = nil end
+
+if hk1 then pcall(function() hk1.destroy() end) hk1 = nil end
+if hk2 then pcall(function() hk2.destroy() end) hk2 = nil end
+if incGear then pcall(function() incGear.destroy() end) incGear = nil end
+if decGear then pcall(function() decGear.destroy() end) decGear = nil end
+
+-- Optional: also clear config/state so re-enable starts fresh
+speedTable = nil
+index = nil
+speedXString = nil
+speedYString = nil
+alwaysEnforce = nil
+
+</AssemblerScript>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
@@ -663,6 +1439,29 @@ if hk1 then hk1.destroy() end
         <Byte>D9</Byte>
         <Byte>59</Byte>
         <Byte>3C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>car y speed :fadd dword ptr [edx+38] </Description>
+      <AddressString>PhysXCore.dll+137F02</AddressString>
+      <Before>
+        <Byte>D9</Byte>
+        <Byte>C9</Byte>
+        <Byte>D9</Byte>
+        <Byte>5A</Byte>
+        <Byte>34</Byte>
+      </Before>
+      <Actual>
+        <Byte>D8</Byte>
+        <Byte>42</Byte>
+        <Byte>38</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>5A</Byte>
+        <Byte>38</Byte>
+        <Byte>D8</Byte>
+        <Byte>42</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
