@@ -68,7 +68,7 @@ slower.destroy()
 
 local turn=0.05
 local mul=1+10e-3
-local ratio=2.2
+local ratio=1.8
 local turnWt=1.1
 
 -- This script needs speed of turn address as "steer". You also have to adjust the ratio wrt the game. You may also have to change the sign of ratio if the car goes in opp direction to your key input.
@@ -563,7 +563,7 @@ timer.destroy()
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
-  <Comments>+A80 for one wheel to another
-speed*1.375 = one of the wheel speeds +- 5
+  <Comments>+15e0 for one wheel to another
+speed*1.42 = one of the wheel speeds +- 5
 </Comments>
 </CheatTable>
