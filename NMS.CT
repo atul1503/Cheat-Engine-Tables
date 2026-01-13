@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"MAIN"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"SCRIPTS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1</ID>
+              <Description>"Unlimited Radiation Protection"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : NMS.exe
+  Version: 
+  Date   : 2025-12-17
+  Author : atult
+
+  Unlimited radiation protection
+}
+
+[ENABLE]
+
+aobscanmodule(unlim_radiation_protection,NMS.exe,F3 0F 58 4C BB 24) // should be unique
+registersymbol(unlim_radiation_protection)
+
+
+unlim_radiation_protection:
+db 90 90 90 90 90 90
+
+[DISABLE]
+
+unlim_radiation_protection:
+  db F3 0F 58 4C BB 24
+
+unregistersymbol(unlim_radiation_protection)
+
+{
+// ORIGINAL CODE - INJECTION POINT: NMS.exe+1324B4E
+
+NMS.exe+1324B19: 0F 86 BB 00 00 00           - jbe NMS.exe+1324BDA
+NMS.exe+1324B1F: 48 8B 05 72 05 5D 05        - mov rax,[NMS.exe+68F5098]
+NMS.exe+1324B26: 41 8B D4                    - mov edx,r12d
+NMS.exe+1324B29: 48 8B CB                    - mov rcx,rbx
+NMS.exe+1324B2C: F3 0F 10 9C B8 9C 4E 48 00  - movss xmm3,[rax+rdi*4+00484E9C]
+NMS.exe+1324B35: F3 0F 10 94 B8 D4 4E 48 00  - movss xmm2,[rax+rdi*4+00484ED4]
+NMS.exe+1324B3E: E8 1D 0B 00 00              - call NMS.exe+1325660
+NMS.exe+1324B43: 41 0F 28 C9                 - movaps xmm1,xmm9
+NMS.exe+1324B47: F3 0F 5E C8                 - divss xmm1,xmm0
+NMS.exe+1324B4B: 0F 28 C7                    - movaps xmm0,xmm7
+// ---------- INJECTING HERE ----------
+NMS.exe+1324B4E: F3 0F 58 4C BB 24           - addss xmm1,[rbx+rdi*4+24]
+// ---------- DONE INJECTING  ----------
+NMS.exe+1324B54: F3 0F 5D C1                 - minss xmm0,xmm1
+NMS.exe+1324B58: F3 0F 11 44 BB 24           - movss [rbx+rdi*4+24],xmm0
+NMS.exe+1324B5E: F3 0F 10 05 9E ED 74 05     - movss xmm0,[NMS.exe+6A73904]
+NMS.exe+1324B66: F3 0F 11 44 BB 78           - movss [rbx+rdi*4+78],xmm0
+NMS.exe+1324B6C: EB 6C                       - jmp NMS.exe+1324BDA
+NMS.exe+1324B6E: F3 0F 10 44 BB 24           - movss xmm0,[rbx+rdi*4+24]
+NMS.exe+1324B74: 41 0F 2F C0                 - comiss xmm0,xmm8
+NMS.exe+1324B78: 76 60                       - jna NMS.exe+1324BDA
+NMS.exe+1324B7A: F3 0F 10 05 82 ED 74 05     - movss xmm0,[NMS.exe+6A73904]
+NMS.exe+1324B82: F3 0F 5C 44 BB 40           - subss xmm0,[rbx+rdi*4+40]
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"Unlimited Jetpack"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : NMS.exe (paused)
+  Version: 
+  Date   : 2026-01-13
+  Author : atult
+
+  Unlimited Jetpack
+}
+
+[ENABLE]
+
+aobscanmodule(unlim_jetpack,NMS.exe,F3 0F 5C C1 F3 0F 11 87 54 31 00 00 E9) // should be unique
+
+unlim_jetpack:
+db 90 90 90 90
+
+[DISABLE]
+
+unlim_jetpack:
+  db F3 0F 5C C1
+
+unregistersymbol(unlim_jetpack)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: NMS.exe+12B9732
+
+NMS.exe+12B96FD: 48 8B CF                 - mov rcx,rdi
+NMS.exe+12B9700: E8 8B 50 00 00           - call NMS.exe+12BE790
+NMS.exe+12B9705: F3 0F 10 0D BF 02 A3 03  - movss xmm1,[NMS.exe+4CE99CC]
+NMS.exe+12B970D: F3 0F 10 15 0F 52 39 03  - movss xmm2,[NMS.exe+464E924]
+NMS.exe+12B9715: F3 0F 5C CA              - subss xmm1,xmm2
+NMS.exe+12B9719: F3 0F 59 C8              - mulss xmm1,xmm0
+NMS.exe+12B971D: F3 0F 10 87 54 31 00 00  - movss xmm0,[rdi+00003154]
+NMS.exe+12B9725: F3 0F 58 CA              - addss xmm1,xmm2
+NMS.exe+12B9729: F3 41 0F 59 CB           - mulss xmm1,xmm11
+NMS.exe+12B972E: F3 0F 59 CF              - mulss xmm1,xmm7
+// ---------- INJECTING HERE ----------
+NMS.exe+12B9732: F3 0F 5C C1              - subss xmm0,xmm1
+// ---------- DONE INJECTING  ----------
+NMS.exe+12B9736: F3 0F 11 87 54 31 00 00  - movss [rdi+00003154],xmm0
+NMS.exe+12B973E: E9 41 FF FF FF           - jmp NMS.exe+12B9684
+NMS.exe+12B9743: F3 0F 10 15 D9 51 39 03  - movss xmm2,[NMS.exe+464E924]
+NMS.exe+12B974B: 45 33 FF                 - xor r15d,r15d
+NMS.exe+12B974E: C6 85 60 14 00 00 01     - mov byte ptr [rbp+00001460],01
+NMS.exe+12B9755: 48 8D 15 EC 1E 2B 03     - lea rdx,[NMS.exe+456B648]
+NMS.exe+12B975C: 44 88 A7 4D 31 00 00     - mov [rdi+0000314D],r12b
+NMS.exe+12B9763: 48 8B 0D 2E B9 63 05     - mov rcx,[NMS.exe+68F5098]
+NMS.exe+12B976A: 48 81 C1 C8 AF 81 00     - add rcx,0081AFC8
+NMS.exe+12B9771: E8 EA 19 34 00           - call NMS.exe+15FB160
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>54</ID>
+          <Description>"ADDRESSES"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"Y COORD"</Description>
+              <Options moAllowManualCollapseAndExpand="1"/>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3A800</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>778</Offset>
+                <Offset>100</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"X COORD"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>-10</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"Z COORD"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>-10+8</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>53</ID>
+          <Description>"POINTERS"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>23</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3A590</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>778</Offset>
+                <Offset>100</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>24</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3A800</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>770</Offset>
+                <Offset>F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>25</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3A800</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>778</Offset>
+                <Offset>100</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>26</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3A590</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>770</Offset>
+                <Offset>F8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>27</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+06876950</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>778</Offset>
+                <Offset>38</Offset>
+                <Offset>90</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>28</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3A588</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>770</Offset>
+                <Offset>30</Offset>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>40</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+0685D8D8</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>770</Offset>
+                <Offset>30</Offset>
+                <Offset>E0</Offset>
+                <Offset>F8</Offset>
+                <Offset>240</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>47</ID>
+              <Description>"y coord pointer"</Description>
+              <VariableType>Double</VariableType>
+              <Address>"NMS.exe"+04D3AA28</Address>
+              <Offsets>
+                <Offset>820</Offset>
+                <Offset>0</Offset>
+                <Offset>658</Offset>
+                <Offset>108</Offset>
+                <Offset>30</Offset>
+                <Offset>20</Offset>
+                <Offset>2C0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Jetpack :movss xmm6,[rsi+00003154]</Description>
+      <AddressString>NMS.exe+8DF1B0</AddressString>
+      <Before>
+        <Byte>9F</Byte>
+        <Byte>4B</Byte>
+        <Byte>0D</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>B6</Byte>
+        <Byte>54</Byte>
+        <Byte>31</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>F3</Byte>
+        <Byte>68</Byte>
+        <Byte>9B</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>something percent :movss [rcx+34],xmm6</Description>
+      <AddressString>NMS.exe+8F7711</AddressString>
+      <Before>
+        <Byte>D5</Byte>
+        <Byte>03</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>D3</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>71</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>88</Byte>
+        <Byte>28</Byte>
+        <Byte>01</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>radiation protection health :movss xmm0,[rbp+00]</Description>
+      <AddressString>NMS.exe+8FDFBC</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>47</Byte>
+        <Byte>08</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>45</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>54</Byte>
+        <Byte>30</Byte>
+        <Byte>4C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Exosuit Inventory :mov eax,[rdx+18]</Description>
+      <AddressString>NMS.exe+2635982</AddressString>
+      <Before>
+        <Byte>42</Byte>
+        <Byte>14</Byte>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>14</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>18</Byte>
+        <Byte>8B</Byte>
+        <Byte>42</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>x coord in double : movsd [rsi+20],xmm1</Description>
+      <AddressString>NMS.exe+2C736F3</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4E</Byte>
+        <Byte>20</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+        <Byte>66</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of subss xmm0,xmm1</Description>
+      <AddressString>NMS.exe+12B9732</AddressString>
+      <Before>
+        <Byte>CB</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>59</Byte>
+        <Byte>CF</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>5C</Byte>
+        <Byte>C1</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>87</Byte>
+        <Byte>54</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>radiation protection armor value is a float that decreases with time instead of increasing.
+</Comments>
+</CheatTable>
