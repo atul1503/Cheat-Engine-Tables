@@ -279,6 +279,129 @@ NMS.exe+12B9771: E8 EA 19 34 00           - call NMS.exe+15FB160
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
+      <Description>"No Description"</Description>
+      <VariableType>2 Bytes</VariableType>
+      <Address>26F33CD3F78</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>207</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- GEAR SETTINGS
+-- Define your different speeds here.
+local gears = { 10,20,50,100 }
+
+-- Start at this gear index (e.g., 2 means start at speed 100)
+local currentGearIndex = 1
+
+-- Names of the cheat table entries
+local speedXString = 'speedx'
+local speedYString = 'speedy'
+
+----------------------------------------------------------------------
+-- HELPER: Get memory records safely
+----------------------------------------------------------------------
+local function getRecords()
+  local t = getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Apply the speed of the CURRENT GEAR
+-- (Triggered by UP Arrow)
+----------------------------------------------------------------------
+local function applyGas()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  -- Must be moving slightly for this to work
+  if r &lt; 0.0001 then return end
+
+  -- Get target speed from table
+  local targetSpeed = gears[currentGearIndex]
+
+  local ratio = targetSpeed / r
+  xr.Value = vx * ratio
+  yr.Value = vy * ratio
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Stop (Triggered by DOWN Arrow)
+----------------------------------------------------------------------
+local function applyBrake()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value = 0
+    yr.Value = 0
+  end
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Shift Gears (Triggered by W / S)
+----------------------------------------------------------------------
+local function shiftGear(direction)
+  if direction == "up" then
+    if currentGearIndex &lt; #gears then
+      currentGearIndex = currentGearIndex + 1
+    else
+    end
+  elseif direction == "down" then
+    if currentGearIndex &gt; 1 then
+      currentGearIndex = currentGearIndex - 1
+    else
+    end
+  end
+end
+
+----------------------------------------------------------------------
+-- HOTKEYS
+-- 0x26 = UP Arrow   (Gas / Apply Speed)
+-- 0x28 = DOWN Arrow (Brake / Stop)
+-- 0x57 = W Key      (Gear Up)
+-- 0x53 = S Key      (Gear Down)
+----------------------------------------------------------------------
+
+hkGas = createHotkey(function() applyGas() end, 0x26)
+hkBrake = createHotkey(function() applyBrake() end, 0x28)
+
+-- Changed to W (0x57) and S (0x53)
+hkGearUp = createHotkey(function() shiftGear("up") end, 0x57)
+hkGearDown = createHotkey(function() shiftGear("down") end, 0x53)
+
+
+[DISABLE]
+
+if hkGas then hkGas.destroy(); hkGas=nil end
+if hkBrake then hkBrake.destroy(); hkBrake=nil end
+if hkGearDown then hkGearDown.destroy(); hkGearDown=nil end
+if hkGearUp then hkGearUp.destroy(); hkGearUp=nil end
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>208</ID>
+      <Description>"speedx"</Description>
+      <VariableType>Float</VariableType>
+      <Address>22560D91860</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>209</ID>
+      <Description>"speedy"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>22560D91864</Address>
+    </CheatEntry>
   </CheatEntries>
   <CheatCodes>
     <CodeEntry>
@@ -408,27 +531,51 @@ NMS.exe+12B9771: E8 EA 19 34 00           - call NMS.exe+15FB160
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>Change of subss xmm0,xmm1</Description>
-      <AddressString>NMS.exe+12B9732</AddressString>
+      <Description>some movement :movups [rdi+60],xmm3</Description>
+      <AddressString>NMS.exe+2896BAE</AddressString>
       <Before>
-        <Byte>CB</Byte>
-        <Byte>F3</Byte>
+        <Byte>14</Byte>
+        <Byte>D7</Byte>
         <Byte>0F</Byte>
-        <Byte>59</Byte>
-        <Byte>CF</Byte>
+        <Byte>16</Byte>
+        <Byte>DA</Byte>
       </Before>
       <Actual>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>5C</Byte>
-        <Byte>C1</Byte>
-      </Actual>
-      <After>
-        <Byte>F3</Byte>
         <Byte>0F</Byte>
         <Byte>11</Byte>
-        <Byte>87</Byte>
-        <Byte>54</Byte>
+        <Byte>5F</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>88</Byte>
+        <Byte>88</Byte>
+        <Byte>03</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>speedX :movups [rdx+60],xmm1</Description>
+      <AddressString>NMS.exe+288BBC2</AddressString>
+      <Before>
+        <Byte>CA</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>4A</Byte>
+        <Byte>60</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>4A</Byte>
+        <Byte>60</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>81</Byte>
+        <Byte>40</Byte>
+        <Byte>02</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
