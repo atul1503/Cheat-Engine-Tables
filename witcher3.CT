@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-  <CheatEntries/>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"No Description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>14E4DBE97E8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>54</ID>
+      <Description>"No description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1508AAFEE98</Address>
+    </CheatEntry>
+  </CheatEntries>
   <CheatCodes>
     <CodeEntry>
       <Description>x coord :movsd xmm3,[rax]</Description>
@@ -121,6 +135,34 @@
         <Byte>5E</Byte>
         <Byte>C1</Byte>
         <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Running val :movss xmm7,[rax+00000F78]</Description>
+      <AddressString>witcher3.exe+2CDDCC</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>54</Byte>
+        <Byte>27</Byte>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>B8</Byte>
+        <Byte>78</Byte>
+        <Byte>0F</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>2F</Byte>
+        <Byte>3D</Byte>
+        <Byte>1D</Byte>
+        <Byte>DF</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>

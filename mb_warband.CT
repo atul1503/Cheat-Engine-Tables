@@ -1,31 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-  <CheatEntries/>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"SCRIPTS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Unlimited Health"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : mb_warband.exe
+  Version: 
+  Date   : 2026-01-18
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(unlimHealth,mb_warband.exe,D9 85 00 60 00 00 D9) // should be unique
+alloc(newmem,$100)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  fld dword [ebp+5FFC]
+  fstp dword [ebp+6000]
+  fld dword ptr [ebp+00006000]
+  jmp return
+
+unlimHealth:
+  jmp newmem
+  nop
+return:
+registersymbol(unlimHealth)
+
+[DISABLE]
+
+unlimHealth:
+  db D9 85 00 60 00 00
+
+unregistersymbol(unlimHealth)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: mb_warband.exe+1D551D
+
+mb_warband.exe+1D54F5: FF D2                 - call edx
+mb_warband.exe+1D54F7: A1 40 2F 8B 00        - mov eax,[mb_warband.exe+4B2F40]
+mb_warband.exe+1D54FC: 83 B8 38 95 01 00 00  - cmp dword ptr [eax+00019538],00
+mb_warband.exe+1D5503: 8B 8E A0 01 00 00     - mov ecx,[esi+000001A0]
+mb_warband.exe+1D5509: 8B 11                 - mov edx,[ecx]
+mb_warband.exe+1D550B: 74 08                 - je mb_warband.exe+1D5515
+mb_warband.exe+1D550D: 8B 82 D8 00 00 00     - mov eax,[edx+000000D8]
+mb_warband.exe+1D5513: EB 06                 - jmp mb_warband.exe+1D551B
+mb_warband.exe+1D5515: 8B 82 DC 00 00 00     - mov eax,[edx+000000DC]
+mb_warband.exe+1D551B: FF D0                 - call eax
+// ---------- INJECTING HERE ----------
+mb_warband.exe+1D551D: D9 85 00 60 00 00     - fld dword ptr [ebp+00006000]
+// ---------- DONE INJECTING  ----------
+mb_warband.exe+1D5523: D9 86 18 02 00 00     - fld dword ptr [esi+00000218]
+mb_warband.exe+1D5529: DA E9                 - fucompp 
+mb_warband.exe+1D552B: DF E0                 - fnstsw ax
+mb_warband.exe+1D552D: F6 C4 44              - test ah,44
+mb_warband.exe+1D5530: 0F 8B 89 00 00 00     - jnp mb_warband.exe+1D55BF
+mb_warband.exe+1D5536: D9 85 00 60 00 00     - fld dword ptr [ebp+00006000]
+mb_warband.exe+1D553C: 8B 8E E8 01 00 00     - mov ecx,[esi+000001E8]
+mb_warband.exe+1D5542: D9 9E 18 02 00 00     - fstp dword ptr [esi+00000218]
+mb_warband.exe+1D5548: E8 03 4D E3 FF        - call mb_warband.exe+A250
+mb_warband.exe+1D554D: 8D 4C 24 60           - lea ecx,[esp+60]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Solider Buttons"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+
+local function setValues(val)
+  local list = getAddressList()
+  local s1 = list.getMemoryRecordByDescription("s1")
+  local s2 = list.getMemoryRecordByDescription("s2")
+
+  if s1 then s1.Value = val end
+  if s2 then s2.Value = val end
+end
+
+hkMinus = createHotkey(function() setValues(1) end, 0xBD)
+hkPlus = createHotkey(function() setValues(500) end, 0xBB)
+{$asm}
+
+[DISABLE]
+{$lua}
+if syntaxcheck then return end
+
+if hkMinus then hkMinus.destroy() hkMinus = nil end
+if hkPlus then hkPlus.destroy() hkPlus = nil end
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
   <CheatCodes>
     <CodeEntry>
-      <Description>Money :cmp eax,[edi+ebp+000005D0]</Description>
-      <AddressString>mb_warband.exe+2047E7</AddressString>
+      <Description>Money :mov esi,[ecx+eax+000005D0]</Description>
+      <AddressString>mb_warband.exe+1772A1</AddressString>
       <Before>
+        <Byte>C0</Byte>
+        <Byte>C8</Byte>
         <Byte>0F</Byte>
         <Byte>00</Byte>
         <Byte>00</Byte>
-        <Byte>F7</Byte>
-        <Byte>D8</Byte>
       </Before>
       <Actual>
-        <Byte>3B</Byte>
-        <Byte>84</Byte>
-        <Byte>2F</Byte>
+        <Byte>8B</Byte>
+        <Byte>B4</Byte>
+        <Byte>01</Byte>
         <Byte>D0</Byte>
         <Byte>05</Byte>
         <Byte>00</Byte>
         <Byte>00</Byte>
       </Actual>
       <After>
-        <Byte>0F</Byte>
-        <Byte>87</Byte>
-        <Byte>75</Byte>
-        <Byte>03</Byte>
+        <Byte>68</Byte>
+        <Byte>D8</Byte>
+        <Byte>21</Byte>
+        <Byte>81</Byte>
         <Byte>00</Byte>
       </After>
     </CodeEntry>
@@ -257,4 +367,8 @@
     </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
+  <Comments>94 is the soldier id for rhodok sharpshooter
+44 is the soldier id for best knight ig
+Nord huscarl is 78
+</Comments>
 </CheatTable>
