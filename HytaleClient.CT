@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries/>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Stamina :movss xmm0,[rbp+10]</Description>
+      <AddressString>HytaleClient.exe+402D64</AddressString>
+      <Before>
+        <Byte>E9</Byte>
+        <Byte>7A</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>45</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>46</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
