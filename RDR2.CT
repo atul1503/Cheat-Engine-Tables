@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"SCRIPTS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"Horse Speeder with teleportation"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local speed = 3
+local sleeptime = 0
+
+local al = getAddressList()
+local x_rec = al.getMemoryRecordByDescription("horse x coord")
+local y_rec = al.getMemoryRecordByDescription("horse y coord")
+
+if x_rec == nil or y_rec == nil then
+   print("Error: 'x coord' or 'y coord' records not found.")
+   return
+end
+
+local coords = {nil, nil}
+
+hk1 = createHotkey(function()
+    -- 1. Get Addresses
+    local xAddr = x_rec.CurrentAddress
+    local yAddr = y_rec.CurrentAddress
+
+    -- 2. Basic Safety: Address must exist
+    if xAddr == 0 or yAddr == 0 then return end
+
+    -- 3. Read Values into local variables first
+    local currentX = readFloat(xAddr)
+    local currentY = readFloat(yAddr)
+
+    -- 4. CRITICAL FIX: specific check if readFloat returned nil
+    if currentX == nil or currentY == nil then return end
+
+    -- Logic Flow
+    if coords[0] == nil then
+        -- Initialize start point
+        coords[0] = {x=currentX, y=currentY}
+
+    elseif coords[1] == nil then
+        sleep(sleeptime)
+
+        -- Update values after sleep (in case they changed)
+        currentX = readFloat(xAddr)
+        currentY = readFloat(yAddr)
+        if currentX == nil or currentY == nil then return end -- Check again
+
+        coords[1] = {x=currentX, y=currentY}
+
+        -- Double check that coords[0] is still valid numbers before math
+        if coords[0].x == nil or coords[0].y == nil then
+            coords[0] = {x=currentX, y=currentY} -- Reset if corrupted
+            coords[1] = nil
+            return
+        end
+
+        local dcoord = {x=nil, y=nil}
+
+        -- The Error happened here previously. Now it is safe.
+        dcoord.x = coords[1].x - coords[0].x
+        dcoord.y = coords[1].y - coords[0].y
+
+        local normalized = {x=nil, y=nil}
+        local r = ((dcoord.x^2) + (dcoord.y^2))^0.5
+
+        -- Prevent divide by zero if player is standing still
+        if r &gt; 0 then
+            normalized.x = dcoord.x / r
+            normalized.y = dcoord.y / r
+
+            if isKeyPressed(0xA0) then
+                local newX = currentX + (normalized.x * speed)
+                local newY = currentY + (normalized.y * speed)
+                writeFloat(xAddr, newX)
+                writeFloat(yAddr, newY)
+            end
+        end
+
+        -- Reset for next cycle
+        coords[0] = nil
+        coords[1] = nil
+    end
+end, 0x57, 0xA0) -- Up Arrow + Shift
+
+[DISABLE]
+if hk1 then hk1.destroy() end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"Speeder with teleportation"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+
+local speed = 10
+local sleeptime = 0
+
+local al = getAddressList()
+local x_rec = al.getMemoryRecordByDescription("x coord")
+local y_rec = al.getMemoryRecordByDescription("y coord")
+
+if x_rec == nil or y_rec == nil then
+   print("Error: 'x coord' or 'y coord' records not found.")
+   return
+end
+
+local coords = {nil, nil}
+
+hk1 = createHotkey(function()
+    -- 1. Get Addresses
+    local xAddr = x_rec.CurrentAddress
+    local yAddr = y_rec.CurrentAddress
+
+    -- 2. Basic Safety: Address must exist
+    if xAddr == 0 or yAddr == 0 then return end
+
+    -- 3. Read Values into local variables first
+    local currentX = readFloat(xAddr)
+    local currentY = readFloat(yAddr)
+
+    -- 4. CRITICAL FIX: specific check if readFloat returned nil
+    if currentX == nil or currentY == nil then return end
+
+    -- Logic Flow
+    if coords[0] == nil then
+        -- Initialize start point
+        coords[0] = {x=currentX, y=currentY}
+
+    elseif coords[1] == nil then
+        sleep(sleeptime)
+
+        -- Update values after sleep (in case they changed)
+        currentX = readFloat(xAddr)
+        currentY = readFloat(yAddr)
+        if currentX == nil or currentY == nil then return end -- Check again
+
+        coords[1] = {x=currentX, y=currentY}
+
+        -- Double check that coords[0] is still valid numbers before math
+        if coords[0].x == nil or coords[0].y == nil then
+            coords[0] = {x=currentX, y=currentY} -- Reset if corrupted
+            coords[1] = nil
+            return
+        end
+
+        local dcoord = {x=nil, y=nil}
+
+        -- The Error happened here previously. Now it is safe.
+        dcoord.x = coords[1].x - coords[0].x
+        dcoord.y = coords[1].y - coords[0].y
+
+        local normalized = {x=nil, y=nil}
+        local r = ((dcoord.x^2) + (dcoord.y^2))^0.5
+
+        -- Prevent divide by zero if player is standing still
+        if r &gt; 0 then
+            normalized.x = dcoord.x / r
+            normalized.y = dcoord.y / r
+
+            if isKeyPressed(0xA0) then
+                local newX = currentX + (normalized.x * speed)
+                local newY = currentY + (normalized.y * speed)
+                writeFloat(xAddr, newX)
+                writeFloat(yAddr, newY)
+            end
+        end
+
+        -- Reset for next cycle
+        coords[0] = nil
+        coords[1] = nil
+    end
+end, 0x57, 0xA0) -- Up Arrow + Shift
+
+[DISABLE]
+if hk1 then hk1.destroy() end
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"POINTERS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BEE548</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>360</Offset>
+            <Offset>3F8</Offset>
+            <Offset>BD0</Offset>
+            <Offset>8E8</Offset>
+            <Offset>198</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EC0638</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04AE8750</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05C7FD38</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03ED0E30</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>120</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A26AE0</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>338</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+039730A0</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>A00</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05359270</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>3D8</Offset>
+            <Offset>1D8</Offset>
+            <Offset>4B8</Offset>
+            <Offset>4C0</Offset>
+            <Offset>680</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05359270</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>3D8</Offset>
+            <Offset>1D8</Offset>
+            <Offset>4C0</Offset>
+            <Offset>388</Offset>
+            <Offset>530</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05359270</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>458</Offset>
+            <Offset>3C8</Offset>
+            <Offset>400</Offset>
+            <Offset>390</Offset>
+            <Offset>290</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05359270</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>458</Offset>
+            <Offset>3C8</Offset>
+            <Offset>400</Offset>
+            <Offset>1D0</Offset>
+            <Offset>3E0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"vulkan_dzn.dll"+003429F8</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>A0</Offset>
+            <Offset>8</Offset>
+            <Offset>30</Offset>
+            <Offset>8</Offset>
+            <Offset>194</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05C7FD38</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>18</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+            <Offset>778</Offset>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BEE548</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+            <Offset>360</Offset>
+            <Offset>3F8</Offset>
+            <Offset>BD0</Offset>
+            <Offset>288</Offset>
+            <Offset>1E0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>60</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A29928</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>61</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+0527ABD8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>62</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A29928</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>120</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>63</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04302588</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>64</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+0527ABD8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>778</Offset>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>66</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EF3CC0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>B0</Offset>
+            <Offset>38</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>67</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A30810</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+            <Offset>E0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>69</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+039730A0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+            <Offset>338</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>70</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EB2EE0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+            <Offset>120</Offset>
+            <Offset>20</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03ED0E30</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+            <Offset>778</Offset>
+            <Offset>28</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EEE558</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>108</Offset>
+            <Offset>10</Offset>
+            <Offset>18</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>73</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EF3CC0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>108</Offset>
+            <Offset>8</Offset>
+            <Offset>20</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>74</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04302588</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+            <Offset>A0</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>65</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EC2F30</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>120</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>76</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A29928</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>18</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+            <Offset>120</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>77</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BB7DC0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+            <Offset>148</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>78</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BD33F8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>38</Offset>
+            <Offset>A8</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>79</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EF17C8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>B0</Offset>
+            <Offset>38</Offset>
+            <Offset>40</Offset>
+            <Offset>88</Offset>
+            <Offset>250</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>80</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+03EF17C8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>B0</Offset>
+            <Offset>120</Offset>
+            <Offset>38</Offset>
+            <Offset>88</Offset>
+            <Offset>250</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>81</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+0453A490</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>E0</Offset>
+            <Offset>A0</Offset>
+            <Offset>40</Offset>
+            <Offset>30</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04556960</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+            <Offset>90</Offset>
+            <Offset>240</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>83</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A29928</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>E0</Offset>
+            <Offset>8</Offset>
+            <Offset>50</Offset>
+            <Offset>48</Offset>
+            <Offset>A8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>84</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A307B8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>778</Offset>
+            <Offset>28</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+059D66C0</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>98</Offset>
+            <Offset>480</Offset>
+            <Offset>150</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>86</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05A8ACB8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+            <Offset>E0</Offset>
+            <Offset>B8</Offset>
+            <Offset>180</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>87</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05B028D8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>40</Offset>
+            <Offset>1A0</Offset>
+            <Offset>50</Offset>
+            <Offset>68</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05B028D8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>40</Offset>
+            <Offset>1C8</Offset>
+            <Offset>40</Offset>
+            <Offset>50</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>89</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BB86F8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>120</Offset>
+            <Offset>38</Offset>
+            <Offset>180</Offset>
+            <Offset>7A0</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>90</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BB86F8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>80</Offset>
+            <Offset>118</Offset>
+            <Offset>7A0</Offset>
+            <Offset>460</Offset>
+            <Offset>18</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05BD33F8</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+            <Offset>A0</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05C7FD38</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>778</Offset>
+            <Offset>28</Offset>
+            <Offset>120</Offset>
+            <Offset>0</Offset>
+            <Offset>F0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>75</ID>
+          <Description>"horse x coord pointer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+048E7468</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+            <Offset>0</Offset>
+            <Offset>50</Offset>
+            <Offset>A8</Offset>
+            <Offset>70</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"zcstatic"</Description>
+          <VariableType>Float</VariableType>
+          <Address>RDR2.exe+4A1DAE8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"ADDRESSES"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>93</ID>
+          <Description>"horse x coord"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+04A29928</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"horse y coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"z coord"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>"RDR2.exe"+05C7FD38</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>38</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>40</ID>
+              <Description>"x coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"y coord"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>-4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Code :?? </Description>
+      <AddressString>RDR2.exe+1446740</AddressString>
+      <Before/>
+      <Actual>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After/>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>y increases towards north
+</Comments>
+</CheatTable>
