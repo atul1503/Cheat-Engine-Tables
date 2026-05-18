@@ -1,0 +1,37 @@
+{
+  "version": "2.3.0",
+  "saved_at": "2026-05-18T15:04:44.4607837+05:30",
+  "game_exe": "forzahorizon6.exe",
+  "is_32bit": false,
+  "data_type": "Float32",
+  "chains": [
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A935130",
+      "offsets": [
+        "+1C0",
+        "+2CA0",
+        "+2A00",
+        "+A8",
+        "+28"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A935138",
+      "offsets": [
+        "+1D0",
+        "+2CA0",
+        "+2A00",
+        "+A8",
+        "+28"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0"
+    }
+  ]
+}
