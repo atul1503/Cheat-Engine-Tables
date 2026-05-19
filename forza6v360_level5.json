@@ -1,0 +1,4678 @@
+{
+  "version": "2.4.0-alpha",
+  "saved_at": "2026-05-19T03:31:09.9211363+05:30",
+  "game_exe": "forzahorizon6.exe",
+  "is_32bit": false,
+  "data_type": "Float32",
+  "chains": [
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DC0",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E08",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EA8",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "8EB7328",
+      "offsets": [
+        "+18",
+        "-8",
+        "+10",
+        "+10",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "8EB7328",
+      "offsets": [
+        "+10",
+        "-8",
+        "+10",
+        "+10",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "8EB7328",
+      "offsets": [
+        "+8",
+        "+8",
+        "+10",
+        "+10",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A76A428",
+      "offsets": [
+        "+1B0",
+        "-98",
+        "+10",
+        "+10",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A84E738",
+      "offsets": [
+        "+5A0",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA0",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FA8",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB0",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FB8",
+      "offsets": [
+        "+8",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC0",
+      "offsets": [
+        "+0",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A933FC8",
+      "offsets": [
+        "+0",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934060",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934068",
+      "offsets": [
+        "+18",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934070",
+      "offsets": [
+        "+18",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934080",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934088",
+      "offsets": [
+        "+20",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934090",
+      "offsets": [
+        "-20",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934098",
+      "offsets": [
+        "-28",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9340A0",
+      "offsets": [
+        "-28",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934138",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934140",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934148",
+      "offsets": [
+        "-18",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934180",
+      "offsets": [
+        "-8",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934188",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934190",
+      "offsets": [
+        "-10",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A9341F8",
+      "offsets": [
+        "+10",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934200",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-370",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+C0",
+        "-520",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+1A0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+350",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+C0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-10",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+D0",
+        "-1C0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+C0",
+        "+6B0",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A934208",
+      "offsets": [
+        "+8",
+        "+D0",
+        "+500",
+        "+60",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "0.076789565"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D788",
+      "offsets": [
+        "+210",
+        "-100",
+        "+0",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D788",
+      "offsets": [
+        "+210",
+        "-F0",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D788",
+      "offsets": [
+        "+210",
+        "-F8",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D788",
+      "offsets": [
+        "+210",
+        "-D0",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D788",
+      "offsets": [
+        "+210",
+        "-C0",
+        "-10",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D788",
+      "offsets": [
+        "+210",
+        "-C8",
+        "-10",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D790",
+      "offsets": [
+        "+160",
+        "-D0",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D790",
+      "offsets": [
+        "+160",
+        "-100",
+        "+0",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D790",
+      "offsets": [
+        "+160",
+        "-C8",
+        "-10",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D790",
+      "offsets": [
+        "+160",
+        "-C0",
+        "-10",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D790",
+      "offsets": [
+        "+160",
+        "-F8",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D790",
+      "offsets": [
+        "+160",
+        "-F0",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D798",
+      "offsets": [
+        "+160",
+        "-C8",
+        "-10",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D798",
+      "offsets": [
+        "+160",
+        "-100",
+        "+0",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D798",
+      "offsets": [
+        "+160",
+        "-C0",
+        "-10",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D798",
+      "offsets": [
+        "+160",
+        "-F8",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D798",
+      "offsets": [
+        "+160",
+        "-F0",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A98D798",
+      "offsets": [
+        "+160",
+        "-D0",
+        "-8",
+        "+50",
+        "-548"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E40",
+        "-840",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "-1728",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "+D40",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E40",
+        "-12F8",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DD0",
+        "-1300",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E08",
+        "-838",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DD8",
+        "+22B8",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EA8",
+        "+280",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E38",
+        "+22C0",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DC0",
+        "-838",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "-1770",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EA8",
+        "-840",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "+D40",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "-1688",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DD8",
+        "+22C0",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "-1688",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EA8",
+        "+288",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EC0",
+        "+22B8",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "-1730",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DD0",
+        "-12F8",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DC0",
+        "-840",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E38",
+        "+22B8",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DD0",
+        "-838",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E08",
+        "-840",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EA8",
+        "-838",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "+D48",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E40",
+        "-838",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "+288",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E40",
+        "-1300",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "+D48",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "+280",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DC0",
+        "+280",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "-1778",
+        "-2A78"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "-1728",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E08",
+        "+280",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E08",
+        "+288",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+E00",
+        "+288",
+        "-2D10"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "-1770",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DB8",
+        "+280",
+        "-2CC8"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DD0",
+        "-840",
+        "-3788"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+EC0",
+        "+22C0",
+        "-3538"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    },
+    {
+      "base_module": "forzahorizon6.exe",
+      "base_offset": "A994A50",
+      "offsets": [
+        "+10",
+        "+10",
+        "+DC0",
+        "+288",
+        "-37D0"
+      ],
+      "label": "",
+      "notes": "",
+      "expected_value": "100"
+    }
+  ]
+}
