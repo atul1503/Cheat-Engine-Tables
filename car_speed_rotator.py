@@ -1,5 +1,5 @@
 """
-Car Speed Rotator — Smooth Transitions Fix
+Car Speed Rotator — Deterministic & Predictable Inputs
 Run as Administrator.
 """
 import ctypes
@@ -20,18 +20,20 @@ Z_SPEED_OFFSET = 0
 STEER_OFFSET = 12
 
 # =============================================================================
-# TUNED CONFIGURATION TO FORCE NOSE ROTATION
+# DETERMINISTIC CONFIGURATION (PREDICTABLE INPUTS)
 # =============================================================================
-TURN = -0.075/0.9          # Converted to positive baseline for clean arithmetic
-TURN_DAMP = 1.15     # Snaps back to center smoothly when keys are released
+# Target angles when holding a key down completely
+TARGET_LEFT = -1.8
+TARGET_RIGHT = 1.8
+
+# This controls how fast the chassis matches your key press.
+# 1.0 = Instant snap. Lower (e.g., 0.5) = slight smooth transition.
+SNAP_SPEED = 0.05
+
 ACCEL_FACTOR = 1.01
-RATIO = -1.8           # Degrees per unit of steer; keep negative if inverted
+RATIO = -1.8             # Degrees per unit of steer
 
-# Limits to force the game engine to visually yaw the car
-MAX_STEER = 2.5
-COUNTER_STEER_MULT = 2.0 # Fixed: Multiplies recovery speed back to center cleanly
-
-UPDATE_HZ = 20
+UPDATE_HZ = 30           # Bumped to 30Hz for tighter, more responsive input reads
 
 # =============================================================================
 # Windows API
@@ -144,35 +146,27 @@ def run_tick(handle, z_addr, current_steer):
     xs = read_float(handle, z_addr + X_SPEED_OFFSET)
     zs = read_float(handle, z_addr + Z_SPEED_OFFSET)
 
-    # 1. Fixed Math: Explicit direction handling to remove jerking/sudden snaps
-    if key_down(VK_LEFT):
-        if current_steer < 0:
-            # Moving back up from negative to positive territory
-            current_steer += (TURN * COUNTER_STEER_MULT)
-        else:
-            current_steer += TURN
-
+    # 1. State Mapping: Define discrete destinations for zero unpredictability
+    if key_down(VK_LEFT) and key_down(VK_RIGHT):
+        target_steer = 0.0
+    elif key_down(VK_LEFT):
+        target_steer = TARGET_LEFT
     elif key_down(VK_RIGHT):
-        if current_steer > 0:
-            # Moving down from positive to negative territory
-            current_steer -= (TURN * COUNTER_STEER_MULT)
-        else:
-            current_steer -= TURN
-
+        target_steer = TARGET_RIGHT
     else:
-        # Fast center damping to prevent sliding after key release
-        if abs(current_steer) < 0.01:
-            current_steer = 0.0
-        else:
-            current_steer = current_steer / TURN_DAMP
+        target_steer = 0.0
 
-    # Clamp safely inside threshold bounds
-    current_steer = max(-MAX_STEER, min(current_steer, MAX_STEER))
+    # Smoothly but rapidly interpolate to the destination state
+    current_steer += (target_steer - current_steer) * SNAP_SPEED
 
-    # Write steering value back
+    # Clean up micro-decimals when centered
+    if target_steer == 0.0 and abs(current_steer) < 0.005:
+        current_steer = 0.0
+
+    # Write precise steering back to memory
     write_float(handle, z_addr + STEER_OFFSET, current_steer)
 
-    # 2. Rotate the velocity vector
+    # 2. Rotate the velocity vector using the reliable state value
     theta = math.radians(RATIO * current_steer)
     c = math.cos(theta)
     s = math.sin(theta)
@@ -193,7 +187,7 @@ def run_tick(handle, z_addr, current_steer):
     write_float(handle, z_addr + Z_SPEED_OFFSET, nz)
 
     direction = "LEFT " if current_steer > 0.05 else "RIGHT" if current_steer < -0.05 else "--"
-    status_str = f"[AUTOSTEER] steer={current_steer:+.3f} [{direction}] vx={xs:+.2f}->{nx:+.2f} vz={zs:+.2f}->{nz:+.2f}"
+    status_str = f"[PREDICTABLE] steer={current_steer:+.3f} [{direction}] vx={xs:+.2f}->{nx:+.2f} vz={zs:+.2f}->{nz:+.2f}"
 
     return status_str, current_steer
 
@@ -201,7 +195,7 @@ def run_tick(handle, z_addr, current_steer):
 # Main
 # =============================================================================
 def main():
-    print(f"[*] Keys: LEFT/RIGHT = steer | UP = accelerate | DOWN = brake | release = center")
+    print(f"[*] Keys: LEFT/RIGHT = snap turn | UP = accelerate | DOWN = brake")
     print(f"[*] Looking for {PROCESS_NAME}...")
 
     pid = get_pid(PROCESS_NAME)
