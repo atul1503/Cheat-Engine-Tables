@@ -1,13 +1,14 @@
 """
-Car Speed Rotator — Deterministic & Predictable Inputs
+Car Speed Rotator — Grip Default Engine (LCTRL to Drift)
 Run as Administrator.
 """
+
 import ctypes
 import ctypes.wintypes
 import math
-import time
 import struct
 import sys
+import time
 
 # =============================================================================
 # CONFIG (Pointer Chain & Offsets)
@@ -20,20 +21,17 @@ Z_SPEED_OFFSET = 0
 STEER_OFFSET = 12
 
 # =============================================================================
-# DETERMINISTIC CONFIGURATION (PREDICTABLE INPUTS)
+# DYNAMIC PHYSICS CONFIG
 # =============================================================================
-# Target angles when holding a key down completely
-TARGET_LEFT = -2
-TARGET_RIGHT = 2
-
-# This controls how fast the chassis matches your key press.
-# 1.0 = Instant snap. Lower (e.g., 0.5) = slight smooth transition.
+TARGET_LEFT = -3.0
+TARGET_RIGHT = 3.0
 SNAP_SPEED = 0.04
 
-ACCEL_FACTOR =1+1e-5
-RATIO = -1            # Degrees per unit of steer. -1.8 is good for forza horizon 6
+GRIP_RATIO = -1.1  # Normal driving = GRIP (Car stays on rails)
+DRIFT_RATIO = 0.2  # Holding Left Control = DRIFT (Initiates slide)
 
-UPDATE_HZ = 30           # Bumped to 30Hz for tighter, more responsive input reads
+ACCEL_FACTOR = 1.0  # + 64e-4  # + 1e-5
+UPDATE_HZ = 30
 
 # =============================================================================
 # Windows API
@@ -50,6 +48,8 @@ VK_LEFT = 0x25
 VK_RIGHT = 0x27
 VK_UP = 0x26
 VK_DOWN = 0x28
+VK_LCTRL = 0xA2  # Left Control Key
+
 
 class PROCESSENTRY32(ctypes.Structure):
     _fields_ = [
@@ -65,6 +65,7 @@ class PROCESSENTRY32(ctypes.Structure):
         ("szExeFile", ctypes.c_char * 260),
     ]
 
+
 class MODULEENTRY32(ctypes.Structure):
     _fields_ = [
         ("dwSize", ctypes.wintypes.DWORD),
@@ -79,6 +80,7 @@ class MODULEENTRY32(ctypes.Structure):
         ("szExePath", ctypes.c_char * 260),
     ]
 
+
 def get_pid(name):
     snap = k32.CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0)
     entry = PROCESSENTRY32()
@@ -92,6 +94,7 @@ def get_pid(name):
             break
     k32.CloseHandle(snap)
     return 0
+
 
 def get_module_base(pid, name):
     snap = k32.CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, pid)
@@ -108,24 +111,31 @@ def get_module_base(pid, name):
     k32.CloseHandle(snap)
     return 0
 
+
 def read_bytes(handle, addr, n):
     buf = ctypes.create_string_buffer(n)
     read = ctypes.c_size_t(0)
     k32.ReadProcessMemory(handle, ctypes.c_void_p(addr), buf, n, ctypes.byref(read))
-    return buf.raw[:read.value]
+    return buf.raw[: read.value]
+
 
 def read_float(handle, addr):
     data = read_bytes(handle, addr, 4)
-    return struct.unpack('<f', data)[0] if len(data) >= 4 else 0.0
+    return struct.unpack("<f", data)[0] if len(data) >= 4 else 0.0
+
 
 def read_ptr(handle, addr):
     data = read_bytes(handle, addr, 8)
-    return struct.unpack('<Q', data)[0] if len(data) >= 8 else 0
+    return struct.unpack("<Q", data)[0] if len(data) >= 8 else 0
+
 
 def write_float(handle, addr, value):
-    buf = struct.pack('<f', float(value))
+    buf = struct.pack("<f", float(value))
     written = ctypes.c_size_t(0)
-    k32.WriteProcessMemory(handle, ctypes.c_void_p(addr), ctypes.c_char_p(buf), 4, ctypes.byref(written))
+    k32.WriteProcessMemory(
+        handle, ctypes.c_void_p(addr), ctypes.c_char_p(buf), 4, ctypes.byref(written)
+    )
+
 
 def resolve_chain(handle, module_base, base_offset, offsets):
     addr = module_base + base_offset
@@ -136,8 +146,10 @@ def resolve_chain(handle, module_base, base_offset, offsets):
         addr = ptr + off
     return addr
 
+
 def key_down(vk):
     return bool(user32.GetAsyncKeyState(vk) & 0x8000)
+
 
 # =============================================================================
 # Core Logic
@@ -146,39 +158,49 @@ def run_tick(handle, z_addr, current_steer):
     xs = read_float(handle, z_addr + X_SPEED_OFFSET)
     zs = read_float(handle, z_addr + Z_SPEED_OFFSET)
 
-    # 1. State Mapping: Define discrete destinations for zero unpredictability
-    if key_down(VK_LEFT) and key_down(VK_RIGHT):
+    up = key_down(VK_UP)
+    down = key_down(VK_DOWN)
+    left = key_down(VK_LEFT)
+    right = key_down(VK_RIGHT)
+    lctrl = key_down(VK_LCTRL)
+
+    if left and right:
         target_steer = 0.0
-    elif key_down(VK_LEFT):
+    elif left:
         target_steer = TARGET_LEFT
-    elif key_down(VK_RIGHT):
+    elif right:
         target_steer = TARGET_RIGHT
     else:
         target_steer = 0.0
 
-    # Smoothly but rapidly interpolate to the destination state
+    # Key Modifier Logic using clean variable names
+    if lctrl:
+        active_ratio = DRIFT_RATIO  # 2.0 (Drift)
+        mode_label = "DRIFT"
+    else:
+        active_ratio = GRIP_RATIO  # -2.0 (Grip)
+        mode_label = "GRIP "
+
+    # Interpolate steering input
     current_steer += (target_steer - current_steer) * SNAP_SPEED
 
-    # Clean up micro-decimals when centered
     if target_steer == 0.0 and abs(current_steer) < 0.005:
         current_steer = 0.0
 
-    # Write precise steering back to memory
     write_float(handle, z_addr + STEER_OFFSET, current_steer)
 
-    # 2. Rotate the velocity vector using the reliable state value
-    theta = math.radians(RATIO * current_steer)
+    # Process physics rotation vector
+    theta = math.radians(active_ratio * current_steer)
     c = math.cos(theta)
     s = math.sin(theta)
 
-    nx = (xs * c - zs * s)
-    nz = (xs * s + zs * c)
+    nx = xs * c - zs * s
+    nz = xs * s + zs * c
 
-    # 3. Acceleration / Braking
-    if key_down(VK_UP):
+    if up:
         nx = nx * ACCEL_FACTOR
         nz = nz * ACCEL_FACTOR
-    elif key_down(VK_DOWN):
+    elif down:
         denom = ACCEL_FACTOR * 1.02
         nx = nx / denom
         nz = nz / denom
@@ -186,16 +208,21 @@ def run_tick(handle, z_addr, current_steer):
     write_float(handle, z_addr + X_SPEED_OFFSET, nx)
     write_float(handle, z_addr + Z_SPEED_OFFSET, nz)
 
-    direction = "LEFT " if current_steer > 0.05 else "RIGHT" if current_steer < -0.05 else "--"
-    status_str = f"[PREDICTABLE] steer={current_steer:+.3f} [{direction}] vx={xs:+.2f}->{nx:+.2f} vz={zs:+.2f}->{nz:+.2f}"
+    direction = (
+        "LEFT " if current_steer > 0.05 else "RIGHT" if current_steer < -0.05 else "--"
+    )
+    status_str = f"[{mode_label}] ratio={active_ratio:+.1f} steer={current_steer:+.2f} [{direction}]"
 
     return status_str, current_steer
 
+
 # =============================================================================
-# Main
+# Main Process Loop
 # =============================================================================
 def main():
-    print(f"[*] Keys: LEFT/RIGHT = snap turn | UP = accelerate | DOWN = brake")
+    print(
+        f"[*] Controls: ARROWS = Grip Driving ({GRIP_RATIO}) | Hold LCTRL = Drift Mode ({DRIFT_RATIO})"
+    )
     print(f"[*] Looking for {PROCESS_NAME}...")
 
     pid = get_pid(PROCESS_NAME)
@@ -245,6 +272,7 @@ def main():
         print("\n[*] Stopped.")
     finally:
         k32.CloseHandle(handle)
+
 
 if __name__ == "__main__":
     main()
