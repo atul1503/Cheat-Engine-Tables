@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>116</ID>
+      <Description>"MAIN"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>115</ID>
+          <Description>"SCRIPTS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"geared speeder"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+
+[ENABLE]
+
+-- GEAR SETTINGS
+-- Define your different speeds here.
+local gears = { 2500,5000,10000,20000 }
+
+-- Start at this gear index (e.g., 2 means start at speed 100)
+local currentGearIndex = 1
+
+-- Names of the cheat table entries
+local speedXString = 'speedx'
+local speedYString = 'speedy'
+
+----------------------------------------------------------------------
+-- HELPER: Get memory records safely
+----------------------------------------------------------------------
+local function getRecords()
+  local t = getAddressList()
+  local xr = t.getMemoryRecordByDescription(speedXString)
+  local yr = t.getMemoryRecordByDescription(speedYString)
+  return xr, yr
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Apply the speed of the CURRENT GEAR
+-- (Triggered by UP Arrow)
+----------------------------------------------------------------------
+local function applyGas()
+  local xr, yr = getRecords()
+  if not xr or not yr then return end
+
+  local vx = tonumber(xr.Value) or 0
+  local vy = tonumber(yr.Value) or 0
+  local r = math.sqrt(vx*vx + vy*vy)
+
+  -- Must be moving slightly for this to work
+  if r &lt; 0.0001 then return end
+
+  -- Get target speed from table
+  local targetSpeed = gears[currentGearIndex]
+
+  local ratio = targetSpeed / r
+  xr.Value = vx * ratio
+  yr.Value = vy * ratio
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Stop (Triggered by DOWN Arrow)
+----------------------------------------------------------------------
+local function applyBrake()
+  local xr, yr = getRecords()
+  if xr and yr then
+    xr.Value = 0
+    yr.Value = 0
+  end
+end
+
+----------------------------------------------------------------------
+-- LOGIC: Shift Gears (Triggered by W / S)
+----------------------------------------------------------------------
+local function shiftGear(direction)
+  if direction == "up" then
+    if currentGearIndex &lt; #gears then
+      currentGearIndex = currentGearIndex + 1
+    else
+    end
+  elseif direction == "down" then
+    if currentGearIndex &gt; 1 then
+      currentGearIndex = currentGearIndex - 1
+    else
+    end
+  end
+end
+
+----------------------------------------------------------------------
+-- HOTKEYS
+-- 0x26 = UP Arrow   (Gas / Apply Speed)
+-- 0x28 = DOWN Arrow (Brake / Stop)
+-- 0x57 = W Key      (Gear Up)
+-- 0x53 = S Key      (Gear Down)
+----------------------------------------------------------------------
+
+hkGas = createHotkey(function() applyGas() end, 0x26)
+hkBrake = createHotkey(function() applyBrake() end, 0x28)
+
+-- Changed to W (0x57) and S (0x53)
+hkGearUp = createHotkey(function() shiftGear("up") end, 0x57)
+hkGearDown = createHotkey(function() shiftGear("down") end, 0x53)
+
+
+[DISABLE]
+
+if hkGas then hkGas.destroy(); hkGas=nil end
+if hkBrake then hkBrake.destroy(); hkBrake=nil end
+if hkGearDown then hkGearDown.destroy(); hkGearDown=nil end
+if hkGearUp then hkGearUp.destroy(); hkGearUp=nil end
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>114</ID>
+          <Description>"POINTERS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>92</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+09448A10</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>328</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F116D0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>90</Offset>
+                <Offset>D20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>96</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+0943BDC0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>A60</Offset>
+                <Offset>918</Offset>
+                <Offset>110</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>97</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F9BFF0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>20</Offset>
+                <Offset>1A0</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>98</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093B4318</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>90</Offset>
+                <Offset>50</Offset>
+                <Offset>380</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F9BFF0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>90</Offset>
+                <Offset>10</Offset>
+                <Offset>208</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>101</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093D2E50</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>20</Offset>
+                <Offset>D90</Offset>
+                <Offset>FC0</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>102</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+0943BBA0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>A60</Offset>
+                <Offset>C98</Offset>
+                <Offset>90</Offset>
+                <Offset>318</Offset>
+                <Offset>710</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F9BFF0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>90</Offset>
+                <Offset>DA8</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>95</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+09448A10</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>188</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+09446D58</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>A60</Offset>
+                <Offset>C98</Offset>
+                <Offset>170</Offset>
+                <Offset>A18</Offset>
+                <Offset>710</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+0943BAB0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>0</Offset>
+                <Offset>208</Offset>
+                <Offset>20</Offset>
+                <Offset>A60</Offset>
+                <Offset>918</Offset>
+                <Offset>510</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093B49C8</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>0</Offset>
+                <Offset>208</Offset>
+                <Offset>20</Offset>
+                <Offset>38</Offset>
+                <Offset>780</Offset>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F116D0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>20</Offset>
+                <Offset>EC0</Offset>
+                <Offset>90</Offset>
+                <Offset>D88</Offset>
+                <Offset>DE0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>107</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F116D0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>20</Offset>
+                <Offset>EC0</Offset>
+                <Offset>90</Offset>
+                <Offset>DA8</Offset>
+                <Offset>DE0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>108</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093B48C0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>38</Offset>
+                <Offset>580</Offset>
+                <Offset>2D0</Offset>
+                <Offset>2A0</Offset>
+                <Offset>510</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093B4F78</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>38</Offset>
+                <Offset>580</Offset>
+                <Offset>590</Offset>
+                <Offset>510</Offset>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>110</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+0942A9A8</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>160</Offset>
+                <Offset>140</Offset>
+                <Offset>2E0</Offset>
+                <Offset>70</Offset>
+                <Offset>230</Offset>
+                <Offset>2C0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>112</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+08F9BFF0</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>20</Offset>
+                <Offset>4E8</Offset>
+                <Offset>DE0</Offset>
+                <Offset>2D0</Offset>
+                <Offset>120</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>111</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+0942A868</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>160</Offset>
+                <Offset>140</Offset>
+                <Offset>2E0</Offset>
+                <Offset>70</Offset>
+                <Offset>430</Offset>
+                <Offset>40</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>113</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093D2E50</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>6B8</Offset>
+                <Offset>50</Offset>
+                <Offset>20</Offset>
+                <Offset>EA0</Offset>
+                <Offset>2E8</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"x speed pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"DSClient-Win64-Shipping.exe"+093B4830</Address>
+              <Offsets>
+                <Offset>B8</Offset>
+                <Offset>58</Offset>
+                <Offset>38</Offset>
+                <Offset>580</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>117</ID>
+      <Description>"ADDRESS"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>118</ID>
+          <Description>"speedx"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
+          <Address>"DSClient-Win64-Shipping.exe"+09448A10</Address>
+          <Offsets>
+            <Offset>B8</Offset>
+            <Offset>58</Offset>
+            <Offset>328</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>119</ID>
+              <Description>"speedy"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>120</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : DSClient-Win64-Shipping.exe
+  Version: 
+  Date   : 2026-08-05
+  Author : atult
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(piss,DSClient-Win64-Shipping.exe,28 7C 24 60 0F 10 00 0F 11 83 B8 00 00 00) // should be unique
+alloc(newmem,$1000,piss)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  movups xmm0,[rax]
+  movups [rbx+000000B8],xmm0
+  jmp return
+
+piss+04:
+  jmp newmem
+  nop 5
+return:
+registersymbol(piss)
+
+[DISABLE]
+
+piss+04:
+  db 0F 10 00 0F 11 83 B8 00 00 00
+
+unregistersymbol(piss)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DSClient-Win64-Shipping.exe+2E38D04
+
+DSClient-Win64-Shipping.exe+2E38CD2: F2 0F 11 64 24 20        - movsd [rsp+20],xmm4
+DSClient-Win64-Shipping.exe+2E38CD8: F2 0F 59 F1              - mulsd xmm6,xmm1
+DSClient-Win64-Shipping.exe+2E38CDC: F2 0F 11 44 24 28        - movsd [rsp+28],xmm0
+DSClient-Win64-Shipping.exe+2E38CE2: F2 0F 11 74 24 30        - movsd [rsp+30],xmm6
+DSClient-Win64-Shipping.exe+2E38CE8: 4C 8D 44 24 20           - lea r8,[rsp+20]
+DSClient-Win64-Shipping.exe+2E38CED: 48 8B CB                 - mov rcx,rbx
+DSClient-Win64-Shipping.exe+2E38CF0: 48 8D 54 24 38           - lea rdx,[rsp+38]
+DSClient-Win64-Shipping.exe+2E38CF5: E8 F6 A2 00 00           - call DSClient-Win64-Shipping.exe+2E42FF0
+DSClient-Win64-Shipping.exe+2E38CFA: 0F 28 74 24 70           - movaps xmm6,[rsp+70]
+DSClient-Win64-Shipping.exe+2E38CFF: 0F 28 7C 24 60           - movaps xmm7,[rsp+60]
+// ---------- INJECTING HERE ----------
+DSClient-Win64-Shipping.exe+2E38D04: 0F 10 00                 - movups xmm0,[rax]
+// ---------- DONE INJECTING  ----------
+DSClient-Win64-Shipping.exe+2E38D07: 0F 11 83 B8 00 00 00     - movups [rbx+000000B8],xmm0
+DSClient-Win64-Shipping.exe+2E38D0E: F2 0F 10 48 10           - movsd xmm1,[rax+10]
+DSClient-Win64-Shipping.exe+2E38D13: F2 0F 11 8B C8 00 00 00  - movsd [rbx+000000C8],xmm1
+DSClient-Win64-Shipping.exe+2E38D1B: 48 8B 9C 24 98 00 00 00  - mov rbx,[rsp+00000098]
+DSClient-Win64-Shipping.exe+2E38D23: 48 81 C4 80 00 00 00     - add rsp,00000080
+DSClient-Win64-Shipping.exe+2E38D2A: 5F                       - pop rdi
+DSClient-Win64-Shipping.exe+2E38D2B: C3                       - ret 
+DSClient-Win64-Shipping.exe+2E38D2C: CC                       - int 3 
+DSClient-Win64-Shipping.exe+2E38D2D: CC                       - int 3 
+DSClient-Win64-Shipping.exe+2E38D2E: CC                       - int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Money in shop :mov rax,[rcx+28]</Description>
+      <AddressString>DSClient-Win64-Shipping.exe+6338028</AddressString>
+      <Before>
+        <Byte>49</Byte>
+        <Byte>3B</Byte>
+        <Byte>C8</Byte>
+        <Byte>74</Byte>
+        <Byte>05</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>41</Byte>
+        <Byte>28</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+        <Byte>C3</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>height coord :movups xmm0,[rax+00000270]</Description>
+      <AddressString>DSClient-Win64-Shipping.exe+62275E8</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>45</Byte>
+        <Byte>E8</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>80</Byte>
+        <Byte>70</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>45</Byte>
+        <Byte>E8</Byte>
+        <Byte>F2</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>x coord writer :movups [rdi+00000260],xmm14</Description>
+      <AddressString>DSClient-Win64-Shipping.exe+2ED2E3D</AddressString>
+      <Before>
+        <Byte>BF</Byte>
+        <Byte>50</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>B7</Byte>
+        <Byte>60</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>A7</Byte>
+        <Byte>70</Byte>
+        <Byte>02</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>speed x :movups [rbx+000000B8],xmm0</Description>
+      <AddressString>DSClient-Win64-Shipping.exe+2E38D07</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>60</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>83</Byte>
+        <Byte>B8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F2</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+        <Byte>10</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>x y z
+</Comments>
+</CheatTable>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries/>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Inventory :cmp qword ptr [rbx+10],00</Description>
+      <AddressString>CrimsonDesert.exe+1F87DDA</AddressString>
+      <Before>
+        <Byte>3B</Byte>
+        <Byte>53</Byte>
+        <Byte>08</Byte>
+        <Byte>74</Byte>
+        <Byte>5A</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>83</Byte>
+        <Byte>7B</Byte>
+        <Byte>10</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>7E</Byte>
+        <Byte>53</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+        <Byte>4B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>movement speed :vmovss [rbx+08],xmm2</Description>
+      <AddressString>CrimsonDesert.exe+556337</AddressString>
+      <Before>
+        <Byte>D2</Byte>
+        <Byte>59</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>11</Byte>
+        <Byte>53</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>E2</Byte>
+        <Byte>58</Byte>
+        <Byte>D0</Byte>
+        <Byte>C5</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>movement speed 2:mov eax,[rsi+00000080]</Description>
+      <AddressString>CrimsonDesert.exe+6FCA13</AddressString>
+      <Before>
+        <Byte>C5</Byte>
+        <Byte>FB</Byte>
+        <Byte>10</Byte>
+        <Byte>66</Byte>
+        <Byte>78</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>86</Byte>
+        <Byte>80</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>78</Byte>
+        <Byte>C5</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <Comments>1)Inventory has two addresses for each item. To change the item amount you have to make sure that each of two values are same.
+
+2)From the inventory if you change the silver or copper or bronze then you have to save the game first and then load that game to show up the new changed currency in game.</Comments>
+</CheatTable>
