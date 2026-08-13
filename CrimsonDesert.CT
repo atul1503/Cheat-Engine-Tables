@@ -1,6 +1,502 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheatTable CheatEngineTableVersion="45">
-  <CheatEntries/>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"MAIN"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"POINTERS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>14</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06183448</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>15</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06183448</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>17</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB790</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB8D0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB8D0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+064B2A20</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>5F0</Offset>
+                <Offset>88</Offset>
+                <Offset>8</Offset>
+                <Offset>58</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>21</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+0606CDB8</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+                <Offset>188</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>22</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182C98</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>23</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182CD8</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+                <Offset>40</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>24</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06183448</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>0</Offset>
+                <Offset>130</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>25</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06183448</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>0</Offset>
+                <Offset>270</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>26</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB790</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>0</Offset>
+                <Offset>240</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>27</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB798</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>0</Offset>
+                <Offset>198</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>28</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB8D0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>0</Offset>
+                <Offset>160</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>29</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+060FC160</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+                <Offset>48</Offset>
+                <Offset>68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>30</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06111400</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+                <Offset>60</Offset>
+                <Offset>48</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>31</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+0615C910</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+                <Offset>150</Offset>
+                <Offset>90</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>32</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+0615C9A0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+                <Offset>1D8</Offset>
+                <Offset>40</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182CB8</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+                <Offset>B8</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>34</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182CB8</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+                <Offset>B8</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182CC8</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+                <Offset>8</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>36</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182CD0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>0</Offset>
+                <Offset>1B0</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182F88</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>0</Offset>
+                <Offset>270</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>38</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182F88</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>0</Offset>
+                <Offset>190</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06182FB8</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>D8</Offset>
+                <Offset>58</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>40</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06183448</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>88</Offset>
+                <Offset>190</Offset>
+                <Offset>1B0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB790</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>0</Offset>
+                <Offset>F0</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>42</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB790</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>180</Offset>
+                <Offset>D8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB8D0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>0</Offset>
+                <Offset>B8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>44</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB8D0</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>0</Offset>
+                <Offset>F0</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06406B98</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>50</Offset>
+                <Offset>78</Offset>
+                <Offset>50</Offset>
+                <Offset>D58</Offset>
+                <Offset>3E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"movement pointer"</Description>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+061FB790</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"ADDRESS"</Description>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>49</ID>
+              <Description>"movement"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>"CrimsonDesert.exe"+06183448</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>C8</Offset>
+                <Offset>40</Offset>
+                <Offset>68</Offset>
+                <Offset>50</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
   <CheatCodes>
     <CodeEntry>
       <Description>Inventory :cmp qword ptr [rbx+10],00</Description>
@@ -78,9 +574,664 @@
         <Byte>C5</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>my stamina display :vmovss xmm8,[rcx+000001B8]</Description>
+      <AddressString>CrimsonDesert.exe+A57C0F6</AddressString>
+      <Before>
+        <Byte>41</Byte>
+        <Byte>78</Byte>
+        <Byte>29</Byte>
+        <Byte>4B</Byte>
+        <Byte>A8</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>7A</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>7A</Byte>
+        <Byte>10</Byte>
+        <Byte>89</Byte>
+        <Byte>C4</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>zcoord :vmovsd xmm0,[rcx+000000B4]</Description>
+      <AddressString>CrimsonDesert.exe+3DF352</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>DA</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FB</Byte>
+        <Byte>10</Byte>
+        <Byte>81</Byte>
+        <Byte>B4</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>FB</Byte>
+        <Byte>10</Byte>
+        <Byte>89</Byte>
+        <Byte>F0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>my zcoord :vmovups ymm1,[rcx+000000B8]</Description>
+      <AddressString>CrimsonDesert.exe+EF9782</AddressString>
+      <Before>
+        <Byte>85</Byte>
+        <Byte>90</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FC</Byte>
+        <Byte>10</Byte>
+        <Byte>89</Byte>
+        <Byte>B8</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>FC</Byte>
+        <Byte>11</Byte>
+        <Byte>8D</Byte>
+        <Byte>B0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Code :vmovdqu ymm1,ymm0,[rdx]</Description>
+      <AddressString>VCRUNTIME140.dll+113B0</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>0F</Byte>
+        <Byte>1F</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FE</Byte>
+        <Byte>6F</Byte>
+        <Byte>0A</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>FE</Byte>
+        <Byte>6F</Byte>
+        <Byte>52</Byte>
+        <Byte>20</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health dispaly writer :mov [r8+rdx],eax</Description>
+      <AddressString>CrimsonDesert.exe+2152B86</AddressString>
+      <Before>
+        <Byte>41</Byte>
+        <Byte>30</Byte>
+        <Byte>45</Byte>
+        <Byte>8B</Byte>
+        <Byte>C1</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>89</Byte>
+        <Byte>04</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>health dsiplay writer :mov [rcx+30],eax</Description>
+      <AddressString>CrimsonDesert.exe+2152B92</AddressString>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>8B</Byte>
+        <Byte>02</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>41</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>movement something :vmovss xmm5,[rbx+08]</Description>
+      <AddressString>CrimsonDesert.exe+556306</AddressString>
+      <Before>
+        <Byte>04</Byte>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>10</Byte>
+        <Byte>23</Byte>
+      </Before>
+      <Actual>
+        <Byte>C5</Byte>
+        <Byte>FA</Byte>
+        <Byte>10</Byte>
+        <Byte>6B</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>CA</Byte>
+        <Byte>59</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>stamina dispaly writer :vmovss [r13+00],xmm0</Description>
+      <AddressString>CrimsonDesert.exe+BFA4C3</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>C4</Byte>
+        <Byte>C1</Byte>
+        <Byte>7A</Byte>
+        <Byte>11</Byte>
+        <Byte>45</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>1A</Byte>
+        <Byte>4C</Byte>
+        <Byte>8D</Byte>
+        <Byte>AF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>rdx give it to r12 the main componet of dispaly stamina :mov r12,rdx</Description>
+      <AddressString>CrimsonDesert.exe+BFA2E3</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>4D</Byte>
+        <Byte>8B</Byte>
+        <Byte>F8</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>E2</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>F9</Byte>
+        <Byte>74</Byte>
+        <Byte>0A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>before this call rbp has the display integer :call CrimsonDesert.exe+BFA2C0</Description>
+      <AddressString>CrimsonDesert.exe+A586AE9</AddressString>
+      <Before>
+        <Byte>89</Byte>
+        <Byte>EA</Byte>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>F9</Byte>
+      </Before>
+      <Actual>
+        <Byte>E8</Byte>
+        <Byte>D2</Byte>
+        <Byte>37</Byte>
+        <Byte>67</Byte>
+        <Byte>F6</Byte>
+      </Actual>
+      <After>
+        <Byte>BE</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>check call for rbp :call qword ptr [r10+00000508]</Description>
+      <AddressString>CrimsonDesert.exe+BFCEE1</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>20</Byte>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>FF</Byte>
+        <Byte>92</Byte>
+        <Byte>08</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>45</Byte>
+        <Byte>3A</Byte>
+        <Byte>BC</Byte>
+        <Byte>24</Byte>
+        <Byte>84</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>dispaly * 100 integer best source rn :mov r11,[rdi]</Description>
+      <AddressString>CrimsonDesert.exe+BFCE55</AddressString>
+      <Before>
+        <Byte>5C</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>1F</Byte>
+      </Actual>
+      <After>
+        <Byte>4D</Byte>
+        <Byte>3B</Byte>
+        <Byte>F3</Byte>
+        <Byte>75</Byte>
+        <Byte>09</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>very imp call :call CrimsonDesert.exe+145B720</Description>
+      <AddressString>CrimsonDesert.exe+BFCD6C</AddressString>
+      <Before>
+        <Byte>F0</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>49</Byte>
+        <Byte>18</Byte>
+      </Before>
+      <Actual>
+        <Byte>E8</Byte>
+        <Byte>AF</Byte>
+        <Byte>E9</Byte>
+        <Byte>85</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>08</Byte>
+        <Byte>48</Byte>
+        <Byte>B8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>rbx here has the stat curve :mov [rdi],r9</Description>
+      <AddressString>CrimsonDesert.exe+1461891</AddressString>
+      <Before>
+        <Byte>C1</Byte>
+        <Byte>66</Byte>
+        <Byte>45</Byte>
+        <Byte>89</Byte>
+        <Byte>06</Byte>
+      </Before>
+      <Actual>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>0F</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>07</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Stats (2 of them of same value and 1000*what you see in game) :mov rax,[rbx+08]</Description>
+      <AddressString>CrimsonDesert.exe+1461896</AddressString>
+      <Before>
+        <Byte>4C</Byte>
+        <Byte>89</Byte>
+        <Byte>0F</Byte>
+        <Byte>EB</Byte>
+        <Byte>07</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>07</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>non curve stat * 1000 :mov rcx,[rcx+rax]</Description>
+      <AddressString>CrimsonDesert.exe+145B814</AddressString>
+      <Before>
+        <Byte>18</Byte>
+        <Byte>48</Byte>
+        <Byte>C1</Byte>
+        <Byte>E1</Byte>
+        <Byte>05</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>0C</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+        <Byte>0E</Byte>
+        <Byte>EB</Byte>
+        <Byte>7D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Weapon damage stat :imul [rsi+08]</Description>
+      <AddressString>CrimsonDesert.exe+1F92623</AddressString>
+      <Before>
+        <Byte>E3</Byte>
+        <Byte>A5</Byte>
+        <Byte>9B</Byte>
+        <Byte>C4</Byte>
+        <Byte>20</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>F7</Byte>
+        <Byte>6E</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>F2</Byte>
+        <Byte>48</Byte>
+        <Byte>C1</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
-  <Comments>1)Inventory has two addresses for each item. To change the item amount you have to make sure that each of two values are same.
+  <Structures StructVersion="2">
+    <Structure Name="unnamed structure" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000000" DisplayMethod="unsigned integer"/>
+        <Element Offset="3" Vartype="4 Bytes" Bytesize="4" RLECount="75" OffsetHex="00000003" DisplayMethod="unsigned integer"/>
+        <Element Offset="303" Vartype="Pointer" Bytesize="8" OffsetHex="0000012F" DisplayMethod="unsigned integer"/>
+        <Element Offset="311" Vartype="4 Bytes" Bytesize="4" RLECount="77" OffsetHex="00000137" DisplayMethod="unsigned integer"/>
+        <Element Offset="619" Vartype="String" Bytesize="5" OffsetHex="0000026B" DisplayMethod="unsigned integer"/>
+        <Element Offset="624" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000270" DisplayMethod="unsigned integer"/>
+        <Element Offset="627" Vartype="4 Bytes" Bytesize="4" RLECount="81" OffsetHex="00000273" DisplayMethod="unsigned integer"/>
+        <Element Offset="951" Vartype="String" Bytesize="8" OffsetHex="000003B7" DisplayMethod="unsigned integer"/>
+        <Element Offset="959" Vartype="4 Bytes" Bytesize="4" RLECount="75" OffsetHex="000003BF" DisplayMethod="unsigned integer"/>
+        <Element Offset="1259" Vartype="String" Bytesize="5" OffsetHex="000004EB" DisplayMethod="unsigned integer"/>
+        <Element Offset="1264" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000004F0" DisplayMethod="unsigned integer"/>
+        <Element Offset="1267" Vartype="4 Bytes" Bytesize="4" OffsetHex="000004F3" DisplayMethod="unsigned integer"/>
+        <Element Offset="1271" Vartype="Byte" Bytesize="1" OffsetHex="000004F7" DisplayMethod="unsigned integer"/>
+        <Element Offset="1272" Vartype="String" Bytesize="8" OffsetHex="000004F8" DisplayMethod="unsigned integer"/>
+        <Element Offset="1280" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000500" DisplayMethod="unsigned integer"/>
+        <Element Offset="1283" Vartype="4 Bytes" Bytesize="4" RLECount="78" OffsetHex="00000503" DisplayMethod="unsigned integer"/>
+        <Element Offset="1595" Vartype="String" Bytesize="4" OffsetHex="0000063B" DisplayMethod="unsigned integer"/>
+        <Element Offset="1599" Vartype="4 Bytes" Bytesize="4" RLECount="76" OffsetHex="0000063F" DisplayMethod="unsigned integer"/>
+        <Element Offset="1903" Vartype="String" Bytesize="8" OffsetHex="0000076F" DisplayMethod="unsigned integer"/>
+        <Element Offset="1911" Vartype="Pointer" Bytesize="8" OffsetHex="00000777" DisplayMethod="unsigned integer"/>
+        <Element Offset="1919" Vartype="4 Bytes" Bytesize="4" RLECount="158" OffsetHex="0000077F" DisplayMethod="unsigned integer"/>
+        <Element Offset="2551" Vartype="Pointer" Bytesize="8" OffsetHex="000009F7" DisplayMethod="unsigned integer"/>
+        <Element Offset="2559" Vartype="4 Bytes" Bytesize="4" RLECount="76" OffsetHex="000009FF" DisplayMethod="unsigned integer"/>
+        <Element Offset="2863" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B2F" DisplayMethod="hexadecimal"/>
+        <Element Offset="2867" Vartype="String" Bytesize="5" OffsetHex="00000B33" DisplayMethod="unsigned integer"/>
+        <Element Offset="2872" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000B38" DisplayMethod="unsigned integer"/>
+        <Element Offset="2875" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B3B" DisplayMethod="unsigned integer"/>
+        <Element Offset="2879" Vartype="Pointer" Bytesize="8" OffsetHex="00000B3F" DisplayMethod="unsigned integer"/>
+        <Element Offset="2887" Vartype="Byte" Bytesize="1" OffsetHex="00000B47" DisplayMethod="unsigned integer"/>
+        <Element Offset="2888" Vartype="String" Bytesize="7" OffsetHex="00000B48" DisplayMethod="unsigned integer"/>
+        <Element Offset="2895" Vartype="Pointer" Bytesize="8" OffsetHex="00000B4F" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="2903" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B57" DisplayMethod="hexadecimal"/>
+        <Element Offset="2907" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000B5B" DisplayMethod="unsigned integer"/>
+        <Element Offset="2919" Vartype="Pointer" Bytesize="8" OffsetHex="00000B67" DisplayMethod="unsigned integer"/>
+        <Element Offset="2927" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B6F" DisplayMethod="hexadecimal"/>
+        <Element Offset="2931" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B73" DisplayMethod="unsigned integer"/>
+        <Element Offset="2935" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B77" DisplayMethod="hexadecimal"/>
+        <Element Offset="2939" Vartype="String" Bytesize="5" OffsetHex="00000B7B" DisplayMethod="unsigned integer"/>
+        <Element Offset="2944" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000B80" DisplayMethod="unsigned integer"/>
+        <Element Offset="2947" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B83" DisplayMethod="unsigned integer"/>
+        <Element Offset="2951" Vartype="Pointer" Bytesize="8" OffsetHex="00000B87" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="2959" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000B8F" DisplayMethod="hexadecimal"/>
+        <Element Offset="2963" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000B93" DisplayMethod="unsigned integer"/>
+        <Element Offset="2975" Vartype="Pointer" Bytesize="8" RLECount="3" OffsetHex="00000B9F" DisplayMethod="unsigned integer"/>
+        <Element Offset="2999" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000BB7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3007" Vartype="Pointer" Bytesize="8" OffsetHex="00000BBF" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3015" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000BC7" DisplayMethod="hexadecimal"/>
+        <Element Offset="3019" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000BCB" DisplayMethod="unsigned integer"/>
+        <Element Offset="3031" Vartype="Pointer" Bytesize="8" RLECount="3" OffsetHex="00000BD7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3055" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000BEF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3063" Vartype="Pointer" Bytesize="8" OffsetHex="00000BF7" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3071" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000BFF" DisplayMethod="hexadecimal"/>
+        <Element Offset="3075" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C03" DisplayMethod="unsigned integer"/>
+        <Element Offset="3079" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000C07" DisplayMethod="unsigned integer"/>
+        <Element Offset="3095" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C17" DisplayMethod="hexadecimal"/>
+        <Element Offset="3099" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C1B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3103" Vartype="Pointer" Bytesize="8" OffsetHex="00000C1F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3111" Vartype="String" Bytesize="8" OffsetHex="00000C27" DisplayMethod="unsigned integer"/>
+        <Element Offset="3119" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000C2F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3127" Vartype="Pointer" Bytesize="8" OffsetHex="00000C37" DisplayMethod="unsigned integer"/>
+        <Element Offset="3135" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000C3F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3147" Vartype="String" Bytesize="5" OffsetHex="00000C4B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3152" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000C50" DisplayMethod="unsigned integer"/>
+        <Element Offset="3155" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C53" DisplayMethod="unsigned integer"/>
+        <Element Offset="3159" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C57" DisplayMethod="hexadecimal"/>
+        <Element Offset="3163" Vartype="String" Bytesize="5" OffsetHex="00000C5B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3168" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000C60" DisplayMethod="unsigned integer"/>
+        <Element Offset="3171" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C63" DisplayMethod="unsigned integer"/>
+        <Element Offset="3175" Vartype="String" Bytesize="9" OffsetHex="00000C67" DisplayMethod="unsigned integer"/>
+        <Element Offset="3184" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000C70" DisplayMethod="unsigned integer"/>
+        <Element Offset="3187" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000C73" DisplayMethod="unsigned integer"/>
+        <Element Offset="3199" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000C7F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3215" Vartype="Pointer" Bytesize="8" OffsetHex="00000C8F" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3223" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000C97" DisplayMethod="hexadecimal"/>
+        <Element Offset="3227" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000C9B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3239" Vartype="Pointer" Bytesize="8" OffsetHex="00000CA7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3247" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CAF" DisplayMethod="hexadecimal"/>
+        <Element Offset="3251" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000CB3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3259" Vartype="String" Bytesize="5" OffsetHex="00000CBB" DisplayMethod="unsigned integer"/>
+        <Element Offset="3264" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000CC0" DisplayMethod="unsigned integer"/>
+        <Element Offset="3267" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CC3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3271" Vartype="Pointer" Bytesize="8" OffsetHex="00000CC7" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3279" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CCF" DisplayMethod="hexadecimal"/>
+        <Element Offset="3283" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CD3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3287" Vartype="String" Bytesize="7" OffsetHex="00000CD7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3294" Vartype="Byte" Bytesize="1" OffsetHex="00000CDE" DisplayMethod="unsigned integer"/>
+        <Element Offset="3295" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000CDF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3311" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CEF" DisplayMethod="hexadecimal"/>
+        <Element Offset="3315" Vartype="String" Bytesize="5" OffsetHex="00000CF3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3320" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000CF8" DisplayMethod="unsigned integer"/>
+        <Element Offset="3323" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CFB" DisplayMethod="unsigned integer"/>
+        <Element Offset="3327" Vartype="Pointer" Bytesize="8" OffsetHex="00000CFF" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3335" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D07" DisplayMethod="hexadecimal"/>
+        <Element Offset="3339" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000D0B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3351" Vartype="Pointer" Bytesize="8" OffsetHex="00000D17" DisplayMethod="unsigned integer"/>
+        <Element Offset="3359" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D1F" DisplayMethod="hexadecimal"/>
+        <Element Offset="3363" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000D23" DisplayMethod="unsigned integer"/>
+        <Element Offset="3371" Vartype="String" Bytesize="5" OffsetHex="00000D2B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3376" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000D30" DisplayMethod="unsigned integer"/>
+        <Element Offset="3379" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D33" DisplayMethod="unsigned integer"/>
+        <Element Offset="3383" Vartype="Pointer" Bytesize="8" OffsetHex="00000D37" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3391" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D3F" DisplayMethod="hexadecimal"/>
+        <Element Offset="3395" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D43" DisplayMethod="unsigned integer"/>
+        <Element Offset="3399" Vartype="String" Bytesize="9" OffsetHex="00000D47" DisplayMethod="unsigned integer"/>
+        <Element Offset="3408" Vartype="Byte" Bytesize="1" OffsetHex="00000D50" DisplayMethod="unsigned integer"/>
+        <Element Offset="3409" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000D51" DisplayMethod="unsigned integer"/>
+        <Element Offset="3411" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D53" DisplayMethod="unsigned integer"/>
+        <Element Offset="3415" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D57" DisplayMethod="hexadecimal"/>
+        <Element Offset="3419" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D5B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3423" Vartype="Byte" Bytesize="1" OffsetHex="00000D5F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3424" Vartype="String" Bytesize="8" OffsetHex="00000D60" DisplayMethod="unsigned integer"/>
+        <Element Offset="3432" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000D68" DisplayMethod="unsigned integer"/>
+        <Element Offset="3435" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D6B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3439" Vartype="Pointer" Bytesize="8" OffsetHex="00000D6F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3447" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000D77" DisplayMethod="unsigned integer"/>
+        <Element Offset="3463" Vartype="Pointer" Bytesize="8" OffsetHex="00000D87" DisplayMethod="unsigned integer"/>
+        <Element Offset="3471" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000D8F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3483" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000D9B" DisplayMethod="hexadecimal"/>
+        <Element Offset="3487" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000D9F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3503" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000DAF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3511" Vartype="String" Bytesize="9" OffsetHex="00000DB7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3520" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000DC0" DisplayMethod="unsigned integer"/>
+        <Element Offset="3523" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DC3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3527" Vartype="Pointer" Bytesize="8" OffsetHex="00000DC7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3535" Vartype="Pointer" Bytesize="8" OffsetHex="00000DCF" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3543" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DD7" DisplayMethod="hexadecimal"/>
+        <Element Offset="3547" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DDB" DisplayMethod="unsigned integer"/>
+        <Element Offset="3551" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000DDF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3567" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DEF" DisplayMethod="hexadecimal"/>
+        <Element Offset="3571" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000DF3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3575" Vartype="Pointer" Bytesize="8" OffsetHex="00000DF7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3583" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000DFF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3591" Vartype="Pointer" Bytesize="8" OffsetHex="00000E07" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3599" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E0F" DisplayMethod="hexadecimal"/>
+        <Element Offset="3603" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E13" DisplayMethod="unsigned integer"/>
+        <Element Offset="3607" Vartype="String" Bytesize="11" OffsetHex="00000E17" DisplayMethod="unsigned integer"/>
+        <Element Offset="3618" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000E22" DisplayMethod="unsigned integer"/>
+        <Element Offset="3620" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="00000E24" DisplayMethod="unsigned integer"/>
+        <Element Offset="3622" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000E26" DisplayMethod="unsigned integer"/>
+        <Element Offset="3624" Vartype="Byte" Bytesize="1" OffsetHex="00000E28" DisplayMethod="unsigned integer"/>
+        <Element Offset="3625" Vartype="String" Bytesize="7" OffsetHex="00000E29" DisplayMethod="unsigned integer"/>
+        <Element Offset="3632" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000E30" DisplayMethod="unsigned integer"/>
+        <Element Offset="3635" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000E33" DisplayMethod="unsigned integer"/>
+        <Element Offset="3647" Vartype="Pointer" Bytesize="8" OffsetHex="00000E3F" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3655" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E47" DisplayMethod="hexadecimal"/>
+        <Element Offset="3659" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E4B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3663" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000E4F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3679" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E5F" DisplayMethod="hexadecimal"/>
+        <Element Offset="3683" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E63" DisplayMethod="unsigned integer"/>
+        <Element Offset="3687" Vartype="Pointer" Bytesize="8" OffsetHex="00000E67" DisplayMethod="unsigned integer"/>
+        <Element Offset="3695" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000E6F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3703" Vartype="Pointer" Bytesize="8" OffsetHex="00000E77" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3711" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E7F" DisplayMethod="hexadecimal"/>
+        <Element Offset="3715" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E83" DisplayMethod="unsigned integer"/>
+        <Element Offset="3719" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000E87" DisplayMethod="unsigned integer"/>
+        <Element Offset="3735" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E97" DisplayMethod="hexadecimal"/>
+        <Element Offset="3739" Vartype="String" Bytesize="7" OffsetHex="00000E9B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3746" Vartype="Byte" Bytesize="1" OffsetHex="00000EA2" DisplayMethod="unsigned integer"/>
+        <Element Offset="3747" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000EA3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3751" Vartype="Pointer" Bytesize="8" OffsetHex="00000EA7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3759" Vartype="Byte" Bytesize="1" RLECount="4" OffsetHex="00000EAF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3763" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000EB3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3775" Vartype="Pointer" Bytesize="8" OffsetHex="00000EBF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3783" Vartype="String" Bytesize="8" OffsetHex="00000EC7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3791" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000ECF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3799" Vartype="Pointer" Bytesize="8" OffsetHex="00000ED7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3807" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000EDF" DisplayMethod="unsigned integer"/>
+        <Element Offset="3819" Vartype="String" Bytesize="5" OffsetHex="00000EEB" DisplayMethod="unsigned integer"/>
+        <Element Offset="3824" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000EF0" DisplayMethod="unsigned integer"/>
+        <Element Offset="3827" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000EF3" DisplayMethod="unsigned integer"/>
+        <Element Offset="3831" Vartype="Byte" Bytesize="1" OffsetHex="00000EF7" DisplayMethod="unsigned integer"/>
+        <Element Offset="3832" Vartype="String" Bytesize="8" OffsetHex="00000EF8" DisplayMethod="unsigned integer"/>
+        <Element Offset="3840" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000F00" DisplayMethod="unsigned integer"/>
+        <Element Offset="3843" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F03" DisplayMethod="unsigned integer"/>
+        <Element Offset="3847" Vartype="Byte" Bytesize="1" OffsetHex="00000F07" DisplayMethod="unsigned integer"/>
+        <Element Offset="3848" Vartype="String" Bytesize="10" OffsetHex="00000F08" DisplayMethod="unsigned integer"/>
+        <Element Offset="3858" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000F12" DisplayMethod="unsigned integer"/>
+        <Element Offset="3860" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000F14" DisplayMethod="unsigned integer"/>
+        <Element Offset="3863" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F17" DisplayMethod="hexadecimal"/>
+        <Element Offset="3867" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F1B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3871" Vartype="String" Bytesize="11" OffsetHex="00000F1F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3882" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000F2A" DisplayMethod="unsigned integer"/>
+        <Element Offset="3884" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="00000F2C" DisplayMethod="unsigned integer"/>
+        <Element Offset="3886" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000F2E" DisplayMethod="unsigned integer"/>
+        <Element Offset="3888" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000F30" DisplayMethod="unsigned integer"/>
+        <Element Offset="3891" Vartype="4 Bytes" Bytesize="4" RLECount="5" OffsetHex="00000F33" DisplayMethod="unsigned integer"/>
+        <Element Offset="3911" Vartype="Pointer" Bytesize="8" OffsetHex="00000F47" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3919" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F4F" DisplayMethod="hexadecimal"/>
+        <Element Offset="3923" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000F53" DisplayMethod="unsigned integer"/>
+        <Element Offset="3931" Vartype="String" Bytesize="4" OffsetHex="00000F5B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3935" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000F5F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3951" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000F6F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3959" Vartype="Byte" Bytesize="1" OffsetHex="00000F77" DisplayMethod="unsigned integer"/>
+        <Element Offset="3960" Vartype="String" Bytesize="7" OffsetHex="00000F78" DisplayMethod="unsigned integer"/>
+        <Element Offset="3967" Vartype="Pointer" Bytesize="8" OffsetHex="00000F7F" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="3975" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F87" DisplayMethod="hexadecimal"/>
+        <Element Offset="3979" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000F8B" DisplayMethod="unsigned integer"/>
+        <Element Offset="3983" Vartype="String" Bytesize="8" OffsetHex="00000F8F" DisplayMethod="unsigned integer"/>
+        <Element Offset="3991" Vartype="Pointer" Bytesize="8" RLECount="2" OffsetHex="00000F97" DisplayMethod="unsigned integer"/>
+        <Element Offset="4007" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FA7" DisplayMethod="hexadecimal"/>
+        <Element Offset="4011" Vartype="String" Bytesize="5" OffsetHex="00000FAB" DisplayMethod="unsigned integer"/>
+        <Element Offset="4016" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000FB0" DisplayMethod="unsigned integer"/>
+        <Element Offset="4019" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FB3" DisplayMethod="unsigned integer"/>
+        <Element Offset="4023" Vartype="Pointer" Bytesize="8" OffsetHex="00000FB7" Description="Pointer to instance of pa::LocalizationStringBase" DisplayMethod="unsigned integer"/>
+        <Element Offset="4031" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FBF" DisplayMethod="hexadecimal"/>
+        <Element Offset="4035" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="00000FC3" DisplayMethod="unsigned integer"/>
+        <Element Offset="4043" Vartype="String" Bytesize="7" OffsetHex="00000FCB" DisplayMethod="unsigned integer"/>
+        <Element Offset="4050" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000FD2" DisplayMethod="unsigned integer"/>
+        <Element Offset="4052" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="00000FD4" DisplayMethod="unsigned integer"/>
+        <Element Offset="4054" Vartype="2 Bytes" Bytesize="2" OffsetHex="00000FD6" DisplayMethod="unsigned integer"/>
+        <Element Offset="4056" Vartype="Byte" Bytesize="1" OffsetHex="00000FD8" DisplayMethod="unsigned integer"/>
+        <Element Offset="4057" Vartype="String" Bytesize="7" OffsetHex="00000FD9" DisplayMethod="unsigned integer"/>
+        <Element Offset="4064" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000FE0" DisplayMethod="unsigned integer"/>
+        <Element Offset="4067" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000FE3" DisplayMethod="unsigned integer"/>
+        <Element Offset="4071" Vartype="String" Bytesize="9" OffsetHex="00000FE7" DisplayMethod="unsigned integer"/>
+        <Element Offset="4080" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="00000FF0" DisplayMethod="unsigned integer"/>
+        <Element Offset="4083" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000FF3" DisplayMethod="unsigned integer"/>
+        <Element Offset="4095" Vartype="Byte" Bytesize="1" OffsetHex="00000FFF" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
+  <Comments>Notes:
 
-2)From the inventory if you change the silver or copper or bronze then you have to save the game first and then load that game to show up the new changed currency in game.</Comments>
+Inventory has two addresses for each item. To change the item amount you have to make sure that each of two values are same.
+From the inventory if you change the silver or copper or bronze then you have to save the game first and then load that game to show up the new changed currency in game.
+Inventory first address(by address number) is the display value. Second address is the actual value of that item in number. Changing this number will actually matter when item gets consumed. However changing the first address is also important because without that visually you can't click and consume item when its not visible if the number in this address is zero.
+
+As for stats like health and stamina and others. The story is different. For stats like health and all other stats except stamina, the value in memory is stored as 8 bytes of the number visible in game * 1000. So a health of 50 in the display is actually stored as 50000 as 8 bytes. For health also there are two addresses. First address by address number is just display and second address is the real health. For other stats like weapon damage etc. they are single address based. But they are also multiplied by 1000 in memory. For eg, if longsword has 12 weapons damage visible in game then in memory the value is 12000. 
+
+To get One heat kill, you have to set weapon damage to more than 1000 in game(in memory you have to set it to 1000*1000). I have tried 6000 and it works like a charm.
+</Comments>
 </CheatTable>
