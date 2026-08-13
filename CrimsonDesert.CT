@@ -1008,6 +1008,6 @@ Inventory first address(by address number) is the display value. Second address 
 
 As for stats like health and stamina and others. The story is different. For stats like health and all other stats except stamina, the value in memory is stored as 8 bytes of the number visible in game * 1000. So a health of 50 in the display is actually stored as 50000 as 8 bytes. For health also there are two addresses. First address by address number is just display and second address is the real health. For other stats like weapon damage etc. they are single address based. But they are also multiplied by 1000 in memory. For eg, if longsword has 12 weapons damage visible in game then in memory the value is 12000. 
 
-To get One heat kill, you have to set weapon damage to more than 1000 in game(in memory you have to set it to 1000*1000). I have tried 6000 and it works like a charm.
+To get One hit kill, you have to set weapon damage to more than 1000 in game(in memory you have to set it to 1000*1000). I have tried 6000 and it works like a charm.
 </Comments>
 </CheatTable>
