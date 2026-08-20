@@ -494,6 +494,305 @@
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
+        <CheatEntry>
+          <ID>56</ID>
+          <Description>"SCRIPTS"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>54</ID>
+              <Description>"Free Fly"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{
+   Game   : CrimsonDesert.exe
+   Author : atult
+
+   State variable hack at the addps xmm0,[r13+00] injection point
+   (CrimsonDesert.exe+3A409E7) — this instruction runs BEFORE the
+   movups [r13+00],xmm0 store.
+
+   state (registered symbol "state", 4 bytes, default 0):
+     0 -&gt; no change
+     1 -&gt; clamp xmm0's 2nd float to a minimum of -1.0
+          direct maxss comparison: -1.0 vs the value itself
+          e.g. value -20.0 -&gt; forced to -1.0 ; value 5.0 -&gt; stays 5.0
+          state stays 1 (keeps clamping until you set it back to 0)
+     2 -&gt; xmm0's 2nd float += 300.0, then state auto-resets to 0
+
+   r13 is ONLY used in the final code: block (the original addps).
+   case1/case2 never touch r13.
+
+   state is declared with globalalloc BEFORE [ENABLE], so:
+     - the symbol is auto-registered and usable even while the script is disabled
+     - its address is stable across enable/disable (add "state" to the address
+       list as a 4-byte value and it stays valid)
+   The block below resets state to 0 every time you enable the script.
+}
+
+globalalloc(state,4) // registered symbol, stable address, survives disable
+
+[ENABLE]
+
+{$lua}
+if syntaxcheck then return end
+writeInteger("state",0)
+{$asm}
+
+aobscanmodule(kiss,CrimsonDesert.exe,41 0F 58 45 00 41) // should be unique
+alloc(newmem,$1000,kiss)
+
+label(code)
+label(return)
+label(float300)
+label(minus1)
+label(scratch)
+label(case1)
+label(case2)
+
+newmem:
+  cmp dword ptr [state],1
+  je case1
+  cmp dword ptr [state],2
+  je case2
+  jmp code
+
+case1:
+  // state == 1 : clamp xmm0 2nd float to &gt;= -1.0 — direct maxss,
+  //              no r13 involved
+  movups [scratch],xmm0
+  movss xmm1,[minus1]        // xmm1 = -1.0
+  maxss xmm1,[scratch+04]    // xmm1 = max(-1.0, value) ; -20 -&gt; -1.0
+  movss [scratch+04],xmm1
+  movups xmm0,[scratch]
+  jmp code                   // original addps xmm0,[r13+00] runs here
+
+case2:
+  // state == 2 : xmm0 2nd float += 300.0, then state = 0
+  movups [scratch],xmm0
+  movss xmm1,[float300]
+  addss xmm1,[scratch+04]
+  movss [scratch+04],xmm1
+  movups xmm0,[scratch]
+  mov dword ptr [state],0
+  jmp code
+
+code:
+  // original instruction — the ONLY place r13 is used
+  addps xmm0,[r13+00]
+  jmp return
+
+float300:
+  dd (float)300.0 // 300.0f
+
+minus1:
+  dd (float)0.0 // -1.0f
+
+scratch:
+  dd 0,0,0,0
+
+kiss:
+  jmp newmem
+return:
+
+registersymbol(kiss)
+
+[DISABLE]
+
+kiss:
+  db 41 0F 58 45 00
+
+unregistersymbol(kiss)
+dealloc(newmem)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>55</ID>
+                  <Description>"state"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>state</Address>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>98</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>101</Key>
+                      </Keys>
+                      <Value>1</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>104</Key>
+                      </Keys>
+                      <Value>2</Value>
+                      <ID>2</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"Free Fly 2"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{
+   Game   : CrimsonDesert.exe
+   Author : atult
+
+   State variable hack at the addps xmm0,[r13+00] injection point
+   (CrimsonDesert.exe+3A409E7) — this instruction runs BEFORE the
+   movups [r13+00],xmm0 store.
+
+   xmm0 layout:  [1st float][2nd float][3rd float][4th float]
+                  byte 00    byte 04    byte 08    byte 0C
+
+   FOR ALL STATES (0, 1, 2):
+     1st float (byte 00) and 3rd float (byte 08) are multiplied by
+     [multiplier] BEFORE the addps.
+
+     multiplier is a globalalloc'd symbol (float, default 2.0).
+     To change it: edit the writeFloat line in [ENABLE] below, OR add
+     "multiplier" to the address list as a 4-byte Float and edit live.
+     (Note: re-enabling the script reloads the value from the script line.)
+
+   state (registered symbol "state", 4 bytes, default 0):
+     0 -&gt; no change to the 2nd float
+     1 -&gt; clamp xmm0's 2nd float to a minimum of -1.0
+          direct maxss: -1.0 vs the value itself
+          e.g. value -20.0 -&gt; forced to -1.0 ; value 5.0 -&gt; stays 5.0
+          state stays 1 (keeps clamping until you set it back to 0)
+     2 -&gt; xmm0's 2nd float += 300.0, then state auto-resets to 0
+
+   r13 is ONLY used in the final code: block (the original addps).
+   The multiplier and state blocks never touch r13.
+
+   state is declared with globalalloc BEFORE [ENABLE], so:
+     - the symbols are auto-registered and usable even while the script is disabled
+     - their addresses are stable across enable/disable
+   The  block resets state to 0 and multiplier to 2.0 on every enable.
+}
+
+globalalloc(state,4)      // registered symbol, stable address
+globalalloc(multiplier,4) // registered symbol, stable address
+
+[ENABLE]
+
+{$lua}
+if syntaxcheck then return end
+writeInteger("state",0)
+writeFloat("multiplier",5.0) -- &lt;&lt;&lt; DEFAULT MULTIPLIER - edit this value if you want
+{$asm}
+
+aobscanmodule(kiss,CrimsonDesert.exe,41 0F 58 45 00 41) // should be unique
+alloc(newmem,$1000,kiss)
+
+label(code)
+label(return)
+label(float300)
+label(minus1)
+label(scratch)
+label(case1)
+label(case2)
+
+newmem:
+  // ---- FOR ALL CASES: multiply 1st and 3rd float by [multiplier] ----
+  movups [scratch],xmm0
+  movss xmm1,[multiplier]
+  movss xmm2,[scratch+00]   // 1st float
+  mulss xmm2,xmm1
+  movss [scratch+00],xmm2
+  movss xmm2,[scratch+08]   // 3rd float
+  mulss xmm2,xmm1
+  movss [scratch+08],xmm2
+  movups xmm0,[scratch]
+  // ---- state dispatch ----
+  cmp dword ptr [state],1
+  je case1
+  cmp dword ptr [state],2
+  je case2
+  jmp code
+
+case1:
+  // state == 1 : clamp 2nd float to &gt;= -1.0 — direct maxss, no r13
+  movups [scratch],xmm0
+  movss xmm1,[minus1]        // xmm1 = -1.0
+  maxss xmm1,[scratch+04]    // xmm1 = max(-1.0, value) ; -20 -&gt; -1.0
+  movss [scratch+04],xmm1
+  movups xmm0,[scratch]
+  jmp code                   // original addps xmm0,[r13+00] runs here
+
+case2:
+  // state == 2 : 2nd float += 300.0, then state = 0
+  movups [scratch],xmm0
+  movss xmm1,[float300]
+  addss xmm1,[scratch+04]
+  movss [scratch+04],xmm1
+  movups xmm0,[scratch]
+  mov dword ptr [state],0
+  jmp code
+
+code:
+  // original instruction — the ONLY place r13 is used
+  addps xmm0,[r13+00]
+  jmp return
+
+float300:
+  dd 43960000 // 300.0f
+
+minus1:
+  dd (float)0.0 // -1.0f
+
+scratch:
+  dd 0,0,0,0
+
+kiss:
+  jmp newmem
+return:
+
+registersymbol(kiss)
+
+[DISABLE]
+
+kiss:
+  db 41 0F 58 45 00
+
+unregistersymbol(kiss)
+dealloc(newmem)
+
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>58</ID>
+                  <Description>"state"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>state</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>59</ID>
+                  <Description>"multiplier"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Float</VariableType>
+                  <Address>multiplier</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
@@ -781,104 +1080,6 @@
       </After>
     </CodeEntry>
     <CodeEntry>
-      <Description>rdx give it to r12 the main componet of dispaly stamina :mov r12,rdx</Description>
-      <AddressString>CrimsonDesert.exe+BFA2E3</AddressString>
-      <Before>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>4D</Byte>
-        <Byte>8B</Byte>
-        <Byte>F8</Byte>
-      </Before>
-      <Actual>
-        <Byte>4C</Byte>
-        <Byte>8B</Byte>
-        <Byte>E2</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>F9</Byte>
-        <Byte>74</Byte>
-        <Byte>0A</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>before this call rbp has the display integer :call CrimsonDesert.exe+BFA2C0</Description>
-      <AddressString>CrimsonDesert.exe+A586AE9</AddressString>
-      <Before>
-        <Byte>89</Byte>
-        <Byte>EA</Byte>
-        <Byte>48</Byte>
-        <Byte>89</Byte>
-        <Byte>F9</Byte>
-      </Before>
-      <Actual>
-        <Byte>E8</Byte>
-        <Byte>D2</Byte>
-        <Byte>37</Byte>
-        <Byte>67</Byte>
-        <Byte>F6</Byte>
-      </Actual>
-      <After>
-        <Byte>BE</Byte>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>check call for rbp :call qword ptr [r10+00000508]</Description>
-      <AddressString>CrimsonDesert.exe+BFCEE1</AddressString>
-      <Before>
-        <Byte>24</Byte>
-        <Byte>20</Byte>
-        <Byte>49</Byte>
-        <Byte>8B</Byte>
-        <Byte>CC</Byte>
-      </Before>
-      <Actual>
-        <Byte>41</Byte>
-        <Byte>FF</Byte>
-        <Byte>92</Byte>
-        <Byte>08</Byte>
-        <Byte>05</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>45</Byte>
-        <Byte>3A</Byte>
-        <Byte>BC</Byte>
-        <Byte>24</Byte>
-        <Byte>84</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
-      <Description>dispaly * 100 integer best source rn :mov r11,[rdi]</Description>
-      <AddressString>CrimsonDesert.exe+BFCE55</AddressString>
-      <Before>
-        <Byte>5C</Byte>
-        <Byte>02</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>4C</Byte>
-        <Byte>8B</Byte>
-        <Byte>1F</Byte>
-      </Actual>
-      <After>
-        <Byte>4D</Byte>
-        <Byte>3B</Byte>
-        <Byte>F3</Byte>
-        <Byte>75</Byte>
-        <Byte>09</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry>
       <Description>very imp call :call CrimsonDesert.exe+145B720</Description>
       <AddressString>CrimsonDesert.exe+BFCD6C</AddressString>
       <Before>
@@ -998,16 +1199,183 @@
         <Byte>C1</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Health :mov rdi,[rcx+08]</Description>
+      <AddressString>CrimsonDesert.exe+C333FD5</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>D7</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>79</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>8D</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>50</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Stamina :mov [r12+08],r9</Description>
+      <AddressString>CrimsonDesert.exe+C304450</AddressString>
+      <Before>
+        <Byte>4D</Byte>
+        <Byte>8D</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>28</Byte>
+      </Before>
+      <Actual>
+        <Byte>4D</Byte>
+        <Byte>89</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>08</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>0F</Byte>
+        <Byte>4C</Byte>
+        <Byte>C9</Byte>
+        <Byte>66</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>my x coord 1 :vfnmadd213ps xmm0,xmm9,[rax+00000090]</Description>
+      <AddressString>CrimsonDesert.exe+A7DFE5</AddressString>
+      <Before>
+        <Byte>B3</Byte>
+        <Byte>9D</Byte>
+        <Byte>6E</Byte>
+        <Byte>05</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>C4</Byte>
+        <Byte>E2</Byte>
+        <Byte>31</Byte>
+        <Byte>AC</Byte>
+        <Byte>80</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>F8</Byte>
+        <Byte>58</Byte>
+        <Byte>0D</Byte>
+        <Byte>1A</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>my xcoord 2 :vfnmadd213ps xmm1,xmm0,[rax+00000090]</Description>
+      <AddressString>CrimsonDesert.exe+594337</AddressString>
+      <Before>
+        <Byte>80</Byte>
+        <Byte>80</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C4</Byte>
+        <Byte>E2</Byte>
+        <Byte>79</Byte>
+        <Byte>AC</Byte>
+        <Byte>88</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>F0</Byte>
+        <Byte>58</Byte>
+        <Byte>0D</Byte>
+        <Byte>C8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>my xcoord 3 :vfnmadd213ps xmm1,xmm0,[rax+00000090]</Description>
+      <AddressString>CrimsonDesert.exe+2F5565F</AddressString>
+      <Before>
+        <Byte>39</Byte>
+        <Byte>27</Byte>
+        <Byte>21</Byte>
+        <Byte>03</Byte>
+        <Byte>10</Byte>
+      </Before>
+      <Actual>
+        <Byte>C4</Byte>
+        <Byte>E2</Byte>
+        <Byte>79</Byte>
+        <Byte>AC</Byte>
+        <Byte>88</Byte>
+        <Byte>90</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C5</Byte>
+        <Byte>F0</Byte>
+        <Byte>58</Byte>
+        <Byte>0D</Byte>
+        <Byte>A0</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>x coord writer :movups [r13+00],xmm0</Description>
+      <AddressString>CrimsonDesert.exe+3A409EC</AddressString>
+      <Before>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>58</Byte>
+        <Byte>45</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>41</Byte>
+        <Byte>0F</Byte>
+        <Byte>11</Byte>
+        <Byte>45</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>BB</Byte>
+        <Byte>F8</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
-  <UserdefinedSymbols/>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>state</Name>
+      <Address>02960000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>multiplier</Name>
+      <Address>02960010</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
   <Comments>Notes:
-
 Inventory has two addresses for each item. To change the item amount you have to make sure that each of two values are same.
 From the inventory if you change the silver or copper or bronze then you have to save the game first and then load that game to show up the new changed currency in game.
 Inventory first address(by address number) is the display value. Second address is the actual value of that item in number. Changing this number will actually matter when item gets consumed. However changing the first address is also important because without that visually you can't click and consume item when its not visible if the number in this address is zero.
-
 As for stats like health and stamina and others. The story is different. For stats like health and all other stats except stamina, the value in memory is stored as 8 bytes of the number visible in game * 1000. So a health of 50 in the display is actually stored as 50000 as 8 bytes. For health also there are two addresses. First address by address number is just display and second address is the real health. For other stats like weapon damage etc. they are single address based. But they are also multiplied by 1000 in memory. For eg, if longsword has 12 weapons damage visible in game then in memory the value is 12000. 
-
 To get One hit kill, you have to set weapon damage to more than 1000 in game(in memory you have to set it to 1000*1000). I have tried 6000 and it works like a charm.
 </Comments>
 </CheatTable>
